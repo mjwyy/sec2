@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-# sec2
-这是kylin的分支shenmegui 
-
-这是readme
-readme并没有什么用
-纳尼merge我的分支会覆盖原来的readme?
-=======
-﻿# sec2
-这是王梦麟的分支
-文档按照日期分类
-更新日期——10.9
->>>>>>> origin/master
+这是软工二第23小组的Github主页
+小组主要文档都在kylin分支中
+其余小组成员的分支分别有各自的作业。

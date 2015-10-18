@@ -2,6 +2,7 @@ package businesslogic.logisticbl;
 
 /**
  * 快递种类常量
+ * 包括 1:经济快递，2:标准快递，3:特快专递
  * 
  * @author kylin
  *

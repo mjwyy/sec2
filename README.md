@@ -1,4 +1,5 @@
 # sec2
+shenmegui 
 <<<<<<< HEAD
 这是软工二的master分支
 大家在各自的分支上工作

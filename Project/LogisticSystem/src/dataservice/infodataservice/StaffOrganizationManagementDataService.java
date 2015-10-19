@@ -4,15 +4,15 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import dataservice.data_service_exception.ElementNotFoundException;
-import dataservice.data_service_exception.InterruptWithExistedElementException;
+import dataservice.util.exception.ElementNotFoundException;
+import dataservice.util.exception.InterruptWithExistedElementException;
 import po.OrganizationPO;
 import po.StaffPO;
 
 public interface StaffOrganizationManagementDataService extends Remote {
 	/**
-	 * Ç°ÖÃÌõ¼þ£º¾­¹ýÁË¸ñÊ½¼ì²é
-	 * ºóÖÃÌõ¼þ£ºDataÏòÊý¾ÝÖÐÔö¼ÓÔ±¹¤ÐÅÏ¢
+	 * Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¸ï¿½Ê½ï¿½ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Dataï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½Ï¢
 	 * @param staff
 	 * @return
 	 * @throws RemoteException

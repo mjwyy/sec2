@@ -10,8 +10,8 @@ import po.UserPO;
 
 public interface SystemUserManagementDataService extends Remote {
 	/**
-	 * ǰ��������UserPO����Ϣ�Ѿ����ʽ���
-	 * ����������Data�����������û���Ϣ
+	 * 前锟斤拷锟斤拷锟斤拷锟斤拷UserPO锟斤拷锟斤拷息锟窖撅拷锟斤拷锟绞斤拷锟斤拷
+	 * 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷Data锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟矫伙拷锟斤拷息
 	 * @param user
 	 * @return true for successful add operation
 	 * @throws RemoteException
@@ -21,8 +21,8 @@ public interface SystemUserManagementDataService extends Remote {
 			throws RemoteException, InterruptWithExistedElementException;
 	
 	/**
-	 * ǰ��������UserPO����Ϣ�Ѿ����ʽ���
-	 * ����������Data���Ҳ�ɾ����û�
+	 * 前锟斤拷锟斤拷锟斤拷锟斤拷UserPO锟斤拷锟斤拷息锟窖撅拷锟斤拷锟绞斤拷锟斤拷
+	 * 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷Data锟斤拷锟揭诧拷删锟斤拷锟斤拷没锟�
 	 * @param user
 	 * @return
 	 * @throws RemoteException
@@ -32,8 +32,8 @@ public interface SystemUserManagementDataService extends Remote {
 			throws RemoteException, ElementNotFoundException;
 	
 	/**
-	 * ǰ����������
-	 * ����������Data���originalUser�����û�����modified���֮
+	 * 前锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
+	 * 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷Data锟斤拷锟給riginalUser锟斤拷锟斤拷锟矫伙拷锟斤拷锟斤拷modified锟斤拷锟街�
 	 * @param originalUser
 	 * @param modified
 	 * @return
@@ -44,8 +44,8 @@ public interface SystemUserManagementDataService extends Remote {
 			throws RemoteException, ElementNotFoundException,InterruptWithExistedElementException;
 	
 	/**
-	 * ǰ��������userInfo�����˸�ʽ��������а�������һ����Ϣ
-	 * ����������Data���Ҵ��û���������������Ϣ
+	 * 前锟斤拷锟斤拷锟斤拷锟斤拷userInfo锟斤拷锟斤拷锟剿革拷式锟斤拷锟斤拷锟斤拷锟斤拷邪锟斤拷锟斤拷锟斤拷锟揭伙拷锟斤拷锟较�
+	 * 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷Data锟斤拷锟揭达拷锟矫伙拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷息
 	 * @param userInfo
 	 * @return
 	 * @throws RemoteException
@@ -55,11 +55,21 @@ public interface SystemUserManagementDataService extends Remote {
 			throws RemoteException, ElementNotFoundException;
 	
 	/**
-	 * ǰ����������
-	 * ����������Data���������û���Ϣ
+	 * 前锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
+	 * 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷Data锟斤拷锟斤拷锟斤拷锟斤拷锟矫伙拷锟斤拷息
 	 * @return
 	 * @throws RemoteException
 	 */
 	public ArrayList<UserPO> getAllUsers()
 			throws RemoteException;
+	/**
+	 * 前置条件：无
+	 * 后置条件：Data查询UserPO中的内容是否正确，包括账号密码匹配、权限检查
+	 * @param user
+	 * @return
+	 * @throws RemoteException
+	 * @throws ElementNotFoundException
+	 */
+	public boolean logIn(UserPO user)
+			throws RemoteException, ElementNotFoundException;
 }

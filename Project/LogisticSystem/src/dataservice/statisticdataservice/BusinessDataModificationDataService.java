@@ -33,6 +33,10 @@ public interface BusinessDataModificationDataService extends Remote {
 	 */
 	public boolean setPrice(String name,double newValue)
 			throws RemoteException,ElementNotFoundException;
+	
+	public double getPrice(String name)
+			throws RemoteException,ElementNotFoundException;
+	
 	/**
 	 * ǰ����������
 	 * �������������Ӷ�Ӧ���м�¼

@@ -8,13 +8,15 @@ package businesslogicservice.financeblservice;
 import java.util.ArrayList;
 
 import businesslogic.util.ResultMsg;
-import vo.PutInStorageVO;
+import vo.StorageInVO;
 import vo.ReceipeVO;
 
 public interface CreditNoteInputBLService {
 	
 	/**
 	 * 显示快递收款单
+	 * 前置条件；经验证的用户要求查看收款单信息
+	 * 后置条件；无
 	 * @return 信息列表
 	 */
 	public ArrayList<ReceipeVO> show();

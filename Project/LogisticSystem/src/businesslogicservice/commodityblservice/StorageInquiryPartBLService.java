@@ -25,6 +25,8 @@ public interface StorageInquiryPartBLService {
  
   /**
    * 显示该时间段的信息
+   * 前置条件：时间格式无误，逻辑无误
+   * 后置条件；系统显示信息，系统日志记录
    * @param time1
    * @param time2
    * @return

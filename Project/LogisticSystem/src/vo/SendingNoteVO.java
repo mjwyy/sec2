@@ -81,5 +81,48 @@ public class SendingNoteVO extends NoteVO {
 		this.packPrice = packPrice;
 		this.barCode = barCode;
 	}
-	
+
+	public String getSenderName() {
+		return senderName;
+	}
+
+	public String getSenderAddress() {
+		return senderAddress;
+	}
+
+	public String getSenderWorkPlace() {
+		return senderWorkPlace;
+	}
+
+	public String getSenderTeleNumber() {
+		return senderTeleNumber;
+	}
+
+	public String getNumber() {
+		return number;
+	}
+
+	public double getWeight() {
+		return weight;
+	}
+
+	public double getVolume() {
+		return volume;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public DeliverCategory getCategory() {
+		return category;
+	}
+
+	public double getPackPrice() {
+		return packPrice;
+	}
+
+	public String getBarCode() {
+		return barCode;
+	}
 }

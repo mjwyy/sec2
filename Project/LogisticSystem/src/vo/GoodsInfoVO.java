@@ -29,5 +29,16 @@ public class GoodsInfoVO {
 		this.state = state;
 		this.departurePlace = departurePlace;
 	}
-	
+
+	public String getBarcode() {
+		return barcode;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public String getDeparturePlace() {
+		return departurePlace;
+	}
 }

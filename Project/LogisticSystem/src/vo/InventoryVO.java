@@ -38,8 +38,20 @@ public class InventoryVO {
 		this.place =place;
 		
 	}
-	
-	
-	
 
+	public String getOutNum() {
+		return outNum;
+	}
+
+	public String getInNum() {
+		return inNum;
+	}
+
+	public String getMoney() {
+		return money;
+	}
+
+	public ArrayList<String> getPlace() {
+		return place;
+	}
 }

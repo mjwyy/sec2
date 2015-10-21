@@ -1,5 +1,5 @@
 /**
- * ÊäÈë¼Ä¼şµ¥ĞÅÏ¢Êı¾İ½Ó¿Ú
+ * è¾“å…¥å¯„ä»¶å•ä¿¡æ¯æ•°æ®æ¥å£
  * @author wqy
  * @date 2015/10/17
  */
@@ -12,42 +12,35 @@ import po.DeliveryNoteInputPO;
 
 public interface DeliveryNoteInputDataService {
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ²»´æÔÚ
-	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞÔö¼ÓÒ»¸öpo¼ÇÂ¼
-	 * @param po ¿â´æpo
+	 * å‰ç½®æ¡ä»¶ï¼šåŒæ ·IDçš„poåœ¨Mapperä¸­ä¸å­˜åœ¨
+	 * åç½®æ¡ä»¶ï¼šåœ¨æ•°æ®åº“ä¸­å¢åŠ ä¸€ä¸ªpoè®°å½•
+	 * @param po åº“å­˜po
 	 */
 	public void insert(DeliveryNoteInputPO po) throws RemoteException;
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ´æÔÚ
-	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞÉ¾³ıÒ»¸öpo¼ÇÂ¼
-	 * @param po ¿â´æpo
+	 * å‰ç½®æ¡ä»¶ï¼šåŒæ ·IDçš„poåœ¨Mapperä¸­å­˜åœ¨
+	 * åç½®æ¡ä»¶ï¼šåœ¨æ•°æ®åº“ä¸­åˆ é™¤ä¸€ä¸ªpoè®°å½•
+	 * @param po åº“å­˜po
 	 */
 	public void delete(DeliveryNoteInputPO po) throws RemoteException;
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ´æÔÚ
-	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞ¸üĞÂÒ»¸öpo¼ÇÂ¼
-	 * @param po ¿â´æpo
+	 * å‰ç½®æ¡ä»¶ï¼šåŒæ ·IDçš„poåœ¨Mapperä¸­å­˜åœ¨
+	 * åç½®æ¡ä»¶ï¼šåœ¨æ•°æ®åº“ä¸­æ›´æ–°ä¸€ä¸ªpoè®°å½•
+	 * @param po åº“å­˜po
 	 */
 	public void update(DeliveryNoteInputPO po) throws RemoteException;
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£º°´Ãû×Ö½øĞĞ²éÕÒ·µ»ØÏàÓ¦µÄDeliveryNoteInputPO½á¹û
-	 * @param name ¿â´æÃû×Ö
-	 * @return DeliveryNoteInputPO ¿â´æPO
+	 * å‰ç½®æ¡ä»¶ï¼šæ— 
+	 * åç½®æ¡ä»¶ï¼šæŒ‰åå­—è¿›è¡ŒæŸ¥æ‰¾è¿”å›ç›¸åº”çš„DeliveryNoteInputPOç»“æœ
+	 * @param name åº“å­˜åå­—
+	 * @return DeliveryNoteInputPO åº“å­˜PO
 	 */
 	public DeliveryNoteInputPO findByName(String name) throws RemoteException;
+
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£º°´ID½øĞĞ²éÕÒ·µ»ØÏàÓ¦µÄDeliveryNoteInputPO½á¹û
-	 * @param ID ¿â´æID
-	 * @return DeliveryNoteInputPO ¿â´æPO
-	 */
-	public DeliveryNoteInputPO findById(String id) throws RemoteException;
-	
-	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£º·µ»ØËùÓĞµÄ¿â´æPO
-	 * @return DeliveryNoteInputPO ¿â´æPO
+	 * å‰ç½®æ¡ä»¶ï¼šæ— 
+	 * åç½®æ¡ä»¶ï¼šè¿”å›æ‰€æœ‰çš„åº“å­˜PO
+	 * @return DeliveryNoteInputPO åº“å­˜PO
 	 */
 	public ArrayList<DeliveryNoteInputPO> show() throws RemoteException;
 }

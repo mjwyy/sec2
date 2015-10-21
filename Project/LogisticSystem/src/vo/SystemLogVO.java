@@ -7,5 +7,5 @@ package vo;
  *
  */
 public class SystemLogVO {
-
+    // TODO 系统日志VO
 }

@@ -28,4 +28,15 @@ public class AccountVO {
 		this.balance = balance;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public String getAccount() {
+		return account;
+	}
+
+	public double getBalance() {
+		return balance;
+	}
 }

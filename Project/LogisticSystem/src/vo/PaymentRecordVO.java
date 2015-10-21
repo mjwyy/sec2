@@ -44,4 +44,23 @@ public class PaymentRecordVO {
 		this.paymentMethod = paymentMethod;
 	}
 
+	public String getDate() {
+		return date;
+	}
+
+	public String getMoney() {
+		return money;
+	}
+
+	public String getPayer() {
+		return payer;
+	}
+
+	public String getAccountNum() {
+		return accountNum;
+	}
+
+	public String getPaymentMethod() {
+		return paymentMethod;
+	}
 }

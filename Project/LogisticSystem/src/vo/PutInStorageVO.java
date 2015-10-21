@@ -28,6 +28,12 @@ public class PutInStorageVO {
 		this.date = date;
 		this.GoodsInStorageInfo = GoodsInStorageInfo;
 	}
-	
-   
+
+	public String getDate() {
+		return date;
+	}
+
+	public ArrayList<String> getGoodsInStorageInfo() {
+		return GoodsInStorageInfo;
+	}
 }

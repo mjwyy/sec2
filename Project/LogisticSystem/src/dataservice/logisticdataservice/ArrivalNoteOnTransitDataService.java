@@ -1,5 +1,5 @@
 /**
- * ´¦ÀíÖĞ×ªÖĞĞÄµ½´ï¼şÊı¾İ½Ó¿Ú
+ * å¤„ç†ä¸­è½¬ä¸­å¿ƒåˆ°è¾¾ä»¶æ•°æ®æ¥å£
  * @author wqy
  * @date 2015/10/17
  */
@@ -12,42 +12,35 @@ import po.ArrivalNoteOnTransitPO;
 
 public interface ArrivalNoteOnTransitDataService {
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ²»´æÔÚ
-	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞÔö¼ÓÒ»¸öpo¼ÇÂ¼
-	 * @param po ¿â´æpo
+	 * å‰ç½®æ¡ä»¶ï¼šåŒæ ·IDçš„poåœ¨Mapperä¸­ä¸å­˜åœ¨
+	 * åç½®æ¡ä»¶ï¼šåœ¨æ•°æ®åº“ä¸­å¢åŠ ä¸€ä¸ªpoè®°å½•
+	 * @param po åº“å­˜po
 	 */
 	public void insert(ArrivalNoteOnTransitPO po) throws RemoteException;
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ´æÔÚ
-	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞÉ¾³ıÒ»¸öpo¼ÇÂ¼
-	 * @param po ¿â´æpo
+	 * å‰ç½®æ¡ä»¶ï¼šåŒæ ·IDçš„poåœ¨Mapperä¸­å­˜åœ¨
+	 * åç½®æ¡ä»¶ï¼šåœ¨æ•°æ®åº“ä¸­åˆ é™¤ä¸€ä¸ªpoè®°å½•
+	 * @param po åº“å­˜po
 	 */
 	public void delete(ArrivalNoteOnTransitPO po) throws RemoteException;
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ´æÔÚ
-	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞ¸üĞÂÒ»¸öpo¼ÇÂ¼
-	 * @param po ¿â´æpo
+	 * å‰ç½®æ¡ä»¶ï¼šåŒæ ·IDçš„poåœ¨Mapperä¸­å­˜åœ¨
+	 * åç½®æ¡ä»¶ï¼šåœ¨æ•°æ®åº“ä¸­æ›´æ–°ä¸€ä¸ªpoè®°å½•
+	 * @param po åº“å­˜po
 	 */
 	public void update(ArrivalNoteOnTransitPO po) throws RemoteException;
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£º°´Ãû×Ö½øĞĞ²éÕÒ·µ»ØÏàÓ¦µÄArrivalNoteOnTransitPO½á¹û
-	 * @param name ¿â´æÃû×Ö
-	 * @return ArrivalNoteOnTransitPO ¿â´æPO
+	 * å‰ç½®æ¡ä»¶ï¼šæ— 
+	 * åç½®æ¡ä»¶ï¼šæŒ‰åå­—è¿›è¡ŒæŸ¥æ‰¾è¿”å›ç›¸åº”çš„ArrivalNoteOnTransitPOç»“æœ
+	 * @param name åº“å­˜åå­—
+	 * @return ArrivalNoteOnTransitPO åº“å­˜PO
 	 */
 	public ArrivalNoteOnTransitPO findByName(String name) throws RemoteException;
+
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£º°´ID½øĞĞ²éÕÒ·µ»ØÏàÓ¦µÄArrivalNoteOnTransitPO½á¹û
-	 * @param ID ¿â´æID
-	 * @return ArrivalNoteOnTransitPO ¿â´æPO
-	 */
-	public ArrivalNoteOnTransitPO findById(String id) throws RemoteException;
-	
-	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£º·µ»ØËùÓĞµÄ¿â´æPO
-	 * @return ArrivalNoteOnTransitPO ¿â´æPO
+	 * å‰ç½®æ¡ä»¶ï¼šæ— 
+	 * åç½®æ¡ä»¶ï¼šè¿”å›æ‰€æœ‰çš„åº“å­˜PO
+	 * @return ArrivalNoteOnTransitPO åº“å­˜PO
 	 */
 	public ArrayList<ArrivalNoteOnTransitPO> show() throws RemoteException;
 }

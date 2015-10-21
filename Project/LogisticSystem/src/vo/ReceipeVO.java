@@ -37,4 +37,20 @@ public class ReceipeVO {
 		this.CourierName =CourierName;
 		this.barcode = barcode;
 	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public String getMoneySum() {
+		return moneySum;
+	}
+
+	public String getCourierName() {
+		return CourierName;
+	}
+
+	public ArrayList<String> getBarcode() {
+		return barcode;
+	}
 }

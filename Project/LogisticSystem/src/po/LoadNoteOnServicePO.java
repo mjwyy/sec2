@@ -1,5 +1,5 @@
 /**
- * ÓªÒµÌü×°³µµ¥
+ * è¥ä¸šå…è£…è½¦å•
  * @author wqy
  * @date 2015/10/17
  */
@@ -11,37 +11,37 @@ public class LoadNoteOnServicePO {
 	private String date;
 
 	/**
-	 * ±¾ÓªÒµÌü±àºÅ
+	 * æœ¬è¥ä¸šå…ç¼–å·
 	 */
 	private String hallNumber;
 
 	/**
-	 * ÆûÔË±àºÅ
+	 * æ±½è¿ç¼–å·
 	 */
 	private String transpotationNumber;
 
 	/**
-	 * Ä¿µÄµØ
+	 * ç›®çš„åœ°
 	 */
 	private String Destination;
 
 	/**
-	 * ³µÁ¾´úºÅ
+	 * è½¦è¾†ä»£å·
 	 */
 	private String carNumber;
 
 	/**
-	 * ¼à×°Ô±ĞÅÏ¢
+	 * ç›‘è£…å‘˜ä¿¡æ¯
 	 */
 	private String guardMan;
 
 	/**
-	 * ÑºÔËÔ±ĞÅÏ¢
+	 * æŠ¼è¿å‘˜ä¿¡æ¯
 	 */
 	private String supercargoMan;
 
 	/**
-	 * »õÎïÌõĞÎÂë
+	 * è´§ç‰©æ¡å½¢ç 
 	 */
 	private ArrayList<String> barcodes;
 

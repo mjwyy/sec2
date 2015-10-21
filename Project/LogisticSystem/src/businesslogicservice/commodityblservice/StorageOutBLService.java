@@ -3,7 +3,6 @@ package businesslogicservice.commodityblservice;
 import java.util.ArrayList;
 
 import businesslogic.util.ResultMsg;
-import vo.PutInStorageVO;
 import vo.StorageOutVO;
 
 public interface StorageOutBLService {

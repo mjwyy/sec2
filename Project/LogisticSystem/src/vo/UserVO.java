@@ -28,4 +28,15 @@ public class UserVO {
 		this.authority = authority;
 	}
 
+    public String getUserNum() {
+        return userNum;
+    }
+
+    public String getInitialPassword() {
+        return initialPassword;
+    }
+
+    public String getAuthority() {
+        return authority;
+    }
 }

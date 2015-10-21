@@ -22,7 +22,7 @@ public class InventoryVO {
 	/**
 	 * 货物位置信息
 	 */
-	private ArrayList<String> place;
+	private ArrayList<GoodsVO> goodsInfo;
 	
 	/**
 	 * 构造方法
@@ -31,11 +31,11 @@ public class InventoryVO {
 	 * @param money
 	 * @param place
 	 */
-	public InventoryVO(String outNum, String inNum,String money,ArrayList<String> place){
+	public InventoryVO(String outNum, String inNum,String money,ArrayList<GoodsVO> goodsInfo){
 		this.outNum = outNum;
 		this.inNum = inNum;
 		this.money = money;
-		this.place =place;
+		this.goodsInfo = goodsInfo;
 		
 	}
 	

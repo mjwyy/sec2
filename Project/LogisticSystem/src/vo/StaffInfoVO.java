@@ -47,6 +47,7 @@ public class StaffInfoVO {
 	 * @param wage
 	 */
 	public StaffInfoVO(String name,String sex,String postion,String IDNum,int workingtime,String phoneNum,double wage){
+		
 		this.name = name;
 		this.sex = sex;
 		this.phoneNum = phoneNum;
@@ -55,33 +56,10 @@ public class StaffInfoVO {
 		this.postion = postion;
 		this.wage = wage;
 		this.workingtime = workingtime;
+		
+		
 	}
+	
+	
 
-	public String getName() {
-		return name;
-	}
-
-	public String getSex() {
-		return sex;
-	}
-
-	public String getPostion() {
-		return postion;
-	}
-
-	public String getIDNum() {
-		return IDNum;
-	}
-
-	public int getWorkingtime() {
-		return workingtime;
-	}
-
-	public String getPhoneNum() {
-		return phoneNum;
-	}
-
-	public double getWage() {
-		return wage;
-	}
 }

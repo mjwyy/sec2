@@ -29,16 +29,4 @@ public class CommodityInfoVO {
 		this.maxSize = maxSize;
 		this.currentSize = currentSize;
 	}
-
-	public String getName() {
-		return name;
-	}
-
-	public int getMaxSize() {
-		return maxSize;
-	}
-
-	public int getCurrentSize() {
-		return currentSize;
-	}
 }

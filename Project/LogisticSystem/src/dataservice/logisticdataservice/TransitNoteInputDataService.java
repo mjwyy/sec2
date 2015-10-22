@@ -1,5 +1,5 @@
 /**
- * å‘é€ä¸­è½¬å•æ•°æ®æ¥å£
+ * ·¢ËÍÖĞ×ªµ¥Êı¾İ½Ó¿Ú
  * @author wqy
  * @date 2015/10/17
  */
@@ -12,36 +12,42 @@ import po.TransitNoteInputPO;
 
 public interface TransitNoteInputDataService {
 	/**
-	 * å‰ç½®æ¡ä»¶ï¼šåŒæ ·IDçš„poåœ¨Mapperä¸­ä¸å­˜åœ¨
-	 * åç½®æ¡ä»¶ï¼šåœ¨æ•°æ®åº“ä¸­å¢åŠ ä¸€ä¸ªpoè®°å½•
-	 * @param po TransitNoteInputpo
+	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ²»´æÔÚ
+	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞÔö¼ÓÒ»¸öpo¼ÇÂ¼
+	 * @param po ¿â´æpo
 	 */
 	public void insert(TransitNoteInputPO po) throws RemoteException;
 	/**
-	 * å‰ç½®æ¡ä»¶ï¼šåŒæ ·IDçš„poåœ¨Mapperä¸­å­˜åœ¨
-	 * åç½®æ¡ä»¶ï¼šåœ¨æ•°æ®åº“ä¸­åˆ é™¤ä¸€ä¸ªpoè®°å½•
-	 * @param po TransitNoteInputpo
+	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ´æÔÚ
+	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞÉ¾³ıÒ»¸öpo¼ÇÂ¼
+	 * @param po ¿â´æpo
 	 */
 	public void delete(TransitNoteInputPO po) throws RemoteException;
 	/**
-	 * å‰ç½®æ¡ä»¶ï¼šåŒæ ·IDçš„poåœ¨Mapperä¸­å­˜åœ¨
-	 * åç½®æ¡ä»¶ï¼šåœ¨æ•°æ®åº“ä¸­æ›´æ–°ä¸€ä¸ªpoè®°å½•
-	 * @param po TransitNoteInputpo
+	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ´æÔÚ
+	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞ¸üĞÂÒ»¸öpo¼ÇÂ¼
+	 * @param po ¿â´æpo
 	 */
 	public void update(TransitNoteInputPO po) throws RemoteException;
 	/**
-	 * å‰ç½®æ¡ä»¶ï¼šæ— 
-	 * åç½®æ¡ä»¶ï¼šæŸ¥æ‰¾è¿”å›ç›¸åº”çš„NotePOç»“æœ
-	 * @param name å…³é”®å­—
-	 * @return TransitNoteInputPO 
+	 * Ç°ÖÃÌõ¼ş£ºÎŞ
+	 * ºóÖÃÌõ¼ş£º°´Ãû×Ö½øĞĞ²éÕÒ·µ»ØÏàÓ¦µÄNotePO½á¹û
+	 * @param name ¿â´æÃû×Ö
+	 * @return TransitNoteInputPO ¿â´æPO
 	 */
-	public ArrayList<TransitNoteInputPO> find(String name) throws RemoteException;
-	
+	public TransitNoteInputPO findByName(String name) throws RemoteException;
+	/**
+	 * Ç°ÖÃÌõ¼ş£ºÎŞ
+	 * ºóÖÃÌõ¼ş£º°´ID½øĞĞ²éÕÒ·µ»ØÏàÓ¦µÄTransitNoteInputPO½á¹û
+	 * @param ID ¿â´æID
+	 * @return TransitNoteInputPO ¿â´æPO
+	 */
+	public TransitNoteInputPO findById(String id) throws RemoteException;
 	
 	/**
-	 * å‰ç½®æ¡ä»¶ï¼šæ— 
-	 * åç½®æ¡ä»¶ï¼šè¿”å›æ‰€æœ‰çš„TransitNoteInputPO
-	 * @return TransitNoteInputPO 
+	 * Ç°ÖÃÌõ¼ş£ºÎŞ
+	 * ºóÖÃÌõ¼ş£º·µ»ØËùÓĞµÄ¿â´æPO
+	 * @return TransitNoteInputPO ¿â´æPO
 	 */
-	public ArrayList<TransitNoteInputPO> findAll() throws RemoteException;
+	public ArrayList<TransitNoteInputPO> show() throws RemoteException;
 }

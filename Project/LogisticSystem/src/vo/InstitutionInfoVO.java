@@ -31,16 +31,4 @@ public class InstitutionInfoVO {
 		this.staff = staff;
 		this.cars = cars;
 	}
-
-	public String getName() {
-		return name;
-	}
-
-	public Hashtable<String, Integer> getStaff() {
-		return staff;
-	}
-
-	public Hashtable<String, Integer> getCars() {
-		return cars;
-	}
 }

@@ -20,22 +20,5 @@ public class ChartVO {
 	 */
 	String time1;
 	String time2;
-
-    public ChartVO(ChartType type, String time1, String time2) {
-        this.type = type;
-        this.time1 = time1;
-        this.time2 = time2;
-    }
-
-    public ChartType getType() {
-        return type;
-    }
-
-    public String getTime1() {
-        return time1;
-    }
-
-    public String getTime2() {
-        return time2;
-    }
+	
 }

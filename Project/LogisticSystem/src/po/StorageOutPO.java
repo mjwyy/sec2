@@ -1,5 +1,5 @@
 /**
- * å‡ºåº“å•ä¿¡æ¯POç±»
+ * Èë¿âµ¥ĞÅÏ¢POÀà
  * @author wQY
  * @data 2015/10/17
  */
@@ -11,63 +11,31 @@ import java.util.ArrayList;
 public class StorageOutPO {
 
     /**
-     * æ—¥æœŸ
+     * ÈÕÆÚ
      */
 	private String date;
+	
 	/**
-     * å¿«é€’ç¼–å·
-     */
-	private String expressCode;
-	/**
-     * ç›®çš„åœ°
-     */
-	private String destination;
-	/**
-     * è£…è¿å½¢å¼
-     */
-	private String type;
-	/**
-     * ä¸­è½¬å•ç¼–å·
-     */
-	private String transferCode;
-	/**
-	 * è´§ç‰©ä¿¡æ¯ï¼ŒåŒ…æ‹¬æ¡å½¢ç åŠå…¶ä½ç½®ä¿¡æ¯
+	 * »õÎïĞÅÏ¢£¬°üÀ¨ÌõĞÎÂë¼°ÆäÎ»ÖÃĞÅÏ¢
 	 */
-
-
+	private ArrayList<String> GoodsInStorageInfo;
+	
 	/**
-	 * æ„é€ æ–¹æ³•
+	 * ¹¹Ôì·½·¨
 	 * @param date
 	 * @param GoodsInStorageInfo
 	 */
-	public StorageOutPO(String date,String expressCode,String destination,String type,String transferCode){
+	public StorageOutPO(String date,ArrayList<String> GoodsInStorageInfo){
 		this.date = date;
-		this.expressCode = expressCode;
-		this.destination = destination;
-		this.type = type;
-		this.transferCode = transferCode;
+		this.GoodsInStorageInfo = GoodsInStorageInfo;
 	}
 
 	public String getDate() {
 		return date;
 	}
 
-	public String getExpressCode() {
-		return expressCode;
+	public ArrayList<String> getGoodsInStorageInfo() {
+		return GoodsInStorageInfo;
 	}
-
-	public String getDestination() {
-		return destination;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public String getTransferCode() {
-		return transferCode;
-	}
-
-	
 
 }

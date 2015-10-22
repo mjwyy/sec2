@@ -29,15 +29,4 @@ public class VehicleInfoVO {
 		this.serviceTimeLimit =serviceTimeLimit;
 	}
 
-	public String getVehiclecode() {
-		return vehiclecode;
-	}
-
-	public String getPlatenumber() {
-		return platenumber;
-	}
-
-	public String getServiceTimeLimit() {
-		return serviceTimeLimit;
-	}
 }

@@ -49,29 +49,7 @@ public class ReceiveRecordVO {
 		this.payee = payee;
 		this.payService = payService;
 		this.place = place;
+				
 	}
-
-	public String getMoney() {
-		return money;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public String getInstitution() {
-		return institution;
-	}
-
-	public String getPayee() {
-		return payee;
-	}
-
-	public String getPayService() {
-		return payService;
-	}
-
-	public String getPlace() {
-		return place;
-	}
+	
 }

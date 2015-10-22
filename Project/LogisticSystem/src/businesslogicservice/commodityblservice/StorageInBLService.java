@@ -9,14 +9,14 @@ import java.util.ArrayList;
 
 import businesslogic.util.InventoryStatus;
 import businesslogic.util.ResultMsg;
-import vo.PutInStorageVO;
+import vo.StorageInVO;
 
 public interface StorageInBLService {
 	/**
 	 * 显示入库单信息
 	 * @return 信息列表
 	 */
-	public ArrayList<PutInStorageVO> show();
+	public ArrayList<StorageInVO> show();
 	
 	/**
 	 * 新增入库单
@@ -25,7 +25,7 @@ public interface StorageInBLService {
 	 * @param putInStorageVo
 	 * @return
 	 */
-	public ResultMsg addPutInStorgaeDoc(PutInStorageVO putInStorageVo);
+	public ResultMsg addPutInStorgaeDoc(StorageInVO putInStorageVo);
 	
 	/**
 	 * 提交入库单信息
@@ -34,7 +34,7 @@ public interface StorageInBLService {
 	 * @param putInStorageVo
 	 * @return
 	 */
-   public ResultMsg submitPutInStorageDoc(PutInStorageVO putInStorageVo);
+   public ResultMsg submitPutInStorageDoc(StorageInVO putInStorageVo);
    
    /**
     * 前置条件：库存超过最大警戒线

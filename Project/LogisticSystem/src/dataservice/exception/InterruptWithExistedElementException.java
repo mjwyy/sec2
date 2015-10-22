@@ -1,4 +1,4 @@
-package dataservice.util.exception;
+package dataservice.exception;
 
 public class InterruptWithExistedElementException extends Exception {
 

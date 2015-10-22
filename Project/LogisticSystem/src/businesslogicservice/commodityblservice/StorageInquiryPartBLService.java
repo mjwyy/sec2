@@ -24,9 +24,9 @@ public interface StorageInquiryPartBLService {
   public ResultMsg inputTime(String time1,String time2);
  
   /**
-   * 显示该时间段的信息 
-   * 前置条件：库存管理人员输入了正确的起止时间
-   * 后置条件：系统显示相应时间段内的库存信息
+   * 显示该时间段的信息
+   * 前置条件：时间格式无误，逻辑无误
+   * 后置条件；系统显示信息，系统日志记录
    * @param time1
    * @param time2
    * @return

@@ -22,7 +22,7 @@ public interface LogInquiryBLService {
 	public ResultMsg inputKeywords(String keywords);
 	
 	/**
-	 *	显示对应关键字的系统日志
+	 * 显示对应关键字的系统日志
 	 *
 	 * @param keywords
 	 * @return

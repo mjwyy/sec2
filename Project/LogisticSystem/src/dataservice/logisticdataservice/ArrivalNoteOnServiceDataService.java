@@ -13,36 +13,25 @@ import po.ArrivalNoteOnServicePO;
 
 public interface ArrivalNoteOnServiceDataService {
 	/**
-	 * 前置条件：同样ID的po在Mapper中不存在
-	 * 后置条件：在数据库中增加一个po记录
-	 * @param po ArrivalNoteOnServicepo
+	 * 在数据库中插入单一持久化对象
 	 */
 	public void insert(ArrivalNoteOnServicePO po) throws RemoteException;
 	/**
-	 * 前置条件：同样ID的po在Mapper中存在
-	 * 后置条件：在数据库中删除一个po记录
-	 * @param po ArrivalNoteOnServicepo
+	 * 在数据库中删除单一持久化对象
 	 */
 	public void delete(ArrivalNoteOnServicePO po) throws RemoteException;
 	/**
-	 * 前置条件：同样ID的po在Mapper中存在
-	 * 后置条件：在数据库中更新一个po记录
-	 * @param po ArrivalNoteOnServicepo
+	 * 在数据库中更新单一持久化对象
 	 */
 	public void update(ArrivalNoteOnServicePO po) throws RemoteException;
 	/**
-	 * 前置条件：无
-	 * 后置条件：查找返回相应的ArrivalNoteOnServicePO结果
-	 * @param name 关键字
-	 * @return ArrivalNoteOnServicePO ArrivalNoteOnServicePO
+	 * 按关键字进行查找返回相应的ArrivalNoteOnServicePO结果
 	 */
 	public ArrayList<ArrivalNoteOnServicePO> find(String name) throws RemoteException;
 
 	
 	/**
-	 * 前置条件：无
-	 * 后置条件：返回所有的ArrivalNoteOnServicePO
-	 * @return PO ArrivalNoteOnServicePO
+	 * 返回所有的营业厅到达单PO
 	 */
 	public ArrayList<ArrivalNoteOnServicePO> findAll() throws RemoteException;
 }

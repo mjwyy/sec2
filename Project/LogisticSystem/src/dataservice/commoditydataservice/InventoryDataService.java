@@ -12,20 +12,14 @@ import po.InventoryPO;
 
 public interface InventoryDataService {
 	/**
-	 * 前置条件：无
-	 * 后置条件：按起止时间进行查找返回相应的PO结果
-	 * @param sTime 开始时间
-	 * @param eTime 结束时间
-	 * @return InventoryPO 库存PO
+	 * 按起止时间进行查找返回相应的PO结果
 	 */
 	
 	public ArrayList<InventoryPO> findByTime(String sTime,String eTime) throws RemoteException;
 	
 	
 	/**
-	 * 前置条件：无
-	 * 后置条件：库存盘点，返回上一个盘点时间点与此次盘点时间之间各区快递的信息
-	 * @return InventoryPO 库存PO
+	 * 库存盘点，返回上一个盘点时间点与此次盘点时间之间各区快递的信息
 	 */
 	public ArrayList<InventoryPO> findAll() throws RemoteException;
 

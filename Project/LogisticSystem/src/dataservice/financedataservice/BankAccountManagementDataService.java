@@ -11,8 +11,8 @@ import po.BankAccountPO;
 public interface BankAccountManagementDataService extends Remote {
 
 	/**
-	 * Data向数据库中添加对应PO信息
-	 *
+	 * ǰ��������BankAccountPO�����ڲ�����Ѿ����飬ȷ����ʽ����
+	 * ����������Data���Ӧ��������ݿ�����˻���¼
 	 * @param account
 	 * @return true for successful add operation
 	 * @throws RemoteException
@@ -20,10 +20,10 @@ public interface BankAccountManagementDataService extends Remote {
 	 */
 	public boolean addBankAccount(BankAccountPO account) 
 			throws RemoteException,	InterruptWithExistedElementException;
-
+	
 	/**
-	 * Data删除对应PO记录
-     *
+	 * ǰ��������BankAccountPO�����ڲ�����Ѿ����飬ȷ����ʽ����
+	 * ����������Data���Ӧ��������ݿ�ɾ���˻���¼
 	 * @param account
 	 * @return true for successful remove operation
 	 * @throws RemoteException
@@ -31,10 +31,10 @@ public interface BankAccountManagementDataService extends Remote {
 	 */
 	public boolean removeBankAccount(BankAccountPO account)
 			throws RemoteException,	ElementNotFoundException;
-
+	
 	/**
-	 * Data将originalAccount 替换为modifiedAccount
-     *
+	 * ǰ��������BankAccountPO�����ڲ�����Ѿ����飬ȷ����ʽ����
+	 * ����������Data���Ӧ��������ݿ����˻���¼�в���originalAccount�������滻ΪmodifiedAccount
 	 * @param originalAccount
 	 * @param modifiedAccount
 	 * @return true for successful remove operation
@@ -43,20 +43,20 @@ public interface BankAccountManagementDataService extends Remote {
 	 */
 	public boolean modifyBankAccount(BankAccountPO originalAccount,BankAccountPO modifiedAccount)
 			throws RemoteException,	ElementNotFoundException,InterruptWithExistedElementException;
-
+	
 	/**
-	 * Data返回符合信息的BankAccountPO
-     *
+	 * ǰ��������BankAccountPO�����ڲ�����Ѿ����飬ȷ����ʽ����
+	 * ����������Data���ݲ����еĲ���ȫ��Ϣ��ѯ�������˻���ϸ��Ϣ
 	 * @param account
-	 * @return
+	 * @return ��ϸ�˻���Ϣ
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException
 	 */
-	public BankAccountPO findBankAccount(BankAccountPO account)
+	public BankAccountPO findBankAccount(String number)
 			throws RemoteException, ElementNotFoundException;
 	/**
-     * Data返回所有BankAccountPO记录
-     *
+	 * ǰ����������
+	 * ����������Data���ѯ�õ������˻���Ϣ������
 	 * @return
 	 * @throws RemoteException
 	 */

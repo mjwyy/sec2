@@ -36,5 +36,8 @@ public interface StorageInquiryAllBLService {
 	 * @return
 	 */
 	public ArrayList<InventoryVO> show();
+	
+	
+	
 
 }

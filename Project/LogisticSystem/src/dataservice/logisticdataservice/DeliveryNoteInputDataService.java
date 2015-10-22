@@ -12,36 +12,25 @@ import po.DeliveryNoteInputPO;
 
 public interface DeliveryNoteInputDataService {
 	/**
-	 * 前置条件：同样ID的po在Mapper中不存在
-	 * 后置条件：在数据库中增加一个po记录
-	 * @param po DeliveryNoteInputpo
+	 * 在数据库中增加一个po记录
 	 */
 	public void insert(DeliveryNoteInputPO po) throws RemoteException;
 	/**
-	 * 前置条件：同样ID的po在Mapper中存在
-	 * 后置条件：在数据库中删除一个po记录
-	 * @param po DeliveryNoteInputpo
+	 * 在数据库中删除一个po记录
 	 */
 	public void delete(DeliveryNoteInputPO po) throws RemoteException;
 	/**
-	 * 前置条件：同样ID的po在Mapper中存在
-	 * 后置条件：在数据库中更新一个po记录
-	 * @param po DeliveryNoteInputpo
+	 * 在数据库中更新一个po记录
 	 */
 	public void update(DeliveryNoteInputPO po) throws RemoteException;
 	/**
-	 * 前置条件：无
-	 * 后置条件：查找返回相应的DeliveryNoteInputPO结果
-	 * @param name 关键字
-	 * @return DeliveryNoteInputPO 
+	 * 查找返回相应的DeliveryNoteInputPO结果
 	 */
 	public ArrayList<DeliveryNoteInputPO> find(String name) throws RemoteException;
 	
 	
 	/**
-	 * 前置条件：无
-	 * 后置条件：返回所有的DeliveryNoteInputPO
-	 * @return DeliveryNoteInputPO 
+	 * 返回所有的DeliveryNoteInputPO
 	 */
 	public ArrayList<DeliveryNoteInputPO> findAll() throws RemoteException;
 }

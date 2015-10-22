@@ -1,6 +1,5 @@
-
 /**
- * å¤„ç†è¥ä¸šå…åˆ°è¾¾ä»¶PO
+ * ´¦ÀíÓªÒµÌüµ½´ï¼şPO
  * @author wqy
  * @date 2015/10/17
  */
@@ -11,41 +10,41 @@ import java.util.Date;
 public class ArrivalNoteOnServicePO extends NotePO{
 
 
-	private Date time;//è´§ç‰©åˆ°è¾¾æ—¥æœŸ
-	private String transitNoteNum;//ä¸­è½¬å•ç¼–å·
-	private String from;//å‡ºå‘åœ°
-	private String state;//è´§ç‰©åˆ°è¾¾çŠ¶æ€
-	public ArrivalNoteOnServicePO(Date time,String transitNoteNum,String from,String state){
-		this.time=time;
-		this.transitNoteNum=transitNoteNum;
-		this.from=from;
-		this.state=state;
-	}
-	public Date getTime() {
-		return time;
-	}
-	public String getTransitNoteNum() {
-		return transitNoteNum;
-	}
-	public String getFrom() {
-		return from;
-	}
-	public String getState() {
-		return state;
-	}
+Date time;//»õÎïµ½´ïÈÕÆÚ
+int transitNoteNum;//ÖĞ×ªµ¥±àºÅ
+String from;//³ö·¢µØ
+String state;//»õÎïµ½´ï×´Ì¬
+public ArrivalNoteOnServicePO(Date time,int transitNoteNum,String from,String state){
+	this.time=time;
+	this.transitNoteNum=transitNoteNum;
+	this.from=from;
+	this.state=state;
+}
+public Date getTime() {
+	return time;
+}
+public int getTransitNoteNum() {
+	return transitNoteNum;
+}
+public String getFrom() {
+	return from;
+}
+public String getState() {
+	return state;
+}
 
-	String Barcode;//è´§ç‰©æ¡å½¢ç 
-	String DeliveryMan;//å¿«é€’å‘˜
-	public ArrivalNoteOnServicePO(Date time,String Barcode,String Deliveryman){
-		this.time=time;
-		this.Barcode=Barcode;
-		this.DeliveryMan=Deliveryman;
-	}
-	public String getBarcode() {
-		return Barcode;
-	}
-	public String getDeliveryMan() {
-		return DeliveryMan;
-	}
+int Barcode;//»õÎïÌõĞÎÂë
+String DeliveryMan;//¿ìµİÔ±
+public ArrivalNoteOnServicePO(Date time,int Barcode,String Deliveryman){
+	this.time=time;
+this.Barcode=Barcode;
+this.DeliveryMan=Deliveryman;
+}
+public int getBarcode() {
+	return Barcode;
+}
+public String getDeliveryMan() {
+	return DeliveryMan;
+}
 
 }

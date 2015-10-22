@@ -12,36 +12,25 @@ import po.LoadNoteOnTransitPO;
 
 public interface LoadNoteOnTransitDataService {
 	/**
-	 * 前置条件：同样ID的po在Mapper中不存在
-	 * 后置条件：在数据库中增加一个po记录
-	 * @param po LoadNoteOnTransitpo
+	 * 在数据库中增加一个po记录
 	 */
 	public void insert(LoadNoteOnTransitPO po) throws RemoteException;
 	/**
-	 * 前置条件：同样ID的po在Mapper中存在
-	 * 后置条件：在数据库中删除一个po记录
-	 * @param po LoadNoteOnTransitpo
+	 * 在数据库中删除一个po记录
 	 */
 	public void delete(LoadNoteOnTransitPO po) throws RemoteException;
 	/**
-	 * 前置条件：同样ID的po在Mapper中存在
-	 * 后置条件：在数据库中更新一个po记录
-	 * @param po LoadNoteOnServicepo
+	 * 在数据库中更新一个po记录
 	 */
 	public void update(LoadNoteOnTransitPO po) throws RemoteException;
 	/**
-	 * 前置条件：无
-	 * 后置条件：查找返回相应的LoadNoteOnTransitPO结果
-	 * @param name 关键字
-	 * @return LoadNoteOnTransitPO 
+	 * 查找返回相应的LoadNoteOnTransitPO结果
 	 */
 	public ArrayList<LoadNoteOnTransitPO> find(String name) throws RemoteException;
 	
 	
 	/**
-	 * 前置条件：无
-	 * 后置条件：返回所有的LoadNoteOnServicePO
-	 * @return LoadNoteOnTransitPO 
+	 * 返回所有的LoadNoteOnServicePO
 	 */
 	public ArrayList<LoadNoteOnTransitPO> findAll() throws RemoteException;
 }

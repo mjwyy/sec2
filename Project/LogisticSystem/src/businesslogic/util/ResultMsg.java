@@ -1,11 +1,8 @@
 package businesslogic.util;
 
-<<<<<<< HEAD
 /**
  *
  */
-=======
->>>>>>> master
 public class ResultMsg {
 	
 	boolean pass;

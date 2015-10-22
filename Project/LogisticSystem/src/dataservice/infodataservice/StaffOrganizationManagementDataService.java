@@ -11,13 +11,8 @@ import po.StaffPO;
 
 public interface StaffOrganizationManagementDataService extends Remote {
 	/**
-<<<<<<< HEAD
 	 * Data向数据库中添加对应StaffPO项
      *
-=======
-	 * ǰ�������������˸�ʽ���
-	 * ����������Data�����������Ա����Ϣ
->>>>>>> master
 	 * @param staff
 	 * @return
 	 * @throws RemoteException
@@ -25,7 +20,6 @@ public interface StaffOrganizationManagementDataService extends Remote {
 	 */
 	public boolean addStaff(StaffPO staff)
 			throws RemoteException,InterruptWithExistedElementException;
-<<<<<<< HEAD
 
 	/**
 	 * Data向数据库中添加对应OrganizationPO项
@@ -123,33 +117,6 @@ public interface StaffOrganizationManagementDataService extends Remote {
 	 * @return
 	 * @throws RemoteException
 	 */
-=======
-	
-	public boolean addOrganization(OrganizationPO org)
-			throws RemoteException,InterruptWithExistedElementException;
-	
-	public boolean removeStaff(StaffPO staff)
-			throws RemoteException,ElementNotFoundException;
-	
-	public boolean removeOrganization(OrganizationPO org)
-			throws RemoteException,ElementNotFoundException;
-	
-	public boolean modifyStaff(StaffPO original,StaffPO modified)
-			throws RemoteException,ElementNotFoundException,InterruptWithExistedElementException;
-	
-	public boolean modifyOrganization(OrganizationPO original,OrganizationPO modified)
-			throws RemoteException,ElementNotFoundException,InterruptWithExistedElementException;
-	
-	public StaffPO findStaff(StaffPO name)
-			throws RemoteException,ElementNotFoundException;
-	
-	public OrganizationPO findOrganization(OrganizationPO name)
-			throws RemoteException,ElementNotFoundException;
-	
-	public ArrayList<StaffPO> getAllStaff()
-			throws RemoteException;
-	
->>>>>>> master
 	public ArrayList<OrganizationPO> getAllOrganizations()
 			throws RemoteException;
 	

@@ -12,13 +12,8 @@ import po.VehiclePO;
 public interface DriverVehicleManagementDataService extends Remote {
 
 	/**
-<<<<<<< HEAD
 	 * Data向数据库中添加对应司机PO项
      *
-=======
-	 * ǰ��������DriverPO����Ϣ�����˸�ʽ���
-	 * ����������Data��������м���˼�¼
->>>>>>> master
 	 * @param driver
 	 * @return
 	 * @throws RemoteException
@@ -26,7 +21,6 @@ public interface DriverVehicleManagementDataService extends Remote {
 	 */
 	public boolean addDriver(DriverPO driver)
 			throws RemoteException,InterruptWithExistedElementException;
-<<<<<<< HEAD
 
 	/**
 	 * Data向数据库中添加对应汽车PO项
@@ -123,33 +117,6 @@ public interface DriverVehicleManagementDataService extends Remote {
 	 * @return
 	 * @throws RemoteException
 	 */
-=======
-	
-	public boolean addVehicle(VehiclePO vehicle)
-			throws RemoteException,InterruptWithExistedElementException;
-	
-	public boolean removeDriver(DriverPO driver)
-			throws RemoteException,ElementNotFoundException;
-	
-	public boolean removeVehicle(VehiclePO vehicle)
-			throws RemoteException,ElementNotFoundException;
-	
-	public boolean modifyDriver(DriverPO originalDriver,DriverPO modified)
-			throws RemoteException,ElementNotFoundException,InterruptWithExistedElementException;
-	
-	public boolean modifyVehicle(VehiclePO originalVehicle,VehiclePO modified)
-			throws RemoteException,ElementNotFoundException,InterruptWithExistedElementException;
-	
-	public ArrayList<DriverPO> getAllDriver()
-			throws RemoteException;
-	
-	public ArrayList<VehiclePO> getAllVehicles()
-			throws RemoteException;
-	
-	public ArrayList<DriverPO> inquireDriver(String[] keywords)
-			throws RemoteException,ElementNotFoundException;
-	
->>>>>>> master
 	public ArrayList<VehiclePO> inquireVehicle(String[] keywords)
 			throws RemoteException;
 	

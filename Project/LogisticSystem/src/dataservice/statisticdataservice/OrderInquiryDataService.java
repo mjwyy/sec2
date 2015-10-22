@@ -9,13 +9,8 @@ import po.OrderVO;
 public interface OrderInquiryDataService extends Remote {
 
 	/**
-<<<<<<< HEAD
 	 * Data返回对应单据的OrderVO
 	 *
-=======
-	 * ǰ��������Barcode�Ѿ����ʽ���
-	 * ����������Data����ж������Ҳ�������Ϣ
->>>>>>> master
 	 * @param barcode
 	 * @return
 	 * @throws RemoteException

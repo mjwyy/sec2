@@ -14,36 +14,23 @@ public interface LoadNoteOnTransitDataService {
 	/**
 	 * 前置条件：同样ID的po在Mapper中不存在
 	 * 后置条件：在数据库中增加一个po记录
-<<<<<<< HEAD
 	 * @param po LoadNoteOnTransitpo
-=======
-	 * @param po 库存po
->>>>>>> master
 	 */
 	public void insert(LoadNoteOnTransitPO po) throws RemoteException;
 	/**
 	 * 前置条件：同样ID的po在Mapper中存在
 	 * 后置条件：在数据库中删除一个po记录
-<<<<<<< HEAD
 	 * @param po LoadNoteOnTransitpo
-=======
-	 * @param po 库存po
->>>>>>> master
 	 */
 	public void delete(LoadNoteOnTransitPO po) throws RemoteException;
 	/**
 	 * 前置条件：同样ID的po在Mapper中存在
 	 * 后置条件：在数据库中更新一个po记录
-<<<<<<< HEAD
 	 * @param po LoadNoteOnServicepo
-=======
-	 * @param po 库存po
->>>>>>> master
 	 */
 	public void update(LoadNoteOnTransitPO po) throws RemoteException;
 	/**
 	 * 前置条件：无
-<<<<<<< HEAD
 	 * 后置条件：查找返回相应的LoadNoteOnTransitPO结果
 	 * @param name 关键字
 	 * @return LoadNoteOnTransitPO 
@@ -57,18 +44,4 @@ public interface LoadNoteOnTransitDataService {
 	 * @return LoadNoteOnTransitPO 
 	 */
 	public ArrayList<LoadNoteOnTransitPO> findAll() throws RemoteException;
-=======
-	 * 后置条件：按名字进行查找返回相应的LoadNoteOnTransitPO结果
-	 * @param name 库存名字
-	 * @return LoadNoteOnTransitPO 库存PO
-	 */
-	public LoadNoteOnTransitPO findByName(String name) throws RemoteException;
-
-	/**
-	 * 前置条件：无
-	 * 后置条件：返回所有的库存PO
-	 * @return LoadNoteOnTransitPO 库存PO
-	 */
-	public ArrayList<LoadNoteOnTransitPO> show() throws RemoteException;
->>>>>>> master
 }

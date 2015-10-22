@@ -39,6 +39,20 @@ public class ArrivalNoteOnServiceVO extends NoteVO{
 		this.barCodes = barCodes;
 		this.TransferNumber = transferNumber;
 	}
-	
-	
+
+	public String getDate() {
+		return date;
+	}
+
+	public GoodsState getState() {
+		return state;
+	}
+
+	public ArrayList<String> getBarCodes() {
+		return barCodes;
+	}
+
+	public String getTransferNumber() {
+		return TransferNumber;
+	}
 }

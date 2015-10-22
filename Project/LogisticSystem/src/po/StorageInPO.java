@@ -1,5 +1,5 @@
 /**
- * Èë¿âµ¥ĞÅÏ¢POÀà
+ * å…¥åº“å•ä¿¡æ¯POç±»
  * @author WQY
  * @data 2015/10/17
  */
@@ -9,21 +9,21 @@ import java.util.ArrayList;
 
 public class StorageInPO {
 	 /**
-     * ÈÕÆÚ
+     * æ—¥æœŸ
      */
 	private String date;
 	
 	/**
-	 * »õÎïĞÅÏ¢£¬°üÀ¨ÌõĞÎÂë¼°ÆäÎ»ÖÃĞÅÏ¢
+	 * è´§ç‰©ä¿¡æ¯ï¼ŒåŒ…æ‹¬æ¡å½¢ç åŠå…¶ä½ç½®ä¿¡æ¯
 	 */
-	private ArrayList<String> GoodsInStorageInfo;
+	private ArrayList<GoodsPO> GoodsInStorageInfo;
 	
 	/**
-	 * ¹¹Ôì·½·¨
+	 * æ„é€ æ–¹æ³•
 	 * @param date
 	 * @param GoodsInStorageInfo
 	 */
-	public StorageInPO(String date,ArrayList<String> GoodsInStorageInfo){
+	public StorageInPO(String date,ArrayList<GoodsPO> GoodsInStorageInfo){
 		this.date = date;
 		this.GoodsInStorageInfo = GoodsInStorageInfo;
 	}
@@ -32,10 +32,17 @@ public class StorageInPO {
 		return date;
 	}
 
-	public ArrayList<String> getGoodsInStorageInfo() {
+	public ArrayList<GoodsPO> getGoodsInStorageInfo() {
 		return GoodsInStorageInfo;
 	}
 
 
     
 }
+
+
+
+
+
+
+

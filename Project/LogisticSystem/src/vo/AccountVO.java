@@ -12,17 +12,7 @@ public class AccountVO {
 	 */
 	private String account;
 	
-	public String getName() {
-		return name;
-	}
 
-	public String getAccount() {
-		return account;
-	}
-
-	public double getBalance() {
-		return balance;
-	}
 
 	/**
 	 * 璐︽埛浣欓
@@ -40,4 +30,15 @@ public class AccountVO {
 		this.balance = balance;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public String getAccount() {
+		return account;
+	}
+
+	public double getBalance() {
+		return balance;
+	}
 }

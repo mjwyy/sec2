@@ -29,6 +29,16 @@ public class ReceingNoteVO extends NoteVO {
 		this.receiveCustomer = receiveCustomer;
 		this.time = time;
 	}
-	
-	
+
+	public String getBarcode() {
+		return barcode;
+	}
+
+	public String getReceiveCustomer() {
+		return receiveCustomer;
+	}
+
+	public String getTime() {
+		return time;
+	}
 }

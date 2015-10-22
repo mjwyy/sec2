@@ -1,5 +1,6 @@
+
 /**
- * ÊäÈëÊÕ¼şµ¥
+ * è¾“å…¥æ”¶ä»¶å•
  * @author wqy
  * @date 2015/10/17
  */
@@ -7,17 +8,17 @@ package po;
 
 public class ReceivingNoteInputPO {
 	/**
-	 * ÊÕ¼şµ¥ºÅ
+	 * æ”¶ä»¶å•å·
 	 */
 	private String barcode;
 	
 	/**
-	 * ÊÕ¼şÈËĞÕÃû
+	 * æ”¶ä»¶äººå§“å
 	 */
 	private String receiveCustomer;
 
 	/**
-	 * ÊÕ¼şÊ±¼ä
+	 * æ”¶ä»¶æ—¶é—´
 	 */
 	private String time;
 

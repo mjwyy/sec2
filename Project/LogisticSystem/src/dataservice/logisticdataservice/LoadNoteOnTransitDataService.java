@@ -1,5 +1,5 @@
 /**
- * Â¼ÈëÖĞ×ªÖĞĞÄ×°³µµ¥Êı¾İ½Ó¿Ú
+ * å½•å…¥ä¸­è½¬ä¸­å¿ƒè£…è½¦å•æ•°æ®æ¥å£
  * @author wqy
  * @date 2015/10/17
  */
@@ -12,42 +12,35 @@ import po.LoadNoteOnTransitPO;
 
 public interface LoadNoteOnTransitDataService {
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ²»´æÔÚ
-	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞÔö¼ÓÒ»¸öpo¼ÇÂ¼
-	 * @param po ¿â´æpo
+	 * å‰ç½®æ¡ä»¶ï¼šåŒæ ·IDçš„poåœ¨Mapperä¸­ä¸å­˜åœ¨
+	 * åç½®æ¡ä»¶ï¼šåœ¨æ•°æ®åº“ä¸­å¢åŠ ä¸€ä¸ªpoè®°å½•
+	 * @param po åº“å­˜po
 	 */
 	public void insert(LoadNoteOnTransitPO po) throws RemoteException;
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ´æÔÚ
-	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞÉ¾³ıÒ»¸öpo¼ÇÂ¼
-	 * @param po ¿â´æpo
+	 * å‰ç½®æ¡ä»¶ï¼šåŒæ ·IDçš„poåœ¨Mapperä¸­å­˜åœ¨
+	 * åç½®æ¡ä»¶ï¼šåœ¨æ•°æ®åº“ä¸­åˆ é™¤ä¸€ä¸ªpoè®°å½•
+	 * @param po åº“å­˜po
 	 */
 	public void delete(LoadNoteOnTransitPO po) throws RemoteException;
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ´æÔÚ
-	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞ¸üĞÂÒ»¸öpo¼ÇÂ¼
-	 * @param po ¿â´æpo
+	 * å‰ç½®æ¡ä»¶ï¼šåŒæ ·IDçš„poåœ¨Mapperä¸­å­˜åœ¨
+	 * åç½®æ¡ä»¶ï¼šåœ¨æ•°æ®åº“ä¸­æ›´æ–°ä¸€ä¸ªpoè®°å½•
+	 * @param po åº“å­˜po
 	 */
 	public void update(LoadNoteOnTransitPO po) throws RemoteException;
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£º°´Ãû×Ö½øĞĞ²éÕÒ·µ»ØÏàÓ¦µÄLoadNoteOnTransitPO½á¹û
-	 * @param name ¿â´æÃû×Ö
-	 * @return LoadNoteOnTransitPO ¿â´æPO
+	 * å‰ç½®æ¡ä»¶ï¼šæ— 
+	 * åç½®æ¡ä»¶ï¼šæŒ‰åå­—è¿›è¡ŒæŸ¥æ‰¾è¿”å›ç›¸åº”çš„LoadNoteOnTransitPOç»“æœ
+	 * @param name åº“å­˜åå­—
+	 * @return LoadNoteOnTransitPO åº“å­˜PO
 	 */
 	public LoadNoteOnTransitPO findByName(String name) throws RemoteException;
+
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£º°´ID½øĞĞ²éÕÒ·µ»ØÏàÓ¦µÄNotePO½á¹û
-	 * @param ID ¿â´æID
-	 * @return LoadNoteOnTransitPO ¿â´æPO
-	 */
-	public LoadNoteOnTransitPO findById(String id) throws RemoteException;
-	
-	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£º·µ»ØËùÓĞµÄ¿â´æPO
-	 * @return LoadNoteOnTransitPO ¿â´æPO
+	 * å‰ç½®æ¡ä»¶ï¼šæ— 
+	 * åç½®æ¡ä»¶ï¼šè¿”å›æ‰€æœ‰çš„åº“å­˜PO
+	 * @return LoadNoteOnTransitPO åº“å­˜PO
 	 */
 	public ArrayList<LoadNoteOnTransitPO> show() throws RemoteException;
 }

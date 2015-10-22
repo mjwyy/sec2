@@ -40,14 +40,14 @@ public class ArrivalNoteOnTransitDataService_Stub implements ArrivalNoteOnTransi
     }
 
     @Override
-    public ArrivalNoteOnTransitPO findByName(String name) throws RemoteException {
-        System.out.println("findByName succeed!");
-        return po2;
+    public ArrayList<ArrivalNoteOnTransitPO> find(String name) throws RemoteException {
+        System.out.println("find succeed!");
+        return pos;
     }
 
     @Override
-    public ArrayList<ArrivalNoteOnTransitPO> show() throws RemoteException {
-        System.out.println("show succeed!");
+    public ArrayList<ArrivalNoteOnTransitPO> findAll() throws RemoteException {
+        System.out.println("findAll succeed!");
         return pos;
     }
 }

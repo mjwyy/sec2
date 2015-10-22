@@ -41,14 +41,14 @@ public class ReceivingNoteInputDataService_Stub implements ReceivingNoteInputDat
     }
 
     @Override
-    public ReceivingNoteInputPO findByName(String name) throws RemoteException {
-        System.out.println("findByName succeed!");
-        return po1;
+    public ArrayList<ReceivingNoteInputPO> find(String name) throws RemoteException {
+        System.out.println("find succeed!");
+        return pos;
     }
 
     @Override
-    public ArrayList<ReceivingNoteInputPO> show() throws RemoteException {
-        System.out.println("show succeed!");
+    public ArrayList<ReceivingNoteInputPO> findAll() throws RemoteException {
+        System.out.println("find all succeed!");
         return pos;
     }
 }

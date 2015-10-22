@@ -49,14 +49,14 @@ public class LoadNoteOnTransitDataService_Stub implements LoadNoteOnTransitDataS
     }
 
     @Override
-    public LoadNoteOnTransitPO findByName(String name) throws RemoteException {
-        System.out.println("findByName succeed!");
-        return po1;
+    public ArrayList<LoadNoteOnTransitPO> find(String name) throws RemoteException {
+        System.out.println("find succeed!");
+        return pos;
     }
 
     @Override
-    public ArrayList<LoadNoteOnTransitPO> show() throws RemoteException {
-        System.out.println("show succeed!");
+    public ArrayList<LoadNoteOnTransitPO> findAll() throws RemoteException {
+        System.out.println("findAll succeed!");
         return pos;
     }
 }

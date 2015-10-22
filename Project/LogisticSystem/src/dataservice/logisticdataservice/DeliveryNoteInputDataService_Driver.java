@@ -22,16 +22,16 @@ public class DeliveryNoteInputDataService_Driver {
                 "150052126666","1",0.5,20,"head first java","书籍",5,"1234567891");
         service.insert(po1);
         service.insert(po2);
-        service.show();
-        service.findByName("王二狗");
-        service.findByName("离散数学");
-        service.findByName("书籍");
-        service.findByName("1234567891");
+        service.findAll();
+        service.find("王二狗");
+        service.find("离散数学");
+        service.find("书籍");
+        service.find("1234567891");
         service.delete(po1);
-        service.show();
+        service.findAll();
         po2 = new DeliveryNoteInputPO("一只麟","江苏省南京市栖霞区南京大学仙林校区","南京大学仙林校区",
                 "150052126666","1",0.2,20,"人月神话","书籍",5,"1234567894");
         service.update(po2);
-        service.show();
+        service.findAll();
     }
 }

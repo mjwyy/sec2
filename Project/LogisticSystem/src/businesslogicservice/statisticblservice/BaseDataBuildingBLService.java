@@ -54,10 +54,6 @@ public interface BaseDataBuildingBLService {
 	 * 前置条件：财务人员要求进行以上年为基础的建账操作
 	 * 后置条件：系统提示期初建账成功，更新相应信息，生成待查副本，记录日志
 	 * 
-	 * @param institutionVO
-	 * @param commodityInfoVO
-	 * @param financeInfoVO
-	 * @return
 	 */
 	public ResultMsg restartWithBasis();
 	

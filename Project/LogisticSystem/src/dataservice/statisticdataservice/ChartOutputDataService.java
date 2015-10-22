@@ -8,8 +8,8 @@ import po.ChartPO;
 public interface ChartOutputDataService extends Remote {
 
 	/**
-	 * 前置条件：ChartPO内的各信息经过了格式检查
-	 * 后置条件：
+	 * Data杩斿洖灏佽浜嗚缁嗘暟鎹殑ChartPO
+	 *
 	 * @param info
 	 * @return
 	 * @throws RemoteException

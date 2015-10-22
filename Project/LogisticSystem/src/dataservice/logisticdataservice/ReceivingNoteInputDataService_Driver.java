@@ -22,15 +22,15 @@ public class ReceivingNoteInputDataService_Driver {
         service.insert(po1);
         service.insert(po2);
         service.insert(po3);
-        service.show();
-        service.findByName("汪同学");
-        service.findByName("0123456789");
+        service.findAll();
+        service.find("汪同学");
+        service.find("0123456789");
         service.delete(po1);
         service.delete(po2);
-        service.show();
+        service.findAll();
         po3 = new ReceivingNoteInputPO("0123456791","狗狗","2015-10-26 9:30");
         service.update(po3);
-        service.show();
+        service.findAll();
     }
 
 }

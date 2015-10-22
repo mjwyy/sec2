@@ -7,7 +7,7 @@ package businesslogic.util;
  * @author kylin
  *
  */
-public class sendDocMsg {
+public class sendDocMsg extends ResultMsg{
 
     /**
      * 运费, 根据运费与包装费和获得
@@ -19,9 +19,10 @@ public class sendDocMsg {
      */
     private String predectedDate;
 
-    public sendDocMsg(String predectedDate, double price) {
-        this.predectedDate = predectedDate;
+    public sendDocMsg(boolean pass, String message, double price, String predectedDate) {
+        super(pass, message);
         this.price = price;
+        this.predectedDate = predectedDate;
     }
 
     public double getPrice() {

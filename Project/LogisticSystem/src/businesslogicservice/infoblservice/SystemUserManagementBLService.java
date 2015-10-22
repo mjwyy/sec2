@@ -47,7 +47,16 @@ public interface SystemUserManagementBLService {
 	 * @return
 	 */
 	public ArrayList<UserVO> find(String userNum);
-		
-	
+
+	/**
+	 * 用户登录系统操作接口
+	 * 前置条件：用户要求登录系统，输入相应的用户名与密码
+	 * 后置条件：系统查询相应的用户是否存在，密码是否正确，返回登录结果信息
+	 *
+	 * @param userID
+	 * @param password
+	 * @return
+	 */
+	public ResultMsg login(String userID,String password);
  
 }

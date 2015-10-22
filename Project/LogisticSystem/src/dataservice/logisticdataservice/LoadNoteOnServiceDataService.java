@@ -14,33 +14,34 @@ public interface LoadNoteOnServiceDataService {
 	/**
 	 * 前置条件：同样ID的po在Mapper中不存在
 	 * 后置条件：在数据库中增加一个po记录
-	 * @param po 库存po
+	 * @param po LoadNoteOnServicepo
 	 */
 	public void insert(LoadNoteOnServicePO po) throws RemoteException;
 	/**
 	 * 前置条件：同样ID的po在Mapper中存在
 	 * 后置条件：在数据库中删除一个po记录
-	 * @param po 库存po
+	 * @param po LoadNoteOnServicepo
 	 */
 	public void delete(LoadNoteOnServicePO po) throws RemoteException;
 	/**
 	 * 前置条件：同样ID的po在Mapper中存在
 	 * 后置条件：在数据库中更新一个po记录
-	 * @param po 库存po
+	 * @param po LoadNoteOnServicepo
 	 */
 	public void update(LoadNoteOnServicePO po) throws RemoteException;
 	/**
 	 * 前置条件：无
-	 * 后置条件：按名字进行查找返回相应的LoadNoteOnServicePO结果
-	 * @param name 库存名字
-	 * @return LoadNoteOnServicePO 库存PO
+	 * 后置条件：查找返回相应的LoadNoteOnServicePO结果
+	 * @param name 关键字
+	 * @return LoadNoteOnServicePO
 	 */
-	public LoadNoteOnServicePO findByName(String name) throws RemoteException;
-
+	public ArrayList<LoadNoteOnServicePO> find(String name) throws RemoteException;
+	
+	
 	/**
 	 * 前置条件：无
-	 * 后置条件：返回所有的库存PO
-	 * @return LoadNoteOnServicePO 库存PO
+	 * 后置条件：返回所有的LoadNoteOnServicePO
+	 * @return LoadNoteOnServicePO 
 	 */
-	public ArrayList<LoadNoteOnServicePO> show() throws RemoteException;
+	public ArrayList<LoadNoteOnServicePO> findAll() throws RemoteException;
 }

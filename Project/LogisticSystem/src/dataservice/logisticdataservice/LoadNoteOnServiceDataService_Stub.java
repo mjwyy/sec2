@@ -44,13 +44,13 @@ public class LoadNoteOnServiceDataService_Stub implements LoadNoteOnServiceDataS
     }
 
     @Override
-    public LoadNoteOnServicePO findByName(String name) throws RemoteException {
-        System.out.println("findByName succeed!");
-        return po1;
+    public ArrayList<LoadNoteOnServicePO> find(String name) throws RemoteException {
+        System.out.println("find succeed!");
+        return pos;
     }
 
     @Override
-    public ArrayList<LoadNoteOnServicePO> show() throws RemoteException {
+    public ArrayList<LoadNoteOnServicePO> findAll() throws RemoteException {
         System.out.println("show succeed!");
         return pos;
     }

@@ -4,6 +4,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import po.DistancePO;
 import dataservice.util.exception.ElementNotFoundException;
 import dataservice.util.exception.InterruptWithExistedElementException;
 
@@ -19,7 +20,7 @@ public interface BusinessDataModificationDataService extends Remote {
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException  �Ҳ�������
 	 */
-	public boolean setDistance(double distance,String city1,String city2)
+	public boolean setDistance(DistancePO distancePO)
 			throws RemoteException,ElementNotFoundException;
 	
 	/**
@@ -47,6 +48,6 @@ public interface BusinessDataModificationDataService extends Remote {
 	public ArrayList<String> getAllCities()
 			throws RemoteException;
 	
-	public double getDistance(String city1,String city2)
+	public double getDistance(DistancePO distancePO)
 			throws RemoteException,ElementNotFoundException;
 }

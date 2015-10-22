@@ -67,7 +67,7 @@ public interface DriverVehicleManagementBLService {
 	public ResultMsg modify(DriverInfoVO vo);
 	
 	/**
-	 * 查询
+	 * 关键字查询车辆信息
 	 * 前置条件：经验证的业务员选择查询车辆信息
 	 * 后置条件：系统检查关键字格式，若无误显示查询到的信息
 	 * @param keyword
@@ -76,7 +76,7 @@ public interface DriverVehicleManagementBLService {
 	public ArrayList<VehicleInfoVO> findVehicle(String keyword);
 	
 	/**
-	 * 查询
+	 * 关键字查询司机信息
 	 * 前置条件：经验证的业务员选择查询司机信息
 	 * 后置条件：系统检查关键字格式，若无误显示查询到的信息
 	 * @param keyword

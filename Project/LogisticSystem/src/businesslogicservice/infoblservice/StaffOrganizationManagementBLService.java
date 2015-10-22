@@ -41,7 +41,7 @@ public interface StaffOrganizationManagementBLService {
 	public ResultMsg Modify(StaffInfoVO vo);
 	
 	/**
-	 * 查找人员信息
+	 * 关键字查找人员信息
 	 * 前置条件：经验证的业务员选择查找人员信息
 	 * 后置条件；系统显示查找到的信息，系统日志记录
 	 * @param keyword
@@ -77,7 +77,7 @@ public interface StaffOrganizationManagementBLService {
 	public ResultMsg Modify(OrganizationInfoVO vo);
 	
 	/**
-	 * 查找机构信息
+	 * 关键字查找机构信息
 	 * 前置条件：经验证的业务员选择查找机构信息
 	 * 后置条件；系统显示查找到的信息，系统日志记录
 	 * @param keyword

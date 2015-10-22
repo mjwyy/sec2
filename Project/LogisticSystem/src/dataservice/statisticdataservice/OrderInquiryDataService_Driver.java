@@ -1,0 +1,23 @@
+package dataservice.statisticdataservice;
+/**
+ * @author wwz
+ * @data 2015-10-22
+ */
+import java.rmi.RemoteException;
+
+import dataservice.util.exception.ElementNotFoundException;
+
+public class OrderInquiryDataService_Driver {
+	public void drive(OrderInquiryDataService OIDataService) throws RemoteException, ElementNotFoundException {
+		OIDataService.findOrder("123567890");
+	}
+   
+	public static void main(String[] args) throws RemoteException, ElementNotFoundException {
+		OrderInquiryDataService_Stub stub = new OrderInquiryDataService_Stub();
+		OrderInquiryDataService_Driver driver = new OrderInquiryDataService_Driver();
+		driver.drive(stub);
+	}
+	
+	
+
+}

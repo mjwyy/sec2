@@ -17,10 +17,4 @@ public class CreditNotePO implements Serializable {
 	
 	String nameOfDeliveryMan = null;
 	
-	public CreditNotePO(String date,BigDecimal money,String nameofDeliveryMan){
-		this.date = date;
-		this.money = money;
-		this.nameOfDeliveryMan = nameofDeliveryMan;
-	}
-	
 }

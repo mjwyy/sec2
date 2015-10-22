@@ -15,38 +15,4 @@ public class PaymentPO implements Serializable {
 	String type = null;
 	String comment = null;
 	
-	public PaymentPO(String data,String nameOfPayer,String accountNumber,
-			BigDecimal amountOfMoney,String type,String comment){
-		this.date = date;
-		this.nameOfPayer = nameOfPayer;
-		this.amountOfMoney = amountOfMoney;
-		this.type = type;
-		this.comment = comment;
-		this.accountNumber = accountNumber;
-		
-	}
-	
-	public String getDate(){
-		return date;
-	}
-	
-	public String getNameOfPayer(){
-		return nameOfPayer;
-	}
-	
-	public BigDecimal getAmountOfMoney(){
-		return amountOfMoney;
-	}
-	
-	public String getAccountNumber(){
-		return accountNumber;
-	}
-	
-	public String getType(){
-		return type;
-	}
-	
-	public String getComment(){
-		return comment;
-	}
 }

@@ -1,5 +1,5 @@
 /**
- * ÊäÈëÖĞ×ªµ¥
+ * è¾“å…¥ä¸­è½¬å•
  * @author wqy
  * @date 2015/10/17
  */
@@ -9,47 +9,47 @@ import java.util.ArrayList;
 
 public class TransitNoteInputPO {
 	/**
-	 * ×°³µÈÕÆÚ
+	 * è£…è½¦æ—¥æœŸ
 	 */
 	private String date;
 
 	/**
-	 * ÖĞ×ªµ¥±àºÅ	
+	 * ä¸­è½¬å•ç¼–å·	
 	 */
 	private String transitDocNumber;
 
 	/**
-	 * º½°àºÅ	
+	 * èˆªç­å·	
 	 */
 	private String flightNumber;
 
 	/**
-	 * ³ö·¢µØ
+	 * å‡ºå‘åœ°
 	 */
 	private String departurePlace;
 
 	/**
-	 * µ½´ïµØ
+	 * åˆ°è¾¾åœ°
 	 */
 	private String desitination;
 
 	/**
-	 * »õ¹ñºÅ
+	 * è´§æŸœå·
 	 */
 	private String containerNumber;
 
 	/**
-	 * ¼à×°Ô±
+	 * ç›‘è£…å‘˜
 	 */
 	private String supercargoMan;
 
 	/**
-	 * ×°ÏäËùÓĞÍĞÔËµ¥ºÅ
+	 * è£…ç®±æ‰€æœ‰æ‰˜è¿å•å·
 	 */
 	private ArrayList<String> barcodes;
 	
 	/**
-	 * ÔË·Ñ
+	 * è¿è´¹
 	 */
 	private double price;
 

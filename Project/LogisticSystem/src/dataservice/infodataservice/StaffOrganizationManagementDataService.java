@@ -36,10 +36,10 @@ public interface StaffOrganizationManagementDataService extends Remote {
 	public boolean modifyOrganization(OrganizationPO original,OrganizationPO modified)
 			throws RemoteException,ElementNotFoundException,InterruptWithExistedElementException;
 	
-	public StaffPO findStaff(String name)
+	public StaffPO findStaff(StaffPO name)
 			throws RemoteException,ElementNotFoundException;
 	
-	public OrganizationPO findOrganization(String name)
+	public OrganizationPO findOrganization(OrganizationPO name)
 			throws RemoteException,ElementNotFoundException;
 	
 	public ArrayList<StaffPO> getAllStaff()

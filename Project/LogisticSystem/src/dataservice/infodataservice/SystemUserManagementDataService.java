@@ -51,7 +51,7 @@ public interface SystemUserManagementDataService extends Remote {
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException
 	 */
-	public UserPO inquireUser(String acount)
+	public UserPO inquireUser(UserPO userInfo)
 			throws RemoteException, ElementNotFoundException;
 	
 	/**

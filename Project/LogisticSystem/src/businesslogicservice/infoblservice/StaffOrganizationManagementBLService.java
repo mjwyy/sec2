@@ -15,6 +15,8 @@ public interface StaffOrganizationManagementBLService {
 	
 	/**
 	 * 新增人员信息
+	 * 前置条件：选择新增人员信息
+	 * 后置条件；更新人员信息，系统日志记录
 	 * @param vo
 	 * @return
 	 */
@@ -22,6 +24,8 @@ public interface StaffOrganizationManagementBLService {
 	
 	/**
 	 * 删除人员信息
+	 * 前置条件：选择删除人员信息
+	 * 后置条件；更新人员信息，系统日志记录	
 	 * @param vo
 	 * @return
 	 */
@@ -29,13 +33,17 @@ public interface StaffOrganizationManagementBLService {
 	
 	/**
 	 * 修改人员信息
+	 * 前置条件：选择修改人员信息
+	 * 后置条件；更新人员信息，系统日志记录
 	 * @param vo
 	 * @return
 	 */
 	public ResultMsg Modify(StaffInfoVO vo);
 	
 	/**
-	 * 关键字查找人员信息
+	 * 查找人员信息
+	 * 前置条件：选择查找人员信息
+	 * 后置条件；显示查找到的信息，系统日志记录
 	 * @param keyword
 	 * @return
 	 */
@@ -43,6 +51,8 @@ public interface StaffOrganizationManagementBLService {
 	
 	/**
 	 * 新增机构信息
+	 * 前置条件：选择新增机构信息
+	 * 后置条件；更新机构信息，系统日志记录
 	 * @param vo
 	 * @return
 	 */
@@ -50,6 +60,8 @@ public interface StaffOrganizationManagementBLService {
 	
 	/**
 	 * 删除机构信息
+	 * 前置条件：选择删除机构信息
+	 * 后置条件；更新机构信息，系统日志记录
 	 * @param vo
 	 * @return
 	 */
@@ -57,13 +69,17 @@ public interface StaffOrganizationManagementBLService {
 	
 	/**
 	 * 修改机构信息
+	 * 前置条件：选择修改机构信息
+	 * 后置条件；更新机构信息，系统日志记录
 	 * @param vo
 	 * @return
 	 */
 	public ResultMsg Modify(OrganizationInfoVO vo);
 	
 	/**
-	 * 关键字查找机构信息
+	 * 查找机构信息
+	 * 前置条件：选择查找机构信息
+	 * 后置条件；显示查找到的信息，系统日志记录
 	 * @param keyword
 	 * @return
 	 */

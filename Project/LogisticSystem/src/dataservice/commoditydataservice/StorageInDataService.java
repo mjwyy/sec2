@@ -1,5 +1,5 @@
 /**
- * 入库处理数据接口
+ * 鍏ュ簱澶勭悊鏁版嵁鎺ュ彛
  * @author wqy
  * @date 2015/10/17
  */
@@ -15,43 +15,22 @@ import po.StorageInPO;
 
 public interface StorageInDataService {
 	/**
-	 * 前置条件：同样ID的po在Mapper中不存在
-	 * 后置条件：在数据库中增加一个po记录
-	 * @param po 库存po
+	 * 鍦ㄦ暟鎹簱涓鍔犱竴涓猵o璁板綍
 	 */
 	public void insert(StorageInPO po) throws RemoteException;
 	/**
-	 * 前置条件：同样ID的po在Mapper中存在
-	 * 后置条件：在数据库中删除一个po记录
-	 * @param po 库存po
+	 * 鍦ㄦ暟鎹簱涓垹闄や竴涓猵o璁板綍
 	 */
 	public void delete(StorageInPO po) throws RemoteException;
 	/**
-	 * 前置条件：同样ID的po在Mapper中存在
-	 * 后置条件：在数据库中更新一个po记录
-	 * @param po 库存po
+	 * 鍦ㄦ暟鎹簱涓洿鏂颁竴涓猵o璁板綍
 	 */
 	public void update(StorageInPO po) throws RemoteException;
 	/**
-	 * 前置条件：无
-	 * 后置条件：按名字进行查找返回相应的StorageInPOPO结果
-	 * @param name 库存名字
-	 * @return StorageInPOPO 库存PO
+	 * 鏌ユ壘杩斿洖鐩稿簲鐨凷torageInPO缁撴灉
 	 */
-	public StorageInPO findByName(String name) throws RemoteException;
-	/**
-	 * 前置条件：无
-	 * 后置条件：按ID进行查找返回相应的PO结果
-	 * @param ID 库存ID
-	 * @return StorageInPO 库存PO
-	 */
-	public StorageInPO findById(String id) throws RemoteException;
+	public ArrayList<StorageInPO> find(String name) throws RemoteException;
 	
-	/**
-	 * 前置条件：无
-	 * 后置条件：返回所有的库存PO
-	 * @return StorageInPO 库存PO
-	 */
-	public ArrayList<StorageInPO> show() throws RemoteException;
+	
 
 }

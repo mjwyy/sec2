@@ -13,27 +13,9 @@ public class BankAccountPO implements Serializable {
 	String name = null;
 	
 	/*
-	 * ï¿½ï¿½ï¿½Çµï¿½ï¿½ËºÅºÜ³ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Stringï¿½ï¿½ï¿½ï¿½Â¼
+	 * ¿¼ÂÇµ½ÕËºÅºÜ³¤£¬Ê¹ÓÃStringÀ´¼ÇÂ¼
 	 */
 	String number = null;
 	
 	BigDecimal balance = null;
-	
- 	public BankAccountPO(String name,String number,BigDecimal balance){
- 		this.name = name;
- 		this.number = number;
- 		this.balance = balance;
- 	}
- 	
- 	public String getName(){
- 		return name;
- 	}
- 	
- 	public String getNumber(){
- 		return number;
- 	}
- 	
- 	public BigDecimal getBalance(){
- 		return balance;
- 	}
 }

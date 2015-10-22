@@ -9,27 +9,8 @@ public class UserPO implements Serializable {
 	String account = null;
 	String password = null;
 	
-	//锟斤拷枚锟斤拷锟斤拷要前锟斤拷统一
+	//用枚举需要前后统一
 	String authority = null;
-
-	public UserPO(String account, String password, String authority) {
-		super();
-		this.account = account;
-		this.password = password;
-		this.authority = authority;
-	}
-
-	public String getAccount() {
-		return account;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public String getAuthority() {
-		return authority;
-	}
-
+	
 	
 }

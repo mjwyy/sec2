@@ -52,6 +52,30 @@ public class StorageOutVO {
 		this.shippingForm = shippingForm;
 		this.barcode = barcode;
 	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public String getDestination() {
+		return destination;
+	}
+
+	public String getTruckNum() {
+		return truckNum;
+	}
+
+	public String getTransferNum() {
+		return transferNum;
+	}
+
+	public String getShippingForm() {
+		return shippingForm;
+	}
+
+	public ArrayList<String> getBarcode() {
+		return barcode;
+	}
 	
 
 }

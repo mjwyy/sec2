@@ -12,18 +12,4 @@ public class LogEntryPO implements Serializable {
 	String Time = null;
 	String record = null;
 	
-	public LogEntryPO(String time, String record) {
-		super();
-		Time = time;
-		this.record = record;
-	}
-
-	public String getTime() {
-		return Time;
-	}
-
-	public String getRecord() {
-		return record;
-	}
-	
 }

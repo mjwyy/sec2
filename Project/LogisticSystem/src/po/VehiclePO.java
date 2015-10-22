@@ -5,8 +5,6 @@ import java.io.Serializable;
 
 public class VehiclePO implements Serializable {
 
-
-
 	private static final long serialVersionUID = -843114324702086467L;
 
 	String carNumber = null;
@@ -14,49 +12,8 @@ public class VehiclePO implements Serializable {
 	File picture = null;
 	
 	/*
-	 * ï¿½Ã¿ï¿½Ê¼Ê¹ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Ê±ï¿½ï¿½
+	 * ÓÃ¿ªÊ¼Ê¹ÓÃÊ±¼ä´úÌæÒÑÊ¹ÓÃÊ±¼ä
 	 */
 	String firstUseTime = null;
-	
-	public VehiclePO(String carNumber, String hallNumber,
-			String firstUseTime) {
-		this.carNumber = carNumber;
-		this.hallNumber = hallNumber;
-		//this.picture = picture;
-		this.firstUseTime = firstUseTime;
-	}
-	
-
-	public String getCarNumber() {
-		return carNumber;
-	}
-
-	public void setCarNumber(String carNumber) {
-		this.carNumber = carNumber;
-	}
-
-	public String getHallNumber() {
-		return hallNumber;
-	}
-
-	public void setHallNumber(String hallNumber) {
-		this.hallNumber = hallNumber;
-	}
-
-	public File getPicture() {
-		return picture;
-	}
-
-	public void setPicture(File picture) {
-		this.picture = picture;
-	}
-
-	public String getFirstUseTime() {
-		return firstUseTime;
-	}
-
-	public void setFirstUseTime(String firstUseTime) {
-		this.firstUseTime = firstUseTime;
-	}
 	
 }

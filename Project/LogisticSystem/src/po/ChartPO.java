@@ -15,5 +15,5 @@ public class ChartPO implements Serializable {
 	int type = -1;
 	String startTime = null;
 	String endTime = null;
-		
+	
 }

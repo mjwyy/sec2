@@ -52,7 +52,7 @@ public interface BankAccountManagementDataService extends Remote {
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException
 	 */
-	public BankAccountPO findBankAccount(String number)
+	public BankAccountPO findBankAccount(BankAccountPO account)
 			throws RemoteException, ElementNotFoundException;
 	/**
 	 * ǰ����������

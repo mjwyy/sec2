@@ -1,5 +1,5 @@
 /**
- * ÊäÈëµ¥¾İÊı¾İ½Ó¿Ú
+ * è¾“å…¥å•æ®æ•°æ®æ¥å£
  * @author wqy
  * @date 2015/10/17
  */
@@ -9,53 +9,33 @@ import java.util.ArrayList;
 import po.NotePO;
 public interface NoteDataService {
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ²»´æÔÚ
-	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞÔö¼ÓÒ»¸öpo¼ÇÂ¼
-	 * @param po ¿â´æpo
+	 * åœ¨æ•°æ®åº“ä¸­å¢åŠ ä¸€ä¸ªpoè®°å½•
 	 */
 	public void insert(NotePO po) throws RemoteException;
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ´æÔÚ
-	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞÉ¾³ıÒ»¸öpo¼ÇÂ¼
-	 * @param po ¿â´æpo
+	 * åœ¨æ•°æ®åº“ä¸­åˆ é™¤ä¸€ä¸ªpoè®°å½•
 	 */
 	public void delete(NotePO po) throws RemoteException;
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ´æÔÚ
-	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞ¸üĞÂÒ»¸öpo¼ÇÂ¼
-	 * @param po ¿â´æpo
+	 * åœ¨æ•°æ®åº“ä¸­æ›´æ–°ä¸€ä¸ªpoè®°å½•
 	 */
 	public void update(NotePO po) throws RemoteException;
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£º°´Ãû×Ö½øĞĞ²éÕÒ·µ»ØÏàÓ¦µÄNotePO½á¹û
-	 * @param name ¿â´æÃû×Ö
-	 * @return NotePO ¿â´æPO
+	 * æŸ¥æ‰¾è¿”å›ç›¸åº”çš„NotePOç»“æœ
 	 */
-	public NotePO findByName(String name) throws RemoteException;
-	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£º°´ID½øĞĞ²éÕÒ·µ»ØÏàÓ¦µÄNotePO½á¹û
-	 * @param ID ¿â´æID
-	 * @return NotePO ¿â´æPO
-	 */
-	public NotePO findById(String id) throws RemoteException;
+	public ArrayList<NotePO> find(String name) throws RemoteException;
 	
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£º·µ»ØËùÓĞµÄ¿â´æPO
-	 * @return NotePO ¿â´æPO
+	 * è¿”å›æ‰€æœ‰çš„NotePO
 	 */
-	public ArrayList<NotePO> show() throws RemoteException;
+	public ArrayList<NotePO> findAll() throws RemoteException;
 
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£º³õÊ¼»¯³Ö¾Ã»¯Êı¾İ¿â
+	 * åˆå§‹åŒ–æŒä¹…åŒ–æ•°æ®åº“
 	 */
 	public void init() throws RemoteException;
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£º½áÊø³Ö¾Ã»¯Êı¾İ¿âµÄÊ¹ÓÃ
+	 * ç»“æŸæŒä¹…åŒ–æ•°æ®åº“çš„ä½¿ç”¨
 	 */
 	public void finish() throws RemoteException;
 }

@@ -1,5 +1,5 @@
 /**
- * Èë¿âµ¥ĞÅÏ¢POÀà
+ * å‡ºåº“å•ä¿¡æ¯POç±»
  * @author wQY
  * @data 2015/10/17
  */
@@ -10,32 +10,79 @@ import java.util.ArrayList;
 
 public class StorageOutPO {
 
-    /**
-     * ÈÕÆÚ
-     */
-	private String date;
-	
 	/**
-	 * »õÎïĞÅÏ¢£¬°üÀ¨ÌõĞÎÂë¼°ÆäÎ»ÖÃĞÅÏ¢
+	 * æ—¥æœŸ
 	 */
-	private ArrayList<String> GoodsInStorageInfo;
-	
+	private String date;
 	/**
-	 * ¹¹Ôì·½·¨
+	 * å¿«é€’ç¼–å·
+	 */
+	private String expressCode;
+	/**
+	 * ç›®çš„åœ°
+	 */
+	private String destination;
+	/**
+	 * è£…è¿å½¢å¼
+	 */
+	private String type;
+	/**
+	 * ä¸­è½¬å•ç¼–å·
+	 */
+	private String transferCode;
+	/**
+	 * æ±½è¿ç¼–å·
+	 */
+	private String carCode;
+	/**
+	 * ä¸­è½¬å•ç¼–å·æˆ–æ±½è¿ç¼–å·,trueä¸ºä¸­è½¬å•ç¼–å·ï¼Œfalseä¸ºæ±½è¿ç¼–å·
+	 */
+	boolean TorC;
+
+	public boolean isTorC() {
+		return TorC;
+	}
+	public String getCarCode() {
+		return carCode;
+	}
+	/**
+	 * æ„é€ æ–¹æ³•
 	 * @param date
 	 * @param GoodsInStorageInfo
 	 */
-	public StorageOutPO(String date,ArrayList<String> GoodsInStorageInfo){
+	public StorageOutPO(String date,String expressCode,String destination,String type,String transferCode,boolean TorC){
 		this.date = date;
-		this.GoodsInStorageInfo = GoodsInStorageInfo;
+		this.expressCode = expressCode;
+		this.destination = destination;
+		this.type = type;
+		this.TorC=TorC;
+		if(TorC==true)
+			this.transferCode = transferCode;
+		else
+			this.carCode = transferCode;
+
 	}
 
 	public String getDate() {
 		return date;
 	}
 
-	public ArrayList<String> getGoodsInStorageInfo() {
-		return GoodsInStorageInfo;
+	public String getExpressCode() {
+		return expressCode;
 	}
+
+	public String getDestination() {
+		return destination;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public String getTransferCode() {
+		return transferCode;
+	}
+
+
 
 }

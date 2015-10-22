@@ -19,7 +19,7 @@ public interface ArrivalNoteOnServiceBLService extends NoteInputBLService {
 	 * @return 单据信息格式检查结果
 	 */
 	public ResultMsg inputHallArrivalDoc(ArrivalNoteOnServiceVO arrialDocVO);
-	
+
 	/**
 	 * 前置条件：营业厅业务员核对信息后要求提交单据
 	 * 后置条件：系统提示单据信息录入成功，并提交单据给总经理审批
@@ -28,7 +28,7 @@ public interface ArrivalNoteOnServiceBLService extends NoteInputBLService {
 	 * @return 
 	 */
 	public ResultMsg submitHallArrivalDoc(ArrivalNoteOnServiceVO arrialDocVO);
-	
+
 	/**
 	 * 前置条件：营业厅业务员要求输入派件
 	 * 后置条件：系统检查单据信息的格式，反馈检查结果
@@ -36,8 +36,8 @@ public interface ArrivalNoteOnServiceBLService extends NoteInputBLService {
 	 * @param deliverDocVO 派件单VO
 	 * @return 单据信息格式检查结果
 	 */
-	public ResultMsg inputDeliverDoc(DeliverNoteOnServiceVO deliverDocVO);
-	
+	public ResultMsg inputHallDeliverDoc(DeliverNoteOnServiceVO deliverDocVO);
+
 	/**
 	 * 前置条件：营业厅业务员核对信息后要求提交单据
 	 * 后置条件：系统提示单据信息录入成功，并􏰁提交单据给总经理审批
@@ -45,6 +45,6 @@ public interface ArrivalNoteOnServiceBLService extends NoteInputBLService {
 	 * @param deliverDocVO 派件单VO
 	 * @return 
 	 */
-	public ResultMsg submitHallArrivalDoc(DeliverNoteOnServiceVO deliverDocVO);
-	
+	public ResultMsg submitHallDeliverDoc(DeliverNoteOnServiceVO deliverDocVO);
+
 }

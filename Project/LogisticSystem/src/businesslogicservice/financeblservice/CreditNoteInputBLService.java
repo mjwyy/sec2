@@ -21,6 +21,8 @@ public interface CreditNoteInputBLService {
 	
 	/**
 	 * 新增快递收款单
+	 * 前置条件：业务员选择新增收款单的功能
+	 * 后置条件：系统检查收款单信息
 	 * @param putInStorageVo
 	 * @return
 	 */
@@ -28,9 +30,14 @@ public interface CreditNoteInputBLService {
 	
 	/**
 	 * 提交收款单
+	 * 前置条件：收款单格式检查无误
+	 * 后置条件：系统反馈提交结果
 	 * @param putInStorageVo
 	 * @return
 	 */
    public ResultMsg submitReceipeDoc(ReceipeVO vo);
    
+
+	
+
 }

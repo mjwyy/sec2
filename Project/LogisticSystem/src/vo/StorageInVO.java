@@ -30,6 +30,14 @@ public class StorageInVO {
 		this.date = date;
 		this.GoodsInStorageInfo = GoodsInStorageInfo;
 	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public ArrayList<GoodsVO> getGoodsInStorageInfo() {
+		return GoodsInStorageInfo;
+	}
 	
    
 }

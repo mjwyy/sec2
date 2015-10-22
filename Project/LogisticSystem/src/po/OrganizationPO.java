@@ -12,34 +12,4 @@ public class OrganizationPO implements Serializable {
 	String name = null;
 	ArrayList<StaffPO> staff = null;
 	
-	public OrganizationPO(String type, String code, String name,
-			ArrayList<StaffPO> staff) {
-		super();
-		this.type = type;
-		this.code = code;
-		this.name = name;
-		this.staff = staff;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public String getCode() {
-		return code;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public ArrayList<StaffPO> getStaff() {
-		return staff;
-	}
-	
-	
-	
-	
-	
-	
 }

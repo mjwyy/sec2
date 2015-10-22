@@ -43,10 +43,10 @@ public interface DriverVehicleManagementDataService extends Remote {
 	public ArrayList<VehiclePO> getAllVehicles()
 			throws RemoteException;
 	
-	public ArrayList<DriverPO> inquireDriver(String string)
+	public ArrayList<DriverPO> inquireDriver(String[] keywords)
 			throws RemoteException,ElementNotFoundException;
 	
-	public ArrayList<VehiclePO> inquireVehicle(String keywords)
+	public ArrayList<VehiclePO> inquireVehicle(String[] keywords)
 			throws RemoteException;
 	
 	

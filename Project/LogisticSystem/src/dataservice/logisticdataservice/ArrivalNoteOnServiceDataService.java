@@ -1,5 +1,5 @@
 /**
- * ´¦ÀíÓªÒµÌüµ½´ï¼şÊı¾İ½Ó¿Ú
+ * å¤„ç†è¥ä¸šå…åˆ°è¾¾ä»¶æ•°æ®æ¥å£
  * @author wqy
  * @date 2015/10/17
  */
@@ -13,42 +13,25 @@ import po.ArrivalNoteOnServicePO;
 
 public interface ArrivalNoteOnServiceDataService {
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ²»´æÔÚ
-	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞÔö¼ÓÒ»¸öpo¼ÇÂ¼
-	 * @param po ¿â´æpo
+	 * åœ¨æ•°æ®åº“ä¸­æ’å…¥å•ä¸€æŒä¹…åŒ–å¯¹è±¡
 	 */
 	public void insert(ArrivalNoteOnServicePO po) throws RemoteException;
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ´æÔÚ
-	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞÉ¾³ıÒ»¸öpo¼ÇÂ¼
-	 * @param po ¿â´æpo
+	 * åœ¨æ•°æ®åº“ä¸­åˆ é™¤å•ä¸€æŒä¹…åŒ–å¯¹è±¡
 	 */
 	public void delete(ArrivalNoteOnServicePO po) throws RemoteException;
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ´æÔÚ
-	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞ¸üĞÂÒ»¸öpo¼ÇÂ¼
-	 * @param po ¿â´æpo
+	 * åœ¨æ•°æ®åº“ä¸­æ›´æ–°å•ä¸€æŒä¹…åŒ–å¯¹è±¡
 	 */
 	public void update(ArrivalNoteOnServicePO po) throws RemoteException;
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£º°´Ãû×Ö½øĞĞ²éÕÒ·µ»ØÏàÓ¦µÄNotePO½á¹û
-	 * @param name ¿â´æÃû×Ö
-	 * @return NotePO ¿â´æPO
+	 * æŒ‰å…³é”®å­—è¿›è¡ŒæŸ¥æ‰¾è¿”å›ç›¸åº”çš„ArrivalNoteOnServicePOç»“æœ
 	 */
-	public ArrivalNoteOnServicePO findByName(String name) throws RemoteException;
-	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£º°´ID½øĞĞ²éÕÒ·µ»ØÏàÓ¦µÄNotePO½á¹û
-	 * @param ID ¿â´æID
-	 * @return NotePO ¿â´æPO
-	 */
-	public ArrivalNoteOnServicePO findById(String id) throws RemoteException;
+	public ArrayList<ArrivalNoteOnServicePO> find(String name) throws RemoteException;
+
 	
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£º·µ»ØËùÓĞµÄ¿â´æPO
-	 * @return NotePO ¿â´æPO
+	 * è¿”å›æ‰€æœ‰çš„è¥ä¸šå…åˆ°è¾¾å•PO
 	 */
-	public ArrayList<ArrivalNoteOnServicePO> show() throws RemoteException;
+	public ArrayList<ArrivalNoteOnServicePO> findAll() throws RemoteException;
 }

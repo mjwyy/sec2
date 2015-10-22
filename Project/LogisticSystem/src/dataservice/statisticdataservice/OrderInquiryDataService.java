@@ -3,8 +3,8 @@ package dataservice.statisticdataservice;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-import dataservice.data_service_exception.ElementNotFoundException;
-import po.OrderPO;
+import dataservice.util.exception.ElementNotFoundException;
+import po.OrderVO;
 
 public interface OrderInquiryDataService extends Remote {
 
@@ -16,7 +16,7 @@ public interface OrderInquiryDataService extends Remote {
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException
 	 */
-	public OrderPO findOrder(String barcode)
+	public OrderVO findOrder(String barcode)
 		throws RemoteException, ElementNotFoundException;
 	
 }

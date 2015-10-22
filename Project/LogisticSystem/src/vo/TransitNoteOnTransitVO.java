@@ -67,6 +67,42 @@ public class TransitNoteOnTransitVO extends NoteVO {
 		this.supercargoMan = supercargoMan;
 		this.barcodes = barcodes;
 	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public String getTransitDocNumber() {
+		return transitDocNumber;
+	}
+
+	public String getFlightNumber() {
+		return flightNumber;
+	}
+
+	public String getDeparturePlace() {
+		return departurePlace;
+	}
+
+	public String getDesitination() {
+		return desitination;
+	}
+
+	public String getContainerNumber() {
+		return containerNumber;
+	}
+
+	public String getSupercargoMan() {
+		return supercargoMan;
+	}
+
+	public ArrayList<String> getBarcodes() {
+		return barcodes;
+	}
+
+	public double getPrice() {
+		return price;
+	}
 	
 	
 	

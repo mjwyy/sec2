@@ -4,14 +4,14 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import dataservice.util.exception.ElementNotFoundException;
+import dataservice.util.exception.InterruptWithExistedElementException;
 import po.UserPO;
-import dataservice.data_service_exception.ElementNotFoundException;
-import dataservice.data_service_exception.InterruptWithExistedElementException;
 
 public interface SystemUserManagementDataService extends Remote {
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºUserPOÄÚĞÅÏ¢ÒÑ¾­¹ı¸ñÊ½¼ì²é
-	 * ºóÖÃÌõ¼ş£ºDataÏòÊı¾İÄÚÌí¼ÓÓÃ»§ĞÅÏ¢
+	 * Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½UserPOï¿½ï¿½ï¿½ï¿½Ï¢ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Dataï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
 	 * @param user
 	 * @return true for successful add operation
 	 * @throws RemoteException
@@ -21,8 +21,8 @@ public interface SystemUserManagementDataService extends Remote {
 			throws RemoteException, InterruptWithExistedElementException;
 	
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºUserPOÄÚĞÅÏ¢ÒÑ¾­¹ı¸ñÊ½¼ì²é
-	 * ºóÖÃÌõ¼ş£ºData²éÕÒ²¢É¾³ı´ËÓÃ»§
+	 * Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½UserPOï¿½ï¿½ï¿½ï¿½Ï¢ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Dataï¿½ï¿½ï¿½Ò²ï¿½É¾ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
 	 * @param user
 	 * @return
 	 * @throws RemoteException
@@ -32,8 +32,8 @@ public interface SystemUserManagementDataService extends Remote {
 			throws RemoteException, ElementNotFoundException;
 	
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£ºData¸ù¾İoriginalUser²éÕÒÓÃ»§²¢ÓÃmodifiedÌæ´úÖ®
+	 * Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Dataï¿½ï¿½ï¿½originalUserï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½modifiedï¿½ï¿½ï¿½Ö®
 	 * @param originalUser
 	 * @param modified
 	 * @return
@@ -44,8 +44,8 @@ public interface SystemUserManagementDataService extends Remote {
 			throws RemoteException, ElementNotFoundException,InterruptWithExistedElementException;
 	
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºuserInfo¾­¹ıÁË¸ñÊ½¼ì²éÇÒÆäÖĞ°üº¬ÁËÖÁÉÙÒ»ÌõĞÅÏ¢
-	 * ºóÖÃÌõ¼ş£ºData²éÕÒ´ËÓÃ»§²¢·µ»ØÆäÍêÕûĞÅÏ¢
+	 * Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½userInfoï¿½ï¿½ï¿½ï¿½ï¿½Ë¸ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ï¢
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Dataï¿½ï¿½ï¿½Ò´ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 * @param userInfo
 	 * @return
 	 * @throws RemoteException
@@ -55,8 +55,8 @@ public interface SystemUserManagementDataService extends Remote {
 			throws RemoteException, ElementNotFoundException;
 	
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£ºData·µ»ØËùÓĞÓÃ»§ĞÅÏ¢
+	 * Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Dataï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
 	 * @return
 	 * @throws RemoteException
 	 */

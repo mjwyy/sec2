@@ -1,5 +1,5 @@
 /**
- * 库存数据接口
+ * 搴撳瓨鏌ョ湅鐩樼偣鏁版嵁鎺ュ彛
  * @author wqy
  * @date 2015/10/17
  */
@@ -12,43 +12,15 @@ import po.InventoryPO;
 
 public interface InventoryDataService {
 	/**
-	 * 前置条件：同样ID的po在Mapper中不存在
-	 * 后置条件：在数据库中增加一个po记录
-	 * @param po 库存po
+	 * 鎸夎捣姝㈡椂闂磋繘琛屾煡鎵捐繑鍥炵浉搴旂殑PO缁撴灉
 	 */
-	public void insert(InventoryPO po) throws RemoteException;
-	/**
-	 * 前置条件：同样ID的po在Mapper中存在
-	 * 后置条件：在数据库中删除一个po记录
-	 * @param po 库存po
-	 */
-	public void delete(InventoryPO po) throws RemoteException;
-	/**
-	 * 前置条件：同样ID的po在Mapper中存在
-	 * 后置条件：在数据库中更新一个po记录
-	 * @param po 库存po
-	 */
-	public void update(InventoryPO po) throws RemoteException;
-	/**
-	 * 前置条件：无
-	 * 后置条件：按名字进行查找返回相应的InventoryPO结果
-	 * @param name 库存名字
-	 * @return InventoryPO 库存PO
-	 */
-	public InventoryPO findByName(String name) throws RemoteException;
-	/**
-	 * 前置条件：无
-	 * 后置条件：按ID进行查找返回相应的PO结果
-	 * @param ID 库存ID
-	 * @return InventoryPO 库存PO
-	 */
-	public InventoryPO findById(String id) throws RemoteException;
+	
+	public ArrayList<InventoryPO> findByTime(String sTime,String eTime) throws RemoteException;
+	
 	
 	/**
-	 * 前置条件：无
-	 * 后置条件：返回所有的库存PO
-	 * @return StorageInPO 库存PO
+	 * 搴撳瓨鐩樼偣锛岃繑鍥炰笂涓�涓洏鐐规椂闂寸偣涓庢娆＄洏鐐规椂闂翠箣闂村悇鍖哄揩閫掔殑淇℃伅
 	 */
-	public ArrayList<InventoryPO> show() throws RemoteException;
+	public ArrayList<InventoryPO> findAll() throws RemoteException;
 
 }

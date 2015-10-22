@@ -4,27 +4,27 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import dataservice.data_service_exception.ElementNotFoundException;
-import dataservice.data_service_exception.InterruptWithExistedElementException;
+import dataservice.util.exception.ElementNotFoundException;
+import dataservice.util.exception.InterruptWithExistedElementException;
 
 public interface BusinessDataModificationDataService extends Remote {
 	
 	/**
-	 * Ç°ÖÃÌõ¼þ£ºcity¡¢distance¾­¹ý¸ñÊ½¼ì²é
-	 * ºóÖÃÌõ¼þ£ºData²ã²éÕÒÁ½¸ö³ÇÊÐ£¬²¢ÐÞ¸ÄÁ½Õß¾àÀë²ÎÊý
+	 * Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½cityï¿½ï¿½distanceï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Dataï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ß¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @param distance
 	 * @param city1
 	 * @param city2
 	 * @return true for successful modification
 	 * @throws RemoteException
-	 * @throws ElementNotFoundException  ÕÒ²»µ½³ÇÊÐ
+	 * @throws ElementNotFoundException  ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public boolean setDistance(double distance,String city1,String city2)
 			throws RemoteException,ElementNotFoundException;
 	
 	/**
-	 * Ç°ÖÃÌõ¼þ£ºÎÞ
-	 * ºóÖÃÌõ¼þ£ºData²ãÐÞ¸Ä¶ÔÓ¦³£Á¿
+	 * Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Dataï¿½ï¿½ï¿½Þ¸Ä¶ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½
 	 * @param name
 	 * @param newValue
 	 * @return
@@ -34,8 +34,8 @@ public interface BusinessDataModificationDataService extends Remote {
 	public boolean setPrice(String name,double newValue)
 			throws RemoteException,ElementNotFoundException;
 	/**
-	 * Ç°ÖÃÌõ¼þ£ºÎÞ
-	 * ºóÖÃÌõ¼þ£ºÔö¼Ó¶ÔÓ¦³ÇÊÐ¼ÇÂ¼
+	 * Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¶ï¿½Ó¦ï¿½ï¿½ï¿½Ð¼ï¿½Â¼
 	 * @param name
 	 * @return
 	 * @throws RemoteException

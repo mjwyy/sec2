@@ -3,14 +3,14 @@ package dataservice.financedataservice;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
+import dataservice.util.exception.FailToPassApprovingException;
 import po.CreditNotePO;
-import dataservice.data_service_exception.FailToPassApprovingException;
 
 public interface CreditNoteInputDataService extends Remote {
 
 	/**
-	 * 前置条件：CreditNotePO对象的内容经过了格式检查，确认无误
-	 * 后置条件：Data层记录对象数据，并修改对应的银行账户信息
+	 * 前锟斤拷锟斤拷锟斤拷锟斤拷CreditNotePO锟斤拷锟斤拷锟斤拷锟斤拷菥锟斤拷锟斤拷烁锟绞斤拷锟介，确锟斤拷锟斤拷锟斤拷
+	 * 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷Data锟斤拷锟铰硷拷锟斤拷锟斤拷锟捷ｏ拷锟斤拷锟睫改讹拷应锟斤拷锟斤拷锟斤拷锟剿伙拷锟斤拷息
 	 * @return true for successful add operation
 	 * @throws RemoteException
 	 */

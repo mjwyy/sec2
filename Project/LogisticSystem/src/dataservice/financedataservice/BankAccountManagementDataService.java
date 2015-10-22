@@ -4,15 +4,15 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import dataservice.data_service_exception.ElementNotFoundException;
-import dataservice.data_service_exception.InterruptWithExistedElementException;
+import dataservice.util.exception.ElementNotFoundException;
+import dataservice.util.exception.InterruptWithExistedElementException;
 import po.BankAccountPO;
 
 public interface BankAccountManagementDataService extends Remote {
 
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºBankAccountPO¶ÔÏóÄÚ²¿Êı¾İÒÑ¾­¹ı¼ì²é£¬È·¶¨¸ñÊ½ÎŞÎó
-	 * ºóÖÃÌõ¼ş£ºData²ã¶ÔÓ¦¶ÔÏóÏòÊı¾İ¿âÌí¼ÓÕË»§¼ÇÂ¼
+	 * Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½BankAccountPOï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½é£¬È·ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Dataï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ¿ï¿½ï¿½ï¿½ï¿½ï¿½Ë»ï¿½ï¿½ï¿½Â¼
 	 * @param account
 	 * @return true for successful add operation
 	 * @throws RemoteException
@@ -22,8 +22,8 @@ public interface BankAccountManagementDataService extends Remote {
 			throws RemoteException,	InterruptWithExistedElementException;
 	
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºBankAccountPO¶ÔÏóÄÚ²¿Êı¾İÒÑ¾­¹ı¼ì²é£¬È·¶¨¸ñÊ½ÎŞÎó
-	 * ºóÖÃÌõ¼ş£ºData²ã¶ÔÓ¦¶ÔÏóÏòÊı¾İ¿âÉ¾³ıÕË»§¼ÇÂ¼
+	 * Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½BankAccountPOï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½é£¬È·ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Dataï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ¿ï¿½É¾ï¿½ï¿½ï¿½Ë»ï¿½ï¿½ï¿½Â¼
 	 * @param account
 	 * @return true for successful remove operation
 	 * @throws RemoteException
@@ -33,8 +33,8 @@ public interface BankAccountManagementDataService extends Remote {
 			throws RemoteException,	ElementNotFoundException;
 	
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºBankAccountPO¶ÔÏóÄÚ²¿Êı¾İÒÑ¾­¹ı¼ì²é£¬È·¶¨¸ñÊ½ÎŞÎó
-	 * ºóÖÃÌõ¼ş£ºData²ã¶ÔÓ¦¶ÔÏóÏòÊı¾İ¿âÔÚÕË»§¼ÇÂ¼ÖĞ²éÕÒoriginalAccount£¬½«ÆäÌæ»»ÎªmodifiedAccount
+	 * Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½BankAccountPOï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½é£¬È·ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Dataï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ¿ï¿½ï¿½ï¿½ï¿½Ë»ï¿½ï¿½ï¿½Â¼ï¿½Ğ²ï¿½ï¿½ï¿½originalAccountï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ»»ÎªmodifiedAccount
 	 * @param originalAccount
 	 * @param modifiedAccount
 	 * @return true for successful remove operation
@@ -45,18 +45,18 @@ public interface BankAccountManagementDataService extends Remote {
 			throws RemoteException,	ElementNotFoundException,InterruptWithExistedElementException;
 	
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºBankAccountPO¶ÔÏóÄÚ²¿Êı¾İÒÑ¾­¹ı¼ì²é£¬È·¶¨¸ñÊ½ÎŞÎó
-	 * ºóÖÃÌõ¼ş£ºData²ã¸ù¾İ²ÎÊıÖĞµÄ²»ÍêÈ«ĞÅÏ¢²éÑ¯²¢·µ»ØÕË»§ÏêÏ¸ĞÅÏ¢
+	 * Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½BankAccountPOï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½é£¬È·ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Dataï¿½ï¿½ï¿½İ²ï¿½ï¿½ï¿½ï¿½ĞµÄ²ï¿½ï¿½ï¿½È«ï¿½ï¿½Ï¢ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë»ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢
 	 * @param account
-	 * @return ÏêÏ¸ÕË»§ĞÅÏ¢
+	 * @return ï¿½ï¿½Ï¸ï¿½Ë»ï¿½ï¿½ï¿½Ï¢
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException
 	 */
 	public BankAccountPO findBankAccount(BankAccountPO account)
 			throws RemoteException, ElementNotFoundException;
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£ºData²ã²éÑ¯µÃµ½ËùÓĞÕË»§ĞÅÏ¢²¢·µ»Ø
+	 * Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Dataï¿½ï¿½ï¿½Ñ¯ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë»ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @return
 	 * @throws RemoteException
 	 */

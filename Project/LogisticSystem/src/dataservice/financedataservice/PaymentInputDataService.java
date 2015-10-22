@@ -3,14 +3,14 @@ package dataservice.financedataservice;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
+import dataservice.util.exception.FailToPassApprovingException;
 import po.PaymentPO;
-import dataservice.data_service_exception.FailToPassApprovingException;
 
 public interface PaymentInputDataService extends Remote {
 	
 	/**
-	 * 前置条件：PaymentPO格式已经过检查，确认无误
-	 * 后置条件：Data层向数据记录Payment信息，并修改对应银行账户信息
+	 * 前锟斤拷锟斤拷锟斤拷锟斤拷PaymentPO锟斤拷式锟窖撅拷锟斤拷锟介，确锟斤拷锟斤拷锟斤拷
+	 * 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷Data锟斤拷锟斤拷锟斤拷菁锟铰糚ayment锟斤拷息锟斤拷锟斤拷锟睫改讹拷应锟斤拷锟斤拷锟剿伙拷锟斤拷息
 	 * @return true for successful add operation
 	 * @throws RemoteException
 	 * @throws FailToPassApprovingException

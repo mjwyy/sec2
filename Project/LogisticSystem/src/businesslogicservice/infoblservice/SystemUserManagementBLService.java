@@ -47,6 +47,7 @@ public interface SystemUserManagementBLService {
 	 * @return
 	 */
 	public ArrayList<UserVO> find(String userNum);
+<<<<<<< HEAD
 
 	/**
 	 * 用户登录系统操作接口
@@ -58,5 +59,9 @@ public interface SystemUserManagementBLService {
 	 * @return
 	 */
 	public ResultMsg login(String userID,String password);
+=======
+		
+	
+>>>>>>> master
  
 }

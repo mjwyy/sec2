@@ -122,8 +122,12 @@
       <sortByType />
     </navigator>
     <panes>
+<<<<<<< HEAD
       <pane id="PackagesPane" />
       <pane id="Scope" />
+=======
+      <pane id="Scratches" />
+>>>>>>> master
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -158,7 +162,12 @@
           </PATH>
         </subPane>
       </pane>
+<<<<<<< HEAD
       <pane id="Scratches" />
+=======
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+>>>>>>> master
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -450,9 +459,15 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22876713" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21643835" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+=======
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21643835" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+>>>>>>> master
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -544,7 +559,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.53977275">
           <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
+<<<<<<< HEAD
           <folding />
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -608,11 +626,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.70170456">
           <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
+<<<<<<< HEAD
           <folding>
             <element signature="e#463#464#0" expanded="false" />
             <element signature="e#503#504#0" expanded="false" />
             <element signature="e#539#540#0" expanded="false" />
           </folding>
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -620,7 +641,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18892045">
           <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+<<<<<<< HEAD
           <folding />
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -628,6 +652,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.84194976">
           <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+<<<<<<< HEAD
           <folding>
             <element signature="e#410#411#0" expanded="true" />
             <element signature="e#441#442#0" expanded="true" />
@@ -635,6 +660,8 @@
             <element signature="e#493#494#0" expanded="true" />
             <element signature="e#514#515#0" expanded="true" />
           </folding>
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -642,9 +669,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5681818">
           <caret line="42" column="29" selection-start-line="42" selection-start-column="29" selection-end-line="42" selection-end-column="29" />
+<<<<<<< HEAD
           <folding>
             <element signature="e#672#673#0" expanded="true" />
           </folding>
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -652,6 +682,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.62215906">
           <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
+<<<<<<< HEAD
           <folding>
             <element signature="e#390#391#0" expanded="true" />
             <element signature="e#417#418#0" expanded="true" />
@@ -659,6 +690,8 @@
             <element signature="e#509#510#0" expanded="true" />
             <element signature="e#537#538#0" expanded="true" />
           </folding>
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -666,6 +699,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.81107956">
           <caret line="38" column="39" selection-start-line="38" selection-start-column="39" selection-end-line="38" selection-end-column="39" />
+<<<<<<< HEAD
           <folding>
             <element signature="e#675#676#0" expanded="true" />
             <element signature="e#711#712#0" expanded="true" />
@@ -675,6 +709,8 @@
             <element signature="e#835#836#0" expanded="true" />
             <element signature="e#861#862#0" expanded="true" />
           </folding>
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -682,7 +718,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.053977273">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+<<<<<<< HEAD
           <folding />
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -690,6 +729,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7556818">
           <caret line="32" column="29" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
+<<<<<<< HEAD
           <folding>
             <element signature="e#440#441#0" expanded="true" />
             <element signature="e#468#469#0" expanded="true" />
@@ -697,6 +737,8 @@
             <element signature="e#521#522#0" expanded="true" />
             <element signature="e#546#547#0" expanded="true" />
           </folding>
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -704,6 +746,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.83664775">
           <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
+<<<<<<< HEAD
           <folding>
             <element signature="e#526#527#0" expanded="true" />
             <element signature="e#571#572#0" expanded="true" />
@@ -711,6 +754,8 @@
             <element signature="e#639#640#0" expanded="true" />
             <element signature="e#673#674#0" expanded="true" />
           </folding>
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -718,6 +763,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.35227272">
           <caret line="60" column="34" selection-start-line="60" selection-start-column="34" selection-end-line="60" selection-end-column="34" />
+<<<<<<< HEAD
           <folding>
             <element signature="e#961#962#0" expanded="true" />
             <element signature="e#989#990#0" expanded="true" />
@@ -733,6 +779,8 @@
             <element signature="e#1250#1251#0" expanded="true" />
             <element signature="e#1283#1284#0" expanded="true" />
           </folding>
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -740,6 +788,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8636364">
           <caret line="32" column="32" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+<<<<<<< HEAD
           <folding>
             <element signature="e#465#466#0" expanded="true" />
             <element signature="e#494#495#0" expanded="true" />
@@ -747,6 +796,8 @@
             <element signature="e#551#552#0" expanded="true" />
             <element signature="e#579#580#0" expanded="true" />
           </folding>
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -754,7 +805,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24289773">
           <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+<<<<<<< HEAD
           <folding />
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -762,6 +816,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.51420456">
           <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
+<<<<<<< HEAD
           <folding>
             <element signature="e#552#553#0" expanded="true" />
             <element signature="e#601#602#0" expanded="true" />
@@ -769,6 +824,8 @@
             <element signature="e#668#669#0" expanded="true" />
             <element signature="e#686#687#0" expanded="true" />
           </folding>
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -776,6 +833,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.40625">
           <caret line="41" column="31" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
+<<<<<<< HEAD
           <folding>
             <element signature="e#592#593#0" expanded="true" />
             <element signature="e#621#622#0" expanded="true" />
@@ -785,6 +843,8 @@
             <element signature="e#728#729#0" expanded="true" />
             <element signature="e#747#748#0" expanded="true" />
           </folding>
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -792,6 +852,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.025568182">
           <caret line="65" column="29" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+<<<<<<< HEAD
           <folding>
             <element signature="e#1049#1050#0" expanded="true" />
             <element signature="e#1083#1084#0" expanded="true" />
@@ -809,6 +870,8 @@
             <element signature="e#1460#1461#0" expanded="true" />
             <element signature="e#1482#1483#0" expanded="true" />
           </folding>
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -816,6 +879,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.81107956">
           <caret line="60" column="29" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
+<<<<<<< HEAD
           <folding>
             <element signature="e#964#965#0" expanded="true" />
             <element signature="e#1007#1008#0" expanded="true" />
@@ -831,6 +895,8 @@
             <element signature="e#1317#1318#0" expanded="true" />
             <element signature="e#1339#1340#0" expanded="true" />
           </folding>
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -838,12 +904,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2159091">
           <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+<<<<<<< HEAD
           <folding>
             <element signature="e#212#213#0" expanded="true" />
             <element signature="e#234#235#0" expanded="true" />
             <element signature="e#267#268#0" expanded="true" />
             <element signature="e#290#291#0" expanded="true" />
           </folding>
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -851,7 +920,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7016248">
           <caret line="25" column="40" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
+<<<<<<< HEAD
           <folding />
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -859,6 +931,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.81107956">
           <caret line="46" column="29" selection-start-line="46" selection-start-column="29" selection-end-line="46" selection-end-column="29" />
+<<<<<<< HEAD
           <folding>
             <element signature="e#679#680#0" expanded="true" />
             <element signature="e#708#709#0" expanded="true" />
@@ -870,6 +943,8 @@
             <element signature="e#870#871#0" expanded="true" />
             <element signature="e#897#898#0" expanded="true" />
           </folding>
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -877,11 +952,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.703125">
           <caret line="31" column="29" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
+<<<<<<< HEAD
           <folding>
             <element signature="e#513#514#0" expanded="true" />
             <element signature="e#566#567#0" expanded="true" />
             <element signature="e#598#599#0" expanded="true" />
           </folding>
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -889,6 +967,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8636364">
           <caret line="32" column="32" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+<<<<<<< HEAD
           <folding>
             <element signature="e#470#471#0" expanded="true" />
             <element signature="e#509#510#0" expanded="true" />
@@ -896,6 +975,8 @@
             <element signature="e#566#567#0" expanded="true" />
             <element signature="e#584#585#0" expanded="true" />
           </folding>
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -903,6 +984,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8700148">
           <caret line="40" column="29" selection-start-line="40" selection-start-column="29" selection-end-line="40" selection-end-column="29" />
+<<<<<<< HEAD
           <folding>
             <element signature="e#608#609#0" expanded="true" />
             <element signature="e#640#641#0" expanded="true" />
@@ -912,6 +994,8 @@
             <element signature="e#764#765#0" expanded="true" />
             <element signature="e#785#786#0" expanded="true" />
           </folding>
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -919,6 +1003,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8153619">
           <caret line="53" column="30" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
+<<<<<<< HEAD
           <folding>
             <element signature="e#767#768#0" expanded="true" />
             <element signature="e#795#796#0" expanded="true" />
@@ -932,6 +1017,8 @@
             <element signature="e#1008#1009#0" expanded="true" />
             <element signature="e#1027#1028#0" expanded="true" />
           </folding>
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -939,7 +1026,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.81107956">
           <caret line="84" column="35" selection-start-line="84" selection-start-column="35" selection-end-line="84" selection-end-column="35" />
+<<<<<<< HEAD
           <folding />
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -947,6 +1037,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.028409092">
           <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
+<<<<<<< HEAD
           <folding>
             <element signature="e#826#827#0" expanded="true" />
             <element signature="e#844#845#0" expanded="true" />
@@ -963,6 +1054,8 @@
             <element signature="e#1127#1128#0" expanded="true" />
             <element signature="e#1145#1146#0" expanded="true" />
           </folding>
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -970,7 +1063,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.81107956">
           <caret line="55" column="29" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
+<<<<<<< HEAD
           <folding />
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -978,7 +1074,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24289773">
           <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+<<<<<<< HEAD
           <folding />
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -986,6 +1085,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.81107956">
           <caret line="70" column="29" selection-start-line="70" selection-start-column="29" selection-end-line="70" selection-end-column="29" />
+<<<<<<< HEAD
           <folding>
             <element signature="e#1149#1150#0" expanded="true" />
             <element signature="e#1189#1190#0" expanded="true" />
@@ -1005,6 +1105,8 @@
             <element signature="e#1635#1636#0" expanded="true" />
             <element signature="e#1654#1655#0" expanded="true" />
           </folding>
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -1012,6 +1114,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.80965906">
           <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
+<<<<<<< HEAD
           <folding>
             <element signature="e#498#499#0" expanded="true" />
             <element signature="e#540#541#0" expanded="true" />
@@ -1019,6 +1122,8 @@
             <element signature="e#614#615#0" expanded="true" />
             <element signature="e#646#647#0" expanded="true" />
           </folding>
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -1026,6 +1131,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.43323863">
           <caret line="28" column="48" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
+<<<<<<< HEAD
           <folding>
             <element signature="e#520#521#0" expanded="true" />
             <element signature="e#545#546#0" expanded="true" />
@@ -1034,6 +1140,8 @@
             <element signature="e#645#646#0" expanded="true" />
             <element signature="e#675#676#0" expanded="true" />
           </folding>
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -1041,7 +1149,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.10795455">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+<<<<<<< HEAD
           <folding />
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -1049,7 +1160,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13494319">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+<<<<<<< HEAD
           <folding />
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -1057,7 +1171,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.10795455">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+<<<<<<< HEAD
           <folding />
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -1065,7 +1182,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.053977273">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+<<<<<<< HEAD
           <folding />
+=======
+>>>>>>> master
         </state>
       </provider>
     </entry>

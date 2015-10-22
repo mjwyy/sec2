@@ -8,7 +8,10 @@ package businesslogicservice.financeblservice;
 import java.util.ArrayList;
 
 import businesslogic.util.ResultMsg;
+<<<<<<< HEAD
 import vo.StorageInVO;
+=======
+>>>>>>> master
 import vo.ReceipeVO;
 
 public interface CreditNoteInputBLService {

@@ -21,6 +21,15 @@ public interface SettlementManagementBLService {
 	 */
 	public ResultMsg addReceiveRecord(ReceiveRecordVO vo);
 
+
+	/**
+	 * 提交收款记录
+	 * 前置条件：收款单经过格式检验，财务人员核对无误，要求提交单据
+	 * 后置条件：系统提示单据信息录入成功，并提交单据给总经理审批
+	 * @param vo
+	 * @return
+	 */
+	public ResultMsg submitReceiveRecord(ReceiveRecordVO vo);
 	
 	/**
 	 * 按日期查询收款记录
@@ -38,7 +47,7 @@ public interface SettlementManagementBLService {
 	 * @param serive
 	 * @return
 	 */
-	public ArrayList<ReceiveRecordVO> findbyServic(String serive);
+	public ArrayList<ReceiveRecordVO> findbyService(String serivce);
 	
 
 }

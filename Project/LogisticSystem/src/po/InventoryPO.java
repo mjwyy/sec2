@@ -1,5 +1,5 @@
 /**
- * ¿â´æPO
+ * åº“å­˜PO
  * @author wqy
  * @date 2015/10/17
  */
@@ -8,28 +8,34 @@ package po;
 import java.util.ArrayList;
 
 public class InventoryPO {
-	   /**
-     * ³ö¿âÊıÁ¿
-     */
-	public String outNum;
-	
 	/**
-	 * Èë¿âÊıÁ¿
+	 * æ€»çš„åº“å­˜æ•°é‡
 	 */
-	public String inNum;
-	
+	private String num;
+
+
 	/**
-	 * Ê±¼ä¶ÎÄÚ»õÎï½ğ¶î
+	 * å‡ºåº“æ•°é‡
 	 */
-	public String money;
-	
+	private String outNum;
+
 	/**
-	 * »õÎïÎ»ÖÃĞÅÏ¢
+	 * å…¥åº“æ•°é‡
 	 */
-	public ArrayList<String> place;
-	
+	private String inNum;
+
 	/**
-	 * ¹¹Ôì·½·¨
+	 * æ—¶é—´æ®µå†…è´§ç‰©é‡‘é¢
+	 */
+	private String money;
+
+	/**
+	 * è´§ç‰©ä½ç½®ä¿¡æ¯
+	 */
+	private ArrayList<String> place;
+
+	/**
+	 * æ„é€ æ–¹æ³•
 	 * @param outNum
 	 * @param inNum
 	 * @param money
@@ -40,7 +46,7 @@ public class InventoryPO {
 		this.inNum = inNum;
 		this.money = money;
 		this.place =place;
-		
+
 	}
 
 	public String getOutNum() {
@@ -58,6 +64,8 @@ public class InventoryPO {
 	public ArrayList<String> getPlace() {
 		return place;
 	}
-	
-	
+	public String getNum() {
+		return num;
+	}
+
 }

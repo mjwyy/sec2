@@ -12,8 +12,8 @@ import po.VehiclePO;
 public interface DriverVehicleManagementDataService extends Remote {
 
 	/**
-	 * ǰ��������DriverPO����Ϣ�����˸�ʽ���
-	 * ����������Data��������м���˼�¼
+	 * Data向数据库中添加对应司机PO项
+     *
 	 * @param driver
 	 * @return
 	 * @throws RemoteException
@@ -21,32 +21,111 @@ public interface DriverVehicleManagementDataService extends Remote {
 	 */
 	public boolean addDriver(DriverPO driver)
 			throws RemoteException,InterruptWithExistedElementException;
-	
+
+	/**
+	 * Data向数据库中添加对应汽车PO项
+     *
+	 * @param vehicle
+	 * @return
+	 * @throws RemoteException
+	 * @throws InterruptWithExistedElementException
+	 */
 	public boolean addVehicle(VehiclePO vehicle)
 			throws RemoteException,InterruptWithExistedElementException;
-	
+
+	/**
+	 * Data删除对应司机PO记录
+     *
+	 * @param driver
+	 * @return
+	 * @throws RemoteException
+	 * @throws ElementNotFoundException
+	 */
 	public boolean removeDriver(DriverPO driver)
 			throws RemoteException,ElementNotFoundException;
-	
+
+	/**
+	 * Data删除对应汽车PO记录
+     *
+	 * @param vehicle
+	 * @return
+	 * @throws RemoteException
+	 * @throws ElementNotFoundException
+	 */
 	public boolean removeVehicle(VehiclePO vehicle)
 			throws RemoteException,ElementNotFoundException;
-	
+
+	/**
+	 * Data将originalDriver替换为modified
+     *
+	 * @param originalDriver
+	 * @param modified
+	 * @return
+	 * @throws RemoteException
+	 * @throws ElementNotFoundException
+	 * @throws InterruptWithExistedElementException
+	 */
 	public boolean modifyDriver(DriverPO originalDriver,DriverPO modified)
 			throws RemoteException,ElementNotFoundException,InterruptWithExistedElementException;
-	
+
+	/**
+	 * Data将originalVehicle数据替换为modified
+     *
+	 * @param originalVehicle
+	 * @param modified
+	 * @return
+	 * @throws RemoteException
+	 * @throws ElementNotFoundException
+	 * @throws InterruptWithExistedElementException
+	 */
 	public boolean modifyVehicle(VehiclePO originalVehicle,VehiclePO modified)
 			throws RemoteException,ElementNotFoundException,InterruptWithExistedElementException;
-	
+
+	/**
+	 * Data返回所有司机数据
+     *
+	 * @return
+	 * @throws RemoteException
+	 */
 	public ArrayList<DriverPO> getAllDriver()
 			throws RemoteException;
-	
+
+	/**
+	 * Data返回所有车辆数据
+     *
+	 * @return
+	 * @throws RemoteException
+	 */
 	public ArrayList<VehiclePO> getAllVehicles()
 			throws RemoteException;
+<<<<<<< HEAD
 	
 	public ArrayList<DriverPO> inquireDriver(String string)
 			throws RemoteException,ElementNotFoundException;
 	
 	public ArrayList<VehiclePO> inquireVehicle(String keywords)
+=======
+
+	/**
+	 * Data返回所有符合关键字的司机数据
+     *
+	 * @param keywords
+	 * @return
+	 * @throws RemoteException
+	 * @throws ElementNotFoundException
+	 */
+	public ArrayList<DriverPO> inquireDriver(String[] keywords)
+			throws RemoteException,ElementNotFoundException;
+
+	/**
+	 * Data返回所有符合关键字的车辆数据
+     *
+	 * @param keywords
+	 * @return
+	 * @throws RemoteException
+	 */
+	public ArrayList<VehiclePO> inquireVehicle(String[] keywords)
+>>>>>>> master
 			throws RemoteException;
 	
 	

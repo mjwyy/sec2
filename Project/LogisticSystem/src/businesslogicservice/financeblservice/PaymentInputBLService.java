@@ -19,6 +19,13 @@ public interface PaymentInputBLService {
 	 */
 	public ResultMsg addPaymentRecord(PaymentRecordVO vo);
 	
-	
+	/**
+	 * 输入付款记录信息
+	 * 前置条件；付款单经过格式检验，财务人员核对无误，要求提交单据
+	 * 后置条件：系统提示单据信息录入成功，并提交单据给总经理审批
+	 * @param vo
+	 * @return
+	 */
+	public ResultMsg submitPaymentRecord(PaymentRecordVO vo);
 
 }

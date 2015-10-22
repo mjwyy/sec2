@@ -9,8 +9,8 @@ import po.CreditNotePO;
 public interface CreditNoteInputDataService extends Remote {
 
 	/**
-	 * ǰ��������CreditNotePO��������ݾ����˸�ʽ��飬ȷ������
-	 * ����������Data���¼������ݣ����޸Ķ�Ӧ�������˻���Ϣ
+	 * Data向数据库中添加记录
+	 *
 	 * @return true for successful add operation
 	 * @throws RemoteException
 	 */

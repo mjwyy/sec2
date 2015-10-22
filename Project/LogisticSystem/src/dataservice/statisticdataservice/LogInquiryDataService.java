@@ -9,8 +9,8 @@ import po.LogEntryPO;
 public interface LogInquiryDataService extends Remote {
 
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£ºData²ã¸ù¾İÊ±¼ä¡¢¹Ø¼ü´Ê²éÑ¯Log£¬·µ»ØÏà¹ØÌõÄ¿
+	 * Dataå±‚æ ¹æ®æ—¶é—´ã€å…³é”®è¯æŸ¥è¯¢Logï¼Œè¿”å›ç›¸å…³æ¡ç›®
+	 *
 	 * @param time
 	 * @param keyword
 	 * @return

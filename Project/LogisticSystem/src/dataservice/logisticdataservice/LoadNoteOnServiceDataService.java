@@ -1,5 +1,5 @@
 /**
- * Â¼ÈëÓªÒµÌü×°³µµ¥Êı¾İ½Ó¿Ú
+ * å½•å…¥è¥ä¸šå…è£…è½¦å•æ•°æ®æ¥å£
  * @author wqy
  * @date 2015/10/17
  */
@@ -12,42 +12,36 @@ import po.LoadNoteOnServicePO;
 
 public interface LoadNoteOnServiceDataService {
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ²»´æÔÚ
-	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞÔö¼ÓÒ»¸öpo¼ÇÂ¼
-	 * @param po ¿â´æpo
+	 * å‰ç½®æ¡ä»¶ï¼šåŒæ ·IDçš„poåœ¨Mapperä¸­ä¸å­˜åœ¨
+	 * åç½®æ¡ä»¶ï¼šåœ¨æ•°æ®åº“ä¸­å¢åŠ ä¸€ä¸ªpoè®°å½•
+	 * @param po LoadNoteOnServicepo
 	 */
 	public void insert(LoadNoteOnServicePO po) throws RemoteException;
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ´æÔÚ
-	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞÉ¾³ıÒ»¸öpo¼ÇÂ¼
-	 * @param po ¿â´æpo
+	 * å‰ç½®æ¡ä»¶ï¼šåŒæ ·IDçš„poåœ¨Mapperä¸­å­˜åœ¨
+	 * åç½®æ¡ä»¶ï¼šåœ¨æ•°æ®åº“ä¸­åˆ é™¤ä¸€ä¸ªpoè®°å½•
+	 * @param po LoadNoteOnServicepo
 	 */
 	public void delete(LoadNoteOnServicePO po) throws RemoteException;
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ´æÔÚ
-	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞ¸üĞÂÒ»¸öpo¼ÇÂ¼
-	 * @param po ¿â´æpo
+	 * å‰ç½®æ¡ä»¶ï¼šåŒæ ·IDçš„poåœ¨Mapperä¸­å­˜åœ¨
+	 * åç½®æ¡ä»¶ï¼šåœ¨æ•°æ®åº“ä¸­æ›´æ–°ä¸€ä¸ªpoè®°å½•
+	 * @param po LoadNoteOnServicepo
 	 */
 	public void update(LoadNoteOnServicePO po) throws RemoteException;
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£º°´Ãû×Ö½øĞĞ²éÕÒ·µ»ØÏàÓ¦µÄLoadNoteOnServicePO½á¹û
-	 * @param name ¿â´æÃû×Ö
-	 * @return LoadNoteOnServicePO ¿â´æPO
+	 * å‰ç½®æ¡ä»¶ï¼šæ— 
+	 * åç½®æ¡ä»¶ï¼šæŸ¥æ‰¾è¿”å›ç›¸åº”çš„LoadNoteOnServicePOç»“æœ
+	 * @param name å…³é”®å­—
+	 * @return LoadNoteOnServicePO
 	 */
-	public LoadNoteOnServicePO findByName(String name) throws RemoteException;
-	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£º°´ID½øĞĞ²éÕÒ·µ»ØÏàÓ¦µÄLoadNoteOnServicePO½á¹û
-	 * @param ID ¿â´æID
-	 * @return LoadNoteOnServicePO ¿â´æPO
-	 */
-	public LoadNoteOnServicePO findById(String id) throws RemoteException;
+	public ArrayList<LoadNoteOnServicePO> find(String name) throws RemoteException;
+	
 	
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£º·µ»ØËùÓĞµÄ¿â´æPO
-	 * @return LoadNoteOnServicePO ¿â´æPO
+	 * å‰ç½®æ¡ä»¶ï¼šæ— 
+	 * åç½®æ¡ä»¶ï¼šè¿”å›æ‰€æœ‰çš„LoadNoteOnServicePO
+	 * @return LoadNoteOnServicePO 
 	 */
-	public ArrayList<LoadNoteOnServicePO> show() throws RemoteException;
+	public ArrayList<LoadNoteOnServicePO> findAll() throws RemoteException;
 }

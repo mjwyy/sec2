@@ -1,5 +1,5 @@
 /**
- * ¿â´æÊı¾İ½Ó¿Ú
+ * åº“å­˜æŸ¥çœ‹ç›˜ç‚¹æ•°æ®æ¥å£
  * @author wqy
  * @date 2015/10/17
  */
@@ -12,43 +12,21 @@ import po.InventoryPO;
 
 public interface InventoryDataService {
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ²»´æÔÚ
-	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞÔö¼ÓÒ»¸öpo¼ÇÂ¼
-	 * @param po ¿â´æpo
+	 * å‰ç½®æ¡ä»¶ï¼šæ— 
+	 * åç½®æ¡ä»¶ï¼šæŒ‰èµ·æ­¢æ—¶é—´è¿›è¡ŒæŸ¥æ‰¾è¿”å›ç›¸åº”çš„POç»“æœ
+	 * @param sTime å¼€å§‹æ—¶é—´
+	 * @param eTime ç»“æŸæ—¶é—´
+	 * @return InventoryPO åº“å­˜PO
 	 */
-	public void insert(InventoryPO po) throws RemoteException;
-	/**
-	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ´æÔÚ
-	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞÉ¾³ıÒ»¸öpo¼ÇÂ¼
-	 * @param po ¿â´æpo
-	 */
-	public void delete(InventoryPO po) throws RemoteException;
-	/**
-	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ´æÔÚ
-	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞ¸üĞÂÒ»¸öpo¼ÇÂ¼
-	 * @param po ¿â´æpo
-	 */
-	public void update(InventoryPO po) throws RemoteException;
-	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£º°´Ãû×Ö½øĞĞ²éÕÒ·µ»ØÏàÓ¦µÄInventoryPO½á¹û
-	 * @param name ¿â´æÃû×Ö
-	 * @return InventoryPO ¿â´æPO
-	 */
-	public InventoryPO findByName(String name) throws RemoteException;
-	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£º°´ID½øĞĞ²éÕÒ·µ»ØÏàÓ¦µÄPO½á¹û
-	 * @param ID ¿â´æID
-	 * @return InventoryPO ¿â´æPO
-	 */
-	public InventoryPO findById(String id) throws RemoteException;
+	
+	public ArrayList<InventoryPO> findByTime(String sTime,String eTime) throws RemoteException;
+	
 	
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£º·µ»ØËùÓĞµÄ¿â´æPO
-	 * @return StorageInPO ¿â´æPO
+	 * å‰ç½®æ¡ä»¶ï¼šæ— 
+	 * åç½®æ¡ä»¶ï¼šåº“å­˜ç›˜ç‚¹ï¼Œè¿”å›ä¸Šä¸€ä¸ªç›˜ç‚¹æ—¶é—´ç‚¹ä¸æ­¤æ¬¡ç›˜ç‚¹æ—¶é—´ä¹‹é—´å„åŒºå¿«é€’çš„ä¿¡æ¯
+	 * @return InventoryPO åº“å­˜PO
 	 */
-	public ArrayList<InventoryPO> show() throws RemoteException;
+	public ArrayList<InventoryPO> findAll() throws RemoteException;
 
 }

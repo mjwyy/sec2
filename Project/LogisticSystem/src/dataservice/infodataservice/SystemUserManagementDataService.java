@@ -10,8 +10,8 @@ import po.UserPO;
 
 public interface SystemUserManagementDataService extends Remote {
 	/**
-	 * ǰ��������UserPO����Ϣ�Ѿ����ʽ���
-	 * ����������Data�����������û���Ϣ
+	 * Data向数据库中添加对应UserPO记录
+     *
 	 * @param user
 	 * @return true for successful add operation
 	 * @throws RemoteException
@@ -19,10 +19,10 @@ public interface SystemUserManagementDataService extends Remote {
 	 */
 	public boolean addUser(UserPO user)
 			throws RemoteException, InterruptWithExistedElementException;
-	
+
 	/**
-	 * ǰ��������UserPO����Ϣ�Ѿ����ʽ���
-	 * ����������Data���Ҳ�ɾ����û�
+	 * Data从数据库中删除对应UserPO条目
+     *
 	 * @param user
 	 * @return
 	 * @throws RemoteException
@@ -30,10 +30,10 @@ public interface SystemUserManagementDataService extends Remote {
 	 */
 	public boolean removeUser(UserPO user)
 			throws RemoteException, ElementNotFoundException;
-	
+
 	/**
-	 * ǰ����������
-	 * ����������Data���originalUser�����û�����modified���֮
+	 * Data将originalUserPO替换为modifiedUserPO
+     *
 	 * @param originalUser
 	 * @param modified
 	 * @return
@@ -42,10 +42,10 @@ public interface SystemUserManagementDataService extends Remote {
 	 */
 	public boolean modifyUser(UserPO originalUser,UserPO modified)
 			throws RemoteException, ElementNotFoundException,InterruptWithExistedElementException;
-	
+
 	/**
-	 * ǰ��������userInfo�����˸�ʽ��������а�������һ����Ϣ
-	 * ����������Data���Ҵ��û���������������Ϣ
+	 * Data查询对应的用户并返回其UserPO
+     *
 	 * @param userInfo
 	 * @return
 	 * @throws RemoteException
@@ -53,13 +53,15 @@ public interface SystemUserManagementDataService extends Remote {
 	 */
 	public UserPO inquireUser(String acount)
 			throws RemoteException, ElementNotFoundException;
-	
+
 	/**
-	 * ǰ����������
-	 * ����������Data���������û���Ϣ
+	 * Data返回所有的UserPO
+     *
 	 * @return
 	 * @throws RemoteException
 	 */
 	public ArrayList<UserPO> getAllUsers()
 			throws RemoteException;
+
+
 }

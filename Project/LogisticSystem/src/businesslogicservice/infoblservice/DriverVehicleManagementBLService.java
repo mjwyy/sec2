@@ -19,7 +19,7 @@ public interface DriverVehicleManagementBLService {
 	 * @param vo
 	 * @return
 	 */
-	public ResultMsg add(VehicleInfoVO vo);
+	public ResultMsg addVehicle(VehicleInfoVO vo);
 	
 	/**
 	 * 删除车辆信息
@@ -28,7 +28,7 @@ public interface DriverVehicleManagementBLService {
 	 * @param vo
 	 * @return
 	 */
-	public ResultMsg delete(VehicleInfoVO vo);
+	public ResultMsg deleteVehicle(VehicleInfoVO vo);
 	
 	/**
 	 * 修改车辆信息
@@ -37,7 +37,7 @@ public interface DriverVehicleManagementBLService {
 	 * @param vo
 	 * @return
 	 */
-	public ResultMsg modify(VehicleInfoVO vo);
+	public ResultMsg modifyVehicle(VehicleInfoVO vo);
 	
 	/**
 	 * 新增司机信息
@@ -46,7 +46,7 @@ public interface DriverVehicleManagementBLService {
 	 * @param vo
 	 * @return
 	 */
-	public ResultMsg add(DriverInfoVO vo);
+	public ResultMsg addDriver(DriverInfoVO vo);
 	
 	/**
 	 * 删除司机信息
@@ -55,7 +55,7 @@ public interface DriverVehicleManagementBLService {
 	 * @param vo
 	 * @return
 	 */
-	public ResultMsg delete(DriverInfoVO vo);
+	public ResultMsg deleteDriver(DriverInfoVO vo);
 	
 	/**
 	 * 修改司机信息
@@ -64,10 +64,14 @@ public interface DriverVehicleManagementBLService {
 	 * @param vo
 	 * @return
 	 */
-	public ResultMsg modify(DriverInfoVO vo);
+	public ResultMsg modifyDriver(DriverInfoVO vo);
 	
 	/**
+<<<<<<< HEAD
 	 * 关键字查询车辆信息
+=======
+	 * 查询
+>>>>>>> master
 	 * 前置条件：经验证的业务员选择查询车辆信息
 	 * 后置条件：系统检查关键字格式，若无误显示查询到的信息
 	 * @param keyword
@@ -76,7 +80,11 @@ public interface DriverVehicleManagementBLService {
 	public ArrayList<VehicleInfoVO> findVehicle(String keyword);
 	
 	/**
+<<<<<<< HEAD
 	 * 关键字查询司机信息
+=======
+	 * 查询
+>>>>>>> master
 	 * 前置条件：经验证的业务员选择查询司机信息
 	 * 后置条件：系统检查关键字格式，若无误显示查询到的信息
 	 * @param keyword

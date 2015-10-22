@@ -57,7 +57,32 @@ public class LoadNoteOnTransitVO extends NoteVO {
 		this.supercargoMan = supercargoMan;
 		this.barcodes = barcodes;
 	}
-	
-	
-	
+
+	public String getDate() {
+		return date;
+	}
+
+	public String getTranspotationNumber() {
+		return transpotationNumber;
+	}
+
+	public String getDestination() {
+		return Destination;
+	}
+
+	public String getCarNumber() {
+		return carNumber;
+	}
+
+	public String getGuardMan() {
+		return guardMan;
+	}
+
+	public String getSupercargoMan() {
+		return supercargoMan;
+	}
+
+	public ArrayList<String> getBarcodes() {
+		return barcodes;
+	}
 }

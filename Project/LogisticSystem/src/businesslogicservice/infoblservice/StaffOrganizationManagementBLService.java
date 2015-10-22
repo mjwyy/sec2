@@ -20,7 +20,7 @@ public interface StaffOrganizationManagementBLService {
 	 * @param vo
 	 * @return
 	 */
-	public ResultMsg add(StaffInfoVO vo);
+	public ResultMsg addStaff(StaffInfoVO vo);
 	
 	/**
 	 * 删除人员信息
@@ -29,7 +29,7 @@ public interface StaffOrganizationManagementBLService {
 	 * @param vo
 	 * @return
 	 */
-	public ResultMsg del(StaffInfoVO vo);
+	public ResultMsg delStaff(StaffInfoVO vo);
 	
 	/**
 	 * 修改人员信息
@@ -38,10 +38,14 @@ public interface StaffOrganizationManagementBLService {
 	 * @param vo
 	 * @return
 	 */
-	public ResultMsg Modify(StaffInfoVO vo);
+	public ResultMsg ModifyStaff(StaffInfoVO vo);
 	
 	/**
+<<<<<<< HEAD
 	 * 关键字查找人员信息
+=======
+	 * 查找人员信息
+>>>>>>> master
 	 * 前置条件：经验证的业务员选择查找人员信息
 	 * 后置条件；系统显示查找到的信息，系统日志记录
 	 * @param keyword
@@ -56,7 +60,7 @@ public interface StaffOrganizationManagementBLService {
 	 * @param vo
 	 * @return
 	 */
-	public ResultMsg add(OrganizationInfoVO vo);
+	public ResultMsg addOrganization(OrganizationInfoVO vo);
 	
 	/**
 	 * 删除机构信息
@@ -65,7 +69,7 @@ public interface StaffOrganizationManagementBLService {
 	 * @param vo
 	 * @return
 	 */
-	public ResultMsg del(OrganizationInfoVO vo);
+	public ResultMsg delOrganization(OrganizationInfoVO vo);
 	
 	/**
 	 * 修改机构信息
@@ -74,10 +78,14 @@ public interface StaffOrganizationManagementBLService {
 	 * @param vo
 	 * @return
 	 */
-	public ResultMsg Modify(OrganizationInfoVO vo);
+	public ResultMsg ModifyOrganization(OrganizationInfoVO vo);
 	
 	/**
+<<<<<<< HEAD
 	 * 关键字查找机构信息
+=======
+	 * 查找机构信息
+>>>>>>> master
 	 * 前置条件：经验证的业务员选择查找机构信息
 	 * 后置条件；系统显示查找到的信息，系统日志记录
 	 * @param keyword

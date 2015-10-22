@@ -3,22 +3,24 @@ package vo;
 public class AccountVO {
 	
 	/**
-	 * 账户名称
+	 * 璐︽埛鍚嶇О
 	 */
 	private String name;
 	
 	/**
-	 * 账号
+	 * 璐﹀彿
 	 */
 	private String account;
 	
+
+
 	/**
-	 * 账户余额
+	 * 璐︽埛浣欓
 	 */
 	private double balance;
 
 	/**
-	 * 构造方法
+	 * 鏋勯�犳柟娉�
 	 * @param name
 	 * @param balance
 	 */
@@ -28,4 +30,15 @@ public class AccountVO {
 		this.balance = balance;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public String getAccount() {
+		return account;
+	}
+
+	public double getBalance() {
+		return balance;
+	}
 }

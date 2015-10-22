@@ -1,5 +1,5 @@
 /**
- * å¤„ç†ä¸­è½¬ä¸­å¿ƒåˆ°è¾¾ä»¶PO
+ * ´¦ÀíÖĞ×ªÖĞĞÄµ½´ï¼şPO
  * @author wqy
  * @date 2015/10/17
  */
@@ -8,12 +8,12 @@ package po;
 import java.util.Date;
 
 public class ArrivalNoteOnTransitPO {
-	private String transitNum;//ä¸­è½¬ä¸­å¿ƒç¼–å·
-	private Date time;//è´§ç‰©åˆ°è¾¾æ—¥æœŸ
-	private String transitNoteNum;//ä¸­è½¬å•ç¼–å·
-	private String from;//å‡ºå‘åœ°
-	private String state;//è´§ç‰©åˆ°è¾¾çŠ¶æ€
-	public ArrivalNoteOnTransitPO(Date time,String transitNoteNum,String from,String state,String transitNum){
+	int transitNum;//ÖĞ×ªÖĞĞÄ±àºÅ
+	Date time;//»õÎïµ½´ïÈÕÆÚ
+	int transitNoteNum;//ÖĞ×ªµ¥±àºÅ
+	String from;//³ö·¢µØ
+	String state;//»õÎïµ½´ï×´Ì¬
+	public ArrivalNoteOnTransitPO(Date time,int transitNoteNum,String from,String state,int transitNum){
 		this.time=time;
 		this.transitNoteNum=transitNoteNum;
 		this.from=from;
@@ -23,7 +23,7 @@ public class ArrivalNoteOnTransitPO {
 	public Date getTime() {
 		return time;
 	}
-	public String getTransitNoteNum() {
+	public int getTransitNoteNum() {
 		return transitNoteNum;
 	}
 	public String getFrom() {
@@ -33,7 +33,7 @@ public class ArrivalNoteOnTransitPO {
 		return state;
 	}
 
-	public String getTransitNum() {
+	public int getTransitNum() {
 		return transitNum;
 	}
 }

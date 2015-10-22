@@ -56,33 +56,7 @@ public class DriverInfoVO {
     	 this.phoneNum = phoneNum;
     	 this.sex = sex;
     	 this.drvingLicencePeriod = drvingLicencePeriod;
+    			 
      }
-
-	public String getDriverNum() {
-		return driverNum;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public String getBirthday() {
-		return birthday;
-	}
-
-	public String getIDNum() {
-		return IDNum;
-	}
-
-	public String getPhoneNum() {
-		return phoneNum;
-	}
-
-	public String getSex() {
-		return sex;
-	}
-
-	public String getDrvingLicencePeriod() {
-		return drvingLicencePeriod;
-	}
+	
 }

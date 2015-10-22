@@ -7,5 +7,5 @@ package vo;
  *
  */
 public class FinanceInfoVO {
-    // TODO 需要补充的期初建账使用的财务信息信息
+
 }

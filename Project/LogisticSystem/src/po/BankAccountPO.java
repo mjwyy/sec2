@@ -5,49 +5,35 @@ import java.math.BigDecimal;
 
 public class BankAccountPO implements Serializable {
 
-	public BankAccountPO(String name, String number, BigDecimal balance) {
-		super();
-		this.name = name;
-		this.number = number;
-		this.balance = balance;
-	}
-
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -2348048532115826364L;
 
-	private String name = null;
+	String name = null;
 	
 	/*
-	 * ¿¼ÂÇµ½ÕËºÅºÜ³¤£¬Ê¹ÓÃStringÀ´¼ÇÂ¼
+	 * ï¿½ï¿½ï¿½Çµï¿½ï¿½ËºÅºÜ³ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Stringï¿½ï¿½ï¿½ï¿½Â¼
 	 */
-	private String number = null;
+	String number = null;
 	
-	private BigDecimal balance = null;
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getNumber() {
-		return number;
-	}
-
-	public void setNumber(String number) {
-		this.number = number;
-	}
-
-	public BigDecimal getBalance() {
-		return balance;
-	}
-
-	public void setBalance(BigDecimal balance) {
-		this.balance = balance;
-	}
+	BigDecimal balance = null;
 	
+ 	public BankAccountPO(String name,String number,BigDecimal balance){
+ 		this.name = name;
+ 		this.number = number;
+ 		this.balance = balance;
+ 	}
+ 	
+ 	public String getName(){
+ 		return name;
+ 	}
+ 	
+ 	public String getNumber(){
+ 		return number;
+ 	}
+ 	
+ 	public BigDecimal getBalance(){
+ 		return balance;
+ 	}
 }

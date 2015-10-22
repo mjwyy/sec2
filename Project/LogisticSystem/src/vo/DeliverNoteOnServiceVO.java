@@ -31,16 +31,5 @@ public class DeliverNoteOnServiceVO extends NoteVO {
 		BarCode = barCode;
 		DeliveryMan = deliveryMan;
 	}
-
-    public String getDate() {
-        return date;
-    }
-
-    public ArrayList<String> getBarCode() {
-        return BarCode;
-    }
-
-    public String getDeliveryMan() {
-        return DeliveryMan;
-    }
+	
 }

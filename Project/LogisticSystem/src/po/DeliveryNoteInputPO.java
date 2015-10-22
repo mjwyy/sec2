@@ -1,5 +1,5 @@
 /**
- * è¾“å…¥å¯„ä»¶å•
+ * ÊäÈë¼Ä¼şµ¥
  * @author wqy
  * @date 2015/10/17
  */
@@ -7,57 +7,57 @@ package po;
 
 public class DeliveryNoteInputPO {
 /**
- * å®¢æˆ·å§“å
+ * ¿Í»§ĞÕÃû
  */
 private String senderName;
 
 /**
- * å®¢æˆ·åœ°å€
+ * ¿Í»§µØÖ·
  */
 private String senderAddress;
 
 /**
- * å®¢æˆ·å•ä½åœ°å€
+ * ¿Í»§µ¥Î»µØÖ·
  */
 private String senderWorkPlace;
 
 /**
- * å®¢æˆ·ç”µè¯ï¼ˆæ‰‹æœºï¼‰å·ç 
+ * ¿Í»§µç»°£¨ÊÖ»ú£©ºÅÂë
  */
 private String senderTeleNumber;
 
 /**
- * å¯„ä»¶ä»¶æ•°
+ * ¼Ä¼ş¼şÊı
  */
 private String number;
 
 /**
- * è´§ç‰©å®é™…é‡é‡
+ * »õÎïÊµ¼ÊÖØÁ¿
  */
 private double weight;
 
 /**
- * è´§ç‰©ä½“ç§¯
+ * »õÎïÌå»ı
  */
 private double volume;
 
 /**
- * è´§ç‰©å†…ä»¶å“å
+ * »õÎïÄÚ¼şÆ·Ãû
  */
 private String name;
 
 /**
- * å¿«é€’ç§ç±»
+ * ¿ìµİÖÖÀà
  */
 private String category;
 
 /**
- * åŒ…è£…è´¹ç”¨
+ * °ü×°·ÑÓÃ
  */
 private double packPrice;
 
 /**
- * è´§ç‰©æ¡å½¢ç 
+ * »õÎïÌõĞÎÂë
  */
 private String barCode;
 

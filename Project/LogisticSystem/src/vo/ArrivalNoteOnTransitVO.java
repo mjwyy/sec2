@@ -35,20 +35,5 @@ public class ArrivalNoteOnTransitVO extends NoteVO {
 		this.date = date;
 		GoodsInfoVOs = goodsInfoVOs;
 	}
-
-	public String getTransferNumber() {
-		return transferNumber;
-	}
-
-	public String getCenterNumber() {
-		return centerNumber;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public ArrayList<GoodsInfoVO> getGoodsInfoVOs() {
-		return GoodsInfoVOs;
-	}
+	
 }

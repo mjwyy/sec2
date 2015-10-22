@@ -1,5 +1,5 @@
 /**
- * è¾“å…¥å¯„ä»¶å•ä¿¡æ¯æ•°æ®æ¥å£
+ * ÊäÈë¼Ä¼şµ¥ĞÅÏ¢Êı¾İ½Ó¿Ú
  * @author wqy
  * @date 2015/10/17
  */
@@ -12,36 +12,42 @@ import po.ReceivingNoteInputPO;
 
 public interface ReceivingNoteInputDataService {
 	/**
-	 * å‰ç½®æ¡ä»¶ï¼šåŒæ ·IDçš„poåœ¨Mapperä¸­ä¸å­˜åœ¨
-	 * åç½®æ¡ä»¶ï¼šåœ¨æ•°æ®åº“ä¸­å¢åŠ ä¸€ä¸ªpoè®°å½•
-	 * @param po ReceivingNoteInputpo
+	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ²»´æÔÚ
+	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞÔö¼ÓÒ»¸öpo¼ÇÂ¼
+	 * @param po ¿â´æpo
 	 */
 	public void insert(ReceivingNoteInputPO po) throws RemoteException;
 	/**
-	 * å‰ç½®æ¡ä»¶ï¼šåŒæ ·IDçš„poåœ¨Mapperä¸­å­˜åœ¨
-	 * åç½®æ¡ä»¶ï¼šåœ¨æ•°æ®åº“ä¸­åˆ é™¤ä¸€ä¸ªpoè®°å½•
-	 * @param po ReceivingNoteInputpo
+	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ´æÔÚ
+	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞÉ¾³ıÒ»¸öpo¼ÇÂ¼
+	 * @param po ¿â´æpo
 	 */
 	public void delete(ReceivingNoteInputPO po) throws RemoteException;
 	/**
-	 * å‰ç½®æ¡ä»¶ï¼šåŒæ ·IDçš„poåœ¨Mapperä¸­å­˜åœ¨
-	 * åç½®æ¡ä»¶ï¼šåœ¨æ•°æ®åº“ä¸­æ›´æ–°ä¸€ä¸ªpoè®°å½•
-	 * @param po ReceivingNoteInputpo
+	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ´æÔÚ
+	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞ¸üĞÂÒ»¸öpo¼ÇÂ¼
+	 * @param po ¿â´æpo
 	 */
 	public void update(ReceivingNoteInputPO po) throws RemoteException;
 	/**
-	 * å‰ç½®æ¡ä»¶ï¼šæ— 
-	 * åç½®æ¡ä»¶ï¼šæŸ¥æ‰¾è¿”å›ç›¸åº”çš„ReceivingNoteInputPOç»“æœ
-	 * @param name å…³é”®å­—
-	 * @return ReceivingNoteInputPO 
+	 * Ç°ÖÃÌõ¼ş£ºÎŞ
+	 * ºóÖÃÌõ¼ş£º°´Ãû×Ö½øĞĞ²éÕÒ·µ»ØÏàÓ¦µÄReceivingNoteInputPO½á¹û
+	 * @param name ¿â´æÃû×Ö
+	 * @return NotePO ¿â´æPO
 	 */
-	public ArrayList<ReceivingNoteInputPO> find(String name) throws RemoteException;
-	
+	public ReceivingNoteInputPO findByName(String name) throws RemoteException;
+	/**
+	 * Ç°ÖÃÌõ¼ş£ºÎŞ
+	 * ºóÖÃÌõ¼ş£º°´ID½øĞĞ²éÕÒ·µ»ØÏàÓ¦µÄReceivingNoteInputPO½á¹û
+	 * @param ID ¿â´æID
+	 * @return ReceivingNoteInputPO ¿â´æPO
+	 */
+	public ReceivingNoteInputPO findById(String id) throws RemoteException;
 	
 	/**
-	 * å‰ç½®æ¡ä»¶ï¼šæ— 
-	 * åç½®æ¡ä»¶ï¼šè¿”å›æ‰€æœ‰çš„ReceivingNoteInputPO
-	 * @return ReceivingNoteInputPO 
+	 * Ç°ÖÃÌõ¼ş£ºÎŞ
+	 * ºóÖÃÌõ¼ş£º·µ»ØËùÓĞµÄ¿â´æPO
+	 * @return ReceivingNoteInputPO ¿â´æPO
 	 */
-	public ArrayList<ReceivingNoteInputPO> findAll() throws RemoteException;
+	public ArrayList<ReceivingNoteInputPO> show() throws RemoteException;
 }

@@ -1,5 +1,5 @@
 /**
- * è¾“å…¥å•æ®æ•°æ®æ¥å£
+ * ÊäÈëµ¥¾İÊı¾İ½Ó¿Ú
  * @author wqy
  * @date 2015/10/17
  */
@@ -9,46 +9,53 @@ import java.util.ArrayList;
 import po.NotePO;
 public interface NoteDataService {
 	/**
-	 * å‰ç½®æ¡ä»¶ï¼šåŒæ ·IDçš„poåœ¨Mapperä¸­ä¸å­˜åœ¨
-	 * åç½®æ¡ä»¶ï¼šåœ¨æ•°æ®åº“ä¸­å¢åŠ ä¸€ä¸ªpoè®°å½•
-	 * @param po Notepo
+	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ²»´æÔÚ
+	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞÔö¼ÓÒ»¸öpo¼ÇÂ¼
+	 * @param po ¿â´æpo
 	 */
 	public void insert(NotePO po) throws RemoteException;
 	/**
-	 * å‰ç½®æ¡ä»¶ï¼šåŒæ ·IDçš„poåœ¨Mapperä¸­å­˜åœ¨
-	 * åç½®æ¡ä»¶ï¼šåœ¨æ•°æ®åº“ä¸­åˆ é™¤ä¸€ä¸ªpoè®°å½•
-	 * @param po Notepo
+	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ´æÔÚ
+	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞÉ¾³ıÒ»¸öpo¼ÇÂ¼
+	 * @param po ¿â´æpo
 	 */
 	public void delete(NotePO po) throws RemoteException;
 	/**
-	 * å‰ç½®æ¡ä»¶ï¼šåŒæ ·IDçš„poåœ¨Mapperä¸­å­˜åœ¨
-	 * åç½®æ¡ä»¶ï¼šåœ¨æ•°æ®åº“ä¸­æ›´æ–°ä¸€ä¸ªpoè®°å½•
-	 * @param po Notepo
+	 * Ç°ÖÃÌõ¼ş£ºÍ¬ÑùIDµÄpoÔÚMapperÖĞ´æÔÚ
+	 * ºóÖÃÌõ¼ş£ºÔÚÊı¾İ¿âÖĞ¸üĞÂÒ»¸öpo¼ÇÂ¼
+	 * @param po ¿â´æpo
 	 */
 	public void update(NotePO po) throws RemoteException;
 	/**
-	 * å‰ç½®æ¡ä»¶ï¼šæ— 
-	 * åç½®æ¡ä»¶ï¼šæŸ¥æ‰¾è¿”å›ç›¸åº”çš„NotePOç»“æœ
-	 * @param name å…³é”®å­—
-	 * @return NotePO 
+	 * Ç°ÖÃÌõ¼ş£ºÎŞ
+	 * ºóÖÃÌõ¼ş£º°´Ãû×Ö½øĞĞ²éÕÒ·µ»ØÏàÓ¦µÄNotePO½á¹û
+	 * @param name ¿â´æÃû×Ö
+	 * @return NotePO ¿â´æPO
 	 */
-	public ArrayList<NotePO> find(String name) throws RemoteException;
+	public NotePO findByName(String name) throws RemoteException;
+	/**
+	 * Ç°ÖÃÌõ¼ş£ºÎŞ
+	 * ºóÖÃÌõ¼ş£º°´ID½øĞĞ²éÕÒ·µ»ØÏàÓ¦µÄNotePO½á¹û
+	 * @param ID ¿â´æID
+	 * @return NotePO ¿â´æPO
+	 */
+	public NotePO findById(String id) throws RemoteException;
 	
 	/**
-	 * å‰ç½®æ¡ä»¶ï¼šæ— 
-	 * åç½®æ¡ä»¶ï¼šè¿”å›æ‰€æœ‰çš„NotePO
-	 * @return NotePO 
+	 * Ç°ÖÃÌõ¼ş£ºÎŞ
+	 * ºóÖÃÌõ¼ş£º·µ»ØËùÓĞµÄ¿â´æPO
+	 * @return NotePO ¿â´æPO
 	 */
-	public ArrayList<NotePO> findAll() throws RemoteException;
+	public ArrayList<NotePO> show() throws RemoteException;
 
 	/**
-	 * å‰ç½®æ¡ä»¶ï¼šæ— 
-	 * åç½®æ¡ä»¶ï¼šåˆå§‹åŒ–æŒä¹…åŒ–æ•°æ®åº“
+	 * Ç°ÖÃÌõ¼ş£ºÎŞ
+	 * ºóÖÃÌõ¼ş£º³õÊ¼»¯³Ö¾Ã»¯Êı¾İ¿â
 	 */
 	public void init() throws RemoteException;
 	/**
-	 * å‰ç½®æ¡ä»¶ï¼šæ— 
-	 * åç½®æ¡ä»¶ï¼šç»“æŸæŒä¹…åŒ–æ•°æ®åº“çš„ä½¿ç”¨
+	 * Ç°ÖÃÌõ¼ş£ºÎŞ
+	 * ºóÖÃÌõ¼ş£º½áÊø³Ö¾Ã»¯Êı¾İ¿âµÄÊ¹ÓÃ
 	 */
 	public void finish() throws RemoteException;
 }

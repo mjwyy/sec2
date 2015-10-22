@@ -23,11 +23,4 @@ public class OrganizationInfoVO {
 		this.staffinfo = staffinfo;
 	}
 
-	public String getOrganizationNum() {
-		return organizationNum;
-	}
-
-	public ArrayList<StaffInfoVO> getStaffinfo() {
-		return staffinfo;
-	}
 }

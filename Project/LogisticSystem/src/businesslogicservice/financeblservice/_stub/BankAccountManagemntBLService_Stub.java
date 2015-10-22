@@ -66,13 +66,13 @@ public class BankAccountManagemntBLService_Stub implements
 	@Override
 	public ResultMsg delete(AccountVO vo) {
 		// TODO Auto-generated method stub
-		return null;
+		return new ResultMsg(true, "Success!");
 	}
 
 	@Override
 	public ResultMsg update(AccountVO vo) {
 		// TODO Auto-generated method stub
-		return null;
+		return new ResultMsg(true, "Success!");
 	}
 
 	@Override
@@ -86,9 +86,10 @@ public class BankAccountManagemntBLService_Stub implements
 			return null;
 		}
 		
-		Iterator it = get.listIterator();
 		
 		return list;
 	}
+	
+
 
 }

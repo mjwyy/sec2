@@ -49,4 +49,5 @@ public class BankAccountPO implements Serializable {
 	public void setBalance(BigDecimal balance) {
 		this.balance = balance;
 	}
+	
 }

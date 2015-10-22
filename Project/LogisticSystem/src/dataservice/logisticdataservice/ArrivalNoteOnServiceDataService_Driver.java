@@ -31,9 +31,9 @@ public class ArrivalNoteOnServiceDataService_Driver {
     public void drive(ArrivalNoteOnServiceDataService arrivalNoteOnServiceDataService) throws RemoteException {
         arrivalNoteOnServiceDataService.insert(arrivalNoteOnServicePO);
         arrivalNoteOnServiceDataService.insert(arrivalNoteOnServicePO2);
-        arrivalNoteOnServiceDataService.findByName("南京");
-        arrivalNoteOnServiceDataService.findByName("北京");
-        arrivalNoteOnServiceDataService.show();
+        arrivalNoteOnServiceDataService.find("南京");
+        arrivalNoteOnServiceDataService.find("北京");
+        arrivalNoteOnServiceDataService.findAll();
         arrivalNoteOnServiceDataService.delete(arrivalNoteOnServicePO);
         arrivalNoteOnServiceDataService.update(arrivalNoteOnServicePO3);
     }

@@ -32,17 +32,17 @@ public class LoadNoteOnTransitDataService_Driver {
                 "李沪东","吴大爷",codes2);
         service.insert(po1);
         service.insert(po2);
-        service.show();
-        service.findByName("武昌昊");
-        service.findByName("李沪东");
-        service.findByName("北京");
-        service.findByName("苏A 00001");
+        service.findAll();
+        service.find("武昌昊");
+        service.find("李沪东");
+        service.find("北京");
+        service.find("苏A 00001");
         service.delete(po1);
-        service.show();
+        service.findAll();
         po2 = new LoadNoteOnTransitPO("2015-10-23","025100120151023000003","西藏","苏B 00001",
                 "李沪东","吴大爷",codes2);
         service.update(po2);
-        service.show();
+        service.findAll();
     }
 
 }

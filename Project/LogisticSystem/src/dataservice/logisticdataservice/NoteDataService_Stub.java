@@ -38,14 +38,14 @@ public class NoteDataService_Stub implements NoteDataService {
     }
 
     @Override
-    public NotePO findByName(String name) throws RemoteException {
-        System.out.println("findByName succeed!");
-        return po1;
+    public ArrayList<NotePO> find(String name) throws RemoteException {
+        System.out.println("find succeed!");
+        return pos;
     }
 
     @Override
-    public ArrayList<NotePO> show() throws RemoteException {
-        System.out.println("show succeed!");
+    public ArrayList<NotePO> findAll() throws RemoteException {
+        System.out.println("find All succeed!");
         return pos;
     }
 

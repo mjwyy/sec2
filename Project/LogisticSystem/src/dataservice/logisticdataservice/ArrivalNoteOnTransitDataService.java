@@ -14,33 +14,34 @@ public interface ArrivalNoteOnTransitDataService {
 	/**
 	 * 前置条件：同样ID的po在Mapper中不存在
 	 * 后置条件：在数据库中增加一个po记录
-	 * @param po 库存po
+	 * @param po ArrivalNoteOnTransitpo
 	 */
 	public void insert(ArrivalNoteOnTransitPO po) throws RemoteException;
 	/**
 	 * 前置条件：同样ID的po在Mapper中存在
 	 * 后置条件：在数据库中删除一个po记录
-	 * @param po 库存po
+	 * @param po ArrivalNoteOnTransitpo
 	 */
 	public void delete(ArrivalNoteOnTransitPO po) throws RemoteException;
 	/**
 	 * 前置条件：同样ID的po在Mapper中存在
 	 * 后置条件：在数据库中更新一个po记录
-	 * @param po 库存po
+	 * @param po 库ArrivalNoteOnTransitpo
 	 */
 	public void update(ArrivalNoteOnTransitPO po) throws RemoteException;
 	/**
 	 * 前置条件：无
-	 * 后置条件：按名字进行查找返回相应的ArrivalNoteOnTransitPO结果
-	 * @param name 库存名字
-	 * @return ArrivalNoteOnTransitPO 库存PO
+	 * 后置条件：查找返回相应的ArrivalNoteOnTransitPO结果
+	 * @param name 关键字
+	 * @return ArrivalNoteOnTransitPO 
 	 */
-	public ArrivalNoteOnTransitPO findByName(String name) throws RemoteException;
-
+	public ArrayList<ArrivalNoteOnTransitPO> find(String name) throws RemoteException;
+	
+	
 	/**
 	 * 前置条件：无
-	 * 后置条件：返回所有的库存PO
-	 * @return ArrivalNoteOnTransitPO 库存PO
+	 * 后置条件：返回所有的ArrivalNoteOnTransitPO
+	 * @return ArrivalNoteOnTransitPO 
 	 */
-	public ArrayList<ArrivalNoteOnTransitPO> show() throws RemoteException;
+	public ArrayList<ArrivalNoteOnTransitPO> findAll() throws RemoteException;
 }

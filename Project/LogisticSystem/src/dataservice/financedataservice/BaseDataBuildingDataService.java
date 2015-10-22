@@ -6,24 +6,21 @@ import java.rmi.RemoteException;
 /**
  * 
  * @author River
- * ÆÚ³õ½¨ÕËµ÷ÓÃÆäËûÔöÉ¾¸Ä²éµÄ½Ó¿Ú
- * Ò»µ«¿ªÊ¼ÆÚ³õ½¨ÕË²Ù×÷£¬ÆÚ¼äData½ûÖ¹ÆäËûÓÃ»§Êı¾İ·ÃÎÊÓëĞŞ¸Ä
  */
 public interface BaseDataBuildingDataService extends Remote {
-	
+
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºÎŞ
-	 * ºóÖÃÌõ¼ş£ºData¿ªÊ¼½ÓÊÜµ¥Ò»¿Í»§¶Ë²Ù×÷ÇëÇó
-	 * @param withBase
+	 * Dataå¼€å§‹æ¥å—å•ä¸€å®¢æˆ·ç«¯æ“ä½œè¯·æ±‚
+	 *
 	 * @return
 	 * @throws RemoteException
 	 */
 	public boolean startBaseDataBuilding(boolean withBase)
 			throws RemoteException;
-	
+
 	/**
-	 * Ç°ÖÃÌõ¼ş£º½¨ÕËµÄ¿Í»§¶ËÍê³ÉÁË½¨ÕËËùÓĞ²Ù×÷
-	 * ºóÖÃÌõ¼ş£ºData²ã½áÊø½¨ÕË£¬²¢Ê¹ÓÃĞÂÕË
+	 * Dataå±‚ç»“æŸå»ºè´¦ï¼Œå¹¶ä½¿ç”¨æ–°è´¦
+	 *
 	 * @return
 	 * @throws RemoteException
 	 */

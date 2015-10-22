@@ -7,10 +7,10 @@ import dataservice.util.exception.FailToPassApprovingException;
 import po.PaymentPO;
 
 public interface PaymentInputDataService extends Remote {
-	
+
 	/**
-	 * ǰ��������PaymentPO��ʽ�Ѿ����飬ȷ������
-	 * ����������Data������ݼ�¼Payment��Ϣ�����޸Ķ�Ӧ�����˻���Ϣ
+	 * Data向数据库中添加记录
+	 *
 	 * @return true for successful add operation
 	 * @throws RemoteException
 	 * @throws FailToPassApprovingException

@@ -50,14 +50,14 @@ public class TransitNoteInputDataService_Stub implements TransitNoteInputDataSer
     }
 
     @Override
-    public TransitNoteInputPO findByName(String name) throws RemoteException {
-        System.out.println("findByName succeed!");
-        return po1;
+    public ArrayList<TransitNoteInputPO> find(String name) throws RemoteException {
+        System.out.println("find succeed!");
+        return pos;
     }
 
     @Override
-    public ArrayList<TransitNoteInputPO> show() throws RemoteException {
-        System.out.println("show succeed!");
+    public ArrayList<TransitNoteInputPO> findAll() throws RemoteException {
+        System.out.println("find all succeed!");
         return pos;
     }
 }

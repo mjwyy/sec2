@@ -31,14 +31,14 @@ public class LoadNoteOnServiceDataService_Driver {
                 "Bridy",codes2);
         service.insert(po1);
         service.insert(po2);
-        service.show();
-        service.findByName("北京");
-        service.findByName("上海");
+        service.findAll();
+        service.find("北京");
+        service.find("上海");
         service.delete(po1);
-        service.show();
+        service.findAll();
         po2 = new LoadNoteOnServicePO("2015-10-23","0251001","0251001201510220002","西藏","苏A 00002","Tom Hanks",
                 "一只麟",codes);
         service.update(po2);
-        service.show();
+        service.findAll();
     }
 }

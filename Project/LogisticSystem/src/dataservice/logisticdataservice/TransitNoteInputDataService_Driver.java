@@ -33,14 +33,14 @@ public class TransitNoteInputDataService_Driver {
                 "深圳","0122","西北狼",list2);
         service.insert(po1);
         service.insert(po2);
-        service.show();
-        service.findByName("西安");
-        service.findByName("王小二");
-        service.findByName("CA1206");
-        service.findByName("3000111112");
+        service.findAll();
+        service.find("西安");
+        service.find("王小二");
+        service.find("CA1206");
+        service.find("3000111112");
         service.delete(po1);
         service.delete(po2);
-        service.show();
+        service.findAll();
     }
 
 }

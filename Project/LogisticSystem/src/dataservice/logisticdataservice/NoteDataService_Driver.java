@@ -21,12 +21,12 @@ public class NoteDataService_Driver {
         service.init();
         service.insert(po1);
         service.insert(po2);
-        service.show();
-        service.findByName("寄件单");
-        service.findByName("中转单");
+        service.findAll();
+        service.find("寄件单");
+        service.find("中转单");
         service.delete(po1);
         service.delete(po2);
-        service.show();
+        service.findAll();
         service.finish();
     }
 

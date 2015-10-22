@@ -7,8 +7,8 @@ import po.IncomeNotePO;
 
 public interface SettlementManagementDataService extends Remote {
 	/**
-	 * Ç°ÖÃÌõ¼ş£ºIncomeNotePOÒÑ¾­¾­¹ı¼ì²é£¬¸ñÊ½ÎŞÎó
-	 * ºóÖÃÌõ¼ş£ºData²ãÔö¼ÓÊÕ¿îµ¥¼ÇÂ¼£¬ĞŞ¸Ä¶ÔÓ¦ÕË»§ĞÅÏ¢
+	 * Dataå±‚å¢åŠ æ”¶æ¬¾å•è®°å½•ï¼Œä¿®æ”¹å¯¹åº”è´¦æˆ·ä¿¡æ¯
+	 *
 	 * @return
 	 * @throws RemoteException
 	 */

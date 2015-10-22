@@ -1,6 +1,7 @@
-package dataservice.logisticdataservice;
+package dataservice.logisticdataservice._Stub;
 
 
+import dataservice.logisticdataservice.ArrivalNoteOnServiceDataService;
 import po.ArrivalNoteOnServicePO;
 
 import java.rmi.RemoteException;
@@ -10,7 +11,7 @@ import java.util.Date;
 /**
  * Created by kylin on 15/10/20.
  */
-public class ArrivalNoteOnServiceDataService_Stub implements ArrivalNoteOnServiceDataService{
+public class ArrivalNoteOnServiceDataService_Stub implements ArrivalNoteOnServiceDataService {
 	private ArrivalNoteOnServicePO arrivalNoteOnServicePO;
 	private ArrivalNoteOnServicePO arrivalNoteOnServicePO2;
 	private ArrivalNoteOnServicePO arrivalNoteOnServicePO3;

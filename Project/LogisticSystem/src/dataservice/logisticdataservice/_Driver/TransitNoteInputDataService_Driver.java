@@ -1,5 +1,7 @@
-package dataservice.logisticdataservice;
+package dataservice.logisticdataservice._Driver;
 
+import dataservice.logisticdataservice.TransitNoteInputDataService;
+import dataservice.logisticdataservice._Stub.TransitNoteInputDataService_Stub;
 import po.TransitNoteInputPO;
 
 import java.rmi.RemoteException;

@@ -1,9 +1,9 @@
-package dataservice.commoditydataservice;
+package dataservice.commoditydataservice._Driver;
 
-import po.InventoryPO;
+import dataservice.commoditydataservice.InventoryDataService;
+import dataservice.commoditydataservice._Stub.InventoryDataService_Stub;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 /**
  * Created by kylin on 15/10/20.

@@ -1,5 +1,6 @@
-package dataservice.commoditydataservice;
+package dataservice.commoditydataservice._Stub;
 
+import dataservice.commoditydataservice.StorageInDataService;
 import po.GoodsPO;
 import po.StorageInPO;
 

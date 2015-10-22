@@ -1,5 +1,6 @@
-package dataservice.logisticdataservice;
+package dataservice.logisticdataservice._Stub;
 
+import dataservice.logisticdataservice.LoadNoteOnServiceDataService;
 import po.LoadNoteOnServicePO;
 
 import java.rmi.RemoteException;

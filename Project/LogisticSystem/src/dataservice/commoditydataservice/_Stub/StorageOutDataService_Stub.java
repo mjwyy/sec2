@@ -1,5 +1,6 @@
-package dataservice.commoditydataservice;
+package dataservice.commoditydataservice._Stub;
 
+import dataservice.commoditydataservice.StorageOutDataService;
 import po.StorageOutPO;
 
 import java.rmi.RemoteException;

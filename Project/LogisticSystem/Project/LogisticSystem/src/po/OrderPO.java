@@ -2,7 +2,7 @@ package po;
 
 import java.io.Serializable;
 
-public class OrderVO implements Serializable {
+public class OrderPO implements Serializable {
 
 	/**
 	 * 

@@ -47,6 +47,10 @@ public interface BaseDataBuildingBLService {
 	/**
 	 * 有基础期初建账，输入修改后的或者未修改的的机构，库存，财务信息
 	 * 
+	 * @param institutionVO
+	 * @param commodityInfoVO
+	 * @param financeInfoVO
+	 * @return
 	 */
 	public ResultMsg restartWithBasis();
 	

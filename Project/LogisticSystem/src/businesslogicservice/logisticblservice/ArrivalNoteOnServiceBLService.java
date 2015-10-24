@@ -40,7 +40,11 @@ public interface ArrivalNoteOnServiceBLService extends NoteInputBLService {
 
 	/**
 	 * 前置条件：营业厅业务员核对信息后要求提交单据
+<<<<<<< HEAD
 	 * 后置条件：系统提示单据信息录入成功，并􏰁提交单据给总经理审批
+=======
+	 * 后置条件：系统提示单据信息录入成功，并提交单据给总经理审批
+>>>>>>> parent of 2d8eb69... 10.22这个世界没有锟斤拷版本
 	 * 
 	 * @param deliverDocVO 派件单VO
 	 * @return 

@@ -13,8 +13,10 @@ import vo.ChartVO;
 public interface ChartOutputBLService {
 
 	/**
-	 * 查看报表操作
-	 *
+	 * 前置条件：用户发起查看报表操作
+	 * 后置条件：系统请求用户输入统计数据的起止时间
+	 * 
+	 * 
 	 * @param chartType 报表类型
 	 * @param time1 起点时间
 	 * @param time2 终点时间
@@ -23,15 +25,17 @@ public interface ChartOutputBLService {
 	public ResultMsg enquiryChart(ChartType chartType,String time1,String time2);
 	
 	/**
-	 * 系统显示起止时间内的相应类型的报表信息
-	 *
+	 * 前置条件：用户选择了报表类型并输入了正确的起止时间
+	 * 后置条件：系统显示起止时间内的相应类型的报表信息
+	 * 
 	 * @return
 	 */
 	public ChartVO getChartVO();
 	
 	/**
-	 * 导出报表操作
-	 *
+	 * 前置条件：用户发起导出报表操作请求
+	 * 后置条件：系统向指定的位置导出相应报表
+	 * 
 	 * @param path
 	 */
 	public ResultMsg exportChart(String path);

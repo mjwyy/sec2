@@ -48,6 +48,10 @@ public interface BusinessDataModificationDataService extends Remote {
 	public ArrayList<String> getAllCities()
 			throws RemoteException;
 	
+<<<<<<< HEAD
 	public double getDistance(DistancePO distancePO)
+=======
+	public double getDistance(String city1,String city2)
+>>>>>>> parent of 2d8eb69... 10.22这个世界没有锟斤拷版本
 			throws RemoteException,ElementNotFoundException;
 }

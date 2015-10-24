@@ -5,6 +5,9 @@ import java.rmi.RemoteException;
 
 import po.ChartPO;
 
+/**
+ * @author River
+ */
 public interface ChartOutputDataService extends Remote {
 
 	/**

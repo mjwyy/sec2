@@ -27,7 +27,7 @@ public class BankAccountManagementDataService_Driver {
 	throws RemoteException, InterruptWithExistedElementException, ElementNotFoundException{
 		bankAccountManagementDataService.addBankAccount(bankAccountPO);
 		bankAccountManagementDataService.removeBankAccount(bankAccountPO);
-		bankAccountManagementDataService.findBankAccount(bankAccountPO.getNumber());
+		bankAccountManagementDataService.findBankAccount(new BankAccountPO("Mark", null, null));
 		bankAccountManagementDataService.modifyBankAccount(bankAccountPO,bankAccountPO1 );
 		bankAccountManagementDataService.getAllAccounts();
 	}

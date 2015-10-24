@@ -5,7 +5,6 @@ import dataservice.logisticdataservice._Stub.ArrivalNoteOnTransitDataService_Stu
 import po.ArrivalNoteOnTransitPO;
 
 import java.rmi.RemoteException;
-import java.util.Date;
 
 /**
  * Created by kylin on 15/10/21.

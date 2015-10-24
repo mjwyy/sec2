@@ -3,7 +3,6 @@ package dataservice.commoditydataservice._Stub;
 import dataservice.commoditydataservice.InventoryDataService;
 import po.GoodsPO;
 import po.InventoryPO;
-import po.StorageInPO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;

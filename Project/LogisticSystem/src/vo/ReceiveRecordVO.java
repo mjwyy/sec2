@@ -1,5 +1,11 @@
 package vo;
 
+/**
+ * 收款记录
+ * 
+ * @author kylin
+ *
+ */
 public class ReceiveRecordVO {
      
 	/**

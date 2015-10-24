@@ -2,7 +2,7 @@ package businesslogicservice.statisticblservice;
 
 import businesslogic.util.ResultMsg;
 import vo.CommodityInfoVO;
-import vo.FinanceInfoVO;
+import vo.FinanceVO;
 import vo.InstitutionInfoVO;
 
 /**
@@ -42,7 +42,7 @@ public interface BaseDataBuildingBLService {
 	 * @param financeInfoVO
 	 * @return
 	 */
-	public ResultMsg addFinanceInfo(FinanceInfoVO financeInfoVO);
+	public ResultMsg addFinanceInfo(FinanceVO financeInfoVO);
 	
 	/**
 	 * 有基础期初建账，输入修改后的或者未修改的的机构，库存，财务信息
@@ -72,7 +72,7 @@ public interface BaseDataBuildingBLService {
 	 * @param financeInfoVO
 	 * @return
 	 */
-	public ResultMsg changeFinanceInfo(FinanceInfoVO financeInfoVO);
+	public ResultMsg changeFinanceInfo(FinanceVO financeInfoVO);
 	
 	/**
 	 * 结束期初建账信息

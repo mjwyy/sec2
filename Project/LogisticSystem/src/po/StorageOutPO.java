@@ -11,13 +11,14 @@ import java.util.ArrayList;
 public class StorageOutPO {
 
 	/**
+	 * 快递编号
+	 */
+	private ArrayList<String> expressCode;
+
+	/**
 	 * 日期
 	 */
 	private String date;
-	/**
-	 * 快递编号
-	 */
-	private String expressCode;
 	/**
 	 * 目的地
 	 */
@@ -34,28 +35,25 @@ public class StorageOutPO {
 	 * 汽运编号
 	 */
 	private String carCode;
+	
 	/**
 	 * 中转单编号或汽运编号,true为中转单编号，false为汽运编号
 	 */
-	boolean TorC;
+	boolean TransferOrCar;
 
-	public boolean isTorC() {
-		return TorC;
-	}
-	public String getCarCode() {
-		return carCode;
-	}
 	/**
 	 * 构造方法
 	 * @param date
 	 * @param GoodsInStorageInfo
 	 */
-	public StorageOutPO(String date,String expressCode,String destination,String type,String transferCode,boolean TorC){
+	public StorageOutPO(ArrayList<String> expressCode,String date,
+			String destination,String type
+			,String transferCode,boolean TorC){
 		this.date = date;
 		this.expressCode = expressCode;
 		this.destination = destination;
 		this.type = type;
-		this.TorC=TorC;
+		this.TransferOrCar=TorC;
 		if(TorC==true)
 			this.transferCode = transferCode;
 		else
@@ -67,7 +65,7 @@ public class StorageOutPO {
 		return date;
 	}
 
-	public String getExpressCode() {
+	public ArrayList<String> getExpressCode() {
 		return expressCode;
 	}
 
@@ -82,7 +80,14 @@ public class StorageOutPO {
 	public String getTransferCode() {
 		return transferCode;
 	}
+	
+	public String getCarCode() {
+		return carCode;
+	}
 
+	public boolean isTransferOrCar() {
+		return TransferOrCar;
+	}
 
 
 }

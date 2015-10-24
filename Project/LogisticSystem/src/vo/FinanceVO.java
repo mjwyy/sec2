@@ -8,7 +8,7 @@ import java.math.BigDecimal;
  * @author kylin
  *
  */
-public class FinanceInfoVO {
+public class FinanceVO {
 	/**
 	 * 账户名称用字符串表示
 	 */
@@ -24,7 +24,7 @@ public class FinanceInfoVO {
 	 */
 	private BigDecimal balance = null;
 
-	public FinanceInfoVO(String name, String number, BigDecimal balance) {
+	public FinanceVO(String name, String number, BigDecimal balance) {
 		super();
 		this.name = name;
 		this.number = number;

@@ -28,7 +28,6 @@ public interface ArrivalNoteOnTransitDataService {
 	 */
 	public ArrayList<ArrivalNoteOnTransitPO> find(ArrivalNoteOnTransitPO po) throws RemoteException;
 	
-	
 	/**
 	 * 返回所有的中转中心到达单PO
 	 */

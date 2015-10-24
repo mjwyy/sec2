@@ -6,46 +6,65 @@
  */
 package po;
 
-import java.util.Date;
+import java.util.ArrayList;
+
+import businesslogic.util.GoodsState;
 
 public class ArrivalNoteOnServicePO extends NotePO{
 
+	/**
+	 * 到达日期
+	 */
+	private String date;
 
-	private String time;//货物到达日期
-	private String transitNoteNum;//中转单编号
-	private String from;//出发地
-	private String state;//货物到达状态
-	public ArrivalNoteOnServicePO(String time,String transitNoteNum,String from,String state){
-		this.time=time;
-		this.transitNoteNum=transitNoteNum;
-		this.from=from;
-		this.state=state;
+	/**
+	 * 中转单编号（装车单编号）
+	 */
+	private String TransferNumber;
+	
+	/**
+	 * 出发地
+	 */
+	private String from;
+	
+	/**
+	 * 到达状态
+	 */
+	private GoodsState state;
+
+	/**
+	 * 货物托运条形码
+	 */
+	private ArrayList<String> barCodes;
+
+	public ArrivalNoteOnServicePO(String date, String transferNumber, String from, GoodsState state,
+			ArrayList<String> barCodes) {
+		super();
+		this.date = date;
+		TransferNumber = transferNumber;
+		this.from = from;
+		this.state = state;
+		this.barCodes = barCodes;
 	}
-	public String getTime() {
-		return time;
+
+	public String getDate() {
+		return date;
 	}
-	public String getTransitNoteNum() {
-		return transitNoteNum;
+
+	public String getTransferNumber() {
+		return TransferNumber;
 	}
+
 	public String getFrom() {
 		return from;
 	}
-	public String getState() {
+
+	public GoodsState getState() {
 		return state;
 	}
 
-	String Barcode;//货物条形码
-	String DeliveryMan;//快递员
-	public ArrivalNoteOnServicePO(String time,String Barcode,String Deliveryman){
-		this.time=time;
-		this.Barcode=Barcode;
-		this.DeliveryMan=Deliveryman;
+	public ArrayList<String> getBarCodes() {
+		return barCodes;
 	}
-	public String getBarcode() {
-		return Barcode;
-	}
-	public String getDeliveryMan() {
-		return DeliveryMan;
-	}
-
+	
 }

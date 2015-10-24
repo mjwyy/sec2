@@ -3,6 +3,10 @@ package vo;
 import java.util.ArrayList;
 
 public class StorageOutVO {
+	/**
+	 * 条形码
+	 */
+	private ArrayList<String> barcode;
 	
 	/**
 	 * 日期
@@ -30,9 +34,9 @@ public class StorageOutVO {
 	private String shippingForm;
 	
 	/**
-	 * 条形码
+	 * 中转单编号或汽运编号,true为中转单编号，false为汽运编号
 	 */
-	private ArrayList<String> barcode;
+	boolean TransferOrCar;
 	
 	/**
 	 * 构造方法
@@ -43,14 +47,16 @@ public class StorageOutVO {
 	 * @param shippingForm
 	 * @param barcode
 	 */
-	public StorageOutVO(String date,String destination,String truckNum,
-			String transferNum,String shippingForm,ArrayList<String>barcode){
+	public StorageOutVO(String date,String destination,String transferNum,String shippingForm,
+			ArrayList<String>barcode,boolean TorC){
 		this.date = date;
 		this.destination = destination;
-		this.truckNum = truckNum;
-		this.transferNum = transferNum;
 		this.shippingForm = shippingForm;
 		this.barcode = barcode;
+		if(TorC==true)
+			this.transferNum = transferNum;
+		else
+			this.truckNum = transferNum;
 	}
 
 	public String getDate() {
@@ -75,5 +81,9 @@ public class StorageOutVO {
 
 	public ArrayList<String> getBarcode() {
 		return barcode;
+	}
+
+	public boolean isTransferOrCar() {
+		return TransferOrCar;
 	}
 }

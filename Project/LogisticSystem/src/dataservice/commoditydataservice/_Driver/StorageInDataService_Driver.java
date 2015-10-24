@@ -4,7 +4,6 @@ import dataservice.commoditydataservice.StorageInDataService;
 import dataservice.commoditydataservice._Stub.StorageInDataService_Stub;
 import po.GoodsPO;
 import po.StorageInPO;
-import vo.GoodsVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -30,7 +29,6 @@ public class StorageInDataService_Driver {
         storageInDataService.delete(inPO2);
         inPO3 = new StorageInPO("2015-10-11",GoodsInStorageInfo);
         storageInDataService.update(inPO3);
-        ArrayList<StorageInPO> output = storageInDataService.find(inPO);
     }
 
 }

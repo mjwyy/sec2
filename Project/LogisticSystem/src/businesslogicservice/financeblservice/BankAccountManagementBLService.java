@@ -8,7 +8,7 @@ package businesslogicservice.financeblservice;
 import java.util.ArrayList;
 
 import businesslogic.util.ResultMsg;
-import vo.AccountVO;
+import vo.BankAccountVO;
 
 
 public interface BankAccountManagementBLService {
@@ -18,33 +18,33 @@ public interface BankAccountManagementBLService {
 	 * @param name
 	 * @return
 	 */
-	public ArrayList<AccountVO> find(AccountVO vo);
+	public ArrayList<BankAccountVO> find(BankAccountVO vo);
 	
 	/**
 	 * 增加账户
 	 * @param vo
 	 * @return
 	 */
-	public ResultMsg add(AccountVO vo);
+	public ResultMsg add(BankAccountVO vo);
 	
 	/**
 	 * 删除账户
 	 * @param vo
 	 * @return
 	 */
-	public ResultMsg delete(AccountVO vo);
+	public ResultMsg delete(BankAccountVO vo);
 	
 	/**
 	 * 更新账户
 	 * @param vo
 	 * @return
 	 */
-	public ResultMsg update(AccountVO vo);
+	public ResultMsg update(BankAccountVO vo);
 	
 	/**
 	 * 显示所有账户信息
 	 * @return
 	 */
-	public ArrayList<AccountVO> show();
+	public ArrayList<BankAccountVO> show();
 
 }

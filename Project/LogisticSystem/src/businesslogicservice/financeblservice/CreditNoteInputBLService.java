@@ -5,10 +5,8 @@
  */
 package businesslogicservice.financeblservice;
 
-import java.util.ArrayList;
-
 import businesslogic.util.ResultMsg;
-import vo.ReceipeVO;
+import vo.CreditNoteVO;
 
 public interface CreditNoteInputBLService {
 	
@@ -17,13 +15,13 @@ public interface CreditNoteInputBLService {
 	 * @param putInStorageVo
 	 * @return
 	 */
-	public ResultMsg addReceipeDoc(ReceipeVO vo);
+	public ResultMsg addReceipeDoc(CreditNoteVO vo);
 	
 	/**
 	 * 提交收款单
 	 * @param putInStorageVo
 	 * @return
 	 */
-   public ResultMsg submitReceipeDoc(ReceipeVO vo);
+   public ResultMsg submitReceipeDoc(CreditNoteVO vo);
    
 }

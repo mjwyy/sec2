@@ -17,19 +17,19 @@ public interface StorageInDataService {
 	/**
 	 * 在数据库中增加一个po记录
 	 */
-	public void insert(StorageInPO po) throws RemoteException;
+	public boolean insert(StorageInPO po) throws RemoteException;
 	/**
 	 * 在数据库中删除一个po记录
 	 */
-	public void delete(StorageInPO po) throws RemoteException;
+	public boolean delete(StorageInPO po) throws RemoteException;
 	/**
 	 * 在数据库中更新一个po记录
 	 */
-	public void update(StorageInPO po) throws RemoteException;
+	public boolean update(StorageInPO po) throws RemoteException;
 	/**
 	 * 查找返回相应的StorageInPO结果
 	 */
-	public ArrayList<StorageInPO> find(String name) throws RemoteException;
+	public ArrayList<StorageInPO> find(StorageInPO po) throws RemoteException;
 	
 	
 

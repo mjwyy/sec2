@@ -25,8 +25,8 @@ public class ReceivingNoteInputDataService_Driver {
         service.insert(po2);
         service.insert(po3);
         service.findAll();
-        service.find("汪同学");
-        service.find("0123456789");
+        service.find(po1);
+        service.find(po2);
         service.delete(po1);
         service.delete(po2);
         service.findAll();

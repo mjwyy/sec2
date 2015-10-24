@@ -25,10 +25,8 @@ public class DeliveryNoteInputDataService_Driver {
         service.insert(po1);
         service.insert(po2);
         service.findAll();
-        service.find("王二狗");
-        service.find("离散数学");
-        service.find("书籍");
-        service.find("1234567891");
+        service.find(po1);
+        service.find(po2);
         service.delete(po1);
         service.findAll();
         po2 = new DeliveryNoteInputPO("一只麟","江苏省南京市栖霞区南京大学仙林校区","南京大学仙林校区",

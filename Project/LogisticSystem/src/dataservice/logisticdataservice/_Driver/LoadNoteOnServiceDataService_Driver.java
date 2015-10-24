@@ -34,8 +34,8 @@ public class LoadNoteOnServiceDataService_Driver {
         service.insert(po1);
         service.insert(po2);
         service.findAll();
-        service.find("北京");
-        service.find("上海");
+        service.find(po1);
+        service.find(po2);
         service.delete(po1);
         service.findAll();
         po2 = new LoadNoteOnServicePO("2015-10-23","0251001","0251001201510220002","西藏","苏A 00002","Tom Hanks",

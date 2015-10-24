@@ -14,19 +14,19 @@ public interface ReceivingNoteInputDataService {
 	/**
 	 * 在数据库中增加一个po记录
 	 */
-	public void insert(ReceivingNoteInputPO po) throws RemoteException;
+	public boolean insert(ReceivingNoteInputPO po) throws RemoteException;
 	/**
 	 * 在数据库中删除一个po记录
 	 */
-	public void delete(ReceivingNoteInputPO po) throws RemoteException;
+	public boolean delete(ReceivingNoteInputPO po) throws RemoteException;
 	/**
 	 * 在数据库中更新一个po记录
 	 */
-	public void update(ReceivingNoteInputPO po) throws RemoteException;
+	public boolean update(ReceivingNoteInputPO po) throws RemoteException;
 	/**
 	 * 查找返回相应的ReceivingNoteInputPO结果
 	 */
-	public ArrayList<ReceivingNoteInputPO> find(String name) throws RemoteException;
+	public ArrayList<ReceivingNoteInputPO> find(ReceivingNoteInputPO po) throws RemoteException;
 	
 	
 	/**

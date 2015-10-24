@@ -10,7 +10,7 @@ import vo.SendingNoteVO;
  * @author kylin
  *
  */
-public interface DeliveryNoteInputBLService extends NoteInputBLService {
+public interface DeliveryNoteInputBLService {
 
 	/**
 	 * 快递员输入寄件单信息

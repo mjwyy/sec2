@@ -29,9 +29,9 @@ public class DriverVehicleManagementDataService_Driver {
 				,"320323199611122345","18362922345","男","2015-09-20");
 		driverPO3 = new DriverPO("025010007","0251010","王小二","1997-11-12"
 				,"320323199711122345","18367922345","男","2015-01-20");
-		vehiclePO1 = new VehiclePO("025010001","0251010","2013-01-01");
-		vehiclePO2 = new VehiclePO("025010002","0251010","2013-02-01");
-		vehiclePO3 = new VehiclePO("025010002","0251010","2013-03-01");	
+		vehiclePO1 = new VehiclePO("025010001","0251010",null, "2013-01-01");
+		vehiclePO2 = new VehiclePO("025010002","0251010",null,"2013-02-01");
+		vehiclePO3 = new VehiclePO("025010002","0251010",null,"2013-03-01");	
 		ArrayList<DriverPO> driverList = new ArrayList<DriverPO>();
 	    ArrayList<VehiclePO> vehicleList = new ArrayList<VehiclePO>();
 	    driverList.add(driverPO1);
@@ -54,7 +54,7 @@ public class DriverVehicleManagementDataService_Driver {
 		driverVehicleManagementDataService.removeDriver(driverPO2);
 		driverVehicleManagementDataService.removeVehicle(vehiclePO1);
 		driverVehicleManagementDataService.inquireDriver(new DriverPO(null, null, null, null, null, null, null, null));
-		driverVehicleManagementDataService.inquireVehicle(new VehiclePO(null, null, null));
+		driverVehicleManagementDataService.inquireVehicle(new VehiclePO(null, null,null, null));
 		driverVehicleManagementDataService.getAllDriver();
 		driverVehicleManagementDataService.getAllVehicles();	
 	}

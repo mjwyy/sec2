@@ -54,5 +54,12 @@ public class BaseDataBuildingBLService_Stub implements BaseDataBuildingBLService
 	public ResultMsg changeFinanceInfo(FinanceInfoVO financeInfoVO){
 		System.out.println("changeing finance");
 		return new ResultMsg(true, "Success");
+	}
+
+
+	@Override
+	public ResultMsg endDataBuilding() {
+		System.out.println("endDataBuilding");
+		return new ResultMsg(true, "Success");
 	};
 }

@@ -19,10 +19,9 @@ public class ArrivalNoteOnServiceDataService_Stub implements ArrivalNoteOnServic
 
 	public ArrivalNoteOnServiceDataService_Stub() {
 		pos = new ArrayList<ArrivalNoteOnServicePO>();
-		Date date = new Date();
-		this.arrivalNoteOnServicePO = new ArrivalNoteOnServicePO(date,"250000201510130000000","北京","南京");
-		this.arrivalNoteOnServicePO2 = new ArrivalNoteOnServicePO(date,"250000201510130000001","北京","南京");
-		this.arrivalNoteOnServicePO3 = new ArrivalNoteOnServicePO(date,"250000201510130000002","北京","南京");
+		this.arrivalNoteOnServicePO = new ArrivalNoteOnServicePO("2011-11-11","250000201510130000000","北京","南京");
+		this.arrivalNoteOnServicePO2 = new ArrivalNoteOnServicePO("2011-11-11","250000201510130000001","北京","南京");
+		this.arrivalNoteOnServicePO3 = new ArrivalNoteOnServicePO("2011-11-11","250000201510130000002","北京","南京");
 		pos.add(arrivalNoteOnServicePO);
 		pos.add(this.arrivalNoteOnServicePO2);
 		pos.add(arrivalNoteOnServicePO3);

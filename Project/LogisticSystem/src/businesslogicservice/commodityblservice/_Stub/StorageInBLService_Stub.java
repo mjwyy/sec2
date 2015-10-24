@@ -22,7 +22,6 @@ public class StorageInBLService_Stub implements StorageInBLService{
 	//输入入库单界面显示所有入库单
 	@Override
 	public ArrayList<StorageInVO> show() {
-		// TODO Auto-generated method stub
 		ArrayList<StorageInVO> list=new ArrayList<StorageInVO>();
 		list.add(new StorageInVO(date,GoodsInStorageInfo));
 		return list;

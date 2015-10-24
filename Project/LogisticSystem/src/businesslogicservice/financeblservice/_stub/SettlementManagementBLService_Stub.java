@@ -17,14 +17,11 @@ public class SettlementManagementBLService_Stub implements
 
 
 	@Override
-	public ArrayList<ReceiveRecordVO> findbydate(String date) {
+	public ArrayList<ReceiveRecordVO> find(ReceiveRecordVO vo) {
 		
-		System.out.println("found by date");
+		System.out.println("found ");
 		return new ArrayList<>();
 	}
 
-	@Override
-	public ArrayList<ReceiveRecordVO> findbyServic(String serive) {
-		return null;
-	}
+
 }

@@ -24,22 +24,25 @@ public class NoteDataService_Stub implements NoteDataService {
     }
 
     @Override
-    public void insert(NotePO po) throws RemoteException {
+    public boolean insert(NotePO po) throws RemoteException {
         System.out.println("insert succeed!");
+		return true;
     }
 
     @Override
-    public void delete(NotePO po) throws RemoteException {
+    public boolean delete(NotePO po) throws RemoteException {
         System.out.println("delete succeed!");
+		return true;
     }
 
     @Override
-    public void update(NotePO po) throws RemoteException {
+    public boolean update(NotePO po) throws RemoteException {
         System.out.println("update succeed!");
+		return true;
     }
 
     @Override
-    public ArrayList<NotePO> find(String name) throws RemoteException {
+    public ArrayList<NotePO> find(NotePO po) throws RemoteException {
         System.out.println("find succeed!");
         return pos;
     }

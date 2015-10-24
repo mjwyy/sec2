@@ -34,10 +34,8 @@ public class LoadNoteOnTransitDataService_Driver {
         service.insert(po1);
         service.insert(po2);
         service.findAll();
-        service.find("武昌昊");
-        service.find("李沪东");
-        service.find("北京");
-        service.find("苏A 00001");
+        service.find(po1);
+        service.find(po2);
         service.delete(po1);
         service.findAll();
         po2 = new LoadNoteOnTransitPO("2015-10-23","025100120151023000003","西藏","苏B 00001",

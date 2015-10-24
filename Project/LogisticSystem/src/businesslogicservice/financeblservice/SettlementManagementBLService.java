@@ -21,18 +21,12 @@ public interface SettlementManagementBLService {
 
 	
 	/**
-	 * 按日期查询收款记录
+	 * 查询收款记录
 	 * @param date
 	 * @return
 	 */
-	public ArrayList<ReceiveRecordVO> findbydate(String date);
+	public ArrayList<ReceiveRecordVO> find(ReceiveRecordVO vo);
 	
-	/**
-	 * 按营业厅查询收款记录
-	 * @param serive
-	 * @return
-	 */
-	public ArrayList<ReceiveRecordVO> findbyServic(String serive);
 	
 
 }

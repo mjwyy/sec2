@@ -1,8 +1,6 @@
 package businesslogicservice.commodityblservice._Driver;
 
-import java.util.ArrayList;
 
-import vo.InventoryVO;
 import businesslogic.util.ResultMsg;
 import businesslogicservice.commodityblservice.StorageInquiryPartBLService;
 import businesslogicservice.commodityblservice._Stub.StorageInquiryPartBLService_Stub;

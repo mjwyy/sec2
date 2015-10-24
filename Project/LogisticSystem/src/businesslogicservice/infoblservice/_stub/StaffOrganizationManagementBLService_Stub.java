@@ -33,7 +33,7 @@ public class StaffOrganizationManagementBLService_Stub implements StaffOrganizat
 	};
 	
 	
-	public ArrayList<StaffInfoVO> findStaffInfo(String keyword){
+	public ArrayList<StaffInfoVO> findStaffInfo(StaffInfoVO vo){
 		System.out.println("found staff");
 		return new ArrayList<>();
 	};
@@ -57,7 +57,7 @@ public class StaffOrganizationManagementBLService_Stub implements StaffOrganizat
 	};
 	
 	
-	public ArrayList<OrganizationInfoVO> findOrgInfo(String keyword){
+	public ArrayList<OrganizationInfoVO> findOrgInfo(OrganizationInfoVO vo){
 		System.out.println("found org");
 		return new ArrayList<>();
 	};

@@ -17,31 +17,33 @@ public class ArrivalNoteOnTransitDataService_Stub implements ArrivalNoteOnTransi
     private ArrayList<ArrivalNoteOnTransitPO> pos;
 
     public ArrivalNoteOnTransitDataService_Stub() {
-        Date date = new Date();
-        po1 = new ArrivalNoteOnTransitPO(date,"025100","025100201510200000001","北京","完整");
-        po2 = new ArrivalNoteOnTransitPO(date,"025100","025100201510200000002","上海","完整");
+        po1 = new ArrivalNoteOnTransitPO("2011-11-11","025100","025100201510200000001","北京","完整");
+        po2 = new ArrivalNoteOnTransitPO("2011-11-11","025100","025100201510200000002","上海","完整");
         pos = new ArrayList<ArrivalNoteOnTransitPO>();
         pos.add(po1);
         pos.add(po2);
     }
 
     @Override
-    public void insert(ArrivalNoteOnTransitPO po) throws RemoteException {
+    public boolean insert(ArrivalNoteOnTransitPO po) throws RemoteException {
         System.out.println("insert succeed!");
+		return true;
     }
 
     @Override
-    public void delete(ArrivalNoteOnTransitPO po) throws RemoteException {
+    public boolean delete(ArrivalNoteOnTransitPO po) throws RemoteException {
         System.out.println("delete succeed!");
+		return true;
     }
 
     @Override
-    public void update(ArrivalNoteOnTransitPO po) throws RemoteException {
+    public boolean update(ArrivalNoteOnTransitPO po) throws RemoteException {
         System.out.println("update succeed!");
+		return true;
     }
 
     @Override
-    public ArrayList<ArrivalNoteOnTransitPO> find(String name) throws RemoteException {
+    public ArrayList<ArrivalNoteOnTransitPO> find(ArrivalNoteOnTransitPO po) throws RemoteException {
         System.out.println("find succeed!");
         return pos;
     }

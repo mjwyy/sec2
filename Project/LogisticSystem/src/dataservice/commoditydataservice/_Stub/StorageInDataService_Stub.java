@@ -13,22 +13,25 @@ import java.util.ArrayList;
 public class StorageInDataService_Stub implements StorageInDataService {
 
     @Override
-    public void insert(StorageInPO po) throws RemoteException {
+    public boolean insert(StorageInPO po) throws RemoteException {
         System.out.println("insert succeed!");
+		return true;
     }
 
     @Override
-    public void delete(StorageInPO po) throws RemoteException {
+    public boolean delete(StorageInPO po) throws RemoteException {
         System.out.println("delete succeed!");
+		return true;
     }
 
     @Override
-    public void update(StorageInPO po) throws RemoteException {
+    public boolean update(StorageInPO po) throws RemoteException {
         System.out.println("update succeed!");
+		return true;
     }
 
     @Override
-    public ArrayList<StorageInPO> find(String name) throws RemoteException {
+    public ArrayList<StorageInPO> find(StorageInPO po) throws RemoteException {
         System.out.println("find succeed!");
         return new ArrayList<StorageInPO>();
     }

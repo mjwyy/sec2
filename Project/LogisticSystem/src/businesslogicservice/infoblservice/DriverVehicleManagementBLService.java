@@ -59,13 +59,13 @@ public interface DriverVehicleManagementBLService {
 	 * @param keyword
 	 * @return
 	 */
-	public ArrayList<VehicleInfoVO> findVehicle(String keyword);
+	public ArrayList<VehicleInfoVO> findVehicle(VehicleInfoVO vo);
 	
 	/**
 	 * 关键字查询司机信息
 	 * @param keyword
 	 * @return
 	 */
-	public ArrayList<DriverInfoVO> findDriver(String keyword);
+	public ArrayList<DriverInfoVO> findDriver(DriverInfoVO vo);
 	
 }

@@ -23,8 +23,8 @@ public class StorageOutDataService_Driver {
                 "铁路","025000201510230000001",true);
         StorageOutPO po2 = new StorageOutPO("2015-10-24","02510012015102300002","上海",
                 "铁路","025000201510230000002",false);
-        storageOutDataService.find("2015-10-22");
-        storageOutDataService.find("南京");
+        storageOutDataService.find(po);
+        storageOutDataService.find(po2);
         storageOutDataService.insert(po);
         storageOutDataService.insert(po2);
         po2 = po;

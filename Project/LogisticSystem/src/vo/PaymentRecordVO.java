@@ -1,5 +1,11 @@
 package vo;
 
+/**
+ * 付款记录
+ * 
+ * @author kylin
+ *
+ */
 public class PaymentRecordVO {
 	
 	/**

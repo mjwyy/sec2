@@ -1,7 +1,5 @@
 package businesslogicservice.logisticblservice._Stub;
 
-import java.util.ArrayList;
-
 import vo.LoadNoteOnTransitVO;
 import businesslogic.util.ResultMsg;
 import businesslogicservice.logisticblservice.LoadNoteOnTransitBLService;

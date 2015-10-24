@@ -22,6 +22,7 @@ public class DeliveryNoteInputDataService_Stub implements DeliveryNoteInputDataS
                 "150052126666","1",0.5,20,"head first java","书籍",5,"1234567891");
         pos = new ArrayList<DeliveryNoteInputPO>();
         pos.add(po1);
+        pos.add(po2);
     }
 
     @Override

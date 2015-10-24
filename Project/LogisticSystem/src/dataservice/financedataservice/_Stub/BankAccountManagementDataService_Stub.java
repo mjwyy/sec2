@@ -13,7 +13,6 @@ import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
 
 public class BankAccountManagementDataService_Stub implements BankAccountManagementDataService{
-    private BankAccountPO bankAccountPO;
 
 	@Override
 	public boolean addBankAccount(BankAccountPO account)
@@ -41,7 +40,6 @@ public class BankAccountManagementDataService_Stub implements BankAccountManagem
 	public ArrayList<BankAccountPO> findBankAccount(BankAccountPO info)
 			throws RemoteException, ElementNotFoundException {
 		System.out.println("find bankAccount success");
-		BigDecimal c = new BigDecimal(2000);
 		return new ArrayList<>();
 	}
 

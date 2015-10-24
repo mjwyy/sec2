@@ -2,7 +2,7 @@ package businesslogicservice.commodityblservice._Driver;
 
 import java.util.ArrayList;
 
-import vo.GoodsVO;
+import vo.CommodityGoodsVO;
 import vo.StorageInVO;
 import businesslogic.util.InventoryStatus;
 import businesslogic.util.ResultMsg;
@@ -17,8 +17,8 @@ public static void main(String[] args){
 	
 }
 public void drive(StorageInBLService a){
-	GoodsVO good=new GoodsVO("0123456789","航空区","南京",0002,0002,0002);
-	ArrayList<GoodsVO> GoodsInStorageInfo=new ArrayList<GoodsVO> ();
+	CommodityGoodsVO good=new CommodityGoodsVO("0123456789","航空区","南京",0002,0002,0002);
+	ArrayList<CommodityGoodsVO> GoodsInStorageInfo=new ArrayList<CommodityGoodsVO> ();
 	GoodsInStorageInfo.add(good);
 	StorageInVO	putInStorageVo=new StorageInVO("2011-11-11",GoodsInStorageInfo);
 	ResultMsg result=a.addPutInStorgaeDoc(putInStorageVo);

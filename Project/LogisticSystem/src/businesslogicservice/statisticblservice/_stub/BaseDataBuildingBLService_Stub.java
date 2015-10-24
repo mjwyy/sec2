@@ -3,7 +3,7 @@ package businesslogicservice.statisticblservice._stub;
 import businesslogic.util.ResultMsg;
 import businesslogicservice.statisticblservice.BaseDataBuildingBLService;
 import vo.CommodityInfoVO;
-import vo.FinanceInfoVO;
+import vo.FinanceVO;
 import vo.InstitutionInfoVO;
 
 public class BaseDataBuildingBLService_Stub implements BaseDataBuildingBLService {
@@ -27,7 +27,7 @@ public class BaseDataBuildingBLService_Stub implements BaseDataBuildingBLService
 	};
 	
 	
-	public ResultMsg addFinanceInfo(FinanceInfoVO financeInfoVO){
+	public ResultMsg addFinanceInfo(FinanceVO financeInfoVO){
 		System.out.println("adding finance");
 		return new ResultMsg(true, "Success");
 	};
@@ -51,7 +51,7 @@ public class BaseDataBuildingBLService_Stub implements BaseDataBuildingBLService
 	};
 	
 	
-	public ResultMsg changeFinanceInfo(FinanceInfoVO financeInfoVO){
+	public ResultMsg changeFinanceInfo(FinanceVO financeInfoVO){
 		System.out.println("changeing finance");
 		return new ResultMsg(true, "Success");
 	}

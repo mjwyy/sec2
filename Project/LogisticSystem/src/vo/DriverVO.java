@@ -1,6 +1,6 @@
 package vo;
 
-public class DriverInfoVO {
+public class DriverVO {
 	
 	/**
 	 * 城市编号
@@ -47,7 +47,7 @@ public class DriverInfoVO {
 	 * @param sex
 	 * @param drvingLicencePeriod
 	 */
-     public DriverInfoVO(String driverNum,String name,String birthday,
+     public DriverVO(String driverNum,String name,String birthday,
     		 String IDNum,String phoneNum,String sex,String drvingLicencePeriod){
     	 this.driverNum = driverNum;
     	 this.name = name;

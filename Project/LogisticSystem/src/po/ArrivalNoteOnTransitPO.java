@@ -5,7 +5,7 @@
  */
 package po;
 
-
+//TODO povo的统一
 public class ArrivalNoteOnTransitPO {
 	private String transitNum;//中转中心编号
 	private String time;//货物到达日期

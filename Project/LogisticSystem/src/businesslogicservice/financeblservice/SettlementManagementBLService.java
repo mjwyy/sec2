@@ -18,7 +18,6 @@ public interface SettlementManagementBLService {
 	 * @return
 	 */
 	public ResultMsg addReceiveRecord(ReceiveRecordVO vo);
-
 	
 	/**
 	 * 查询收款记录
@@ -26,7 +25,5 @@ public interface SettlementManagementBLService {
 	 * @return
 	 */
 	public ArrayList<ReceiveRecordVO> find(ReceiveRecordVO vo);
-	
-	
 
 }

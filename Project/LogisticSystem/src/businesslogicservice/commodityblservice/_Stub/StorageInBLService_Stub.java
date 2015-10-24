@@ -2,7 +2,7 @@ package businesslogicservice.commodityblservice._Stub;
 
 import java.util.ArrayList;
 
-import vo.GoodsVO;
+import vo.CommodityGoodsVO;
 import vo.StorageInVO;
 import businesslogic.util.InventoryStatus;
 import businesslogic.util.ResultMsg;
@@ -10,12 +10,12 @@ import businesslogicservice.commodityblservice.StorageInBLService;
 
 public class StorageInBLService_Stub implements StorageInBLService{
 	String date;
-	ArrayList<GoodsVO> GoodsInStorageInfo;
+	ArrayList<CommodityGoodsVO> GoodsInStorageInfo;
 	public StorageInBLService_Stub(){
 		date = "2015-10-22";
-		GoodsInStorageInfo = new ArrayList<GoodsVO>(); 
+		GoodsInStorageInfo = new ArrayList<CommodityGoodsVO>(); 
 	}
-	public StorageInBLService_Stub(String date,ArrayList<GoodsVO> GoodsInStorageInfo){
+	public StorageInBLService_Stub(String date,ArrayList<CommodityGoodsVO> GoodsInStorageInfo){
 		this.date = date;
 		this.GoodsInStorageInfo = GoodsInStorageInfo;
 	}
@@ -39,7 +39,7 @@ public class StorageInBLService_Stub implements StorageInBLService{
 
 	@Override
 	public InventoryStatus alarm() {
-		GoodsInStorageInfo =new ArrayList<GoodsVO>();
+		GoodsInStorageInfo =new ArrayList<CommodityGoodsVO>();
 		
 		if(date.equals("2011-11-11"))
 			return InventoryStatus.SAFE;

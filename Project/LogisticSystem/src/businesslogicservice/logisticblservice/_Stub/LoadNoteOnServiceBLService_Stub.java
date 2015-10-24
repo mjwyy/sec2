@@ -3,7 +3,6 @@ package businesslogicservice.logisticblservice._Stub;
 import java.util.ArrayList;
 
 import vo.LoadNoteOnServiceVO;
-import businesslogic.util.GoodsState;
 import businesslogic.util.ResultMsg;
 import businesslogicservice.logisticblservice.LoadNoteOnServiceBLService;
 

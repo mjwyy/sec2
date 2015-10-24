@@ -1,7 +1,5 @@
 package businesslogicservice.commodityblservice;
 
-import java.util.ArrayList;
-
 import businesslogic.util.ResultMsg;
 import vo.StorageOutVO;
 

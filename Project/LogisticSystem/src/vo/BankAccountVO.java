@@ -1,6 +1,11 @@
 package vo;
-
-public class AccountVO {
+/**
+ * 银行账户
+ * 
+ * @author kylin
+ *
+ */
+public class BankAccountVO {
 	
 	/**
 	 * 账户名称
@@ -22,7 +27,7 @@ public class AccountVO {
 	 * @param name
 	 * @param balance
 	 */
-	public AccountVO(String name, String account, double balance) {
+	public BankAccountVO(String name, String account, double balance) {
 		this.name = name;
 		this.account = account;
 		this.balance = balance;

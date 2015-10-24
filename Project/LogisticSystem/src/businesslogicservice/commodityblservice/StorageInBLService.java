@@ -5,8 +5,6 @@
  */
 package businesslogicservice.commodityblservice;
 
-import java.util.ArrayList;
-
 import businesslogic.util.InventoryStatus;
 import businesslogic.util.ResultMsg;
 import vo.StorageInVO;
@@ -28,7 +26,7 @@ public interface StorageInBLService {
    public ResultMsg submitPutInStorageDoc(StorageInVO putInStorageVo);
    
    /**
-    * 库存呢报警
+    * 库存报警
     * @return
     */
    public InventoryStatus alarm();

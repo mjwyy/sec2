@@ -51,13 +51,13 @@ public class DriverVehicleManagementBLService_Stub implements DriverVehicleManag
 	};
 	
 
-	public ArrayList<VehicleInfoVO> findVehicle(String keyword){
+	public ArrayList<VehicleInfoVO> findVehicle(VehicleInfoVO vo){
 		System.out.println("found vehicle");
 		return new ArrayList<>();
 	};
 	
 
-	public ArrayList<DriverInfoVO> findDriver(String keyword){
+	public ArrayList<DriverInfoVO> findDriver(DriverInfoVO vo){
 		System.out.println("found driver");
 		return new ArrayList<>();
 	};

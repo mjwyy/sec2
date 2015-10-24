@@ -28,9 +28,9 @@ public class BankAccountManagemntBLService_Stub implements
 	
 	
 	@Override
-	public ArrayList<AccountVO> find(String name) {
+	public ArrayList<AccountVO> find(AccountVO vo) {
 		
-		BankAccountPO ac = new BankAccountPO(name, null, null);
+		BankAccountPO ac = new BankAccountPO("name", null, null);
 		BankAccountPO result;
 		ArrayList<AccountVO> list = new ArrayList<AccountVO>();
 		

@@ -9,15 +9,6 @@ import businesslogicservice.commodityblservice.StorageOutBLService;
 
 public class StorageOutBLService_Stub implements StorageOutBLService{
 
-	@Override
-	public ArrayList<StorageOutVO> show() {
-		ArrayList<StorageOutVO> list=new ArrayList<StorageOutVO>();
-		ArrayList<String>barcode=new ArrayList<String>();
-		barcode.add("1234567890");
-		list.add(new StorageOutVO("2011-11-11","北京","025000201509091234567",
-				"025000201510120000003","铁路",barcode));
-		return list;
-	}
 
 	@Override
 	public ResultMsg addStorageOutDoc(StorageOutVO storageOutVo) {

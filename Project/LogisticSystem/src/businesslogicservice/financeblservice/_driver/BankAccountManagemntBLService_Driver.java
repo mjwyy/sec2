@@ -18,7 +18,7 @@ public class BankAccountManagemntBLService_Driver  {
 	public void drive(BankAccountManagementBLService service){
 		service.add(new AccountVO("sd", "1234567", 1.50));
 		service.delete(new AccountVO("sd", "1234567", 1.50));
-		service.find("sd");
+		service.find(new AccountVO("sd", "1234567", 1.50));
 		service.show();
 		service.update(new AccountVO("sd", "1234567", 1.50));
 	}

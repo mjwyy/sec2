@@ -39,7 +39,7 @@ public interface StaffOrganizationManagementBLService {
 	 * @param keyword
 	 * @return
 	 */
-	public ArrayList<StaffInfoVO> findStaffInfo(String keyword);
+	public ArrayList<StaffInfoVO> findStaffInfo(StaffInfoVO vo);
 	
 	/**
 	 * 新增机构信息
@@ -67,7 +67,7 @@ public interface StaffOrganizationManagementBLService {
 	 * @param keyword
 	 * @return
 	 */
-	public ArrayList<OrganizationInfoVO> findOrgInfo(String keyword);
+	public ArrayList<OrganizationInfoVO> findOrgInfo(OrganizationInfoVO vo);
 	
 	/**
 	 * 显示所有机构人员信息

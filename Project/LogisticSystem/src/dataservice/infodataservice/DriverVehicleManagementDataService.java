@@ -107,7 +107,7 @@ public interface DriverVehicleManagementDataService extends Remote {
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException
 	 */
-	public ArrayList<DriverPO> inquireDriver(String keywords)
+	public ArrayList<DriverPO> inquireDriver(DriverPO keywords)
 			throws RemoteException,ElementNotFoundException;
 
 	/**
@@ -117,7 +117,7 @@ public interface DriverVehicleManagementDataService extends Remote {
 	 * @return
 	 * @throws RemoteException
 	 */
-	public ArrayList<VehiclePO> inquireVehicle(String keywords)
+	public ArrayList<VehiclePO> inquireVehicle(VehiclePO keywords)
 			throws RemoteException;
 	
 	

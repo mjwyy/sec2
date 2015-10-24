@@ -61,20 +61,6 @@ public class StaffOrganizationManagementDataService_Stub implements StaffOrganiz
 	}
 
 	@Override
-	public StaffPO findStaff(String name) throws RemoteException,
-			ElementNotFoundException {
-		System.out.println("find success");
-		return null;
-	}
-
-	@Override
-	public OrganizationPO findOrganization(String name)
-			throws RemoteException, ElementNotFoundException {
-		System.out.println("find success");
-		return null;
-	}
-
-	@Override
 	public ArrayList<StaffPO> getAllStaff() throws RemoteException {
 		System.out.println("get success");
 		return null;
@@ -84,6 +70,20 @@ public class StaffOrganizationManagementDataService_Stub implements StaffOrganiz
 	public ArrayList<OrganizationPO> getAllOrganizations()
 			throws RemoteException {
 		System.out.println("get success");
+		return null;
+	}
+
+	@Override
+	public ArrayList<StaffPO> findStaff(StaffPO info) throws RemoteException,
+			ElementNotFoundException {
+		System.out.println("find success");
+		return null;
+	}
+
+	@Override
+	public ArrayList<OrganizationPO> findOrganization(OrganizationPO info)
+			throws RemoteException, ElementNotFoundException {
+		System.out.println("find success");
 		return null;
 	}
 	

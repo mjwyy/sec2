@@ -21,7 +21,7 @@ public class BusinessDataModificationDataService_Driver {
 	public void drive(BusinessDataModificationDataService businessDataService) throws RemoteException, InterruptWithExistedElementException, ElementNotFoundException {
 		businessDataService.addCity("");
 		businessDataService.setDistance(distancePO);
-		businessDataService.setPrice("汽油",97.0);
+		businessDataService.setPrice(null, 0);
 		businessDataService.getAllCities();
 		businessDataService.getDistance(distancePO);	
 	}

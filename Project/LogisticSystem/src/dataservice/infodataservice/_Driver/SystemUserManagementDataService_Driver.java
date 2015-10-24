@@ -26,7 +26,7 @@ public class SystemUserManagementDataService_Driver {
 		sumDataService.addUser(userPO);
 		sumDataService.removeUser(userPO);
 		sumDataService.modifyUser(userPO, userPO);
-		sumDataService.inquireUser(userPO.getAccount());
+		sumDataService.inquireUser(new UserPO(null, null, 0));
 		sumDataService.getAllUsers();		
 	}
 	

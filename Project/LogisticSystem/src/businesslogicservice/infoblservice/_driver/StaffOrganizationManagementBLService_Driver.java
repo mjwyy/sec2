@@ -12,10 +12,10 @@ public class StaffOrganizationManagementBLService_Driver {
 	
 	
 	public void drive(StaffOrganizationManagementBLService service){
-		service.addStaff(new StaffInfoVO("����", null, null, null, 2, null, 1.0));
-		service.delStaff(new StaffInfoVO("����", null, null, null, 2, null, 1.0));
-		service.findStaffInfo(new StaffInfoVO("����", null, null, null, 2, null, 1.0));
-		service.ModifyStaff(new StaffInfoVO("����", null, null, null, 2, null, 1.0));
+		service.addStaff(new StaffInfoVO("Tom", null, null, null, 2, null, 1.0));
+		service.delStaff(new StaffInfoVO("Tom", null, null, null, 2, null, 1.0));
+		service.findStaffInfo(new StaffInfoVO("Tom", null, null, null, 2, null, 1.0));
+		service.ModifyStaff(new StaffInfoVO("Tom", null, null, null, 2, null, 1.0));
 		
 		service.addOrganization(new OrganizationInfoVO("002122", null));
 		service.delOrganization(new OrganizationInfoVO("002122", null));

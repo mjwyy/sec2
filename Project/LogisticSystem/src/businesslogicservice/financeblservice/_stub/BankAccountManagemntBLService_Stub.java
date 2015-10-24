@@ -29,44 +29,32 @@ public class BankAccountManagemntBLService_Stub implements
 	
 	@Override
 	public ArrayList<AccountVO> find(AccountVO vo) {
-		
 		BankAccountPO ac = new BankAccountPO("name", null, null);
 		BankAccountPO result;
 		ArrayList<AccountVO> list = new ArrayList<AccountVO>();
-		
-		
 		return list;
 	}
 
 	@Override
 	public ResultMsg add(AccountVO vo) {
-		
 		ResultMsg result = null;
-		
-		
 		return result;
 	}
 
 	@Override
 	public ResultMsg delete(AccountVO vo) {
-		
 		return new ResultMsg(true, "Success!");
 	}
 
 	@Override
 	public ResultMsg update(AccountVO vo) {
-		
 		return new ResultMsg(true, "Success!");
 	}
 
 	@Override
 	public ArrayList<AccountVO> show() {
-		
 		ArrayList<AccountVO> list = new ArrayList<>();
 		ArrayList<BankAccountPO> get = null;
-		
-		
-		
 		return list;
 	}
 	

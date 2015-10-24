@@ -62,31 +62,26 @@ public class DriverVehicleManagementDataService_Stub implements DriverVehicleMan
 
 	@Override
 	public ArrayList<DriverPO> getAllDriver() throws RemoteException {
-		// TODO Auto-generated method stub
 		System.out.println("success getting");
 		return null;
 	}
 
 	@Override
 	public ArrayList<VehiclePO> getAllVehicles() throws RemoteException {
-		// TODO Auto-generated method stub
 		System.out.println("success getting");
 		return null;
 	}
 
-
 	@Override
-	public ArrayList<VehiclePO> inquireVehicle(String string)
-			throws RemoteException {
-		// TODO Auto-generated method stub
+	public ArrayList<DriverPO> inquireDriver(DriverPO keywords)
+			throws RemoteException, ElementNotFoundException {
 		System.out.println("inquire success");
 		return null;
 	}
 
 	@Override
-	public ArrayList<DriverPO> inquireDriver(String string)
-			throws RemoteException, ElementNotFoundException {
-		// TODO Auto-generated method stub
+	public ArrayList<VehiclePO> inquireVehicle(VehiclePO keywords)
+			throws RemoteException {
 		System.out.println("inquire success");
 		return null;
 	}

@@ -39,8 +39,8 @@ public class StaffOrganizationMangaementDataService_Driver {
 		somDataService.removeOrganization(orPO);
 		somDataService.modifyOrganization(orPO, orPO);
 		somDataService.modifyStaff(staffPO1, staffPO2);
-		somDataService.findStaff(staffPO1.getName());
-		somDataService.findOrganization(orPO.getName());		
+		somDataService.findStaff(new StaffPO(null, null, null, 0, null, null, 0));
+		somDataService.findOrganization(new OrganizationPO(null, null, null, null));		
 	}
 	
 	public static void  main(String[] args) throws RemoteException, InterruptWithExistedElementException, ElementNotFoundException {

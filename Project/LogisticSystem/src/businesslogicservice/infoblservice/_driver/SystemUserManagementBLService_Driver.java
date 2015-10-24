@@ -6,7 +6,11 @@ import java.util.ArrayList;
 import businesslogic.util.ResultMsg;
 import businesslogicservice.infoblservice.SystemUserManagementBLService;
 import vo.UserVO;
-
+/**
+ * 
+ * @author River
+ *
+ */
 public class SystemUserManagementBLService_Driver {
 
 	public void drive(SystemUserManagementBLService service){

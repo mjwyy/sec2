@@ -53,8 +53,8 @@ public class DriverVehicleManagementDataService_Driver {
 		driverVehicleManagementDataService.modifyDriver(driverPO1, driverPO2);
 		driverVehicleManagementDataService.removeDriver(driverPO2);
 		driverVehicleManagementDataService.removeVehicle(vehiclePO1);
-		driverVehicleManagementDataService.inquireDriver("025010008");
-		driverVehicleManagementDataService.inquireVehicle("025010001");
+		driverVehicleManagementDataService.inquireDriver(new DriverPO(null, null, null, null, null, null, null, null));
+		driverVehicleManagementDataService.inquireVehicle(new VehiclePO(null, null, null));
 		driverVehicleManagementDataService.getAllDriver();
 		driverVehicleManagementDataService.getAllVehicles();	
 	}

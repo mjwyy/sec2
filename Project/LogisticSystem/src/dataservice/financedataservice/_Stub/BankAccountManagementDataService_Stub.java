@@ -38,12 +38,11 @@ public class BankAccountManagementDataService_Stub implements BankAccountManagem
 	}
 
 	@Override
-	public BankAccountPO findBankAccount(String number)
+	public ArrayList<BankAccountPO> findBankAccount(BankAccountPO info)
 			throws RemoteException, ElementNotFoundException {
 		System.out.println("find bankAccount success");
 		BigDecimal c = new BigDecimal(2000);
-		BankAccountPO po = new BankAccountPO("金三胖","1234567890",c);
-		return po;
+		return new ArrayList<>();
 	}
 
 	@Override

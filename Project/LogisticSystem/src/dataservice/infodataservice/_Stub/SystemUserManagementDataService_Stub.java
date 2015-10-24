@@ -37,16 +37,16 @@ public class SystemUserManagementDataService_Stub implements SystemUserManagemen
 	}
 
 	@Override
-	public UserPO inquireUser(String account) throws RemoteException,
-			ElementNotFoundException {
-		System.out.println("inquireUser success");
+	public ArrayList<UserPO> getAllUsers() throws RemoteException {
+		// TODO Auto-generated method stub
+		System.out.println("get success");
 		return null;
 	}
 
 	@Override
-	public ArrayList<UserPO> getAllUsers() throws RemoteException {
-		// TODO Auto-generated method stub
-		System.out.println("get success");
+	public ArrayList<UserPO> inquireUser(UserPO info) throws RemoteException,
+			ElementNotFoundException {
+		System.out.println("inquireUser success");
 		return null;
 	}
 	

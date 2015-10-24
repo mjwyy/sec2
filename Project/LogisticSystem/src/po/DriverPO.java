@@ -5,7 +5,6 @@ import java.io.Serializable;
 /**
  * 表示司机信息的PO
  * @author River
- *
  */
 public class DriverPO implements Serializable {
 

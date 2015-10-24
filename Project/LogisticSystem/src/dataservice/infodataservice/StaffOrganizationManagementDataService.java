@@ -88,7 +88,7 @@ public interface StaffOrganizationManagementDataService extends Remote {
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException
 	 */
-	public StaffPO findStaff(String name)
+	public ArrayList<StaffPO> findStaff(StaffPO info)
 			throws RemoteException,ElementNotFoundException;
 
 	/**
@@ -99,7 +99,7 @@ public interface StaffOrganizationManagementDataService extends Remote {
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException
 	 */
-	public OrganizationPO findOrganization(String name)
+	public ArrayList<OrganizationPO> findOrganization(OrganizationPO info)
 			throws RemoteException,ElementNotFoundException;
 
 	/**

@@ -14,19 +14,19 @@ public interface TransitNoteInputDataService {
 	/**
 	 * 在数据库中增加一个po记录
 	 */
-	public void insert(TransitNoteInputPO po) throws RemoteException;
+	public boolean insert(TransitNoteInputPO po) throws RemoteException;
 	/**
 	 * 在数据库中删除一个po记录
 	 */
-	public void delete(TransitNoteInputPO po) throws RemoteException;
+	public boolean delete(TransitNoteInputPO po) throws RemoteException;
 	/**
 	 * 在数据库中更新一个po记录
 	 */
-	public void update(TransitNoteInputPO po) throws RemoteException;
+	public boolean update(TransitNoteInputPO po) throws RemoteException;
 	/**
 	 * 查找返回相应的TransitNoteInputPO结果
 	 */
-	public ArrayList<TransitNoteInputPO> find(String name) throws RemoteException;
+	public ArrayList<TransitNoteInputPO> find(TransitNoteInputPO po) throws RemoteException;
 	
 	
 	/**

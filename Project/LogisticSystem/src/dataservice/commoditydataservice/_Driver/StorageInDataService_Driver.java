@@ -25,12 +25,12 @@ public class StorageInDataService_Driver {
         StorageInPO inPO = new StorageInPO("2015-10-09",GoodsInStorageInfo);
         StorageInPO inPO2 = new StorageInPO("2015-10-09",GoodsInStorageInfo);
         StorageInPO inPO3 = new StorageInPO("2015-10-10",GoodsInStorageInfo);
-        storageInDataService.find("2015-10-10");
+        storageInDataService.find(inPO);
         storageInDataService.insert(inPO3);
         storageInDataService.delete(inPO2);
         inPO3 = new StorageInPO("2015-10-11",GoodsInStorageInfo);
         storageInDataService.update(inPO3);
-        ArrayList<StorageInPO> output = storageInDataService.find("2015-10-09");
+        ArrayList<StorageInPO> output = storageInDataService.find(inPO);
     }
 
 }

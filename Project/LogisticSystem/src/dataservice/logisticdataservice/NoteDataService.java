@@ -11,19 +11,19 @@ public interface NoteDataService {
 	/**
 	 * 在数据库中增加一个po记录
 	 */
-	public void insert(NotePO po) throws RemoteException;
+	public boolean insert(NotePO po) throws RemoteException;
 	/**
 	 * 在数据库中删除一个po记录
 	 */
-	public void delete(NotePO po) throws RemoteException;
+	public boolean delete(NotePO po) throws RemoteException;
 	/**
 	 * 在数据库中更新一个po记录
 	 */
-	public void update(NotePO po) throws RemoteException;
+	public boolean update(NotePO po) throws RemoteException;
 	/**
 	 * 查找返回相应的NotePO结果
 	 */
-	public ArrayList<NotePO> find(String name) throws RemoteException;
+	public ArrayList<NotePO> find(NotePO po) throws RemoteException;
 	
 	/**
 	 * 返回所有的NotePO

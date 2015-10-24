@@ -36,10 +36,8 @@ public class TransitNoteInputDataService_Driver {
         service.insert(po1);
         service.insert(po2);
         service.findAll();
-        service.find("西安");
-        service.find("王小二");
-        service.find("CA1206");
-        service.find("3000111112");
+        service.find(po1);
+        service.find(po2);
         service.delete(po1);
         service.delete(po2);
         service.findAll();

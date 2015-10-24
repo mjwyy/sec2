@@ -24,8 +24,8 @@ public class NoteDataService_Driver {
         service.insert(po1);
         service.insert(po2);
         service.findAll();
-        service.find("寄件单");
-        service.find("中转单");
+        service.find(po1);
+        service.find(po2);
         service.delete(po1);
         service.delete(po2);
         service.findAll();

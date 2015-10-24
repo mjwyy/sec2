@@ -25,22 +25,25 @@ public class DeliveryNoteInputDataService_Stub implements DeliveryNoteInputDataS
     }
 
     @Override
-    public void insert(DeliveryNoteInputPO po) throws RemoteException {
+    public boolean insert(DeliveryNoteInputPO po) throws RemoteException {
         System.out.println("insert succeed!");
+		return true;
     }
 
     @Override
-    public void delete(DeliveryNoteInputPO po) throws RemoteException {
+    public boolean delete(DeliveryNoteInputPO po) throws RemoteException {
         System.out.println("delete succeed!");
+		return true;
     }
 
     @Override
-    public void update(DeliveryNoteInputPO po) throws RemoteException {
+    public boolean update(DeliveryNoteInputPO po) throws RemoteException {
         System.out.println("update succeed!");
+		return true;
     }
 
     @Override
-    public ArrayList<DeliveryNoteInputPO> find(String name) throws RemoteException {
+    public ArrayList<DeliveryNoteInputPO> find(DeliveryNoteInputPO po) throws RemoteException {
         System.out.println("find succeed!");
         return pos;
     }

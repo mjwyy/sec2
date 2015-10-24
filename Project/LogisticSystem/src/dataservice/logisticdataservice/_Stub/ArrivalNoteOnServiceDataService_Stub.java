@@ -19,10 +19,9 @@ public class ArrivalNoteOnServiceDataService_Stub implements ArrivalNoteOnServic
 
 	public ArrivalNoteOnServiceDataService_Stub() {
 		pos = new ArrayList<ArrivalNoteOnServicePO>();
-		Date date = new Date();
-		this.arrivalNoteOnServicePO = new ArrivalNoteOnServicePO(date,"250000201510130000000","北京","南京");
-		this.arrivalNoteOnServicePO2 = new ArrivalNoteOnServicePO(date,"250000201510130000001","北京","南京");
-		this.arrivalNoteOnServicePO3 = new ArrivalNoteOnServicePO(date,"250000201510130000002","北京","南京");
+		this.arrivalNoteOnServicePO = new ArrivalNoteOnServicePO("2011-11-11","250000201510130000000","北京","南京");
+		this.arrivalNoteOnServicePO2 = new ArrivalNoteOnServicePO("2011-11-11","250000201510130000001","北京","南京");
+		this.arrivalNoteOnServicePO3 = new ArrivalNoteOnServicePO("2011-11-11","250000201510130000002","北京","南京");
 		pos.add(arrivalNoteOnServicePO);
 		pos.add(this.arrivalNoteOnServicePO2);
 		pos.add(arrivalNoteOnServicePO3);
@@ -30,22 +29,25 @@ public class ArrivalNoteOnServiceDataService_Stub implements ArrivalNoteOnServic
 
 
 	@Override
-	public void insert(ArrivalNoteOnServicePO po) throws RemoteException {
+	public boolean insert(ArrivalNoteOnServicePO po) throws RemoteException {
 		System.out.println("insert ArrivalNoteOnServicePO succeed");
+return true;
 	}
 
 	@Override
-	public void delete(ArrivalNoteOnServicePO po) throws RemoteException {
+	public boolean delete(ArrivalNoteOnServicePO po) throws RemoteException {
 		System.out.println("delete ArrivalNoteOnServicePO succeed");
+		return true;
 	}
 
 	@Override
-	public void update(ArrivalNoteOnServicePO po) throws RemoteException {
+	public boolean update(ArrivalNoteOnServicePO po) throws RemoteException {
 		System.out.println("update ArrivalNoteOnServicePO succeed");
+		return true;
 	}
 
 	@Override
-	public ArrayList<ArrivalNoteOnServicePO> find(String name) throws RemoteException {
+	public ArrayList<ArrivalNoteOnServicePO> find(ArrivalNoteOnServicePO po) throws RemoteException {
 		System.out.println("find ArrivalNoteOnServicePO succeed");
 		return pos;
 	}

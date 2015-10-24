@@ -10,7 +10,7 @@ import vo.ArrivalNoteOnServiceVO;
  * @author kylin
  *
  */
-public interface ArrivalNoteOnServiceBLService extends NoteInputBLService {
+public interface ArrivalNoteOnServiceBLService {
 	/**
 	 * 营业厅业务员输入到达单信息
 	 *

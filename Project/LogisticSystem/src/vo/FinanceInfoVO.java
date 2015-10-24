@@ -1,5 +1,7 @@
 package vo;
 
+import java.math.BigDecimal;
+
 /**
  * 期初建账使用的财务信息
  * 
@@ -7,5 +9,38 @@ package vo;
  *
  */
 public class FinanceInfoVO {
-    // TODO 需要补充的期初建账使用的财务信息信息
+	/**
+	 * 账户名称用字符串表示
+	 */
+	private String name = null;
+	
+	/**
+	 * 账号用字符串表示
+	 */
+	private String number = null;
+	
+	/**
+	 * 为保证精度，余额用BigDecimal表示
+	 */
+	private BigDecimal balance = null;
+
+	public FinanceInfoVO(String name, String number, BigDecimal balance) {
+		super();
+		this.name = name;
+		this.number = number;
+		this.balance = balance;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getNumber() {
+		return number;
+	}
+
+	public BigDecimal getBalance() {
+		return balance;
+	}
+	
 }

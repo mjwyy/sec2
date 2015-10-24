@@ -19,7 +19,7 @@ public interface LogInquiryBLService {
 	 * @param keywords
 	 * @return
 	 */
-	public ResultMsg inputKeywords(String keywords);
+	public ResultMsg inputKeywords(SystemLogVO log);
 	
 	/**
 	 *	显示对应关键字的系统日志
@@ -27,6 +27,6 @@ public interface LogInquiryBLService {
 	 * @param keywords
 	 * @return
 	 */
-	public ArrayList<SystemLogVO> getLogInfo(String keywords);
+	public ArrayList<SystemLogVO> getLogInfo(SystemLogVO log);
 	
 }

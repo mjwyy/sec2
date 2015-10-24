@@ -1,8 +1,5 @@
 package businesslogicservice.statisticblservice._driver;
 
-import java.util.ArrayList;
-
-import businesslogic.util.DocType;
 import businesslogicservice.statisticblservice.NoteApprovingBLService;
 import vo.NoteVO;
 
@@ -14,7 +11,7 @@ public class NoteApprovingBLService_Driver {
 		service.passAllDoc();
 		service.passDoc(new NoteVO(){});
 		service.failDoc(new NoteVO(){});
-		service.inputAdvice(new NoteVO(){}, "²»ÐÐ");
+		service.inputAdvice(new NoteVO(){}, "ï¿½ï¿½ï¿½ï¿½");
 	}
 	
 }

@@ -7,17 +7,20 @@ import businesslogicservice.statisticblservice.LogInquiryBLService;
 import vo.SystemLogVO;
 
 public class LogInquiryBLService_Stub implements LogInquiryBLService {
-	
 
-	public ResultMsg inputKeywords(String keywords){
-		System.out.println("received keywords: " + keywords);
+	@Override
+	public ResultMsg inputKeywords(SystemLogVO log) {
+		System.out.println("received time keywords: " + log.getTime());
+		System.out.println("received content keywords: " + log.getContent());
 		return new ResultMsg(true, "Success!");
-	};
-	
+	}
 
-	public ArrayList<SystemLogVO> getLogInfo(String keywords){
+
+	@Override
+	public ArrayList<SystemLogVO> getLogInfo(SystemLogVO log) {
 		System.out.println("returning info");
+		System.out.println("received content" + log.getContent());
 		return new ArrayList<>();
-	};
+	}
 	
 }

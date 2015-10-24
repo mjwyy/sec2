@@ -7,7 +7,7 @@ public class VehiclePO implements Serializable {
 
 	private static final long serialVersionUID = -843114324702086467L;
 
-	public VehiclePO(String carNumber, String hallNumber,
+	public VehiclePO(String carNumber, String hallNumber,File picture,
 			String firstUseTime) {
 		super();
 		this.carNumber = carNumber;

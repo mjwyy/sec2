@@ -1,17 +1,11 @@
 package businesslogicservice.statisticblservice._stub;
 
-import businesslogic.util.ConstantType;
 import businesslogic.util.PriceType;
 import businesslogic.util.ResultMsg;
 import businesslogicservice.statisticblservice.BusinessDataModificationBLService;
 
 
 public class BusinessDataModificationBLService_Stub implements BusinessDataModificationBLService {
-
-    @Override
-	public void selectConstantType(ConstantType type){
-		System.out.println("seleted type");
-	};
 
     @Override
 	public ResultMsg inputCityDistance(String city1,String city2,double distance){

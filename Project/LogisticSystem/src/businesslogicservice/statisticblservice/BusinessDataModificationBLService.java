@@ -1,6 +1,5 @@
 package businesslogicservice.statisticblservice;
 
-import businesslogic.util.ConstantType;
 import businesslogic.util.PriceType;
 import businesslogic.util.ResultMsg;
 
@@ -11,13 +10,6 @@ import businesslogic.util.ResultMsg;
  *
  */
 public interface BusinessDataModificationBLService {
-	
-	/**
-	 * 总经理选择修改业务数据类型
-	 *
-	 * @param type
-	 */
-	public void selectConstantType(ConstantType type);
 	
 	/**
 	 * 总经理要求价格常量

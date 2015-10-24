@@ -30,22 +30,25 @@ public class LoadNoteOnServiceDataService_Stub implements LoadNoteOnServiceDataS
     }
 
     @Override
-    public void insert(LoadNoteOnServicePO po) throws RemoteException {
+    public boolean insert(LoadNoteOnServicePO po) throws RemoteException {
         System.out.println("insert succeed!");
+		return true;
     }
 
     @Override
-    public void delete(LoadNoteOnServicePO po) throws RemoteException {
+    public boolean delete(LoadNoteOnServicePO po) throws RemoteException {
         System.out.println("delete succeed!");
+		return true;
     }
 
     @Override
-    public void update(LoadNoteOnServicePO po) throws RemoteException {
+    public boolean update(LoadNoteOnServicePO po) throws RemoteException {
         System.out.println("update succeed!");
+		return true;
     }
 
     @Override
-    public ArrayList<LoadNoteOnServicePO> find(String name) throws RemoteException {
+    public ArrayList<LoadNoteOnServicePO> find(LoadNoteOnServicePO po) throws RemoteException {
         System.out.println("find succeed!");
         return pos;
     }

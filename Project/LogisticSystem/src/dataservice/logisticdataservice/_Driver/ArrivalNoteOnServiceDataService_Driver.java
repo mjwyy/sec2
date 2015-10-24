@@ -20,10 +20,9 @@ public class ArrivalNoteOnServiceDataService_Driver {
 
     public ArrivalNoteOnServiceDataService_Driver() {
         pos = new ArrayList<ArrivalNoteOnServicePO>();
-        Date date = new Date();
-        arrivalNoteOnServicePO = new ArrivalNoteOnServicePO(date,"250000201510130000000","北京","南京");
-        arrivalNoteOnServicePO2 = new ArrivalNoteOnServicePO(date,"250000201510130000001","北京","南京");
-        arrivalNoteOnServicePO3 = new ArrivalNoteOnServicePO(date,"250000201510130000002","北京","南京");
+        arrivalNoteOnServicePO = new ArrivalNoteOnServicePO("2011-11-11","250000201510130000000","北京","南京");
+        arrivalNoteOnServicePO2 = new ArrivalNoteOnServicePO("2011-11-11","250000201510130000001","北京","南京");
+        arrivalNoteOnServicePO3 = new ArrivalNoteOnServicePO("2011-11-11","250000201510130000002","北京","南京");
         pos.add(arrivalNoteOnServicePO);
         pos.add(arrivalNoteOnServicePO2);
         pos.add(arrivalNoteOnServicePO3);
@@ -33,8 +32,8 @@ public class ArrivalNoteOnServiceDataService_Driver {
     public void drive(ArrivalNoteOnServiceDataService arrivalNoteOnServiceDataService) throws RemoteException {
         arrivalNoteOnServiceDataService.insert(arrivalNoteOnServicePO);
         arrivalNoteOnServiceDataService.insert(arrivalNoteOnServicePO2);
-        arrivalNoteOnServiceDataService.find("南京");
-        arrivalNoteOnServiceDataService.find("北京");
+        arrivalNoteOnServiceDataService.find(arrivalNoteOnServicePO);
+        arrivalNoteOnServiceDataService.find(arrivalNoteOnServicePO2);
         arrivalNoteOnServiceDataService.findAll();
         arrivalNoteOnServiceDataService.delete(arrivalNoteOnServicePO);
         arrivalNoteOnServiceDataService.update(arrivalNoteOnServicePO3);

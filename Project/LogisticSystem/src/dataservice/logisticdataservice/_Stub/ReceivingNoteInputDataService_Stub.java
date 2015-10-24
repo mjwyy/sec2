@@ -27,22 +27,25 @@ public class ReceivingNoteInputDataService_Stub implements ReceivingNoteInputDat
     }
 
     @Override
-    public void insert(ReceivingNoteInputPO po) throws RemoteException {
+    public boolean insert(ReceivingNoteInputPO po) throws RemoteException {
         System.out.println("insert succeed!");
+        return true;
     }
 
     @Override
-    public void delete(ReceivingNoteInputPO po) throws RemoteException {
+    public boolean delete(ReceivingNoteInputPO po) throws RemoteException {
         System.out.println("delete succeed!");
+        return true;
     }
 
     @Override
-    public void update(ReceivingNoteInputPO po) throws RemoteException {
+    public boolean update(ReceivingNoteInputPO po) throws RemoteException {
         System.out.println("update succeed!");
+        return true;
     }
 
     @Override
-    public ArrayList<ReceivingNoteInputPO> find(String name) throws RemoteException {
+    public ArrayList<ReceivingNoteInputPO> find(ReceivingNoteInputPO po) throws RemoteException {
         System.out.println("find succeed!");
         return pos;
     }

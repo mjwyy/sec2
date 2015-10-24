@@ -35,22 +35,25 @@ public class LoadNoteOnTransitDataService_Stub implements LoadNoteOnTransitDataS
     }
 
     @Override
-    public void insert(LoadNoteOnTransitPO po) throws RemoteException {
+    public boolean insert(LoadNoteOnTransitPO po) throws RemoteException {
         System.out.println("insert succeed!");
+		return true;
     }
 
     @Override
-    public void delete(LoadNoteOnTransitPO po) throws RemoteException {
+    public boolean delete(LoadNoteOnTransitPO po) throws RemoteException {
         System.out.println("delete succeed!");
+		return true;
     }
 
     @Override
-    public void update(LoadNoteOnTransitPO po) throws RemoteException {
+    public boolean update(LoadNoteOnTransitPO po) throws RemoteException {
         System.out.println("update succeed!");
+		return true;
     }
 
     @Override
-    public ArrayList<LoadNoteOnTransitPO> find(String name) throws RemoteException {
+    public ArrayList<LoadNoteOnTransitPO> find(LoadNoteOnTransitPO po) throws RemoteException {
         System.out.println("find succeed!");
         return pos;
     }

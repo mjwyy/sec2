@@ -36,22 +36,25 @@ public class TransitNoteInputDataService_Stub implements TransitNoteInputDataSer
     }
 
     @Override
-    public void insert(TransitNoteInputPO po) throws RemoteException {
+    public boolean insert(TransitNoteInputPO po) throws RemoteException {
         System.out.println("insert succeed!");
+		return true;
     }
 
     @Override
-    public void delete(TransitNoteInputPO po) throws RemoteException {
+    public boolean delete(TransitNoteInputPO po) throws RemoteException {
         System.out.println("delete succeed!");
+		return true;
     }
 
     @Override
-    public void update(TransitNoteInputPO po) throws RemoteException {
+    public boolean update(TransitNoteInputPO po) throws RemoteException {
         System.out.println("update succeed!");
+		return true;
     }
 
     @Override
-    public ArrayList<TransitNoteInputPO> find(String name) throws RemoteException {
+    public ArrayList<TransitNoteInputPO> find(TransitNoteInputPO po) throws RemoteException {
         System.out.println("find succeed!");
         return pos;
     }

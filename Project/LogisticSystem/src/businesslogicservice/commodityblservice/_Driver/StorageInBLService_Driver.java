@@ -36,6 +36,5 @@ public void drive(StorageInBLService a){
 		System.out.println("没有超过库存值");
 	else
 		System.out.println("超过库存预警，库存报警");
-	a.show();
 }
 }

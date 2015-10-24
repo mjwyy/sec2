@@ -2,10 +2,8 @@ package businesslogicservice.commodityblservice._Driver;
 
 import java.util.ArrayList;
 
-import vo.GoodsVO;
-import vo.StorageInVO;
+
 import vo.StorageOutVO;
-import businesslogic.util.InventoryStatus;
 import businesslogic.util.ResultMsg;
 import businesslogicservice.commodityblservice.StorageOutBLService;
 import businesslogicservice.commodityblservice._Stub.StorageOutBLService_Stub;
@@ -32,6 +30,6 @@ public class StorageOutBLService_Driver {
 			System.out.println("提交成功");
 		else
 			System.out.println("提交失败");
-		a.show();
+
 	}
 }

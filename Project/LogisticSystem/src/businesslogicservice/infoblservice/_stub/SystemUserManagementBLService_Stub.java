@@ -32,7 +32,7 @@ public class SystemUserManagementBLService_Stub implements SystemUserManagementB
 	};
 	
 
-	public ArrayList<UserVO> find(String userNum){
+	public ArrayList<UserVO> find(UserVO vo){
 		System.out.println("found user");
 		return new ArrayList<>();
 	};

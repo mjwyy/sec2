@@ -12,11 +12,6 @@ import businesslogic.util.ResultMsg;
 import vo.StorageInVO;
 
 public interface StorageInBLService {
-	/**
-	 * 显示入库单信息
-	 * @return 信息列表
-	 */
-	public ArrayList<StorageInVO> show();
 	
 	/**
 	 * 新增入库单

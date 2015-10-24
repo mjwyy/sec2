@@ -38,7 +38,7 @@ public interface SystemUserManagementBLService {
 	 * @param userNum
 	 * @return
 	 */
-	public ArrayList<UserVO> find(String userNum);
+	public ArrayList<UserVO> find(UserVO vo);
 		
 	
  

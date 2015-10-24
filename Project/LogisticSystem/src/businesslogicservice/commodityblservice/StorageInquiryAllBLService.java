@@ -25,13 +25,5 @@ public interface StorageInquiryAllBLService {
 	 */
 	public ResultMsg request();
 	
-	/**
-	 * 系统要求确认进行盘点
-	 * @return
-	 */
-	public ArrayList<InventoryVO> show();
-	
-	
-	
 
 }

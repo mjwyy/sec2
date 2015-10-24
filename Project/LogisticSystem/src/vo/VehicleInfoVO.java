@@ -1,5 +1,7 @@
 package vo;
 
+import java.io.File;
+
 public class VehicleInfoVO {
 	
 	/**
@@ -13,9 +15,11 @@ public class VehicleInfoVO {
 	private String platenumber;
 	
 	/**
-	 * 服役实现
+	 * 服役时间
 	 */
 	private String serviceTimeLimit;
+	
+	private File picture;
 	
 	/**
 	 * 
@@ -23,10 +27,11 @@ public class VehicleInfoVO {
 	 * @param platenumber
 	 * @param serviceTimeLimit
 	 */
-	public VehicleInfoVO(String vehiclecode,String platenumber,String serviceTimeLimit){
+	public VehicleInfoVO(String vehiclecode,String platenumber,String serviceTimeLimit,File picture){
 		this.vehiclecode = vehiclecode;
 		this.platenumber = platenumber;
 		this.serviceTimeLimit =serviceTimeLimit;
+		this.picture = picture;
 	}
 
 	public String getVehiclecode() {
@@ -39,5 +44,9 @@ public class VehicleInfoVO {
 
 	public String getServiceTimeLimit() {
 		return serviceTimeLimit;
+	}
+	
+	public File getPicture(){
+		return picture;
 	}
 }

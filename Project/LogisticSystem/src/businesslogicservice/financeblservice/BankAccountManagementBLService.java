@@ -18,7 +18,7 @@ public interface BankAccountManagementBLService {
 	 * @param name
 	 * @return
 	 */
-	public ArrayList<AccountVO> find(String name);
+	public ArrayList<AccountVO> find(AccountVO vo);
 	
 	/**
 	 * 增加账户

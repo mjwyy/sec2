@@ -13,11 +13,6 @@ public class CreditNoteInputBLService_Stub implements
 		
 	}
 
-	@Override
-	public ArrayList<ReceipeVO> show() {
-		System.out.println("showing");
-		return new ArrayList<ReceipeVO>();
-	}
 
 	@Override
 	public ResultMsg addReceipeDoc(ReceipeVO vo) {

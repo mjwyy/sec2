@@ -11,7 +11,6 @@ public static void main(String[] args){
 	b.drive(a);
 }
 public void drive(StorageInquiryAllBLService a){
-	a.show();
 	ResultMsg result2 =a.inputFirst("2011-11-11");
 	if(result2.isPass()==true)
 		System.out.println("success");

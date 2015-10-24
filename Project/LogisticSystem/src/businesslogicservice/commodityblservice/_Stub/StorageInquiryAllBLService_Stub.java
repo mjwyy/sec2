@@ -20,10 +20,6 @@ public class StorageInquiryAllBLService_Stub implements StorageInquiryAllBLServi
 	public ResultMsg request() {
 			return new ResultMsg(true,"提交成功");
 	}
-
-	@Override
-	public ArrayList<InventoryVO> show() {
-		return new ArrayList<InventoryVO>();
-	}
+	
 
 }

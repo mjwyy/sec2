@@ -6,6 +6,9 @@ import java.rmi.RemoteException;
 import dataservice.exception.FailToPassApprovingException;
 import po.PaymentPO;
 
+/**
+* @author River
+*/
 public interface PaymentInputDataService extends Remote {
 
 	/**

@@ -5,6 +5,9 @@ import java.rmi.RemoteException;
 
 import po.IncomeNotePO;
 
+/**
+* @author River
+*/
 public interface SettlementManagementDataService extends Remote {
 	/**
 	 * Data层增加收款单记录，修改对应账户信息

@@ -8,6 +8,9 @@ import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
 import po.UserPO;
 
+/**
+* @author River
+*/
 public interface SystemUserManagementDataService extends Remote {
 	/**
 	 * Data向数据库中添加对应UserPO记录

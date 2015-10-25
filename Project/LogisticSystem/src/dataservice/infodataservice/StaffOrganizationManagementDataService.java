@@ -9,6 +9,9 @@ import dataservice.exception.InterruptWithExistedElementException;
 import po.OrganizationPO;
 import po.StaffPO;
 
+/**
+* @author River
+*/
 public interface StaffOrganizationManagementDataService extends Remote {
 	/**
 	 * Data向数据库中添加对应StaffPO项

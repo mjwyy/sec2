@@ -5,8 +5,14 @@
  */
 package po;
 
+import java.io.Serializable;
+
 //TODO povo的统一
-public class ArrivalNoteOnTransitPO {
+public class ArrivalNoteOnTransitPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7182509551136962156L;
 	private String transitNum;//中转中心编号
 	private String time;//货物到达日期
 	private String transitNoteNum;//中转单编号
@@ -35,4 +41,5 @@ public class ArrivalNoteOnTransitPO {
 	public String getTransitNum() {
 		return transitNum;
 	}
+
 }

@@ -5,9 +5,16 @@
  */
 package po;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class InventoryPO {
+public class InventoryPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5409693594601033268L;
+
+
 	/**
 	 * 总的库存数量
 	 */

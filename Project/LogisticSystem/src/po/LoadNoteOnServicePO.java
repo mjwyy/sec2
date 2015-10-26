@@ -5,9 +5,15 @@
  */
 package po;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class LoadNoteOnServicePO {
+public class LoadNoteOnServicePO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4136800709346156198L;
+
 	private String date;
 
 	/**

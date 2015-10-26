@@ -1,6 +1,13 @@
 package po;
 
-public class GoodsPO {
+import java.io.Serializable;
+
+public class GoodsPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5422402328899845439L;
+
 	/**
 	 * 条形码
 	 */

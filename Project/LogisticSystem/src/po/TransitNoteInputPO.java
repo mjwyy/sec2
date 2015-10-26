@@ -5,9 +5,15 @@
  */
 package po;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class TransitNoteInputPO {
+public class TransitNoteInputPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4056108594719181855L;
+
 	/**
 	 * 装车日期
 	 */

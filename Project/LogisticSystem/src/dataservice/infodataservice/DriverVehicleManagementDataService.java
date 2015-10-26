@@ -9,6 +9,9 @@ import dataservice.exception.InterruptWithExistedElementException;
 import po.DriverPO;
 import po.VehiclePO;
 
+/**
+* @author River
+*/
 public interface DriverVehicleManagementDataService extends Remote {
 
 	/**

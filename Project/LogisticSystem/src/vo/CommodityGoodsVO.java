@@ -5,7 +5,7 @@
  */
 package vo;
 
-public class GoodsVO {
+public class CommodityGoodsVO {
 	
 	/**
 	 * 条形码
@@ -45,13 +45,37 @@ public class GoodsVO {
 	 * @param framenumber
 	 * @param placenumber
 	 */
-	public GoodsVO(String barcode,String areacode,String destination,int rownumber,int framenumber,int placenumber){
+	public CommodityGoodsVO(String barcode,String areacode,String destination,int rownumber,int framenumber,int placenumber){
 		this.barcode = barcode;
 		this.destination = destination;
 		this.areacode = areacode;
 		this.rownumber = rownumber;
 		this.framenumber = framenumber;
 		this.placenumber= placenumber;
+	}
+
+	public String getBarcode() {
+		return barcode;
+	}
+
+	public String getAreacode() {
+		return areacode;
+	}
+
+	public String getDestination() {
+		return destination;
+	}
+
+	public int getRownumber() {
+		return rownumber;
+	}
+
+	public int getFramenumber() {
+		return framenumber;
+	}
+
+	public int getPlacenumber() {
+		return placenumber;
 	}
 
 }

@@ -8,6 +8,7 @@ import java.util.ArrayList;
  * @author kylin
  *
  */
+//TODO povo的统一
 public class ArrivalNoteOnTransitVO extends NoteVO {
 	
 	/**

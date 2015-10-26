@@ -1,10 +1,6 @@
 package businesslogicservice.statisticblservice._driver;
 
-import businesslogic.util.ResultMsg;
 import businesslogicservice.statisticblservice.BaseDataBuildingBLService;
-import vo.CommodityInfoVO;
-import vo.FinanceInfoVO;
-import vo.InstitutionInfoVO;
 
 public class BaseDataBuildingBLService_Driver {
 	
@@ -17,6 +13,5 @@ public class BaseDataBuildingBLService_Driver {
 		service.changeCommodityInfo(null);
 		service.changeFinanceInfo(null);
 		service.changeInstitutionInfo(null);
-		
 	}
 }

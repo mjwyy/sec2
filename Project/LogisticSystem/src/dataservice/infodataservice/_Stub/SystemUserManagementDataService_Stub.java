@@ -38,7 +38,6 @@ public class SystemUserManagementDataService_Stub implements SystemUserManagemen
 
 	@Override
 	public ArrayList<UserPO> getAllUsers() throws RemoteException {
-		// TODO Auto-generated method stub
 		System.out.println("get success");
 		return null;
 	}

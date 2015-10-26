@@ -1,5 +1,9 @@
 package vo;
 
+import java.util.ArrayList;
+
+import po.GoodsPO;
+
 /**
  * 期初建账使用的仓库信息VO
  * 
@@ -14,31 +18,24 @@ public class CommodityInfoVO {
 	private String name;
 	
 	/**
-	 * 仓库最大库存量
+	 * 货物信息
 	 */
-	private int maxSize;
-	
-	/**
-	 * 仓库当前库存量
-	 */
-	private int currentSize;
-	
-	public CommodityInfoVO(String name, int maxSize, int currentSize) {
+	private ArrayList<GoodsPO> goodsInfo;
+
+	public CommodityInfoVO(String name, ArrayList<GoodsPO> goodsInfo) {
 		super();
 		this.name = name;
-		this.maxSize = maxSize;
-		this.currentSize = currentSize;
+		this.goodsInfo = goodsInfo;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public int getMaxSize() {
-		return maxSize;
+	public ArrayList<GoodsPO> getGoodsInfo() {
+		return goodsInfo;
 	}
-
-	public int getCurrentSize() {
-		return currentSize;
-	}
+	
+	
+	
 }

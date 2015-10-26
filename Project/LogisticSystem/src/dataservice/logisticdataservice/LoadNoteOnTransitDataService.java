@@ -28,7 +28,6 @@ public interface LoadNoteOnTransitDataService {
 	 */
 	public ArrayList<LoadNoteOnTransitPO> find(LoadNoteOnTransitPO po) throws RemoteException;
 	
-	
 	/**
 	 * 返回所有的LoadNoteOnServicePO
 	 */

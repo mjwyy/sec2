@@ -5,10 +5,7 @@
  */
 package businesslogicservice.commodityblservice;
 
-import java.util.ArrayList;
-
 import businesslogic.util.ResultMsg;
-import vo.InventoryVO;
 
 public interface StorageInquiryAllBLService {
 	

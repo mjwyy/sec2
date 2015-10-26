@@ -1,9 +1,6 @@
 package businesslogicservice.financeblservice._driver;
 
-import java.util.ArrayList;
-
 import vo.ReceiveRecordVO;
-import businesslogic.util.ResultMsg;
 import businesslogicservice.financeblservice.SettlementManagementBLService;
 
 public class SettlementManagementBLService_Driver {

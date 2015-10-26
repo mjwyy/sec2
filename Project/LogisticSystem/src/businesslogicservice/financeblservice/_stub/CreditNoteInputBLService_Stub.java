@@ -1,8 +1,6 @@
 package businesslogicservice.financeblservice._stub;
 
-import java.util.ArrayList;
-
-import vo.ReceipeVO;
+import vo.CreditNoteVO;
 import businesslogic.util.ResultMsg;
 import businesslogicservice.financeblservice.CreditNoteInputBLService;
 
@@ -15,13 +13,13 @@ public class CreditNoteInputBLService_Stub implements
 
 
 	@Override
-	public ResultMsg addReceipeDoc(ReceipeVO vo) {
+	public ResultMsg addReceipeDoc(CreditNoteVO vo) {
 		System.out.println("added doc");
 		return new ResultMsg(true, null);
 	}
 
 	@Override
-	public ResultMsg submitReceipeDoc(ReceipeVO vo) {
+	public ResultMsg submitReceipeDoc(CreditNoteVO vo) {
 		System.out.println("submitted");
 		return new ResultMsg(true, null);
 	}

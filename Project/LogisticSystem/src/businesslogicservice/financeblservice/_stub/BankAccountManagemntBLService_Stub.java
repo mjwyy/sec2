@@ -1,15 +1,9 @@
 package businesslogicservice.financeblservice._stub;
 
-import java.math.BigDecimal;
-import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
-import po.BankAccountPO;
 import dataservice.financedataservice.BankAccountManagementDataService;
-import dataservice.exception.ElementNotFoundException;
-import dataservice.exception.InterruptWithExistedElementException;
-import vo.AccountVO;
+import vo.BankAccountVO;
 import businesslogic.util.ResultMsg;
 import businesslogicservice.financeblservice.BankAccountManagementBLService;
 
@@ -28,48 +22,38 @@ public class BankAccountManagemntBLService_Stub implements
 	
 	
 	@Override
-	public ArrayList<AccountVO> find(AccountVO vo) {
-		
-		BankAccountPO ac = new BankAccountPO("name", null, null);
-		BankAccountPO result;
-		ArrayList<AccountVO> list = new ArrayList<AccountVO>();
-		
-		
+	public ArrayList<BankAccountVO> find(BankAccountVO vo) {
+		System.out.println("find Success");
+		BankAccountVO ac = new BankAccountVO(null, null, 0);
+		ArrayList<BankAccountVO> list = new ArrayList<BankAccountVO>();
+		list.add(ac);
 		return list;
 	}
 
 	@Override
-	public ResultMsg add(AccountVO vo) {
-		
+	public ResultMsg add(BankAccountVO vo) {
+		System.out.println("add Success");
 		ResultMsg result = null;
-		
-		
 		return result;
 	}
 
 	@Override
-	public ResultMsg delete(AccountVO vo) {
-		
+	public ResultMsg delete(BankAccountVO vo) {
+		System.out.println("delete Success");
 		return new ResultMsg(true, "Success!");
 	}
 
 	@Override
-	public ResultMsg update(AccountVO vo) {
-		
+	public ResultMsg update(BankAccountVO vo) {
+		System.out.println("update Success");
 		return new ResultMsg(true, "Success!");
 	}
 
 	@Override
-	public ArrayList<AccountVO> show() {
-		
-		ArrayList<AccountVO> list = new ArrayList<>();
-		ArrayList<BankAccountPO> get = null;
-		
-		
-		
+	public ArrayList<BankAccountVO> show() {
+		System.out.println("show Success");
+		ArrayList<BankAccountVO> list = new ArrayList<>();
 		return list;
 	}
-	
-
 
 }

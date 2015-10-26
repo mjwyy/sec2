@@ -1,11 +1,7 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=master
 eclipse.preferences.version=1
-<<<<<<< HEAD
-encoding//src/dataservice/logisticdataservice/ArrivalNoteOnServiceDataService.java=UTF-8
-=======
-<<<<<<< HEAD
 encoding//src/dataservice/infodataservice/SystemUserManagementDataService.java=UTF-8
-encoding//src/vo/AccountVO.java=UTF-8
-=======
 encoding//src/dataservice/logisticdataservice/ArrivalNoteOnServiceDataService.java=UTF-8
->>>>>>> origin/master
->>>>>>> master
+encoding//src/vo/BankAccountVO.java=UTF-8

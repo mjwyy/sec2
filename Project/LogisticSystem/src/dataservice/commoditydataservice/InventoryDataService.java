@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import po.InventoryPO;
 
 public interface InventoryDataService {
+	
 	/**
 	 * 按起止时间进行查找返回相应的PO结果
 	 */
-	
 	public ArrayList<InventoryPO> findByTime(String sTime,String eTime) throws RemoteException;
 	
 	

@@ -31,16 +31,28 @@ public class LoadNoteOnTransitDataService_Driver {
                 "朱梦晴","武昌昊",codes);
         LoadNoteOnTransitPO po2 = new LoadNoteOnTransitPO("2015-10-23","025100120151023000001","北京","苏A 00001",
                 "李沪东","吴大爷",codes2);
-        service.insert(po1);
-        service.insert(po2);
+        if(service.insert(po1))
+        	System.out.println("insert succeed");
+        else
+        	System.out.println("insert failed");
+        if(service.insert(po2))
+        	System.out.println("insert succeed");
+        else
+        	System.out.println("insert failed");
         service.findAll();
         service.find(po1);
         service.find(po2);
-        service.delete(po1);
+        if(service.delete(po1))
+        	System.out.println("delete succeed");
+        else
+        	System.out.println("delete failed");
         service.findAll();
         po2 = new LoadNoteOnTransitPO("2015-10-23","025100120151023000003","西藏","苏B 00001",
                 "李沪东","吴大爷",codes2);
-        service.update(po2);
+        if(service.update(po2))
+        	System.out.println("update succeed");
+        else
+        	System.out.println("update failed");
         service.findAll();
     }
 

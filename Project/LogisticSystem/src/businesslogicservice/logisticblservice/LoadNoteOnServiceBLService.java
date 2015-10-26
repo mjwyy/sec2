@@ -3,7 +3,7 @@ package businesslogicservice.logisticblservice;
 import businesslogic.util.ResultMsg;
 import vo.LoadNoteOnServiceVO;
 
-public interface LoadNoteOnServiceBLService extends NoteInputBLService {
+public interface LoadNoteOnServiceBLService {
 
 	/**
 	 * 营业厅业务员输入营业厅装车单信息

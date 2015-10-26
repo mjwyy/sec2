@@ -12,7 +12,6 @@ public class SettlementManagementDataService_Stub implements SettlementManagemen
 
 	@Override
 	public boolean addIncomeNote(IncomeNotePO note) throws RemoteException {
-		// TODO Auto-generated method stub
 		System.out.println("add income note sucess");
 		return true;
 	}

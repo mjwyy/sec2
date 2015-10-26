@@ -2,10 +2,7 @@ package businesslogicservice.logisticblservice._Driver;
 
 import java.util.ArrayList;
 
-import vo.ArrivalNoteOnServiceVO;
-import vo.DeliverNoteOnServiceVO;
 import vo.TransitNoteOnTransitVO;
-import businesslogic.util.GoodsState;
 import businesslogic.util.ResultMsg;
 import businesslogicservice.logisticblservice.TransitNoteInputBLService;
 import businesslogicservice.logisticblservice._Stub.TransitNoteInputBLService_Stub;

@@ -8,6 +8,9 @@ import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
 import po.UserPO;
 
+/**
+* @author River
+*/
 public interface SystemUserManagementDataService extends Remote {
 	/**
 	 * Data向数据库中添加对应UserPO记录
@@ -42,7 +45,7 @@ public interface SystemUserManagementDataService extends Remote {
 	 */
 	public boolean modifyUser(UserPO originalUser,UserPO modified)
 			throws RemoteException, ElementNotFoundException,InterruptWithExistedElementException;
-
+	// TODO 修改的参数的一个两个问题
 	/**
 	 * Data查询对应的用户并返回其UserPO
      *

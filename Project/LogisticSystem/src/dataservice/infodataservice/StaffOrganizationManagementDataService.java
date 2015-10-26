@@ -9,6 +9,9 @@ import dataservice.exception.InterruptWithExistedElementException;
 import po.OrganizationPO;
 import po.StaffPO;
 
+/**
+* @author River
+*/
 public interface StaffOrganizationManagementDataService extends Remote {
 	/**
 	 * Data向数据库中添加对应StaffPO项
@@ -66,7 +69,7 @@ public interface StaffOrganizationManagementDataService extends Remote {
 	 */
 	public boolean modifyStaff(StaffPO original,StaffPO modified)
 			throws RemoteException,ElementNotFoundException,InterruptWithExistedElementException;
-
+	// TODO 替换的参数一个还是两个问题
 	/**
 	 * Data将originalOrganizationPO数据替换为modifiedOrganizationPO
      *

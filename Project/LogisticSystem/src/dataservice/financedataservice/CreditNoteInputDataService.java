@@ -6,6 +6,9 @@ import java.rmi.RemoteException;
 import dataservice.exception.FailToPassApprovingException;
 import po.CreditNotePO;
 
+/**
+* @author River
+*/
 public interface CreditNoteInputDataService extends Remote {
 
 	/**

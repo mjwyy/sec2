@@ -7,7 +7,7 @@ package businesslogicservice.infoblservice._stub;
 
 import java.util.ArrayList;
 
-import vo.DriverInfoVO;
+import vo.DriverVO;
 import vo.VehicleInfoVO;
 import businesslogic.util.ResultMsg;
 import businesslogicservice.infoblservice.DriverVehicleManagementBLService;
@@ -33,19 +33,19 @@ public class DriverVehicleManagementBLService_Stub implements DriverVehicleManag
 	};
 	
 
-	public ResultMsg addDriver(DriverInfoVO vo){
+	public ResultMsg addDriver(DriverVO vo){
 		System.out.println("added driver!");
 		return new ResultMsg(true, "Success!");
 	};
 	
 
-	public ResultMsg deleteDriver(DriverInfoVO vo){
+	public ResultMsg deleteDriver(DriverVO vo){
 		System.out.println("deleted driver!");
 		return new ResultMsg(true, "Success!");
 	};
 	
 
-	public ResultMsg modifyDriver(DriverInfoVO vo){
+	public ResultMsg modifyDriver(DriverVO vo){
 		System.out.println("modified driver!");
 		return new ResultMsg(true, "Success!");
 	};
@@ -57,7 +57,7 @@ public class DriverVehicleManagementBLService_Stub implements DriverVehicleManag
 	};
 	
 
-	public ArrayList<DriverInfoVO> findDriver(DriverInfoVO vo){
+	public ArrayList<DriverVO> findDriver(DriverVO vo){
 		System.out.println("found driver");
 		return new ArrayList<>();
 	};

@@ -1,11 +1,5 @@
 package businesslogicservice.infoblservice._driver;
 
-import java.util.ArrayList;
-
-import vo.DriverInfoVO;
-import vo.VehicleInfoVO;
-import businesslogic.util.ResultMsg;
-import businesslogicservice.infoblservice.DriverVehicleManagementBLService;
 import businesslogicservice.infoblservice._stub.DriverVehicleManagementBLService_Stub;
 import businesslogicservice.infoblservice._stub.StaffOrganizationManagementBLService_Stub;
 import businesslogicservice.infoblservice._stub.SystemUserManagementBLService_Stub;

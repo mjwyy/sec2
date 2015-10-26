@@ -2,13 +2,13 @@ package po;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Calendar;
 
 /**
  * 营业厅业务员的收款单PO
  * @author River
  *
  */
+//TODO povo的统一
 public class CreditNotePO implements Serializable {
 	
 	/**

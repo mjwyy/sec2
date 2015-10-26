@@ -28,7 +28,6 @@ public interface ArrivalNoteOnServiceDataService {
 	 * 按关键字进行查找返回相应的ArrivalNoteOnServicePO结果
 	 */
 	public ArrayList<ArrivalNoteOnServicePO> find(ArrivalNoteOnServicePO po) throws RemoteException;
-
 	
 	/**
 	 * 返回所有的营业厅到达单PO

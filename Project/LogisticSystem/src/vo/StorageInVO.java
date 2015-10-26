@@ -14,19 +14,17 @@ public class StorageInVO {
      */
 	private String date;
 	
-
-	
 	/**
 	 * 货物信息，包括条形码及其位置信息
 	 */
-	private ArrayList<GoodsVO> GoodsInStorageInfo;
+	private ArrayList<CommodityGoodsVO> GoodsInStorageInfo;
 	
 	/**
 	 * 构造方法
 	 * @param date
 	 * @param GoodsInStorageInfo
 	 */
-	public StorageInVO(String date,ArrayList<GoodsVO> GoodsInStorageInfo){
+	public StorageInVO(String date,ArrayList<CommodityGoodsVO> GoodsInStorageInfo){
 		this.date = date;
 		this.GoodsInStorageInfo = GoodsInStorageInfo;
 	}
@@ -35,7 +33,7 @@ public class StorageInVO {
 		return date;
 	}
 
-	public ArrayList<GoodsVO> getGoodsInStorageInfo() {
+	public ArrayList<CommodityGoodsVO> getGoodsInStorageInfo() {
 		return GoodsInStorageInfo;
 	}
 }

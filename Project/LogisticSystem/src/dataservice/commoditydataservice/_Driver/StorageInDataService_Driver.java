@@ -4,7 +4,6 @@ import dataservice.commoditydataservice.StorageInDataService;
 import dataservice.commoditydataservice._Stub.StorageInDataService_Stub;
 import po.GoodsPO;
 import po.StorageInPO;
-import vo.GoodsVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -25,12 +24,21 @@ public class StorageInDataService_Driver {
         StorageInPO inPO = new StorageInPO("2015-10-09",GoodsInStorageInfo);
         StorageInPO inPO2 = new StorageInPO("2015-10-09",GoodsInStorageInfo);
         StorageInPO inPO3 = new StorageInPO("2015-10-10",GoodsInStorageInfo);
-        storageInDataService.find(inPO);
-        storageInDataService.insert(inPO3);
-        storageInDataService.delete(inPO2);
+        ArrayList<StorageInPO> pos =  storageInDataService.find(inPO);
+        System.out.println("find "+pos.size()+" StorageInPO");
+        if(storageInDataService.insert(inPO3))
+        	System.out.println("insert succeed");
+        else
+        	System.out.println("insert failed");
+        if(storageInDataService.delete(inPO2))
+        	System.out.println("delete succeed");
+        else
+        	System.out.println("delete failed");
         inPO3 = new StorageInPO("2015-10-11",GoodsInStorageInfo);
-        storageInDataService.update(inPO3);
-        ArrayList<StorageInPO> output = storageInDataService.find(inPO);
+        if(storageInDataService.update(inPO3))
+       		System.out.println("update succeed");
+        else
+        	System.out.println("update failed");
     }
 
 }

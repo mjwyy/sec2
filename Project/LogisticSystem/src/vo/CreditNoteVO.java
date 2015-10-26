@@ -2,7 +2,14 @@ package vo;
 
 import java.util.ArrayList;
 
-public class ReceipeVO {
+/**
+ * 快递收款单
+ * 
+ * @author kylin
+ *
+ */
+//TODO povo的统一
+public class CreditNoteVO {
   
 	/**
 	 * 日期
@@ -31,7 +38,7 @@ public class ReceipeVO {
 	 * @param CourierName
 	 * @param barcode
 	 */
-	public ReceipeVO(String date,String moneySum,String CourierName,ArrayList<String> barcode){
+	public CreditNoteVO(String date,String moneySum,String CourierName,ArrayList<String> barcode){
 		this.date = date;
 		this.moneySum = moneySum;
 		this.CourierName =CourierName;

@@ -6,7 +6,8 @@ import po.ArrivalNoteOnServicePO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.Date;
+
+import businesslogic.util.GoodsState;
 
 /**
  * Created by kylin on 15/10/20.
@@ -18,10 +19,14 @@ public class ArrivalNoteOnServiceDataService_Stub implements ArrivalNoteOnServic
 	private ArrayList<ArrivalNoteOnServicePO> pos;
 
 	public ArrivalNoteOnServiceDataService_Stub() {
-		pos = new ArrayList<ArrivalNoteOnServicePO>();
-		this.arrivalNoteOnServicePO = new ArrivalNoteOnServicePO("2011-11-11","250000201510130000000","北京","南京");
-		this.arrivalNoteOnServicePO2 = new ArrivalNoteOnServicePO("2011-11-11","250000201510130000001","北京","南京");
-		this.arrivalNoteOnServicePO3 = new ArrivalNoteOnServicePO("2011-11-11","250000201510130000002","北京","南京");
+		ArrayList<String> barCodes = new ArrayList<String>();
+        pos = new ArrayList<ArrivalNoteOnServicePO>();
+        arrivalNoteOnServicePO = new ArrivalNoteOnServicePO("2011-11-11","250000201510130000000",
+        		"北京",GoodsState.COMPLETE,barCodes);
+        arrivalNoteOnServicePO2 = new ArrivalNoteOnServicePO("2011-11-11","250000201510130000001",
+        		"北京",GoodsState.COMPLETE,barCodes);
+        arrivalNoteOnServicePO3 = new ArrivalNoteOnServicePO("2011-11-11","250000201510130000002",
+        		"北京",GoodsState.COMPLETE,barCodes);
 		pos.add(arrivalNoteOnServicePO);
 		pos.add(this.arrivalNoteOnServicePO2);
 		pos.add(arrivalNoteOnServicePO3);

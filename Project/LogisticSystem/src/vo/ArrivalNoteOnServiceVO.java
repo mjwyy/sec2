@@ -18,6 +18,16 @@ public class ArrivalNoteOnServiceVO extends NoteVO{
 	private String date;
 
 	/**
+	 * 中转单编号（装车单编号）
+	 */
+	private String TransferNumber;
+	
+	/**
+	 * 出发地
+	 */
+	private String from;
+	
+	/**
 	 * 到达状态
 	 */
 	private GoodsState state;
@@ -27,21 +37,26 @@ public class ArrivalNoteOnServiceVO extends NoteVO{
 	 */
 	private ArrayList<String> barCodes;
 
-	/**
-	 * 中转单编号（装车单编号）
-	 */
-	private String TransferNumber;
-	
-	public ArrivalNoteOnServiceVO(String date, GoodsState state, ArrayList<String> barCodes, String transferNumber) {
+	public ArrivalNoteOnServiceVO(String date, String transferNumber, String from, GoodsState state,
+			ArrayList<String> barCodes) {
 		super();
 		this.date = date;
+		TransferNumber = transferNumber;
+		this.from = from;
 		this.state = state;
 		this.barCodes = barCodes;
-		this.TransferNumber = transferNumber;
 	}
 
 	public String getDate() {
 		return date;
+	}
+
+	public String getTransferNumber() {
+		return TransferNumber;
+	}
+
+	public String getFrom() {
+		return from;
 	}
 
 	public GoodsState getState() {
@@ -52,7 +67,4 @@ public class ArrivalNoteOnServiceVO extends NoteVO{
 		return barCodes;
 	}
 
-	public String getTransferNumber() {
-		return TransferNumber;
-	}
 }

@@ -19,7 +19,7 @@ public class StorageOutBLService_Driver {
 		ArrayList<String>barcode=new ArrayList<String>();
 		barcode.add("1234567890");
 		StorageOutVO storageOutVo=new StorageOutVO("2011-11-11","北京","025000201509091234567",
-				"025000201510120000003","铁路",barcode);
+				"铁路", barcode,true);
 		ResultMsg result=a.addStorageOutDoc(storageOutVo);
 		if(result.isPass()==true)
 			System.out.println("输入的入库单格式正确");

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import vo.ArrivalNoteOnTransitVO;
 import vo.GoodsInfoVO;
-import businesslogic.util.GoodsState;
 import businesslogic.util.ResultMsg;
 import businesslogicservice.logisticblservice.ArrivalNoteOnTransitBLService;
 

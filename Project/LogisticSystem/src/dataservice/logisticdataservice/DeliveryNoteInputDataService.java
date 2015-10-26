@@ -28,7 +28,6 @@ public interface DeliveryNoteInputDataService {
 	 */
 	public ArrayList<DeliveryNoteInputPO> find(DeliveryNoteInputPO po) throws RemoteException;
 	
-	
 	/**
 	 * 返回所有的DeliveryNoteInputPO
 	 */

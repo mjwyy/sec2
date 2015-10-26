@@ -5,7 +5,8 @@ package dataservice.statisticdataservice._Stub;
  */
 import java.rmi.RemoteException;
 
-import dataservice.financedataservice.BaseDataBuildingDataService;
+import dataservice.statisticdataservice.BaseDataBuildingDataService;
+
 
 
 public class BaseDataBuildingDataService_Stub implements BaseDataBuildingDataService{

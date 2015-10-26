@@ -5,7 +5,14 @@
  */
 package po;
 
-public class DeliveryNoteInputPO {
+import java.io.Serializable;
+
+public class DeliveryNoteInputPO implements Serializable{
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3326557217189374031L;
+
 /**
  * 客户姓名
  */
@@ -120,6 +127,50 @@ public double getPackPrice() {
 
 public String getBarCode() {
 	return barCode;
+}
+
+public void setSenderName(String senderName) {
+	this.senderName = senderName;
+}
+
+public void setSenderAddress(String senderAddress) {
+	this.senderAddress = senderAddress;
+}
+
+public void setSenderWorkPlace(String senderWorkPlace) {
+	this.senderWorkPlace = senderWorkPlace;
+}
+
+public void setSenderTeleNumber(String senderTeleNumber) {
+	this.senderTeleNumber = senderTeleNumber;
+}
+
+public void setNumber(String number) {
+	this.number = number;
+}
+
+public void setWeight(double weight) {
+	this.weight = weight;
+}
+
+public void setVolume(double volume) {
+	this.volume = volume;
+}
+
+public void setName(String name) {
+	this.name = name;
+}
+
+public void setCategory(String category) {
+	this.category = category;
+}
+
+public void setPackPrice(double packPrice) {
+	this.packPrice = packPrice;
+}
+
+public void setBarCode(String barCode) {
+	this.barCode = barCode;
 }
 
 }

@@ -6,9 +6,15 @@
 
 package po;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class StorageOutPO {
+public class StorageOutPO implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4577241133330282111L;
 
 	/**
 	 * 快递编号

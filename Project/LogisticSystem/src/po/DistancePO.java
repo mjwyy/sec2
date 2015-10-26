@@ -1,7 +1,14 @@
 package po;
 
-public class DistancePO {
+import java.io.Serializable;
+
+public class DistancePO implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1779913246249138401L;
+
 	String city1;
 	
 	String city2;

@@ -22,16 +22,28 @@ public class DeliveryNoteInputDataService_Driver {
                 "150052120000","1",0.5,20,"离散数学","书籍",5,"1234567890");
         DeliveryNoteInputPO po2 = new DeliveryNoteInputPO("kylin","江苏省南京市栖霞区南京大学仙林校区","南京大学仙林校区",
                 "150052126666","1",0.5,20,"head first java","书籍",5,"1234567891");
-        service.insert(po1);
-        service.insert(po2);
+        if(service.insert(po1))
+        	System.out.println("insert succeed");
+        else
+        	System.out.println("insert failed");
+        if(service.insert(po2))
+        	System.out.println("insert succeed");
+        else
+        	System.out.println("insert failed");
         service.findAll();
         service.find(po1);
         service.find(po2);
-        service.delete(po1);
+        if(service.delete(po1))
+        	System.out.println("delete succeed");
+        else
+        	System.out.println("delete failed");
         service.findAll();
         po2 = new DeliveryNoteInputPO("一只麟","江苏省南京市栖霞区南京大学仙林校区","南京大学仙林校区",
                 "150052126666","1",0.2,20,"人月神话","书籍",5,"1234567894");
-        service.update(po2);
+        if(service.update(po2))
+        	System.out.println("update succeed");
+        else
+        	System.out.println("update failed");
         service.findAll();
     }
 }

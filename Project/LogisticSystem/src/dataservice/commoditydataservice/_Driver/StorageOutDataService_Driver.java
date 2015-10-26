@@ -22,12 +22,27 @@ public class StorageOutDataService_Driver {
         StorageOutPO po2 = new StorageOutPO(null, null, null, null, null, false);
         storageOutDataService.find(po);
         storageOutDataService.find(po2);
-        storageOutDataService.insert(po);
-        storageOutDataService.insert(po2);
+        if(storageOutDataService.insert(po))
+        	System.out.println("insert succeed");
+        else
+        	System.out.println("insert failed");
+        if(storageOutDataService.insert(po2))
+    		System.out.println("insert succeed");
+    	else
+        	System.out.println("insert failed");
         po2 = po;
-        storageOutDataService.update(po2);
-        storageOutDataService.delete(po);
-        storageOutDataService.delete(po2);
+        if(storageOutDataService.update(po2))
+        	System.out.println("update succeed");
+        else
+        	System.out.println("update failed");
+        if( storageOutDataService.delete(po))
+        	System.out.println("delete succeed");
+        else
+        	System.out.println("delete failed");
+        if(storageOutDataService.delete(po2))
+        	System.out.println("delete succeed");
+        else
+        	System.out.println("delete failed");
     }
 
 }

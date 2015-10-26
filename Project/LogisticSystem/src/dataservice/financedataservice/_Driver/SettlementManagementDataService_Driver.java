@@ -23,7 +23,12 @@ public class SettlementManagementDataService_Driver {
 	}
 	
 	public void drive(SettlementManagementDataService settlementManagementDataService) throws RemoteException {
-	   settlementManagementDataService.addIncomeNote(incomeNotePO);		
+	   settlementManagementDataService.addIncomeNote(incomeNotePO);	
+	   
+	   if(settlementManagementDataService.addIncomeNote(incomeNotePO))
+		   System.out.println("sucess");
+	   else
+		   System.out.println("fail");
 	}
 	
 	public static void main(String[] args) throws RemoteException {

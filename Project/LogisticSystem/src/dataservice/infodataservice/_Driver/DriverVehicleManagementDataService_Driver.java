@@ -57,6 +57,48 @@ public class DriverVehicleManagementDataService_Driver {
 		driverVehicleManagementDataService.inquireVehicle(new VehiclePO(null, null,null, null));
 		driverVehicleManagementDataService.getAllDriver();
 		driverVehicleManagementDataService.getAllVehicles();	
+		
+		if(driverVehicleManagementDataService.addDriver(driverPO1))
+			System.out.println("success");
+		else
+			System.out.println("fail");		
+		if(driverVehicleManagementDataService.addDriver(driverPO2))
+			System.out.println("success");
+		else
+			System.out.println("fail");		
+		if(driverVehicleManagementDataService.addDriver(driverPO3))
+			System.out.println("success");
+		else
+			System.out.println("fail");
+		if(driverVehicleManagementDataService.addVehicle(vehiclePO1))
+			System.out.println("success");
+		else
+			System.out.println("fail");	
+		if(driverVehicleManagementDataService.addVehicle(vehiclePO2))
+			System.out.println("success");
+		else
+			System.out.println("fail");
+		if(driverVehicleManagementDataService.addVehicle(vehiclePO3))
+			System.out.println("success");
+		else
+			System.out.println("fail");
+		if(driverVehicleManagementDataService.modifyVehicle(vehiclePO1, vehiclePO2))
+			System.out.println("success");
+		else
+			System.out.println("fail");
+		if(driverVehicleManagementDataService.modifyDriver(driverPO1, driverPO2))
+			System.out.println("success");
+		else
+			System.out.println("fail");
+		if(driverVehicleManagementDataService.removeDriver(driverPO2))
+			System.out.println("success");
+		else
+			System.out.println("fail");
+		if(driverVehicleManagementDataService.removeVehicle(vehiclePO1))
+			System.out.println("success");
+		else
+			System.out.println("fail");
+			
 	}
 	
 	public static void main(String[] args) throws RemoteException, InterruptWithExistedElementException, ElementNotFoundException {

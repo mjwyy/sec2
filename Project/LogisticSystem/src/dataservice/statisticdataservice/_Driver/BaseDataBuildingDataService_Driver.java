@@ -13,7 +13,21 @@ public class BaseDataBuildingDataService_Driver {
 	public void drive(BaseDataBuildingDataService baseDataBuildingDataService) throws RemoteException{
 		baseDataBuildingDataService.startBaseDataBuilding(false);
 		baseDataBuildingDataService.startBaseDataBuilding(true);
-		baseDataBuildingDataService.endBaseDataBuilding();		
+		baseDataBuildingDataService.endBaseDataBuilding();	
+		
+		if(baseDataBuildingDataService.startBaseDataBuilding(false))
+			System.out.println("success");
+		else
+			System.out.println("fail");
+		if(baseDataBuildingDataService.startBaseDataBuilding(true))
+			System.out.println("success");
+		else
+			System.out.println("fail");
+		if(baseDataBuildingDataService.endBaseDataBuilding())
+			System.out.println("success");
+		else
+			System.out.println("fail");
+		
 	}
 	
 	public static void main(String[] args) throws RemoteException{

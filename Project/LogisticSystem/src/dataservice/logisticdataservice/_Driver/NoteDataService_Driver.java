@@ -21,13 +21,25 @@ public class NoteDataService_Driver {
         NotePO po1 = new NotePO();
         NotePO po2 = new NotePO();
         service.init();
-        service.insert(po1);
-        service.insert(po2);
+        if(service.insert(po1))
+        	System.out.println("insert succeed");
+        else
+        	System.out.println("insert failed");
+        if(service.insert(po2))
+        	System.out.println("insert succeed");
+        else
+        	System.out.println("insert failed");
         service.findAll();
         service.find(po1);
         service.find(po2);
-        service.delete(po1);
-        service.delete(po2);
+        if(service.delete(po1))
+        	System.out.println("delete succeed");
+        else
+        	System.out.println("delete failed");
+        if(service.delete(po2))
+        	System.out.println("delete succeed");
+        else
+        	System.out.println("delete failed");
         service.findAll();
         service.finish();
     }

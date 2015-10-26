@@ -21,17 +21,35 @@ public class ReceivingNoteInputDataService_Driver {
         ReceivingNoteInputPO po1 = new ReceivingNoteInputPO("0123456789","旭爷","2015-10-23 14:00");
         ReceivingNoteInputPO po2 = new ReceivingNoteInputPO("0123456790","汪同学","2015-10-23 14:00");
         ReceivingNoteInputPO po3 = new ReceivingNoteInputPO("0123456791","狗狗","2015-10-26 9:00");
-        service.insert(po1);
-        service.insert(po2);
-        service.insert(po3);
+        if(service.insert(po1))
+        	System.out.println("insert succeed");
+        else
+        	System.out.println("insert failed");
+        if(service.insert(po2))
+        	System.out.println("insert succeed");
+        else
+        	System.out.println("insert failed");
+        if(service.insert(po3))
+        	System.out.println("insert succeed");
+        else
+        	System.out.println("insert failed");
         service.findAll();
         service.find(po1);
         service.find(po2);
-        service.delete(po1);
-        service.delete(po2);
+        if(service.delete(po1))
+        	System.out.println("delete succeed");
+        else
+        	System.out.println("delete failed");
+        if(service.delete(po2))
+        	System.out.println("delete succeed");
+        else
+        	System.out.println("delete failed");
         service.findAll();
         po3 = new ReceivingNoteInputPO("0123456791","狗狗","2015-10-26 9:30");
-        service.update(po3);
+        if(service.update(po3))
+        	System.out.println("update succeed");
+        else
+        	System.out.println("update failed");
         service.findAll();
     }
 

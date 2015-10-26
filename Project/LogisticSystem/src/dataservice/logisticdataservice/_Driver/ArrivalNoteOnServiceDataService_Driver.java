@@ -35,13 +35,17 @@ public class ArrivalNoteOnServiceDataService_Driver {
 
 
     public void drive(ArrivalNoteOnServiceDataService arrivalNoteOnServiceDataService) throws RemoteException {
-        arrivalNoteOnServiceDataService.insert(arrivalNoteOnServicePO);
-        arrivalNoteOnServiceDataService.insert(arrivalNoteOnServicePO2);
+        if(arrivalNoteOnServiceDataService.insert(arrivalNoteOnServicePO));
+        	System.out.println("insert succeed");
+        if(arrivalNoteOnServiceDataService.insert(arrivalNoteOnServicePO2));
+        	System.out.println("insert succeed");
         arrivalNoteOnServiceDataService.find(arrivalNoteOnServicePO);
         arrivalNoteOnServiceDataService.find(arrivalNoteOnServicePO2);
         arrivalNoteOnServiceDataService.findAll();
-        arrivalNoteOnServiceDataService.delete(arrivalNoteOnServicePO);
-        arrivalNoteOnServiceDataService.update(arrivalNoteOnServicePO3);
+        if(arrivalNoteOnServiceDataService.delete(arrivalNoteOnServicePO));
+        	System.out.println("delete succeed");
+        if(arrivalNoteOnServiceDataService.update(arrivalNoteOnServicePO3));
+        	System.out.println("update succeed");
     }
 
     public static void main(String[] args) throws RemoteException {

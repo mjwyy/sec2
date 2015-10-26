@@ -29,6 +29,21 @@ public class BankAccountManagementDataService_Driver {
 		bankAccountManagementDataService.findBankAccount(new BankAccountPO("Mark", null, null));
 		bankAccountManagementDataService.modifyBankAccount(bankAccountPO,bankAccountPO1 );
 		bankAccountManagementDataService.getAllAccounts();
+		
+		if(bankAccountManagementDataService.addBankAccount(bankAccountPO))
+			System.out.println("add success");
+		else
+			System.out.println("add fail");
+		
+		if(bankAccountManagementDataService.removeBankAccount(bankAccountPO))
+			System.out.println("remove success");
+		else
+			System.out.println("remove fail");
+		if(bankAccountManagementDataService.modifyBankAccount(bankAccountPO,bankAccountPO1 ))
+			System.out.println("modify success");
+		else 
+			System.out.println("modify fail");
+		
 	}
 	
 	public static void main(String[] args) throws RemoteException, InterruptWithExistedElementException, ElementNotFoundException{

@@ -24,6 +24,14 @@ public class BusinessDataModificationDataService_Driver {
 		businessDataService.setPrice(null, 0);
 		businessDataService.getAllCities();
 		businessDataService.getDistance(distancePO);	
+		if(businessDataService.addCity(""))
+			System.out.println("success");
+		else
+			System.out.println("fail");
+		if(businessDataService.setPrice(null, 0))
+			System.out.println("success");
+		else
+			System.out.println("fail");
 	}
 	
 	public static void main(String[] args) throws RemoteException, InterruptWithExistedElementException, ElementNotFoundException {

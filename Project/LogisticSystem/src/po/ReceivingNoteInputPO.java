@@ -6,7 +6,14 @@
  */
 package po;
 
-public class ReceivingNoteInputPO {
+import java.io.Serializable;
+
+public class ReceivingNoteInputPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4632266724829914064L;
+
 	/**
 	 * 收件单号
 	 */

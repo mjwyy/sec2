@@ -8,6 +8,9 @@ import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
 import po.BankAccountPO;
 
+/**
+* @author River
+*/
 public interface BankAccountManagementDataService extends Remote {
 
 	/**

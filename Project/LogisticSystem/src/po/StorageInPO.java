@@ -5,10 +5,16 @@
  */
 package po;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class StorageInPO {
+public class StorageInPO implements Serializable{
 	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3860679131224751298L;
+
+	/**
      * 日期
      */
 	private String date;

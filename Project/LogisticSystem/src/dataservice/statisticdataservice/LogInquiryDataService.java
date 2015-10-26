@@ -6,6 +6,9 @@ import java.util.ArrayList;
 
 import po.LogEntryPO;
 
+/**
+* @author River
+*/
 public interface LogInquiryDataService extends Remote {
 
 	/**

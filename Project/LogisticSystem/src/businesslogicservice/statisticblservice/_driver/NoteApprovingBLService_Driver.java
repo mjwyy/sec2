@@ -11,7 +11,7 @@ public class NoteApprovingBLService_Driver {
 		service.passAllDoc();
 		service.passDoc(new NoteVO(){});
 		service.failDoc(new NoteVO(){});
-		service.inputAdvice(new NoteVO(){}, "����");
+		service.inputAdvice(new NoteVO(){}, "declined");
 	}
 	
 }

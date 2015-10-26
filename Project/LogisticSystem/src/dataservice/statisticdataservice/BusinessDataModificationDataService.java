@@ -9,6 +9,9 @@ import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
 import po.DistancePO;
 
+/**
+* @author River
+*/
 public interface BusinessDataModificationDataService extends Remote {
 	
 

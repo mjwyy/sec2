@@ -6,7 +6,11 @@ import vo.PaymentRecordVO;
 public class PaymentInputBLService_Driver {
 
 	public void drive(PaymentInputBLService service){
-		service.addPaymentRecord(new PaymentRecordVO(null, null, null, null, null));
+		if(service.addPaymentRecord(new PaymentRecordVO(null, null, null, null, null)).isPass()){
+			System.out.println("Pass");
+		}else{
+			System.out.println("Fail to add payment");
+		}
 	}
 
 }

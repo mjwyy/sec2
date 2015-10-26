@@ -22,7 +22,10 @@ public class CreditNoteInputDataService_Driver {
 	
 	public void drive(CreditNoteInputDataService creditNoteInputDataService) throws RemoteException, FailToPassApprovingException {
 		creditNoteInputDataService.addCreditNote(creditNotePO);
-		//System.out.println("success");
+		if(creditNoteInputDataService.addCreditNote(creditNotePO))
+		   System.out.println("success");
+		else
+			System.out.println("fail");
 	}
 	
 	public static void main(String[] args) throws RemoteException,FailToPassApprovingException {

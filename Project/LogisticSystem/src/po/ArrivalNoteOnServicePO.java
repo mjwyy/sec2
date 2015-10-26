@@ -6,11 +6,19 @@
  */
 package po;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import businesslogic.util.GoodsState;
 
-public class ArrivalNoteOnServicePO extends NotePO{
+public class ArrivalNoteOnServicePO extends NotePO implements Serializable{
+
+
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7187002330817151504L;
 
 	/**
 	 * 到达日期
@@ -66,5 +74,8 @@ public class ArrivalNoteOnServicePO extends NotePO{
 	public ArrayList<String> getBarCodes() {
 		return barCodes;
 	}
+
+
+
 	
 }

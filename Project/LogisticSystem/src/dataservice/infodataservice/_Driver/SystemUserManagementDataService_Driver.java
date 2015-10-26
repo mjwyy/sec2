@@ -27,7 +27,21 @@ public class SystemUserManagementDataService_Driver {
 		sumDataService.removeUser(userPO);
 		sumDataService.modifyUser(userPO, userPO);
 		sumDataService.inquireUser(new UserPO(null, null, 0));
-		sumDataService.getAllUsers();		
+		sumDataService.getAllUsers();
+		
+		if(sumDataService.addUser(userPO))
+			System.out.println("success");
+		else
+			System.out.println("fail");
+		if(sumDataService.removeUser(userPO))
+			System.out.println("success");
+		else
+			System.out.println("fail");
+		if(sumDataService.modifyUser(userPO, userPO))
+			System.out.println("success");
+		else
+			System.out.println("fail");
+		
 	}
 	
 	public static void main(String[] args) throws RemoteException, InterruptWithExistedElementException, ElementNotFoundException {

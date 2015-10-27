@@ -2,7 +2,6 @@
 package businesslogicservice.infoblservice._driver;
 
 import businesslogicservice.infoblservice.SystemUserManagementBLService;
-import vo.OrganizationInfoVO;
 import vo.UserVO;
 
 public class SystemUserManagementBLService_Driver {

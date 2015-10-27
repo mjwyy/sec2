@@ -9,7 +9,7 @@ import businesslogicservice.logisticblservice.DeliveryNoteInputBLService;
 
 
 public class DeliveryNoteInputUI {
-	public void init(DeliveryNoteInputBLService service){
+	public DeliveryNoteInputUI(DeliveryNoteInputBLService service){
 
 	}
 	

@@ -8,7 +8,7 @@ package businesslogicservice.infoblservice;
 import java.util.ArrayList;
 
 import businesslogic.util.ResultMsg;
-import vo.OrganizationInfoVO;
+import vo.OrganizationVO;
 import vo.StaffVO;
 
 public interface StaffOrganizationManagementBLService {
@@ -46,33 +46,33 @@ public interface StaffOrganizationManagementBLService {
 	 * @param vo
 	 * @return
 	 */
-	public ResultMsg addOrganization(OrganizationInfoVO vo);
+	public ResultMsg addOrganization(OrganizationVO vo);
 	
 	/**
 	 * 删除机构信息
 	 * @param vo
 	 * @return
 	 */
-	public ResultMsg delOrganization(OrganizationInfoVO vo);
+	public ResultMsg delOrganization(OrganizationVO vo);
 	
 	/**
 	 * 修改机构信息
 	 * @param vo
 	 * @return
 	 */
-	public ResultMsg ModifyOrganization(OrganizationInfoVO vo);
+	public ResultMsg ModifyOrganization(OrganizationVO vo);
 	
 	/**
 	 * 关键字查找机构信息
 	 * @param keyword
 	 * @return
 	 */
-	public ArrayList<OrganizationInfoVO> findOrgInfo(OrganizationInfoVO vo);
+	public ArrayList<OrganizationVO> findOrgInfo(OrganizationVO vo);
 	
 	/**
 	 * 显示所有机构人员信息
 	 * @return
 	 */
-	public ArrayList<OrganizationInfoVO> showAll();
+	public ArrayList<OrganizationVO> showAll();
 
 }

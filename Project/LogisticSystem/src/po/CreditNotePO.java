@@ -22,8 +22,6 @@ public class CreditNotePO implements Serializable {
 		this.date = date;
 		this.money = money;
 	}
-	
-	
 
 	/**
 	 * 日期用字符串表示

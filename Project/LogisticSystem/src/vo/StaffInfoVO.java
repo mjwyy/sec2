@@ -1,6 +1,6 @@
 package vo;
 
-public class StaffVO {
+public class StaffInfoVO {
 	
 	/**
 	 * 姓名
@@ -46,7 +46,7 @@ public class StaffVO {
 	 * @param phoneNum
 	 * @param wage
 	 */
-	public StaffVO(String name,String sex,String postion,String IDNum,int workingtime,String phoneNum,double wage){
+	public StaffInfoVO(String name,String sex,String postion,String IDNum,int workingtime,String phoneNum,double wage){
 		this.name = name;
 		this.sex = sex;
 		this.phoneNum = phoneNum;

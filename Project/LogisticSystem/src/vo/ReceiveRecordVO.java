@@ -6,7 +6,7 @@ package vo;
  * @author kylin
  *
  */
-public class IncomeNoteVO {
+public class ReceiveRecordVO {
      
 	/**
 	 * 金额
@@ -38,8 +38,6 @@ public class IncomeNoteVO {
 	 */
 	private String place;
 	
-	private BankAccountVO bankAccount;
-	
 	/**
 	 * 构造方法
 	 * @param money
@@ -49,15 +47,14 @@ public class IncomeNoteVO {
 	 * @param payService
 	 * @param place
 	 */
-	public IncomeNoteVO(String money,String date,String institution,
-			String payee,String payService,String place,BankAccountVO bankAccount){
+	public ReceiveRecordVO(String money,String date,String institution,
+			String payee,String payService,String place){
 		this.date = date;
 		this.institution =institution;
 		this.money = money;
 		this.payee = payee;
 		this.payService = payService;
 		this.place = place;
-		this.bankAccount = bankAccount;
 	}
 
 	public String getMoney() {

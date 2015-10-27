@@ -2,7 +2,7 @@ package vo;
 
 import java.io.File;
 
-public class VehicleVO {
+public class VehicleInfoVO {
 	
 	/**
 	 * 车辆代号
@@ -27,7 +27,7 @@ public class VehicleVO {
 	 * @param platenumber
 	 * @param serviceTimeLimit
 	 */
-	public VehicleVO(String vehiclecode,String platenumber,String serviceTimeLimit,File picture){
+	public VehicleInfoVO(String vehiclecode,String platenumber,String serviceTimeLimit,File picture){
 		this.vehiclecode = vehiclecode;
 		this.platenumber = platenumber;
 		this.serviceTimeLimit =serviceTimeLimit;

@@ -2,8 +2,6 @@ package vo;
 
 import java.util.ArrayList;
 
-import businesslogic.util.GoodsState;
-
 /**
  * 营业厅到达单VO
  * 
@@ -28,23 +26,17 @@ public class ArrivalNoteOnServiceVO extends NoteVO{
 	private String from;
 	
 	/**
-	 * 到达状态
+	 * 货物的条形码与对应状态
 	 */
-	private GoodsState state;
+	private ArrayList<BarcodeAndStateVO> BarcodeAndState;
 
-	/**
-	 * 货物托运条形码
-	 */
-	private ArrayList<String> barCodes;
-
-	public ArrivalNoteOnServiceVO(String date, String transferNumber, String from, GoodsState state,
-			ArrayList<String> barCodes) {
+	public ArrivalNoteOnServiceVO(String date, String transferNumber, String from,
+			ArrayList<BarcodeAndStateVO> barcodeAndState) {
 		super();
 		this.date = date;
 		TransferNumber = transferNumber;
 		this.from = from;
-		this.state = state;
-		this.barCodes = barCodes;
+		BarcodeAndState = barcodeAndState;
 	}
 
 	public String getDate() {
@@ -59,12 +51,8 @@ public class ArrivalNoteOnServiceVO extends NoteVO{
 		return from;
 	}
 
-	public GoodsState getState() {
-		return state;
+	public ArrayList<BarcodeAndStateVO> getBarcodeAndState() {
+		return BarcodeAndState;
 	}
-
-	public ArrayList<String> getBarCodes() {
-		return barCodes;
-	}
-
+	
 }

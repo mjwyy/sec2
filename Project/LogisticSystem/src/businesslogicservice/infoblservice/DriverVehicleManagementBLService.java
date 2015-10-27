@@ -8,7 +8,7 @@ package businesslogicservice.infoblservice;
 import java.util.ArrayList;
 
 import vo.DriverVO;
-import vo.VehicleInfoVO;
+import vo.VehicleVO;
 import businesslogic.util.ResultMsg;
 public interface DriverVehicleManagementBLService {
 	
@@ -17,21 +17,21 @@ public interface DriverVehicleManagementBLService {
 	 * @param vo
 	 * @return
 	 */
-	public ResultMsg addVehicle(VehicleInfoVO vo);
+	public ResultMsg addVehicle(VehicleVO vo);
 	
 	/**
 	 * 删除车辆信息
 	 * @param vo
 	 * @return
 	 */
-	public ResultMsg deleteVehicle(VehicleInfoVO vo);
+	public ResultMsg deleteVehicle(VehicleVO vo);
 	
 	/**
 	 * 修改车辆信息
 	 * @param vo
 	 * @return
 	 */
-	public ResultMsg modifyVehicle(VehicleInfoVO vo);
+	public ResultMsg modifyVehicle(VehicleVO vo);
 	
 	/**
 	 * 新增司机信息
@@ -59,7 +59,7 @@ public interface DriverVehicleManagementBLService {
 	 * @param keyword
 	 * @return
 	 */
-	public ArrayList<VehicleInfoVO> findVehicle(VehicleInfoVO vo);
+	public ArrayList<VehicleVO> findVehicle(VehicleVO vo);
 	
 	/**
 	 * 关键字查询司机信息

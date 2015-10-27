@@ -1,5 +1,5 @@
 package presentation.commodityui;
 
-public class StorageOutUI {
+public class StorageInquiryUI {
 
 }

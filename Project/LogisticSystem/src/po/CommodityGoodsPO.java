@@ -1,8 +1,13 @@
+/**
+ * 货物库存信息
+ * @author WQY
+ * @data 2015/10/27
+ */
 package po;
 
 import java.io.Serializable;
 
-public class GoodsPO implements Serializable{
+public class CommodityGoodsPO implements Serializable{
 	/**
 	 * 
 	 */
@@ -46,7 +51,7 @@ public class GoodsPO implements Serializable{
 	 * @param framenumber
 	 * @param placenumber
 	 */
-	public GoodsPO(String barcode,String areacode,String destination,int rownumber,int framenumber,int placenumber){
+	public CommodityGoodsPO(String barcode,String areacode,String destination,int rownumber,int framenumber,int placenumber){
 		this.barcode = barcode;
 		this.destination = destination;
 		this.areacode = areacode;

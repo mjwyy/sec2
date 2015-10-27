@@ -6,6 +6,9 @@ import po.ArrivalNoteOnTransitPO;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.util.BarcodeAndState;
+import businesslogic.util.GoodsState;
+
 /**
  * Created by kylin on 15/10/21.
  */
@@ -16,8 +19,11 @@ public class ArrivalNoteOnTransitDataService_Stub implements ArrivalNoteOnTransi
     private ArrayList<ArrivalNoteOnTransitPO> pos;
 
     public ArrivalNoteOnTransitDataService_Stub() {
-        po1 = new ArrivalNoteOnTransitPO("2011-11-11","025100","025100201510200000001","北京","完整");
-        po2 = new ArrivalNoteOnTransitPO("2011-11-11","025100","025100201510200000002","上海","完整");
+    	BarcodeAndState bar=new BarcodeAndState("0123456789",GoodsState.COMPLETE);
+		ArrayList<BarcodeAndState> BarcodeAndStates=new ArrayList<BarcodeAndState> ();
+		BarcodeAndStates.add(bar);
+        po1 = new ArrivalNoteOnTransitPO("2011-11-11","025100","025100201510200000001","北京",BarcodeAndStates);
+        po2 = new ArrivalNoteOnTransitPO("2011-11-11","025100","025100201510200000002","上海",BarcodeAndStates);
         pos = new ArrayList<ArrivalNoteOnTransitPO>();
         pos.add(po1);
         pos.add(po2);

@@ -7,12 +7,10 @@ import java.math.BigDecimal;
  * @author River
  *
  */
-//TODO VO PO的统一问题
 public class IncomeNotePO implements Serializable {
 
 	private static final long serialVersionUID = 8156585850190316916L;
 
-	
 	public IncomeNotePO(String time, String receivingOrganization,
 			String incomeHandler, String incomeSource, BigDecimal money,
 			String location, BankAccountPO account) {

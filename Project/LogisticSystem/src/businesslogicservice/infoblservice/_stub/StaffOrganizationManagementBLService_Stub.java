@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import businesslogic.util.ResultMsg;
 import businesslogicservice.infoblservice.StaffOrganizationManagementBLService;
-import vo.OrganizationInfoVO;
+import vo.OrganizationVO;
 import vo.StaffVO;
 
 public class StaffOrganizationManagementBLService_Stub implements StaffOrganizationManagementBLService {
@@ -39,31 +39,31 @@ public class StaffOrganizationManagementBLService_Stub implements StaffOrganizat
 	};
 	
 	
-	public ResultMsg addOrganization(OrganizationInfoVO vo){
+	public ResultMsg addOrganization(OrganizationVO vo){
 		System.out.println("added org!");
 		return new ResultMsg(true, "Success!");
 	};
 	
 	
-	public ResultMsg delOrganization(OrganizationInfoVO vo){
+	public ResultMsg delOrganization(OrganizationVO vo){
 		System.out.println("deleted org!");
 		return new ResultMsg(true, "Success!");
 	};
 	
 	
-	public ResultMsg ModifyOrganization(OrganizationInfoVO vo){
+	public ResultMsg ModifyOrganization(OrganizationVO vo){
 		System.out.println("modified org!");
 		return new ResultMsg(true, "Success!");
 	};
 	
 	
-	public ArrayList<OrganizationInfoVO> findOrgInfo(OrganizationInfoVO vo){
+	public ArrayList<OrganizationVO> findOrgInfo(OrganizationVO vo){
 		System.out.println("found org");
 		return new ArrayList<>();
 	};
 	
 	
-	public ArrayList<OrganizationInfoVO> showAll(){
+	public ArrayList<OrganizationVO> showAll(){
 		System.out.println("showing all");
 		return new ArrayList<>();
 	};

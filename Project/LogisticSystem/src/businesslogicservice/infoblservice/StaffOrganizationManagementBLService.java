@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import businesslogic.util.ResultMsg;
 import vo.OrganizationInfoVO;
-import vo.StaffInfoVO;
+import vo.StaffVO;
 
 public interface StaffOrganizationManagementBLService {
 	
@@ -18,28 +18,28 @@ public interface StaffOrganizationManagementBLService {
 	 * @param vo
 	 * @return
 	 */
-	public ResultMsg addStaff(StaffInfoVO vo);
+	public ResultMsg addStaff(StaffVO vo);
 	
 	/**
 	 * 删除人员信息
 	 * @param vo
 	 * @return
 	 */
-	public ResultMsg delStaff(StaffInfoVO vo);
+	public ResultMsg delStaff(StaffVO vo);
 	
 	/**
 	 * 修改人员信息
 	 * @param vo
 	 * @return
 	 */
-	public ResultMsg ModifyStaff(StaffInfoVO vo);
+	public ResultMsg ModifyStaff(StaffVO vo);
 	
 	/**
 	 * 关键字查找人员信息
 	 * @param keyword
 	 * @return
 	 */
-	public ArrayList<StaffInfoVO> findStaffInfo(StaffInfoVO vo);
+	public ArrayList<StaffVO> findStaffInfo(StaffVO vo);
 	
 	/**
 	 * 新增机构信息

@@ -15,11 +15,7 @@ public class DriverPO implements Serializable {
 			String birthday, String iDCardNumber, String phoneNumber,
 			String gender, String licenseDate) {
 		super();
-<<<<<<< HEAD
 		this.driverNumber = driverNumber;		
-=======
-		this.driverNumber = driverNumber;
->>>>>>> master
 		this.name = name;
 		this.birthday = birthday;
 		IDCardNumber = iDCardNumber;

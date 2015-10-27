@@ -6,7 +6,7 @@ package vo;
  * @author kylin
  *
  */
-public class PaymentRecordVO {
+public class PaymentVO {
 	
 	/**
 	 * 日期
@@ -41,7 +41,7 @@ public class PaymentRecordVO {
 	 * @param accountNum
 	 * @param paymentMethod
 	 */
-	public PaymentRecordVO(String date,String money,String payer,String accountNum,
+	public PaymentVO(String date,String money,String payer,String accountNum,
 			String paymentMethod){
 		this.date = date;
 		this.money = money;

@@ -5,9 +5,8 @@ package dataservice.statisticdataservice._Driver;
  */
 import java.rmi.RemoteException;
 
-import dataservice.statisticdataservice.BaseDataBuildingDataService;
+import dataservice.financedataservice.BaseDataBuildingDataService;
 import dataservice.statisticdataservice._Stub.BaseDataBuildingDataService_Stub;
-
 
 public class BaseDataBuildingDataService_Driver {
 	

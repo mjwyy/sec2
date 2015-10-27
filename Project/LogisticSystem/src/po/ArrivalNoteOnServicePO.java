@@ -40,11 +40,7 @@ public class ArrivalNoteOnServicePO extends NotePO implements Serializable{
 	/**
 	 * 条形码与货物状态
 	 */
-<<<<<<< HEAD
-	private GoodsState GoodsState;
-=======
 	private ArrayList<BarcodeAndState> BarcodeAndStates;
->>>>>>> wqy
 
 
 
@@ -54,16 +50,11 @@ public class ArrivalNoteOnServicePO extends NotePO implements Serializable{
 		this.date = date;
 		TransferNumber = transferNumber;
 		this.from = from;
-<<<<<<< HEAD
-		this.GoodsState = state;
-		this.barCodes = barCodes;
-=======
 		BarcodeAndStates = barcodeAndStates;
 	}
 
 	public ArrayList<BarcodeAndState> getBarcodeAndStates() {
 		return BarcodeAndStates;
->>>>>>> wqy
 	}
 
 	public String getDate() {
@@ -78,17 +69,7 @@ public class ArrivalNoteOnServicePO extends NotePO implements Serializable{
 		return from;
 	}
 
-<<<<<<< HEAD
-	public GoodsState getGoodsState() {
-		return GoodsState;
-	}
-
-	public ArrayList<String> getBarCodes() {
-		return barCodes;
-	}
-=======
 	
->>>>>>> wqy
 
 
 

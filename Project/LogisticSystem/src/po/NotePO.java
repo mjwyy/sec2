@@ -16,12 +16,8 @@ public class NotePO implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 5768739830941620932L;
-<<<<<<< HEAD
-	
-=======
 	// 创建这个单据的业务员信息
 	private String userName;
->>>>>>> wqy
 	private DocState state;
 
 	public DocState getState() {
@@ -31,8 +27,6 @@ public class NotePO implements Serializable{
 	public void setState(DocState state) {
 		this.state = state;
 	}
-<<<<<<< HEAD
-=======
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -41,10 +35,5 @@ public class NotePO implements Serializable{
 	public String getUserName() {
 		return userName;
 	}
->>>>>>> wqy
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
 }

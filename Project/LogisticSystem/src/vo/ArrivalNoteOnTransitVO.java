@@ -26,16 +26,16 @@ public class ArrivalNoteOnTransitVO extends NoteVO {
 	 */
 	private String date;
 	
-	
-	/**
-	 * 货物出发地
-	 */
-	private String departurePlace;
-	
-	/**
-	 * 货物条形码与状态
-	 */
-	private ArrayList<BarcodeAndStateVO> GoodsInfoVOs;
+	private ArrayList<GoodsInfoVO> GoodsInfoVOs;
+
+	public ArrivalNoteOnTransitVO(String transferNumber, String centerNumber, String date,
+			ArrayList<GoodsInfoVO> goodsInfoVOs) {
+		super();
+		this.transferNumber = transferNumber;
+		this.centerNumber = centerNumber;
+		this.date = date;
+		GoodsInfoVOs = goodsInfoVOs;
+	}
 
 	public String getTransferNumber() {
 		return transferNumber;
@@ -49,22 +49,7 @@ public class ArrivalNoteOnTransitVO extends NoteVO {
 		return date;
 	}
 
-	public String getDeparturePlace() {
-		return departurePlace;
-	}
-
-	public ArrayList<BarcodeAndStateVO> getGoodsInfoVOs() {
+	public ArrayList<GoodsInfoVO> getGoodsInfoVOs() {
 		return GoodsInfoVOs;
 	}
-
-	public ArrivalNoteOnTransitVO(String transferNumber, String centerNumber, String date, String departurePlace,
-			ArrayList<BarcodeAndStateVO> goodsInfoVOs) {
-		super();
-		this.transferNumber = transferNumber;
-		this.centerNumber = centerNumber;
-		this.date = date;
-		this.departurePlace = departurePlace;
-		GoodsInfoVOs = goodsInfoVOs;
-	}
-		
 }

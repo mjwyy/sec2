@@ -1,4 +1,4 @@
-package dataservice.financedataservice;
+package dataservice.statisticdataservice;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

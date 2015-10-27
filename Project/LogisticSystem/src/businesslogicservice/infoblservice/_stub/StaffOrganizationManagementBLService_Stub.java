@@ -10,30 +10,30 @@ import java.util.ArrayList;
 import businesslogic.util.ResultMsg;
 import businesslogicservice.infoblservice.StaffOrganizationManagementBLService;
 import vo.OrganizationInfoVO;
-import vo.StaffVO;
+import vo.StaffInfoVO;
 
 public class StaffOrganizationManagementBLService_Stub implements StaffOrganizationManagementBLService {
 	
 	
-	public ResultMsg addStaff(StaffVO vo){
+	public ResultMsg addStaff(StaffInfoVO vo){
 		System.out.println("added staff!");
 		return new ResultMsg(true, "Success!");
 	};
 	
 	
-	public ResultMsg delStaff(StaffVO vo){
+	public ResultMsg delStaff(StaffInfoVO vo){
 		System.out.println("deleted staff!");
 		return new ResultMsg(true, "Success!");
 	};
 	
 	
-	public ResultMsg ModifyStaff(StaffVO vo){
+	public ResultMsg ModifyStaff(StaffInfoVO vo){
 		System.out.println("modified staff!");
 		return new ResultMsg(true, "Success!");
 	};
 	
 	
-	public ArrayList<StaffVO> findStaffInfo(StaffVO vo){
+	public ArrayList<StaffInfoVO> findStaffInfo(StaffInfoVO vo){
 		System.out.println("found staff");
 		return new ArrayList<>();
 	};

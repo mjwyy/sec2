@@ -30,7 +30,7 @@ public class ArrivalNoteOnServiceVO extends NoteVO{
 	/**
 	 * 到达状态
 	 */
-	private GoodsState GoodsState;
+	private GoodsState state;
 
 	/**
 	 * 货物托运条形码
@@ -43,7 +43,7 @@ public class ArrivalNoteOnServiceVO extends NoteVO{
 		this.date = date;
 		TransferNumber = transferNumber;
 		this.from = from;
-		this.GoodsState = state;
+		this.state = state;
 		this.barCodes = barCodes;
 	}
 
@@ -59,8 +59,8 @@ public class ArrivalNoteOnServiceVO extends NoteVO{
 		return from;
 	}
 
-	public GoodsState getGoodsState() {
-		return GoodsState;
+	public GoodsState getState() {
+		return state;
 	}
 
 	public ArrayList<String> getBarCodes() {

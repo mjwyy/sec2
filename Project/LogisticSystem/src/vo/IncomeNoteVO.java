@@ -1,7 +1,5 @@
 package vo;
 
-import po.BankAccountPO;
-
 /**
  * 收款记录
  * 
@@ -40,10 +38,7 @@ public class IncomeNoteVO {
 	 */
 	private String place;
 	
-	/**
-	 * 银行账户
-	 */
-	private BankAccountPO account;
+	private BankAccountVO bankAccount;
 	
 	/**
 	 * 构造方法
@@ -55,14 +50,14 @@ public class IncomeNoteVO {
 	 * @param place
 	 */
 	public IncomeNoteVO(String money,String date,String institution,
-			String payee,String payService,String place,BankAccountPO account){
+			String payee,String payService,String place,BankAccountVO bankAccount){
 		this.date = date;
 		this.institution =institution;
 		this.money = money;
 		this.payee = payee;
 		this.payService = payService;
 		this.place = place;
-		this.account = account;
+		this.bankAccount = bankAccount;
 	}
 
 	public String getMoney() {
@@ -89,9 +84,8 @@ public class IncomeNoteVO {
 		return place;
 	}
 
-	public BankAccountPO getAccount() {
-		return account;
+	public BankAccountVO getBankAccount() {
+		return bankAccount;
 	}
-
 	
 }

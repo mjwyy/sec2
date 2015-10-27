@@ -2,7 +2,7 @@ package businesslogicservice.statisticblservice._driver;
 
 import businesslogic.util.ResultMsg;
 import businesslogicservice.statisticblservice.OrderInquiryBLService;
-import vo.NoteHistoryVO;
+import vo.OrderVO;
 
 public class OrderInquiryBLService_Driver {
 
@@ -19,8 +19,7 @@ public class OrderInquiryBLService_Driver {
 			System.out.println("barcode is correct!");
 		else
 			System.out.println("barcode is wrong!");
-		NoteHistoryVO history = service.submitBarcode("0123456790");
-		System.out.println(history.getState());
+		OrderVO history = service.submitBarcode("0123456790");
 	}
 	
 }

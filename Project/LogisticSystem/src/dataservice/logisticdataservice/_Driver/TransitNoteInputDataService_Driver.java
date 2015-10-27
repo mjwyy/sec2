@@ -2,7 +2,7 @@ package dataservice.logisticdataservice._Driver;
 
 import dataservice.logisticdataservice.TransitNoteInputDataService;
 import dataservice.logisticdataservice._Stub.TransitNoteInputDataService_Stub;
-import po.TransitNoteInputPO;
+import po.TransitNotePO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -29,9 +29,9 @@ public class TransitNoteInputDataService_Driver {
         list.add("2000111111");
         list.add("3000111112");
         list.add("4000111113");
-        TransitNoteInputPO po1 = new TransitNoteInputPO("2015-10-23","025100201510200000012","CA1206","南京",
+        TransitNotePO po1 = new TransitNotePO("2015-10-23","025100201510200000012","CA1206","南京",
                 "西安","0120","王小二",list);
-        TransitNoteInputPO po2 = new TransitNoteInputPO("2015-10-24","025100201510200000013","CZ3151","南京",
+        TransitNotePO po2 = new TransitNotePO("2015-10-24","025100201510200000013","CZ3151","南京",
                 "深圳","0122","西北狼",list2);
         if(service.insert(po1))
         	System.out.println("insert succeed");

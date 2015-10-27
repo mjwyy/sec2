@@ -7,7 +7,7 @@ package presentation.logisticui;
 import businesslogicservice.logisticblservice.TransitNoteInputBLService;
 
 public class TransitNoteInputUI {
-    public TransitNoteInputUI(TransitNoteInputBLService service){
+    public void init(TransitNoteInputBLService service){
     	
     }
 }

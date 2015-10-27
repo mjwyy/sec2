@@ -2,7 +2,7 @@ package vo;
 
 import java.util.ArrayList;
 
-public class OrganizationVO {
+public class OrganizationInfoVO {
 	
 	/**
 	 * 机构编号
@@ -10,7 +10,7 @@ public class OrganizationVO {
 	private String organizationNum;
 	
 	/**
-	 * 机构名
+	 * 机构名称
 	 */
 	private String name;
 	
@@ -28,13 +28,11 @@ public class OrganizationVO {
 	 * @param organizationNum
 	 * @param staffinfo
 	 */
-	public OrganizationVO(String organizationNum, String name, String type,
-			ArrayList<StaffVO> staffinfo) {
-		super();
+	public OrganizationInfoVO(String organizationNum,String type,String name,ArrayList<StaffVO> staffinfo){
 		this.organizationNum = organizationNum;
-		this.name = name;
-		this.type = type;
 		this.staffinfo = staffinfo;
+		this.type = type;
+		this.name = name;
 	}
 
 	public String getOrganizationNum() {
@@ -52,7 +50,6 @@ public class OrganizationVO {
 	public ArrayList<StaffVO> getStaffinfo() {
 		return staffinfo;
 	}
-	
-	
+
 
 }

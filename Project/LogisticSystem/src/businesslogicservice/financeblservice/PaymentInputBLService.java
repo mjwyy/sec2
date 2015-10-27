@@ -6,7 +6,7 @@
 package businesslogicservice.financeblservice;
 
 import businesslogic.util.ResultMsg;
-import vo.PaymentRecordVO;
+import vo.PaymentVO;
 
 public interface PaymentInputBLService {
 	
@@ -15,6 +15,6 @@ public interface PaymentInputBLService {
 	 * @param vo
 	 * @return
 	 */
-	public ResultMsg addPaymentRecord(PaymentRecordVO vo);
+	public ResultMsg addPaymentRecord(PaymentVO vo);
 
 }

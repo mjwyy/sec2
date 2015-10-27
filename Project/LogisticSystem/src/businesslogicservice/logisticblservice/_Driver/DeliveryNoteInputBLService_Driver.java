@@ -1,6 +1,6 @@
 package businesslogicservice.logisticblservice._Driver;
 
-import vo.SendingNoteVO;
+import vo.DeliveryNoteVO;
 import businesslogic.util.DeliverCategory;
 import businesslogic.util.ResultMsg;
 import businesslogic.util.sendDocMsg;
@@ -14,7 +14,7 @@ public class DeliveryNoteInputBLService_Driver {
 		b.driver(a);
 	}
 	public void driver(DeliveryNoteInputBLService a){
-		SendingNoteVO sendDocVO1=new SendingNoteVO("李明", "南京大学仙林校区", "南京大学", "1388888888",
+		DeliveryNoteVO sendDocVO1=new DeliveryNoteVO("李明", "南京大学仙林校区", "南京大学", "1388888888",
 				"1", 1.0, 1.0, "书", DeliverCategory.ECNOMIC,  5.0,
 				"0123456789");
 		ResultMsg result=a.inputSendDoc(sendDocVO1);

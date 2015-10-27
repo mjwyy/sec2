@@ -8,26 +8,26 @@ package businesslogicservice.infoblservice._stub;
 import java.util.ArrayList;
 
 import vo.DriverVO;
-import vo.VehicleInfoVO;
+import vo.VehicleVO;
 import businesslogic.util.ResultMsg;
 import businesslogicservice.infoblservice.DriverVehicleManagementBLService;
 
 public class DriverVehicleManagementBLService_Stub implements DriverVehicleManagementBLService {
 	
 
-	public ResultMsg addVehicle(VehicleInfoVO vo){
+	public ResultMsg addVehicle(VehicleVO vo){
 		System.out.println("added vehicle!");
 		return new ResultMsg(true, "Success!");
 	};
 	
 
-	public ResultMsg deleteVehicle(VehicleInfoVO vo){
+	public ResultMsg deleteVehicle(VehicleVO vo){
 		System.out.println("deleted vehicle!");
 		return new ResultMsg(true, "Success!");
 	};
 	
 
-	public ResultMsg modifyVehicle(VehicleInfoVO vo){
+	public ResultMsg modifyVehicle(VehicleVO vo){
 		System.out.println("modified vehicle!");
 		return new ResultMsg(true, "Success!");
 	};
@@ -51,7 +51,7 @@ public class DriverVehicleManagementBLService_Stub implements DriverVehicleManag
 	};
 	
 
-	public ArrayList<VehicleInfoVO> findVehicle(VehicleInfoVO vo){
+	public ArrayList<VehicleVO> findVehicle(VehicleVO vo){
 		System.out.println("found vehicle");
 		return new ArrayList<>();
 	};

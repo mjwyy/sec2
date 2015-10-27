@@ -8,7 +8,7 @@ package businesslogicservice.financeblservice;
 import java.util.ArrayList;
 
 import businesslogic.util.ResultMsg;
-import vo.ReceiveRecordVO;
+import vo.IncomeNoteVO;
 
 public interface SettlementManagementBLService {
 	
@@ -17,13 +17,13 @@ public interface SettlementManagementBLService {
 	 * @param vo
 	 * @return
 	 */
-	public ResultMsg addReceiveRecord(ReceiveRecordVO vo);
+	public ResultMsg addReceiveRecord(IncomeNoteVO vo);
 	
 	/**
 	 * 查询收款记录
 	 * @param date
 	 * @return
 	 */
-	public ArrayList<ReceiveRecordVO> find(ReceiveRecordVO vo);
+	public ArrayList<IncomeNoteVO> find(IncomeNoteVO vo);
 
 }

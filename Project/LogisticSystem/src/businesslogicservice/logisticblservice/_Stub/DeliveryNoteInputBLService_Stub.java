@@ -1,6 +1,6 @@
 package businesslogicservice.logisticblservice._Stub;
 
-import vo.SendingNoteVO;
+import vo.DeliveryNoteVO;
 import businesslogic.util.DeliverCategory;
 import businesslogic.util.ResultMsg;
 import businesslogic.util.sendDocMsg;
@@ -39,7 +39,7 @@ public class DeliveryNoteInputBLService_Stub implements DeliveryNoteInputBLServi
 	}
 	//输入寄件单界面得到对输入的寄件单的反馈检查结果
 	@Override
-	public ResultMsg inputSendDoc(SendingNoteVO sendDocVO) {
+	public ResultMsg inputSendDoc(DeliveryNoteVO sendDocVO) {
 		if(sendDocVO.getNumber().equals("1"))
 			return new ResultMsg(true,"输入寄件单格式正确");
 		else
@@ -47,7 +47,7 @@ public class DeliveryNoteInputBLService_Stub implements DeliveryNoteInputBLServi
 	}
 	//提交界面得到对提交的寄件单的反馈结果
 	@Override
-	public sendDocMsg submitSendDoc(SendingNoteVO sendDocVO) {
+	public sendDocMsg submitSendDoc(DeliveryNoteVO sendDocVO) {
 		if(sendDocVO.getNumber().equals("1"))
 			return new sendDocMsg(true,"提交成功",10,"3days");
 		else

@@ -83,4 +83,9 @@ public class IncomeNoteVO {
 	public String getPlace() {
 		return place;
 	}
+
+	public BankAccountVO getBankAccount() {
+		return bankAccount;
+	}
+	
 }

@@ -7,7 +7,7 @@ package po;
 
 import java.io.Serializable;
 
-public class DeliveryNoteInputPO implements Serializable{
+public class DeliveryNotePO implements Serializable{
 /**
 	 * 
 	 */
@@ -68,7 +68,7 @@ private double packPrice;
  */
 private String barCode;
 
-public DeliveryNoteInputPO(String senderName, String senderAddress, String senderWorkPlace, String senderTeleNumber,
+public DeliveryNotePO(String senderName, String senderAddress, String senderWorkPlace, String senderTeleNumber,
 		String number, double weight, double volume, String name, String category, double packPrice,
 		String barCode) {
 	super();

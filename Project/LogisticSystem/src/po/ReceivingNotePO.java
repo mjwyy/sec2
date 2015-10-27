@@ -8,7 +8,7 @@ package po;
 
 import java.io.Serializable;
 
-public class ReceivingNoteInputPO implements Serializable{
+public class ReceivingNotePO implements Serializable{
 	/**
 	 * 
 	 */
@@ -29,7 +29,7 @@ public class ReceivingNoteInputPO implements Serializable{
 	 */
 	private String time;
 
-	public ReceivingNoteInputPO(String barcode, String receiveCustomer, String time) {
+	public ReceivingNotePO(String barcode, String receiveCustomer, String time) {
 		super();
 		this.barcode = barcode;
 		this.receiveCustomer = receiveCustomer;

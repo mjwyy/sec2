@@ -3,7 +3,7 @@ package vo;
 public class DriverVO {
 	
 	/**
-	 * 城市编号
+	 * 司机编号
 	 */
 	private String driverNum; 
     

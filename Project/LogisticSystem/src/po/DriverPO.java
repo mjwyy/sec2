@@ -11,12 +11,11 @@ public class DriverPO implements Serializable {
 	private static final long serialVersionUID = 5894748451667870139L;
 	
 	
-	public DriverPO(String driverNumber, String hallNumber, String name,
+	public DriverPO(String driverNumber, String name,
 			String birthday, String iDCardNumber, String phoneNumber,
 			String gender, String licenseDate) {
 		super();
 		this.driverNumber = driverNumber;
-		this.hallNumber = hallNumber;
 		this.name = name;
 		this.birthday = birthday;
 		IDCardNumber = iDCardNumber;
@@ -29,11 +28,6 @@ public class DriverPO implements Serializable {
 	 * 司机编号
 	 */
 	String driverNumber = null;
-	
-	/**
-	 * 营业厅编号
-	 */
-	String hallNumber = null;
 	
 	/**
 	 * 司机姓名
@@ -70,9 +64,6 @@ public class DriverPO implements Serializable {
 	}
 	public String getDriverNumber() {
 		return driverNumber;
-	}
-	public String getHallNumber() {
-		return hallNumber;
 	}
 	public String getName() {
 		return name;

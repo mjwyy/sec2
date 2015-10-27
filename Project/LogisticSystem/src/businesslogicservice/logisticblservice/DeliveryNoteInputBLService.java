@@ -2,7 +2,7 @@ package businesslogicservice.logisticblservice;
 
 import businesslogic.util.ResultMsg;
 import businesslogic.util.sendDocMsg;
-import vo.SendingNoteVO;
+import vo.DeliveryNoteVO;
 
 /**
  * 输入寄件单逻辑接口
@@ -18,7 +18,7 @@ public interface DeliveryNoteInputBLService {
 	 * @param sendDocVO 寄件单VO
 	 * @return 单据信息格式检查结果
 	 */
-	public ResultMsg inputSendDoc(SendingNoteVO sendDocVO);
+	public ResultMsg inputSendDoc(DeliveryNoteVO sendDocVO);
 	
 	/**
 	 * 快递员核对信息后要求提交单据
@@ -26,6 +26,6 @@ public interface DeliveryNoteInputBLService {
 	 * @param sendDocVO 寄件单VO
 	 * @return 寄件报价、预计到达日期信息
 	 */
-	public sendDocMsg submitSendDoc(SendingNoteVO sendDocVO);
+	public sendDocMsg submitSendDoc(DeliveryNoteVO sendDocVO);
 	
 }

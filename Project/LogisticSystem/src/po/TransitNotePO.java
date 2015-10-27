@@ -8,7 +8,7 @@ package po;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class TransitNoteInputPO implements Serializable{
+public class TransitNotePO implements Serializable{
 	/**
 	 * 
 	 */
@@ -59,7 +59,7 @@ public class TransitNoteInputPO implements Serializable{
 	 */
 	private double price;
 
-	public TransitNoteInputPO(String date, String transitDocNumber, String flightNumber, String departurePlace,
+	public TransitNotePO(String date, String transitDocNumber, String flightNumber, String departurePlace,
 			String desitination, String containerNumber, String supercargoMan, ArrayList<String> barcodes) {
 		super();
 		this.date = date;

@@ -2,7 +2,7 @@ package dataservice.commoditydataservice._Driver;
 
 import dataservice.commoditydataservice.StorageInDataService;
 import dataservice.commoditydataservice._Stub.StorageInDataService_Stub;
-import po.GoodsPO;
+import po.CommodityGoodsPO;
 import po.StorageInPO;
 
 import java.rmi.RemoteException;
@@ -20,7 +20,7 @@ public class StorageInDataService_Driver {
     }
 
     public void drive(StorageInDataService storageInDataService) throws RemoteException {
-        ArrayList<GoodsPO> GoodsInStorageInfo = new  ArrayList<GoodsPO>();
+        ArrayList<CommodityGoodsPO> GoodsInStorageInfo = new  ArrayList<CommodityGoodsPO>();
         StorageInPO inPO = new StorageInPO("2015-10-09",GoodsInStorageInfo);
         StorageInPO inPO2 = new StorageInPO("2015-10-09",GoodsInStorageInfo);
         StorageInPO inPO3 = new StorageInPO("2015-10-10",GoodsInStorageInfo);

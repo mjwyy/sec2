@@ -8,29 +8,29 @@ package dataservice.logisticdataservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import po.TransitNoteInputPO;
+import po.TransitNotePO;
 
 public interface TransitNoteInputDataService {
 	/**
 	 * 在数据库中增加一个po记录
 	 */
-	public boolean insert(TransitNoteInputPO po) throws RemoteException;
+	public boolean insert(TransitNotePO po) throws RemoteException;
 	/**
 	 * 在数据库中删除一个po记录
 	 */
-	public boolean delete(TransitNoteInputPO po) throws RemoteException;
+	public boolean delete(TransitNotePO po) throws RemoteException;
 	/**
 	 * 在数据库中更新一个po记录
 	 */
-	public boolean update(TransitNoteInputPO po) throws RemoteException;
+	public boolean update(TransitNotePO po) throws RemoteException;
 	/**
 	 * 查找返回相应的TransitNoteInputPO结果
 	 */
-	public ArrayList<TransitNoteInputPO> find(TransitNoteInputPO po) throws RemoteException;
+	public ArrayList<TransitNotePO> find(TransitNotePO po) throws RemoteException;
 	
 	
 	/**
 	 * 返回所有的TransitNoteInputPO
 	 */
-	public ArrayList<TransitNoteInputPO> findAll() throws RemoteException;
+	public ArrayList<TransitNotePO> findAll() throws RemoteException;
 }

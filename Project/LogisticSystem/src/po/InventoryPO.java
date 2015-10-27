@@ -39,7 +39,7 @@ public class InventoryPO implements Serializable{
 	/**
 	 * 货物信息
 	 */
-	private ArrayList<GoodsPO> goodsInfo;;
+	private ArrayList<CommodityGoodsPO> goodsInfo;;
 
 	/**
 	 * 构造方法
@@ -48,7 +48,7 @@ public class InventoryPO implements Serializable{
 	 * @param money
 	 * @param place
 	 */
-	public InventoryPO(String outNum, String inNum,String money,ArrayList<GoodsPO> goodsInfo){
+	public InventoryPO(String outNum, String inNum,String money,ArrayList<CommodityGoodsPO> goodsInfo){
 		this.outNum = outNum;
 		this.inNum = inNum;
 		this.money = money;
@@ -69,7 +69,7 @@ public class InventoryPO implements Serializable{
 	}
 
 	
-	public ArrayList<GoodsPO> getGoodsInfo() {
+	public ArrayList<CommodityGoodsPO> getGoodsInfo() {
 		return goodsInfo;
 	}
 

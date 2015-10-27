@@ -1,12 +1,12 @@
 package businesslogicservice.financeblservice._driver;
 
 import businesslogicservice.financeblservice.PaymentInputBLService;
-import vo.PaymentRecordVO;
+import vo.PaymentVO;
 
 public class PaymentInputBLService_Driver {
 
 	public void drive(PaymentInputBLService service){
-		service.addPaymentRecord(new PaymentRecordVO(null, null, null, null, null));
+		service.addPaymentRecord(new PaymentVO(null, null, null, null, null));
 	}
 
 }

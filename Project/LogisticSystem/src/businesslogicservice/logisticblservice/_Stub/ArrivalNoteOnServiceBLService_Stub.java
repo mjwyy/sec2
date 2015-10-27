@@ -29,7 +29,7 @@ public class ArrivalNoteOnServiceBLService_Stub implements ArrivalNoteOnServiceB
 	public ResultMsg inputHallArrivalDoc(ArrivalNoteOnServiceVO arrialDocVO) {
 		ArrayList<String> bar=new ArrayList<String>();
 		bar.add("1234567890");
-		if(arrialDocVO.getBarCodes().equals(bar))
+		if(arrialDocVO.getBarcodeAndStates().equals(bar))
 			return new ResultMsg(true,"输入的到达单格式正确");
 		else
 			return new ResultMsg(false,"输入的到达单格式不正确");
@@ -39,7 +39,7 @@ public class ArrivalNoteOnServiceBLService_Stub implements ArrivalNoteOnServiceB
 	public ResultMsg submitHallArrivalDoc(ArrivalNoteOnServiceVO arrialDocVO) {
 		ArrayList<String> bar=new ArrayList<String>();
 		bar.add("1234567890");
-		if(arrialDocVO.getBarCodes().equals(bar))
+		if(arrialDocVO.getBarcodeAndStates().equals(bar))
 			return new ResultMsg(true,"提交成功");
 		else
 			return new ResultMsg(false,"提交失败");

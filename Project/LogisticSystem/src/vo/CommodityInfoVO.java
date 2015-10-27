@@ -2,7 +2,7 @@ package vo;
 
 import java.util.ArrayList;
 
-import po.GoodsPO;
+import po.CommodityGoodsPO;
 
 /**
  * 期初建账使用的仓库信息VO
@@ -20,9 +20,9 @@ public class CommodityInfoVO {
 	/**
 	 * 货物信息
 	 */
-	private ArrayList<GoodsPO> goodsInfo;
+	private ArrayList<CommodityGoodsPO> goodsInfo;
 
-	public CommodityInfoVO(String name, ArrayList<GoodsPO> goodsInfo) {
+	public CommodityInfoVO(String name, ArrayList<CommodityGoodsPO> goodsInfo) {
 		super();
 		this.name = name;
 		this.goodsInfo = goodsInfo;
@@ -32,7 +32,7 @@ public class CommodityInfoVO {
 		return name;
 	}
 
-	public ArrayList<GoodsPO> getGoodsInfo() {
+	public ArrayList<CommodityGoodsPO> getGoodsInfo() {
 		return goodsInfo;
 	}
 	

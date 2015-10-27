@@ -2,22 +2,22 @@ package businesslogicservice.logisticblservice._Stub;
 
 import java.util.ArrayList;
 
-import vo.ArrivalNoteOnTransitVO;
-import vo.GoodsInfoVO;
+import businesslogic.util.BarcodeAndState;
 import businesslogic.util.ResultMsg;
 import businesslogicservice.logisticblservice.ArrivalNoteOnTransitBLService;
+import vo.ArrivalNoteOnTransitVO;
 
 public class ArrivalNoteOnTransitBLService_Stub implements ArrivalNoteOnTransitBLService{
 	String transferNumber;
 	String centerNumber;
 	String date;
 
-	ArrayList<GoodsInfoVO> GoodsInfoVOs;
+	ArrayList<BarcodeAndState> GoodsInfoVOs;
 	public ArrivalNoteOnTransitBLService_Stub(){
 
 	}
 	public ArrivalNoteOnTransitBLService_Stub(String transferNumber, String centerNumber, String date,
-			ArrayList<GoodsInfoVO> goodsInfoVOs) {
+			ArrayList<BarcodeAndState> goodsInfoVOs) {
 		super();
 		this.transferNumber = transferNumber;
 		this.centerNumber = centerNumber;

@@ -21,6 +21,9 @@ public class StatisticClient {
 		
 		NoteApprovingBLService_Driver driver5 = new NoteApprovingBLService_Driver();
 		driver5.drive(new NoteApprovingBLService_Stub());
+		
+		OrderInquiryBLService_Driver driver6 = new OrderInquiryBLService_Driver();
+		driver6.drive(new OrderInquiryBLService_Stub());
 	}
 	
 }

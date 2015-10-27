@@ -8,7 +8,7 @@ import businesslogic.util.DeliverCategory;
  * @author kylin
  *
  */
-public class DeliveryNoteVO extends NoteVO {
+public class SendingNoteVO extends NoteVO {
 	
 	/**
 	 * 客户姓名
@@ -65,7 +65,7 @@ public class DeliveryNoteVO extends NoteVO {
 	 */
 	private String barCode;
 	
-	public DeliveryNoteVO(String senderName, String senderAddress, String senderWorkPlace, String senderTeleNumber,
+	public SendingNoteVO(String senderName, String senderAddress, String senderWorkPlace, String senderTeleNumber,
 			String number, double weight, double volume, String name, DeliverCategory category, double packPrice,
 			String barCode) {
 		super();

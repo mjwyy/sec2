@@ -22,14 +22,14 @@ public class StorageInPO implements Serializable{
 	/**
 	 * 货物信息，包括条形码及其位置信息
 	 */
-	private ArrayList<GoodsPO> GoodsInStorageInfo;
+	private ArrayList<CommodityGoodsPO> GoodsInStorageInfo;
 	
 	/**
 	 * 构造方法
 	 * @param date
 	 * @param GoodsInStorageInfo
 	 */
-	public StorageInPO(String date,ArrayList<GoodsPO> GoodsInStorageInfo){
+	public StorageInPO(String date,ArrayList<CommodityGoodsPO> GoodsInStorageInfo){
 		this.date = date;
 		this.GoodsInStorageInfo = GoodsInStorageInfo;
 	}
@@ -38,7 +38,7 @@ public class StorageInPO implements Serializable{
 		return date;
 	}
 
-	public ArrayList<GoodsPO> getGoodsInStorageInfo() {
+	public ArrayList<CommodityGoodsPO> getGoodsInStorageInfo() {
 		return GoodsInStorageInfo;
 	}
 

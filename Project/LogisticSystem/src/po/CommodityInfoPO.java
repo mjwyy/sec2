@@ -1,17 +1,14 @@
-package vo;
+/**
+ * 期初建账使用的仓库信息PO
+ * 
+ * @author WQY
+ *
+ */
+package po;
 
 import java.util.ArrayList;
 
-import po.CommodityGoodsPO;
-
-/**
- * 期初建账使用的仓库信息VO
- * 
- * @author kylin
- *
- */
-public class CommodityInfoVO {
-
+public class CommodityInfoPO {
 	/**
 	 * 仓库名称
 	 */
@@ -22,7 +19,7 @@ public class CommodityInfoVO {
 	 */
 	private ArrayList<CommodityGoodsPO> goodsInfo;
 
-	public CommodityInfoVO(String name, ArrayList<CommodityGoodsPO> goodsInfo) {
+	public CommodityInfoPO(String name, ArrayList<CommodityGoodsPO> goodsInfo) {
 		super();
 		this.name = name;
 		this.goodsInfo = goodsInfo;
@@ -35,7 +32,5 @@ public class CommodityInfoVO {
 	public ArrayList<CommodityGoodsPO> getGoodsInfo() {
 		return goodsInfo;
 	}
-	
-	
 	
 }

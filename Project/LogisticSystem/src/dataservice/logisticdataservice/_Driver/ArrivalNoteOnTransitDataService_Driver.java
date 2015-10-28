@@ -5,6 +5,9 @@ import dataservice.logisticdataservice._Stub.ArrivalNoteOnTransitDataService_Stu
 import po.ArrivalNoteOnTransitPO;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
+
+import businesslogic.util.BarcodeAndState;
 
 /**
  * Created by kylin on 15/10/21.
@@ -18,8 +21,9 @@ public class ArrivalNoteOnTransitDataService_Driver {
     }
 
     public void drive(ArrivalNoteOnTransitDataService service) throws RemoteException {
-        ArrivalNoteOnTransitPO po1 = new ArrivalNoteOnTransitPO("2011-11-11","025100","025100201510200000001","北京","完整");
-        ArrivalNoteOnTransitPO po2 = new ArrivalNoteOnTransitPO("2011-11-11","025100","025100201510200000002","上海","完整");
+    	ArrayList<BarcodeAndState> BarcodeAndStates=new ArrayList<BarcodeAndState> ();
+    	ArrivalNoteOnTransitPO po1 = new ArrivalNoteOnTransitPO("2011-11-11","025100","025100201510200000001","上海",BarcodeAndStates);
+        ArrivalNoteOnTransitPO po2 = new ArrivalNoteOnTransitPO("2011-11-11","025100","025100201510200000002","上海",BarcodeAndStates);
         if(service.insert(po1))
         	System.out.println("insert succeed");
         else
@@ -36,7 +40,7 @@ public class ArrivalNoteOnTransitDataService_Driver {
         else
         	System.out.println("delete failed");
         service.findAll();
-        po2= new ArrivalNoteOnTransitPO("2011-11-11","025100","025100201510200000002","上海","损失");
+        po2= new ArrivalNoteOnTransitPO("2011-11-11","025100","025100201510200000002","上海",BarcodeAndStates);
         if(service.update(po2))
         	System.out.println("update succeed");
         else

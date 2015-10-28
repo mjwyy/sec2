@@ -1,6 +1,6 @@
 
 /**
- * 处理营业厅到达件PO
+ * 营业厅到达单PO
  * @author wqy
  * @date 2015/10/17
  */
@@ -9,6 +9,7 @@ package po;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import businesslogic.util.BarcodeAndState;
 import businesslogic.util.GoodsState;
 
 public class ArrivalNoteOnServicePO extends NotePO implements Serializable{
@@ -35,24 +36,25 @@ public class ArrivalNoteOnServicePO extends NotePO implements Serializable{
 	 */
 	private String from;
 	
+	
 	/**
-	 * 到达状态
+	 * 条形码与货物状态
 	 */
-	private GoodsState GoodsState;
+	private ArrayList<BarcodeAndState> BarcodeAndStates;
 
-	/**
-	 * 货物托运条形码
-	 */
-	private ArrayList<String> barCodes;
 
-	public ArrivalNoteOnServicePO(String date, String transferNumber, String from, GoodsState state,
-			ArrayList<String> barCodes) {
+
+	public ArrivalNoteOnServicePO(String date, String transferNumber,
+			String from, ArrayList<BarcodeAndState> barcodeAndStates) {
 		super();
 		this.date = date;
 		TransferNumber = transferNumber;
 		this.from = from;
-		this.GoodsState = state;
-		this.barCodes = barCodes;
+		BarcodeAndStates = barcodeAndStates;
+	}
+
+	public ArrayList<BarcodeAndState> getBarcodeAndStates() {
+		return BarcodeAndStates;
 	}
 
 	public String getDate() {
@@ -67,13 +69,7 @@ public class ArrivalNoteOnServicePO extends NotePO implements Serializable{
 		return from;
 	}
 
-	public GoodsState getGoodsState() {
-		return GoodsState;
-	}
-
-	public ArrayList<String> getBarCodes() {
-		return barCodes;
-	}
+	
 
 
 

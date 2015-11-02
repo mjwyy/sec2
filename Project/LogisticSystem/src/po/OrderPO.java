@@ -1,6 +1,7 @@
 package po;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * 用于传递订单历史记录（轨迹）的PO
@@ -12,14 +13,6 @@ public class OrderPO implements Serializable {
 
 	private static final long serialVersionUID = -164650701484223427L;
 	
-	public OrderPO(String barcode, String stateOfTransport,
-			String[] historicalRecords) {
-		super();
-		this.barcode = barcode;
-		this.stateOfTransport = stateOfTransport;
-		this.historicalRecords = historicalRecords;
-	}
-	
 	/**
 	 * 条形码用字符串表示
 	 */
@@ -30,22 +23,29 @@ public class OrderPO implements Serializable {
 	 */
 	String stateOfTransport = null;
 	
-	/**
-	 * 保存了所有历史记录的字符串数组
-	 */
-	String[] historicalRecords = null;
+	private ArrayList<String> history;
+
+	public OrderPO(String barcode, String stateOfTransport, ArrayList<String> history) {
+		super();
+		this.barcode = barcode;
+		this.stateOfTransport = stateOfTransport;
+		this.history = history;
+	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
 	public String getBarcode() {
 		return barcode;
 	}
+
 	public String getStateOfTransport() {
 		return stateOfTransport;
 	}
-	public String[] getHistoricalRecords() {
-		return historicalRecords;
+
+	public ArrayList<String> getHistory() {
+		return history;
 	}
 	
 }

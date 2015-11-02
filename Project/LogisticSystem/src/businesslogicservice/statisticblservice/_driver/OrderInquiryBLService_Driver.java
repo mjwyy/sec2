@@ -20,6 +20,7 @@ public class OrderInquiryBLService_Driver {
 		else
 			System.out.println("barcode is wrong!");
 		OrderVO history = service.submitBarcode("0123456790");
+		System.out.println(history.getStateOfTransport());
 	}
 	
 }

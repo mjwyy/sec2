@@ -10,7 +10,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import businesslogic.util.BarcodeAndState;
-import businesslogic.util.GoodsState;
 
 public class ArrivalNoteOnServicePO extends NotePO implements Serializable{
 

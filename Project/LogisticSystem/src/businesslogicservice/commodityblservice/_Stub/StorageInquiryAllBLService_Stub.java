@@ -1,7 +1,10 @@
 package businesslogicservice.commodityblservice._Stub;
 
+import java.util.ArrayList;
+
 import businesslogic.util.ResultMsg;
 import businesslogicservice.commodityblservice.StorageInquiryAllBLService;
+import vo.InventoryVO;
 
 public class StorageInquiryAllBLService_Stub implements StorageInquiryAllBLService {
 
@@ -14,8 +17,7 @@ public class StorageInquiryAllBLService_Stub implements StorageInquiryAllBLServi
 	}
 
 	@Override
-	public ResultMsg request() {
-			return new ResultMsg(true,"提交成功");
+	public ArrayList<InventoryVO> request() {
+		return null;
 	}
-
 }

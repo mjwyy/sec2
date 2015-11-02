@@ -8,7 +8,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogic.util.BarcodeAndState;
-import businesslogic.util.GoodsState;
 
 /**
  * Created by kylin on 15/10/20.
@@ -22,7 +21,6 @@ public class ArrivalNoteOnServiceDataService_Driver {
 
     public ArrivalNoteOnServiceDataService_Driver() {
     	ArrayList<BarcodeAndState> BarcodeAndStates=new ArrayList<BarcodeAndState>();
-    	ArrayList<String> barCodes = new ArrayList<String>();
         pos = new ArrayList<ArrivalNoteOnServicePO>();
         arrivalNoteOnServicePO = new ArrivalNoteOnServicePO("2011-11-11","250000201510130000000",
         		"北京",BarcodeAndStates);

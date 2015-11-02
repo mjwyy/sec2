@@ -24,7 +24,6 @@ public class ArrivalNoteOnServiceDataService_Stub implements ArrivalNoteOnServic
 		BarcodeAndState bar=new BarcodeAndState("0123456789",GoodsState.COMPLETE);
 		ArrayList<BarcodeAndState> BarcodeAndStates=new ArrayList<BarcodeAndState> ();
 		BarcodeAndStates.add(bar);
-		ArrayList<String> barCodes = new ArrayList<String>();
         pos = new ArrayList<ArrivalNoteOnServicePO>();
         arrivalNoteOnServicePO = new ArrivalNoteOnServicePO("2011-11-11","250000201510130000000",
         		"北京",BarcodeAndStates);

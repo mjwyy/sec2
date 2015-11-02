@@ -16,10 +16,5 @@ public void drive(StorageInquiryAllBLService a){
 		System.out.println("success");
 	else
 		System.out.println("fail");
-	ResultMsg result=a.request();
-	if(result.isPass()==true)
-		System.out.println("success");
-	else
-		System.out.println("fail");
-}
+	}
 }

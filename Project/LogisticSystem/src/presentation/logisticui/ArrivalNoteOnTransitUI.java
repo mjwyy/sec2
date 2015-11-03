@@ -8,7 +8,7 @@ import businesslogicservice.logisticblservice.ArrivalNoteOnTransitBLService;
 
 public class ArrivalNoteOnTransitUI {
 	
-	public ArrivalNoteOnTransitUI(ArrivalNoteOnTransitBLService service){
+	public void init(ArrivalNoteOnTransitBLService service){
 		
 	}
 

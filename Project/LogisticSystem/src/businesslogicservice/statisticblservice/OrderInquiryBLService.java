@@ -1,7 +1,7 @@
 package businesslogicservice.statisticblservice;
 
 import businesslogic.util.ResultMsg;
-import vo.NoteHistoryVO;
+import vo.OrderVO;
 
 /**
  * 单据查询的逻辑接口
@@ -25,6 +25,6 @@ public interface OrderInquiryBLService {
 	 * @param inputBarcode
 	 * @return
 	 */
-	public NoteHistoryVO submitBarcode(String inputBarcode);
+	public OrderVO submitBarcode(String inputBarcode);
 	
 }

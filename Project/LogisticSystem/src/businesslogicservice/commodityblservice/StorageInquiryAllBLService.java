@@ -5,7 +5,10 @@
  */
 package businesslogicservice.commodityblservice;
 
+import java.util.ArrayList;
+
 import businesslogic.util.ResultMsg;
+import vo.InventoryVO;
 
 public interface StorageInquiryAllBLService {
 	
@@ -20,7 +23,7 @@ public interface StorageInquiryAllBLService {
 	 * 请求进行库存盘点
 	 * @return
 	 */
-	public ResultMsg request();
+	public ArrayList<InventoryVO> request();
 	
 
 }

@@ -9,6 +9,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.ArrivalNoteOnServicePO;
+import po.DeliverNoteOnServicePO;
 
 
 public interface ArrivalNoteOnServiceDataService {
@@ -33,4 +34,22 @@ public interface ArrivalNoteOnServiceDataService {
 	 * 返回所有的营业厅到达单PO
 	 */
 	public ArrayList<ArrivalNoteOnServicePO> findAll() throws RemoteException;
+	/**
+	 * 在数据库中插入单一持久化对象
+	 */
+	public boolean insert(DeliverNoteOnServicePO po) throws RemoteException;
+	/**
+	 * 在数据库中删除单一持久化对象
+	 */
+	public boolean delete(DeliverNoteOnServicePO po) throws RemoteException;
+	/**
+	 * 在数据库中更新单一持久化对象
+	 */
+	public boolean update(DeliverNoteOnServicePO po) throws RemoteException;
+	/**
+	 * 按关键字进行查找返回相应的ArrivalNoteOnServicePO结果
+	 */
+	public ArrayList<DeliverNoteOnServicePO> find(DeliverNoteOnServicePO po) throws RemoteException;
+	
+
 }

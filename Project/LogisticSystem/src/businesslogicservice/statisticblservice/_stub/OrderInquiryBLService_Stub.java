@@ -2,7 +2,7 @@ package businesslogicservice.statisticblservice._stub;
 
 import businesslogic.util.ResultMsg;
 import businesslogicservice.statisticblservice.OrderInquiryBLService;
-import vo.NoteHistoryVO;
+import vo.OrderVO;
 
 public class OrderInquiryBLService_Stub implements OrderInquiryBLService {
 
@@ -13,9 +13,9 @@ public class OrderInquiryBLService_Stub implements OrderInquiryBLService {
 	}
 
 	@Override
-	public NoteHistoryVO submitBarcode(String inputBarcode) {
+	public OrderVO submitBarcode(String inputBarcode) {
 		System.out.println("submitBarcode succeed");
-		return new NoteHistoryVO(null,null);
+		return new OrderVO(null,null, null);
 	}
 
 }

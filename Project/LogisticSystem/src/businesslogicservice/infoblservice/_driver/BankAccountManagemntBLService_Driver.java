@@ -1,7 +1,7 @@
-package businesslogicservice.financeblservice._driver;
+package businesslogicservice.infoblservice._driver;
 
 import vo.BankAccountVO;
-import businesslogicservice.financeblservice.BankAccountManagementBLService;
+import businesslogicservice.infoblservice.BankAccountManagementBLService;
 
 public class BankAccountManagemntBLService_Driver  {
 

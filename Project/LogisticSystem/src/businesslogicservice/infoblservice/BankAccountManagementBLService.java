@@ -3,7 +3,7 @@
  * @author wwz
  * date 2015/10/17
  */
-package businesslogicservice.financeblservice;
+package businesslogicservice.infoblservice;
 
 import java.util.ArrayList;
 

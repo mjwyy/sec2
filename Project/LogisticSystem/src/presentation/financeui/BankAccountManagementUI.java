@@ -4,7 +4,7 @@
  */
 package presentation.financeui;
 
-import businesslogicservice.financeblservice.BankAccountManagementBLService;
+import businesslogicservice.infoblservice.BankAccountManagementBLService;
 
 /**
  * @author River

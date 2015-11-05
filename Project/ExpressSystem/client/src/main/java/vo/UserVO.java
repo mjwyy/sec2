@@ -1,5 +1,8 @@
 package vo;
 
+/**
+ * 系统用户
+ */
 public class UserVO {
 	/**
 	 * 账号

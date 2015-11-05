@@ -27,7 +27,7 @@ public interface ChartOutputBLService {
 	 *
 	 * @return
 	 */
-	public ChartVO getChartVO();
+	public ChartVO getChartVO(ChartType chartType,String time1,String time2);
 	
 	/**
 	 * 导出报表操作

@@ -16,5 +16,11 @@ public interface PaymentInputBLService {
 	 * @return
 	 */
 	public ResultMsg addPaymentRecord(PaymentVO vo);
-
+    
+    /**
+     * 提交付款记录
+     * @param vo
+     * @return
+     */
+    public ResultMsg submitPaymentRecord(PaymentVO vo);
 }

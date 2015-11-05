@@ -12,4 +12,9 @@ public class PaymentInputBLService_Stub implements PaymentInputBLService {
 		return new ResultMsg(true, "Success!");
 	}
 
+	@Override
+	public ResultMsg submitPaymentRecord(PaymentVO vo) {
+		return null;
+	}
+
 }

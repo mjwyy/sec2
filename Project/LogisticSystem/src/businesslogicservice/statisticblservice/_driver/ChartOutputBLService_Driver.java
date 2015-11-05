@@ -1,18 +1,19 @@
 package businesslogicservice.statisticblservice._driver;
 
+import businesslogic.util.ChartType;
 import businesslogicservice.statisticblservice.ChartOutputBLService;
 
 public class ChartOutputBLService_Driver {
 
-	
+
 	public void drive(ChartOutputBLService service){
-		if(service.enquiryChart(null, null, null).isPass()){
+		if(service.enquiryChart(ChartType.BUSINESS_STAT_CHART, "2015-10-22", "2015-11-1").isPass()){
 			System.out.println("Passed");
 		}else{
 			System.out.println("Failed");
 		}
 		
-		if(service.getChartVO()!=null){
+		if(service.getChartVO(ChartType.BUSINESS_STAT_CHART, "2015-10-22", "2015-11-1")!=null){
 			System.out.println("Got chartVO");
 		}else{
 			System.out.println("Null return");

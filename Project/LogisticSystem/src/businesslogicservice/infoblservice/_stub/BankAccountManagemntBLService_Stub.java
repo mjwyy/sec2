@@ -1,11 +1,11 @@
-package businesslogicservice.financeblservice._stub;
+package businesslogicservice.infoblservice._stub;
 
 import java.util.ArrayList;
 
 import dataservice.financedataservice.BankAccountManagementDataService;
 import vo.BankAccountVO;
 import businesslogic.util.ResultMsg;
-import businesslogicservice.financeblservice.BankAccountManagementBLService;
+import businesslogicservice.infoblservice.BankAccountManagementBLService;
 
 public class BankAccountManagemntBLService_Stub implements
 		BankAccountManagementBLService {

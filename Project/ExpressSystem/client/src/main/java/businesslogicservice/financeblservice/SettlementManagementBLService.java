@@ -21,7 +21,7 @@ public interface SettlementManagementBLService {
 	
 	/**
 	 * 查询收款记录
-	 * @param date
+	 * @param vo
 	 * @return
 	 */
 	public ArrayList<IncomeNoteVO> find(IncomeNoteVO vo);

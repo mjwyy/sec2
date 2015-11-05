@@ -13,7 +13,6 @@ import java.util.ArrayList;
  */
 public class SystemUserManagementData implements SystemUserManagementDataService{
 
-
     @Override
     public boolean addUser(UserPO user) throws RemoteException, InterruptWithExistedElementException {
         return false;

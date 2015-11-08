@@ -31,7 +31,7 @@ public class OrderInquirybl implements OrderInquiryBLService {
 			res = new ResultMsg(false,"条形码位数应为10位");
 		else{
 			for(int i = 0;i<10;i++){
-				if(!(inputBarcode.charAt(i)>='0'&&inputBarcode.charAt(i)<=9)){
+				if(!(inputBarcode.charAt(i)>='0'&&inputBarcode.charAt(i)<='9')){
 					isNum = 0;
 					break;
 				}

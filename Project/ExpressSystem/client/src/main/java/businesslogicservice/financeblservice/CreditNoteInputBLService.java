@@ -12,14 +12,14 @@ public interface CreditNoteInputBLService {
 	
 	/**
 	 * 新增快递收款单
-	 * @param putInStorageVo
+	 * @param vo
 	 * @return
 	 */
 	public ResultMsg addReceipeDoc(CreditNoteVO vo);
 	
 	/**
 	 * 提交收款单
-	 * @param putInStorageVo
+	 * @param vo
 	 * @return
 	 */
    public ResultMsg submitReceipeDoc(CreditNoteVO vo);

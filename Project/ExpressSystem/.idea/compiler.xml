@@ -17,19 +17,33 @@
       <profile default="true" name="Default" enabled="false">
         <processorPath useClasspath="true" />
       </profile>
+<<<<<<< HEAD
       <profile default="false" name="Annotation profile for server" enabled="true">
+=======
+      <profile default="false" name="Annotation profile for client" enabled="true">
+>>>>>>> master
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+<<<<<<< HEAD
         <module name="server" />
       </profile>
       <profile default="false" name="Annotation profile for client" enabled="true">
+=======
+        <module name="client" />
+      </profile>
+      <profile default="false" name="Annotation profile for server" enabled="true">
+>>>>>>> master
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+<<<<<<< HEAD
         <module name="client" />
+=======
+        <module name="server" />
+>>>>>>> master
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

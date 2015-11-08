@@ -28,22 +28,13 @@ public class OrderInquirybl implements OrderInquiryBLService {
 	public ResultMsg inputBarcode(String inputBarcode){
 		int isNum = 1;
 		if(inputBarcode.length()!=10)
-			res = new ResultMsg(false,"条形码位数应为10位");
+			return new ResultMsg(false,"条形码位数应为10位");
 		else{
-			for(int i = 0;i<10;i++){
-				if(!(inputBarcode.charAt(i)>='0'&&inputBarcode.charAt(i)<='9')){
-					isNum = 0;
-					break;
-				}
-			}
-			
-			if(isNum == 0)
-				res = new ResultMsg(false,"条形码应为10位0～9的数字");
-			else
-				res = new ResultMsg(true,null);		
+			for(int i = 0;i<10;i++)
+				if(!(inputBarcode.charAt(i)>='0'&&inputBarcode.charAt(i)<='9'))
+					return new ResultMsg(false,"条形码应为10位0～9的数字");
 		}
-		
-		return res;
+		return new ResultMsg(true,"格式检查通过");
 	}
 
 	@Override

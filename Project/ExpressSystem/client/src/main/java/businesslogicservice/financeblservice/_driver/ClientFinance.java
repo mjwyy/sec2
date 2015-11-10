@@ -1,4 +1,4 @@
-package businesslogicservice.infoblservice._driver;
+package businesslogicservice.financeblservice._driver;
 
 import businesslogicservice.financeblservice._driver.CreditNoteInputBLService_Driver;
 import businesslogicservice.financeblservice._driver.PaymentInputBLService_Driver;

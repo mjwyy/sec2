@@ -20,7 +20,7 @@ public class ArrivalNoteOnTransitBLService_Driver {
 		ArrayList<BarcodeAndState> c=new ArrayList<BarcodeAndState>();
 		BarcodeAndState b=new BarcodeAndState("1234567890", GoodsState.COMPLETE);
 		c.add(b);
-		ArrivalNoteOnTransitVO centerArrivalDocVO=new ArrivalNoteOnTransitVO(null, null, null, null, null); 
+		ArrivalNoteOnTransitVO centerArrivalDocVO=new ArrivalNoteOnTransitVO("02500100199009", "025001", null, null, null);
 		ResultMsg result=arrivalNoteOnTransitBLService.inputCenterArrivalDoc(centerArrivalDocVO);
 		if(result.isPass()==true)
 			System.out.println("输入的中转中心到达单格式正确");

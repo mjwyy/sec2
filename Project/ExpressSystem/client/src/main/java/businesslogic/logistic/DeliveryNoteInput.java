@@ -38,9 +38,6 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
         //时间和价格还没有数据接口提供,PO的数据不全
         double price = 0;
         String date = null;
-        this.notePO = new DeliveryNotePO(sendDocVO.getSenderName(),sendDocVO.getSenderAddress(),sendDocVO.getSenderWorkPlace(),
-                sendDocVO.getSenderTeleNumber(),sendDocVO.getNumber(),sendDocVO.getWeight(),sendDocVO.getVolume(),
-                sendDocVO.getName(),sendDocVO.getCategory(),sendDocVO.getPackPrice(),sendDocVO.getBarCode());
         try {
             this.dataService.insert(this.notePO);
         } catch (RemoteException e) {

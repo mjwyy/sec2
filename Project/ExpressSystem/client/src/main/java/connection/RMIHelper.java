@@ -1,40 +1,21 @@
 package connection;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
-<<<<<<< HEAD
 /**
  *
  * @author River
  *
-=======
-
-
-
-
-import connection.connectionservice.RMIObjectProviderService;
-
-
-
-/**
- * 
- * @author River
- *	
->>>>>>> origin/master
  * 本类RMIHelper用于在程序启动时建立起对服务器的连接
  * 其中，必须先调用tryConnect()尝试连接链接
  * 之后用getConnectionStatus()检查是否成功建立了连接
  */
 public class RMIHelper {
 
-<<<<<<< HEAD
     private static String serverIP = "localhost";
     private static String objectiveName = "RMIObjectProvider";
 
@@ -76,48 +57,4 @@ public class RMIHelper {
     public RMIObjectProviderService getProvider() {
         return provider;
     }
-=======
-	private static String serverIP = "localhost";
-	private static String objectiveName = "RMIObjectProvider";
-	
-	private RMIObjectProviderService provider = null;
-	
-	private static RMIHelper obj;
-	
-	private boolean connectStatus = false;
-	
-	private RMIHelper() {
-		initiateIP();
-	}
-	
-	private void initiateIP() {}
-
-	public static void tryConnect() throws RemoteException, NotBoundException {
-		if (System.getSecurityManager() == null) {
-            System.setSecurityManager(new SecurityManager());
-        }
-		
-		obj = new RMIHelper();
-		
-		Registry registry = LocateRegistry.getRegistry(serverIP);
-		RMIObjectProviderService prov = (RMIObjectProviderService) registry.lookup(objectiveName);
-		
-		obj.provider = prov;
-		obj.connectStatus = true;
-	}
-	
-	public static boolean getConnectionStatus() {
-		if(obj==null) obj = new RMIHelper();
-		return obj.connectStatus;
-	}
-	
-	public static RMIHelper getInstance() {
-		return obj;
-	}
-	
-	public RMIObjectProviderService getProvider() {
-		return provider;
-	}
-
->>>>>>> origin/master
 }

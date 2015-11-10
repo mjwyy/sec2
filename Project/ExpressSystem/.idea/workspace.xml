@@ -2,520 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80e1d396-4d24-4864-b9b7-ee0530b48260" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Document/软件设计/人机交互设计/人机交互之导航设计.docx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Document/软件设计/详细设计/物流管理系统人机交互描述文档.docx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Document/软件设计/详细设计/物流管理系统详细设计描述文档.docx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/logistic/DeliveryNoteInput.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/target/classes/connection/RMIHelper.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/target/classes/connection/RemoteObjectGetter.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/target/client-0.0.1-SNAPSHOT.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/connection/RMIObjectProviderService.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/commoditydataservice/InventoryDataService.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/commoditydataservice/StorageInDataService.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/commoditydataservice/StorageOutDataService.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/commoditydataservice/_Driver/InventoryDataService_Driver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/commoditydataservice/_Driver/StorageInDataService_Driver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/commoditydataservice/_Driver/StorageOutDataService_Driver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/commoditydataservice/_Stub/InventoryDataService_Stub.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/commoditydataservice/_Stub/StorageInDataService_Stub.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/commoditydataservice/_Stub/StorageOutDataService_Stub.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/exception/ElementNotFoundException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/exception/FailToPassApprovingException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/exception/InterruptWithExistedElementException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/financedataservice/CreditNoteInputDataService.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/financedataservice/PaymentInputDataService.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/financedataservice/SettlementManagementDataService.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/financedataservice/_Driver/CreditNoteInputDataService_Driver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/financedataservice/_Driver/PaymentInputDataService_Driver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/financedataservice/_Driver/SettlementManagementDataService_Driver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/financedataservice/_Stub/CreditNoteInputDataService_Stub.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/financedataservice/_Stub/PaymentInputDataService_Stub.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/financedataservice/_Stub/SettlementManagementDataService_Stub.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/BankAccountManagementDataService.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/DriverVehicleManagementDataService.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/StaffOrganizationManagementDataService.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/SystemUserManagementDataService.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/_Driver/BankAccountManagementDataService_Driver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/_Driver/DriverVehicleManagementDataService_Driver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/_Driver/StaffOrganizationMangaementDataService_Driver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/_Driver/SystemUserManagementDataService_Driver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/_Stub/BankAccountManagementDataService_Stub.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/_Stub/DriverVehicleManagementDataService_Stub.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/_Stub/StaffOrganizationManagementDataService_Stub.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/_Stub/SystemUserManagementDataService_Stub.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/ArrivalNoteOnServiceDataService.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/ArrivalNoteOnTransitDataService.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/DeliveryNoteInputDataService.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/LoadNoteOnServiceDataService.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/LoadNoteOnTransitDataService.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/NoteDataService.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/ReceivingNoteInputDataService.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/TransitNoteInputDataService.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/ArrivalNoteOnServiceDataService_Driver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/ArrivalNoteOnTransitDataService_Driver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/DeliveryNoteInputDataService_Driver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/LoadNoteOnServiceDataService_Driver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/LoadNoteOnTransitDataService_Driver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/NoteDataService_Driver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/ReceivingNoteInputDataService_Driver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/TransitNoteInputDataService_Driver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Stub/ArrivalNoteOnServiceDataService_Stub.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Stub/ArrivalNoteOnTransitDataService_Stub.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Stub/DeliveryNoteInputDataService_Stub.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Stub/LoadNoteOnServiceDataService_Stub.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Stub/LoadNoteOnTransitDataService_Stub.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Stub/NoteDataService_Stub.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Stub/ReceivingNoteInputDataService_Stub.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Stub/TransitNoteInputDataService_Stub.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/BaseDataBuildingDataService.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/BusinessDataModificationDataService.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/ChartOutputDataService.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/LogInquiryDataService.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/NoteApprovingDataService.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/OrderInquiryDataService.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/_Driver/BaseDataBuildingDataService_Driver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/_Driver/BusinessDataModificationDataService_Driver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/_Driver/ChartOutputDataService_Driver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/_Driver/LogInquiryDataService_Driver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/_Driver/NoteApprovingDataService_Driver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/_Driver/OrderInquiryDataService_Driver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/_Stub/BaseDataBuildingDataService_Stub.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/_Stub/BusinessDataModificationDataService_Stub.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/_Stub/ChartOutputDataService_Stub.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/_Stub/LogInquiryDataService_Stub.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/_Stub/NoteApprovingDataService_Stub.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/_Stub/OrderInquiryDataService_Stub.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/ArrivalNoteOnServicePO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/ArrivalNoteOnTransitPO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/BankAccountPO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/ChartPO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/CommodityGoodsPO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/CommodityInfoPO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/CreditNotePO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/DeliverNoteOnServicePO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/DeliveryNotePO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/DistancePO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/DriverPO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/IncomeNotePO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/InventoryPO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/LoadNoteOnServicePO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/LoadNoteOnTransitPO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/LogEntryPO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/NotePO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/OrderPO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/OrganizationPO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/PaymentPO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/ReceivingNotePO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/StaffPO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/StorageInPO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/StorageOutPO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/TransitNotePO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/UserPO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/VehiclePO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/chart/BusinessStateChartPO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/po/chart/CostAndProfitChartPO.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/util/BarcodeAndState.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/util/ResultMsg.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/util/enums/ChartType.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/util/enums/DeliverCategory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/util/enums/DeliveryState.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/util/enums/DocState.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/util/enums/DocType.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/util/enums/GoodsState.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/util/enums/InventoryStatus.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/util/enums/PriceType.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/classes/util/sendDocMsg.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/common-0.0.1-SNAPSHOT.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/target/classes/connection/RMIObjectProvider.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/target/classes/connection/RMIPublisher.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/target/classes/data/ArrivalNoteOnServiceData.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/target/classes/data/ArrivalNoteOnTransitData.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/target/classes/data/DeliveryNoteInputData.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/target/classes/data/LoadNoteOnServiceData.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/target/classes/data/LoadNoteOnTransitData.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/target/classes/data/ReceivingNoteInputData.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/target/classes/data/TransitNoteInputData.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/target/server-0.0.1-SNAPSHOT.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/main/java/businesslogic/logistic/DeliveryNoteInput.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/main/java/connection/RMIHelper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/main/java/connection/RemoteObjectGetter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/target/maven-archiver/pom.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/common.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/pom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/main/java/connection/RMIObjectProviderService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/infodataservice/_Driver/SystemUserManagementDataService_Driver.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Driver/DeliveryNoteInputDataService_Driver.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Stub/DeliveryNoteInputDataService_Stub.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/main/java/po/DeliveryNotePO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/maven-archiver/pom.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/main/java/connection/RMIObjectProvider.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/main/java/connection/RMIPublisher.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/main/java/data/ArrivalNoteOnServiceData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/main/java/data/ArrivalNoteOnTransitData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/main/java/data/DeliveryNoteInputData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/main/java/data/LoadNoteOnServiceData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/main/java/data/LoadNoteOnTransitData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/main/java/data/ReceivingNoteInputData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/main/java/data/TransitNoteInputData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/target/maven-archiver/pom.properties" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/commoditydataservice/InventoryDataService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/commoditydataservice/StorageInDataService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/commoditydataservice/StorageOutDataService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/commoditydataservice/_Driver/InventoryDataService_Driver.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/commoditydataservice/_Driver/StorageInDataService_Driver.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/commoditydataservice/_Driver/StorageOutDataService_Driver.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/commoditydataservice/_Stub/InventoryDataService_Stub.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/commoditydataservice/_Stub/StorageInDataService_Stub.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/commoditydataservice/_Stub/StorageOutDataService_Stub.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/exception/ElementNotFoundException.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/exception/FailToPassApprovingException.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/exception/InterruptWithExistedElementException.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/financedataservice/CreditNoteInputDataService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/financedataservice/PaymentInputDataService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/financedataservice/SettlementManagementDataService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/financedataservice/_Driver/CreditNoteInputDataService_Driver.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/financedataservice/_Driver/PaymentInputDataService_Driver.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/financedataservice/_Driver/SettlementManagementDataService_Driver.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/financedataservice/_Stub/CreditNoteInputDataService_Stub.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/financedataservice/_Stub/PaymentInputDataService_Stub.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/financedataservice/_Stub/SettlementManagementDataService_Stub.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/infodataservice/BankAccountManagementDataService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/infodataservice/DriverVehicleManagementDataService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/infodataservice/StaffOrganizationManagementDataService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/infodataservice/SystemUserManagementDataService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/infodataservice/_Driver/BankAccountManagementDataService_Driver.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/infodataservice/_Driver/DriverVehicleManagementDataService_Driver.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/infodataservice/_Driver/StaffOrganizationMangaementDataService_Driver.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/infodataservice/_Driver/SystemUserManagementDataService_Driver.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/infodataservice/_Stub/BankAccountManagementDataService_Stub.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/infodataservice/_Stub/DriverVehicleManagementDataService_Stub.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/infodataservice/_Stub/StaffOrganizationManagementDataService_Stub.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/infodataservice/_Stub/SystemUserManagementDataService_Stub.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/logisticdataservice/ArrivalNoteOnServiceDataService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/logisticdataservice/ArrivalNoteOnTransitDataService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/logisticdataservice/DeliveryNoteInputDataService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/logisticdataservice/LoadNoteOnServiceDataService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/logisticdataservice/LoadNoteOnTransitDataService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/logisticdataservice/NoteDataService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/logisticdataservice/ReceivingNoteInputDataService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/logisticdataservice/TransitNoteInputDataService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/logisticdataservice/_Driver/ArrivalNoteOnServiceDataService_Driver.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/logisticdataservice/_Driver/ArrivalNoteOnTransitDataService_Driver.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/logisticdataservice/_Driver/DeliveryNoteInputDataService_Driver.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/logisticdataservice/_Driver/LoadNoteOnServiceDataService_Driver.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/logisticdataservice/_Driver/LoadNoteOnTransitDataService_Driver.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/logisticdataservice/_Driver/NoteDataService_Driver.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/logisticdataservice/_Driver/ReceivingNoteInputDataService_Driver.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/logisticdataservice/_Driver/TransitNoteInputDataService_Driver.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/logisticdataservice/_Stub/ArrivalNoteOnServiceDataService_Stub.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/logisticdataservice/_Stub/ArrivalNoteOnTransitDataService_Stub.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/logisticdataservice/_Stub/DeliveryNoteInputDataService_Stub.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/logisticdataservice/_Stub/LoadNoteOnServiceDataService_Stub.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/logisticdataservice/_Stub/LoadNoteOnTransitDataService_Stub.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/logisticdataservice/_Stub/NoteDataService_Stub.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/logisticdataservice/_Stub/ReceivingNoteInputDataService_Stub.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/logisticdataservice/_Stub/TransitNoteInputDataService_Stub.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/statisticdataservice/BaseDataBuildingDataService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/statisticdataservice/BusinessDataModificationDataService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/statisticdataservice/ChartOutputDataService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/statisticdataservice/LogInquiryDataService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/statisticdataservice/NoteApprovingDataService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/statisticdataservice/OrderInquiryDataService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/statisticdataservice/_Driver/BaseDataBuildingDataService_Driver.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/statisticdataservice/_Driver/BusinessDataModificationDataService_Driver.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/statisticdataservice/_Driver/ChartOutputDataService_Driver.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/statisticdataservice/_Driver/LogInquiryDataService_Driver.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/statisticdataservice/_Driver/NoteApprovingDataService_Driver.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/statisticdataservice/_Driver/OrderInquiryDataService_Driver.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/statisticdataservice/_Stub/BaseDataBuildingDataService_Stub.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/statisticdataservice/_Stub/BusinessDataModificationDataService_Stub.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/statisticdataservice/_Stub/ChartOutputDataService_Stub.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/statisticdataservice/_Stub/LogInquiryDataService_Stub.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/statisticdataservice/_Stub/NoteApprovingDataService_Stub.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/dataservice/statisticdataservice/_Stub/OrderInquiryDataService_Stub.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/ArrivalNoteOnServicePO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/ArrivalNoteOnTransitPO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/BankAccountPO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/ChartPO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/CommodityGoodsPO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/CommodityInfoPO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/CreditNotePO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/DeliverNoteOnServicePO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/DeliveryNotePO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/DistancePO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/DriverPO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/IncomeNotePO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/InventoryPO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/LoadNoteOnServicePO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/LoadNoteOnTransitPO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/LogEntryPO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/NotePO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/OrderPO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/OrganizationPO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/PaymentPO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/ReceivingNotePO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/StaffPO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/StorageInPO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/StorageOutPO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/TransitNotePO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/UserPO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/VehiclePO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/chart/BusinessStateChartPO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/po/chart/CostAndProfitChartPO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/util/BarcodeAndState.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/util/ResultMsg.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/util/enums/ChartType.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/util/enums/DeliverCategory.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/util/enums/DeliveryState.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/util/enums/DocState.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/util/enums/DocType.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/util/enums/GoodsState.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/util/enums/InventoryStatus.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/util/enums/PriceType.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/util/sendDocMsg.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/src/main/java/dataImpl/infodata/SystemUserManagementData.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/infodataservice/_Driver/SystemUserManagementDataService_Driver.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/logisticdataservice/_Driver/DeliveryNoteInputDataService_Driver.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/logisticdataservice/_Stub/DeliveryNoteInputDataService_Stub.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/src/main/java/po/DeliveryNotePO.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/commoditydataservice/InventoryDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/commoditydataservice/InventoryDataService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/commoditydataservice/StorageInDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/commoditydataservice/StorageInDataService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/commoditydataservice/StorageOutDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/commoditydataservice/StorageOutDataService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/commoditydataservice/_Driver/InventoryDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/commoditydataservice/_Driver/InventoryDataService_Driver.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/commoditydataservice/_Driver/StorageInDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/commoditydataservice/_Driver/StorageInDataService_Driver.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/commoditydataservice/_Driver/StorageOutDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/commoditydataservice/_Driver/StorageOutDataService_Driver.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/commoditydataservice/_Stub/InventoryDataService_Stub.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/commoditydataservice/_Stub/InventoryDataService_Stub.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/commoditydataservice/_Stub/StorageInDataService_Stub.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/commoditydataservice/_Stub/StorageInDataService_Stub.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/commoditydataservice/_Stub/StorageOutDataService_Stub.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/commoditydataservice/_Stub/StorageOutDataService_Stub.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/exception/ElementNotFoundException.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/exception/ElementNotFoundException.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/exception/FailToPassApprovingException.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/exception/FailToPassApprovingException.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/exception/InterruptWithExistedElementException.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/exception/InterruptWithExistedElementException.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/financedataservice/CreditNoteInputDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/financedataservice/CreditNoteInputDataService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/financedataservice/PaymentInputDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/financedataservice/PaymentInputDataService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/financedataservice/SettlementManagementDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/financedataservice/SettlementManagementDataService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/financedataservice/_Driver/CreditNoteInputDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/financedataservice/_Driver/CreditNoteInputDataService_Driver.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/financedataservice/_Driver/PaymentInputDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/financedataservice/_Driver/PaymentInputDataService_Driver.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/financedataservice/_Driver/SettlementManagementDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/financedataservice/_Driver/SettlementManagementDataService_Driver.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/financedataservice/_Stub/CreditNoteInputDataService_Stub.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/financedataservice/_Stub/CreditNoteInputDataService_Stub.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/financedataservice/_Stub/PaymentInputDataService_Stub.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/financedataservice/_Stub/PaymentInputDataService_Stub.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/financedataservice/_Stub/SettlementManagementDataService_Stub.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/financedataservice/_Stub/SettlementManagementDataService_Stub.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/infodataservice/BankAccountManagementDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/infodataservice/BankAccountManagementDataService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/infodataservice/DriverVehicleManagementDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/infodataservice/DriverVehicleManagementDataService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/infodataservice/StaffOrganizationManagementDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/infodataservice/StaffOrganizationManagementDataService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/infodataservice/SystemUserManagementDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/infodataservice/SystemUserManagementDataService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/infodataservice/_Driver/BankAccountManagementDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/infodataservice/_Driver/BankAccountManagementDataService_Driver.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/infodataservice/_Driver/DriverVehicleManagementDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/infodataservice/_Driver/DriverVehicleManagementDataService_Driver.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/infodataservice/_Driver/StaffOrganizationMangaementDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/infodataservice/_Driver/StaffOrganizationMangaementDataService_Driver.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/infodataservice/_Stub/BankAccountManagementDataService_Stub.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/infodataservice/_Stub/BankAccountManagementDataService_Stub.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/infodataservice/_Stub/DriverVehicleManagementDataService_Stub.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/infodataservice/_Stub/DriverVehicleManagementDataService_Stub.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/infodataservice/_Stub/StaffOrganizationManagementDataService_Stub.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/infodataservice/_Stub/StaffOrganizationManagementDataService_Stub.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/infodataservice/_Stub/SystemUserManagementDataService_Stub.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/infodataservice/_Stub/SystemUserManagementDataService_Stub.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/logisticdataservice/ArrivalNoteOnServiceDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/ArrivalNoteOnServiceDataService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/logisticdataservice/ArrivalNoteOnTransitDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/ArrivalNoteOnTransitDataService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/logisticdataservice/DeliveryNoteInputDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/DeliveryNoteInputDataService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/logisticdataservice/LoadNoteOnServiceDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/LoadNoteOnServiceDataService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/logisticdataservice/LoadNoteOnTransitDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/LoadNoteOnTransitDataService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/logisticdataservice/NoteDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/NoteDataService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/logisticdataservice/ReceivingNoteInputDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/ReceivingNoteInputDataService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/logisticdataservice/TransitNoteInputDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/TransitNoteInputDataService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/logisticdataservice/_Driver/ArrivalNoteOnServiceDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Driver/ArrivalNoteOnServiceDataService_Driver.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/logisticdataservice/_Driver/ArrivalNoteOnTransitDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Driver/ArrivalNoteOnTransitDataService_Driver.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/logisticdataservice/_Driver/LoadNoteOnServiceDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Driver/LoadNoteOnServiceDataService_Driver.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/logisticdataservice/_Driver/LoadNoteOnTransitDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Driver/LoadNoteOnTransitDataService_Driver.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/logisticdataservice/_Driver/NoteDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Driver/NoteDataService_Driver.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/logisticdataservice/_Driver/ReceivingNoteInputDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Driver/ReceivingNoteInputDataService_Driver.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/logisticdataservice/_Driver/TransitNoteInputDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Driver/TransitNoteInputDataService_Driver.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/logisticdataservice/_Stub/ArrivalNoteOnServiceDataService_Stub.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Stub/ArrivalNoteOnServiceDataService_Stub.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/logisticdataservice/_Stub/ArrivalNoteOnTransitDataService_Stub.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Stub/ArrivalNoteOnTransitDataService_Stub.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/logisticdataservice/_Stub/LoadNoteOnServiceDataService_Stub.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Stub/LoadNoteOnServiceDataService_Stub.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/logisticdataservice/_Stub/LoadNoteOnTransitDataService_Stub.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Stub/LoadNoteOnTransitDataService_Stub.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/logisticdataservice/_Stub/NoteDataService_Stub.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Stub/NoteDataService_Stub.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/logisticdataservice/_Stub/ReceivingNoteInputDataService_Stub.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Stub/ReceivingNoteInputDataService_Stub.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/logisticdataservice/_Stub/TransitNoteInputDataService_Stub.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Stub/TransitNoteInputDataService_Stub.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/statisticdataservice/BaseDataBuildingDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/statisticdataservice/BaseDataBuildingDataService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/statisticdataservice/BusinessDataModificationDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/statisticdataservice/BusinessDataModificationDataService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/statisticdataservice/ChartOutputDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/statisticdataservice/ChartOutputDataService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/statisticdataservice/LogInquiryDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/statisticdataservice/LogInquiryDataService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/statisticdataservice/NoteApprovingDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/statisticdataservice/NoteApprovingDataService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/statisticdataservice/OrderInquiryDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/statisticdataservice/OrderInquiryDataService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/statisticdataservice/_Driver/BaseDataBuildingDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/statisticdataservice/_Driver/BaseDataBuildingDataService_Driver.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/statisticdataservice/_Driver/BusinessDataModificationDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/statisticdataservice/_Driver/BusinessDataModificationDataService_Driver.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/statisticdataservice/_Driver/ChartOutputDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/statisticdataservice/_Driver/ChartOutputDataService_Driver.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/statisticdataservice/_Driver/LogInquiryDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/statisticdataservice/_Driver/LogInquiryDataService_Driver.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/statisticdataservice/_Driver/NoteApprovingDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/statisticdataservice/_Driver/NoteApprovingDataService_Driver.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/statisticdataservice/_Driver/OrderInquiryDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/statisticdataservice/_Driver/OrderInquiryDataService_Driver.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/statisticdataservice/_Stub/BaseDataBuildingDataService_Stub.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/statisticdataservice/_Stub/BaseDataBuildingDataService_Stub.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/statisticdataservice/_Stub/BusinessDataModificationDataService_Stub.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/statisticdataservice/_Stub/BusinessDataModificationDataService_Stub.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/statisticdataservice/_Stub/ChartOutputDataService_Stub.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/statisticdataservice/_Stub/ChartOutputDataService_Stub.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/statisticdataservice/_Stub/LogInquiryDataService_Stub.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/statisticdataservice/_Stub/LogInquiryDataService_Stub.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/statisticdataservice/_Stub/NoteApprovingDataService_Stub.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/statisticdataservice/_Stub/NoteApprovingDataService_Stub.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/dataservice/statisticdataservice/_Stub/OrderInquiryDataService_Stub.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/statisticdataservice/_Stub/OrderInquiryDataService_Stub.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/ArrivalNoteOnServicePO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/ArrivalNoteOnServicePO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/ArrivalNoteOnTransitPO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/ArrivalNoteOnTransitPO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/BankAccountPO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/BankAccountPO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/ChartPO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/ChartPO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/CommodityGoodsPO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/CommodityGoodsPO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/CommodityInfoPO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/CommodityInfoPO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/CreditNotePO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/CreditNotePO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/DeliverNoteOnServicePO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/DeliverNoteOnServicePO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/DistancePO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/DistancePO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/DriverPO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/DriverPO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/IncomeNotePO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/IncomeNotePO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/InventoryPO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/InventoryPO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/LoadNoteOnServicePO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/LoadNoteOnServicePO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/LoadNoteOnTransitPO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/LoadNoteOnTransitPO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/LogEntryPO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/LogEntryPO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/NotePO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/NotePO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/OrderPO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/OrderPO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/OrganizationPO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/OrganizationPO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/PaymentPO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/PaymentPO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/ReceivingNotePO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/ReceivingNotePO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/StaffPO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/StaffPO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/StorageInPO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/StorageInPO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/StorageOutPO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/StorageOutPO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/TransitNotePO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/TransitNotePO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/UserPO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/UserPO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/VehiclePO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/VehiclePO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/chart/BusinessStateChartPO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/chart/BusinessStateChartPO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/po/chart/CostAndProfitChartPO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/chart/CostAndProfitChartPO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/util/BarcodeAndState.java" afterPath="$PROJECT_DIR$/common/src/main/java/util/BarcodeAndState.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/util/ResultMsg.java" afterPath="$PROJECT_DIR$/common/src/main/java/util/ResultMsg.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/util/enums/ChartType.java" afterPath="$PROJECT_DIR$/common/src/main/java/util/enums/ChartType.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/util/enums/DeliverCategory.java" afterPath="$PROJECT_DIR$/common/src/main/java/util/enums/DeliverCategory.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/util/enums/DeliveryState.java" afterPath="$PROJECT_DIR$/common/src/main/java/util/enums/DeliveryState.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/util/enums/DocState.java" afterPath="$PROJECT_DIR$/common/src/main/java/util/enums/DocState.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/util/enums/DocType.java" afterPath="$PROJECT_DIR$/common/src/main/java/util/enums/DocType.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/util/enums/GoodsState.java" afterPath="$PROJECT_DIR$/common/src/main/java/util/enums/GoodsState.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/util/enums/InventoryStatus.java" afterPath="$PROJECT_DIR$/common/src/main/java/util/enums/InventoryStatus.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/util/enums/PriceType.java" afterPath="$PROJECT_DIR$/common/src/main/java/util/enums/PriceType.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/src/main/java/util/sendDocMsg.java" afterPath="$PROJECT_DIR$/common/src/main/java/util/sendDocMsg.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/StorageInBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/StorageInBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/StorageInquiryAllBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/StorageInquiryAllBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/StorageInquiryPartBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/StorageInquiryPartBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/StorageOutBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/StorageOutBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Driver/StorageInBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Driver/StorageInBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Driver/StorageInquiryAllBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Driver/StorageInquiryAllBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Driver/StorageInquiryPartBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Driver/StorageInquiryPartBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Driver/StorageOutBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Driver/StorageOutBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Stub/StorageInBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Stub/StorageInBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Stub/StorageInquiryAllBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Stub/StorageInquiryAllBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Stub/StorageInquiryPartBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Stub/StorageInquiryPartBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Stub/StorageOutBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Stub/StorageOutBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/CreditNoteInputBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/CreditNoteInputBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/PaymentInputBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/PaymentInputBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/SettlementManagementBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/SettlementManagementBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_driver/CreditNoteInputBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_driver/CreditNoteInputBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_driver/PaymentInputBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_driver/PaymentInputBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_driver/SettlementManagementBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_driver/SettlementManagementBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_stub/CreditNoteInputBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_stub/CreditNoteInputBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_stub/PaymentInputBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_stub/PaymentInputBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_stub/SettlementManagementBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_stub/SettlementManagementBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/BankAccountManagementBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/BankAccountManagementBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/DriverVehicleManagementBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/DriverVehicleManagementBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/StaffOrganizationManagementBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/StaffOrganizationManagementBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/SystemUserManagementBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/SystemUserManagementBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/BankAccountManagemntBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/BankAccountManagemntBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/ClientFinance.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/ClientFinance.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/DriverVehicleManagementBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/DriverVehicleManagementBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/InfoClient.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/InfoClient.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/StaffOrganizationManagementBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/StaffOrganizationManagementBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/SystemUserManagementBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/SystemUserManagementBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_stub/BankAccountManagemntBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_stub/BankAccountManagemntBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_stub/DriverVehicleManagementBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_stub/DriverVehicleManagementBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_stub/StaffOrganizationManagementBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_stub/StaffOrganizationManagementBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_stub/SystemUserManagementBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_stub/SystemUserManagementBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/ArrivalNoteOnServiceBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/ArrivalNoteOnServiceBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/ArrivalNoteOnTransitBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/ArrivalNoteOnTransitBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/DeliveryNoteInputBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/DeliveryNoteInputBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/LoadNoteOnServiceBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/LoadNoteOnServiceBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/LoadNoteOnTransitBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/LoadNoteOnTransitBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/ReceivingNoteInputBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/ReceivingNoteInputBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/TransitNoteInputBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/TransitNoteInputBLService.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/main/java/businesslogicservice/logisticblservice/_Driver/ArrivalNoteOnServiceBLService_Driver.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/ClientFinance.class" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/businesslogicservice/infoblservice/_driver/ClientFinance.java" afterPath="$PROJECT_DIR$/client/src/main/java/businesslogicservice/financeblservice/_driver/ClientFinance.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/ArrivalNoteOnTransitBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/ArrivalNoteOnTransitBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/DeliveryNoteInputBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/DeliveryNoteInputBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/LoadNoteOnServiceBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/LoadNoteOnServiceBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/LoadNoteOnTransitBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/LoadNoteOnTransitBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/ReceivingNoteInputBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/ReceivingNoteInputBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/TransitNoteInputBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/TransitNoteInputBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/ArrivalNoteOnServiceBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/ArrivalNoteOnServiceBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/ArrivalNoteOnTransitBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/ArrivalNoteOnTransitBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/DeliveryNoteInputBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/DeliveryNoteInputBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/LoadNoteOnServiceBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/LoadNoteOnServiceBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/LoadNoteOnTransitBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/LoadNoteOnTransitBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/ReceivingNoteInputBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/ReceivingNoteInputBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/TransitNoteInputBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/TransitNoteInputBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/BaseDataBuildingBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/BaseDataBuildingBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/BusinessDataModificationBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/BusinessDataModificationBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/ChartOutputBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/ChartOutputBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/LogInquiryBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/LogInquiryBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/NoteApprovingBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/NoteApprovingBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/OrderInquiryBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/OrderInquiryBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/BaseDataBuildingBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/BaseDataBuildingBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/BusinessDataModificationBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/BusinessDataModificationBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/ChartOutputBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/ChartOutputBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/LogInquiryBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/LogInquiryBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/NoteApprovingBLService_Driver$1.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/NoteApprovingBLService_Driver$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/NoteApprovingBLService_Driver$2.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/NoteApprovingBLService_Driver$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/NoteApprovingBLService_Driver$3.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/NoteApprovingBLService_Driver$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/NoteApprovingBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/NoteApprovingBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/OrderInquiryBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/OrderInquiryBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/StatisticClient.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/StatisticClient.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/BaseDataBuildingBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/BaseDataBuildingBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/BusinessDataModificationBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/BusinessDataModificationBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/ChartOutputBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/ChartOutputBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/LogInquiryBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/LogInquiryBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/NoteApprovingBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/NoteApprovingBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/OrderInquiryBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/OrderInquiryBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/commodityui/StorageInUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/commodityui/StorageInUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/commodityui/StorageInquiryAllUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/commodityui/StorageInquiryAllUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/commodityui/StorageInquiryPartUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/commodityui/StorageInquiryPartUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/commodityui/StorageOutUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/commodityui/StorageOutUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/financeui/BankAccountManagementUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/financeui/BankAccountManagementUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/financeui/CreditNoteInputUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/financeui/CreditNoteInputUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/financeui/PaymentInputUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/financeui/PaymentInputUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/financeui/SettlementManagementUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/financeui/SettlementManagementUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/infoui/DriverVehicleManagementUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/infoui/DriverVehicleManagementUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/infoui/StaffOrganizationManagementUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/infoui/StaffOrganizationManagementUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/infoui/SystemUserManagementUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/infoui/SystemUserManagementUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/ArrivalNoteOnServiceUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/ArrivalNoteOnServiceUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/ArrivalNoteOnTransitUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/ArrivalNoteOnTransitUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/DeliveryNoteInputUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/DeliveryNoteInputUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/LoadNoteOnServiceUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/LoadNoteOnServiceUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/LoadNoteOnTransitUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/LoadNoteOnTransitUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/ReceivingNoteInputUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/ReceivingNoteInputUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/TransitNoteInputUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/TransitNoteInputUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/statisticui/BaseDataBuildingUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/statisticui/BaseDataBuildingUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/statisticui/BusinessDataModificationUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/statisticui/BusinessDataModificationUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/statisticui/ChartOutputUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/statisticui/ChartOutputUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/statisticui/LogInquiryUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/statisticui/LogInquiryUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/statisticui/NoteApprovingUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/statisticui/NoteApprovingUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/ArrivalNoteOnServiceVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/ArrivalNoteOnServiceVO.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/ArrivalNoteOnTransitVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/ArrivalNoteOnTransitVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/ChartVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/ChartVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/DeliveryNoteVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/DeliveryNoteVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/UserVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/UserVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/client.iml" afterPath="$PROJECT_DIR$/client/client.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pom.xml" afterPath="$PROJECT_DIR$/client/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/client/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/pom.xml" afterPath="$PROJECT_DIR$/server/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/server.iml" afterPath="$PROJECT_DIR$/server/server.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/businesslogicservice/logisticblservice/_Driver/ArrivalNoteOnTransitBLService_Driver.java" afterPath="$PROJECT_DIR$/client/src/main/java/businesslogicservice/logisticblservice/_Driver/ArrivalNoteOnTransitBLService_Driver.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/vo/ArrivalNoteOnTransitVO.java" afterPath="$PROJECT_DIR$/client/src/main/java/vo/ArrivalNoteOnTransitVO.java" />
     </list>
     <ignored path="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/client/target/" />
     <ignored path="$PROJECT_DIR$/common/target/" />
     <ignored path="$PROJECT_DIR$/server/target/" />
+    <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -537,7 +38,6 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -554,15 +54,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-        <option value="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Driver/DeliveryNoteInputDataService_Driver.java" />
-        <option value="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Stub/DeliveryNoteInputDataService_Stub.java" />
-        <option value="$PROJECT_DIR$/common/src/main/java/po/DeliveryNotePO.java" />
-        <option value="$PROJECT_DIR$/client/src/main/java/businesslogic/logistic/DeliveryNoteInput.java" />
-        <option value="$PROJECT_DIR$/client/src/main/java/connection/connectionservice/RMIObjectProviderService.java" />
-        <option value="$PROJECT_DIR$/client/src/main/java/connection/RMIObjectProvider.java" />
-        <option value="$PROJECT_DIR$/client/src/main/java/connection/RMIPublisher.java" />
-        <option value="$PROJECT_DIR$/client/src/main/java/connection/RMIHelper.java" />
-        <option value="$PROJECT_DIR$/client/src/main/java/connection/RemoteObjectGetter.java" />
+        <option value="$PROJECT_DIR$/client/src/main/java/businesslogicservice/commodityblservice/_Driver/StorageInBLService_Driver.java" />
+        <option value="$PROJECT_DIR$/client/src/main/java/businesslogicservice/commodityblservice/_Driver/StorageInquiryAllBLService_Driver.java" />
+        <option value="$PROJECT_DIR$/client/src/main/java/vo/ArrivalNoteOnTransitVO.java" />
+        <option value="$PROJECT_DIR$/client/src/main/java/businesslogicservice/logisticblservice/_Driver/ArrivalNoteOnTransitBLService_Driver.java" />
+        <option value="$PROJECT_DIR$/client/src/main/java/businesslogicservice/logisticblservice/_Driver/ArrivalNoteOnServiceBLService_Driver.java" />
       </list>
     </option>
   </component>
@@ -571,6 +67,11 @@
       <MavenGeneralSettings>
         <option name="mavenHome" value="Bundled (Maven 3)" />
       </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
     </option>
   </component>
   <component name="ProjectFrameBounds">
@@ -621,18 +122,45 @@
               <option name="myItemId" value="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ExpressSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
     </panes>
   </component>
+  <component name="PropertiesComponent">
+    <property name="FullScreen" value="true" />
+  </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="data" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.StatisticClient">
+  <component name="RunManager" selected="Application.InfoClient">
+    <configuration default="false" name="StorageInBLService_Driver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="businesslogicservice.commodityblservice._Driver.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="businesslogicservice.commodityblservice._Driver.StorageInBLService_Driver" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="client" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="false" name="ArrivalNoteOnTransitBLService_Driver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -653,14 +181,14 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="LoadNoteOnServiceBLService_Driver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="ClientFinance" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="businesslogicservice.logisticblservice._Driver.*" />
+          <option name="PATTERN" value="businesslogicservice.financeblservice._driver.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="businesslogicservice.logisticblservice._Driver.LoadNoteOnServiceBLService_Driver" />
+      <option name="MAIN_CLASS_NAME" value="businesslogicservice.financeblservice._driver.ClientFinance" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -673,54 +201,14 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="LoadNoteOnTransitBLService_Driver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="InfoClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="businesslogicservice.logisticblservice._Driver.*" />
+          <option name="PATTERN" value="businesslogicservice.infoblservice._driver.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="businesslogicservice.logisticblservice._Driver.LoadNoteOnTransitBLService_Driver" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="client" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="ReceivingNoteInputBLService_Driver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="businesslogicservice.logisticblservice._Driver.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="businesslogicservice.logisticblservice._Driver.ReceivingNoteInputBLService_Driver" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="client" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="StatisticClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="businesslogicservice.statisticblservice._driver.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="businesslogicservice.statisticblservice._driver.StatisticClient" />
+      <option name="MAIN_CLASS_NAME" value="businesslogicservice.infoblservice._driver.InfoClient" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -977,20 +465,18 @@
       <listeners />
       <method />
     </configuration>
-    <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Application.ArrivalNoteOnTransitBLService_Driver" />
-      <item index="1" class="java.lang.String" itemvalue="Application.LoadNoteOnServiceBLService_Driver" />
-      <item index="2" class="java.lang.String" itemvalue="Application.LoadNoteOnTransitBLService_Driver" />
-      <item index="3" class="java.lang.String" itemvalue="Application.ReceivingNoteInputBLService_Driver" />
-      <item index="4" class="java.lang.String" itemvalue="Application.StatisticClient" />
+    <list size="4">
+      <item index="0" class="java.lang.String" itemvalue="Application.StorageInBLService_Driver" />
+      <item index="1" class="java.lang.String" itemvalue="Application.ArrivalNoteOnTransitBLService_Driver" />
+      <item index="2" class="java.lang.String" itemvalue="Application.ClientFinance" />
+      <item index="3" class="java.lang.String" itemvalue="Application.InfoClient" />
     </list>
     <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.StatisticClient" />
-        <item index="1" class="java.lang.String" itemvalue="Application.ReceivingNoteInputBLService_Driver" />
-        <item index="2" class="java.lang.String" itemvalue="Application.LoadNoteOnTransitBLService_Driver" />
-        <item index="3" class="java.lang.String" itemvalue="Application.LoadNoteOnServiceBLService_Driver" />
-        <item index="4" class="java.lang.String" itemvalue="Application.ArrivalNoteOnTransitBLService_Driver" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Application.InfoClient" />
+        <item index="1" class="java.lang.String" itemvalue="Application.ClientFinance" />
+        <item index="2" class="java.lang.String" itemvalue="Application.ArrivalNoteOnTransitBLService_Driver" />
+        <item index="3" class="java.lang.String" itemvalue="Application.StorageInBLService_Driver" />
       </list>
     </recent_temporary>
   </component>
@@ -1018,10 +504,10 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14931507" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17671233" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3368336" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -1035,6 +521,14 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -1047,14 +541,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/main/java/businesslogic/logistic/DeliveryNoteInput.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1762963">
@@ -1166,30 +652,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/main/java/businesslogicservice/commodityblservice/_Driver/StorageInBLService_Driver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14814815">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/main/java/businesslogicservice/logisticblservice/_Stub/ArrivalNoteOnTransitBLService_Stub.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8888889">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/main/java/businesslogicservice/logisticblservice/_Driver/ArrivalNoteOnTransitBLService_Driver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14814815">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/main/java/businesslogicservice/statisticblservice/_driver/NoteApprovingBLService_Driver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22222222">
@@ -1283,6 +745,136 @@
             <element signature="e#598#599#0" expanded="true" />
             <element signature="e#626#627#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/expressSystem.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/businesslogicservice/commodityblservice/_Driver/StorageInBLService_Driver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20067453">
+          <caret line="14" column="52" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/businesslogicservice/commodityblservice/_Driver/StorageInquiryAllBLService_Driver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34401348">
+          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/businesslogicservice/commodityblservice/_Driver/StorageOutBLService_Driver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11467116">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/businesslogicservice/commodityblservice/_Driver/StorageInquiryPartBLService_Driver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14333895">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/businesslogicservice/commodityblservice/StorageInquiryAllBLService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14333895">
+          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/businesslogicservice/logisticblservice/_Stub/ArrivalNoteOnTransitBLService_Stub.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7338129">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/vo/ArrivalNoteOnTransitVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18945868">
+          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/businesslogicservice/logisticblservice/_Driver/DeliveryNoteInputBLService_Driver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.508547">
+          <caret line="26" column="39" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/businesslogicservice/logisticblservice/_Driver/ArrivalNoteOnServiceBLService_Driver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26638177">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/businesslogicservice/logisticblservice/_Stub/ArrivalNoteOnServiceBLService_Stub.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.024216523">
+          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/vo/DeliverNoteOnServiceVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65384614">
+          <caret line="27" column="11" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/vo/ArrivalNoteOnServiceVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6054131">
+          <caret line="34" column="11" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/businesslogicservice/logisticblservice/_Driver/ArrivalNoteOnTransitBLService_Driver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.48433048">
+          <caret line="27" column="42" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Driver/ArrivalNoteOnServiceDataService_Driver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5340314">
+          <caret line="24" column="39" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>

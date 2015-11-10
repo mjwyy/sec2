@@ -5,6 +5,8 @@
  */
 package po;
 
+import util.enums.DeliverCategory;
+
 import java.io.Serializable;
 
 public class DeliveryNotePO implements Serializable{
@@ -56,7 +58,7 @@ private String name;
 /**
  * 快递种类
  */
-private String category;
+private DeliverCategory category;
 
 /**
  * 包装费用
@@ -69,7 +71,7 @@ private double packPrice;
 private String barCode;
 
 public DeliveryNotePO(String senderName, String senderAddress, String senderWorkPlace, String senderTeleNumber,
-		String number, double weight, double volume, String name, String category, double packPrice,
+		String number, double weight, double volume, String name, DeliverCategory category, double packPrice,
 		String barCode) {
 	super();
 	this.senderName = senderName;
@@ -117,7 +119,7 @@ public String getName() {
 	return name;
 }
 
-public String getCategory() {
+public DeliverCategory getCategory() {
 	return category;
 }
 
@@ -161,7 +163,7 @@ public void setName(String name) {
 	this.name = name;
 }
 
-public void setCategory(String category) {
+public void setCategory(DeliverCategory category) {
 	this.category = category;
 }
 

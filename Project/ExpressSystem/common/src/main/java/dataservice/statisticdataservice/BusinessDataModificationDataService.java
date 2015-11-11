@@ -62,9 +62,7 @@ public interface BusinessDataModificationDataService extends Remote {
     /**
 	 * Data将city1与city2之间的距离数据改为distance
      *
-	 * @param distance
-	 * @param city1
-	 * @param city2
+	 * @param distancePO
 	 * @return true for successful modification
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException
@@ -75,8 +73,7 @@ public interface BusinessDataModificationDataService extends Remote {
 	/**
      * Data返回两个城市对应距离数值
      *
-     * @param city1
-     * @param city2
+     * @param distancePO
      * @return
      * @throws RemoteException
      * @throws ElementNotFoundException

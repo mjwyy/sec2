@@ -1,13 +1,5 @@
-<<<<<<< HEAD
 Manifest-Version: 1.0
-Build-Jdk: 1.7.0_79
-Built-By: kylin
+Built-By: Administrator
+Build-Jdk: 1.7.0_67
 Created-By: Maven Integration for Eclipse
 
-=======
-Manifest-Version: 1.0
-Build-Jdk: 1.7.0_79
-Built-By: kylin
-Created-By: Maven Integration for Eclipse
-
->>>>>>> master

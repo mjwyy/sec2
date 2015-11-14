@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 import util.BarcodeAndState;
 
-//TODO povo的统一
 public class ArrivalNoteOnTransitPO implements Serializable{
 	/**
 	 * 
@@ -53,7 +52,11 @@ public class ArrivalNoteOnTransitPO implements Serializable{
 		BarcodeAndStates = barcodeAndStates;
 	}
 
-	public String getTransferNumber() {
+    public ArrivalNoteOnTransitPO() {
+        super();
+    }
+
+    public String getTransferNumber() {
 		return transferNumber;
 	}
 

@@ -31,9 +31,17 @@
         <processorPath useClasspath="true" />
         <module name="server" />
       </profile>
+      <profile default="false" name="Annotation profile for common" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="common" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="client" target="1.7" />
+      <module name="common" target="1.7" />
       <module name="expressSystem" target="1.5" />
       <module name="server" target="1.7" />
     </bytecodeTargetLevel>

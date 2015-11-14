@@ -38,6 +38,7 @@
       <property name="caretWidth" class="java.lang.Integer" />
     </properties>
   </component>
+>>>>>>> master
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>

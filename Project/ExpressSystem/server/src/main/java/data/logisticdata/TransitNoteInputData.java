@@ -1,4 +1,4 @@
-package data;
+package data.logisticdata;
 
 import dataservice.logisticdataservice.TransitNoteInputDataService;
 import po.TransitNotePO;

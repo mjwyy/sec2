@@ -30,12 +30,4 @@ public interface NoteDataService {
 	 */
 	public ArrayList<NotePO> findAll() throws RemoteException;
 
-	/**
-	 * 初始化持久化数据库
-	 */
-	public void init() throws RemoteException;
-	/**
-	 * 结束持久化数据库的使用
-	 */
-	public void finish() throws RemoteException;
 }

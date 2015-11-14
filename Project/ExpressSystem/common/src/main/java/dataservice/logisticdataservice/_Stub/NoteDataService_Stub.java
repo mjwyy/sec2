@@ -53,13 +53,4 @@ public class NoteDataService_Stub implements NoteDataService {
         return pos;
     }
 
-     
-    public void init() throws RemoteException {
-        System.out.println("init succeed!");
-    }
-
-     
-    public void finish() throws RemoteException {
-        System.out.println("finish succeed!");
-    }
 }

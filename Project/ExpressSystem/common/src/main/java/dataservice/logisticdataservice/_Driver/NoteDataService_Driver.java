@@ -20,7 +20,6 @@ public class NoteDataService_Driver {
     public void drive(NoteDataService service) throws RemoteException {
         NotePO po1 = new NotePO();
         NotePO po2 = new NotePO();
-        service.init();
         if(service.insert(po1))
         	System.out.println("insert succeed");
         else
@@ -41,7 +40,6 @@ public class NoteDataService_Driver {
         else
         	System.out.println("delete failed");
         service.findAll();
-        service.finish();
     }
 
 }

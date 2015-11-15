@@ -9,7 +9,9 @@ import java.math.BigDecimal;
 public class PaymentPO implements Serializable {
 
 	private static final long serialVersionUID = 8277049058138246140L;
-	
+	public PaymentPO(){
+		
+	}
 	public PaymentPO(String date, String nameOfPayer, String accountNumber,
 			BigDecimal amountOfMoney, String type, String comment) {
 		super();

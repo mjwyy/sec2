@@ -29,13 +29,15 @@ public class BusinessDataModificationDataService_Stub implements BusinessDataMod
 	}
 
 	 
-	public void setDistance(DistancePO distancePO) {
+	public boolean setDistance(DistancePO distancePO) {
 		System.out.println("set distance");
+		return false;
 	}
 
 	 
-	public void getDistance(DistancePO distancePO) {		
+	public DistancePO getDistance(DistancePO distancePO) {		
 		System.out.println("got distance");
+		return distancePO;
 	}
 
 	 

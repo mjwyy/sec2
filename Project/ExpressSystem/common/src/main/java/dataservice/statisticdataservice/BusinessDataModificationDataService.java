@@ -67,7 +67,7 @@ public interface BusinessDataModificationDataService extends Remote {
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException
 	 */
-	public void setDistance(DistancePO distancePO)
+	public boolean setDistance(DistancePO distancePO)
 			throws RemoteException,ElementNotFoundException;
 	
 	/**
@@ -78,6 +78,6 @@ public interface BusinessDataModificationDataService extends Remote {
      * @throws RemoteException
      * @throws ElementNotFoundException
      */
-	public void getDistance(DistancePO distancePO)
+	public DistancePO getDistance(DistancePO distancePO)
 			throws RemoteException,ElementNotFoundException;
 }

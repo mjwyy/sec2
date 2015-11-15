@@ -24,7 +24,9 @@ public class OrderInquiry_Test {
 		history.add("鼓楼营业厅");
 		MockOrderInquiry order = new MockOrderInquiry("1234567890","完好",history);
 		
-	    assertEquals(order,service.findOrder(order.getBarcode()));
+	    assertEquals("1234567890",service.findOrder(order.getBarcode()).getBarcode());
+	    assertEquals("完好",service.findOrder(order.getBarcode()).getStateOfTransport());
+	    assertEquals(true,history.equals(service.findOrder(order.getBarcode()).getHistory()));
 		
 	}
 	

@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class MockArrivalNoteOnService extends ArrivalNoteOnServicePO {
     /**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -18,4 +18,9 @@ public class MockArrivalNoteOnService extends ArrivalNoteOnServicePO {
                                     String from, ArrayList<BarcodeAndState> barcodeAndStates) {
         super(date, transferNumber, from, barcodeAndStates);
     }
+
+    public MockArrivalNoteOnService(String date, String transferNumber, String from){
+        super(date,transferNumber,from,null);
+    }
+
 }

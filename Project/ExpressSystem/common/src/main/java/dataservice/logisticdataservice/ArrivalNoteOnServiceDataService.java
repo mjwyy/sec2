@@ -16,40 +16,46 @@ public interface ArrivalNoteOnServiceDataService {
 	/**
 	 * 在数据库中插入单一持久化对象
 	 */
-	public boolean insert(ArrivalNoteOnServicePO po) throws RemoteException;
+	public boolean insertArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException;
 	/**
 	 * 在数据库中删除单一持久化对象
 	 */
-	public boolean delete(ArrivalNoteOnServicePO po) throws RemoteException;
+	public boolean deleteArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException;
 	/**
 	 * 在数据库中更新单一持久化对象
 	 */
-	public boolean update(ArrivalNoteOnServicePO po) throws RemoteException;
+	public boolean updateArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException;
 	/**
 	 * 按关键字进行查找返回相应的ArrivalNoteOnServicePO结果
 	 */
-	public ArrayList<ArrivalNoteOnServicePO> find(ArrivalNoteOnServicePO po) throws RemoteException;
+	public ArrayList<ArrivalNoteOnServicePO> findArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException;
 	
 	/**
 	 * 返回所有的营业厅到达单PO
 	 */
-	public ArrayList<ArrivalNoteOnServicePO> findAll() throws RemoteException;
+	public ArrayList<ArrivalNoteOnServicePO> findAllArrivalNote() throws RemoteException;
+
 	/**
 	 * 在数据库中插入单一持久化对象
 	 */
-	public boolean insert(DeliverNoteOnServicePO po) throws RemoteException;
+	public boolean insertDeliverNote(DeliverNoteOnServicePO po) throws RemoteException;
 	/**
 	 * 在数据库中删除单一持久化对象
 	 */
-	public boolean delete(DeliverNoteOnServicePO po) throws RemoteException;
+	public boolean deleteDeliverNote(DeliverNoteOnServicePO po) throws RemoteException;
 	/**
 	 * 在数据库中更新单一持久化对象
 	 */
-	public boolean update(DeliverNoteOnServicePO po) throws RemoteException;
+	public boolean updateDeliverNote(DeliverNoteOnServicePO po) throws RemoteException;
+
 	/**
 	 * 按关键字进行查找返回相应的ArrivalNoteOnServicePO结果
 	 */
-	public ArrayList<DeliverNoteOnServicePO> find(DeliverNoteOnServicePO po) throws RemoteException;
-	
+	public ArrayList<DeliverNoteOnServicePO> findDeliverNote(DeliverNoteOnServicePO po) throws RemoteException;
+
+    /**
+     * 返回所有的ArrivalNoteOnServiceP
+     */
+    public ArrayList<ArrivalNoteOnServicePO> findAllDeliverNote() throws RemoteException;
 
 }

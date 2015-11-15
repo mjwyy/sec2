@@ -34,16 +34,16 @@ public class ArrivalNoteOnServiceDataService_Driver {
 
 
     public void drive(ArrivalNoteOnServiceDataService arrivalNoteOnServiceDataService) throws RemoteException {
-        if(arrivalNoteOnServiceDataService.insert(arrivalNoteOnServicePO));
+        if(arrivalNoteOnServiceDataService.insertArrivalNote(arrivalNoteOnServicePO));
         	System.out.println("insert succeed");
-        if(arrivalNoteOnServiceDataService.insert(arrivalNoteOnServicePO2));
+        if(arrivalNoteOnServiceDataService.insertArrivalNote(arrivalNoteOnServicePO2));
         	System.out.println("insert succeed");
-        arrivalNoteOnServiceDataService.find(arrivalNoteOnServicePO);
-        arrivalNoteOnServiceDataService.find(arrivalNoteOnServicePO2);
-        arrivalNoteOnServiceDataService.findAll();
-        if(arrivalNoteOnServiceDataService.delete(arrivalNoteOnServicePO));
+        arrivalNoteOnServiceDataService.findArrivalNote(arrivalNoteOnServicePO);
+        arrivalNoteOnServiceDataService.findArrivalNote(arrivalNoteOnServicePO2);
+        arrivalNoteOnServiceDataService.findAllArrivalNote();
+        if(arrivalNoteOnServiceDataService.deleteArrivalNote(arrivalNoteOnServicePO));
         	System.out.println("delete succeed");
-        if(arrivalNoteOnServiceDataService.update(arrivalNoteOnServicePO3));
+        if(arrivalNoteOnServiceDataService.updateArrivalNote(arrivalNoteOnServicePO3));
         	System.out.println("update succeed");
     }
 

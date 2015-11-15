@@ -14,4 +14,10 @@ public class MockLoadNoteOnService extends LoadNoteOnServicePO {
         super(date, hallNumber, transpotationNumber, destination, carNumber, guardMan,
                 supercargoMan, barcodes);
     }
+
+    public MockLoadNoteOnService(String transpotationNumber,String destination, String carNumber){
+        super(null, null, transpotationNumber, destination, carNumber, null,
+                null, null);
+    }
+
 }

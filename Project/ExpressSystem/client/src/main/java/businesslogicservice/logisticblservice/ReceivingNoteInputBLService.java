@@ -23,7 +23,7 @@ public interface ReceivingNoteInputBLService {
 	 * 快递员核对信息后要求提交单据
 	 * 
 	 * @param receiveDocVO 收件单VO
-	 * @return 寄件报价、预计到达日期信息
+	 * @return 
 	 */
 	public ResultMsg submitSecdDoc(ReceingNoteVO receiveDocVO);
 	

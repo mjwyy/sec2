@@ -19,15 +19,18 @@ public class DeliveryNoteInputDataService_Driver {
     }
 
     public void drive(DeliveryNoteInputDataService service) throws RemoteException {
-        DeliveryNotePO po1 = new DeliveryNotePO("王二狗","江苏省南京市栖霞区南京大学仙林校区","南京大学仙林校区",
-                "150052120000","1",0.5,20,"离散数学", DeliverCategory.ECNOMIC,5,"1234567890");
-        DeliveryNotePO po2 = new DeliveryNotePO("kylin","江苏省南京市栖霞区南京大学仙林校区","南京大学仙林校区",
-                "150052126666","1",0.5,20,"head first java",DeliverCategory.EXPRESS,5,"1234567891");
-        if(service.insert(po1))
+        DeliveryNotePO po1 = new DeliveryNotePO("王二狗","江苏省南京市栖霞区南京大学仙林校区","150052120000",
+                "Tom Hanks","江苏省徐州市沛县第三中学语文组","19883490000","爆炸物",10,
+                10,2,DeliverCategory.EXPRESS,5,"0000000001");
+
+        DeliveryNotePO po2 = new DeliveryNotePO("王三狗","江苏省南京市栖霞区南京大学仙林校区","150052120000",
+                "Tom Hanks","江苏省徐州市沛县第三中学语文组","19883490000","爆炸物",10,
+                10,2,DeliverCategory.EXPRESS,5,"0000000002");;
+        if(service.insert(po1).getPrice() == 100)
         	System.out.println("insert succeed");
         else
         	System.out.println("insert failed");
-        if(service.insert(po2))
+        if(service.insert(po2).getPrice() == 50)
         	System.out.println("insert succeed");
         else
         	System.out.println("insert failed");
@@ -39,8 +42,9 @@ public class DeliveryNoteInputDataService_Driver {
         else
         	System.out.println("delete failed");
         service.findAll();
-        po2 = new DeliveryNotePO("一只麟","江苏省南京市栖霞区南京大学仙林校区","南京大学仙林校区",
-                "150052126666","1",0.2,20,"人月神话",DeliverCategory.EXPRESS,5,"1234567894");
+        po2 = new DeliveryNotePO("王四狗","江苏省南京市栖霞区南京大学仙林校区","150052120000",
+                "Tom Hanks","江苏省徐州市沛县第三中学语文组","19883490000","爆炸物",10,
+                10,2,DeliverCategory.EXPRESS,5,"0000000003");
         if(service.update(po2))
         	System.out.println("update succeed");
         else

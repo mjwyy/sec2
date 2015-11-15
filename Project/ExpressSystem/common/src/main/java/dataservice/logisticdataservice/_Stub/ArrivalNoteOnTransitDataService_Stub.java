@@ -21,8 +21,8 @@ public class ArrivalNoteOnTransitDataService_Stub implements ArrivalNoteOnTransi
     	BarcodeAndState bar=new BarcodeAndState("0123456789",GoodsState.COMPLETE);
 		ArrayList<BarcodeAndState> BarcodeAndStates=new ArrayList<BarcodeAndState> ();
 		BarcodeAndStates.add(bar);
-        po1 = new ArrivalNoteOnTransitPO("2011-11-11","025100","025100201510200000001","北京",BarcodeAndStates);
-        po2 = new ArrivalNoteOnTransitPO("2011-11-11","025100","025100201510200000002","上海",BarcodeAndStates);
+        po1 = new ArrivalNoteOnTransitPO("025100201510200000001","025100","2011-11-11","北京",BarcodeAndStates);
+        po2 = new ArrivalNoteOnTransitPO("025100201510200000002","025100","2011-11-11","上海",BarcodeAndStates);
         pos = new ArrayList<ArrivalNoteOnTransitPO>();
         pos.add(po1);
         pos.add(po2);

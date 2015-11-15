@@ -3,6 +3,7 @@ package dataservice.logisticdataservice._Stub;
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
 import po.DeliveryNotePO;
 import util.enums.DeliverCategory;
+import util.sendDocMsg;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -17,19 +18,22 @@ public class DeliveryNoteInputDataService_Stub implements DeliveryNoteInputDataS
     private ArrayList<DeliveryNotePO> pos;
 
     public DeliveryNoteInputDataService_Stub() {
-        po1 = new DeliveryNotePO("王二狗","江苏省南京市栖霞区南京大学仙林校区","南京大学仙林校区",
-                "150052120000","1",0.5,20,"离散数学", DeliverCategory.EXPRESS,5,"1234567890");
-        po2 = new DeliveryNotePO("kylin","江苏省南京市栖霞区南京大学仙林校区","南京大学仙林校区",
-                "150052126666","1",0.5,20,"head first java",DeliverCategory.EXPRESS,5,"1234567891");
+        po1 = new DeliveryNotePO("王二狗","江苏省南京市栖霞区南京大学仙林校区","150052120000",
+                "Tom Hanks","江苏省徐州市沛县第三中学语文组","19883490000","爆炸物",10,
+                10,2,DeliverCategory.EXPRESS,5,"0000000001");
+
+        po2 = new DeliveryNotePO("王三狗","江苏省南京市栖霞区南京大学仙林校区","150052120000",
+                "Tom Hanks","江苏省徐州市沛县第三中学语文组","19883490000","爆炸物",10,
+                10,2,DeliverCategory.EXPRESS,5,"0000000002");
         pos = new ArrayList<DeliveryNotePO>();
         pos.add(po1);
         pos.add(po2);
     }
 
      
-    public boolean insert(DeliveryNotePO po) throws RemoteException {
+    public sendDocMsg insert(DeliveryNotePO po) throws RemoteException {
         System.out.println("insert succeed!");
-		return true;
+		return new sendDocMsg(true,"pass",100,"2015-12-12");
     }
 
      

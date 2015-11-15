@@ -39,12 +39,12 @@ public interface BusinessDataModificationDataService extends Remote {
      * Data将name表示的价格条目数值改为newValue
      *
 	 * @param name
-	 * @param newValue
+	 * @param double price
 	 * @return
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException
 	 */
-	public boolean setPrice(PriceType name,double newValue)
+	public boolean setPrice(PriceType name, double price)
 			throws RemoteException,ElementNotFoundException;
 	
     /**

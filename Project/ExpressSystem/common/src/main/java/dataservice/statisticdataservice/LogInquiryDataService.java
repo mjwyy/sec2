@@ -15,7 +15,7 @@ public interface LogInquiryDataService extends Remote {
 	 * Data层根据时间、关键词查询Log，返回相关条目
 	 *
 	 * @param time
-	 * @param keyword
+	 * @param string
 	 * @return
 	 * @throws RemoteException
 	 */

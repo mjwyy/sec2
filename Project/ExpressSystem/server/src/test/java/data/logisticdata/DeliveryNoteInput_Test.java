@@ -17,9 +17,6 @@ public class DeliveryNoteInput_Test {
 
     @Test
     public void testSubmit(){
-
-
-
         assertEquals(1,1);
     }
 

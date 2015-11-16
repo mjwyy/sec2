@@ -18,7 +18,9 @@ public class UserPO implements Serializable {
 	public static final int WAREHOUSE_MANAGER = 4;
 	public static final int CLERK = 5;
 	public static final int DELIVERY_MAN = 6;
-	
+	public UserPO(){
+		
+	}
 	public UserPO(String account, String password, int authority) {
 		super();
 		this.account = account;

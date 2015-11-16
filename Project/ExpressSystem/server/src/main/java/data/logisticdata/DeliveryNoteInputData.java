@@ -30,11 +30,17 @@ public class DeliveryNoteInputData implements DeliveryNoteInputDataService {
 
     @Override
     public ArrayList<DeliveryNotePO> find(DeliveryNotePO po) throws RemoteException {
-        return null;
+        DeliveryNotePO pox = new DeliveryNotePO(null,null,null,null,null,null,null,0,0,0,null,0,null);
+        ArrayList<DeliveryNotePO> list =  new ArrayList<DeliveryNotePO>();
+        list.add(pox);
+        return list;
     }
 
     @Override
     public ArrayList<DeliveryNotePO> findAll() throws RemoteException {
-        return null;
+        DeliveryNotePO pox = new DeliveryNotePO(null,null,null,null,null,null,null,0,0,0,null,0,null);
+        ArrayList<DeliveryNotePO> list =  new ArrayList<DeliveryNotePO>();
+        list.add(pox);
+        return list;
     }
 }

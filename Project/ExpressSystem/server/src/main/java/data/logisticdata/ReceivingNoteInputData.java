@@ -28,11 +28,17 @@ public class ReceivingNoteInputData implements ReceivingNoteInputDataService {
 
     @Override
     public ArrayList<ReceivingNotePO> find(ReceivingNotePO po) throws RemoteException {
-        return null;
+        ReceivingNotePO pox = new ReceivingNotePO(null,null,null);
+        ArrayList<ReceivingNotePO> list =  new ArrayList<ReceivingNotePO>();
+        list.add(pox);
+        return list;
     }
 
     @Override
     public ArrayList<ReceivingNotePO> findAll() throws RemoteException {
-        return null;
+        ReceivingNotePO pox = new ReceivingNotePO(null,null,null);
+        ArrayList<ReceivingNotePO> list =  new ArrayList<ReceivingNotePO>();
+        list.add(pox);
+        return list;
     }
 }

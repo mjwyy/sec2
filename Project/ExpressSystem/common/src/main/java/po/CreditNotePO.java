@@ -15,7 +15,9 @@ public class CreditNotePO implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1995375081984827715L;
-
+	public CreditNotePO(){
+		
+	}
 	public CreditNotePO(String nameOfDeliveryMan, String date, BigDecimal money) {
 		super();
 		this.nameOfDeliveryMan = nameOfDeliveryMan;

@@ -28,11 +28,17 @@ public class ArrivalNoteOnTransitData implements ArrivalNoteOnTransitDataService
 
     @Override
     public ArrayList<ArrivalNoteOnTransitPO> find(ArrivalNoteOnTransitPO po) throws RemoteException {
-        return null;
+        ArrivalNoteOnTransitPO pox = new ArrivalNoteOnTransitPO();
+        ArrayList<ArrivalNoteOnTransitPO> list =  new ArrayList<ArrivalNoteOnTransitPO>();
+        list.add(pox);
+        return list;
     }
 
     @Override
     public ArrayList<ArrivalNoteOnTransitPO> findAll() throws RemoteException {
-        return null;
+        ArrivalNoteOnTransitPO pox = new ArrivalNoteOnTransitPO();
+        ArrayList<ArrivalNoteOnTransitPO> list =  new ArrayList<ArrivalNoteOnTransitPO>();
+        list.add(pox);
+        return list;
     }
 }

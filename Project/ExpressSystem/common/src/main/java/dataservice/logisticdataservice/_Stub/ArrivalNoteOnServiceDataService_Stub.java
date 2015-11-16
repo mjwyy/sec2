@@ -36,63 +36,63 @@ public class ArrivalNoteOnServiceDataService_Stub implements ArrivalNoteOnServic
 	}
 
 
-	 
-	public boolean insert(ArrivalNoteOnServicePO po) throws RemoteException {
-		System.out.println("insert ArrivalNoteOnServicePO succeed");
-return true;
-	}
+    @Override
+    public boolean insertArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException {
+        System.out.println("insertArrivalNote success");
+        return false;
+    }
 
-	 
-	public boolean delete(ArrivalNoteOnServicePO po) throws RemoteException {
-		System.out.println("delete ArrivalNoteOnServicePO succeed");
-		return true;
-	}
+    @Override
+    public boolean deleteArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException {
+        System.out.println("deleteArrivalNote success");
+        return false;
+    }
 
-	 
-	public boolean update(ArrivalNoteOnServicePO po) throws RemoteException {
-		System.out.println("update ArrivalNoteOnServicePO succeed");
-		return true;
-	}
+    @Override
+    public boolean updateArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException {
+        System.out.println("updateArrivalNote success");
+        return false;
+    }
 
-	 
-	public ArrayList<ArrivalNoteOnServicePO> find(ArrivalNoteOnServicePO po) throws RemoteException {
-		System.out.println("find ArrivalNoteOnServicePO succeed");
-		return pos;
-	}
+    @Override
+    public ArrayList<ArrivalNoteOnServicePO> findArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException {
+        System.out.println("findArrivalNote success");
+        return null;
+    }
 
-	 
-	public ArrayList<ArrivalNoteOnServicePO> findAll() throws RemoteException {
-		System.out.println("findAll ArrivalNoteOnServicePO succeed");
-		return pos;
-	}
+    @Override
+    public ArrayList<ArrivalNoteOnServicePO> findAllArrivalNote() throws RemoteException {
+        System.out.println("findAllArrivalNote success");
+        return null;
+    }
 
+    @Override
+    public boolean insertDeliverNote(DeliverNoteOnServicePO po) throws RemoteException {
+        System.out.println("insertDeliverNote success");
+        return false;
+    }
 
-	 
-	public boolean insert(DeliverNoteOnServicePO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public boolean deleteDeliverNote(DeliverNoteOnServicePO po) throws RemoteException {
+        System.out.println("deleteDeliverNote success");
+        return false;
+    }
 
+    @Override
+    public boolean updateDeliverNote(DeliverNoteOnServicePO po) throws RemoteException {
+        System.out.println("updateDeliverNote success");
+        return false;
+    }
 
-	 
-	public boolean delete(DeliverNoteOnServicePO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public ArrayList<DeliverNoteOnServicePO> findDeliverNote(DeliverNoteOnServicePO po) throws RemoteException {
+        System.out.println("findDeliverNote success");
+        return null;
+    }
 
-
-	 
-	public boolean update(DeliverNoteOnServicePO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-	 
-	public ArrayList<DeliverNoteOnServicePO> find(DeliverNoteOnServicePO po)
-			throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+    @Override
+    public ArrayList<DeliverNoteOnServicePO> findAllDeliverNote() throws RemoteException {
+        System.out.println("findAllDeliverNote success");
+        return null;
+    }
 }

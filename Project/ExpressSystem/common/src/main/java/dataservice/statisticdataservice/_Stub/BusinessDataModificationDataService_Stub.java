@@ -6,13 +6,13 @@ package dataservice.statisticdataservice._Stub;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import dataservice.statisticdataservice.BusinessDataModificationDataService;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
+import dataservice.statisticdataservice.BusinessDataModificationDataService;
 import po.DistancePO;
 import util.enums.PriceType;
 
-public class BusinessDataModificationDataService_Stub implements BusinessDataModificationDataService{
+public class BusinessDataModificationDataService_Stub implements BusinessDataModificationDataService {
 
 	
 
@@ -29,13 +29,15 @@ public class BusinessDataModificationDataService_Stub implements BusinessDataMod
 	}
 
 	 
-	public void setDistance(DistancePO distancePO) {
+	public boolean setDistance(DistancePO distancePO) {
 		System.out.println("set distance");
+		return false;
 	}
 
 	 
-	public void getDistance(DistancePO distancePO) {		
+	public DistancePO getDistance(DistancePO distancePO) {		
 		System.out.println("got distance");
+		return distancePO;
 	}
 
 	 

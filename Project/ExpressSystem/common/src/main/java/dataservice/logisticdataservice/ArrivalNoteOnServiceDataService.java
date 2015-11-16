@@ -56,6 +56,6 @@ public interface ArrivalNoteOnServiceDataService {
     /**
      * 返回所有的ArrivalNoteOnServiceP
      */
-    public ArrayList<ArrivalNoteOnServicePO> findAllDeliverNote() throws RemoteException;
+    public ArrayList<DeliverNoteOnServicePO> findAllDeliverNote() throws RemoteException;
 
 }

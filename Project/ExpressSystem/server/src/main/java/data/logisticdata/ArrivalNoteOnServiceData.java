@@ -29,12 +29,18 @@ public class ArrivalNoteOnServiceData implements ArrivalNoteOnServiceDataService
 
 	@Override
 	public ArrayList<ArrivalNoteOnServicePO> findArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException {
-		return null;
+        ArrivalNoteOnServicePO pox = new ArrivalNoteOnServicePO(null,null,null,null);
+        ArrayList<ArrivalNoteOnServicePO> list =  new ArrayList<ArrivalNoteOnServicePO>();
+        list.add(pox);
+        return list;
 	}
 
 	@Override
 	public ArrayList<ArrivalNoteOnServicePO> findAllArrivalNote() throws RemoteException {
-		return null;
+        ArrivalNoteOnServicePO pox = new ArrivalNoteOnServicePO(null,null,null,null);
+        ArrayList<ArrivalNoteOnServicePO> list =  new ArrayList<ArrivalNoteOnServicePO>();
+        list.add(pox);
+        return list;
 	}
 
 	@Override
@@ -54,11 +60,17 @@ public class ArrivalNoteOnServiceData implements ArrivalNoteOnServiceDataService
 
 	@Override
 	public ArrayList<DeliverNoteOnServicePO> findDeliverNote(DeliverNoteOnServicePO po) throws RemoteException {
-		return null;
+        DeliverNoteOnServicePO pox = new DeliverNoteOnServicePO(null,null,null);
+        ArrayList<DeliverNoteOnServicePO> list =  new ArrayList<DeliverNoteOnServicePO>();
+        list.add(pox);
+        return list;
 	}
 
 	@Override
-	public ArrayList<ArrivalNoteOnServicePO> findAllDeliverNote() throws RemoteException {
-		return null;
+	public ArrayList<DeliverNoteOnServicePO> findAllDeliverNote() throws RemoteException {
+        DeliverNoteOnServicePO pox = new DeliverNoteOnServicePO(null,null,null);
+        ArrayList<DeliverNoteOnServicePO> list =  new ArrayList<DeliverNoteOnServicePO>();
+        list.add(pox);
+        return list;
 	}
 }

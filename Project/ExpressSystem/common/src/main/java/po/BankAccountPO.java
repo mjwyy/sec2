@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 public class BankAccountPO implements Serializable {
-
+	public BankAccountPO(){
+		
+	}
 	public BankAccountPO(String name, String number, BigDecimal balance) {
 		super();
 		this.name = name;

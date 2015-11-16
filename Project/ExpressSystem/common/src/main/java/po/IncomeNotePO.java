@@ -12,7 +12,9 @@ public class IncomeNotePO implements Serializable {
 
 	private static final long serialVersionUID = 8156585850190316916L;
 
-	
+	public IncomeNotePO(){
+		
+	}
 	public IncomeNotePO(String time, String receivingOrganization,
 			String incomeHandler, String incomeSource, BigDecimal money,
 			String location, BankAccountPO account) {

@@ -7,6 +7,7 @@ import po.BankAccountPO;
 public class MockBankAccountManagement extends BankAccountPO{
 String name;
 public MockBankAccountManagement(String name){
+    super();
 	this.name=name;
 }
 public String getName() {

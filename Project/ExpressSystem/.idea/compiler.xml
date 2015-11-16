@@ -39,10 +39,10 @@
         <module name="common" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.7">
       <module name="client" target="1.7" />
       <module name="common" target="1.7" />
-      <module name="expressSystem" target="1.5" />
+      <module name="expressSystem" target="1.7" />
       <module name="server" target="1.7" />
     </bytecodeTargetLevel>
   </component>

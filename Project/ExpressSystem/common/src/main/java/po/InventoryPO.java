@@ -46,7 +46,7 @@ public class InventoryPO implements Serializable{
 	 * @param outNum
 	 * @param inNum
 	 * @param money
-	 * @param place
+	 * @param goodsInfo
 	 */
 	public InventoryPO(String outNum, String inNum,String money,ArrayList<CommodityGoodsPO> goodsInfo){
 		this.outNum = outNum;

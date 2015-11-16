@@ -8,7 +8,6 @@ import util.enums.DeliverCategory;
  */
 public class MockDeliveryNote extends DeliveryNotePO{
 
-
     public MockDeliveryNote(String senderName, String senderAddress, String senderTeleNumber,
                             String receiverName, String receiverAddress, String receiverTeleNumber,
                             String name, int goodsNumber, double weight, double volume, DeliverCategory category,

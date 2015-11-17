@@ -4,18 +4,167 @@
     <bookmark url="file://$PROJECT_DIR$/server/src/test/java/data/logisticdata/MockObject/MockArrivalNoteOnTransit.java" line="25" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80e1d396-4d24-4864-b9b7-ee0530b48260" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/main/java/businesslogic/util/FormatCheck.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/test/java/businesslogic/FormatCheck_Test.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_3_8_1.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+    <list default="true" id="80e1d396-4d24-4864-b9b7-ee0530b48260" name="Default" comment="什么鬼">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/logistic/DeliveryNoteInput.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/logistic/DeliveryNoteInput.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/StorageInBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/StorageInBLService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/StorageInquiryAllBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/StorageInquiryAllBLService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/StorageInquiryPartBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/StorageInquiryPartBLService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/StorageOutBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/StorageOutBLService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Driver/StorageInBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Driver/StorageInBLService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Driver/StorageInquiryAllBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Driver/StorageInquiryAllBLService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Driver/StorageInquiryPartBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Driver/StorageInquiryPartBLService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Driver/StorageOutBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Driver/StorageOutBLService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Stub/StorageInBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Stub/StorageInBLService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Stub/StorageInquiryAllBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Stub/StorageInquiryAllBLService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Stub/StorageInquiryPartBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Stub/StorageInquiryPartBLService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Stub/StorageOutBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Stub/StorageOutBLService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/CreditNoteInputBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/CreditNoteInputBLService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/PaymentInputBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/PaymentInputBLService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/SettlementManagementBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/SettlementManagementBLService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_driver/ClientFinance.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_driver/ClientFinance.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_driver/CreditNoteInputBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_driver/CreditNoteInputBLService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_driver/PaymentInputBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_driver/PaymentInputBLService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_driver/SettlementManagementBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_driver/SettlementManagementBLService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_stub/CreditNoteInputBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_stub/CreditNoteInputBLService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_stub/PaymentInputBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_stub/PaymentInputBLService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_stub/SettlementManagementBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_stub/SettlementManagementBLService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/BankAccountManagementBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/BankAccountManagementBLService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/DriverVehicleManagementBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/DriverVehicleManagementBLService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/StaffOrganizationManagementBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/StaffOrganizationManagementBLService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/SystemUserManagementBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/SystemUserManagementBLService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/BankAccountManagemntBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/BankAccountManagemntBLService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/DriverVehicleManagementBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/DriverVehicleManagementBLService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/InfoClient.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/InfoClient.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/StaffOrganizationManagementBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/StaffOrganizationManagementBLService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/SystemUserManagementBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/SystemUserManagementBLService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_stub/BankAccountManagemntBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_stub/BankAccountManagemntBLService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_stub/DriverVehicleManagementBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_stub/DriverVehicleManagementBLService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_stub/StaffOrganizationManagementBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_stub/StaffOrganizationManagementBLService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_stub/SystemUserManagementBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_stub/SystemUserManagementBLService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/ArrivalNoteOnServiceBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/ArrivalNoteOnServiceBLService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/ArrivalNoteOnTransitBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/ArrivalNoteOnTransitBLService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/DeliveryNoteInputBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/DeliveryNoteInputBLService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/LoadNoteOnServiceBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/LoadNoteOnServiceBLService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/LoadNoteOnTransitBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/LoadNoteOnTransitBLService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/ReceivingNoteInputBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/ReceivingNoteInputBLService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/TransitNoteInputBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/TransitNoteInputBLService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/ArrivalNoteOnServiceBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/ArrivalNoteOnServiceBLService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/ArrivalNoteOnTransitBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/ArrivalNoteOnTransitBLService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/LoadNoteOnServiceBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/LoadNoteOnServiceBLService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/LoadNoteOnTransitBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/LoadNoteOnTransitBLService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/ReceivingNoteInputBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/ReceivingNoteInputBLService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/TransitNoteInputBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/TransitNoteInputBLService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/ArrivalNoteOnServiceBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/ArrivalNoteOnServiceBLService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/ArrivalNoteOnTransitBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/ArrivalNoteOnTransitBLService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/LoadNoteOnServiceBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/LoadNoteOnServiceBLService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/LoadNoteOnTransitBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/LoadNoteOnTransitBLService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/ReceivingNoteInputBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/ReceivingNoteInputBLService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/TransitNoteInputBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/TransitNoteInputBLService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/BaseDataBuildingBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/BaseDataBuildingBLService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/BusinessDataModificationBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/BusinessDataModificationBLService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/ChartOutputBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/ChartOutputBLService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/LogInquiryBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/LogInquiryBLService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/NoteApprovingBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/NoteApprovingBLService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/OrderInquiryBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/OrderInquiryBLService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/BaseDataBuildingBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/BaseDataBuildingBLService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/BusinessDataModificationBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/BusinessDataModificationBLService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/ChartOutputBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/ChartOutputBLService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/LogInquiryBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/LogInquiryBLService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/NoteApprovingBLService_Driver$1.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/NoteApprovingBLService_Driver$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/NoteApprovingBLService_Driver$2.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/NoteApprovingBLService_Driver$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/NoteApprovingBLService_Driver$3.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/NoteApprovingBLService_Driver$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/NoteApprovingBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/NoteApprovingBLService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/OrderInquiryBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/OrderInquiryBLService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/StatisticClient.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/StatisticClient.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/BaseDataBuildingBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/BaseDataBuildingBLService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/BusinessDataModificationBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/BusinessDataModificationBLService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/ChartOutputBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/ChartOutputBLService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/LogInquiryBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/LogInquiryBLService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/NoteApprovingBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/NoteApprovingBLService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/OrderInquiryBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/OrderInquiryBLService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/connection/RMIHelper.class" afterPath="$PROJECT_DIR$/client/target/classes/connection/RMIHelper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/connection/RemoteObjectGetter.class" afterPath="$PROJECT_DIR$/client/target/classes/connection/RemoteObjectGetter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/commodityui/StorageInUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/commodityui/StorageInUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/commodityui/StorageInquiryAllUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/commodityui/StorageInquiryAllUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/commodityui/StorageInquiryPartUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/commodityui/StorageInquiryPartUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/commodityui/StorageOutUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/commodityui/StorageOutUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/financeui/BankAccountManagementUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/financeui/BankAccountManagementUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/financeui/CreditNoteInputUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/financeui/CreditNoteInputUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/financeui/PaymentInputUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/financeui/PaymentInputUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/financeui/SettlementManagementUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/financeui/SettlementManagementUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/infoui/DriverVehicleManagementUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/infoui/DriverVehicleManagementUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/infoui/StaffOrganizationManagementUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/infoui/StaffOrganizationManagementUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/infoui/SystemUserManagementUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/infoui/SystemUserManagementUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/ArrivalNoteOnServiceUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/ArrivalNoteOnServiceUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/ArrivalNoteOnTransitUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/ArrivalNoteOnTransitUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/DeliveryNoteInputUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/DeliveryNoteInputUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/LoadNoteOnServiceUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/LoadNoteOnServiceUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/LoadNoteOnTransitUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/LoadNoteOnTransitUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/ReceivingNoteInputUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/ReceivingNoteInputUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/TransitNoteInputUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/TransitNoteInputUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/mainui/MainFrame.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/mainui/MainFrame.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/statisticui/BaseDataBuildingUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/statisticui/BaseDataBuildingUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/statisticui/BusinessDataModificationUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/statisticui/BusinessDataModificationUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/statisticui/ChartOutputUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/statisticui/ChartOutputUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/statisticui/LogInquiryUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/statisticui/LogInquiryUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/statisticui/NoteApprovingUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/statisticui/NoteApprovingUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/ArrivalNoteOnServiceVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/ArrivalNoteOnServiceVO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/ArrivalNoteOnTransitVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/ArrivalNoteOnTransitVO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/BankAccountVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/BankAccountVO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/ChartVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/ChartVO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/CommodityGoodsVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/CommodityGoodsVO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/CommodityInfoVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/CommodityInfoVO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/CreditNoteVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/CreditNoteVO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/DeliverNoteOnServiceVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/DeliverNoteOnServiceVO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/DriverVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/DriverVO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/FinanceVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/FinanceVO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/IncomeNoteVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/IncomeNoteVO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/InstitutionInfoVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/InstitutionInfoVO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/InventoryVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/InventoryVO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/LoadNoteOnServiceVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/LoadNoteOnServiceVO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/LoadNoteOnTransitVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/LoadNoteOnTransitVO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/NoteVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/NoteVO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/OrderVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/OrderVO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/OrganizationInfoVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/OrganizationInfoVO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/PaymentVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/PaymentVO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/ReceingNoteVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/ReceingNoteVO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/StaffVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/StaffVO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/StorageInVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/StorageInVO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/StorageOutVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/StorageOutVO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/SystemLogVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/SystemLogVO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/TransitNoteOnTransitVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/TransitNoteOnTransitVO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/UserVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/UserVO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/vo/VehicleVO.class" afterPath="$PROJECT_DIR$/client/target/classes/vo/VehicleVO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/financedata/PaymentInputData_Test.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/financedata/PaymentInputData_Test.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/infodata/BankAccountManagementData_Test.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/infodata/BankAccountManagementData_Test.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/infodata/DriverVehicleManagementData_test.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/infodata/DriverVehicleManagementData_test.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/infodata/MockObject/MockDriver.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/infodata/MockObject/MockDriver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/infodata/MockObject/MockOrganizationPO.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/infodata/MockObject/MockOrganizationPO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/infodata/MockObject/MockStaffPO.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/infodata/MockObject/MockStaffPO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/infodata/MockObject/MockVehicle.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/infodata/MockObject/MockVehicle.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/infodata/SystemUserManagementData_Test.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/infodata/SystemUserManagementData_Test.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/ArrivalNoteOnTransit_Test.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/ArrivalNoteOnTransit_Test.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/LoadNoteOnService_Test.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/LoadNoteOnService_Test.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/LoadNoteOnTransit_Test.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/LoadNoteOnTransit_Test.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockArrivalNoteOnService.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockArrivalNoteOnService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockArrivalNoteOnTransit.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockArrivalNoteOnTransit.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockDeliverNoteOnService.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockDeliverNoteOnService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockLoadNoteOnService.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockLoadNoteOnService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockLoadNoteOnTransit.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockLoadNoteOnTransit.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockReceivingNote.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockReceivingNote.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockTransitNote.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockTransitNote.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/ReceivingNoteInput_Test.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/ReceivingNoteInput_Test.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/TransitNoteInput_Test.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/TransitNoteInput_Test.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/statisticdata/BusinessDataModification_Test.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/statisticdata/BusinessDataModification_Test.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/statisticdata/ChartOutput_Test.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/statisticdata/ChartOutput_Test.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/statisticdata/LogInquiry_Test.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/statisticdata/LogInquiry_Test.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/statisticdata/MockObject/MockDistance.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/statisticdata/MockObject/MockDistance.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/statisticdata/MockObject/MockLogEntry.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/statisticdata/MockObject/MockLogEntry.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/statisticdata/MockObject/MockOrderInquiry.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/statisticdata/MockObject/MockOrderInquiry.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/statisticdata/NoteApprovingData_Test.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/statisticdata/NoteApprovingData_Test.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/statisticdata/OrderInquiry_Test.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/statisticdata/OrderInquiry_Test.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/client.iml" afterPath="$PROJECT_DIR$/client/client.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pom.xml" afterPath="$PROJECT_DIR$/client/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/businesslogicservice/logisticblservice/_Driver/DeliveryNoteInputBLService_Driver.java" afterPath="$PROJECT_DIR$/client/src/main/java/businesslogicservice/logisticblservice/_Driver/DeliveryNoteInputBLService_Driver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/businesslogicservice/logisticblservice/_Stub/DeliveryNoteInputBLService_Stub.java" afterPath="$PROJECT_DIR$/client/src/main/java/businesslogicservice/logisticblservice/_Stub/DeliveryNoteInputBLService_Stub.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/vo/DeliveryNoteVO.java" afterPath="$PROJECT_DIR$/client/src/main/java/vo/DeliveryNoteVO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/util/ResultMsg.java" afterPath="$PROJECT_DIR$/common/src/main/java/util/ResultMsg.java" />
     </list>
     <ignored path="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,7 +188,7 @@
     <favorites_list name="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -59,7 +208,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/server/src/main/java/data/logisticdata/DeliveryNoteInputData.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/data/logisticdata/LoadNoteOnServiceData.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/data/logisticdata/LoadNoteOnTransitData.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/data/logisticdata/ReceivingNoteInputData.java" />
@@ -110,6 +258,7 @@
         <option value="$PROJECT_DIR$/client/src/main/java/vo/DeliveryNoteVO.java" />
         <option value="$PROJECT_DIR$/client/src/main/java/businesslogicservice/logisticblservice/_Stub/DeliveryNoteInputBLService_Stub.java" />
         <option value="$PROJECT_DIR$/client/src/main/java/businesslogicservice/logisticblservice/_Driver/DeliveryNoteInputBLService_Driver.java" />
+        <option value="$PROJECT_DIR$/.idea/.name" />
       </list>
     </option>
   </component>
@@ -219,7 +368,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -266,413 +414,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ExpressSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ExpressSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ExpressSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ExpressSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="po" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ExpressSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dataservice" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ExpressSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dataservice" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="logisticdataservice" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ExpressSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dataservice" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="logisticdataservice" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_Stub" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ExpressSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ExpressSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ExpressSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="businesslogic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ExpressSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ExpressSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ExpressSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ExpressSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="businesslogic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ExpressSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="businesslogic" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -680,6 +422,7 @@
       </pane>
       <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1104,6 +847,13 @@
       <option name="number" value="Default" />
       <updated>1447165911927</updated>
     </task>
+    <task id="LOCAL-00001" summary="什么鬼">
+      <created>1447774614469</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1447774614469</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1148,8 +898,7 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19315068" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25121164" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1157,13 +906,14 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19315068" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23972602" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1201,6 +951,11 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="什么鬼" />
+    <option name="LAST_COMMIT_MESSAGE" value="什么鬼" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
@@ -1210,20 +965,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.11/junit-4.11.jar!/org/junit/internal/builders/AllDefaultPossibilitiesBuilder.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34960938">
-          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.11/junit-4.11.jar!/org/junit/internal/requests/ClassRequest.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.62109375">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.11/junit-4.11.jar!/org/junit/internal/builders/JUnit4Builder.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36523438">
@@ -1533,9 +1274,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.57575756">
           <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="e#360#361#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1543,7 +1281,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.38746437">
           <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1551,12 +1288,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36324787">
           <caret line="19" column="19" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
-          <folding>
-            <element signature="e#1275#1276#0" expanded="true" />
-            <element signature="e#1321#1322#0" expanded="true" />
-            <element signature="e#1404#1405#0" expanded="true" />
-            <element signature="e#1457#1458#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1565,7 +1296,7 @@
         <state vertical-scroll-proportion="0.53988606">
           <caret line="156" column="48" selection-start-line="156" selection-start-column="48" selection-end-line="156" selection-end-column="48" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1583,8 +1314,24 @@
         <state vertical-scroll-proportion="0.96866095">
           <caret line="40" column="14" selection-start-line="40" selection-start-column="14" selection-end-line="40" selection-end-column="14" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.4070797">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/.name">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.048433047">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

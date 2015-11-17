@@ -1,5 +1,8 @@
 package vo;
 
+import businesslogic.util.FormatCheck;
+import po.DeliveryNotePO;
+import util.ResultMsg;
 import util.enums.DeliverCategory;
 
 /**
@@ -9,120 +12,158 @@ import util.enums.DeliverCategory;
  *
  */
 public class DeliveryNoteVO extends NoteVO {
-	
-	/**
-	 * 客户姓名
-	 */
-	private String senderName;
-	
-	/**
-	 * 客户地址
-	 */
-	private String senderAddress;
-	
-	/**
-	 * 客户单位地址
-	 */
-	private String senderWorkPlace;
-	
-	/**
-	 * 客户电话（手机）号码
-	 */
-	private String senderTeleNumber;
-	
-	/**
-	 * 寄件件数
-	 */
-	private String number;
-	
-	/**
-	 * 货物实际重量
-	 */
-	private double weight;
-	
-	/**
-	 * 货物体积
-	 */
-	private double volume;
-	
-	/**
-	 * 货物内件品名
-	 */
-	private String name;
-	
-	/**
-	 * 快递种类
-	 */
-	private DeliverCategory category;
-	
-	/**
-	 * 包装费用
-	 */
-	private double packPrice;
-	
-	/**
-	 * 货物条形码
-	 */
-	private String barCode;
-	
-	public DeliveryNoteVO(String senderName, String senderAddress, String senderWorkPlace, String senderTeleNumber,
-			String number, double weight, double volume, String name, DeliverCategory category, double packPrice,
-			String barCode) {
-		super();
-		this.senderName = senderName;
-		this.senderAddress = senderAddress;
-		this.senderWorkPlace = senderWorkPlace;
-		this.senderTeleNumber = senderTeleNumber;
-		this.number = number;
-		this.weight = weight;
-		this.volume = volume;
-		this.name = name;
-		this.category = category;
-		this.packPrice = packPrice;
-		this.barCode = barCode;
-	}
 
-	public String getSenderName() {
-		return senderName;
-	}
+    /**
+     * 客户(寄件人)姓名
+     */
+    private String senderName;
 
-	public String getSenderAddress() {
-		return senderAddress;
-	}
+    /**
+     * 客户(寄件人)地址
+     */
+    private String senderAddress;
 
-	public String getSenderWorkPlace() {
-		return senderWorkPlace;
-	}
+    /**
+     * 客户(寄件人)电话（手机）号码
+     */
+    private String senderTeleNumber;
 
-	public String getSenderTeleNumber() {
-		return senderTeleNumber;
-	}
+    /**
+     * 收件人姓名
+     */
+    private String receiverName;
 
-	public String getNumber() {
-		return number;
-	}
+    /**
+     * 收件人地址
+     */
+    private String receiverAddress;
 
-	public double getWeight() {
-		return weight;
-	}
+    /**
+     * 收件人电话（手机）号码
+     */
+    private String receiverTeleNumber;
 
-	public double getVolume() {
-		return volume;
-	}
+    /**
+     * 货物内件品名
+     */
+    private String name;
 
-	public String getName() {
-		return name;
-	}
+    /**
+     * 寄件件数
+     */
+    private int goodsNumber;
 
-	public DeliverCategory getCategory() {
-		return category;
-	}
+    /**
+     * 货物实际重量
+     */
+    private double weight;
 
-	public double getPackPrice() {
-		return packPrice;
-	}
+    /**
+     * 货物体积
+     */
+    private double volume;
 
-	public String getBarCode() {
-		return barCode;
-	}
+    /**
+     * 快递种类
+     */
+    private DeliverCategory category;
+
+    /**
+     * 包装费用
+     */
+    private double packPrice;
+
+    /**
+     * 货物条形码
+     */
+    private String barCode;
+
+    public DeliveryNoteVO(String senderName, String senderAddress, String senderTeleNumber, String receiverName, String receiverAddress, String receiverTeleNumber, String name, int goodsNumber, double weight, double volume, DeliverCategory category, double packPrice, String barCode) {
+        this.senderName = senderName;
+        this.senderAddress = senderAddress;
+        this.senderTeleNumber = senderTeleNumber;
+        this.receiverName = receiverName;
+        this.receiverAddress = receiverAddress;
+        this.receiverTeleNumber = receiverTeleNumber;
+        this.name = name;
+        this.goodsNumber = goodsNumber;
+        this.weight = weight;
+        this.volume = volume;
+        this.category = category;
+        this.packPrice = packPrice;
+        this.barCode = barCode;
+    }
+
+    public String getSenderName() {
+        return senderName;
+    }
+
+    public String getSenderAddress() {
+        return senderAddress;
+    }
+
+    public String getSenderTeleNumber() {
+        return senderTeleNumber;
+    }
+
+    public String getReceiverName() {
+        return receiverName;
+    }
+
+    public String getReceiverAddress() {
+        return receiverAddress;
+    }
+
+    public String getReceiverTeleNumber() {
+        return receiverTeleNumber;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getGoodsNumber() {
+        return goodsNumber;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public double getVolume() {
+        return volume;
+    }
+
+    public DeliverCategory getCategory() {
+        return category;
+    }
+
+    public double getPackPrice() {
+        return packPrice;
+    }
+
+    public String getBarCode() {
+        return barCode;
+    }
+
+    public DeliveryNotePO toPO(){
+        return new DeliveryNotePO(this.senderName, this.senderAddress, this.senderTeleNumber, this.receiverName,
+        this.receiverAddress, this.receiverTeleNumber, this.name, this.goodsNumber, this.weight,
+        this.volume, this.category, this.packPrice, this.barCode);
+    }
+
+    public ResultMsg checkFormat(){
+        ResultMsg result = new ResultMsg(true);
+        ResultMsg results[] = new ResultMsg[13];
+        results[1] = FormatCheck.IsBarcode(this.barCode);
+        results[2] = FormatCheck.IsBarcode(this.receiverTeleNumber);
+        results[3] = FormatCheck.IsBarcode(this.senderTeleNumber);
+        results[4] = FormatCheck.IsChineseName(this.receiverName);
+        results[5] = FormatCheck.IsChineseName(this.receiverName);
+        for(int i = 0; i<results.length; i++){
+            if(!results[i].isPass())
+                result.appendMessage(results[i].getMessage()+'\n');
+        }
+        return result;
+    }
 }

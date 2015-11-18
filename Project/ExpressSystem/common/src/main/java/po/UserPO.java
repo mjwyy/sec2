@@ -28,6 +28,11 @@ public class UserPO implements Serializable {
 		this.authority = authority;
 	}
 
+    @Override
+    public String toString(){
+        return "UserPO: 账户:"+account+" 密码:"+password+" 权限="+Integer.toString(authority);
+    }
+
 	/**
 	 * 用户账号
 	 */

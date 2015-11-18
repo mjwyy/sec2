@@ -5,21 +5,49 @@ import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.infodataservice.SystemUserManagementDataService;
 import po.UserPO;
 
+import java.net.ConnectException;
 import java.rmi.RemoteException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
  * Created by kylin on 15/11/16.
  */
 public class SystemUserManagementData implements SystemUserManagementDataService{
-    @Override
-    public boolean addUser(UserPO user) throws RemoteException, InterruptWithExistedElementException {
-        return false;
+
+    private Connection connection;
+
+    private PreparedStatement statement;
+
+    public SystemUserManagementData(){}
+
+    public SystemUserManagementData(Connection con){
+        this.connection = con;
     }
 
     @Override
-    public boolean removeUser(UserPO user) throws RemoteException, ElementNotFoundException {
-        return false;
+    public boolean addUser(UserPO user) throws RemoteException, InterruptWithExistedElementException, SQLException {
+        String sqlInsert = "insert into user (account,rights,password) values(?,?,?)";
+        statement = connection.prepareStatement(sqlInsert);
+        statement.setString(1,user.getAccount());
+        statement.setInt(2,user.getAuthority());
+        statement.setString(3,user.getPassword());
+        int result = statement.executeUpdate();
+        statement.close();
+        return result > 0;
+    }
+
+    @Override
+    public boolean removeUser(UserPO user) throws RemoteException, ElementNotFoundException, SQLException {
+        String account = user.getAccount();
+        String delete = "delete from user where account = "+account;
+        statement = connection.prepareStatement(delete);
+        int result = statement.executeUpdate();
+        statement.close();
+        return result > 0;
     }
 
     @Override
@@ -33,7 +61,20 @@ public class SystemUserManagementData implements SystemUserManagementDataService
     }
 
     @Override
-    public ArrayList<UserPO> getAllUsers() throws RemoteException {
-        return null;
+    public ArrayList<UserPO> getAllUsers() throws RemoteException, SQLException {
+        String sqlFindAll = "select * from user";
+        statement = connection.prepareStatement(sqlFindAll);
+        ResultSet resultSet = statement.executeQuery();
+        ArrayList<UserPO> result = new ArrayList<>();
+        UserPO userPO;
+        while(resultSet.next()){
+            String account = resultSet.getString(1);
+            String password = resultSet.getString(2);
+            int authority = resultSet.getInt(3);
+            userPO = new UserPO(account,password,authority);
+            result.add(userPO);
+        }
+        statement.close();
+        return result;
     }
 }

@@ -2,6 +2,7 @@ package dataservice.infodataservice;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dataservice.exception.ElementNotFoundException;
@@ -21,7 +22,7 @@ public interface SystemUserManagementDataService extends Remote {
 	 * @throws InterruptWithExistedElementException
 	 */
 	public boolean addUser(UserPO user)
-			throws RemoteException, InterruptWithExistedElementException;
+            throws Exception;
 
 	/**
 	 * Data从数据库中删除对应UserPO条目
@@ -32,7 +33,7 @@ public interface SystemUserManagementDataService extends Remote {
 	 * @throws ElementNotFoundException
 	 */
 	public boolean removeUser(UserPO user)
-			throws RemoteException, ElementNotFoundException;
+            throws Exception;
 
 	/**
 	 * Data将originalUserPO替换为modifiedUserPO
@@ -64,7 +65,7 @@ public interface SystemUserManagementDataService extends Remote {
 	 * @throws RemoteException
 	 */
 	public ArrayList<UserPO> getAllUsers()
-			throws RemoteException;
+            throws Exception;
 
 
 }

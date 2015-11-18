@@ -17,29 +17,31 @@ import dataservice.exception.InterruptWithExistedElementException;
 
 public class SystemUserManagementData_Test {
 
-	@Test
+//	@Test
 	public void testAddUser() throws Exception {
 		UserPO po = new UserPO("toDelete","sbsbsb",5);
         SystemUserManagementDataService service = DatabaseFactory.getSystemUserManagementDataInstance();
 		assertEquals(true,service.addUser(po));
 	}
 
-	@Test
-	public void testRemoveUser() throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException, SQLException {
-        UserPO po = new UserPO("toDelete",null,0);
+//	@Test
+	public void testRemoveUser() throws Exception {
+        UserPO po = new UserPO("test1",null,0);
         SystemUserManagementDataService service = DatabaseFactory.getSystemUserManagementDataInstance();
         assertEquals(true,service.removeUser(po));
 	}
 
 //    @Test
-    public void testInquireUser() throws RemoteException, ElementNotFoundException {
-        MockSystemUserManagement a=new MockSystemUserManagement("1234567");
-        ArrayList<UserPO> c=new ArrayList<UserPO>();
-        c.add(a);
-        //	assertEquals(c,b.inquireUser(a));
+    public void testInquireUser() throws Exception {
+        UserPO a=new UserPO("admin",null,0);
+        SystemUserManagementDataService service = DatabaseFactory.getSystemUserManagementDataInstance();
+        ArrayList<UserPO> result = service.inquireUser(a);
+        for (UserPO po2:result) {
+            System.out.println(po2);
+        }
     }
 
-	@Test
+//	@Test
 	public void testGetAllUsers() throws Exception {
         SystemUserManagementDataService service = DatabaseFactory.getSystemUserManagementDataInstance();
         ArrayList<UserPO> result = service.getAllUsers();

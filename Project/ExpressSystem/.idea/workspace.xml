@@ -5,17 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80e1d396-4d24-4864-b9b7-ee0530b48260" name="Default" comment="什么鬼">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_37.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/main/java/data/Dao/DataBaseConnection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/main/java/data/infodata/UserDAOProxy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/dataservice/infodataservice/SystemUserManagementDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/infodataservice/SystemUserManagementDataService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/dataservice/infodataservice/_Driver/SystemUserManagementDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/infodataservice/_Driver/SystemUserManagementDataService_Driver.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/po/UserPO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/UserPO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/pom.xml" afterPath="$PROJECT_DIR$/server/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/server.iml" afterPath="$PROJECT_DIR$/server/server.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/data/infodata/SystemUserManagementData.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/infodata/SystemUserManagementData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/data/infodata/UserDAOProxy.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/infodata/UserDAOProxy.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/test/java/data/infodata/SystemUserManagementData_Test.java" afterPath="$PROJECT_DIR$/server/src/test/java/data/infodata/SystemUserManagementData_Test.java" />
     </list>
     <ignored path="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD.iws" />
@@ -40,54 +33,35 @@
     <favorites_list name="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="SystemUserManagementData_Test.java" pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="SystemUserManagementData_Test.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/src/test/java/data/infodata/SystemUserManagementData_Test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33270678">
-              <caret line="30" column="50" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="50" />
-              <folding>
-                <element signature="e#1358#1366#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0">
+              <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/data/dao/DatabaseFactory.java">
+      <file leaf-file-name="UserDAOProxy.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/data/infodata/UserDAOProxy.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+              <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
               <folding>
-                <element signature="e#196#197#0" expanded="true" />
-                <element signature="e#237#238#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SystemUserManagementData.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SystemUserManagementData.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/src/main/java/data/infodata/SystemUserManagementData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="66" column="5" selection-start-line="54" selection-start-column="8" selection-end-line="66" selection-end-column="5" />
-              <folding>
-                <element signature="e#743#744#0" expanded="true" />
-                <element signature="e#780#781#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserPO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common/src/main/java/po/UserPO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="32" column="57" selection-start-line="32" selection-start-column="57" selection-end-line="32" selection-end-column="57" />
-              <folding>
-                <element signature="e#735#736#0" expanded="true" />
-                <element signature="e#830#831#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="-1.1447124">
+              <caret line="45" column="68" selection-start-line="45" selection-start-column="68" selection-end-line="45" selection-end-column="68" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -113,7 +87,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/server/src/test/java/data/financedata/MockObject/MockCreditNoteInput.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/po/InventoryPO.java" />
         <option value="$PROJECT_DIR$/server/src/test/java/data/commoditydata/InventoryData_Test.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/ArrivalNoteOnServiceDataService.java" />
@@ -157,13 +130,14 @@
         <option value="$PROJECT_DIR$/server/pom.xml" />
         <option value="$PROJECT_DIR$/server/src/main/java/data/dao/DataBaseConnection.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/data/dao/DAOFactory.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/data/dao/DatabaseConnection.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/dataservice/infodataservice/_Driver/SystemUserManagementDataService_Driver.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/data/dao/DatabaseFactory.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/data/dao/DatabaseConnection.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/data/infodata/UserDAOProxy.java" />
+        <option value="$PROJECT_DIR$/common/src/main/java/dataservice/infodataservice/SystemUserManagementDataService.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/po/UserPO.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/data/infodata/SystemUserManagementData.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/data/dao/DatabaseFactory.java" />
         <option value="$PROJECT_DIR$/server/src/test/java/data/infodata/SystemUserManagementData_Test.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/data/infodata/UserDAOProxy.java" />
       </list>
     </option>
   </component>
@@ -273,7 +247,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -628,8 +603,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1065,49 +1039,49 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="FormatCheck_Test - 2015.11.17 at 23h 02m 07s.xml">
-      <configuration name="FormatCheck_Test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SystemUserManagementData_Test - 2015.11.18 at 20h 18m 31s.xml">
-      <configuration name="SystemUserManagementData_Test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SystemUserManagementData_Test - 2015.11.18 at 20h 19m 02s.xml">
-      <configuration name="SystemUserManagementData_Test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SystemUserManagementData_Test - 2015.11.18 at 20h 19m 49s.xml">
-      <configuration name="SystemUserManagementData_Test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SystemUserManagementData_Test - 2015.11.18 at 20h 22m 00s.xml">
-      <configuration name="SystemUserManagementData_Test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SystemUserManagementData_Test - 2015.11.18 at 20h 29m 18s.xml">
-      <configuration name="SystemUserManagementData_Test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SystemUserManagementData_Test - 2015.11.18 at 20h 29m 58s.xml">
-      <configuration name="SystemUserManagementData_Test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SystemUserManagementData_Test - 2015.11.18 at 20h 32m 44s.xml">
-      <configuration name="SystemUserManagementData_Test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SystemUserManagementData_Test - 2015.11.18 at 20h 32m 58s.xml">
-      <configuration name="SystemUserManagementData_Test" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="SystemUserManagementData_Test - 2015.11.18 at 20h 33m 37s.xml">
+      <configuration name="SystemUserManagementData_Test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SystemUserManagementData_Test - 2015.11.18 at 21h 01m 38s.xml">
+      <configuration name="SystemUserManagementData_Test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SystemUserManagementData_Test - 2015.11.18 at 21h 02m 59s.xml">
+      <configuration name="SystemUserManagementData_Test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SystemUserManagementData_Test - 2015.11.18 at 21h 05m 57s.xml">
+      <configuration name="SystemUserManagementData_Test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SystemUserManagementData_Test - 2015.11.18 at 21h 06m 19s.xml">
+      <configuration name="SystemUserManagementData_Test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SystemUserManagementData_Test - 2015.11.18 at 21h 06m 38s.xml">
+      <configuration name="SystemUserManagementData_Test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SystemUserManagementData_Test - 2015.11.18 at 21h 06m 45s.xml">
+      <configuration name="SystemUserManagementData_Test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SystemUserManagementData_Test - 2015.11.18 at 21h 06m 57s.xml">
+      <configuration name="SystemUserManagementData_Test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SystemUserManagementData_Test - 2015.11.18 at 21h 07m 31s.xml">
+      <configuration name="SystemUserManagementData_Test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SystemUserManagementData_Test - 2015.11.18 at 21h 07m 48s.xml">
       <configuration name="SystemUserManagementData_Test" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23287672" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23224044" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22328767" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22328767" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20516963" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1173,13 +1147,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnServiceData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3935185">
-          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/ArrivalNoteOnServiceDataService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.03935185">
@@ -1212,9 +1179,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.6692914">
           <caret line="62" column="55" selection-start-line="62" selection-start-column="55" selection-end-line="62" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1476,7 +1440,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.54545456">
           <caret line="22" column="41" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1488,16 +1451,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/dao/DatabaseConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.87472034">
-          <caret line="23" column="82" selection-start-line="23" selection-start-column="82" selection-end-line="23" selection-end-column="82" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/src/main/java/dataservice/infodataservice/_Driver/SystemUserManagementDataService_Driver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5055928">
@@ -1506,21 +1459,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/po/UserPO.java">
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/dao/DatabaseConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="57" selection-start-line="32" selection-start-column="57" selection-end-line="32" selection-end-column="57" />
+        <state vertical-scroll-proportion="0.41051137">
+          <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
           <folding>
-            <element signature="e#735#736#0" expanded="true" />
-            <element signature="e#830#831#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/dataservice/infodataservice/SystemUserManagementDataService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3963068">
+          <caret line="52" column="18" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/data/dao/DatabaseFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.22077923">
+          <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
           <folding>
             <element signature="e#196#197#0" expanded="true" />
             <element signature="e#237#238#0" expanded="true" />
@@ -1528,34 +1488,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/po/UserPO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3469388">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/data/infodata/UserDAOProxy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36920223">
-          <caret line="38" column="0" selection-start-line="35" selection-start-column="22" selection-end-line="38" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/infodata/SystemUserManagementData.java">
+    <entry file="file://$PROJECT_DIR$/server/src/test/java/data/infodata/SystemUserManagementData_Test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="66" column="5" selection-start-line="54" selection-start-column="8" selection-end-line="66" selection-end-column="5" />
-          <folding>
-            <element signature="e#743#744#0" expanded="true" />
-            <element signature="e#780#781#0" expanded="true" />
-          </folding>
+          <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/test/java/data/infodata/SystemUserManagementData_Test.java">
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/infodata/SystemUserManagementData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33270678">
-          <caret line="30" column="50" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="50" />
-          <folding>
-            <element signature="e#1358#1366#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-1.1447124">
+          <caret line="45" column="68" selection-start-line="45" selection-start-column="68" selection-end-line="45" selection-end-column="68" />
+          <folding />
         </state>
       </provider>
     </entry>

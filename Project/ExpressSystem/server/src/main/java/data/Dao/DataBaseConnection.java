@@ -15,13 +15,13 @@ public class DatabaseConnection {
     public static final String DB_URL = "jdbc:mysql://localhost:3306/Express";
     public static final String DB_USER = "root";
     public static final String DB_PASSWORD = "861910";
-    private Connection connnection = null;
+    private Connection connection;
 
     public DatabaseConnection(){
         try {
             System.out.println("DataBase connecting......");
             Class.forName(DB_DRIVER);
-            connnection = DriverManager.getConnection(DB_URL,DB_USER,DB_PASSWORD);
+            connection = DriverManager.getConnection(DB_URL,DB_USER,DB_PASSWORD);
             System.out.println("DataBase is connected!");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -30,13 +30,13 @@ public class DatabaseConnection {
         }
     }
 
-    public Connection getConnnection() {
-        return connnection;
+    public Connection getConnection() {
+        return connection;
     }
 
     public void close()throws Exception{
-        if(connnection!=null){
-            connnection.close();
+        if(connection !=null){
+            connection.close();
         }
     }
 

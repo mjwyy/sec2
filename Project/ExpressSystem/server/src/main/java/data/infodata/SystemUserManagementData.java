@@ -43,7 +43,7 @@ public class SystemUserManagementData implements SystemUserManagementDataService
     @Override
     public boolean removeUser(UserPO user) throws RemoteException, ElementNotFoundException, SQLException {
         String account = user.getAccount();
-        String delete = "delete from user where account = "+account;
+        String delete = "delete from user where account = '"+account+"'";
         statement = connection.prepareStatement(delete);
         int result = statement.executeUpdate();
         statement.close();
@@ -51,13 +51,40 @@ public class SystemUserManagementData implements SystemUserManagementDataService
     }
 
     @Override
-    public boolean modifyUser(UserPO originalUser, UserPO modified) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException {
-        return false;
+    public boolean modifyUser(UserPO originalUser, UserPO modified) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException, SQLException {
+        if(!originalUser.getAccount().equals(modified.getAccount()))
+            return false;
+        String modify;
+        if(originalUser.getPassword()!=null && originalUser.getAuthority()!=0){
+            modify = "update user set rights="+modified.getAuthority()
+                    +",password="+modified.getPassword()+" where account = "+modified.getAccount();
+        }else if(originalUser.getPassword()!=null&& originalUser.getAuthority()==0){
+            modify = "update user set password="+modified.getPassword()+" where account = "+modified.getAccount();
+        }else
+            modify = "update user set rights="+modified.getAuthority()+" where account = "+modified.getAccount();
+        statement = connection.prepareStatement(modify);
+        int result = statement.executeUpdate();
+        statement.close();
+        return result > 0;
     }
 
     @Override
-    public ArrayList<UserPO> inquireUser(UserPO info) throws RemoteException, ElementNotFoundException {
-        return null;
+    public ArrayList<UserPO> inquireUser(UserPO info) throws RemoteException, ElementNotFoundException, SQLException {
+        String accountToFind = info.getAccount();
+        String sqlFindAll = "select * from user where account = '"+accountToFind+"'";
+        statement = connection.prepareStatement(sqlFindAll);
+        ResultSet resultSet = statement.executeQuery();
+        ArrayList<UserPO> result = new ArrayList<>();
+        UserPO userPO;
+        while(resultSet.next()){
+            String account = resultSet.getString(1);
+            String password = resultSet.getString(2);
+            int authority = resultSet.getInt(3);
+            userPO = new UserPO(account,password,authority);
+            result.add(userPO);
+        }
+        statement.close();
+        return result;
     }
 
     @Override

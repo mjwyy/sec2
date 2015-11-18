@@ -45,18 +45,18 @@ public interface SystemUserManagementDataService extends Remote {
 	 * @throws ElementNotFoundException
 	 */
 	public boolean modifyUser(UserPO originalUser,UserPO modified)
-			throws RemoteException, ElementNotFoundException,InterruptWithExistedElementException;
+			throws RemoteException, ElementNotFoundException,InterruptWithExistedElementException, Exception;
 	// TODO 修改的参数的一个两个问题
 	/**
 	 * Data查询对应的用户并返回其UserPO
      *
-	 * @param string
+	 * @param info
 	 * @return
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException
 	 */
 	public ArrayList<UserPO> inquireUser(UserPO info)
-			throws RemoteException, ElementNotFoundException;
+			throws RemoteException, ElementNotFoundException, Exception;
 
 	/**
 	 * Data返回所有的UserPO

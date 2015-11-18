@@ -1,13 +1,9 @@
 package data.infodata;
 
 import data.dao.DatabaseConnection;
-import dataservice.exception.ElementNotFoundException;
-import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.infodataservice.SystemUserManagementDataService;
 import po.UserPO;
 
-import java.rmi.RemoteException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -20,7 +16,7 @@ public class UserDAOProxy implements SystemUserManagementDataService {
 
     public UserDAOProxy(){
         connection = new DatabaseConnection();
-        dataImpl = new SystemUserManagementData(connection.getConnnection());
+        dataImpl = new SystemUserManagementData(connection.getConnection());
     }
 
     @Override
@@ -38,13 +34,17 @@ public class UserDAOProxy implements SystemUserManagementDataService {
     }
 
     @Override
-    public boolean modifyUser(UserPO originalUser, UserPO modified) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException {
-        return false;
+    public boolean modifyUser(UserPO originalUser, UserPO modified) throws Exception {
+        boolean result = dataImpl.modifyUser(originalUser,modified);
+        connection.close();
+        return result;
     }
 
     @Override
-    public ArrayList<UserPO> inquireUser(UserPO info) throws RemoteException, ElementNotFoundException {
-        return null;
+    public ArrayList<UserPO> inquireUser(UserPO info) throws Exception {
+        ArrayList<UserPO> result = dataImpl.inquireUser(info);
+        connection.close();
+        return result;
     }
 
     @Override

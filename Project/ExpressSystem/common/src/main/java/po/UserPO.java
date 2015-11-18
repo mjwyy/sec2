@@ -11,13 +11,13 @@ public class UserPO implements Serializable {
 
 	private static final long serialVersionUID = 3758641678884304726L;
 
-	public static final int SYSTEM_MANAGER = 0;
 	public static final int MANAGER = 1;
 	public static final int ACCOUNTANT_HIGH = 2;
 	public static final int ACCOUNTANT_LOW = 3;
 	public static final int WAREHOUSE_MANAGER = 4;
 	public static final int CLERK = 5;
 	public static final int DELIVERY_MAN = 6;
+    public static final int SYSTEM_MANAGER = 7;
 	public UserPO(){
 		
 	}

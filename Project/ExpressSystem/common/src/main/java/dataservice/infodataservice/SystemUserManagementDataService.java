@@ -2,6 +2,7 @@ package dataservice.infodataservice;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dataservice.exception.ElementNotFoundException;
@@ -21,7 +22,7 @@ public interface SystemUserManagementDataService extends Remote {
 	 * @throws InterruptWithExistedElementException
 	 */
 	public boolean addUser(UserPO user)
-			throws RemoteException, InterruptWithExistedElementException;
+            throws Exception;
 
 	/**
 	 * Data从数据库中删除对应UserPO条目
@@ -32,7 +33,7 @@ public interface SystemUserManagementDataService extends Remote {
 	 * @throws ElementNotFoundException
 	 */
 	public boolean removeUser(UserPO user)
-			throws RemoteException, ElementNotFoundException;
+            throws Exception;
 
 	/**
 	 * Data将originalUserPO替换为modifiedUserPO
@@ -44,18 +45,18 @@ public interface SystemUserManagementDataService extends Remote {
 	 * @throws ElementNotFoundException
 	 */
 	public boolean modifyUser(UserPO originalUser,UserPO modified)
-			throws RemoteException, ElementNotFoundException,InterruptWithExistedElementException;
+			throws RemoteException, ElementNotFoundException,InterruptWithExistedElementException, Exception;
 	// TODO 修改的参数的一个两个问题
 	/**
 	 * Data查询对应的用户并返回其UserPO
      *
-	 * @param string
+	 * @param info
 	 * @return
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException
 	 */
 	public ArrayList<UserPO> inquireUser(UserPO info)
-			throws RemoteException, ElementNotFoundException;
+			throws RemoteException, ElementNotFoundException, Exception;
 
 	/**
 	 * Data返回所有的UserPO
@@ -64,7 +65,7 @@ public interface SystemUserManagementDataService extends Remote {
 	 * @throws RemoteException
 	 */
 	public ArrayList<UserPO> getAllUsers()
-			throws RemoteException;
+            throws Exception;
 
 
 }

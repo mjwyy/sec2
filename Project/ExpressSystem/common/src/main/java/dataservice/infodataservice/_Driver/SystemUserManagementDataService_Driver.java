@@ -28,7 +28,7 @@ public class SystemUserManagementDataService_Driver {
 		list.add(userPO3);
 	}
 	
-	public void drive(SystemUserManagementDataService sumDataService) throws RemoteException, InterruptWithExistedElementException, ElementNotFoundException {
+	public void drive(SystemUserManagementDataService sumDataService) throws Exception {
 		if(sumDataService.addUser(userPO1))
 			System.out.println("success");
 		else
@@ -55,7 +55,7 @@ public class SystemUserManagementDataService_Driver {
 		
 	}
 	
-	public static void main(String[] args) throws RemoteException, InterruptWithExistedElementException, ElementNotFoundException {
+	public static void main(String[] args) throws Exception {
 		SystemUserManagementDataService_Stub userManagementData = new SystemUserManagementDataService_Stub();
 		SystemUserManagementDataService_Driver driver = new SystemUserManagementDataService_Driver();
 		driver.drive(userManagementData);

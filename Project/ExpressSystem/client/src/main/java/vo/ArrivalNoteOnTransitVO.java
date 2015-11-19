@@ -2,7 +2,10 @@ package vo;
 
 import java.util.ArrayList;
 
+import po.ArrivalNoteOnTransitPO;
+import po.NotePO;
 import util.BarcodeAndState;
+import util.ResultMsg;
 
 /**
  * 中转中心到达单VO
@@ -67,4 +70,14 @@ public class ArrivalNoteOnTransitVO extends NoteVO {
 		return BarcodeAndStates;
 	}
 
+    @Override
+    public ResultMsg checkFormat() {
+        return super.checkFormat();
+    }
+
+    @Override
+    public ArrivalNoteOnTransitPO toPO() {
+        return new ArrivalNoteOnTransitPO(this.getTransferNumber(),this.getCenterNumber(),
+                this.getDate(),this.getDeparturePlace(),this.getBarcodeAndStates());
+    }
 }

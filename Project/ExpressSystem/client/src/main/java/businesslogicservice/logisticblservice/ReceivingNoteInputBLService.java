@@ -1,7 +1,7 @@
 package businesslogicservice.logisticblservice;
 
 import util.ResultMsg;
-import vo.ReceingNoteVO;
+import vo.ReceivingNoteVO;
 
 /**
  * 输入收件单逻辑接口
@@ -17,7 +17,7 @@ public interface ReceivingNoteInputBLService {
 	 * @param receiveDocVO 收件单VO
 	 * @return 单据信息格式检查结果
 	 */
-	public ResultMsg inputReceiveDoc(ReceingNoteVO receiveDocVO);
+	public ResultMsg inputReceiveDoc(ReceivingNoteVO receiveDocVO);
 	
 	/**
 	 * 快递员核对信息后要求提交单据
@@ -25,6 +25,6 @@ public interface ReceivingNoteInputBLService {
 	 * @param receiveDocVO 收件单VO
 	 * @return 
 	 */
-	public ResultMsg submitSecdDoc(ReceingNoteVO receiveDocVO);
+	public ResultMsg submitSendDoc(ReceivingNoteVO receiveDocVO);
 	
 }

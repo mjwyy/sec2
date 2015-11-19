@@ -1,12 +1,15 @@
 package vo;
 
+import po.ReceivingNotePO;
+import util.ResultMsg;
+
 /**
  * 收件单VO
  * 
  * @author kylin
  *
  */
-public class ReceingNoteVO extends NoteVO {
+public class ReceivingNoteVO extends NoteVO {
 
 	/**
 	 * 收件单号
@@ -23,7 +26,7 @@ public class ReceingNoteVO extends NoteVO {
 	 */
 	private String time;
 
-	public ReceingNoteVO(String barcode, String receiveCustomer, String time) {
+	public ReceivingNoteVO(String barcode, String receiveCustomer, String time) {
 		super();
 		this.barcode = barcode;
 		this.receiveCustomer = receiveCustomer;
@@ -41,4 +44,14 @@ public class ReceingNoteVO extends NoteVO {
 	public String getTime() {
 		return time;
 	}
+
+    @Override
+    public ResultMsg checkFormat() {
+        return super.checkFormat();
+    }
+
+    @Override
+    public ReceivingNotePO toPO() {
+        return new ReceivingNotePO(this.getBarcode(),this.getReceiveCustomer(),this.getTime());
+    }
 }

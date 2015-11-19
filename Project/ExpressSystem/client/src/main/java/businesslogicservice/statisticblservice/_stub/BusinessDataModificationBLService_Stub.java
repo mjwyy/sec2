@@ -10,11 +10,17 @@ public class BusinessDataModificationBLService_Stub implements BusinessDataModif
 	public ResultMsg inputCityDistance(String city1,String city2,double distance){
 		System.out.println("inputed distance");
 		return new ResultMsg(true,"Success!");
-	};
+	}
 
-	public void submitChange(){
-		System.out.println("submitted changes");
-	};
+    @Override
+    public ResultMsg submitPriceChange(PriceType type, double price) {
+        return null;
+    }
+
+    @Override
+    public ResultMsg submitCityDistance(String city1, String city2, double distance) {
+        return null;
+    }
 
 	public ResultMsg inputPrice(PriceType type, double price) {
         System.out.println("inputPrice succeed");

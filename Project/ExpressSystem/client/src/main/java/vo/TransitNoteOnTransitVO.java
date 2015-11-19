@@ -1,5 +1,9 @@
 package vo;
 
+import po.NotePO;
+import po.TransitNotePO;
+import util.ResultMsg;
+
 import java.util.ArrayList;
 
 /**
@@ -103,4 +107,20 @@ public class TransitNoteOnTransitVO extends NoteVO {
 	public double getPrice() {
 		return price;
 	}
+
+    @Override
+    public String getUserName() {
+        return super.getUserName();
+    }
+
+    @Override
+    public ResultMsg checkFormat() {
+        return super.checkFormat();
+    }
+
+    @Override
+    public TransitNotePO toPO() {
+        return new TransitNotePO(this.date, this.transitDocNumber, this.flightNumber,
+        this.departurePlace, this.desitination, this.containerNumber, this.supercargoMan, this.barcodes);
+    }
 }

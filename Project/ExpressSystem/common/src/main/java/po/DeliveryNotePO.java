@@ -9,7 +9,7 @@ import util.enums.DeliverCategory;
 
 import java.io.Serializable;
 
-public class DeliveryNotePO implements Serializable {
+public class DeliveryNotePO extends NotePO implements Serializable {
 	/**
 	 *
 	 */

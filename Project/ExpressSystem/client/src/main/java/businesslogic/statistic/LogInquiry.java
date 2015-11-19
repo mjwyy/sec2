@@ -1,10 +1,10 @@
 package businesslogic.statistic;
 
-import businesslogicservice.statisticblservice.LogInquiryBLService;
-import util.ResultMsg;
-import vo.SystemLogVO;
+        import businesslogicservice.statisticblservice.LogInquiryBLService;
+        import util.ResultMsg;
+        import vo.SystemLogVO;
 
-import java.util.ArrayList;
+        import java.util.ArrayList;
 
 /**
  * Created by kylin on 15/11/17.

@@ -40,6 +40,6 @@ public interface SystemUserManagementBLService {
 	 */
 	public ArrayList<UserVO> find(UserVO vo);
 		
-	public ResultMsg logIn();
+	public ResultMsg logIn(String userNum,String initialPassword);
  
 }

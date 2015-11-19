@@ -78,7 +78,10 @@ public class DeliveryNoteVO extends NoteVO {
      */
     private String barCode;
 
-    public DeliveryNoteVO(String senderName, String senderAddress, String senderTeleNumber, String receiverName, String receiverAddress, String receiverTeleNumber, String name, int goodsNumber, double weight, double volume, DeliverCategory category, double packPrice, String barCode) {
+    public DeliveryNoteVO(String senderName, String senderAddress, String senderTeleNumber,
+                          String receiverName, String receiverAddress, String receiverTeleNumber,
+                          String name, int goodsNumber, double weight, double volume,
+                          DeliverCategory category, double packPrice, String barCode) {
         this.senderName = senderName;
         this.senderAddress = senderAddress;
         this.senderTeleNumber = senderTeleNumber;

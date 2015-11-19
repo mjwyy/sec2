@@ -2,6 +2,8 @@ package dataservice.logisticdataservice._Stub;
 
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
 import po.DeliveryNotePO;
+import po.OrderPO;
+import util.PresumedMsg;
 import util.enums.DeliverCategory;
 import util.sendDocMsg;
 
@@ -36,7 +38,12 @@ public class DeliveryNoteInputDataService_Stub implements DeliveryNoteInputDataS
 		return new sendDocMsg(true,"pass",100,"2015-12-12");
     }
 
-     
+    @Override
+    public PresumedMsg insertOrderPO(OrderPO po) throws RemoteException {
+        return null;
+    }
+
+
     public boolean delete(DeliveryNotePO po) throws RemoteException {
         System.out.println("delete succeed!");
 		return true;

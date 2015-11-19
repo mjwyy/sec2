@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class FormatCheck_Test {
 
-    @Test
+//    @Test
     public void testBarcode(){
         assertEquals(true, FormatCheck.IsBarcode("0123456789"));
         assertEquals(true, FormatCheck.IsBarcode("0123412589"));
@@ -20,7 +20,7 @@ public class FormatCheck_Test {
         assertEquals(false, FormatCheck.IsBarcode("啊啊是打算等我"));
     }
 
-    @Test
+//    @Test
     public void testDate(){
         assertEquals(true, FormatCheck.IsDate("2018-1-24"));
         assertEquals(true, FormatCheck.IsDate("2015-12-24"));
@@ -32,7 +32,7 @@ public class FormatCheck_Test {
         assertEquals(false, FormatCheck.IsDate("2014 9 3"));
     }
 
-    @Test
+//    @Test
     public void testInventoryTime(){
         assertEquals(true, FormatCheck.IsInventoryTime("2015-09-26 10:30"));
         assertEquals(true, FormatCheck.IsInventoryTime("2015-9-26 10:30"));
@@ -44,7 +44,7 @@ public class FormatCheck_Test {
         assertEquals(false, FormatCheck.IsInventoryTime("20151001 10:30"));
     }
 
-    @Test
+//    @Test
     public void testChineseName(){
         assertEquals(true, FormatCheck.IsChineseName("王二狗"));
         assertEquals(true, FormatCheck.IsChineseName("拉啊空间十啊实打实"));
@@ -56,7 +56,7 @@ public class FormatCheck_Test {
         assertEquals(false, FormatCheck.IsChineseName("asdw王sad"));
     }
 
-    @Test
+//    @Test
     public void testPhoneNumber(){
         assertEquals(true, FormatCheck.IsPhoneNumber("18795853010"));
         assertEquals(true, FormatCheck.IsPhoneNumber("+8611233451234"));
@@ -68,4 +68,64 @@ public class FormatCheck_Test {
         assertEquals(false, FormatCheck.IsPhoneNumber("+18795853010"));
     }
 
+//    @Test
+    public void testFixedPhoneNumber(){
+        assertEquals(true, FormatCheck.IsFixedPhoneNumber("0250-66778899"));
+        assertEquals(true, FormatCheck.IsFixedPhoneNumber("0516-89578899"));
+        assertEquals(false, FormatCheck.IsFixedPhoneNumber("025066778899"));
+        assertEquals(false, FormatCheck.IsFixedPhoneNumber("0250 66778899"));
+        assertEquals(false, FormatCheck.IsFixedPhoneNumber("+0250-66778899"));
+        assertEquals(false, FormatCheck.IsFixedPhoneNumber("+0250"));
+    }
+
+//    @Test
+    public void testServiceHallNumber(){
+        assertEquals(true, FormatCheck.IsServiceHallNumber("0251000"));
+        assertEquals(true, FormatCheck.IsServiceHallNumber("0251001"));
+        assertEquals(false, FormatCheck.IsServiceHallNumber("02510002"));
+        assertEquals(false, FormatCheck.IsServiceHallNumber(" "));
+        assertEquals(false, FormatCheck.IsServiceHallNumber(" 0251000"));
+        assertEquals(false, FormatCheck.IsServiceHallNumber("+025100 0"));
+    }
+
+//    @Test
+    public void testCarNumber(){
+        assertEquals(true, FormatCheck.IsCarNumber("025001002"));
+        assertEquals(true, FormatCheck.IsCarNumber("025222002"));
+        assertEquals(false, FormatCheck.IsCarNumber(" 02510002"));
+        assertEquals(false, FormatCheck.IsCarNumber("025222002 "));
+        assertEquals(false, FormatCheck.IsCarNumber(" 0251000"));
+        assertEquals(false, FormatCheck.IsCarNumber(" 025100 0"));
+    }
+
+//    @Test
+    public void testDriverNumber(){
+        assertEquals(true, FormatCheck.IsDriverNumber("025001002"));
+        assertEquals(true, FormatCheck.IsDriverNumber("025222002"));
+        assertEquals(false, FormatCheck.IsDriverNumber(" 02510002"));
+        assertEquals(false, FormatCheck.IsDriverNumber("025222002 "));
+        assertEquals(false, FormatCheck.IsDriverNumber(" 0251000"));
+        assertEquals(false, FormatCheck.IsDriverNumber(" 025100 0"));
+    }
+
+//    @Test
+    public void testIDNumber(){
+        assertEquals(true, FormatCheck.IsIDNumber("320322199606120043"));
+        assertEquals(true, FormatCheck.IsIDNumber("32032219960612004x"));
+        assertEquals(false, FormatCheck.IsIDNumber(" 320322199606120043"));
+        assertEquals(false, FormatCheck.IsIDNumber("320322199606120043 "));
+        assertEquals(false, FormatCheck.IsIDNumber("3203221996061200x3"));
+        assertEquals(false, FormatCheck.IsIDNumber("0320322199606120043"));
+    }
+
+    @Test
+    public void testCenterNumber(){
+        assertEquals(true, FormatCheck.IsCenterNumber("025001"));
+        assertEquals(true, FormatCheck.IsCenterNumber("025006"));
+        assertEquals(false, FormatCheck.IsCenterNumber(" 025001"));
+        assertEquals(false, FormatCheck.IsCenterNumber("025001 "));
+        assertEquals(false, FormatCheck.IsCenterNumber("025x001"));
+        assertEquals(false, FormatCheck.IsCenterNumber("01225001"));
+    }
+    
 }

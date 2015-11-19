@@ -11,6 +11,7 @@ import vo.DeliverNoteOnServiceVO;
 public class ArrivalNoteOnService implements ArrivalNoteOnServiceBLService {
     @Override
     public ResultMsg inputHallArrivalDoc(ArrivalNoteOnServiceVO arrialDocVO) {
+
         return null;
     }
 

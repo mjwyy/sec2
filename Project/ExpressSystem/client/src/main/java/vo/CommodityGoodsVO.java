@@ -5,6 +5,9 @@
  */
 package vo;
 
+import businesslogic.util.FormatCheck;
+import util.ResultMsg;
+
 public class CommodityGoodsVO {
 	
 	/**
@@ -25,16 +28,16 @@ public class CommodityGoodsVO {
 	/**
 	 * 排号
 	 */
-	private int rownumber;
+	private String rownumber;
 	
 	/**
 	 * 架号
 	 */
-	private int framenumber;
+	private String framenumber;
 	/**
 	 * 位号
 	 */
-	private int placenumber;
+	private String placenumber;
 	
 	/**
 	 * 构造函数
@@ -45,7 +48,7 @@ public class CommodityGoodsVO {
 	 * @param framenumber
 	 * @param placenumber
 	 */
-	public CommodityGoodsVO(String barcode,String areacode,String destination,int rownumber,int framenumber,int placenumber){
+	public CommodityGoodsVO(String barcode,String areacode,String destination,String rownumber,String framenumber,String placenumber){
 		this.barcode = barcode;
 		this.destination = destination;
 		this.areacode = areacode;
@@ -66,16 +69,36 @@ public class CommodityGoodsVO {
 		return destination;
 	}
 
-	public int getRownumber() {
+	public String getRownumber() {
 		return rownumber;
 	}
 
-	public int getFramenumber() {
+	public String getFramenumber() {
 		return framenumber;
 	}
 
-	public int getPlacenumber() {
+	public String getPlacenumber() {
 		return placenumber;
 	}
-
+	
+	public ResultMsg checkFormat() {
+		
+		ResultMsg[] msgs = new ResultMsg[6];
+		//TO DO
+		msgs[0] = FormatCheck.IsBarcode(barcode);
+		msgs[1] = FormatCheck.isOrganizationName(destination);
+		msgs[2] = FormatCheck.isAreaCode(areacode);
+		msgs[3] = FormatCheck.isStorageDistrictNumber(framenumber);
+		msgs[4] = FormatCheck.isStorageDistrictNumber(placenumber);
+		msgs[5] = FormatCheck.isStorageDistrictNumber(rownumber);
+		
+		for(int i=0;i<msgs.length;i++) {
+			if(!msgs[i].isPass()) {
+				return msgs[i];
+			}
+		}
+		
+		return new ResultMsg(true);
+		
+	}
 }

@@ -17,7 +17,7 @@ public class StorageInBLService_Driver {
 
 	}
 	public void drive(StorageInBLService a){
-		CommodityGoodsVO good=new CommodityGoodsVO("0123456789","航空区","南京",0002,0002,0002);
+		CommodityGoodsVO good=new CommodityGoodsVO("0123456789","航空区","南京","0002","0002","0002");
 		ArrayList<CommodityGoodsVO> GoodsInStorageInfo=new ArrayList<CommodityGoodsVO> ();
 		GoodsInStorageInfo.add(good);
 		StorageInVO	putInStorageVo=new StorageInVO("2011-11-11",GoodsInStorageInfo);

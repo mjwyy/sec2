@@ -7,6 +7,8 @@ package vo;
 
 import java.util.ArrayList;
 
+import util.ResultMsg;
+
 public class StorageInVO {
 	
     /**
@@ -35,5 +37,12 @@ public class StorageInVO {
 
 	public ArrayList<CommodityGoodsVO> getGoodsInStorageInfo() {
 		return GoodsInStorageInfo;
+	}
+	
+	public ResultMsg checkFormat(){
+		
+		
+		
+		return null;
 	}
 }

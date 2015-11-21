@@ -11,6 +11,8 @@ import java.util.ArrayList;
  * Created by kylin on 15/11/16.
  */
 public class ArrivalNoteOnServiceData implements ArrivalNoteOnServiceDataService {
+
+    //TODO 删除多余接口
     @Override
     public boolean insertArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException {
         return false;

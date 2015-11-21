@@ -1,5 +1,8 @@
 package vo;
 
+import businesslogic.util.FormatCheck;
+import po.ChartPO;
+import util.ResultMsg;
 import util.enums.ChartType;
 
 /**
@@ -10,6 +13,8 @@ import util.enums.ChartType;
  */
 public class ChartVO {
 
+
+    //TODO 选取的类型是否需要检查格式
 	/**
 	 * 报表类型
 	 */
@@ -38,4 +43,17 @@ public class ChartVO {
     public String getTime2() {
         return time2;
     }
+
+    public ResultMsg checkFormat(){
+        ResultMsg result = new ResultMsg(true);
+        ResultMsg results[] = new ResultMsg[2];
+        results[0] = FormatCheck.isDate(this.time1);
+        results[1] = FormatCheck.isDate(this.time2);
+        for(int i = 0; i<results.length; i++){
+            if(!results[i].isPass())
+                return results[i];
+        }
+        return result;
+    }
+
 }

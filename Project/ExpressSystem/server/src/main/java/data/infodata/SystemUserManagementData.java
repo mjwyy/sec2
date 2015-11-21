@@ -7,6 +7,7 @@ import po.UserPO;
 
 import java.net.ConnectException;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,20 +17,23 @@ import java.util.ArrayList;
 /**
  * Created by kylin on 15/11/16.
  */
-public class SystemUserManagementData implements SystemUserManagementDataService{
+public class SystemUserManagementData  implements SystemUserManagementDataService{
 
     private Connection connection;
 
     private PreparedStatement statement;
 
-    public SystemUserManagementData(){}
+    public SystemUserManagementData() throws RemoteException {
+        super();
+    }
 
-    public SystemUserManagementData(Connection con){
+    public SystemUserManagementData(Connection con) throws RemoteException {
+        super();
         this.connection = con;
     }
 
     @Override
-    public boolean addUser(UserPO user) throws RemoteException, InterruptWithExistedElementException, SQLException {
+    public boolean addUser(UserPO user) throws InterruptWithExistedElementException, SQLException {
         String sqlInsert = "insert into user (account,rights,password) values(?,?,?)";
         statement = connection.prepareStatement(sqlInsert);
         statement.setString(1,user.getAccount());
@@ -41,7 +45,7 @@ public class SystemUserManagementData implements SystemUserManagementDataService
     }
 
     @Override
-    public boolean removeUser(UserPO user) throws RemoteException, ElementNotFoundException, SQLException {
+    public boolean removeUser(UserPO user) throws ElementNotFoundException, SQLException {
         String account = user.getAccount();
         String delete = "delete from user where account = '"+account+"'";
         statement = connection.prepareStatement(delete);
@@ -51,7 +55,7 @@ public class SystemUserManagementData implements SystemUserManagementDataService
     }
 
     @Override
-    public boolean modifyUser(UserPO originalUser, UserPO modified) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException, SQLException {
+    public boolean modifyUser(UserPO originalUser, UserPO modified) throws ElementNotFoundException, InterruptWithExistedElementException, SQLException {
         if(!originalUser.getAccount().equals(modified.getAccount()))
             return false;
         String modify;
@@ -69,7 +73,7 @@ public class SystemUserManagementData implements SystemUserManagementDataService
     }
 
     @Override
-    public ArrayList<UserPO> inquireUser(UserPO info) throws RemoteException, ElementNotFoundException, SQLException {
+    public ArrayList<UserPO> inquireUser(UserPO info) throws ElementNotFoundException, SQLException {
         String accountToFind = info.getAccount();
         String sqlFindAll = "select * from user where account = '"+accountToFind+"'";
         statement = connection.prepareStatement(sqlFindAll);
@@ -88,7 +92,7 @@ public class SystemUserManagementData implements SystemUserManagementDataService
     }
 
     @Override
-    public ArrayList<UserPO> getAllUsers() throws RemoteException, SQLException {
+    public ArrayList<UserPO> getAllUsers() throws SQLException {
         String sqlFindAll = "select * from user";
         statement = connection.prepareStatement(sqlFindAll);
         ResultSet resultSet = statement.executeQuery();

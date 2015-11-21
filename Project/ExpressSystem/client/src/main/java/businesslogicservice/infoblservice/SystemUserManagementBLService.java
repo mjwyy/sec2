@@ -35,11 +35,11 @@ public interface SystemUserManagementBLService {
 	
 	/**
 	 * 通过账号查找账户信息
-	 * @param userNum
+	 * @param vo
 	 * @return
 	 */
 	public ArrayList<UserVO> find(UserVO vo);
 		
-	
+	public ResultMsg logIn(String userNum,String initialPassword);
  
 }

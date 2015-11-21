@@ -1,5 +1,8 @@
 package vo;
 
+import businesslogic.util.FormatCheck;
+import util.ResultMsg;
+
 import java.util.ArrayList;
 
 public class OrderVO {
@@ -38,5 +41,9 @@ public class OrderVO {
 	public ArrayList<String> getHistory() {
 		return history;
 	}
+
+    public ResultMsg checkFormat(){
+        return FormatCheck.isBarcode(this.barcode);
+    }
 	
 }

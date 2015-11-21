@@ -1,5 +1,8 @@
 package vo;
 
+import businesslogic.util.FormatCheck;
+import util.ResultMsg;
+
 /**
  * 系统日志VO
  * 
@@ -31,4 +34,18 @@ public class SystemLogVO {
 	public String getContent() {
 		return content;
 	}
+
+    public ResultMsg checkFormat() {
+        ResultMsg result = new ResultMsg(true);
+        ResultMsg results[] = new ResultMsg[2];
+        results[0] = FormatCheck.isLogKeyWord(this.content);
+        results[1] = FormatCheck.isLogInquiryTime(this.time);
+        for(int i = 0; i<results.length; i++){
+            if(!results[i].isPass()){
+                return results[i];
+            }
+        }
+        return result;
+    }
+
 }

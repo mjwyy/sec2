@@ -1,14 +1,17 @@
 package businesslogic.logistic;
 
 import businesslogicservice.logisticblservice.DeliveryNoteInputBLService;
+import connection.RemoteObjectGetter;
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
 import po.DeliveryNotePO;
 import po.OrderPO;
+import util.PresumedMsg;
 import util.ResultMsg;
 import util.sendDocMsg;
 import vo.DeliveryNoteVO;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 /**
  * Created by kylin on 15/11/10.
@@ -20,26 +23,32 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
     private DeliveryNotePO notePO;
     private OrderPO orderPO;
 
-//    private RemoteObjectGetter rmi;
-
+    public DeliveryNoteInput(DeliveryNoteInputDataService dataService) {
+        RemoteObjectGetter getter = new RemoteObjectGetter();
+        this.dataService = (DeliveryNoteInputDataService) getter.getObjectByName("DeliveryNoteInputData");
+    }
 
     @Override
     public ResultMsg inputSendDoc(DeliveryNoteVO sendDocVO) {
-        //格式检查待定,初步想法:正则表达式匹配,检查工具类静态方法
-        boolean formatCheck = true;
-        if(!formatCheck)
-            return new ResultMsg(false,"格式错误!");
-        this.submitSendDoc(sendDocVO);
-        return new ResultMsg(true,"格式正确!");
+        ResultMsg formatCheck = sendDocVO.checkFormat();
+        if(formatCheck.isPass())
+            this.submitSendDoc(sendDocVO);
+        return formatCheck;
     }
 
     @Override
     public sendDocMsg submitSendDoc(DeliveryNoteVO sendDocVO) {
-        //时间和价格还没有数据接口提供,PO的数据不全
         double price = 0;
         String date = null;
         try {
+            this.notePO = sendDocVO.toPO();
             this.dataService.insert(this.notePO);
+            ArrayList<String> history = new ArrayList<String>();
+            history.add("快递员已收件");
+            this.orderPO = new OrderPO(sendDocVO.getBarCode(),"已收货",history);
+            PresumedMsg presumedMsg = this.dataService.insertOrderPO(this.orderPO);
+            price = presumedMsg.getPrice();
+            date = presumedMsg.getDate();
         } catch (RemoteException e) {
             e.printStackTrace();
         }

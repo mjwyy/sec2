@@ -34,15 +34,14 @@ public class DatabaseConnection {
         return connection;
     }
 
-    public void close()throws Exception{
+    public void close() throws SQLException {
         if(connection !=null){
             connection.close();
         }
     }
 
     public static void main(String[] args) {
-        DatabaseConnection databaseConnection = new DatabaseConnection();
-        UserPO po1 = new UserPO("newUser","666666",6);
+        DatabaseConnection connection = new DatabaseConnection();
     }
 
 }

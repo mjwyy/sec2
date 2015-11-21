@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import util.BarcodeAndState;
 
-public class ArrivalNoteOnTransitPO implements Serializable{
+public class ArrivalNoteOnTransitPO extends NotePO implements Serializable{
 	/**
 	 * 
 	 */

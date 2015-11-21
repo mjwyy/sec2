@@ -8,7 +8,7 @@ package po;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class TransitNotePO implements Serializable{
+public class TransitNotePO extends NotePO implements Serializable{
 	/**
 	 * 
 	 */

@@ -2,6 +2,7 @@ package connection;
 
 
 import java.rmi.NotBoundException;
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -13,6 +14,7 @@ import java.rmi.registry.Registry;
  * 本类RMIHelper用于在程序启动时建立起对服务器的连接
  * 其中，必须先调用tryConnect()尝试连接链接
  * 之后用getConnectionStatus()检查是否成功建立了连接
+ *
  */
 public class RMIHelper {
 
@@ -35,13 +37,17 @@ public class RMIHelper {
         if (System.getSecurityManager() == null) {
             System.setSecurityManager(new SecurityManager());
         }
-
         obj = new RMIHelper();
-
+//        Registry registry = LocateRegistry.getRegistry(serverIP);
+//        RMIObjectProviderService prov = (RMIObjectProviderService) registry.lookup(objectiveName);
+        //客户端通过方法Naming.lookup(1)查找RMI服务，
+        // 如果查找成功，将返回一个代表远程服务对象的桩对象，客户端应当进行强制类型转换为接口来使用。
+        // lookup的参数是一个URL，格式是：rmi://<服务器IP地址>:<端口号>/<服务名称>。
+        //providerService = (RMIObjectProviderService) Naming.lookup("rmi://127.0.0.1:1099/RMIObjectProvider");
         Registry registry = LocateRegistry.getRegistry(serverIP);
-        RMIObjectProviderService prov = (RMIObjectProviderService) registry.lookup(objectiveName);
-
-        obj.provider = prov;
+        Remote provider = registry.lookup(objectiveName);
+        obj.provider = (RMIObjectProviderService) provider;
+        System.out.println("客户端成功获得RMIObjectProviderService");
         obj.connectStatus = true;
     }
 
@@ -55,6 +61,6 @@ public class RMIHelper {
     }
 
     public RMIObjectProviderService getProvider() {
-        return provider;
+        return obj.provider;
     }
 }

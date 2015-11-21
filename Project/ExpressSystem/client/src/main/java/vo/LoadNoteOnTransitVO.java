@@ -1,5 +1,10 @@
 package vo;
 
+import businesslogic.util.FormatCheck;
+import po.LoadNoteOnTransitPO;
+import po.NotePO;
+import util.ResultMsg;
+
 import java.util.ArrayList;
 
 /**
@@ -17,7 +22,7 @@ public class LoadNoteOnTransitVO extends NoteVO {
 	private String date;
 
 	/**
-	 * 本中转中心汽运编号
+	 * 本中转中心汽运编号(唯一标识)
 	 */
 	private String transpotationNumber;
 
@@ -51,7 +56,7 @@ public class LoadNoteOnTransitVO extends NoteVO {
 		super();
 		this.date = date;
 		this.transpotationNumber = transpotationNumber;
-		Destination = destination;
+		this.Destination = destination;
 		this.carNumber = carNumber;
 		this.guardMan = guardMan;
 		this.supercargoMan = supercargoMan;
@@ -85,4 +90,42 @@ public class LoadNoteOnTransitVO extends NoteVO {
 	public ArrayList<String> getBarcodes() {
 		return barcodes;
 	}
+
+    @Override
+    public LoadNoteOnTransitPO toPO() {
+        return new LoadNoteOnTransitPO(this.date,
+        this.transpotationNumber,
+        this.Destination,
+        this.carNumber,
+        this.guardMan,
+        this.supercargoMan,
+        this.barcodes);
+    }
+
+    @Override
+    public ResultMsg checkFormat() {
+        ResultMsg result = new ResultMsg(true);
+        ResultMsg results[] = new ResultMsg[7];
+        results[0] = FormatCheck.isCenterLoadNumber(this.transpotationNumber);
+        results[1] = FormatCheck.isCity(this.Destination);
+        results[2] = FormatCheck.isCarNumber(this.carNumber);
+        results[3] = FormatCheck.isChineseName(this.guardMan);
+        results[4] = FormatCheck.isChineseName(this.supercargoMan);
+        results[5] = FormatCheck.isDate(this.date);
+        results[6] = new ResultMsg(true);
+        ResultMsg msg;
+        for(String barcode:barcodes){
+            msg = FormatCheck.isBarcode(barcode);
+            if(!msg.isPass()){
+                results[6] = msg;
+                break;
+            }
+        }
+        for(int i = 0; i<results.length; i++){
+            if(!results[i].isPass()){
+                return results[i];
+            }
+        }
+        return result;
+    }
 }

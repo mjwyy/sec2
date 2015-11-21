@@ -2,7 +2,11 @@ package vo;
 
 import java.util.ArrayList;
 
+import businesslogic.util.FormatCheck;
+import po.ArrivalNoteOnTransitPO;
+import po.NotePO;
 import util.BarcodeAndState;
+import util.ResultMsg;
 
 /**
  * 中转中心到达单VO
@@ -13,7 +17,7 @@ import util.BarcodeAndState;
 public class ArrivalNoteOnTransitVO extends NoteVO {
 	
 	/**
-	 * 中转单编号
+	 * 中转单编号(唯一标示符)
 	 */
 	private String transferNumber;
 	
@@ -67,4 +71,34 @@ public class ArrivalNoteOnTransitVO extends NoteVO {
 		return BarcodeAndStates;
 	}
 
+    @Override
+    public ResultMsg checkFormat() {
+        ResultMsg result = new ResultMsg(true);
+        ResultMsg results[] = new ResultMsg[5];
+        results[0] = FormatCheck.isTransitNoteNumber(this.transferNumber);
+        results[1] = FormatCheck.isCenterNumber(this.centerNumber);
+        results[2] = FormatCheck.isDate(this.date);
+        results[3] = FormatCheck.isCity(this.departurePlace);
+        results[4] = new ResultMsg(true);
+        ResultMsg barcodes;
+        for(BarcodeAndState barcodeAndState:this.BarcodeAndStates){
+            barcodes = FormatCheck.isBarcode(barcodeAndState.getBarcode());
+            if(!barcodes.isPass()){
+                results[3] = barcodes;
+                break;
+            }
+        }
+        for(int i = 0; i<results.length; i++){
+            if(!results[i].isPass()){
+                return results[i];
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public ArrivalNoteOnTransitPO toPO() {
+        return new ArrivalNoteOnTransitPO(this.getTransferNumber(),this.getCenterNumber(),
+                this.getDate(),this.getDeparturePlace(),this.getBarcodeAndStates());
+    }
 }

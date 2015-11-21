@@ -12,12 +12,10 @@ public class CreditNoteInputBLService_Stub implements
 	}
 
 	public ResultMsg addReceipeDoc(CreditNoteVO vo) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public ResultMsg submitReceipeDoc(CreditNoteVO vo) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

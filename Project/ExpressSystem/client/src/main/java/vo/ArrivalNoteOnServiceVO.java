@@ -2,7 +2,10 @@ package vo;
 
 import java.util.ArrayList;
 
+import businesslogic.util.FormatCheck;
+import po.ArrivalNoteOnServicePO;
 import util.BarcodeAndState;
+import util.ResultMsg;
 
 /**
  * 营业厅到达单VO
@@ -17,8 +20,13 @@ public class ArrivalNoteOnServiceVO extends NoteVO{
 	 */
 	private String date;
 
+    /**
+     * 区分中转单编号(true)
+     */
+    private boolean isTransit;
+
 	/**
-	 * 中转单编号（装车单编号）
+	 * 中转单编号（装车单编号）(唯一标示符)
 	 */
 	private String TransferNumber;
 	
@@ -32,16 +40,16 @@ public class ArrivalNoteOnServiceVO extends NoteVO{
 	 */
 	private ArrayList<BarcodeAndState> BarcodeAndStates;
 
-	public ArrivalNoteOnServiceVO(String date, String transferNumber, String from,
-			ArrayList<BarcodeAndState> barcodeAndStates) {
-		super();
-		this.date = date;
-		TransferNumber = transferNumber;
-		this.from = from;
-		BarcodeAndStates = barcodeAndStates;
-	}
+    public ArrivalNoteOnServiceVO(String date, boolean isTransit, String transferNumber,
+                                  String from, ArrayList<BarcodeAndState> barcodeAndStates) {
+        this.date = date;
+        this.isTransit = isTransit;
+        this.TransferNumber = transferNumber;
+        this.from = from;
+        this.BarcodeAndStates = barcodeAndStates;
+    }
 
-	public String getDate() {
+    public String getDate() {
 		return date;
 	}
 
@@ -56,5 +64,37 @@ public class ArrivalNoteOnServiceVO extends NoteVO{
 	public ArrayList<BarcodeAndState> getBarcodeAndStates() {
 		return BarcodeAndStates;
 	}
-	
+
+    @Override
+    public ResultMsg checkFormat() {
+        ResultMsg result = new ResultMsg(true);
+        ResultMsg results[] = new ResultMsg[4];
+        results[0] = FormatCheck.isDate(this.date);
+        if(isTransit)
+            results[1] = FormatCheck.isServiceHallLoadNumber(this.TransferNumber);
+        else
+            results[1] = FormatCheck.isTransitNoteNumber(this.TransferNumber);
+        results[2] = FormatCheck.isCity(this.from);
+        results[3] = new ResultMsg(true);
+        ResultMsg barcodes;
+        for(BarcodeAndState barcodeAndState:this.BarcodeAndStates){
+            barcodes = FormatCheck.isBarcode(barcodeAndState.getBarcode());
+            if(!barcodes.isPass()){
+                results[3] = barcodes;
+                break;
+            }
+        }
+        for (ResultMsg result1 : results) {
+            if (!result1.isPass()) {
+                return result1;
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public ArrivalNoteOnServicePO toPO() {
+        return new ArrivalNoteOnServicePO(this.getDate(),this.getTransferNumber(),
+                this.getFrom(),this.getBarcodeAndStates());
+    }
 }

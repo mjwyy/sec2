@@ -1,5 +1,10 @@
 package vo;
 
+import businesslogic.util.FormatCheck;
+import po.DeliverNoteOnServicePO;
+import po.NotePO;
+import util.ResultMsg;
+
 import java.util.ArrayList;
 
 /**
@@ -9,7 +14,9 @@ import java.util.ArrayList;
  *
  */
 public class DeliverNoteOnServiceVO extends NoteVO {
-	
+
+    //TODO (唯一标示符)
+
 	/**
 	 * 货物到达日期
 	 */
@@ -42,5 +49,33 @@ public class DeliverNoteOnServiceVO extends NoteVO {
 
     public String getDeliveryMan() {
         return DeliveryMan;
+    }
+
+    @Override
+    public ResultMsg checkFormat() {
+        ResultMsg result = new ResultMsg(true);
+        ResultMsg results[] = new ResultMsg[3];
+        results[0] = FormatCheck.isDate(this.date);
+        results[1] = FormatCheck.isChineseName(this.DeliveryMan);
+        results[2] = new ResultMsg(true);
+        ResultMsg msg;
+        for(String barcode:BarCode){
+            msg = FormatCheck.isBarcode(barcode);
+            if(!msg.isPass()){
+                results[2] = msg;
+                break;
+            }
+        }
+        for(int i = 0; i<results.length; i++){
+            if(!results[i].isPass()){
+                return results[i];
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public DeliverNoteOnServicePO toPO() {
+        return new DeliverNoteOnServicePO(this.getDate(),this.getBarCode(),this.getDeliveryMan());
     }
 }

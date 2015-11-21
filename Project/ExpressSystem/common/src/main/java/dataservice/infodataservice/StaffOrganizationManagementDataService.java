@@ -69,7 +69,6 @@ public interface StaffOrganizationManagementDataService extends Remote {
 	 */
 	public boolean modifyStaff(StaffPO original,StaffPO modified)
 			throws RemoteException,ElementNotFoundException,InterruptWithExistedElementException;
-	// TODO 替换的参数一个还是两个问题
 	/**
 	 * Data将originalOrganizationPO数据替换为modifiedOrganizationPO
      *
@@ -86,7 +85,7 @@ public interface StaffOrganizationManagementDataService extends Remote {
 	/**
      * Data返回符合关键字的员工数据
      *
-	 * @param name
+	 * @param info
 	 * @return
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException
@@ -97,7 +96,7 @@ public interface StaffOrganizationManagementDataService extends Remote {
 	/**
 	 * Data返回符合关键字的机构记录
      *
-	 * @param name
+	 * @param info
 	 * @return
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException

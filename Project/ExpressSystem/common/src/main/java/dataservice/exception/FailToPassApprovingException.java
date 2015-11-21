@@ -1,6 +1,8 @@
 package dataservice.exception;
 
-public class FailToPassApprovingException extends Exception {
+import java.io.Serializable;
+
+public class FailToPassApprovingException extends Exception implements Serializable {
 
 	/**
 	 * 

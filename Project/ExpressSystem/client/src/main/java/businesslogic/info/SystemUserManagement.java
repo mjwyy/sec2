@@ -29,4 +29,9 @@ public class SystemUserManagement implements SystemUserManagementBLService {
     public ArrayList<UserVO> find(UserVO vo) {
         return null;
     }
+
+    @Override
+    public ResultMsg logIn(String userNum, String initialPassword) {
+        return null;
+    }
 }

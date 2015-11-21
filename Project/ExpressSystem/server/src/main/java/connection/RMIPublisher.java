@@ -40,7 +40,6 @@ public class RMIPublisher {
             System.out.println("Rebinding");
             //Instantiate RmiServer
             RMIObjectProvider obj = new RMIObjectProvider();
-//        Naming.rebind("//"+hostIP+"/RMIObjectProvider", obj);
             registry.rebind("RMIObjectProvider", obj);
             System.out.println("PeerServer bound in registry");
         } catch (RemoteException e) {

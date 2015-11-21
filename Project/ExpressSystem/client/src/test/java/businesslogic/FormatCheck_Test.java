@@ -1,6 +1,6 @@
 package businesslogic;
 
-import businesslogic.util.FormatCheck;
+import util.FormatCheck;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

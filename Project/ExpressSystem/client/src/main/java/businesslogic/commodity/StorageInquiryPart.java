@@ -1,6 +1,6 @@
 package businesslogic.commodity;
 
-import businesslogic.util.FormatCheck;
+import util.FormatCheck;
 import businesslogicservice.commodityblservice.StorageInquiryPartBLService;
 import util.ResultMsg;
 import vo.InventoryVO;
@@ -12,7 +12,6 @@ import java.util.Iterator;
 import po.InventoryPO;
 import connection.RemoteObjectGetter;
 import dataservice.commoditydataservice.InventoryDataService;
-import dataservice.commoditydataservice.StorageInDataService;
 
 /**
  * Created by kylin on 15/11/17.

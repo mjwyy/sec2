@@ -29,25 +29,7 @@ public class RMIObjectProvider extends UnicastRemoteObject implements RMIObjectP
     }
 
     private void initiateMap() throws RemoteException {
-        //Put all available objects into the map.
-        //TODO RMI
-//        objMap.put("SystemUserManagementDataService", UserDAOProxy.class);
-//
-//        for(Map.Entry<String, Class<? extends UnicastRemoteObject>> entry: objMap.entrySet()){
-//            String name = entry.getKey();
-//            Class<? extends UnicastRemoteObject> clazz = entry.getValue();
-//            UnicastRemoteObject proxy = null;
-//            try {
-//                proxy = clazz.newInstance();
-//                Naming.rebind(name, proxy);
-//            } catch (InstantiationException e) {
-//                e.printStackTrace();
-//            } catch (IllegalAccessException e) {
-//                e.printStackTrace();
-//            }catch (MalformedURLException e) {
-//                e.printStackTrace();
-//            }
-//        }
+        //TODO Put all available objects into the map.
         SystemUserManagementDataService dataService = DatabaseFactory.getSystemUserManagementDataInstance();
         objMap.put("SystemUserManagementDataService", dataService);
         System.out.println("RMIObjectProvider 初始化完毕");

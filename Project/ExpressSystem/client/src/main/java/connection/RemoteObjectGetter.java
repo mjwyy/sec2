@@ -43,21 +43,7 @@ public class RemoteObjectGetter {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-//        try {
-//            SystemUserManagementDataService message =
-//                    (SystemUserManagementDataService) Naming.lookup("rmi://127.0.0.1:1099/SystemUserManagementDataService");
-//        } catch (NotBoundException e) {
-//            e.printStackTrace();
-//        } catch (MalformedURLException e) {
-//            e.printStackTrace();
-//        } catch (RemoteException e) {
-//            e.printStackTrace();
-//        }
         return object;
     }
 
-    public String testObjectGetter(){
-        System.out.println("This is RemoteObjectGetter");
-        return "RemoteObjectGetter returning";
-    }
 }

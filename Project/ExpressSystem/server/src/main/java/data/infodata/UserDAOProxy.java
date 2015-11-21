@@ -29,6 +29,7 @@ public class UserDAOProxy extends UnicastRemoteObject implements SystemUserManag
     @Override
     public boolean addUser(UserPO user) throws InterruptWithExistedElementException, SQLException {
         boolean result = dataImpl.addUser(user);
+        System.out.println("server addUser success!");
         connection.close();
         return result;
     }

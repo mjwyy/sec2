@@ -6,99 +6,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80e1d396-4d24-4864-b9b7-ee0530b48260" name="Default" comment="什么鬼">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/main/java/util/enums/Authority.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/util/FormatCheck.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/ArrivalNoteOnServiceVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/ArrivalNoteOnTransitVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/BankAccountVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/BusinessStateChartVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/ChartVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/CommodityGoodsVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/CommodityInfoVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/CostAndProfitChartVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/CreditNoteVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/DeliverNoteOnServiceVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/DeliveryNoteVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/DriverVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/FinanceVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/IncomeNoteVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/InstitutionInfoVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/InventoryVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/LoadNoteOnServiceVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/LoadNoteOnTransitVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/NoteVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/OrderVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/OrganizationInfoVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/PaymentVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/ReceivingNoteVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/StaffVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/StorageInVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/StorageOutVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/SystemLogVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/TransitNoteOnTransitVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/UserVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/vo/VehicleVO.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/businesslogic/util/FormatCheck.java" afterPath="$PROJECT_DIR$/common/src/main/java/util/FormatCheck.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/ArrivalNoteOnServiceVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/ArrivalNoteOnServiceVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/ArrivalNoteOnTransitVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/ArrivalNoteOnTransitVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/BankAccountVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/BankAccountVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/BusinessStateChartVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/BusinessStateChartVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/ChartVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/ChartVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/CommodityGoodsVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/CommodityGoodsVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/CommodityInfoVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/CommodityInfoVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/CostAndProfitChartVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/CostAndProfitChartVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/CreditNoteVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/CreditNoteVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/DeliverNoteOnServiceVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/DeliverNoteOnServiceVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/DeliveryNoteVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/DeliveryNoteVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/DriverVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/DriverVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/FinanceVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/FinanceVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/IncomeNoteVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/IncomeNoteVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/InstitutionInfoVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/InstitutionInfoVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/InventoryVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/InventoryVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/LoadNoteOnServiceVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/LoadNoteOnServiceVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/LoadNoteOnTransitVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/LoadNoteOnTransitVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/NoteVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/NoteVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/OrderVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/OrderVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/OrganizationInfoVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/OrganizationInfoVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/PaymentVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/PaymentVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/ReceivingNoteVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/ReceivingNoteVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/StaffVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/StaffVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/StorageInVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/StorageInVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/StorageOutVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/StorageOutVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/SystemLogVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/SystemLogVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/TransitNoteOnTransitVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/TransitNoteOnTransitVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/UserVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/UserVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/main/java/vo/VehicleVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/VehicleVO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/commodity/StorageIn.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/commodity/StorageIn.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/commodity/StorageInquiryAll.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/commodity/StorageInquiryAll.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/commodity/StorageInquiryPart.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/commodity/StorageInquiryPart.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/commodity/StorageOut.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/commodity/StorageOut.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/finance/PaymentInput.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/finance/PaymentInput.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/info/SystemUserManagement.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/info/SystemUserManagement.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/statistic/ChartOutput.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/statistic/ChartOutput.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/statistic/LogInquiry.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/statistic/LogInquiry.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Driver/StorageInBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Driver/StorageInBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/SystemUserManagementBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/SystemUserManagementBLService_Driver.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/connection/ClientMain.class" afterPath="$PROJECT_DIR$/client/target/classes/connection/ClientMain.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/test-classes/businesslogic/FormatCheck_Test.class" afterPath="$PROJECT_DIR$/client/target/test-classes/businesslogic/FormatCheck_Test.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/commoditydataservice/_Stub/InventoryDataService_Stub.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/commoditydataservice/_Stub/InventoryDataService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/po/CommodityGoodsPO.class" afterPath="$PROJECT_DIR$/common/target/classes/po/CommodityGoodsPO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/po/InventoryPO.class" afterPath="$PROJECT_DIR$/common/target/classes/po/InventoryPO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/po/UserPO.class" afterPath="$PROJECT_DIR$/common/target/classes/po/UserPO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/connection/RMIObjectProvider.class" afterPath="$PROJECT_DIR$/server/target/classes/connection/RMIObjectProvider.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/data/dao/DatabaseFactory.class" afterPath="$PROJECT_DIR$/server/target/classes/data/dao/DatabaseFactory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/data/infodata/SystemUserManagementData.class" afterPath="$PROJECT_DIR$/server/target/classes/data/infodata/SystemUserManagementData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/data/logisticdata/ArrivalNoteOnServiceData.class" afterPath="$PROJECT_DIR$/server/target/classes/data/logisticdata/ArrivalNoteOnServiceData.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/connection/RMIPublisher.class" afterPath="$PROJECT_DIR$/server/target/classes/connection/RMIPublisher.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/data/infodata/UserDAOProxy.class" afterPath="$PROJECT_DIR$/server/target/classes/data/infodata/UserDAOProxy.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/businesslogic/commodity/StorageInquiryAll.java" afterPath="$PROJECT_DIR$/client/src/main/java/businesslogic/commodity/StorageInquiryAll.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/businesslogic/commodity/StorageInquiryPart.java" afterPath="$PROJECT_DIR$/client/src/main/java/businesslogic/commodity/StorageInquiryPart.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/businesslogicservice/commodityblservice/_Driver/StorageInBLService_Driver.java" afterPath="$PROJECT_DIR$/client/src/main/java/businesslogicservice/commodityblservice/_Driver/StorageInBLService_Driver.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/connection/ClientMain.java" afterPath="$PROJECT_DIR$/client/src/main/java/connection/ClientMain.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/test/java/businesslogic/FormatCheck_Test.java" afterPath="$PROJECT_DIR$/client/src/test/java/businesslogic/FormatCheck_Test.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/dataservice/commoditydataservice/_Stub/InventoryDataService_Stub.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/commoditydataservice/_Stub/InventoryDataService_Stub.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/po/UserPO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/UserPO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/connection/RemoteObjectGetter.java" afterPath="$PROJECT_DIR$/client/src/main/java/connection/RemoteObjectGetter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/connection/RMIHelper.java" afterPath="$PROJECT_DIR$/common/src/main/java/connection/RMIHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/connection/RMIObjectProvider.java" afterPath="$PROJECT_DIR$/server/src/main/java/connection/RMIObjectProvider.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/connection/RMIPublisher.java" afterPath="$PROJECT_DIR$/server/src/main/java/connection/RMIPublisher.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/data/infodata/SystemUserManagementData.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/infodata/SystemUserManagementData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/data/infodata/UserDAOProxy.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/infodata/UserDAOProxy.java" />
     </list>
     <ignored path="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -118,76 +35,8 @@
     <option name="PATCH_PATH" value="" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
-  <component name="FavoritesManager">
-    <favorites_list name="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD" />
-  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ClientMain.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/main/java/connection/ClientMain.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RemoteObjectGetter.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/client/src/main/java/connection/RemoteObjectGetter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7386364">
-              <caret line="52" column="39" selection-start-line="52" selection-start-column="39" selection-end-line="52" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RMIPublisher.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/connection/RMIPublisher.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RMIObjectProvider.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/connection/RMIObjectProvider.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="50" column="105" selection-start-line="50" selection-start-column="70" selection-end-line="50" selection-end-column="105" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DatabaseFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/data/dao/DatabaseFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="13" column="31" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserDAOProxy.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/data/infodata/UserDAOProxy.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -218,28 +67,23 @@
         <option value="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/ReceivingNoteInputDataService.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/TransitNoteInputDataService.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/data/infodata/StaffOrganizationManagementData.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/data/infodata/UserDAOProxy.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/connection/ServerMain.java" />
         <option value="$PROJECT_DIR$/client/src/main/java/businesslogicservice/logisticblservice/_Driver/ArrivalNoteOnServiceBLService_Driver.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/connection/RMIObjectProviderService.java" />
         <option value="$PROJECT_DIR$/client/src/main/java/connection/RMIHelper.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/dataservice/infodataservice/SystemUserManagementDataService.java" />
-        <option value="$PROJECT_DIR$/common/src/main/java/connection/RMIHelper.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/data/dao/DatabaseConnection.java" />
         <option value="$PROJECT_DIR$/client/src/main/java/businesslogic/statistic/ChartOutput.java" />
         <option value="$PROJECT_DIR$/client/src/main/java/vo/BusinessStateChartVO.java" />
         <option value="$PROJECT_DIR$/client/src/main/java/businesslogic/statistic/NoteApproving.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnServiceData.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/data/infodata/TestDataImpl.java" />
-        <option value="$PROJECT_DIR$/client/src/main/java/connection/RemoteObjectGetter.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/connection/RMIObjectProvider.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/data/dao/DatabaseFactory.java" />
         <option value="$PROJECT_DIR$/client/src/main/java/businesslogic/util/FormatCheck.java" />
         <option value="$PROJECT_DIR$/client/src/main/java/vo/UserVO.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/util/enums/Authority.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/po/UserPO.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/data/infodata/SystemUserManagementData.java" />
-        <option value="$PROJECT_DIR$/client/src/main/java/connection/ClientMain.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/vo/ArrivalNoteOnServiceVO.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/vo/ChartVO.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/vo/ArrivalNoteOnTransitVO.java" />
@@ -258,7 +102,12 @@
         <option value="$PROJECT_DIR$/common/src/main/java/dataservice/commoditydataservice/_Stub/InventoryDataService_Stub.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/vo/ReceivingNoteVO.java" />
         <option value="$PROJECT_DIR$/client/src/main/java/businesslogicservice/commodityblservice/_Driver/StorageInBLService_Driver.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/data/infodata/UserDAOProxy.java" />
+        <option value="$PROJECT_DIR$/client/src/main/java/connection/ClientMain.java" />
+        <option value="$PROJECT_DIR$/client/src/main/java/connection/RemoteObjectGetter.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/connection/RMIObjectProvider.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/connection/RMIPublisher.java" />
+        <option value="$PROJECT_DIR$/common/src/main/java/connection/RMIHelper.java" />
       </list>
     </option>
   </component>
@@ -378,8 +227,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -440,62 +287,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ExpressSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ExpressSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="connection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ExpressSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ExpressSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -517,14 +308,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -581,72 +364,14 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ExpressSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ExpressSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="connection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ExpressSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ExpressSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="businesslogic" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1126,27 +851,27 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23013699" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890856" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29452056" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22617124" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22617124" sideWeight="0.8989071" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22617124" sideWeight="0.1010929" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23013699" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="100" y="100" width="1080" height="600" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29452056" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23972602" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1200,25 +925,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnServiceData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26638177">
-          <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/data/infodata/StaffOrganizationManagementData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8192771">
           <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/connection/RMIHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="40" column="58" selection-start-line="40" selection-start-column="58" selection-end-line="40" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1254,6 +964,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.2663817">
           <caret line="59" column="14" selection-start-line="59" selection-start-column="14" selection-end-line="59" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1261,6 +974,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.65384614">
           <caret line="40" column="45" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1509,51 +1223,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/connection/RMIObjectProviderService.java">
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/infodata/UserDAOProxy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24435319">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/connection/RMIPublisher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.76796716">
+          <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/connection/RMIObjectProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="50" column="105" selection-start-line="50" selection-start-column="70" selection-end-line="50" selection-end-column="105" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/data/dao/DatabaseFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="31" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/infodata/UserDAOProxy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.31416836">
+          <caret line="11" column="30" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/main/java/connection/ClientMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.69815195">
+          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1562,8 +1251,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/main/java/connection/RemoteObjectGetter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7386364">
-          <caret line="52" column="39" selection-start-line="52" selection-start-column="39" selection-end-line="52" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.7556468">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/connection/RMIObjectProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/connection/RMIPublisher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16221766">
+          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/connection/RMIHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.4312115">
+          <caret line="47" column="33" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/connection/RMIObjectProviderService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24435319">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/connection/ServerMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31416836">
+          <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
           <folding />
         </state>
       </provider>

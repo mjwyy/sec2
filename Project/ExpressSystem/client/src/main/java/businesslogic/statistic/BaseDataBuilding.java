@@ -1,6 +1,8 @@
 package businesslogic.statistic;
 
 import businesslogicservice.statisticblservice.BaseDataBuildingBLService;
+import connection.RemoteObjectGetter;
+import dataservice.logisticdataservice.TransitNoteInputDataService;
 import dataservice.statisticdataservice.BaseDataBuildingDataService;
 import util.ResultMsg;
 import vo.CommodityInfoVO;
@@ -16,10 +18,16 @@ public class BaseDataBuilding implements BaseDataBuildingBLService {
 
     private BaseDataBuildingDataService dataBuildingDataService;
 
+    public BaseDataBuilding() {
+        RemoteObjectGetter getter = new RemoteObjectGetter();
+        this.dataBuildingDataService =
+                (BaseDataBuildingDataService)getter.getObjectByName("BaseDataBuildingDataService");
+    }
+
     @Override
     public ResultMsg restartWithoutBasis() {
         try {
-            dataBuildingDataService.startBaseDataBuilding(false);
+            this.dataBuildingDataService.startBaseDataBuilding(false);
         } catch (RemoteException e) {
             e.printStackTrace();
             return new ResultMsg(false,"无法开始无基础期初建账!");
@@ -30,7 +38,7 @@ public class BaseDataBuilding implements BaseDataBuildingBLService {
     @Override
     public ResultMsg restartWithBasis() {
         try {
-            dataBuildingDataService.startBaseDataBuilding(true);
+            this.dataBuildingDataService.startBaseDataBuilding(true);
         } catch (RemoteException e) {
             e.printStackTrace();
             return new ResultMsg(false,"无法开始有基础期初建账!");
@@ -41,7 +49,7 @@ public class BaseDataBuilding implements BaseDataBuildingBLService {
     @Override
     public ResultMsg endDataBuilding() {
         try {
-            dataBuildingDataService.endBaseDataBuilding();
+            this.dataBuildingDataService.endBaseDataBuilding();
         } catch (RemoteException e) {
             e.printStackTrace();
             return new ResultMsg(false,"无法结束期初建账!");

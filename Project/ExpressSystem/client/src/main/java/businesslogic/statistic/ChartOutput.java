@@ -1,6 +1,7 @@
 package businesslogic.statistic;
 
 import businesslogicservice.statisticblservice.ChartOutputBLService;
+import connection.RemoteObjectGetter;
 import dataservice.statisticdataservice.ChartOutputDataService;
 import po.ChartPO;
 import po.chart.BusinessStateChartPO;
@@ -27,6 +28,12 @@ public class ChartOutput implements ChartOutputBLService {
 
     private CostAndProfitChartVO costAndProfitVO;
     private CostAndProfitChartPO costAndProfitPO;
+
+    public ChartOutput() {
+        RemoteObjectGetter getter = new RemoteObjectGetter();
+        this.dataService =
+                (ChartOutputDataService)getter.getObjectByName("ChartOutputDataService");
+    }
 
     @Override
     public ResultMsg enquiryChart(ChartType chartType, String time1, String time2) {
@@ -61,6 +68,9 @@ public class ChartOutput implements ChartOutputBLService {
     @Override
     public ResultMsg exportChart(String path) {
         //TODO 报表内容存在问题
+
+        //TODO 导出excle表格
+
         return null;
     }
 }

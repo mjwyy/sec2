@@ -2,8 +2,8 @@ package vo;
 
 import java.util.ArrayList;
 
+import businesslogic.util.FormatCheck;
 import po.ArrivalNoteOnServicePO;
-import po.NotePO;
 import util.BarcodeAndState;
 import util.ResultMsg;
 
@@ -62,7 +62,27 @@ public class ArrivalNoteOnServiceVO extends NoteVO{
 
     @Override
     public ResultMsg checkFormat() {
-        return super.checkFormat();
+        ResultMsg result = new ResultMsg(true);
+        ResultMsg results[] = new ResultMsg[13];
+        results[0] = FormatCheck.isDate(this.date);
+        results[1] = FormatCheck.isServiceHallLoadNumber(this.TransferNumber);
+        results[2] = FormatCheck.isCity(this.from);
+        results[3] = new ResultMsg(true);
+        ResultMsg barcodes = new ResultMsg(true);
+        for(BarcodeAndState barcodeAndState:this.BarcodeAndStates){
+            barcodes = FormatCheck.isBarcode(barcodeAndState.getBarcode());
+            if(!barcodes.isPass()){
+                results[3] = barcodes;
+                break;
+            }
+        }
+        for(int i = 0; i<results.length; i++){
+            if(!results[i].isPass()){
+                result.setPass(false);
+                result.appendMessage(results[i].getMessage()+'\n');
+            }
+        }
+        return result;
     }
 
     @Override

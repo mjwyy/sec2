@@ -31,7 +31,11 @@ public class ResultMsg {
         this.pass = pass;
         this.message = "";
     }
-	
+
+    public void setPass(boolean pass) {
+        this.pass = pass;
+    }
+
     public boolean isPass() {
         return pass;
     }

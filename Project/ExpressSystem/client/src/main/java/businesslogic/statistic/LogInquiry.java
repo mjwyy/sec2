@@ -1,6 +1,7 @@
 package businesslogic.statistic;
 
 import businesslogicservice.statisticblservice.LogInquiryBLService;
+import connection.RemoteObjectGetter;
 import dataservice.statisticdataservice.LogInquiryDataService;
 import po.LogEntryPO;
 import util.ResultMsg;
@@ -15,6 +16,12 @@ import java.util.ArrayList;
 public class LogInquiry implements LogInquiryBLService {
 
     private LogInquiryDataService dataService;
+
+    public LogInquiry() {
+        RemoteObjectGetter getter = new RemoteObjectGetter();
+        this.dataService =
+                (LogInquiryDataService)getter.getObjectByName("LogInquiryDataService");
+    }
 
     @Override
     public ResultMsg inputKeywords(SystemLogVO log) {

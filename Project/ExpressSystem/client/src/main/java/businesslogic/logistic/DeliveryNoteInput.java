@@ -23,8 +23,6 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
     private DeliveryNotePO notePO;
     private OrderPO orderPO;
 
-    private RemoteObjectGetter rmi;
-
     public DeliveryNoteInput(DeliveryNoteInputDataService dataService) {
         RemoteObjectGetter getter = new RemoteObjectGetter();
         this.dataService = (DeliveryNoteInputDataService) getter.getObjectByName("DeliveryNoteInputData");

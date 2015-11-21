@@ -1,6 +1,7 @@
 package businesslogic.statistic;
 
 import businesslogicservice.statisticblservice.OrderInquiryBLService;
+import connection.RemoteObjectGetter;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.statisticdataservice.OrderInquiryDataService;
 import po.OrderPO;
@@ -20,18 +21,19 @@ public class OrderInquiry implements OrderInquiryBLService {
     private OrderPO resultPO;
     private OrderVO resultVO;
 
+    public OrderInquiry() {
+        RemoteObjectGetter getter = new RemoteObjectGetter();
+        this.dataService =
+                (OrderInquiryDataService)getter.getObjectByName("OrderInquiryDataService");
+    }
+
     @Override
     public ResultMsg inputBarcode(String inputBarcode) {
         this.orderVO = new OrderVO(inputBarcode,null,null);
         ResultMsg resultMsg = this.orderVO.checkFormat();
-        //订单号码格式正确
-        if(resultMsg.isPass()){
+        if(resultMsg.isPass())
             this.submitBarcode(inputBarcode);
-            return new ResultMsg(true,"输入的订单号码格式正确!");
-        }
-        //订单号码格式错误
-        else
-            return resultMsg;
+        return resultMsg;
     }
 
     @Override
@@ -40,6 +42,7 @@ public class OrderInquiry implements OrderInquiryBLService {
             this.resultPO = dataService.findOrder(inputBarcode);
         } catch (RemoteException e) {
             e.printStackTrace();
+            return null;
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
             return null;

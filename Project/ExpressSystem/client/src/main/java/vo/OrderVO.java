@@ -43,7 +43,7 @@ public class OrderVO {
 	}
 
     public ResultMsg checkFormat(){
-        ResultMsg resultMsg = FormatCheck.IsBarcode(this.barcode);
+        ResultMsg resultMsg = FormatCheck.isBarcode(this.barcode);
         return resultMsg;
     }
 	

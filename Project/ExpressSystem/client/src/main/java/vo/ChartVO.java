@@ -13,6 +13,8 @@ import util.enums.ChartType;
  */
 public class ChartVO {
 
+
+    //TODO 选取的类型是否需要检查格式
 	/**
 	 * 报表类型
 	 */
@@ -43,19 +45,14 @@ public class ChartVO {
     }
 
     public ResultMsg checkFormat(){
-        boolean pass = true;
         ResultMsg result = new ResultMsg(true);
         ResultMsg results[] = new ResultMsg[2];
-        results[1] = FormatCheck.IsDate(this.time1);
-        results[2] = FormatCheck.IsDate(this.time2);
+        results[0] = FormatCheck.isDate(this.time1);
+        results[1] = FormatCheck.isDate(this.time2);
         for(int i = 0; i<results.length; i++){
-            if(!results[i].isPass()){
-                result.appendMessage(results[i].getMessage()+'\n');
-                pass = false;
-            }
+            if(!results[i].isPass())
+                return results[i];
         }
-        if (pass)
-            result.appendMessage("表格查询信息格式正确");
         return result;
     }
 

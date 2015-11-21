@@ -36,19 +36,15 @@ public class SystemLogVO {
 	}
 
     public ResultMsg checkFormat() {
-        boolean pass = true;
         ResultMsg result = new ResultMsg(true);
         ResultMsg results[] = new ResultMsg[2];
         results[0] = FormatCheck.isLogKeyWord(this.content);
         results[1] = FormatCheck.isLogInquiryTime(this.time);
         for(int i = 0; i<results.length; i++){
             if(!results[i].isPass()){
-                result.appendMessage(results[i].getMessage()+'\n');
-                pass = false;
+                return results[i];
             }
         }
-        if (pass)
-            result.appendMessage("系统日志查询信息格式正确");
         return result;
     }
 

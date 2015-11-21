@@ -1,5 +1,6 @@
 package vo;
 
+import businesslogic.util.FormatCheck;
 import po.ReceivingNotePO;
 import util.ResultMsg;
 
@@ -12,7 +13,7 @@ import util.ResultMsg;
 public class ReceivingNoteVO extends NoteVO {
 
 	/**
-	 * 收件单号
+	 * 收件单号(唯一标识)
 	 */
 	private String barcode;
 	
@@ -47,7 +48,17 @@ public class ReceivingNoteVO extends NoteVO {
 
     @Override
     public ResultMsg checkFormat() {
-        return super.checkFormat();
+        ResultMsg result = new ResultMsg(true);
+        ResultMsg results[] = new ResultMsg[3];
+        results[0] = FormatCheck.isBarcode(this.barcode);
+        results[1] = FormatCheck.isChineseName(this.receiveCustomer);
+        results[2] = FormatCheck.isReceiveTime(this.time);
+        for(int i = 0; i<results.length; i++){
+            if(!results[i].isPass()){
+                return results[i];
+            }
+        }
+        return result;
     }
 
     @Override

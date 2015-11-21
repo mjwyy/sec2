@@ -20,8 +20,13 @@ public class ArrivalNoteOnServiceVO extends NoteVO{
 	 */
 	private String date;
 
+    /**
+     * 区分中转单编号(true)
+     */
+    private boolean isTransit;
+
 	/**
-	 * 中转单编号（装车单编号）
+	 * 中转单编号（装车单编号）(唯一标示符)
 	 */
 	private String TransferNumber;
 	
@@ -35,16 +40,16 @@ public class ArrivalNoteOnServiceVO extends NoteVO{
 	 */
 	private ArrayList<BarcodeAndState> BarcodeAndStates;
 
-	public ArrivalNoteOnServiceVO(String date, String transferNumber, String from,
-			ArrayList<BarcodeAndState> barcodeAndStates) {
-		super();
-		this.date = date;
-		TransferNumber = transferNumber;
-		this.from = from;
-		BarcodeAndStates = barcodeAndStates;
-	}
+    public ArrivalNoteOnServiceVO(String date, boolean isTransit, String transferNumber,
+                                  String from, ArrayList<BarcodeAndState> barcodeAndStates) {
+        this.date = date;
+        this.isTransit = isTransit;
+        this.TransferNumber = transferNumber;
+        this.from = from;
+        this.BarcodeAndStates = barcodeAndStates;
+    }
 
-	public String getDate() {
+    public String getDate() {
 		return date;
 	}
 
@@ -63,12 +68,15 @@ public class ArrivalNoteOnServiceVO extends NoteVO{
     @Override
     public ResultMsg checkFormat() {
         ResultMsg result = new ResultMsg(true);
-        ResultMsg results[] = new ResultMsg[13];
+        ResultMsg results[] = new ResultMsg[4];
         results[0] = FormatCheck.isDate(this.date);
-        results[1] = FormatCheck.isServiceHallLoadNumber(this.TransferNumber);
+        if(isTransit)
+            results[1] = FormatCheck.isServiceHallLoadNumber(this.TransferNumber);
+        else
+            results[1] = FormatCheck.isTransitNoteNumber(this.TransferNumber);
         results[2] = FormatCheck.isCity(this.from);
         results[3] = new ResultMsg(true);
-        ResultMsg barcodes = new ResultMsg(true);
+        ResultMsg barcodes;
         for(BarcodeAndState barcodeAndState:this.BarcodeAndStates){
             barcodes = FormatCheck.isBarcode(barcodeAndState.getBarcode());
             if(!barcodes.isPass()){
@@ -78,8 +86,7 @@ public class ArrivalNoteOnServiceVO extends NoteVO{
         }
         for(int i = 0; i<results.length; i++){
             if(!results[i].isPass()){
-                result.setPass(false);
-                result.appendMessage(results[i].getMessage()+'\n');
+                return results[i];
             }
         }
         return result;

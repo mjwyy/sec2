@@ -118,7 +118,7 @@ public class FormatCheck {
     public static ResultMsg isServiceHallLoadNumber(String str) {
         String trueExpression = "\\d{3}1\\d{16}";
         return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
-                new ResultMsg(false,"营业厅编号格式错误,应为7位数字:3位城市编码+1代表营业厅+3位营业厅编码");
+                new ResultMsg(false,"营业厅汽运编号格式错误,应为营业厅编号+8位日期+00000五位编码");
     }
     /**
      * 9检查输入是否是合法的车辆代号
@@ -452,4 +452,15 @@ public class FormatCheck {
     }
 
 
+    public static ResultMsg isReceiveTime(String time) {
+        String trueExpression = "\\d{4}-\\d{1,2}-\\d{1,2}\\s\\d{2}:\\d{2}";
+        return Pattern.matches(trueExpression,time)? new ResultMsg(true) :
+                new ResultMsg(false,"收件时间格式错误,应为“xxxx－xx－xx xx：xx”,x是数字");
+    }
+
+    public static ResultMsg isFlightNumber(String flightNumber) {
+        String trueExpression = "";
+        return Pattern.matches(trueExpression,flightNumber)? new ResultMsg(true) :
+                new ResultMsg(false,"航班号格式错误,应为");
+    }
 }

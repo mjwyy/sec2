@@ -74,7 +74,7 @@ public class DeliveryNoteVO extends NoteVO {
     private double packPrice;
 
     /**
-     * 货物条形码
+     * 货物条形码(唯一标示符)
      */
     private String barCode;
 
@@ -158,14 +158,21 @@ public class DeliveryNoteVO extends NoteVO {
     public ResultMsg checkFormat(){
         ResultMsg result = new ResultMsg(true);
         ResultMsg results[] = new ResultMsg[13];
-        results[1] = FormatCheck.isBarcode(this.barCode);
-        results[2] = FormatCheck.isBarcode(this.receiverTeleNumber);
-        results[3] = FormatCheck.isBarcode(this.senderTeleNumber);
-        results[4] = FormatCheck.isChineseName(this.receiverName);
-        results[5] = FormatCheck.isChineseName(this.receiverName);
+        results[0] = FormatCheck.isChineseName(this.senderName);
+        results[1] = FormatCheck.isCity(this.senderAddress);
+        results[2] = FormatCheck.isPhoneNumber(this.senderTeleNumber);
+        results[3] = FormatCheck.isChineseName(this.receiverName);
+        results[4] = FormatCheck.isCity(this.receiverAddress);
+        results[5] = FormatCheck.isPhoneNumber(this.receiverTeleNumber);
+        results[6] = new ResultMsg(true);
+        results[8] = new ResultMsg(goodsNumber>0);
+        results[9] = new ResultMsg(weight>0);
+        results[10] = new ResultMsg(volume>0);
+        results[11] = new ResultMsg(packPrice>0);
+        results[12] = FormatCheck.isBarcode(this.barCode);
         for(int i = 0; i<results.length; i++){
             if(!results[i].isPass())
-                result.appendMessage(results[i].getMessage()+'\n');
+                return results[i];
         }
         return result;
     }

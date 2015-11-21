@@ -43,8 +43,7 @@ public class OrderVO {
 	}
 
     public ResultMsg checkFormat(){
-        ResultMsg resultMsg = FormatCheck.isBarcode(this.barcode);
-        return resultMsg;
+        return FormatCheck.isBarcode(this.barcode);
     }
 	
 }

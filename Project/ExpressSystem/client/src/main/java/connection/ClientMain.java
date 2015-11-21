@@ -1,6 +1,7 @@
 package connection;
 
 import dataservice.infodataservice.SystemUserManagementDataService;
+import po.UserPO;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -13,10 +14,13 @@ import java.rmi.RemoteException;
 public class ClientMain {
     public static void main(String[] args) {
         RemoteObjectGetter objectGetter = new RemoteObjectGetter();
-//        String x = objectGetter.testObjectGetter();
-//        System.out.println(x);
         SystemUserManagementDataService dataService =
                 (SystemUserManagementDataService) objectGetter.getObjectByName("SystemUserManagementDataService");
         System.out.println("客户端得到SystemUserManagementDataService");
+        try {
+            dataService.addUser(new UserPO("test10","test10",2));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

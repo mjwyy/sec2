@@ -69,7 +69,7 @@ public class ChartOutput implements ChartOutputBLService {
     public ResultMsg exportChart(String path) {
         //TODO 报表内容存在问题
 
-        //TODO 导出excle表格
+        //TODO 导出excel表格
 
         return null;
     }

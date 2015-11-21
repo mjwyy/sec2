@@ -7,6 +7,7 @@ import util.enums.ChartType;
  */
 public class BusinessStateChartVO extends ChartVO{
 
+    //TODO 内容丰富一天一条
     private double profix;
     private double growthRate;
 

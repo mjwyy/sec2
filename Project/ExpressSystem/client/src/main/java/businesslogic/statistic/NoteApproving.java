@@ -30,7 +30,7 @@ public class NoteApproving implements NoteApprovingBLService {
         ArrayList<NotePO> notePOs;
         try {
             notePOs = dataService.getAllDoc();
-            // TODO po转化为VO的问题
+            // TODO po转化为VO的问题 VO拖到common里面
             for (NotePO po:notePOs){
 
             }

@@ -9,7 +9,6 @@ public class MockDriver extends DriverPO{
 			String licenseDate) {
 		super(driverNumber, name, birthday, iDCardNumber, phoneNumber, gender,
 				licenseDate);
-		// TODO Auto-generated constructor stub
 	}
 
 }

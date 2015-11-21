@@ -208,6 +208,8 @@ public class FormatCheck {
      * @return
      */
     public static ResultMsg IsLogInquiryTime(String str) {
+        if(str == null)
+            return new ResultMsg(true);
         String trueExpression = "\\d{4}-\\d{1,2}-\\d{1,2}";
         return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
                 new ResultMsg(false,"系统日志查询日期格式错误,应为应为“xxxx－xx－xx”,x是数字");
@@ -418,6 +420,8 @@ public class FormatCheck {
      * @return
      */
     public static ResultMsg isLogKeyWord(String str) {
+        if(str == null)
+            return new ResultMsg(true);
         String trueExpression = "[\\u4e00-\\u9fa5]*";
         return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
                 new ResultMsg(false,"查询关键字格式有误，必须为汉字");

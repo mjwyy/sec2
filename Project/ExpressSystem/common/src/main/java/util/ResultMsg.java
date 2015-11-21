@@ -29,6 +29,7 @@ public class ResultMsg {
 
     public ResultMsg(boolean pass){
         this.pass = pass;
+        this.message = "";
     }
 	
     public boolean isPass() {

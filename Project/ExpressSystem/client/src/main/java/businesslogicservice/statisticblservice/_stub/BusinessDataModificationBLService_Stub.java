@@ -13,7 +13,7 @@ public class BusinessDataModificationBLService_Stub implements BusinessDataModif
 	}
 
     @Override
-    public ResultMsg submitPriceChange(PriceType type, double price) {
+    public ResultMsg submitPrice(PriceType type, double price) {
         return null;
     }
 

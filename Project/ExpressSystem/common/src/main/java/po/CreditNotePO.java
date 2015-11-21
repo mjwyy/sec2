@@ -8,7 +8,6 @@ import java.math.BigDecimal;
  * @author River
  *
  */
-//TODO povo的统一
 public class CreditNotePO implements Serializable {
 	
 	/**

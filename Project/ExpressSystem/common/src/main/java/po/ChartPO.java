@@ -20,9 +20,10 @@ public class ChartPO implements Serializable {
 	private String startTime;
 	private String endTime ;
 	private ChartType type;
-	
-	
-	
-	
-	
+
+    public ChartPO(ChartType type,String startTime, String endTime) {
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.type = type;
+    }
 }

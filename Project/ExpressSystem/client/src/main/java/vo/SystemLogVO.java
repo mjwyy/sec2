@@ -1,5 +1,8 @@
 package vo;
 
+import businesslogic.util.FormatCheck;
+import util.ResultMsg;
+
 /**
  * 系统日志VO
  * 
@@ -31,4 +34,22 @@ public class SystemLogVO {
 	public String getContent() {
 		return content;
 	}
+
+    public ResultMsg checkFormat() {
+        boolean pass = true;
+        ResultMsg result = new ResultMsg(true);
+        ResultMsg results[] = new ResultMsg[2];
+        results[0] = FormatCheck.isLogKeyWord(this.content);
+        results[1] = FormatCheck.IsLogInquiryTime(this.time);
+        for(int i = 0; i<results.length; i++){
+            if(!results[i].isPass()){
+                result.appendMessage(results[i].getMessage()+'\n');
+                pass = false;
+            }
+        }
+        if (pass)
+            result.appendMessage("系统日志查询信息格式正确");
+        return result;
+    }
+
 }

@@ -14,28 +14,25 @@ public class DriverVehicleManagementData implements DriverVehicleManagementDataS
 	@Override
 	public boolean addDriver(DriverPO driver) throws RemoteException,
 			InterruptWithExistedElementException {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean addVehicle(VehiclePO vehicle) throws RemoteException,
 			InterruptWithExistedElementException {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean removeDriver(DriverPO driver) throws RemoteException,
 			ElementNotFoundException {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean removeVehicle(VehiclePO vehicle) throws RemoteException,
 			ElementNotFoundException {
-		// TODO Auto-generated method stub
+		 
 		return false;
 	}
 
@@ -43,7 +40,7 @@ public class DriverVehicleManagementData implements DriverVehicleManagementDataS
 	public boolean modifyDriver(DriverPO originalDriver, DriverPO modified)
 			throws RemoteException, ElementNotFoundException,
 			InterruptWithExistedElementException {
-		// TODO Auto-generated method stub
+		 
 		return false;
 	}
 
@@ -51,33 +48,33 @@ public class DriverVehicleManagementData implements DriverVehicleManagementDataS
 	public boolean modifyVehicle(VehiclePO originalVehicle, VehiclePO modified)
 			throws RemoteException, ElementNotFoundException,
 			InterruptWithExistedElementException {
-		// TODO Auto-generated method stub
+		 
 		return false;
 	}
 
 	@Override
 	public ArrayList<DriverPO> getAllDriver() throws RemoteException {
-		// TODO Auto-generated method stub
+		 
 		return null;
 	}
 
 	@Override
 	public ArrayList<VehiclePO> getAllVehicles() throws RemoteException {
-		// TODO Auto-generated method stub
+		 
 		return null;
 	}
 
 	@Override
 	public ArrayList<DriverPO> inquireDriver(DriverPO keywords)
 			throws RemoteException, ElementNotFoundException {
-		// TODO Auto-generated method stub
+		 
 		return null;
 	}
 
 	@Override
 	public ArrayList<VehiclePO> inquireVehicle(VehiclePO keywords)
 			throws RemoteException {
-		// TODO Auto-generated method stub
+		 
 		return null;
 	}
 

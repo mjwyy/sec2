@@ -1,17 +1,34 @@
 package businesslogic.statistic;
 
 import businesslogicservice.statisticblservice.NoteApprovingBLService;
+import dataservice.statisticdataservice.NoteApprovingDataService;
+import po.NotePO;
 import util.enums.DocType;
 import vo.NoteVO;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
  * Created by kylin on 15/11/17.
  */
 public class NoteApproving implements NoteApprovingBLService {
+
+    private NoteApprovingDataService dataService;
+
+    // TODO po转化为VO的问题
+
     @Override
     public ArrayList<NoteVO> getAllDoc() {
+        ArrayList<NoteVO> noteVOArrayList;
+        ArrayList<NotePO> notePOs;
+        try {
+            notePOs = dataService.getAllDoc();
+            for (NotePO po:notePOs){
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 

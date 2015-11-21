@@ -4,6 +4,7 @@ import data.dao.DatabaseConnection;
 import dataservice.infodataservice.SystemUserManagementDataService;
 import po.UserPO;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
@@ -14,7 +15,7 @@ public class UserDAOProxy implements SystemUserManagementDataService {
     private DatabaseConnection connection;
     private SystemUserManagementData dataImpl;
 
-    public UserDAOProxy(){
+    public UserDAOProxy() throws RemoteException {
         connection = new DatabaseConnection();
         dataImpl = new SystemUserManagementData(connection.getConnection());
     }

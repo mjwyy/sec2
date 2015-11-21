@@ -33,5 +33,7 @@ public interface BusinessDataModificationBLService {
 	 * 总经理核对新的业务数据，要求提交
 	 *
 	 */
-	public void submitChange();
+    public ResultMsg submitPriceChange(PriceType type, double price);
+
+    public ResultMsg submitCityDistance(String city1, String city2, double distance);
 }

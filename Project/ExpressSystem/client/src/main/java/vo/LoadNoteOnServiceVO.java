@@ -1,5 +1,9 @@
 package vo;
 
+import po.LoadNoteOnServicePO;
+import po.NotePO;
+import util.ResultMsg;
+
 import java.util.ArrayList;
 
 /**
@@ -56,7 +60,7 @@ public class LoadNoteOnServiceVO extends NoteVO {
 		this.date = date;
 		this.hallNumber = hallNumber;
 		this.transpotationNumber = transpotationNumber;
-		Destination = destination;
+		this.Destination = destination;
 		this.carNumber = carNumber;
 		this.guardMan = guardMan;
 		this.supercargoMan = supercargoMan;
@@ -94,4 +98,15 @@ public class LoadNoteOnServiceVO extends NoteVO {
 	public ArrayList<String> getBarcodes() {
 		return barcodes;
 	}
+
+    @Override
+    public ResultMsg checkFormat() {
+        return super.checkFormat();
+    }
+
+    @Override
+    public LoadNoteOnServicePO toPO() {
+        return new LoadNoteOnServicePO(this.date, this.hallNumber, this.transpotationNumber,
+        this.Destination, this.carNumber, this.guardMan, this.supercargoMan, this.barcodes);
+    }
 }

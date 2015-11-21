@@ -7,6 +7,7 @@ import po.UserPO;
 
 import java.net.ConnectException;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,15 +17,18 @@ import java.util.ArrayList;
 /**
  * Created by kylin on 15/11/16.
  */
-public class SystemUserManagementData implements SystemUserManagementDataService{
+public class SystemUserManagementData extends UnicastRemoteObject implements SystemUserManagementDataService{
 
     private Connection connection;
 
     private PreparedStatement statement;
 
-    public SystemUserManagementData(){}
+    public SystemUserManagementData() throws RemoteException {
+        super();
+    }
 
-    public SystemUserManagementData(Connection con){
+    public SystemUserManagementData(Connection con) throws RemoteException {
+        super();
         this.connection = con;
     }
 

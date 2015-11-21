@@ -2,7 +2,10 @@ package vo;
 
 import java.util.ArrayList;
 
+import po.ArrivalNoteOnServicePO;
+import po.NotePO;
 import util.BarcodeAndState;
+import util.ResultMsg;
 
 /**
  * 营业厅到达单VO
@@ -56,5 +59,15 @@ public class ArrivalNoteOnServiceVO extends NoteVO{
 	public ArrayList<BarcodeAndState> getBarcodeAndStates() {
 		return BarcodeAndStates;
 	}
-	
+
+    @Override
+    public ResultMsg checkFormat() {
+        return super.checkFormat();
+    }
+
+    @Override
+    public ArrivalNoteOnServicePO toPO() {
+        return new ArrivalNoteOnServicePO(this.getDate(),this.getTransferNumber(),
+                this.getFrom(),this.getBarcodeAndStates());
+    }
 }

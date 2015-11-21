@@ -1,5 +1,9 @@
 package vo;
 
+import po.ArrivalNoteOnServicePO;
+import po.NotePO;
+import util.ResultMsg;
+
 /**
  * 所有单据VO的父类
  * 
@@ -20,4 +24,12 @@ public abstract class NoteVO {
 	public boolean isAppproved() {
 		return appproved;
 	}
+
+    public ResultMsg checkFormat() {
+        return null;
+    }
+
+    public NotePO toPO() {
+        return  null;
+    }
 }

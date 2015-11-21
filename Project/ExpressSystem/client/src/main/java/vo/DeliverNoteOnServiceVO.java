@@ -1,5 +1,9 @@
 package vo;
 
+import po.DeliverNoteOnServicePO;
+import po.NotePO;
+import util.ResultMsg;
+
 import java.util.ArrayList;
 
 /**
@@ -42,5 +46,15 @@ public class DeliverNoteOnServiceVO extends NoteVO {
 
     public String getDeliveryMan() {
         return DeliveryMan;
+    }
+
+    @Override
+    public ResultMsg checkFormat() {
+        return super.checkFormat();
+    }
+
+    @Override
+    public DeliverNoteOnServicePO toPO() {
+        return new DeliverNoteOnServicePO(this.getDate(),this.getBarCode(),this.getDeliveryMan());
     }
 }

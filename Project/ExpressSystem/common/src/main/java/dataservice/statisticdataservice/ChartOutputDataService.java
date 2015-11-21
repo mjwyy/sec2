@@ -15,7 +15,7 @@ public interface ChartOutputDataService extends Remote {
 	/**
 	 * Data返回封装了详细数据的ChartPO
 	 *
-	 * @param info
+	 * @param po
 	 * @return
 	 * @throws RemoteException
 	 */

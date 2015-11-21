@@ -28,7 +28,7 @@ public class RMIPublisher {
             System.setSecurityManager(new RMISecurityManager());
         }
 
-        try { //special exception handler for registry creation
+        try {
             //服务器开启RMI服务，第一步就是为其注册端口，
             // 通过方法LocateRegistry.createRegistry(1)实现，
             // 该方法返回一个Registry对象，代表对远程对象的一个注册实例。
@@ -45,7 +45,6 @@ public class RMIPublisher {
         } catch (RemoteException e) {
             // 当端口注册失败时（例如，端口被占用或者不存在的端口号），
             // 该方法抛出RemoteException异常。
-            //do nothing, error means registry already exists
             System.out.println("java RMI registry already exists.");
         }
 

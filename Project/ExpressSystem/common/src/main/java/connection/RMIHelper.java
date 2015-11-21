@@ -38,12 +38,9 @@ public class RMIHelper {
             System.setSecurityManager(new SecurityManager());
         }
         obj = new RMIHelper();
-//        Registry registry = LocateRegistry.getRegistry(serverIP);
-//        RMIObjectProviderService prov = (RMIObjectProviderService) registry.lookup(objectiveName);
-        //客户端通过方法Naming.lookup(1)查找RMI服务，
+        // 客户端通过方法Naming.lookup(1)查找RMI服务，
         // 如果查找成功，将返回一个代表远程服务对象的桩对象，客户端应当进行强制类型转换为接口来使用。
         // lookup的参数是一个URL，格式是：rmi://<服务器IP地址>:<端口号>/<服务名称>。
-        //providerService = (RMIObjectProviderService) Naming.lookup("rmi://127.0.0.1:1099/RMIObjectProvider");
         Registry registry = LocateRegistry.getRegistry(serverIP);
         Remote provider = registry.lookup(objectiveName);
         obj.provider = (RMIObjectProviderService) provider;

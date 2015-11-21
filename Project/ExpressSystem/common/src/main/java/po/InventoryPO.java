@@ -7,6 +7,12 @@ package po;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
+
+import vo.CommodityGoodsVO;
+import vo.InventoryVO;
+
+
 
 public class InventoryPO implements Serializable{
 	/**
@@ -75,6 +81,18 @@ public class InventoryPO implements Serializable{
 
 	public String getNum() {
 		return num;
+	}
+
+	public Object toVO() {
+		
+		ArrayList<CommodityGoodsVO> list = new ArrayList<>();
+		Iterator<CommodityGoodsPO> it = goodsInfo.iterator();
+		while(it.hasNext()) {
+			list.add((CommodityGoodsVO) it.next().toVO());
+		}
+		
+		InventoryVO vo = new InventoryVO(outNum, inNum, money, list);
+		return vo;
 	}
 
 }

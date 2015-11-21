@@ -5,6 +5,7 @@
  */
 package vo;
 
+import po.CommodityGoodsPO;
 import businesslogic.util.FormatCheck;
 import util.ResultMsg;
 
@@ -85,7 +86,7 @@ public class CommodityGoodsVO {
 		
 		ResultMsg[] msgs = new ResultMsg[6];
 		//TO DO
-		msgs[0] = FormatCheck.IsBarcode(barcode);
+		msgs[0] = FormatCheck.isBarcode(barcode);
 		msgs[1] = FormatCheck.isOrganizationName(destination);
 		msgs[2] = FormatCheck.isAreaCode(areacode);
 		msgs[3] = FormatCheck.isStorageDistrictNumber(framenumber);
@@ -100,5 +101,9 @@ public class CommodityGoodsVO {
 		
 		return new ResultMsg(true);
 		
+	}
+
+	public CommodityGoodsPO toPO() {
+		return new CommodityGoodsPO(barcode, areacode, destination, rownumber, framenumber, placenumber);
 	}
 }

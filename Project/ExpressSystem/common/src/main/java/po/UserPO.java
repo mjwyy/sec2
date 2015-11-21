@@ -11,17 +11,10 @@ public class UserPO implements Serializable {
 
 	private static final long serialVersionUID = 3758641678884304726L;
 
-	public static final int MANAGER = 1;
-	public static final int ACCOUNTANT_HIGH = 2;
-	public static final int ACCOUNTANT_LOW = 3;
-	public static final int WAREHOUSE_MANAGER = 4;
-	public static final int CLERK = 5;
-	public static final int DELIVERY_MAN = 6;
-    public static final int SYSTEM_MANAGER = 7;
 	public UserPO(){
 		
 	}
-	public UserPO(String account, String password, int authority) {
+	public UserPO(String account, String password, String authority) {
 		super();
 		this.account = account;
 		this.password = password;
@@ -30,7 +23,7 @@ public class UserPO implements Serializable {
 
     @Override
     public String toString(){
-        return "UserPO: 账户:"+account+" 密码:"+password+" 权限="+Integer.toString(authority);
+        return "UserPO: 账户:"+account+" 密码:"+password+" 权限="+authority;
     }
 
 	/**
@@ -46,7 +39,7 @@ public class UserPO implements Serializable {
 	/**
 	 * 用户请求权限
 	 */
-	int authority = -1;
+	String authority = null;
 
 	public String getAccount() {
 		return account;
@@ -56,7 +49,7 @@ public class UserPO implements Serializable {
 		return password;
 	}
 
-	public int getAuthority() {
+	String getAuthority() {
 		return authority;
 	}
 	

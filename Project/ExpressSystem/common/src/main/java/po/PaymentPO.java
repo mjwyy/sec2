@@ -13,12 +13,12 @@ public class PaymentPO implements Serializable {
 		
 	}
 	public PaymentPO(String date, String nameOfPayer, String accountNumber,
-			BigDecimal amountOfMoney, String type, String comment) {
+			String money, String type, String comment) {
 		super();
 		this.date = date;
 		this.nameOfPayer = nameOfPayer;
 		this.accountNumber = accountNumber;
-		this.amountOfMoney = amountOfMoney;
+		this.amountOfMoney = money;
 		this.type = type;
 		this.comment = comment;
 	}
@@ -41,7 +41,7 @@ public class PaymentPO implements Serializable {
 	/**
 	 * 付款数额
 	 */
-	BigDecimal amountOfMoney = null;
+	String amountOfMoney = null;
 	
 	/**
 	 * 付款种类
@@ -63,7 +63,7 @@ public class PaymentPO implements Serializable {
 	public String getAccountNumber() {
 		return accountNumber;
 	}
-	public BigDecimal getAmountOfMoney() {
+	public String getAmountOfMoney() {
 		return amountOfMoney;
 	}
 	public String getType() {

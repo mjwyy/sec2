@@ -2,6 +2,8 @@ package vo;
 
 import java.util.ArrayList;
 
+import util.ResultMsg;
+
 public class StorageOutVO {
 	/**
 	 * 条形码
@@ -85,5 +87,13 @@ public class StorageOutVO {
 
 	public boolean isTransferOrCar() {
 		return TransferOrCar;
+	}
+
+	public ResultMsg checkFormat() {
+		//TO DO
+		
+		return null;
+		
+		
 	}
 }

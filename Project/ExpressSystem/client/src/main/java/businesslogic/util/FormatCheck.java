@@ -10,12 +10,24 @@ import java.util.regex.Pattern;
 public class FormatCheck {
 
     /**
+     * 检查输入是否是合法的城市名称
+     *
+     * @param str
+     * @return
+     */
+    public static ResultMsg isCity(String str) {
+        String trueExpression = "^[\\u4e00-\\u9fa5]+$";
+        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
+                new ResultMsg(false,"地点名称格式错误,应为合法汉字");
+    }
+
+    /**
      * 1检查输入是否是合法的订单条形码(10位0～9的数字)
      *
      * @param str
      * @return
      */
-    public static ResultMsg IsBarcode(String str) {
+    public static ResultMsg isBarcode(String str) {
         String trueExpression = "\\d{10}$";
         return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
                 new ResultMsg(false,"条形码格式错误,应为10位0～9的数字");
@@ -27,7 +39,7 @@ public class FormatCheck {
      * @param str
      * @return
      */
-    public static ResultMsg IsDate(String str) {
+    public static ResultMsg isDate(String str) {
         String trueExpression = "\\d{4}-\\d{1,2}-\\d{1,2}";
         return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
                 new ResultMsg(false,"日期格式错误,应为“xxxx－xx－xx”,x是数字");
@@ -40,7 +52,7 @@ public class FormatCheck {
      * @param str
      * @return
      */
-    public static ResultMsg IsInventoryTime(String str) {
+    public static ResultMsg isInventoryTime(String str) {
         String trueExpression = "\\d{4}-\\d{1,2}-\\d{1,2}\\s\\d{2}:\\d{2}";
         return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
                 new ResultMsg(false,"日期格式错误,应为“xxxx－xx－xx xx：xx”,x是数字");
@@ -52,7 +64,7 @@ public class FormatCheck {
      * @param str
      * @return
      */
-    public static ResultMsg IsChineseName(String str) {
+    public static ResultMsg isChineseName(String str) {
         String trueExpression = "^[\\u4e00-\\u9fa5]+$";
         return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
                 new ResultMsg(false,"姓名格式错误,应为合法汉字");
@@ -64,7 +76,7 @@ public class FormatCheck {
      * @param str
      * @return
      */
-    public static ResultMsg IsPhoneNumber(String str) {
+    public static ResultMsg isPhoneNumber(String str) {
         String trueExpression = "(\\+\\d+)?1\\d{10}";
         return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
                 new ResultMsg(false,"手机号码格式错误,应为11位数字(最前端可以是+号再加国家区号)");
@@ -77,25 +89,37 @@ public class FormatCheck {
      * @param str
      * @return
      */
-    public static ResultMsg IsFixedPhoneNumber(String str) {
+    public static ResultMsg isFixedPhoneNumber(String str) {
         String trueExpression = "\\d{4}-\\d{8}";
-        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :           
+        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
                 new ResultMsg(false,"固定电话号码格式错误,应为四位区号＋8位座机号");
     }
 
     /**
-     * 8检查输入是否是合法的营业厅编号
+     * 7检查输入是否是合法的营业厅编号
      * 营业厅编号格式为“025城市编码+1营业厅+000鼓楼营业厅”
      *
      * @param str
      * @return
      */
-    public static ResultMsg IsServiceHallNumber(String str) {
+    public static ResultMsg isServiceHallNumber(String str) {
         String trueExpression = "\\d{3}1\\d{3}";
-        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :          
+        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
                 new ResultMsg(false,"营业厅编号格式错误,应为7位数字:3位城市编码+1代表营业厅+3位营业厅编码");
     }
 
+    /**
+     * 7检查输入是否是合法的营业厅汽运编号
+     * 营业厅汽运编号格式为“营业厅编号+20150921日期+00000编码五位数字”。
+     *
+     * @param str
+     * @return
+     */
+    public static ResultMsg isServiceHallLoadNumber(String str) {
+        String trueExpression = "\\d{3}1\\d{16}";
+        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
+                new ResultMsg(false,"营业厅编号格式错误,应为7位数字:3位城市编码+1代表营业厅+3位营业厅编码");
+    }
     /**
      * 9检查输入是否是合法的车辆代号
      * 车辆代号格式为“城市编号（电话号码区号南京025）＋营业厅编号（000三位）＋000三位数字”
@@ -103,9 +127,9 @@ public class FormatCheck {
      * @param str
      * @return
      */
-    public static ResultMsg IsCarNumber(String str) {
+    public static ResultMsg isCarNumber(String str) {
         String trueExpression = "\\d{9,10}";
-        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :       
+        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
                 new ResultMsg(false,"车辆代号格式错误,应为城市编号(电话号码区号)＋三位营业厅编号＋三位数字");
     }
 
@@ -116,9 +140,9 @@ public class FormatCheck {
      * @param str
      * @return
      */
-    public static ResultMsg IsDriverNumber(String str) {
+    public static ResultMsg isDriverNumber(String str) {
         String trueExpression = "\\d{9,10}";
-        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :       
+        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
                 new ResultMsg(false,"司机编号格式错误,应为城市编号(电话号码区号)＋三位营业厅编号＋三位数字");
     }
 
@@ -129,9 +153,9 @@ public class FormatCheck {
      * @param str
      * @return
      */
-    public static ResultMsg IsIDNumber(String str) {
+    public static ResultMsg isIDNumber(String str) {
         String trueExpression = "\\d{17}(\\d|x|X)";
-        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :    
+        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
                 new ResultMsg(false,"身份证号格式错误,身份证号为18位0～9的数字，允许最后一位是‘x’");
     }
 
@@ -142,9 +166,9 @@ public class FormatCheck {
      * @param str
      * @return
      */
-    public static ResultMsg IsCenterNumber(String str) {
-        String trueExpression = "\\d{6}";
-        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :       
+    public static ResultMsg isCenterNumber(String str) {
+        String trueExpression = "\\d{3}0\\d{2}";
+        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
                 new ResultMsg(false,"中转中心编号格式错误,3位城市编码+1代表营业厅+3位中转中心编码");
     }
 
@@ -155,9 +179,9 @@ public class FormatCheck {
      * @param str
      * @return
      */
-    public static ResultMsg IsCenterLoadNumber(String str) {
-        String trueExpression = "\\d{21}";
-        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :       
+    public static ResultMsg isCenterLoadNumber(String str) {
+        String trueExpression = "\\d{3}0\\d{2}\\d{15}";
+        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
                 new ResultMsg(false,"中转中心汽运编号格式错误,应为中转中心编号(6位)＋日期＋7位0～9的数字");
     }
 
@@ -168,9 +192,9 @@ public class FormatCheck {
      * @param str
      * @return
      */
-    public static ResultMsg IsTransitNoteNumber(String str) {
-        String trueExpression = "\\d{21}";
-        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :         
+    public static ResultMsg isTransitNoteNumber(String str) {
+        String trueExpression = "\\d{3}0\\d{15}";
+        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
                 new ResultMsg(false,"中转单编号格式错误,应为中转中心编号(6位)＋日期＋7位0～9的数字");
     }
 
@@ -181,7 +205,7 @@ public class FormatCheck {
      * @param str
      * @return
      */
-    public static ResultMsg IsBaseData(String str) {
+    public static ResultMsg isBaseData(String str) {
         String trueExpression = "\\+?[1-9]+\\d*\\.?\\d*";
         return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
                 new ResultMsg(false,"常量数值格式错误，应为正数");
@@ -194,7 +218,7 @@ public class FormatCheck {
      * @param str
      * @return
      */
-    public static ResultMsg IsMoney(String str) {
+    public static ResultMsg isMoney(String str) {
         String trueExpression = "\\+?[1-9]+\\d*\\.?\\d*";
         return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
                 new ResultMsg(false,"常量数值格式错误，应为正数");
@@ -207,7 +231,9 @@ public class FormatCheck {
      * @param str
      * @return
      */
-    public static ResultMsg IsLogInquiryTime(String str) {
+    public static ResultMsg isLogInquiryTime(String str) {
+        if(str == null)
+            return new ResultMsg(true);
         String trueExpression = "\\d{4}-\\d{1,2}-\\d{1,2}";
         return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
                 new ResultMsg(false,"系统日志查询日期格式错误,应为应为“xxxx－xx－xx”,x是数字");
@@ -309,20 +335,6 @@ public class FormatCheck {
         return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
                 new ResultMsg(false,"性别只可填“男”或“女”");
     }
-    
-    /**
-     * 检查区号是否符合格式：空运、铁路、汽运、其他
-     *
-     * @param str
-     * @return
-     */
-    public static ResultMsg isAreaCode(String str) {
-        String trueExpression = "空运|铁路|汽运|其他";
-        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
-                new ResultMsg(false,"区号必须为“空运”、“铁路”、“汽运”或“其他”");
-    }
-    
-    
     /**
      * 检查驾驶证期限格式是否符合日期格式：xxxx-xx-xx（x为数字）
      *
@@ -432,10 +444,23 @@ public class FormatCheck {
      * @return
      */
     public static ResultMsg isLogKeyWord(String str) {
+        if(str == null)
+            return new ResultMsg(true);
         String trueExpression = "[\\u4e00-\\u9fa5]*";
         return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
                 new ResultMsg(false,"查询关键字格式有误，必须为汉字");
     }
 
+    /**
+     * 检查区号是否符合格式：空运、铁路、汽运、其他
+     *
+     * @param str
+     * @return
+     */
+    public static ResultMsg isAreaCode(String str) {
+        String trueExpression = "空运|铁路|汽运|其他";
+        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
+                new ResultMsg(false,"区号必须为“空运”、“铁路”、“汽运”或“其他”");
+    }
 
 }

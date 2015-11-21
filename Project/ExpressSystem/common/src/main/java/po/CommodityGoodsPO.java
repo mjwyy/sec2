@@ -7,6 +7,8 @@ package po;
 
 import java.io.Serializable;
 
+import vo.CommodityGoodsVO;
+
 public class CommodityGoodsPO implements Serializable{
 	/**
 	 * 
@@ -31,16 +33,16 @@ public class CommodityGoodsPO implements Serializable{
 	/**
 	 * 排号
 	 */
-	private int rownumber;
+	private String rownumber;
 	
 	/**
 	 * 架号
 	 */
-	private int framenumber;
+	private String framenumber;
 	/**
 	 * 位号
 	 */
-	private int placenumber;
+	private String placenumber;
 	
 	/**
 	 * 构造函数
@@ -51,7 +53,7 @@ public class CommodityGoodsPO implements Serializable{
 	 * @param framenumber
 	 * @param placenumber
 	 */
-	public CommodityGoodsPO(String barcode,String areacode,String destination,int rownumber,int framenumber,int placenumber){
+	public CommodityGoodsPO(String barcode,String areacode,String destination,String rownumber,String framenumber,String placenumber){
 		this.barcode = barcode;
 		this.destination = destination;
 		this.areacode = areacode;
@@ -72,16 +74,21 @@ public class CommodityGoodsPO implements Serializable{
 		return destination;
 	}
 
-	public int getRownumber() {
+	public String getRownumber() {
 		return rownumber;
 	}
 
-	public int getFramenumber() {
+	public String getFramenumber() {
 		return framenumber;
 	}
 
-	public int getPlacenumber() {
+	public String getPlacenumber() {
 		return placenumber;
+	}
+
+	public Object toVO() {
+		CommodityGoodsVO vo = new CommodityGoodsVO(barcode, areacode, destination, rownumber, framenumber, placenumber);
+		return vo;
 	}
 
 }

@@ -20,8 +20,8 @@ public class InventoryDataService_Stub implements InventoryDataService {
 
     public InventoryDataService_Stub() {
     	
-    	goodsInfo1 = new CommodityGoodsPO("1234567890","航空区","北京",12,12,56);
-    	goodsInfo2 = new CommodityGoodsPO("1234567891","航空区","北京",12,12,57);
+    	goodsInfo1 = new CommodityGoodsPO("1234567890","航空区","北京","0012","0012","0056");
+    	goodsInfo2 = new CommodityGoodsPO("1234567891","航空区","北京","0012","0012","0057");
     	
     	inventoryPOs = new ArrayList<InventoryPO>();
     ArrayList<CommodityGoodsPO> goods1 = new ArrayList<CommodityGoodsPO>();

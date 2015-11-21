@@ -158,11 +158,11 @@ public class DeliveryNoteVO extends NoteVO {
     public ResultMsg checkFormat(){
         ResultMsg result = new ResultMsg(true);
         ResultMsg results[] = new ResultMsg[13];
-        results[1] = FormatCheck.IsBarcode(this.barCode);
-        results[2] = FormatCheck.IsBarcode(this.receiverTeleNumber);
-        results[3] = FormatCheck.IsBarcode(this.senderTeleNumber);
-        results[4] = FormatCheck.IsChineseName(this.receiverName);
-        results[5] = FormatCheck.IsChineseName(this.receiverName);
+        results[1] = FormatCheck.isBarcode(this.barCode);
+        results[2] = FormatCheck.isBarcode(this.receiverTeleNumber);
+        results[3] = FormatCheck.isBarcode(this.senderTeleNumber);
+        results[4] = FormatCheck.isChineseName(this.receiverName);
+        results[5] = FormatCheck.isChineseName(this.receiverName);
         for(int i = 0; i<results.length; i++){
             if(!results[i].isPass())
                 result.appendMessage(results[i].getMessage()+'\n');

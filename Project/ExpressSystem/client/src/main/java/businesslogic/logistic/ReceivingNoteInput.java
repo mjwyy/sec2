@@ -39,6 +39,6 @@ public class ReceivingNoteInput implements ReceivingNoteInputBLService {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-        return new ResultMsg(true,"中转中心到达单已提交!");
+        return new ResultMsg(true,"收件单已提交!");
     }
 }

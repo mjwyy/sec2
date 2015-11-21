@@ -39,6 +39,6 @@ public class LoadNoteOnService implements LoadNoteOnServiceBLService {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-        return new ResultMsg(true,"中转中心到达单已提交!");
+        return new ResultMsg(true,"营业厅装车单已提交!");
     }
 }

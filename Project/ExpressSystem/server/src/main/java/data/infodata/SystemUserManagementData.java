@@ -4,6 +4,7 @@ import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.infodataservice.SystemUserManagementDataService;
 import po.UserPO;
+import util.enums.Authority;
 
 import java.net.ConnectException;
 import java.rmi.RemoteException;

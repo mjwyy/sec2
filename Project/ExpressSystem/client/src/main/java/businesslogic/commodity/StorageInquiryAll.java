@@ -1,6 +1,6 @@
 package businesslogic.commodity;
 
-import businesslogic.util.FormatCheck;
+import util.FormatCheck;
 import businesslogicservice.commodityblservice.StorageInquiryAllBLService;
 import util.ResultMsg;
 import vo.InventoryVO;

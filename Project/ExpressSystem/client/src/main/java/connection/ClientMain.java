@@ -18,7 +18,7 @@ public class ClientMain {
                 (SystemUserManagementDataService) objectGetter.getObjectByName("SystemUserManagementDataService");
         System.out.println("客户端得到SystemUserManagementDataService");
         try {
-            dataService.addUser(new UserPO("test10","test10",2));
+            dataService.addUser(new UserPO("一只麟","123123",6));
         } catch (Exception e) {
             e.printStackTrace();
         }

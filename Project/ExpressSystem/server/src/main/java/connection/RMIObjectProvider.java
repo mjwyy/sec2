@@ -47,7 +47,6 @@ public class RMIObjectProvider extends UnicastRemoteObject implements RMIObjectP
 //            }catch (MalformedURLException e) {
 //                e.printStackTrace();
 //            }
-//
 //        }
         SystemUserManagementDataService dataService = DatabaseFactory.getSystemUserManagementDataInstance();
         objMap.put("SystemUserManagementDataService", dataService);

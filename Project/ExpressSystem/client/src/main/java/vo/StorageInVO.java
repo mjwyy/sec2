@@ -5,7 +5,14 @@
  */
 package vo;
 
+import java.text.Format;
 import java.util.ArrayList;
+import java.util.Iterator;
+
+import po.CommodityGoodsPO;
+import po.StorageInPO;
+import businesslogic.util.FormatCheck;
+import util.ResultMsg;
 
 public class StorageInVO {
 	
@@ -36,4 +43,32 @@ public class StorageInVO {
 	public ArrayList<CommodityGoodsVO> getGoodsInStorageInfo() {
 		return GoodsInStorageInfo;
 	}
+	
+	public ResultMsg checkFormat(){
+		
+		ResultMsg msg = FormatCheck.isDate(date);
+		if(!msg.isPass()) return msg;
+		
+		Iterator<CommodityGoodsVO> it = GoodsInStorageInfo.iterator();
+		while(it.hasNext()) {
+			msg = it.next().checkFormat();
+			if(!msg.isPass()) return msg;
+		}
+		
+		return new ResultMsg(true);
+	}
+	
+	public Object toPO(){
+		
+		ArrayList<CommodityGoodsPO> list = new ArrayList<>();
+		Iterator<CommodityGoodsVO> it = GoodsInStorageInfo.iterator();
+		
+		while(it.hasNext()) {
+			list.add(it.next().toPO());
+		}
+		
+		StorageInPO po = new StorageInPO(date, list);
+		return po;
+	}
+	
 }

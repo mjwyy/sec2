@@ -1,5 +1,9 @@
 package vo;
 
+import po.PaymentPO;
+import businesslogic.util.FormatCheck;
+import util.ResultMsg;
+
 /**
  * 付款记录
  * 
@@ -14,7 +18,7 @@ public class PaymentVO {
 	private String date;
 	
 	/**
-	 * jine
+	 * 金额
 	 */
 	private String money;
 	
@@ -68,5 +72,26 @@ public class PaymentVO {
 
 	public String getPaymentMethod() {
 		return paymentMethod;
+	}
+	
+	public ResultMsg checkFormat() {
+		
+		ResultMsg[] msg = new ResultMsg[4];
+		
+		msg[0] = FormatCheck.isDate(date);
+		msg[1] = FormatCheck.isMoney(money);
+		msg[2] = FormatCheck.isChineseName(payer);
+		msg[3] = FormatCheck.isBankAccount(accountNum);
+		
+		for(int i=0;i<msg.length;i++) {
+			if(!msg[i].isPass()) return msg[i];
+		}
+		
+		return new ResultMsg(true);
+		
+	}
+	
+	public Object toPO(){
+		return new PaymentPO(date, payer, accountNum, money, paymentMethod, "");
 	}
 }

@@ -1,7 +1,6 @@
 package businesslogic.logistic;
 
 import businesslogicservice.logisticblservice.ArrivalNoteOnServiceBLService;
-import connection.RMIObjectProviderService;
 import connection.RemoteObjectGetter;
 import dataservice.logisticdataservice.ArrivalNoteOnServiceDataService;
 import po.ArrivalNoteOnServicePO;

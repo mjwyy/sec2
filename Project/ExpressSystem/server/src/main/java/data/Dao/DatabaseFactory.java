@@ -1,6 +1,7 @@
 package data.dao;
 
 import data.infodata.UserDAOProxy;
+import dataservice.infodataservice.SystemUserManagementDataService;
 
 import java.rmi.RemoteException;
 
@@ -10,6 +11,7 @@ import java.rmi.RemoteException;
 public class DatabaseFactory {
 
     public static UserDAOProxy getSystemUserManagementDataInstance() throws RemoteException {
+        //TODO 是否单例模式
         return new UserDAOProxy();
     }
 }

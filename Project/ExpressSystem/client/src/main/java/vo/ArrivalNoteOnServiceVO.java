@@ -84,9 +84,9 @@ public class ArrivalNoteOnServiceVO extends NoteVO{
                 break;
             }
         }
-        for(int i = 0; i<results.length; i++){
-            if(!results[i].isPass()){
-                return results[i];
+        for (ResultMsg result1 : results) {
+            if (!result1.isPass()) {
+                return result1;
             }
         }
         return result;

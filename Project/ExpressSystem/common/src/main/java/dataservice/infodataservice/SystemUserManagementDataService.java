@@ -1,5 +1,6 @@
 package dataservice.infodataservice;
 
+import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -11,10 +12,17 @@ import po.UserPO;
 
 /**
 * @author River
+ * 接口必须继承自java.rmi.Remote
+ *
 */
-public interface SystemUserManagementDataService extends Remote {
-	/**
+public interface SystemUserManagementDataService extends Remote, Serializable {
+
+    /**
 	 * Data向数据库中添加对应UserPO记录
+     *
+     * 每个RMI接口方法都必须抛出java.rmi.RemoteException异常
+     *
+     * 每个RMI接口方法的参数类型、返回类型、异常类型都必须实现序列化接口
      *
 	 * @param user
 	 * @return true for successful add operation

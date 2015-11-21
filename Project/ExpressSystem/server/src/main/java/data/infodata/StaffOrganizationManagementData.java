@@ -16,7 +16,10 @@ public class StaffOrganizationManagementData implements
 		 
 	}
 
-	@Override
+    //TODO 去除数据接口的RemoteException
+    //对接口的实现方法一般不抛出RemoteException。
+    //根据接口最小化原则，实现类仅是业务逻辑相关，而无需关注具体的RMI错误。
+    @Override
 	public boolean addStaff(StaffPO staff) throws RemoteException,
 			InterruptWithExistedElementException {
 		  

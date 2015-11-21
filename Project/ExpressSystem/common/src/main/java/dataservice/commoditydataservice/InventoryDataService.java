@@ -5,12 +5,13 @@
  */
 package dataservice.commoditydataservice;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.InventoryPO;
 
-public interface InventoryDataService {
+public interface InventoryDataService extends Remote {
 
 	/**
 	 * 按起止时间进行查找返回相应的PO结果

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
 import po.UserPO;
+import util.LogInMsg;
 
 /**
 * @author River
@@ -30,7 +31,7 @@ public interface SystemUserManagementDataService extends Remote, Serializable {
 	 * @throws InterruptWithExistedElementException
 	 */
 	public boolean addUser(UserPO user)
-            throws Exception;
+            throws RemoteException, ElementNotFoundException,InterruptWithExistedElementException;
 
 	/**
 	 * Data从数据库中删除对应UserPO条目
@@ -41,7 +42,7 @@ public interface SystemUserManagementDataService extends Remote, Serializable {
 	 * @throws ElementNotFoundException
 	 */
 	public boolean removeUser(UserPO user)
-            throws Exception;
+            throws RemoteException, ElementNotFoundException,InterruptWithExistedElementException;
 
 	/**
 	 * Data将originalUserPO替换为modifiedUserPO
@@ -53,7 +54,7 @@ public interface SystemUserManagementDataService extends Remote, Serializable {
 	 * @throws ElementNotFoundException
 	 */
 	public boolean modifyUser(UserPO originalUser,UserPO modified)
-			throws RemoteException, ElementNotFoundException,InterruptWithExistedElementException, Exception;
+			throws RemoteException, ElementNotFoundException,InterruptWithExistedElementException;
 	/**
 	 * Data查询对应的用户并返回其UserPO
      *
@@ -63,7 +64,7 @@ public interface SystemUserManagementDataService extends Remote, Serializable {
 	 * @throws ElementNotFoundException
 	 */
 	public ArrayList<UserPO> inquireUser(UserPO info)
-			throws RemoteException, ElementNotFoundException, Exception;
+            throws RemoteException, ElementNotFoundException,InterruptWithExistedElementException;
 
 	/**
 	 * Data返回所有的UserPO
@@ -72,7 +73,9 @@ public interface SystemUserManagementDataService extends Remote, Serializable {
 	 * @throws RemoteException
 	 */
 	public ArrayList<UserPO> getAllUsers()
-            throws Exception;
+            throws RemoteException, ElementNotFoundException,InterruptWithExistedElementException;
 
+    public LogInMsg logIn(String user,String password)
+            throws RemoteException, ElementNotFoundException,InterruptWithExistedElementException;
 
 }

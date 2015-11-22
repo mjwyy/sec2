@@ -49,6 +49,7 @@ public class BusinessDataModification implements BusinessDataModificationBLServi
             e.printStackTrace();
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
+            return new ResultMsg(false,e.getMessage());
         }
         return new ResultMsg(true,"价格常量修改成功!");
     }
@@ -62,6 +63,7 @@ public class BusinessDataModification implements BusinessDataModificationBLServi
             e.printStackTrace();
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
+            return new ResultMsg(false,e.getMessage());
         }
         return new ResultMsg(true,"城市距离修改成功!");
     }

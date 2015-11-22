@@ -94,7 +94,7 @@ public class ArrivalNoteOnServiceVO extends NoteVO{
 
     @Override
     public ArrivalNoteOnServicePO toPO() {
-        return new ArrivalNoteOnServicePO(this.getDate(),this.getTransferNumber(),
+        return new ArrivalNoteOnServicePO(this.getDate(),isTransit,this.getTransferNumber(),
                 this.getFrom(),this.getBarcodeAndStates());
     }
 }

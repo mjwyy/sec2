@@ -93,7 +93,7 @@ public class LoadNoteOnTransitVO extends NoteVO {
 
     @Override
     public LoadNoteOnTransitPO toPO() {
-        return new LoadNoteOnTransitPO(this.date,
+        return new LoadNoteOnTransitPO(this.date,this.transpotationNumber,
         this.transpotationNumber,
         this.Destination,
         this.carNumber,

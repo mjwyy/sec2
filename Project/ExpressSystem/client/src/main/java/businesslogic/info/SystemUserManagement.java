@@ -60,8 +60,14 @@ public class SystemUserManagement implements SystemUserManagementBLService {
 
     @Override
     public LogInMsg logIn(String userNum, String initialPassword) {
-
-
-        return null;
+        UserVO vo = new UserVO(userNum,initialPassword,null);
+        ArrayList<UserVO> found = this.find(vo);
+        if(found.size()==0)
+            return new LogInMsg(false,null);
+        UserVO foundVO = found.get(0);
+        if(foundVO.getInitialPassword().equals(initialPassword))
+            return new LogInMsg(true,foundVO.getAuthority());
+        else
+            return new LogInMsg(false,null);
     }
 }

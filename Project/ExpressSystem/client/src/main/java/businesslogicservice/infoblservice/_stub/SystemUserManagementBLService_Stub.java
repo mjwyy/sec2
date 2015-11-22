@@ -8,6 +8,7 @@ package businesslogicservice.infoblservice._stub;
 import java.util.ArrayList;
 
 import businesslogicservice.infoblservice.SystemUserManagementBLService;
+import util.LogInMsg;
 import util.ResultMsg;
 import vo.UserVO;
 
@@ -38,12 +39,9 @@ public class SystemUserManagementBLService_Stub implements SystemUserManagementB
 	}
 
     @Override
-    public ResultMsg logIn(String userNum, String initialPassword) {
+    public LogInMsg logIn(String userNum, String initialPassword) {
         return null;
     }
 
-    ;
-		
-	
- 
+
 }

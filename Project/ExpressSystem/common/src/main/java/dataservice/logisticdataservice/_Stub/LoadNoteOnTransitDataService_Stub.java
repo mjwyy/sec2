@@ -26,9 +26,9 @@ public class LoadNoteOnTransitDataService_Stub implements LoadNoteOnTransitDataS
         codes2.add("0000000020");
         codes2.add("0000000030");
         po1 = new LoadNoteOnTransitPO("2015-10-23","025100120151023000001","北京","苏A 00001",
-                "朱梦晴","武昌昊",codes);
+                "朱梦晴","武昌昊","",codes);
         po2 = new LoadNoteOnTransitPO("2015-10-23","025100120151023000001","北京","苏A 00001",
-                "李沪东","吴大爷",codes2);
+                "李沪东","吴大爷","",codes2);
         pos = new ArrayList<LoadNoteOnTransitPO>();
         pos.add(po1);
         pos.add(po2);

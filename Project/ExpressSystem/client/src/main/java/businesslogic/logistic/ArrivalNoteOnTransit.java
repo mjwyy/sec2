@@ -38,6 +38,7 @@ public class ArrivalNoteOnTransit implements ArrivalNoteOnTransitBLService {
             this.dataService.insert(this.po);
         } catch (RemoteException e) {
             e.printStackTrace();
+            return new ResultMsg(false,e.getMessage());
         }
         return new ResultMsg(true,"中转中心到达单已提交!");
     }

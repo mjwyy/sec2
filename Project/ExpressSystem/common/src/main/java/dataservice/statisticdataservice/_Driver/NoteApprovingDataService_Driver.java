@@ -24,18 +24,7 @@ public class NoteApprovingDataService_Driver {
 		}else{
 			System.out.println("Failed to get list");
 		}
-		
-		if(data.passDoc(new NotePO())){
-			System.out.println("Success");
-		}else{
-			System.out.println("Failed");
-		}
-		
-		if(data.failDoc(new NotePO(), "不行")){
-			System.out.println("Success");
-		}else{
-			System.out.println("Failed");
-		}
+
 	}
 	
 }

@@ -6,30 +6,31 @@ package po.chart;
 import po.ChartPO;
 import util.enums.ChartType;
 
+import java.util.ArrayList;
+
 public class BusinessStateChartPO extends ChartPO {
 
 	private static final long serialVersionUID = -1229391901851695868L;
-	private double profix;
-	private double growthRate;
-	
-	public BusinessStateChartPO(String starttime, String endtime, double profix,
-			double growthRate) {
+    private ArrayList<Double> profix;
+    private ArrayList<Double> growthRate;
+
+    public BusinessStateChartPO(String starttime, String endtime, ArrayList<Double> profix,
+                                ArrayList<Double> growthRate) {
         super(ChartType.BUSINESS_STAT_CHART,starttime,endtime);
-		this.profix = profix;
-		this.growthRate = growthRate;
-		
-	}
+        this.profix = profix;
+        this.growthRate = growthRate;
+    }
 
     public BusinessStateChartPO(String starttime, String endtime){
         super(ChartType.BUSINESS_STAT_CHART,starttime,endtime);
     }
 
-	public double getProfix() {
-		return profix;
-	}
+    public ArrayList<Double> getProfix() {
+        return profix;
+    }
 
-	public double getGrowthRate() {
-		return growthRate;
-	}
+    public ArrayList<Double> getGrowthRate() {
+        return growthRate;
+    }
 
 }

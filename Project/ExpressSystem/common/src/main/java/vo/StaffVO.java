@@ -9,6 +9,11 @@ import util.ResultMsg;
 public class StaffVO {
 	
 	/**
+	 * 姓名   性别       所属机构     职位     IDCard   工作时长（按月int）     手机号        工资（总经理制定）      
+	 */
+	
+
+	/**
 	 * 姓名
 	 */
 	private String name;
@@ -17,6 +22,11 @@ public class StaffVO {
 	 * 性别
 	 */
 	private String sex;
+	
+	/**
+	 * 所属机构
+	 */
+	private String organization;
 	
 	/**
 	 * 职位
@@ -52,10 +62,11 @@ public class StaffVO {
 	 * @param phoneNum
 	 * @param wage
 	 */
-	public StaffVO(String name,String sex,String postion,String IDNum,int workingtime,String phoneNum,String wage){
+	public StaffVO(String name,String sex,String organization,String postion,String IDNum,int workingtime,String phoneNum,String wage){
 		this.name = name;
 		this.sex = sex;
 		this.IDNum = IDNum;
+		this.organization = organization;
 		this.phoneNum = phoneNum;
 		this.postion = postion;
 		this.wage = wage;

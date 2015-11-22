@@ -60,9 +60,9 @@ public class DeliveryNoteInput_Test {
                 "Tom Hanks","江苏省徐州市沛县第三中学语文组","19883490000","爆炸物",10,
                 10,2, DeliverCategory.EXPRESS,5,"0000000001");
         service.insert(po1);
-        po1.setBarCode("1111111111");
-        po1.setCategory(DeliverCategory.ECNOMIC);
-        po1.setGoodsNumber(100);
+        po1 = new MockDeliveryNote("王二狗2","江苏省南京市栖霞区南京大学仙林校区","150052120000",
+                "Tom Hanks","江苏省徐州市沛县第三中学语文组","19883490000","爆炸物",10,
+                10,2, DeliverCategory.EXPRESS,5,"0000000999");
         //assertEquals(true,service.update(po1));
     }
 

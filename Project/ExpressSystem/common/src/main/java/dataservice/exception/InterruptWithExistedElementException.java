@@ -1,6 +1,8 @@
 package dataservice.exception;
 
-public class InterruptWithExistedElementException extends Exception {
+import java.io.Serializable;
+
+public class InterruptWithExistedElementException extends Exception implements Serializable {
 
 	/**
 	 * 

@@ -41,8 +41,8 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 	private JTextField textField_5;
 	private JTextField textField_6;
 	private ArrivalNoteOnTransitBLService service;
-	private BarcodeAndState brcodeAndState;
-	private ResultMsg res;
+	//private BarcodeAndState brcodeAndState;
+	//private ResultMsg res;
 	private JTextField box;
 	
 
@@ -131,18 +131,18 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 		add(btnNewButton);	
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ArrivalNoteOnTransitVO vo = new ArrivalNoteOnTransitVO(null,textField_1.getText(),textField.getText(),null,null);
+				//ArrivalNoteOnTransitVO vo = new ArrivalNoteOnTransitVO(null,textField_1.getText(),textField.getText(),null,null);
 				//格式检查
-			    res = service.inputCenterArrivalDoc(vo);
+			   // res = service.inputCenterArrivalDoc(vo);
 				//正确则信息填入那边
-				if(res.isPass()){
-					textField_5.setText(textField_1.getText());
-					textField_6.setText(textField.getText());
-				}
-				else{
+				///if(res.isPass()){
+					//textField_5.setText(textField_1.getText());
+					///textField_6.setText(textField.getText());
+				//}
+				/*else{
 					checkstyleDialog checkstyle = new checkstyleDialog(res.getMessage());
 					checkstyle.setVisible(true);
-			}
+			}*/
 			}
 		});
 												

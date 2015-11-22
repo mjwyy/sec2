@@ -35,7 +35,14 @@ public class SystemUserManagementBLService_Stub implements SystemUserManagementB
 	public ArrayList<UserVO> find(UserVO vo){
 		System.out.println("found user");
 		return new ArrayList<UserVO>();
-	};
+	}
+
+    @Override
+    public ResultMsg logIn(String userNum, String initialPassword) {
+        return null;
+    }
+
+    ;
 		
 	
  

@@ -13,8 +13,6 @@ import util.BarcodeAndState;
 
 public class ArrivalNoteOnServicePO extends NotePO implements Serializable{
 
-
-
 	/**
 	 * 
 	 */
@@ -41,8 +39,6 @@ public class ArrivalNoteOnServicePO extends NotePO implements Serializable{
 	 */
 	private ArrayList<BarcodeAndState> BarcodeAndStates;
 
-
-
 	public ArrivalNoteOnServicePO(String date, String transferNumber,
 			String from, ArrayList<BarcodeAndState> barcodeAndStates) {
 		super();
@@ -68,9 +64,5 @@ public class ArrivalNoteOnServicePO extends NotePO implements Serializable{
 		return from;
 	}
 
-	
 
-
-
-	
 }

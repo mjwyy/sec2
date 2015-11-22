@@ -7,7 +7,8 @@ import po.CreditNotePO;
 public class MockCreditNoteInput extends CreditNotePO{
 	String nameOfDeliveryMan;
 	public MockCreditNoteInput(String nameOfDeliveryMan) {
-		this.nameOfDeliveryMan=nameOfDeliveryMan;
+		super();
+        this.nameOfDeliveryMan=nameOfDeliveryMan;
 	}
 
 }

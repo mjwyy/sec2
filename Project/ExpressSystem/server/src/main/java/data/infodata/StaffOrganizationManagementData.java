@@ -13,34 +13,37 @@ public class StaffOrganizationManagementData implements
 		StaffOrganizationManagementDataService {
 
 	public StaffOrganizationManagementData() {
-		// TODO Auto-generated constructor stub
+		 
 	}
 
-	@Override
+    //TODO 去除数据接口的RemoteException
+    //对接口的实现方法一般不抛出RemoteException。
+    //根据接口最小化原则，实现类仅是业务逻辑相关，而无需关注具体的RMI错误。
+    @Override
 	public boolean addStaff(StaffPO staff) throws RemoteException,
 			InterruptWithExistedElementException {
-		// TODO Auto-generated method stub
+		  
 		return false;
 	}
 
 	@Override
 	public boolean addOrganization(OrganizationPO org) throws RemoteException,
 			InterruptWithExistedElementException {
-		// TODO Auto-generated method stub
+		  
 		return false;
 	}
 
 	@Override
 	public boolean removeStaff(StaffPO staff) throws RemoteException,
 			ElementNotFoundException {
-		// TODO Auto-generated method stub
+		  
 		return false;
 	}
 
 	@Override
 	public boolean removeOrganization(OrganizationPO org)
 			throws RemoteException, ElementNotFoundException {
-		// TODO Auto-generated method stub
+		  
 		return false;
 	}
 
@@ -48,7 +51,7 @@ public class StaffOrganizationManagementData implements
 	public boolean modifyStaff(StaffPO original, StaffPO modified)
 			throws RemoteException, ElementNotFoundException,
 			InterruptWithExistedElementException {
-		// TODO Auto-generated method stub
+		  
 		return false;
 	}
 
@@ -56,34 +59,34 @@ public class StaffOrganizationManagementData implements
 	public boolean modifyOrganization(OrganizationPO original,
 			OrganizationPO modified) throws RemoteException,
 			ElementNotFoundException, InterruptWithExistedElementException {
-		// TODO Auto-generated method stub
+		  
 		return false;
 	}
 
 	@Override
 	public ArrayList<StaffPO> findStaff(StaffPO info) throws RemoteException,
 			ElementNotFoundException {
-		// TODO Auto-generated method stub
+		  
 		return null;
 	}
 
 	@Override
 	public ArrayList<OrganizationPO> findOrganization(OrganizationPO info)
 			throws RemoteException, ElementNotFoundException {
-		// TODO Auto-generated method stub
+		  
 		return null;
 	}
 
 	@Override
 	public ArrayList<StaffPO> getAllStaff() throws RemoteException {
-		// TODO Auto-generated method stub
+		  
 		return null;
 	}
 
 	@Override
 	public ArrayList<OrganizationPO> getAllOrganizations()
 			throws RemoteException {
-		// TODO Auto-generated method stub
+		  
 		return null;
 	}
 

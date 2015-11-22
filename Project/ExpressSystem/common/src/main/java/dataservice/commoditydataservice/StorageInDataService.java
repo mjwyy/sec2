@@ -8,12 +8,13 @@
 
 package dataservice.commoditydataservice;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.StorageInPO;
 
-public interface StorageInDataService {
+public interface StorageInDataService extends Remote {
 	/**
 	 * 在数据库中增加一个po记录
 	 */

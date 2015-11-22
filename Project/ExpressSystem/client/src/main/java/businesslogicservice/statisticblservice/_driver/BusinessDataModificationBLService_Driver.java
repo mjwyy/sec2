@@ -19,7 +19,5 @@ public class BusinessDataModificationBLService_Driver {
 		}else{
 			System.out.println("Failed");
 		}
-		
-		service.submitChange();
 	}
 }

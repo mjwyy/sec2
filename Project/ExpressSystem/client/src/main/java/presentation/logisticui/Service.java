@@ -1,3 +1,9 @@
+/**
+ * 营业厅业务员主界面
+ * 
+ * @author wqy
+ *
+ */
 package presentation.logisticui;
 
 import java.awt.BorderLayout;
@@ -48,12 +54,12 @@ public class Service extends JFrame {
 	/**
 	 * 窗口宽度
 	 */
-	private static final int WIDTH = 1000;
+	private static final int WIDTH = 1280;
 	
 	/**
 	 * 窗口高度
 	 */
-	private static final int HEIGHT = 618;
+	private static final int HEIGHT = 720;
 	private JPanel contentPane;
 
 	/**
@@ -144,7 +150,7 @@ public void setCaiDanLan(){
 	public Service() {
 	
 		this.setResizable(false);//不可调整大小
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Administrator\\Desktop\\u=161254158,2603628643&fm=21&gp=0.jpg"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("image/0001.jpg"));//frameIcon
 		setTitle("快递物流系统");
 		this.setSize(WIDTH, HEIGHT);
 		((JComponent) this.getContentPane()).setOpaque(true);//不透明
@@ -173,12 +179,12 @@ public void setCaiDanLan(){
 		lblNewLabel.requestFocus();
 		lblNewLabel.setBounds(0, 0, WIDTH, 79);
 		panel.add(lblNewLabel);
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Administrator\\Desktop\\QQ图片20151119192305.jpg"));
+		lblNewLabel.setIcon(new ImageIcon("image/0010.jpg"));
 		
 		final JPanel middle = new JPanel(){
 			public void paintComponent(Graphics g) {
 				 super.paintComponent(g);
-				 ImageIcon img = new ImageIcon("C:\\Users\\Administrator\\Desktop\\0011.jpg");
+				 ImageIcon img = new ImageIcon("image/0011.jpg");//背景
 				 g.drawImage(img.getImage(), 0, 0, null);
 				}
 				}; 

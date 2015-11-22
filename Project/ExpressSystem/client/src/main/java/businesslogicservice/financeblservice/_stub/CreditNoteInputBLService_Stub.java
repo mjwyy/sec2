@@ -13,7 +13,8 @@ public class CreditNoteInputBLService_Stub implements
 
 	public ResultMsg addReceipeDoc(CreditNoteVO vo) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		return new ResultMsg(true,"lala");
 	}
 
 	public ResultMsg submitReceipeDoc(CreditNoteVO vo) {

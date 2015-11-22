@@ -36,6 +36,7 @@ public class NoteApproving implements NoteApprovingBLService {
             }
         } catch (RemoteException e) {
             e.printStackTrace();
+            return null;
         }
         return noteVOArrayList;
     }
@@ -52,6 +53,7 @@ public class NoteApproving implements NoteApprovingBLService {
             }
         } catch (RemoteException e) {
             e.printStackTrace();
+            return null;
         }
         return noteVOArrayList;
     }

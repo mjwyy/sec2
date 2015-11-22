@@ -6,6 +6,8 @@ import po.ChartPO;
 import util.ResultMsg;
 import util.enums.ChartType;
 
+import java.util.ArrayList;
+
 /**
  * 表格VO
  * 
@@ -24,6 +26,8 @@ public class ChartVO {
 	 */
 	String time1;
 	String time2;
+
+    ArrayList<String> everyday;
 
     public ChartVO(ChartType type, String time1, String time2) {
         this.type = type;
@@ -55,4 +59,11 @@ public class ChartVO {
         return result;
     }
 
+    public ArrayList<String> getEveryday() {
+        return everyday;
+    }
+
+    public void setEveryday(ArrayList<String> everyday) {
+        this.everyday = everyday;
+    }
 }

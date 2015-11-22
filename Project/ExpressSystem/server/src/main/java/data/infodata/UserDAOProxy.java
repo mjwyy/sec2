@@ -5,6 +5,7 @@ import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.infodataservice.SystemUserManagementDataService;
 import po.UserPO;
+import util.LogInMsg;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -42,7 +43,7 @@ public class UserDAOProxy extends UnicastRemoteObject implements SystemUserManag
     }
 
     @Override
-    public boolean modifyUser(UserPO originalUser, UserPO modified) throws ElementNotFoundException, SQLException, InterruptWithExistedElementException {
+    public boolean modifyUser(UserPO originalUser, UserPO modified) throws ElementNotFoundException, SQLException {
         boolean result = dataImpl.modifyUser(originalUser,modified);
         connection.close();
         return result;
@@ -61,4 +62,5 @@ public class UserDAOProxy extends UnicastRemoteObject implements SystemUserManag
         connection.close();
         return result;
     }
+
 }

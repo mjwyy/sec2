@@ -17,7 +17,6 @@ public class SettlementManagementData implements SettlementManagementDataService
 
 	@Override
 	public ArrayList<IncomeNotePO> findAll() throws RemoteException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

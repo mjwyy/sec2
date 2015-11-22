@@ -10,6 +10,7 @@ import java.util.ArrayList;
  * Created by kylin on 15/11/10.
  */
 public class TransitNoteInputData implements TransitNoteInputDataService {
+
     @Override
     public boolean insert(TransitNotePO po) throws RemoteException {
         return false;
@@ -27,7 +28,10 @@ public class TransitNoteInputData implements TransitNoteInputDataService {
 
     @Override
     public ArrayList<TransitNotePO> find(TransitNotePO po) throws RemoteException {
-        return null;
+        TransitNotePO pox = new TransitNotePO(null,null,null,null,null,null,null,null);
+        ArrayList<TransitNotePO> list =  new ArrayList<TransitNotePO>();
+        list.add(pox);
+        return list;
     }
 
     @Override

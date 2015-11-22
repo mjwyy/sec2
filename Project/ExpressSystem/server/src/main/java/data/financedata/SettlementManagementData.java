@@ -1,15 +1,16 @@
 package data.financedata;
 
+import dataservice.financedataservice.SettlementManagementDataService;
+import po.IncomeNotePO;
+
 import java.rmi.RemoteException;
 
-import po.IncomeNotePO;
-import dataservice.financedataservice.SettlementManagementDataService;
-
-public class SettlementManagementData implements SettlementManagementDataService{
-
-	@Override
-	public boolean addIncomeNote(IncomeNotePO note) throws RemoteException {
-		return false;
-	}
-
+/**
+ * Created by kylin on 15/11/16.
+ */
+public class SettlementManagementData implements SettlementManagementDataService {
+    @Override
+    public boolean addIncomeNote(IncomeNotePO note) throws RemoteException {
+        return false;
+    }
 }

@@ -26,7 +26,6 @@ public class RMIObjectProvider extends UnicastRemoteObject implements Serializab
     }
 
 
-    @Override
     public Object getObjectByName(String name) {
         return objMap.get(name);
     }

@@ -10,6 +10,7 @@ import java.util.ArrayList;
  * Created by kylin on 15/11/10.
  */
 public class LoadNoteOnTransitData implements LoadNoteOnTransitDataService {
+
     @Override
     public boolean insert(LoadNoteOnTransitPO po) throws RemoteException {
         return false;
@@ -27,11 +28,17 @@ public class LoadNoteOnTransitData implements LoadNoteOnTransitDataService {
 
     @Override
     public ArrayList<LoadNoteOnTransitPO> find(LoadNoteOnTransitPO po) throws RemoteException {
-        return null;
+        LoadNoteOnTransitPO pox = new LoadNoteOnTransitPO(null,null,null,null,null,null,null);
+        ArrayList<LoadNoteOnTransitPO> list =  new ArrayList<LoadNoteOnTransitPO>();
+        list.add(pox);
+        return list;
     }
 
     @Override
     public ArrayList<LoadNoteOnTransitPO> findAll() throws RemoteException {
-        return null;
+        LoadNoteOnTransitPO pox = new LoadNoteOnTransitPO(null,null,null,null,null,null,null);
+        ArrayList<LoadNoteOnTransitPO> list =  new ArrayList<LoadNoteOnTransitPO>();
+        list.add(pox);
+        return list;
     }
 }

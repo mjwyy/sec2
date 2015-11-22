@@ -7,17 +7,22 @@ import java.rmi.RemoteException;
 
 import dataservice.statisticdataservice.ChartOutputDataService;
 import dataservice.statisticdataservice._Stub.ChartOutputDataService_Stub;
-import po.ChartPO;
+import po.chart.BusinessStateChartPO;
+import po.chart.CostAndProfitChartPO;
 
 public class ChartOutputDataService_Driver {
-	private ChartPO chartPO;
+	private BusinessStateChartPO po1;
+	private CostAndProfitChartPO po2;
 
 	public ChartOutputDataService_Driver() {
-		chartPO = new ChartPO();
+		 po1 = new BusinessStateChartPO("2015-10-10","2015-11-11",2000,0.5);
+		
+		 //po2 = new CostAndProfitChartPO("2015-10-10","2015-11-11",2000.0,3000.0);
 	}
 	
 	public void drive(ChartOutputDataService coDataService) throws RemoteException {
-		coDataService.getChart(chartPO);	
+		coDataService.getBusinessStateChart(po1);
+		//coDataService.getCostAndProfitChart(po2);
 	}
 	
 	public static void main(String[] args) throws RemoteException {

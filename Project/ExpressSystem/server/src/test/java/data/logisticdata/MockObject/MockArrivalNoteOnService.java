@@ -9,8 +9,18 @@ import java.util.ArrayList;
  * Created by kylin on 15/11/12.
  */
 public class MockArrivalNoteOnService extends ArrivalNoteOnServicePO {
-    public MockArrivalNoteOnService(String date, String transferNumber,
+    /**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public MockArrivalNoteOnService(String date, String transferNumber,
                                     String from, ArrayList<BarcodeAndState> barcodeAndStates) {
         super(date, transferNumber, from, barcodeAndStates);
     }
+
+    public MockArrivalNoteOnService(String date, String transferNumber, String from){
+        super(date,transferNumber,from,null);
+    }
+
 }

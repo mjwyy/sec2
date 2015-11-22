@@ -4,6 +4,8 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import po.ChartPO;
+import po.chart.BusinessStateChartPO;
+import po.chart.CostAndProfitChartPO;
 
 /**
  * @author River
@@ -17,7 +19,10 @@ public interface ChartOutputDataService extends Remote {
 	 * @return
 	 * @throws RemoteException
 	 */
-	public ChartPO getChart(ChartPO info)
+	public BusinessStateChartPO getBusinessStateChart(BusinessStateChartPO po)
+			throws RemoteException;
+	
+	public CostAndProfitChartPO getCostAndProfitChart(CostAndProfitChartPO po) 
 			throws RemoteException;
 	
 }

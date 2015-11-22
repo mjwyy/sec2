@@ -11,48 +11,66 @@ import java.util.ArrayList;
  * Created by kylin on 15/11/10.
  */
 public class ArrivalNoteOnServiceData implements ArrivalNoteOnServiceDataService {
-    @Override
-    public boolean insert(ArrivalNoteOnServicePO po) throws RemoteException {
-        return false;
-    }
 
-    @Override
-    public boolean delete(ArrivalNoteOnServicePO po) throws RemoteException {
-        return false;
-    }
+	@Override
+	public boolean insertArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException {
+		return false;
+	}
 
-    @Override
-    public boolean update(ArrivalNoteOnServicePO po) throws RemoteException {
-        return false;
-    }
+	@Override
+	public boolean deleteArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException {
+		return false;
+	}
 
-    @Override
-    public ArrayList<ArrivalNoteOnServicePO> find(ArrivalNoteOnServicePO po) throws RemoteException {
-        return null;
-    }
+	@Override
+	public boolean updateArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException {
+		return false;
+	}
 
-    @Override
-    public ArrayList<ArrivalNoteOnServicePO> findAll() throws RemoteException {
-        return null;
-    }
+	@Override
+	public ArrayList<ArrivalNoteOnServicePO> findArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException {
+        ArrivalNoteOnServicePO pox = new ArrivalNoteOnServicePO(null,null,null,null);
+        ArrayList<ArrivalNoteOnServicePO> list =  new ArrayList<ArrivalNoteOnServicePO>();
+        list.add(pox);
+        return list;
+	}
 
-    @Override
-    public boolean insert(DeliverNoteOnServicePO po) throws RemoteException {
-        return false;
-    }
+	@Override
+	public ArrayList<ArrivalNoteOnServicePO> findAllArrivalNote() throws RemoteException {
+        ArrivalNoteOnServicePO pox = new ArrivalNoteOnServicePO(null,null,null,null);
+        ArrayList<ArrivalNoteOnServicePO> list =  new ArrayList<ArrivalNoteOnServicePO>();
+        list.add(pox);
+        return list;
+	}
 
-    @Override
-    public boolean delete(DeliverNoteOnServicePO po) throws RemoteException {
-        return false;
-    }
+	@Override
+	public boolean insertDeliverNote(DeliverNoteOnServicePO po) throws RemoteException {
+		return false;
+	}
 
-    @Override
-    public boolean update(DeliverNoteOnServicePO po) throws RemoteException {
-        return false;
-    }
+	@Override
+	public boolean deleteDeliverNote(DeliverNoteOnServicePO po) throws RemoteException {
+		return false;
+	}
 
-    @Override
-    public ArrayList<DeliverNoteOnServicePO> find(DeliverNoteOnServicePO po) throws RemoteException {
-        return null;
-    }
+	@Override
+	public boolean updateDeliverNote(DeliverNoteOnServicePO po) throws RemoteException {
+		return false;
+	}
+
+	@Override
+	public ArrayList<DeliverNoteOnServicePO> findDeliverNote(DeliverNoteOnServicePO po) throws RemoteException {
+        DeliverNoteOnServicePO pox = new DeliverNoteOnServicePO(null,null,null);
+        ArrayList<DeliverNoteOnServicePO> list =  new ArrayList<DeliverNoteOnServicePO>();
+        list.add(pox);
+        return list;
+	}
+
+	@Override
+	public ArrayList<DeliverNoteOnServicePO> findAllDeliverNote() throws RemoteException {
+        DeliverNoteOnServicePO pox = new DeliverNoteOnServicePO(null,null,null);
+        ArrayList<DeliverNoteOnServicePO> list =  new ArrayList<DeliverNoteOnServicePO>();
+        list.add(pox);
+        return list;
+	}
 }

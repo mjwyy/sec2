@@ -1,17 +1,17 @@
 package data.financedata;
 
-import java.rmi.RemoteException;
-
-import po.PaymentPO;
 import dataservice.exception.FailToPassApprovingException;
 import dataservice.financedataservice.PaymentInputDataService;
+import po.PaymentPO;
 
-public class PaymentInputData implements PaymentInputDataService{
+import java.rmi.RemoteException;
 
-	@Override
-	public boolean addPayment(PaymentPO payment) throws RemoteException,
-			FailToPassApprovingException {
-		return false;
-	}
-
+/**
+ * Created by kylin on 15/11/16.
+ */
+public class PaymentInputData implements PaymentInputDataService {
+    @Override
+    public boolean addPayment(PaymentPO payment) throws RemoteException, FailToPassApprovingException {
+        return false;
+    }
 }

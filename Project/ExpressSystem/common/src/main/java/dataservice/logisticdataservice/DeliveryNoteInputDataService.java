@@ -9,12 +9,13 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.DeliveryNotePO;
+import util.sendDocMsg;
 
 public interface DeliveryNoteInputDataService {
 	/**
 	 * 在数据库中增加一个po记录
 	 */
-	public boolean insert(DeliveryNotePO po) throws RemoteException;
+	public sendDocMsg insert(DeliveryNotePO po) throws RemoteException;
 	/**
 	 * 在数据库中删除一个po记录
 	 */

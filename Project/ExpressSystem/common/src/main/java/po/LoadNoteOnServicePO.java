@@ -51,6 +51,8 @@ public class LoadNoteOnServicePO implements Serializable{
 	 */
 	private ArrayList<String> barcodes;
 
+    private double transferPrice;
+
 	public LoadNoteOnServicePO(String date, String hallNumber, String transpotationNumber, String destination,
 			String carNumber, String guardMan, String supercargoMan, ArrayList<String> barcodes) {
 		super();
@@ -95,5 +97,12 @@ public class LoadNoteOnServicePO implements Serializable{
 	public ArrayList<String> getBarcodes() {
 		return barcodes;
 	}
-	
+
+    public double getTransferPrice() {
+        return transferPrice;
+    }
+
+    public void setTransferPrice(double transferPrice) {
+        this.transferPrice = transferPrice;
+    }
 }

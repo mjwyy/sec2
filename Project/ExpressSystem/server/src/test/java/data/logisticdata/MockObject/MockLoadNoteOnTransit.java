@@ -13,4 +13,9 @@ public class MockLoadNoteOnTransit extends LoadNoteOnTransitPO {
                                  String supercargoMan, ArrayList<String> barcodes) {
         super(date, transpotationNumber, destination, carNumber, guardMan, supercargoMan, barcodes);
     }
+
+    public MockLoadNoteOnTransit(String transpotationNumber,
+                                 String destination, String carNumber){
+        super(null, transpotationNumber, destination, carNumber, null, null, null);
+    }
 }

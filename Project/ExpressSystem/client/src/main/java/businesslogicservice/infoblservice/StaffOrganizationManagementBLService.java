@@ -32,7 +32,7 @@ public interface StaffOrganizationManagementBLService {
 	 * @param vo
 	 * @return
 	 */
-	public ResultMsg ModifyStaff(StaffVO vo);
+	public ResultMsg ModifyStaff(StaffVO original,StaffVO modified);
 	
 	/**
 	 * 关键字查找人员信息

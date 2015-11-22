@@ -2,6 +2,7 @@ package dataservice.financedataservice;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import po.IncomeNotePO;
 
@@ -17,4 +18,12 @@ public interface SettlementManagementDataService extends Remote {
 	 */
 	public boolean addIncomeNote(IncomeNotePO note) 
 			throws RemoteException;
+	
+	/**
+	 * 用于查询所有收款单记录
+	 * 
+	 * @return
+	 */
+	public ArrayList<IncomeNotePO> findAll()
+		throws RemoteException;
 }

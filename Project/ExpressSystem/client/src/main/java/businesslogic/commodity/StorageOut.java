@@ -1,5 +1,6 @@
 package businesslogic.commodity;
 
+import po.StorageOutPO;
 import connection.RemoteObjectGetter;
 import dataservice.commoditydataservice.StorageOutDataService;
 import businesslogicservice.commodityblservice.StorageOutBLService;
@@ -8,6 +9,8 @@ import vo.StorageOutVO;
 
 /**
  * Created by kylin on 15/11/17.
+ * 
+ * Finished.
  */
 public class StorageOut implements StorageOutBLService {
 	
@@ -30,6 +33,15 @@ public class StorageOut implements StorageOutBLService {
 
     @Override
     public ResultMsg submitStorageOutDoc(StorageOutVO storageOutVo) {
-        return null;
+        try {
+        	boolean result = dataService.insert((StorageOutPO) storageOutVo.toPO());
+        	if(!result) {
+        		return new ResultMsg(false,"提交出库单失败，请重试");
+        	}
+        } catch (Exception e) {
+        	return new ResultMsg(false,e.getMessage());
+        }
+        
+        return new ResultMsg(true);
     }
 }

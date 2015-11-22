@@ -2,6 +2,8 @@ package po;
 
 import java.io.Serializable;
 
+import vo.StaffVO;
+
 /**
  * 用于人员增删改查的PO
  * @author River
@@ -78,5 +80,9 @@ public class StaffPO implements Serializable {
 	}
 	public double getWorkHour() {
 		return workHour;
+	}
+	public Object toVO() {
+		//TODO PO,VO 不一致！
+		return null;
 	}
 }

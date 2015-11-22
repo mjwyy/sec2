@@ -2,6 +2,8 @@ package po;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+
+import vo.IncomeNoteVO;
 /**
  * 记录收款单的PO
  * @author River
@@ -16,7 +18,7 @@ public class IncomeNotePO implements Serializable {
 		
 	}
 	public IncomeNotePO(String time, String receivingOrganization,
-			String incomeHandler, String incomeSource, BigDecimal money,
+			String incomeHandler, String incomeSource, String money,
 			String location, BankAccountPO account) {
 		super();
 		this.time = time;
@@ -51,7 +53,7 @@ public class IncomeNotePO implements Serializable {
 	/**
 	 * 收款数目
 	 */
-	BigDecimal money = null;
+	String money = null;
 	
 	/**
 	 * 收款地点
@@ -75,7 +77,7 @@ public class IncomeNotePO implements Serializable {
 	public String getIncomeSource() {
 		return incomeSource;
 	}
-	public BigDecimal getMoney() {
+	public String getMoney() {
 		return money;
 	}
 	public String getLocation() {
@@ -85,5 +87,9 @@ public class IncomeNotePO implements Serializable {
 		return account;
 	}
 	
-	
+	public Object toVO() {
+		//TODO 老问题：VO与PO不匹配
+		IncomeNoteVO vo = new IncomeNoteVO(money, null, null, null, null, null, null);
+		return vo;
+	}
 }

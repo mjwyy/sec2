@@ -23,7 +23,7 @@ public class BankAccountManagemntBLService_Stub implements
 	
 	public ArrayList<BankAccountVO> find(BankAccountVO vo) {
 		System.out.println("find Success");
-		BankAccountVO ac = new BankAccountVO(null, null, 0);
+		BankAccountVO ac = new BankAccountVO(null, null, null);
 		ArrayList<BankAccountVO> list = new ArrayList<BankAccountVO>();
 		list.add(ac);
 		return list;

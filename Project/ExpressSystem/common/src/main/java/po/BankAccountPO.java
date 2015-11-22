@@ -3,6 +3,8 @@ package po;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import vo.BankAccountVO;
+
 public class BankAccountPO implements Serializable {
 	public BankAccountPO(){
 		
@@ -56,6 +58,11 @@ public class BankAccountPO implements Serializable {
 
 	public void setBalance(String balance) {
 		this.balance = balance;
+	}
+	
+	public Object toVO() {
+		BankAccountVO vo = new BankAccountVO(name, number, balance);
+		return vo;
 	}
 	
 }

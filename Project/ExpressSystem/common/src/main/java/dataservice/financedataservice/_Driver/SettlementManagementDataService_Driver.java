@@ -16,10 +16,8 @@ public class SettlementManagementDataService_Driver {
 	private BankAccountPO bankAccountPO;
 	
 	public SettlementManagementDataService_Driver() {
-		BigDecimal b = new BigDecimal(300);
-		BigDecimal c = new BigDecimal(20);
-		bankAccountPO = new BankAccountPO("金三胖","1234567890",b);
-		incomeNotePO = new IncomeNotePO("2015-11-11","南京中转中心","汤恩义","六合营业厅",c,"南京",bankAccountPO);	
+		bankAccountPO = new BankAccountPO("金三胖","1234567890","300");
+		incomeNotePO = new IncomeNotePO("2015-11-11","南京中转中心","汤恩义","六合营业厅","20","南京",bankAccountPO);	
 	}
 	
 	public void drive(SettlementManagementDataService settlementManagementDataService) throws RemoteException {

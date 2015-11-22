@@ -42,9 +42,8 @@ public class BankAccountManagementDataService_Stub implements BankAccountManagem
 	public ArrayList<BankAccountPO> getAllAccounts() throws RemoteException {
 		System.out.println("show success");
 		ArrayList<BankAccountPO> list = new ArrayList<BankAccountPO>();
-		BigDecimal c =new BigDecimal(2000);
 		
-		list.add(new BankAccountPO("金三胖","1234567890",c));		
+		list.add(new BankAccountPO("金三胖","1234567890","2000"));		
 		return list;
 	}
 	

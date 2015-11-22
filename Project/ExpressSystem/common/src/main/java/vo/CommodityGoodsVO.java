@@ -85,7 +85,7 @@ public class CommodityGoodsVO {
 	public ResultMsg checkFormat() {
 		
 		ResultMsg[] msgs = new ResultMsg[6];
-		//TO DO
+
 		msgs[0] = FormatCheck.isBarcode(barcode);
 		msgs[1] = FormatCheck.isOrganizationName(destination);
 		msgs[2] = FormatCheck.isAreaCode(areacode);
@@ -103,7 +103,7 @@ public class CommodityGoodsVO {
 		
 	}
 
-	public CommodityGoodsPO toPO() {
+	public Object toPO() {
 		return new CommodityGoodsPO(barcode, areacode, destination, rownumber, framenumber, placenumber);
 	}
 }

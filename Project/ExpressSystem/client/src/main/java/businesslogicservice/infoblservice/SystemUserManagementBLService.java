@@ -32,7 +32,7 @@ public interface SystemUserManagementBLService {
 	 * @param vo
 	 * @return 结果消息
 	 */
-	public ResultMsg modify(UserVO vo);
+	public ResultMsg modify(UserVO origunal,UserVO modified);
 	
 	/**
 	 * 通过账号查找账户信息

@@ -2,6 +2,11 @@ package vo;
 
 import java.util.ArrayList;
 
+import po.CommodityGoodsPO;
+import po.InventoryPO;
+import util.FormatCheck;
+import util.ResultMsg;
+
 public class InventoryVO {
 	
     /**
@@ -69,5 +74,37 @@ public class InventoryVO {
 
 	public void setGoodsInfo(ArrayList<CommodityGoodsVO> goodsInfo) {
 		this.goodsInfo = goodsInfo;
+	}
+	
+	public ResultMsg checkFormat() {
+		ResultMsg[] msgs = new ResultMsg[3];
+		
+		msgs[0] = FormatCheck.isProperNumber(inNum);
+		msgs[1] = FormatCheck.isProperNumber(outNum);
+		msgs[2] = FormatCheck.isMoney(money);
+		
+		for(int i=0;i<msgs.length;i++) {
+			if(!msgs[i].isPass()) return msgs[i];
+		}
+		
+		ResultMsg msg = null;
+		for(CommodityGoodsVO vo:goodsInfo) {
+			msg = vo.checkFormat();
+			if(!msg.isPass()) return msg;
+		}
+		
+		return new ResultMsg(true);
+	}
+	
+	public Object toPO() {
+		ArrayList<CommodityGoodsPO> list = new ArrayList<>();
+		
+		for(CommodityGoodsVO vo:goodsInfo) {
+			list.add((CommodityGoodsPO) vo.toPO());
+		}
+		
+		InventoryPO po = new InventoryPO(outNum, inNum, money, list);
+		
+		return po;
 	}
 }

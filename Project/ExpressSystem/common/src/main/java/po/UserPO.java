@@ -1,6 +1,7 @@
 package po;
 
 import util.enums.Authority;
+import vo.UserVO;
 
 import java.io.Serializable;
 
@@ -26,7 +27,7 @@ public class UserPO implements Serializable {
     /**
      * 权限
      */
-    private int Authority;
+    private Authority Authority;
 
     /**
      * 构造方法
@@ -37,7 +38,7 @@ public class UserPO implements Serializable {
     public UserPO(String Account, String Password, int authority){
         this.Account = Account;
         this.Password = Password;
-        this.Authority = authority;
+        this.Authority = Authority.getAuthObject(authority);
     }
 
     public UserPO(){
@@ -58,7 +59,12 @@ public class UserPO implements Serializable {
     }
 
     public int getAuthority() {
-        return Authority;
+        return Authority.getAuthority();
     }
+
+	public Object toVO() {
+		UserVO vo = new UserVO(Account, Password, Authority);
+		return vo;
+	}
 
 }

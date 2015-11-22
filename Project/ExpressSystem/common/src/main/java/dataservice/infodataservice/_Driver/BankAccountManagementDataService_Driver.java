@@ -17,9 +17,8 @@ public class BankAccountManagementDataService_Driver {
 	private BankAccountPO bankAccountPO1;
 	
 	public BankAccountManagementDataService_Driver() {
-		BigDecimal b = new BigDecimal(2000);
-		bankAccountPO = new BankAccountPO("金三胖","12344567890",b);
-		bankAccountPO1 = new BankAccountPO("金二胖","12344567890",b);
+		bankAccountPO = new BankAccountPO("金三胖","12344567890","2000");
+		bankAccountPO1 = new BankAccountPO("金二胖","12344567890","2000");
 	}
 	
 	public void drive(BankAccountManagementDataService bankAccountManagementDataService)

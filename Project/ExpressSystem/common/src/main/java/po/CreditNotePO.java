@@ -17,7 +17,7 @@ public class CreditNotePO implements Serializable {
 	public CreditNotePO(){
 		
 	}
-	public CreditNotePO(String nameOfDeliveryMan, String date, BigDecimal money) {
+	public CreditNotePO(String nameOfDeliveryMan, String date, String money) {
 		super();
 		this.nameOfDeliveryMan = nameOfDeliveryMan;
 		this.date = date;
@@ -32,7 +32,7 @@ public class CreditNotePO implements Serializable {
 	/**
 	 * 为保证精度，钱数用BigDecimal表示
 	 */
-	BigDecimal money = null;
+	String money = null;
 	
 	/**
 	 * 快递员姓名
@@ -43,24 +43,12 @@ public class CreditNotePO implements Serializable {
 		return date;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
-	}
-
-	public BigDecimal getMoney() {
+	public String getMoney() {
 		return money;
-	}
-
-	public void setMoney(BigDecimal money) {
-		this.money = money;
 	}
 
 	public String getNameOfDeliveryMan() {
 		return nameOfDeliveryMan;
-	}
-
-	public void setNameOfDeliveryMan(String nameOfDeliveryMan) {
-		this.nameOfDeliveryMan = nameOfDeliveryMan;
 	}
 	
 }

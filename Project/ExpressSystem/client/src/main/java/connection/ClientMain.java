@@ -2,6 +2,7 @@ package connection;
 
 import dataservice.infodataservice.SystemUserManagementDataService;
 import po.UserPO;
+import util.enums.Authority;
 
 /**
  * Created by kylin on 15/11/21.

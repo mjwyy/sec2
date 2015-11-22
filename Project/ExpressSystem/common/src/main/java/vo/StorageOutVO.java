@@ -2,6 +2,7 @@ package vo;
 
 import java.util.ArrayList;
 
+import po.StorageOutPO;
 import util.ResultMsg;
 
 public class StorageOutVO {
@@ -90,10 +91,17 @@ public class StorageOutVO {
 	}
 
 	public ResultMsg checkFormat() {
-		//TO DO
+		//TODO 那个双重属性是什么意思？
 		
 		return null;
 		
 		
+	}
+
+	public Object toPO() {
+		//TODO ?那个双重属性是什么意思？
+		StorageOutPO po = new StorageOutPO(barcode, date, destination, shippingForm, transferNum, TransferOrCar);
+		
+		return po;
 	}
 }

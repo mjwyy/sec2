@@ -37,7 +37,9 @@ public class ArrivalNoteOnTransitVO extends NoteVO {
 	 */
 	private ArrayList<BarcodeAndState> BarcodeAndStates;
 
-	public ArrivalNoteOnTransitVO(String transferNumber, String centerNumber, String date, String departurePlace,
+
+	public ArrivalNoteOnTransitVO(String transferNumber, 
+			String date,String centerNumber, String departurePlace,
 			ArrayList<BarcodeAndState> barcodeAndStates) {
 		super();
 		this.transferNumber = transferNumber;

@@ -3,24 +3,19 @@ package data.infodata;
 import static junit.framework.TestCase.assertEquals;
 
 import java.rmi.RemoteException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
-import data.dao.DataBaseFactoryMysqlImpl;
+import data.dao.DatabaseFactoryMysqlImpl;
 import data.dao.DatabaseFactory;
 import dataservice.infodataservice.SystemUserManagementDataService;
-import org.junit.Test;
 
 import po.UserPO;
-import data.infodata.MockObject.MockSystemUserManagement;
-import dataservice.exception.ElementNotFoundException;
-import dataservice.exception.InterruptWithExistedElementException;
 
 public class SystemUserManagementData_Test {
     DatabaseFactory databaseFactory;
 
     public SystemUserManagementData_Test() throws RemoteException {
-        databaseFactory = DataBaseFactoryMysqlImpl.getInstance();
+        databaseFactory = DatabaseFactoryMysqlImpl.getInstance();
     }
 
     //	@Test

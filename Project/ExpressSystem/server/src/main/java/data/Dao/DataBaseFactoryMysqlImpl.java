@@ -19,22 +19,22 @@ import java.rmi.RemoteException;
 /**
  * Created by kylin on 15/11/22.
  */
-public class DataBaseFactoryMysqlImpl implements DatabaseFactory{
+public class DatabaseFactoryMysqlImpl implements DatabaseFactory{
 
     /**
      * 数据实现的提供工厂,单件模式
      */
-    private static DataBaseFactoryMysqlImpl dataBaseFactoryMysql = null;
+    private static DatabaseFactoryMysqlImpl dataBaseFactoryMysql = null;
 
     //TODO 初始化所有的数据层实现
-    private DataBaseFactoryMysqlImpl() throws RemoteException {
+    private DatabaseFactoryMysqlImpl() throws RemoteException {
         systemUserManagementDataService = new UserDAOProxy();
     }
 
-    public static DataBaseFactoryMysqlImpl getInstance() throws RemoteException {
-        if(DataBaseFactoryMysqlImpl.dataBaseFactoryMysql == null)
-            return new DataBaseFactoryMysqlImpl();
-        return DataBaseFactoryMysqlImpl.dataBaseFactoryMysql;
+    public static DatabaseFactoryMysqlImpl getInstance() throws RemoteException {
+        if(DatabaseFactoryMysqlImpl.dataBaseFactoryMysql == null)
+            return new DatabaseFactoryMysqlImpl();
+        return DatabaseFactoryMysqlImpl.dataBaseFactoryMysql;
     }
 
     /**

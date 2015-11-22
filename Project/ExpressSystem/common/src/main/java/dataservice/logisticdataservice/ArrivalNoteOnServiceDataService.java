@@ -16,7 +16,7 @@ import po.DeliverNoteOnServicePO;
 
 public interface ArrivalNoteOnServiceDataService extends Remote, Serializable {
 
-    // TODO 数据层的接口过大问题
+    // wTODO 数据层的接口过大问题
     /**
      * 在数据库中插入单一持久化对象
      */

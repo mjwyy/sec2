@@ -7,10 +7,22 @@ import vo.VehicleVO;
 
 import java.util.ArrayList;
 
+import connection.RemoteObjectGetter;
+import dataservice.commoditydataservice.StorageInDataService;
+import dataservice.infodataservice.DriverVehicleManagementDataService;
+
 /**
  * Created by kylin on 15/11/17.
  */
 public class DriverVehicleManagement implements DriverVehicleManagementBLService {
+	
+	DriverVehicleManagementDataService dataService = null;
+	
+	public DriverVehicleManagement() {
+		RemoteObjectGetter getter = new RemoteObjectGetter();
+		dataService = (DriverVehicleManagementDataService) getter.getObjectByName("DriverVehicleManagementDataService");
+	}
+	
     @Override
     public ResultMsg addVehicle(VehicleVO vo) {
         return null;

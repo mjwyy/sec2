@@ -39,13 +39,12 @@ public interface BankAccountManagementDataService extends Remote, Serializable {
 	/**
 	 * Data将originalAccount 替换为modifiedAccount
      *
-	 * @param originalAccount
-	 * @param modifiedAccount
+	 * @param account--BankAccount的账号account作为唯一标识符
 	 * @return true for successful remove operation
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException
 	 */
-	public boolean modifyBankAccount(BankAccountPO originalAccount,BankAccountPO modifiedAccount)
+	public boolean modifyBankAccount(BankAccountPO account)
 			throws RemoteException,	ElementNotFoundException,InterruptWithExistedElementException;
 
 	/**

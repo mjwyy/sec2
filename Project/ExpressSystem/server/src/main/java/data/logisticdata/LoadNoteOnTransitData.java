@@ -28,11 +28,9 @@ public class LoadNoteOnTransitData implements LoadNoteOnTransitDataService {
 
     @Override
     public ArrayList<LoadNoteOnTransitPO> find(LoadNoteOnTransitPO po) throws RemoteException {
-<<<<<<< HEAD
+
         LoadNoteOnTransitPO pox = new LoadNoteOnTransitPO(null,null,null,null,null,null,null, null);
-=======
-        LoadNoteOnTransitPO pox = new LoadNoteOnTransitPO(null,null,null,null,null,null,null,null);
->>>>>>> refs/remotes/origin/master
+
         ArrayList<LoadNoteOnTransitPO> list =  new ArrayList<LoadNoteOnTransitPO>();
         list.add(pox);
         return list;
@@ -40,11 +38,9 @@ public class LoadNoteOnTransitData implements LoadNoteOnTransitDataService {
 
     @Override
     public ArrayList<LoadNoteOnTransitPO> findAll() throws RemoteException {
-<<<<<<< HEAD
+
         LoadNoteOnTransitPO pox = new LoadNoteOnTransitPO(null,null,null,null,null,null,null, null);
-=======
-        LoadNoteOnTransitPO pox = new LoadNoteOnTransitPO(null,null,null,null,null,null,null,null);
->>>>>>> refs/remotes/origin/master
+
         ArrayList<LoadNoteOnTransitPO> list =  new ArrayList<LoadNoteOnTransitPO>();
         list.add(pox);
         return list;

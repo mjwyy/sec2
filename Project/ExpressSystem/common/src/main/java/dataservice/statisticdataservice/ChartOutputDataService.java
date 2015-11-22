@@ -1,5 +1,6 @@
 package dataservice.statisticdataservice;
 
+import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
@@ -10,7 +11,7 @@ import po.chart.CostAndProfitChartPO;
 /**
  * @author River
  */
-public interface ChartOutputDataService extends Remote {
+public interface ChartOutputDataService extends Remote, Serializable {
 
 	/**
 	 * Data返回封装了详细数据的ChartPO

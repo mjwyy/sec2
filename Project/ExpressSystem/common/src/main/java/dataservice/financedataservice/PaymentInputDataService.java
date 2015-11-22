@@ -1,5 +1,6 @@
 package dataservice.financedataservice;
 
+import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
@@ -9,7 +10,7 @@ import po.PaymentPO;
 /**
 * @author River
 */
-public interface PaymentInputDataService extends Remote {
+public interface PaymentInputDataService extends Remote, Serializable {
 
 	/**
 	 * Data向数据库中添加记录

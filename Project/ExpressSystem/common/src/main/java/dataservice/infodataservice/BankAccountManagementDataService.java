@@ -1,5 +1,6 @@
 package dataservice.infodataservice;
 
+import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import po.BankAccountPO;
 /**
 * @author River
 */
-public interface BankAccountManagementDataService extends Remote {
+public interface BankAccountManagementDataService extends Remote, Serializable {
 
 	/**
 	 * Data向数据库中添加对应PO信息

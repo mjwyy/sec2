@@ -1,5 +1,6 @@
 package dataservice.infodataservice;
 
+import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import po.VehiclePO;
 /**
 * @author River
 */
-public interface DriverVehicleManagementDataService extends Remote {
+public interface DriverVehicleManagementDataService extends Remote, Serializable {
 
 	/**
 	 * Data向数据库中添加对应司机PO项

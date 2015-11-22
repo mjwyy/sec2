@@ -75,7 +75,7 @@ public class ChartOutput implements ChartOutputBLService {
         // 第二步，在webbook中添加一个sheet,对应Excel文件中的sheet
         HSSFSheet sheet = wb.createSheet(chartVO.getType().toString());
         // 第三步，在sheet中添加表头第0行
-        HSSFRow row = sheet.createRow((int) 0);
+        HSSFRow row = sheet.createRow(0);
         // 第四步，创建单元格，并设置值表头 设置表头居中
         HSSFCellStyle style = wb.createCellStyle();
         // 创建一个居中格式

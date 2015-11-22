@@ -1,5 +1,6 @@
 package dataservice.statisticdataservice;
 
+import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import util.enums.PriceType;
 /**
  * @author River
  */
-public interface BusinessDataModificationDataService extends Remote {
+public interface BusinessDataModificationDataService extends Remote, Serializable {
 
 
     /**

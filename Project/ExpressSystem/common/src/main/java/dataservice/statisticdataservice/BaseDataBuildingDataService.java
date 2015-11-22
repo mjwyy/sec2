@@ -1,12 +1,13 @@
 package dataservice.statisticdataservice;
 
+import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 /**
  * @author River
  */
-public interface BaseDataBuildingDataService extends Remote {
+public interface BaseDataBuildingDataService extends Remote, Serializable {
 
 	/**
 	 * Data开始接受单一客户端操作请求

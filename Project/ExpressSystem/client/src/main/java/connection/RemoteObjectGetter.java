@@ -8,13 +8,10 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 /**
- *
  * @author River
  *
  * 实际需要使用远程对象时，只需新建此对象，然后
  * 调用getObjectByName(String name)即可
- *
- *
  *
  */
 public class RemoteObjectGetter {

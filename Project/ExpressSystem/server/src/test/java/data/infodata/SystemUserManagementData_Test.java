@@ -6,6 +6,7 @@ import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import data.dao.DataBaseFactoryMysqlImpl;
 import data.dao.DatabaseFactory;
 import dataservice.infodataservice.SystemUserManagementDataService;
 import org.junit.Test;
@@ -16,25 +17,30 @@ import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
 
 public class SystemUserManagementData_Test {
+    DatabaseFactory databaseFactory;
 
-//	@Test
+    public SystemUserManagementData_Test() throws RemoteException {
+        databaseFactory = DataBaseFactoryMysqlImpl.getInstance();
+    }
+
+    //	@Test
 	public void testAddUser() throws Exception {
 		UserPO po = new UserPO("toDelete","sbsbsb",5);
-        SystemUserManagementDataService service = DatabaseFactory.getSystemUserManagementDataInstance();
+        SystemUserManagementDataService service = databaseFactory.getSystemUserManagementDataService();
 		assertEquals(true,service.addUser(po));
 	}
 
 //	@Test
 	public void testRemoveUser() throws Exception {
         UserPO po = new UserPO("test1",null,0);
-        SystemUserManagementDataService service = DatabaseFactory.getSystemUserManagementDataInstance();
+        SystemUserManagementDataService service = databaseFactory.getSystemUserManagementDataService();
         assertEquals(true,service.removeUser(po));
 	}
 
 //    @Test
     public void testInquireUser() throws Exception {
         UserPO a=new UserPO("admin",null,0);
-        SystemUserManagementDataService service = DatabaseFactory.getSystemUserManagementDataInstance();
+        SystemUserManagementDataService service = databaseFactory.getSystemUserManagementDataService();
         ArrayList<UserPO> result = service.inquireUser(a);
         for (UserPO po2:result) {
             System.out.println(po2);
@@ -43,7 +49,7 @@ public class SystemUserManagementData_Test {
 
 //	@Test
 	public void testGetAllUsers() throws Exception {
-        SystemUserManagementDataService service = DatabaseFactory.getSystemUserManagementDataInstance();
+        SystemUserManagementDataService service = databaseFactory.getSystemUserManagementDataService();
         ArrayList<UserPO> result = service.getAllUsers();
         for (UserPO po2:result) {
             System.out.println(po2);

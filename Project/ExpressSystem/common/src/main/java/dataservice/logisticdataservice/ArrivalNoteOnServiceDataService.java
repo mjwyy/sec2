@@ -5,6 +5,7 @@
  */
 package dataservice.logisticdataservice;
 
+import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ import po.ArrivalNoteOnServicePO;
 import po.DeliverNoteOnServicePO;
 
 
-public interface ArrivalNoteOnServiceDataService extends Remote {
+public interface ArrivalNoteOnServiceDataService extends Remote, Serializable {
 
     // TODO 数据层的接口过大问题
     /**

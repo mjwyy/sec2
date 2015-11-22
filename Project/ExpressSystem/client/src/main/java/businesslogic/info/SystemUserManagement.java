@@ -2,13 +2,13 @@ package businesslogic.info;
 
 import businesslogicservice.infoblservice.SystemUserManagementBLService;
 import util.ResultMsg;
+import util.LogInMsg;
 import vo.UserVO;
 
 import java.util.ArrayList;
 
 import po.UserPO;
 import connection.RemoteObjectGetter;
-import dataservice.financedataservice.PaymentInputDataService;
 import dataservice.infodataservice.SystemUserManagementDataService;
 
 /**
@@ -59,7 +59,9 @@ public class SystemUserManagement implements SystemUserManagementBLService {
     }
 
     @Override
-    public ResultMsg logIn(String userNum, String initialPassword) {
+    public LogInMsg logIn(String userNum, String initialPassword) {
+
+
         return null;
     }
 }

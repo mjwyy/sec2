@@ -14,8 +14,6 @@ import util.enums.ChartType;
  */
 public class ChartVO {
 
-
-    //TODO 选取的类型是否需要检查格式
 	/**
 	 * 报表类型
 	 */

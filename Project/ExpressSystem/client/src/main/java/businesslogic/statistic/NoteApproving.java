@@ -30,9 +30,9 @@ public class NoteApproving implements NoteApprovingBLService {
         ArrayList<NotePO> notePOs;
         try {
             notePOs = dataService.getAllDoc();
-            // TODO po转化为VO的问题 VO拖到common里面
             for (NotePO po:notePOs){
-
+                NoteVO vo = po.toVO();
+                noteVOArrayList.add(vo);
             }
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -46,9 +46,9 @@ public class NoteApproving implements NoteApprovingBLService {
         ArrayList<NotePO> notePOs;
         try {
             notePOs = dataService.getDocByType(type);
-            // TODO po转化为VO的问题
             for (NotePO po:notePOs){
-
+                NoteVO vo = po.toVO();
+                noteVOArrayList.add(vo);
             }
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -74,7 +74,7 @@ public class NoteApproving implements NoteApprovingBLService {
         }
     }
 
-    //TODO 此接口方法多余
+    //TODO 接口方法多余
     @Override
     public void failDoc(NoteVO docVO) {
 

@@ -7,6 +7,7 @@ package businesslogicservice.infoblservice;
 
 import java.util.ArrayList;
 
+import util.LogInMsg;
 import util.ResultMsg;
 import vo.UserVO;
 
@@ -39,7 +40,14 @@ public interface SystemUserManagementBLService {
 	 * @return
 	 */
 	public ArrayList<UserVO> find(UserVO vo);
-		
-	public ResultMsg logIn(String userNum,String initialPassword);
+
+    /**
+     * 用户登陆接口
+     *
+     * @param userNum
+     * @param initialPassword
+     * @return
+     */
+	public LogInMsg logIn(String userNum, String initialPassword);
  
 }

@@ -1,5 +1,6 @@
 package dataservice.financedataservice;
 
+import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import po.IncomeNotePO;
 /**
 * @author River
 */
-public interface SettlementManagementDataService extends Remote {
+public interface SettlementManagementDataService extends Remote, Serializable {
 	/**
 	 * Data层增加收款单记录，修改对应账户信息
 	 *

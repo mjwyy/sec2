@@ -11,11 +11,11 @@ public class MockLoadNoteOnTransit extends LoadNoteOnTransitPO {
     public MockLoadNoteOnTransit(String date, String transpotationNumber,
                                  String destination, String carNumber, String guardMan,
                                  String supercargoMan, ArrayList<String> barcodes) {
-        super(date, transpotationNumber, destination, carNumber, guardMan, supercargoMan, barcodes);
+        super(date, transpotationNumber, destination, carNumber, guardMan, supercargoMan, null,null);
     }
 
     public MockLoadNoteOnTransit(String transpotationNumber,
                                  String destination, String carNumber){
-        super(null, transpotationNumber, destination, carNumber, null, null, null);
+        super(null, transpotationNumber, destination, carNumber, null, null, null,null);
     }
 }

@@ -5,13 +5,14 @@
  */
 package dataservice.logisticdataservice;
 
+import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.ArrivalNoteOnTransitPO;
 
-public interface ArrivalNoteOnTransitDataService extends Remote {
+public interface ArrivalNoteOnTransitDataService extends Remote, Serializable {
 	/**
 	 * 在数据库中增加一个po记录
 	 */

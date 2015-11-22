@@ -46,6 +46,14 @@ public class BankAccountManagementDataService_Stub implements BankAccountManagem
 		list.add(new BankAccountPO("金三胖","1234567890","2000"));		
 		return list;
 	}
+
+	@Override
+	public boolean modifyBankAccount(BankAccountPO account)
+			throws RemoteException, ElementNotFoundException,
+			InterruptWithExistedElementException {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 
 }

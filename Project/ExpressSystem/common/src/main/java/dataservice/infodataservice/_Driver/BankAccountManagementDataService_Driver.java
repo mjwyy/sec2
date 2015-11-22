@@ -26,7 +26,7 @@ public class BankAccountManagementDataService_Driver {
 		bankAccountManagementDataService.addBankAccount(bankAccountPO);
 		bankAccountManagementDataService.removeBankAccount(bankAccountPO);
 		bankAccountManagementDataService.findBankAccount(new BankAccountPO("Mark", null, null));
-		bankAccountManagementDataService.modifyBankAccount(bankAccountPO,bankAccountPO1 );
+		bankAccountManagementDataService.modifyBankAccount(bankAccountPO );
 		bankAccountManagementDataService.getAllAccounts();
 		
 		if(bankAccountManagementDataService.addBankAccount(bankAccountPO))
@@ -38,7 +38,7 @@ public class BankAccountManagementDataService_Driver {
 			System.out.println("remove success");
 		else
 			System.out.println("remove fail");
-		if(bankAccountManagementDataService.modifyBankAccount(bankAccountPO,bankAccountPO1 ))
+		if(bankAccountManagementDataService.modifyBankAccount(bankAccountPO ))
 			System.out.println("modify success");
 		else 
 			System.out.println("modify fail");

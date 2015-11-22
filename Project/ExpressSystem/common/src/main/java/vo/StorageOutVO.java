@@ -22,14 +22,9 @@ public class StorageOutVO {
 	private String destination;
 	
 	/**
-	 * 汽运编号
+	 * 汽运编号或中转单编号
 	 */
 	private String truckNum;
-	
-	/**
-	 * 中转单编号
-	 */
-	private String transferNum;
 	
 	/**
 	 * 装运方式
@@ -56,10 +51,8 @@ public class StorageOutVO {
 		this.destination = destination;
 		this.shippingForm = shippingForm;
 		this.barcode = barcode;
-		if(TorC==true)
-			this.transferNum = transferNum;
-		else
-			this.truckNum = transferNum;
+		TransferOrCar = TorC;
+		this.truckNum = transferNum;
 	}
 
 	public String getDate() {
@@ -72,10 +65,6 @@ public class StorageOutVO {
 
 	public String getTruckNum() {
 		return truckNum;
-	}
-
-	public String getTransferNum() {
-		return transferNum;
 	}
 
 	public String getShippingForm() {
@@ -94,14 +83,10 @@ public class StorageOutVO {
 		//TODO 那个双重属性是什么意思？
 		
 		return null;
-		
-		
 	}
 
 	public Object toPO() {
-		//TODO ?那个双重属性是什么意思？
-		StorageOutPO po = new StorageOutPO(barcode, date, destination, shippingForm, transferNum, TransferOrCar);
-		
+		StorageOutPO po = new StorageOutPO(barcode, date, destination, shippingForm, truckNum, TransferOrCar);
 		return po;
 	}
 }

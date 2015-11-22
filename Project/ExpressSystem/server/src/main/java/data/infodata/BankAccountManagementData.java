@@ -22,10 +22,6 @@ public class BankAccountManagementData implements BankAccountManagementDataServi
         return false;
     }
 
-    @Override
-    public boolean modifyBankAccount(BankAccountPO originalAccount, BankAccountPO modifiedAccount) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException {
-        return false;
-    }
 
     @Override
     public ArrayList<BankAccountPO> findBankAccount(BankAccountPO accountInfo) throws RemoteException, ElementNotFoundException {
@@ -36,4 +32,11 @@ public class BankAccountManagementData implements BankAccountManagementDataServi
     public ArrayList<BankAccountPO> getAllAccounts() throws RemoteException {
         return null;
     }
+
+	@Override
+	public boolean modifyBankAccount(BankAccountPO account)
+			throws RemoteException, ElementNotFoundException,
+			InterruptWithExistedElementException {
+		return false;
+	}
 }

@@ -1,7 +1,7 @@
 package connection;
 
-import data.dao.DatabaseFactoryMysqlImpl;
-import data.dao.DatabaseFactory;
+import data.database.DatabaseFactoryMysqlImpl;
+import data.database.DatabaseFactory;
 import dataservice.commoditydataservice.InventoryDataService;
 import dataservice.commoditydataservice.StorageInDataService;
 import dataservice.commoditydataservice.StorageOutDataService;
@@ -22,6 +22,8 @@ import java.util.HashMap;
 
 /**
  * Created by kylin on 15/11/10.
+ *
+ * provider应该也是单例的,多个客户端,但只有一个provider
  */
 public class RMIObjectProvider extends UnicastRemoteObject implements RMIObjectProviderService {
 

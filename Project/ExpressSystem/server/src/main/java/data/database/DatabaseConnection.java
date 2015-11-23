@@ -1,6 +1,4 @@
-package data.dao;
-
-import po.UserPO;
+package data.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

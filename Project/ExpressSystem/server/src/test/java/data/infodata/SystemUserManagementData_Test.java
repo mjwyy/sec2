@@ -5,8 +5,8 @@ import static junit.framework.TestCase.assertEquals;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import data.dao.DatabaseFactoryMysqlImpl;
-import data.dao.DatabaseFactory;
+import data.database.DatabaseFactoryMysqlImpl;
+import data.database.DatabaseFactory;
 import dataservice.infodataservice.SystemUserManagementDataService;
 
 import po.UserPO;

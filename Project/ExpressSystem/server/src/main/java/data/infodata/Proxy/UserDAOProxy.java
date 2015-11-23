@@ -1,6 +1,7 @@
-package data.infodata;
+package data.infodata.Proxy;
 
-import data.dao.DatabaseConnection;
+import data.database.DatabaseConnection;
+import data.infodata.SystemUserManagementData;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.infodataservice.SystemUserManagementDataService;
@@ -18,7 +19,7 @@ public class UserDAOProxy extends UnicastRemoteObject implements SystemUserManag
     //实现RMI接口的类必须继承自java.rmi.server.UnicastRemoteObject
 
 
-    //由于基类UnicastRemoteObject的默认构造方法抛出异常，因此实现类必须同时提供一个构造方法
+    //由于基类UnicastRemoteObject的默认构造方法抛出异常，因此实现类必须同时提供一个无参数构造方法
     public UserDAOProxy() throws RemoteException {
 
     }

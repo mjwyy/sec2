@@ -1,6 +1,6 @@
-package data.dao;
+package data.database;
 
-import data.infodata.UserDAOProxy;
+import data.infodata.Proxy.UserDAOProxy;
 import dataservice.commoditydataservice.InventoryDataService;
 import dataservice.commoditydataservice.StorageInDataService;
 import dataservice.commoditydataservice.StorageOutDataService;
@@ -23,8 +23,10 @@ public class DatabaseFactoryMysqlImpl implements DatabaseFactory{
 
     /**
      * 数据实现的提供工厂,单件模式
+     * volatile确保实例被初始化的时候,多个线程正确处理实例变量
+     *
      */
-    private static DatabaseFactoryMysqlImpl dataBaseFactoryMysql = null;
+    private volatile static DatabaseFactoryMysqlImpl dataBaseFactoryMysql;
 
     //TODO 初始化所有的数据层实现
     private DatabaseFactoryMysqlImpl() throws RemoteException {
@@ -32,9 +34,14 @@ public class DatabaseFactoryMysqlImpl implements DatabaseFactory{
     }
 
     public static DatabaseFactoryMysqlImpl getInstance() throws RemoteException {
-        if(DatabaseFactoryMysqlImpl.dataBaseFactoryMysql == null)
-            return new DatabaseFactoryMysqlImpl();
-        return DatabaseFactoryMysqlImpl.dataBaseFactoryMysql;
+        if(dataBaseFactoryMysql == null){
+            //如果实例没有被创建,进行同步,只有第一次同步加锁
+            synchronized (DatabaseFactoryMysqlImpl.class){
+                if(dataBaseFactoryMysql == null)
+                    dataBaseFactoryMysql = new DatabaseFactoryMysqlImpl();
+            }
+        }
+        return dataBaseFactoryMysql;
     }
 
     /**

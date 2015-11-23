@@ -25,10 +25,6 @@ public class SystemUserManagementData  implements SystemUserManagementDataServic
 
     private PreparedStatement statement;
 
-    public SystemUserManagementData() throws RemoteException {
-        super();
-    }
-
     public SystemUserManagementData(Connection con) throws RemoteException {
         super();
         this.connection = con;

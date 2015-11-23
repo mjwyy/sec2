@@ -1,6 +1,5 @@
-package data.dao;
+package data.database;
 
-import data.infodata.UserDAOProxy;
 import dataservice.commoditydataservice.InventoryDataService;
 import dataservice.commoditydataservice.StorageInDataService;
 import dataservice.commoditydataservice.StorageOutDataService;
@@ -13,8 +12,6 @@ import dataservice.infodataservice.StaffOrganizationManagementDataService;
 import dataservice.infodataservice.SystemUserManagementDataService;
 import dataservice.logisticdataservice.*;
 import dataservice.statisticdataservice.*;
-
-import java.rmi.RemoteException;
 
 /**
  * Created by kylin on 15/11/18.

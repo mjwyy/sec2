@@ -1,5 +1,6 @@
 package presentation.logisticui;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -7,185 +8,271 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JTable;
+
+import presentation.util.checkstyleDialog;
+import util.ResultMsg;
+import vo.LoadNoteOnTransitVO;
+import businesslogicservice.logisticblservice.LoadNoteOnTransitBLService;
+import businesslogicservice.logisticblservice._Stub.LoadNoteOnTransitBLService_Stub;
+
+import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.util.ArrayList;
+import java.util.Vector;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class LoadNoteOnTransitPanel extends JPanel {
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
-	private JTextField textField_10;
-	private JTextField textField_11;
-	private JTextField textField_12;
+	private JTextField date2;
+	private JTextField trucknum2;
+	private JTextField carnum2;
+	private JTextField supervisor2;
+	private JTextField escort2;
+	private JTextField destination2;
+	private JTextField date1;
+	private JTextField destination1;
+	private JTextField trucknum1;
+	private JTextField carnum;
+	private JTextField supervisor1;
+	private JTextField escort1;
+	private JTextField addbarcode;
 	private JTable table;
+	private DefaultTableModel model;
+	private Vector name;
+	private Vector data;
+	private LoadNoteOnTransitBLService service;
+	private ResultMsg res;
 
 	/**
 	 * Create the panel.
 	 */
+	
+	
+	 public static void main(String[] args){
+		JFrame f = new JFrame();
+		LoadNoteOnTransitPanel p = new LoadNoteOnTransitPanel();
+		p.setVisible(true);
+		f.setSize(1150,446);
+	f.getContentPane().add(p);
+		f.setVisible(true);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
 	public LoadNoteOnTransitPanel() {
+		setSize(1152,446);
 		setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 488, 390);
-		add(panel);
-		panel.setLayout(null);
+		JLabel label = new JLabel("日期");
+		label.setBounds(64, 54, 61, 16);
+		add(label);
 		
-		JLabel lblNewLabel_2 = new JLabel("日期");
-		lblNewLabel_2.setBounds(25, 28, 61, 16);
-		panel.add(lblNewLabel_2);
+		JLabel label_1 = new JLabel("汽运编号");
+		label_1.setBounds(64, 120, 61, 16);
+		add(label_1);
 		
-		textField_7 = new JTextField();
-		textField_7.setEnabled(false);
-		textField_7.setBounds(88, 22, 134, 29);
-		panel.add(textField_7);
-		textField_7.setColumns(10);
+		JLabel label_2 = new JLabel("车辆代号");
+		label_2.setBounds(64, 182, 61, 16);
+		add(label_2);
+		
+		JLabel label_3 = new JLabel("监装员");
+		label_3.setBounds(64, 239, 61, 16);
+		add(label_3);
+		
+		JLabel label_4 = new JLabel("押运员");
+		label_4.setBounds(64, 298, 61, 16);
+		add(label_4);
+		
+		date2 = new JTextField();
+		date2.setEditable(false);
+		date2.setBounds(138, 48, 134, 28);
+		add(date2);
+		date2.setColumns(10);
+		
+		trucknum2 = new JTextField();
+		trucknum2.setEditable(false);
+		trucknum2.setColumns(10);
+		trucknum2.setBounds(138, 114, 134, 28);
+		add(trucknum2);
+		
+		carnum2 = new JTextField();
+		carnum2.setEditable(false);
+		carnum2.setColumns(10);
+		carnum2.setBounds(138, 176, 134, 28);
+		add(carnum2);
+		
+		supervisor2 = new JTextField();
+		supervisor2.setEditable(false);
+		supervisor2.setColumns(10);
+		supervisor2.setBounds(138, 233, 134, 28);
+		add(supervisor2);
+		
+		escort2 = new JTextField();
+		escort2.setEditable(false);
+		escort2.setColumns(10);
+		escort2.setBounds(138, 298, 134, 28);
+		add(escort2);
+		
+		destination2 = new JTextField();
+		destination2.setEditable(false);
+		destination2.setColumns(10);
+		destination2.setBounds(456, 48, 134, 28);
+		add(destination2);
 		
 		JLabel label_5 = new JLabel("到达地");
-		label_5.setBounds(234, 28, 61, 16);
-		panel.add(label_5);
+		label_5.setBounds(383, 54, 61, 16);
+		add(label_5);
 		
-		textField_8 = new JTextField();
-		textField_8.setEnabled(false);
-		textField_8.setColumns(10);
-		textField_8.setBounds(298, 22, 134, 29);
-		panel.add(textField_8);
+		name = new Vector();
+		name.add("条形码");
+		data = new Vector();
+		model = new DefaultTableModel();
+		model.setDataVector(data, name);
+		table = new JTable(model);
+		table.setBounds(383, 120, 206, 234);
+		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(383, 120, 206, 234);
+		add(scrollPane);
 		
-		JLabel label_6 = new JLabel("汽运编号");
-		label_6.setBounds(25, 86, 61, 16);
-		panel.add(label_6);
 		
-		JLabel label_7 = new JLabel("车辆代号");
-		label_7.setBounds(25, 136, 61, 16);
-		panel.add(label_7);
+	
 		
-		JLabel label_8 = new JLabel("监装员");
-		label_8.setBounds(25, 182, 61, 16);
-		panel.add(label_8);
+		JButton button = new JButton("提交");
+		button.setBounds(506, 378, 117, 29);
+		add(button);
 		
-		JLabel label_9 = new JLabel("押运员");
-		label_9.setBounds(25, 236, 61, 16);
-		panel.add(label_9);
+		JLabel label_6 = new JLabel("日期");
+		label_6.setBounds(842, 54, 61, 16);
+		add(label_6);
 		
-		textField_9 = new JTextField();
-		textField_9.setEnabled(false);
-		textField_9.setColumns(10);
-		textField_9.setBounds(86, 80, 134, 29);
-		panel.add(textField_9);
+		JLabel label_7 = new JLabel("到达地");
+		label_7.setBounds(842, 94, 61, 16);
+		add(label_7);
 		
-		textField_10 = new JTextField();
-		textField_10.setEnabled(false);
-		textField_10.setColumns(10);
-		textField_10.setBounds(88, 130, 134, 29);
-		panel.add(textField_10);
+		JLabel label_8 = new JLabel("汽运编号");
+		label_8.setBounds(842, 139, 61, 16);
+		add(label_8);
 		
-		textField_11 = new JTextField();
-		textField_11.setEnabled(false);
-		textField_11.setColumns(10);
-		textField_11.setBounds(88, 176, 134, 29);
-		panel.add(textField_11);
+		JLabel label_9 = new JLabel("车辆代号");
+		label_9.setBounds(842, 182, 61, 16);
+		add(label_9);
 		
-		textField_12 = new JTextField();
-		textField_12.setEnabled(false);
-		textField_12.setColumns(10);
-		textField_12.setBounds(88, 230, 134, 29);
-		panel.add(textField_12);
+		JLabel label_10 = new JLabel("监装员");
+		label_10.setBounds(842, 223, 61, 16);
+		add(label_10);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setViewportBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		scrollPane.setBounds(274, 86, 172, 216);
-		panel.add(scrollPane);
+		JLabel label_11 = new JLabel("押运员");
+		label_11.setBounds(842, 262, 61, 16);
+		add(label_11);
 		
-		table = new JTable();
-		scrollPane.setViewportView(table);
+		date1 = new JTextField();
+		date1.setEnabled(false);
+		date1.setColumns(10);
+		date1.setBounds(930, 48, 134, 28);
+		add(date1);
 		
-		JButton button_2 = new JButton("提交");
-		button_2.setBounds(329, 339, 117, 30);
-		panel.add(button_2);
+		destination1 = new JTextField();
+		destination1.setEnabled(false);
+		destination1.setColumns(10);
+		destination1.setBounds(930, 88, 134, 28);
+		add(destination1);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new EtchedBorder(EtchedBorder.RAISED, Color.LIGHT_GRAY, Color.LIGHT_GRAY));
-		panel_1.setBounds(489, 0, 249, 390);
-		add(panel_1);
-		panel_1.setLayout(null);
+		trucknum1 = new JTextField();
+		trucknum1.setEnabled(false);
+		trucknum1.setColumns(10);
+		trucknum1.setBounds(930, 133, 134, 28);
+		add(trucknum1);
 		
-		JLabel lblNewLabel = new JLabel("日期");
-		lblNewLabel.setBounds(6, 19, 61, 16);
-		panel_1.add(lblNewLabel);
+		carnum = new JTextField();
+		carnum.setEnabled(false);
+		carnum.setColumns(10);
+		carnum.setBounds(930, 176, 134, 28);
+		add(carnum);
 		
-		textField = new JTextField();
-		textField.setBounds(79, 13, 134, 29);
-		panel_1.add(textField);
-		textField.setColumns(10);
+		supervisor1 = new JTextField();
+		supervisor1.setEnabled(false);
+		supervisor1.setColumns(10);
+		supervisor1.setBounds(930, 217, 134, 28);
+		add(supervisor1);
 		
-		JLabel label = new JLabel("汽运编号");
-		label.setBounds(6, 54, 61, 16);
-		panel_1.add(label);
+		escort1 = new JTextField();
+		escort1.setEnabled(false);
+		escort1.setColumns(10);
+		escort1.setBounds(930, 256, 134, 28);
+		add(escort1);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(79, 48, 134, 29);
-		panel_1.add(textField_1);
+		JButton button_1 = new JButton("确认");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				service = new LoadNoteOnTransitBLService_Stub();
+				LoadNoteOnTransitVO vo = new LoadNoteOnTransitVO(date1.getText(), trucknum1.getText(),destination1.getText(), 
+						carnum.getText(),supervisor1.getText(), escort1.getText(), null);
+				res = service.inputCenterLoadDoc(vo);
+				if(res.isPass()){
+					date2.setText(date1.getText());
+					trucknum2.setText(trucknum1.getText());
+					destination2.setText(destination1.getText());
+					carnum2.setText(carnum.getText());
+					supervisor2.setText(supervisor1.getText());
+					escort2.setText(escort1.getText());					
+				}else{
+					checkstyleDialog checkstyle = new checkstyleDialog(res.getMessage());
+					checkstyle.setVisible(true);
+				}
+				
+				
+			}
+		});
+		button_1.setBounds(1009, 299, 117, 29);
+		add(button_1);
 		
-		JLabel lblNewLabel_1 = new JLabel("车辆代号");
-		lblNewLabel_1.setBounds(6, 95, 61, 16);
-		panel_1.add(lblNewLabel_1);
+		JLabel label_12 = new JLabel("条形码");
+		label_12.setBounds(842, 338, 61, 16);
+		add(label_12);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(79, 89, 134, 29);
-		panel_1.add(textField_2);
+		addbarcode = new JTextField();
+		addbarcode.setBounds(930, 340, 134, 28);
+		add(addbarcode);
+		addbarcode.setColumns(10);
 		
-		JLabel label_1 = new JLabel("监装员");
-		label_1.setBounds(6, 136, 61, 16);
-		panel_1.add(label_1);
-		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(79, 130, 134, 29);
-		panel_1.add(textField_3);
-		
-		JLabel label_2 = new JLabel("押运员");
-		label_2.setBounds(6, 175, 61, 16);
-		panel_1.add(label_2);
-		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(79, 169, 134, 29);
-		panel_1.add(textField_4);
-		
-		JLabel label_3 = new JLabel("到达地");
-		label_3.setBounds(6, 214, 61, 16);
-		panel_1.add(label_3);
-		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(79, 208, 134, 29);
-		panel_1.add(textField_5);
-		
-		JButton button = new JButton("确认");
-		button.setBounds(126, 258, 117, 30);
-		panel_1.add(button);
-		
-		JLabel label_4 = new JLabel("条形码");
-		label_4.setBounds(6, 307, 61, 16);
-		panel_1.add(label_4);
-		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(79, 301, 134, 29);
-		panel_1.add(textField_6);
-		
-		JButton button_1 = new JButton("添加");
-		button_1.setBounds(126, 339, 117, 29);
-		panel_1.add(button_1);
+		JButton button_2 = new JButton("添加");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ArrayList<String> barcode = new ArrayList<String>();
+				service = new LoadNoteOnTransitBLService_Stub();
+				barcode.add(addbarcode.getText());
+				LoadNoteOnTransitVO vo = new LoadNoteOnTransitVO(date2.getText(), trucknum2.getText(),destination2.getText(), 
+						carnum2.getText(),supervisor2.getText(), escort2.getText(), barcode);
+				res = service.inputCenterLoadDoc(vo);
+				if(res.isPass()){
+					Vector row = new Vector();
+					row.add(addbarcode.getText());
+					data.add(row.clone());
+					model.setDataVector(data, name);
+					table.setModel(model);
+					
+				}
+				else{
+					checkstyleDialog checkstyle = new checkstyleDialog(res.getMessage());
+					checkstyle.setVisible(true);
+				}
+				
+				
+			}
+		});
+		button_2.setBounds(1009, 378, 117, 29);
+		add(button_2);
 
 	}
-
+	
+	public void paintComponent(Graphics g) {
+		 super.paintComponents(g);
+		 //ImageIcon img = new ImageIcon("C:\\Users\\Administrator\\Desktop\\0011.jpg");
+		// g.drawImage(img.getImage(), 0, 0, null);
+		 float lineWidth = 3.0f;
+	      ((Graphics2D)g).setStroke(new BasicStroke(lineWidth));
+	      g.drawLine(768, 0, 768, 500);
+		}
 }

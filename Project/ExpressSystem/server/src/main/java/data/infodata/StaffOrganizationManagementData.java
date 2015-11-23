@@ -12,6 +12,8 @@ import dataservice.infodataservice.StaffOrganizationManagementDataService;
 public class StaffOrganizationManagementData implements
 		StaffOrganizationManagementDataService {
 
+	private static final long serialVersionUID = 5173539351377111629L;
+
 	public StaffOrganizationManagementData() {
 		 
 	}
@@ -48,22 +50,6 @@ public class StaffOrganizationManagementData implements
 	}
 
 	@Override
-	public boolean modifyStaff(StaffPO original, StaffPO modified)
-			throws RemoteException, ElementNotFoundException,
-			InterruptWithExistedElementException {
-		  
-		return false;
-	}
-
-	@Override
-	public boolean modifyOrganization(OrganizationPO original,
-			OrganizationPO modified) throws RemoteException,
-			ElementNotFoundException, InterruptWithExistedElementException {
-		  
-		return false;
-	}
-
-	@Override
 	public ArrayList<StaffPO> findStaff(StaffPO info) throws RemoteException,
 			ElementNotFoundException {
 		  
@@ -88,6 +74,21 @@ public class StaffOrganizationManagementData implements
 			throws RemoteException {
 		  
 		return null;
+	}
+
+	@Override
+	public boolean modifyStaff(StaffPO staff) throws RemoteException,
+			ElementNotFoundException, InterruptWithExistedElementException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean modifyOrganization(OrganizationPO org)
+			throws RemoteException, ElementNotFoundException,
+			InterruptWithExistedElementException {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

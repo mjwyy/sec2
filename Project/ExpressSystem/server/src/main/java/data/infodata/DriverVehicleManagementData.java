@@ -11,6 +11,8 @@ import dataservice.infodataservice.DriverVehicleManagementDataService;
 
 public class DriverVehicleManagementData implements DriverVehicleManagementDataService{
 
+	private static final long serialVersionUID = -5119026736015127919L;
+
 	@Override
 	public boolean addDriver(DriverPO driver) throws RemoteException,
 			InterruptWithExistedElementException {
@@ -32,22 +34,6 @@ public class DriverVehicleManagementData implements DriverVehicleManagementDataS
 	@Override
 	public boolean removeVehicle(VehiclePO vehicle) throws RemoteException,
 			ElementNotFoundException {
-		 
-		return false;
-	}
-
-	@Override
-	public boolean modifyDriver(DriverPO originalDriver, DriverPO modified)
-			throws RemoteException, ElementNotFoundException,
-			InterruptWithExistedElementException {
-		 
-		return false;
-	}
-
-	@Override
-	public boolean modifyVehicle(VehiclePO originalVehicle, VehiclePO modified)
-			throws RemoteException, ElementNotFoundException,
-			InterruptWithExistedElementException {
 		 
 		return false;
 	}
@@ -76,6 +62,19 @@ public class DriverVehicleManagementData implements DriverVehicleManagementDataS
 			throws RemoteException {
 		 
 		return null;
+	}
+
+	@Override
+	public boolean modifyDriver(DriverPO driver) throws RemoteException,
+			ElementNotFoundException, InterruptWithExistedElementException {
+		return false;
+	}
+
+	@Override
+	public boolean modifyVehicle(VehiclePO originalVehicle)
+			throws RemoteException, ElementNotFoundException,
+			InterruptWithExistedElementException {
+		return false;
 	}
 
 }

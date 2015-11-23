@@ -3,6 +3,8 @@ package po;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import vo.OrganizationInfoVO;
+
 /**
  * 对机构增删改查时的PO
  * @author River
@@ -56,6 +58,10 @@ public class OrganizationPO implements Serializable {
 	}
 	public ArrayList<StaffPO> getStaff() {
 		return staff;
+	}
+	public Object toVO() {
+		// TODO 写个转VO
+		return null;
 	}
 	
 }

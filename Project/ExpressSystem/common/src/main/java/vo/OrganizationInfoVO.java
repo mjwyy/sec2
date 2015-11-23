@@ -2,6 +2,8 @@ package vo;
 
 import java.util.ArrayList;
 
+import util.ResultMsg;
+
 public class OrganizationInfoVO {
 	
 	/**
@@ -51,5 +53,14 @@ public class OrganizationInfoVO {
 		return staffinfo;
 	}
 
+	public ResultMsg checkFormat() {
+		//TODO Fill up!
+		return null;
+	}
+	
+	public Object toPO() {
+		//TODO Fill up too!
+		return null;
+	}
 
 }

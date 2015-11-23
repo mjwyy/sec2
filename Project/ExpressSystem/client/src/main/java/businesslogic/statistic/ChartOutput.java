@@ -7,6 +7,7 @@ import org.apache.poi.hssf.usermodel.*;
 import po.ChartPO;
 import po.chart.BusinessStateChartPO;
 import po.chart.CostAndProfitChartPO;
+import util.FormatCheck;
 import util.ResultMsg;
 import util.enums.ChartType;
 import vo.BusinessStateChartVO;
@@ -15,7 +16,10 @@ import vo.CostAndProfitChartVO;
 
 import java.io.FileOutputStream;
 import java.rmi.RemoteException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by kylin on 15/11/17.
@@ -40,11 +44,27 @@ public class ChartOutput implements ChartOutputBLService {
 
     @Override
     public ResultMsg enquiryChart(ChartType chartType, String time1, String time2) {
-        this.inputChartVO = new ChartVO(chartType,time1,time2);
-        ResultMsg formatCheck = inputChartVO.checkFormat();
-        if(formatCheck.isPass())
+        ResultMsg result = new ResultMsg(true);
+        ResultMsg results[] = new ResultMsg[2];
+        results[0] = FormatCheck.isDate(time1);
+        results[1] = FormatCheck.isDate(time2);
+        for(int i = 0; i<results.length; i++){
+            if(!results[i].isPass())
+                return results[i];
+        }
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date startDay = dateFormat.parse(time1);
+            Date endDay = dateFormat.parse(time2);
+            if(startDay.before(endDay))
+                return new ResultMsg(false,"起点日期不能在终点日期之后!");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        if(result.isPass()){
             this.getChartVO(chartType,time1,time2);
-        return formatCheck;
+        }
+        return result;
     }
 
     @Override

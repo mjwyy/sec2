@@ -30,6 +30,13 @@
           <artifactId>poi</artifactId>
           <version>3.9</version>
       </dependency>
+      <dependency>
+          <groupId>beautyeye</groupId>
+          <artifactId>beautyeye_lnf</artifactId>
+          <version>1.0.0</version>
+          <scope>system</scope>
+          <systemPath>${project.basedir}/lib/beautyeye_lnf.jar</systemPath>
+      </dependency>
   </dependencies>
   
 </project>

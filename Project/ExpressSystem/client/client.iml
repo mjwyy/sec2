@@ -17,5 +17,14 @@
     <orderEntry type="module" module-name="common" />
     <orderEntry type="library" name="Maven: org.apache.poi:poi:3.9" level="project" />
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.5" level="project" />
+    <orderEntry type="module-library">
+      <library name="Maven: beautyeye:beautyeye_lnf:1.0.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/beautyeye_lnf.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

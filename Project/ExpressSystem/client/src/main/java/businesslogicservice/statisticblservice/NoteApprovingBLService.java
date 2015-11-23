@@ -41,13 +41,6 @@ public interface NoteApprovingBLService {
 	public void passDoc(NoteVO docVO);
 	
 	/**
-	 * 否决一个单据
-	 *
-	 * @param docVO
-	 */
-	public void failDoc(NoteVO docVO);
-	
-	/**
 	 * 对否决对单据输入审批意见
 	 *
 	 * @param advice

@@ -17,14 +17,7 @@ public interface ReceivingNoteInputDataService extends Remote, Serializable {
 	 * 在数据库中增加一个po记录
 	 */
 	public boolean insert(ReceivingNotePO po) throws RemoteException;
-	/**
-	 * 在数据库中删除一个po记录
-	 */
-	public boolean delete(ReceivingNotePO po) throws RemoteException;
-	/**
-	 * 在数据库中更新一个po记录
-	 */
-	public boolean update(ReceivingNotePO po) throws RemoteException;
+
 	/**
 	 * 查找返回相应的ReceivingNoteInputPO结果
 	 */

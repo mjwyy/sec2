@@ -17,16 +17,6 @@ public class LoadNoteOnTransitData implements LoadNoteOnTransitDataService {
     }
 
     @Override
-    public boolean delete(LoadNoteOnTransitPO po) throws RemoteException {
-        return false;
-    }
-
-    @Override
-    public boolean update(LoadNoteOnTransitPO po) throws RemoteException {
-        return false;
-    }
-
-    @Override
     public ArrayList<LoadNoteOnTransitPO> find(LoadNoteOnTransitPO po) throws RemoteException {
 
         LoadNoteOnTransitPO pox = new LoadNoteOnTransitPO(null,null,null,null,null,null,null, null);

@@ -42,17 +42,11 @@ public class LoadNoteOnTransitDataService_Driver {
         service.findAll();
         service.find(po1);
         service.find(po2);
-        if(service.delete(po1))
-        	System.out.println("delete succeed");
-        else
-        	System.out.println("delete failed");
+
         service.findAll();
         po2 = new LoadNoteOnTransitPO("2015-10-23","025100120151023000003","西藏","苏B 00001",
                 "李沪东","吴大爷","",codes2);
-        if(service.update(po2))
-        	System.out.println("update succeed");
-        else
-        	System.out.println("update failed");
+
         service.findAll();
     }
 

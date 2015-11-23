@@ -17,16 +17,6 @@ public class TransitNoteInputData implements TransitNoteInputDataService {
     }
 
     @Override
-    public boolean delete(TransitNotePO po) throws RemoteException {
-        return false;
-    }
-
-    @Override
-    public boolean update(TransitNotePO po) throws RemoteException {
-        return false;
-    }
-
-    @Override
     public ArrayList<TransitNotePO> find(TransitNotePO po) throws RemoteException {
         TransitNotePO pox = new TransitNotePO(null,null,null,null,null,null,null,null);
         ArrayList<TransitNotePO> list =  new ArrayList<TransitNotePO>();

@@ -17,16 +17,6 @@ public class LoadNoteOnServiceData implements LoadNoteOnServiceDataService {
     }
 
     @Override
-    public boolean delete(LoadNoteOnServicePO po) throws RemoteException {
-        return false;
-    }
-
-    @Override
-    public boolean update(LoadNoteOnServicePO po) throws RemoteException {
-        return false;
-    }
-
-    @Override
     public ArrayList<LoadNoteOnServicePO> find(LoadNoteOnServicePO po) throws RemoteException {
         LoadNoteOnServicePO pox = new LoadNoteOnServicePO(null,null,null,null,null,null,null,null);
         ArrayList<LoadNoteOnServicePO> list =  new ArrayList<LoadNoteOnServicePO>();

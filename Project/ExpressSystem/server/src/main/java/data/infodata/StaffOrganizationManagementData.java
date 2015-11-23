@@ -47,21 +47,15 @@ public class StaffOrganizationManagementData implements
 		return false;
 	}
 
-	@Override
-	public boolean modifyStaff(StaffPO original, StaffPO modified)
-			throws RemoteException, ElementNotFoundException,
-			InterruptWithExistedElementException {
-		  
-		return false;
-	}
+    @Override
+    public boolean modifyStaff(StaffPO staff) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException {
+        return false;
+    }
 
-	@Override
-	public boolean modifyOrganization(OrganizationPO original,
-			OrganizationPO modified) throws RemoteException,
-			ElementNotFoundException, InterruptWithExistedElementException {
-		  
-		return false;
-	}
+    @Override
+    public boolean modifyOrganization(OrganizationPO org) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException {
+        return false;
+    }
 
 	@Override
 	public ArrayList<StaffPO> findStaff(StaffPO info) throws RemoteException,

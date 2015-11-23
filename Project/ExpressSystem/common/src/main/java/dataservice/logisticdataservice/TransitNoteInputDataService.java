@@ -17,19 +17,11 @@ public interface TransitNoteInputDataService extends Remote, Serializable {
 	 * 在数据库中增加一个po记录
 	 */
 	public boolean insert(TransitNotePO po) throws RemoteException;
-	/**
-	 * 在数据库中删除一个po记录
-	 */
-	public boolean delete(TransitNotePO po) throws RemoteException;
-	/**
-	 * 在数据库中更新一个po记录
-	 */
-	public boolean update(TransitNotePO po) throws RemoteException;
+
 	/**
 	 * 查找返回相应的TransitNoteInputPO结果
 	 */
 	public ArrayList<TransitNotePO> find(TransitNotePO po) throws RemoteException;
-	
 	
 	/**
 	 * 返回所有的TransitNoteInputPO

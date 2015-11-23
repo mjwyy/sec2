@@ -12,19 +12,8 @@ import java.util.ArrayList;
  */
 public class ArrivalNoteOnServiceData implements ArrivalNoteOnServiceDataService {
 
-    //TODO 删除多余接口
     @Override
     public boolean insertArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException {
-        return false;
-    }
-
-    @Override
-    public boolean deleteArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException {
-        return false;
-    }
-
-    @Override
-    public boolean updateArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException {
         return false;
     }
 
@@ -40,16 +29,6 @@ public class ArrivalNoteOnServiceData implements ArrivalNoteOnServiceDataService
 
     @Override
     public boolean insertDeliverNote(DeliverNoteOnServicePO po) throws RemoteException {
-        return false;
-    }
-
-    @Override
-    public boolean deleteDeliverNote(DeliverNoteOnServicePO po) throws RemoteException {
-        return false;
-    }
-
-    @Override
-    public boolean updateDeliverNote(DeliverNoteOnServicePO po) throws RemoteException {
         return false;
     }
 

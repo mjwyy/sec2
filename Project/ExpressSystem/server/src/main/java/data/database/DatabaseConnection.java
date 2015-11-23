@@ -10,9 +10,9 @@ import java.sql.SQLException;
 public class DatabaseConnection {
 
     private static final String DB_DRIVER = "com.mysql.jdbc.Driver";
-    public static final String DB_URL = "jdbc:mysql://localhost:3306/Express";
-    public static final String DB_USER = "root";
-    public static final String DB_PASSWORD = "861910";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/Express";
+    private static final String DB_USER = "root";
+    private static final String DB_PASSWORD = "861910";
     private Connection connection;
 
     public DatabaseConnection(){

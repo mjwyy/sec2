@@ -17,16 +17,6 @@ public class ReceivingNoteInputData implements ReceivingNoteInputDataService {
     }
 
     @Override
-    public boolean delete(ReceivingNotePO po) throws RemoteException {
-        return false;
-    }
-
-    @Override
-    public boolean update(ReceivingNotePO po) throws RemoteException {
-        return false;
-    }
-
-    @Override
     public ArrayList<ReceivingNotePO> find(ReceivingNotePO po) throws RemoteException {
         ReceivingNotePO pox = new ReceivingNotePO(null,null,null);
         ArrayList<ReceivingNotePO> list =  new ArrayList<ReceivingNotePO>();

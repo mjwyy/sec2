@@ -46,7 +46,6 @@ public class SystemUserManagementBLService_Stub implements SystemUserManagementB
 
 	@Override
 	public ResultMsg modify(UserVO origunal, UserVO modified) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

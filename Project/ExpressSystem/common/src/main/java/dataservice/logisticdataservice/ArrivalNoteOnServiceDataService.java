@@ -16,19 +16,11 @@ import po.DeliverNoteOnServicePO;
 
 public interface ArrivalNoteOnServiceDataService extends Remote, Serializable {
 
-    // wTODO 数据层的接口过大问题
     /**
      * 在数据库中插入单一持久化对象
      */
     public boolean insertArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException;
-    /**
-     * 在数据库中删除单一持久化对象
-     */
-    public boolean deleteArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException;
-    /**
-     * 在数据库中更新单一持久化对象
-     */
-    public boolean updateArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException;
+
     /**
      * 按关键字进行查找返回相应的ArrivalNoteOnServicePO结果
      */
@@ -43,14 +35,6 @@ public interface ArrivalNoteOnServiceDataService extends Remote, Serializable {
      * 在数据库中插入单一持久化对象
      */
     public boolean insertDeliverNote(DeliverNoteOnServicePO po) throws RemoteException;
-    /**
-     * 在数据库中删除单一持久化对象
-     */
-    public boolean deleteDeliverNote(DeliverNoteOnServicePO po) throws RemoteException;
-    /**
-     * 在数据库中更新单一持久化对象
-     */
-    public boolean updateDeliverNote(DeliverNoteOnServicePO po) throws RemoteException;
 
     /**
      * 按关键字进行查找返回相应的ArrivalNoteOnServicePO结果

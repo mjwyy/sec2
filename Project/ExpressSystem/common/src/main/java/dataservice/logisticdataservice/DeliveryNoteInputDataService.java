@@ -27,14 +27,6 @@ public interface DeliveryNoteInputDataService extends Remote, Serializable {
     public PresumedMsg insertOrderPO(OrderPO po) throws RemoteException;
 
 	/**
-	 * 在数据库中删除一个po记录
-	 */
-	public boolean delete(DeliveryNotePO po) throws RemoteException;
-	/**
-	 * 在数据库中更新一个po记录
-	 */
-	public boolean update(DeliveryNotePO po) throws RemoteException;
-	/**
 	 * 查找返回相应的DeliveryNoteInputPO结果
 	 */
 	public ArrayList<DeliveryNotePO> find(DeliveryNotePO po) throws RemoteException;

@@ -42,17 +42,11 @@ public class LoadNoteOnServiceDataService_Driver {
         service.findAll();
         service.find(po1);
         service.find(po2);
-        if(service.delete(po1))
-        	System.out.println("delete succeed");
-        else
-        	System.out.println("delete failed");
+
         service.findAll();
         po2 = new LoadNoteOnServicePO("2015-10-23","0251001","0251001201510220002","西藏","苏A 00002","Tom Hanks",
                 "一只麟",codes);
-        if(service.update(po2))
-        	System.out.println("update succeed");
-        else
-        	System.out.println("update failed");
+
         service.findAll();
     }
 }

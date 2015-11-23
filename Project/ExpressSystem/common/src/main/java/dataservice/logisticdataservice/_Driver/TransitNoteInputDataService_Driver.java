@@ -44,15 +44,7 @@ public class TransitNoteInputDataService_Driver {
         service.findAll();
         service.find(po1);
         service.find(po2);
-        if(service.delete(po1))
-        	System.out.println("delete succeed");
-        else
-        	System.out.println("delete failed");
-        if(service.delete(po2))
-        	System.out.println("delete succeed");
-        else
-        	System.out.println("delete failed");
-        service.findAll();
+
     }
 
 }

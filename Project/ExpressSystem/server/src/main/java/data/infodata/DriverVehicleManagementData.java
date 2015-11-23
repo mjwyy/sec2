@@ -36,21 +36,15 @@ public class DriverVehicleManagementData implements DriverVehicleManagementDataS
 		return false;
 	}
 
-	@Override
-	public boolean modifyDriver(DriverPO originalDriver, DriverPO modified)
-			throws RemoteException, ElementNotFoundException,
-			InterruptWithExistedElementException {
-		 
-		return false;
-	}
+    @Override
+    public boolean modifyDriver(DriverPO driver) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException {
+        return false;
+    }
 
-	@Override
-	public boolean modifyVehicle(VehiclePO originalVehicle, VehiclePO modified)
-			throws RemoteException, ElementNotFoundException,
-			InterruptWithExistedElementException {
-		 
-		return false;
-	}
+    @Override
+    public boolean modifyVehicle(VehiclePO originalVehicle) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException {
+        return false;
+    }
 
 	@Override
 	public ArrayList<DriverPO> getAllDriver() throws RemoteException {

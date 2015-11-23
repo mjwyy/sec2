@@ -37,10 +37,7 @@ public class ArrivalNoteOnServiceDataService_Driver {
         arrivalNoteOnServiceDataService.findArrivalNote(arrivalNoteOnServicePO);
         arrivalNoteOnServiceDataService.findArrivalNote(arrivalNoteOnServicePO2);
         arrivalNoteOnServiceDataService.findAllArrivalNote();
-        if(arrivalNoteOnServiceDataService.deleteArrivalNote(arrivalNoteOnServicePO));
-        	System.out.println("delete succeed");
-        if(arrivalNoteOnServiceDataService.updateArrivalNote(arrivalNoteOnServicePO3));
-        	System.out.println("update succeed");
+
     }
 
     public static void main(String[] args) throws RemoteException {

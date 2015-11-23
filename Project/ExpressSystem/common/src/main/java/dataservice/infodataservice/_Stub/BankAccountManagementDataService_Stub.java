@@ -51,7 +51,6 @@ public class BankAccountManagementDataService_Stub implements BankAccountManagem
 	public boolean modifyBankAccount(BankAccountPO account)
 			throws RemoteException, ElementNotFoundException,
 			InterruptWithExistedElementException {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	

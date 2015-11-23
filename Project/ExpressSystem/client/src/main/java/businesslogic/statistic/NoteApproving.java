@@ -76,12 +76,6 @@ public class NoteApproving implements NoteApprovingBLService {
         }
     }
 
-    //TODO 接口方法多余
-    @Override
-    public void failDoc(NoteVO docVO) {
-
-    }
-
     @Override
     public void inputAdvice(NoteVO docVO, String advice) {
         try {

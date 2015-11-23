@@ -17,14 +17,7 @@ public interface ArrivalNoteOnTransitDataService extends Remote, Serializable {
 	 * 在数据库中增加一个po记录
 	 */
 	public boolean insert(ArrivalNoteOnTransitPO po) throws RemoteException;
-	/**
-	 * 在数据库中删除一个po记录
-	 */
-	public boolean delete(ArrivalNoteOnTransitPO po) throws RemoteException;
-	/**
-	 * 在数据库中更新一个po记录
-	 */
-	public boolean update(ArrivalNoteOnTransitPO po) throws RemoteException;
+
 	/**
 	 * 按关键字进行查找返回相应的ArrivalNoteOnTransitPO结果
 	 */

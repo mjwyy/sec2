@@ -7,8 +7,9 @@ import vo.VehicleVO;
 
 import java.util.ArrayList;
 
+import po.DriverPO;
+import po.VehiclePO;
 import connection.RemoteObjectGetter;
-import dataservice.commoditydataservice.StorageInDataService;
 import dataservice.infodataservice.DriverVehicleManagementDataService;
 
 /**
@@ -25,41 +26,139 @@ public class DriverVehicleManagement implements DriverVehicleManagementBLService
 	
     @Override
     public ResultMsg addVehicle(VehicleVO vo) {
-        return null;
+        ResultMsg msg = vo.checkFormat();
+        if(!msg.isPass()) return msg;
+        
+        try {
+        	boolean b = dataService.addVehicle((VehiclePO)vo.toPO());
+        	if(!b) return new ResultMsg(false,"添加车辆失败，请重试");
+        } catch (Exception e) {
+        	return new ResultMsg(false, e.getMessage());
+        }
+        
+        return new ResultMsg(true);
     }
 
     @Override
     public ResultMsg deleteVehicle(VehicleVO vo) {
-        return null;
+        ResultMsg msg = vo.checkFormat();
+        if(!msg.isPass()) return msg;
+        
+        try {
+        	boolean b = dataService.removeVehicle((VehiclePO)vo.toPO());
+        	if(!b) return new ResultMsg(false,"删除车辆失败，请重试");
+        } catch (Exception e) {
+        	return new ResultMsg(false, e.getMessage());
+        }
+        
+        return new ResultMsg(true);
     }
 
     @Override
     public ResultMsg modifyVehicle(VehicleVO vo) {
-        return null;
+        ResultMsg msg = vo.checkFormat();
+        if(!msg.isPass()) return msg;
+        
+        try {
+        	boolean b = dataService.modifyVehicle((VehiclePO)vo.toPO());
+        	if(!b) return new ResultMsg(false,"删除车辆失败，请重试");
+        } catch (Exception e) {
+        	return new ResultMsg(false, e.getMessage());
+        }
+        
+        return new ResultMsg(true);
     }
 
     @Override
     public ResultMsg addDriver(DriverVO vo) {
-        return null;
+        ResultMsg msg = vo.checkFormat();
+        if(!msg.isPass()) return msg;
+        
+        try {
+        	boolean b = dataService.addDriver((DriverPO) vo.toPO());
+        	if(!b) return new ResultMsg(false,"添加司机失败，请重试");
+        } catch (Exception e) {
+        	return new ResultMsg(false, e.getMessage());
+        }
+        
+        return new ResultMsg(true);
     }
 
     @Override
     public ResultMsg deleteDriver(DriverVO vo) {
-        return null;
+        ResultMsg msg = vo.checkFormat();
+        if(!msg.isPass()) return msg;
+        
+        try {
+        	boolean b = dataService.removeDriver((DriverPO) vo.toPO());
+        	if(!b) return new ResultMsg(false,"删除司机信息失败，请重试");
+        } catch (Exception e) {
+        	return new ResultMsg(false, e.getMessage());
+        }
+        
+        return new ResultMsg(true);
     }
 
     @Override
     public ResultMsg modifyDriver(DriverVO vo) {
-        return null;
+        ResultMsg msg = vo.checkFormat();
+        if(!msg.isPass()) return msg;
+        
+        try {
+        	boolean b = dataService.modifyDriver((DriverPO) vo.toPO());
+        	if(!b) return new ResultMsg(false,"修改司机信息失败，请重试");
+        } catch (Exception e) {
+        	return new ResultMsg(false, e.getMessage());
+        }
+        
+        return new ResultMsg(true);
     }
 
     @Override
     public ArrayList<VehicleVO> findVehicle(VehicleVO vo) {
-        return null;
+    	ArrayList<VehicleVO> result = new ArrayList<>();
+    	ArrayList<VehiclePO> get = null;
+    	
+    	try {
+    		if(vo==null){
+    			get = dataService.getAllVehicles();
+    		}else{
+    			get = dataService.inquireVehicle((VehiclePO) vo.toPO());
+    		}
+    	} catch (Exception e) {
+    		System.err.println("获取车辆信息失败：");
+    		System.err.println(e.getMessage());
+    		return result;
+    	}
+    	
+    	for(VehiclePO po:get) {
+    		result.add((VehicleVO) po.toVO());
+    	}
+    	
+    	return result;
     }
 
     @Override
     public ArrayList<DriverVO> findDriver(DriverVO vo) {
-        return null;
+        ArrayList<DriverVO> result = new ArrayList<>();
+        ArrayList<DriverPO> get = null;
+        
+        try {
+        	if(vo==null) {
+        		get = dataService.getAllDriver();
+        	} else {
+        		get = dataService.inquireDriver((DriverPO) vo.toPO());
+        	}
+        } catch (Exception e) {
+    		System.err.println("获取司机信息失败：");
+    		System.err.println(e.getMessage());
+    		return result;
+        }
+        
+        for(DriverPO po:get) {
+        	result.add((DriverVO) po.toVO());
+        }
+        
+        return result;
     }
 }

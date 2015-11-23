@@ -36,8 +36,8 @@ public class StaffOrganizationMangaementDataService_Driver {
 		somDataService.addStaff(staffPO2);
 		somDataService.removeStaff(staffPO1);
 		somDataService.removeOrganization(orPO);
-		somDataService.modifyOrganization(orPO, orPO);
-		somDataService.modifyStaff(staffPO1, staffPO2);
+		somDataService.modifyOrganization(orPO);
+		somDataService.modifyStaff(staffPO1);
 		somDataService.findStaff(new StaffPO(null, null, null, null, 0, null, null, 0));
 		somDataService.findOrganization(new OrganizationPO(null, null, null, null));	
 		
@@ -61,11 +61,11 @@ public class StaffOrganizationMangaementDataService_Driver {
     	        System.out.println("success");
         else
       	    System.out.println("fail");
-	    if(somDataService.modifyOrganization(orPO, orPO))
+	    if(somDataService.modifyOrganization(orPO))
     	        System.out.println("success");
         else
       	    System.out.println("fail");
-	    if(somDataService.modifyStaff(staffPO1, staffPO2))
+	    if(somDataService.modifyStaff(staffPO1))
     	        System.out.println("success");
         else
       	    System.out.println("fail");

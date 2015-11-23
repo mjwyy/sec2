@@ -29,10 +29,10 @@ public interface StaffOrganizationManagementBLService {
 	
 	/**
 	 * 修改人员信息
-	 * @param vo
+	 * @param vo--IDCardNumber为唯一标识符不可修改，其它根据IDCard进行人员辨认
 	 * @return
 	 */
-	public ResultMsg ModifyStaff(StaffVO original,StaffVO modified);
+	public ResultMsg ModifyStaff(StaffVO staff);
 	
 	/**
 	 * 关键字查找人员信息
@@ -57,7 +57,7 @@ public interface StaffOrganizationManagementBLService {
 	
 	/**
 	 * 修改机构信息
-	 * @param vo
+	 * @param vo--编号为唯一标识符，不可修改，其它属性可改
 	 * @return
 	 */
 	public ResultMsg ModifyOrganization(OrganizationInfoVO vo);

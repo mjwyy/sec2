@@ -68,11 +68,4 @@ public class StaffOrganizationManagementBLService_Stub implements StaffOrganizat
 		return new ArrayList<OrganizationInfoVO>();
 	}
 
-
-	@Override
-	public ResultMsg ModifyStaff(StaffVO original, StaffVO modified) {
-		// TODO Auto-generated method stub
-		return null;
-	};
-
 }

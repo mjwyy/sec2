@@ -1,5 +1,7 @@
 package vo;
 
+import util.ResultMsg;
+
 public class DriverVO {
 	
 	/**
@@ -84,5 +86,15 @@ public class DriverVO {
 
 	public String getDrvingLicencePeriod() {
 		return drvingLicencePeriod;
+	}
+	
+	public Object toPO(){
+		return null;
+		//TODO Fill up!
+	}
+	
+	public ResultMsg checkFormat(){
+		return null;
+		//TODO So it is!
 	}
 }

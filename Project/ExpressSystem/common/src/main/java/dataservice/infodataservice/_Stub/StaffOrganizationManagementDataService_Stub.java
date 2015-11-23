@@ -40,20 +40,6 @@ public class StaffOrganizationManagementDataService_Stub implements StaffOrganiz
 		return true;
 	}
 
-	public boolean modifyStaff(StaffPO original, StaffPO modified)
-			throws RemoteException, ElementNotFoundException,
-			InterruptWithExistedElementException {
-		System.out.println("modify success");
-		return true;
-	}
-
-	public boolean modifyOrganization(OrganizationPO original,
-			OrganizationPO modified) throws RemoteException,
-			ElementNotFoundException, InterruptWithExistedElementException {
-		System.out.println("modify success");
-		return true;
-	}
-
 	public ArrayList<StaffPO> getAllStaff() throws RemoteException {
 		System.out.println("get success");
 		return null;
@@ -75,6 +61,21 @@ public class StaffOrganizationManagementDataService_Stub implements StaffOrganiz
 			throws RemoteException, ElementNotFoundException {
 		System.out.println("find success");
 		return null;
+	}
+
+	@Override
+	public boolean modifyStaff(StaffPO staff) throws RemoteException,
+			ElementNotFoundException, InterruptWithExistedElementException {
+		System.out.println("Modify success!");
+		return true;
+	}
+
+	@Override
+	public boolean modifyOrganization(OrganizationPO org)
+			throws RemoteException, ElementNotFoundException,
+			InterruptWithExistedElementException {
+		System.out.println("Modify success!");
+		return true;
 	}
 	
     

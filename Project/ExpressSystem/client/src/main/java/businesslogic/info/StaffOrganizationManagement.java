@@ -7,6 +7,7 @@ import vo.StaffVO;
 
 import java.util.ArrayList;
 
+import po.OrganizationPO;
 import po.StaffPO;
 import connection.RemoteObjectGetter;
 import dataservice.commoditydataservice.StorageInDataService;
@@ -57,15 +58,13 @@ public class StaffOrganizationManagement implements StaffOrganizationManagementB
     }
 
     @Override
-    public ResultMsg ModifyStaff(StaffVO original,StaffVO modified) {
-    	ResultMsg msg = original.checkFormat();
-        if(!msg.isPass()) return msg;
-        msg = modified.checkFormat();
+    public ResultMsg ModifyStaff(StaffVO staff) {
+    	ResultMsg msg = staff.checkFormat();
         if(!msg.isPass()) return msg;
         
         
         try {
-        	boolean b = dataService.modifyStaff((StaffPO) original.toPO(),(StaffPO) modified.toPO());
+        	boolean b = dataService.modifyStaff((StaffPO) staff.toPO());
         	if(!b) return new ResultMsg(false,"修改失败，请重试");
         } catch (Exception e) {
         	return new ResultMsg(false, e.getMessage());
@@ -89,7 +88,7 @@ public class StaffOrganizationManagement implements StaffOrganizationManagementB
     	}
     	
     	for(StaffPO po:get) {
-    		result.add((StaffVO) po.toVO());//Now returns null and throws exception
+    		result.add((StaffVO) po.toVO());//TODO Now returns null and throws exception
     	}
     	
         return result;
@@ -97,26 +96,81 @@ public class StaffOrganizationManagement implements StaffOrganizationManagementB
 
     @Override
     public ResultMsg addOrganization(OrganizationInfoVO vo) {
-        return null;
+    	
+    	ResultMsg msg = vo.checkFormat();
+    	if(!msg.isPass()) return msg;
+    	
+    	try {
+    		boolean b = dataService.addOrganization((OrganizationPO) vo.toPO());
+    		if(!b) return new ResultMsg(false,"添加机构失败，请重试");
+    	} catch (Exception e) {
+    		return new ResultMsg(false, e.getMessage());
+    	}
+    	
+        return new ResultMsg(true);
     }
 
     @Override
     public ResultMsg delOrganization(OrganizationInfoVO vo) {
-        return null;
+    	
+    	ResultMsg msg = vo.checkFormat();
+    	if(!msg.isPass()) return msg;
+    	
+    	try {
+    		boolean b = dataService.removeOrganization((OrganizationPO) vo.toPO());
+    		if(!b) return new ResultMsg(false,"删除机构失败，请重试");
+    	} catch (Exception e) {
+    		return new ResultMsg(false, e.getMessage());
+    	}
+    	
+        return new ResultMsg(true);
+        
     }
 
     @Override
     public ResultMsg ModifyOrganization(OrganizationInfoVO vo) {
-        return null;
+    	
+    	ResultMsg msg = vo.checkFormat();
+    	if(!msg.isPass()) return msg;
+    	
+    	try {
+    		boolean b = dataService.modifyOrganization((OrganizationPO) vo.toPO());
+    		if(!b) return new ResultMsg(false,"删除机构失败，请重试");
+    	} catch (Exception e) {
+    		return new ResultMsg(false, e.getMessage());
+    	}
+    	
+        return new ResultMsg(true);
+        
     }
 
     @Override
     public ArrayList<OrganizationInfoVO> findOrgInfo(OrganizationInfoVO vo) {
-        return null;
+    	
+    	ArrayList<OrganizationInfoVO> result = new ArrayList<>();
+    	ArrayList<OrganizationPO> get = null;
+    	
+    	try {
+    		if(vo==null) {
+    			get = dataService.getAllOrganizations();
+    		} else {
+    			get = dataService.findOrganization((OrganizationPO) vo.toPO());
+    		}
+    	} catch (Exception e) {
+    		System.err.println("获取机构信息失败：");
+    		System.err.println(e.getMessage());
+    		return result;
+    	}
+    	
+    	for(OrganizationPO po:get){
+    		result.add((OrganizationInfoVO) po.toVO());
+    	}
+    	
+        return result;
     }
 
     @Override
     public ArrayList<OrganizationInfoVO> showAll() {
-        return null;
+    	return findOrgInfo(null);
     }
 }

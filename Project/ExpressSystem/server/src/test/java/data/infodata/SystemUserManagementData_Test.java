@@ -3,6 +3,7 @@ package data.infodata;
 import static junit.framework.TestCase.assertEquals;
 
 import java.rmi.RemoteException;
+<<<<<<< HEAD
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -21,20 +22,49 @@ public class SystemUserManagementData_Test {
 	public void testAddUser() throws Exception {
 		UserPO po = new UserPO("toDelete","sbsbsb",5);
         SystemUserManagementDataService service = DatabaseFactory.getSystemUserManagementDataInstance();
+=======
+import java.util.ArrayList;
+
+import data.dao.DatabaseFactoryMysqlImpl;
+import data.dao.DatabaseFactory;
+import dataservice.infodataservice.SystemUserManagementDataService;
+
+import po.UserPO;
+
+public class SystemUserManagementData_Test {
+    DatabaseFactory databaseFactory;
+
+    public SystemUserManagementData_Test() throws RemoteException {
+        databaseFactory = DatabaseFactoryMysqlImpl.getInstance();
+    }
+
+    //	@Test
+	public void testAddUser() throws Exception {
+		UserPO po = new UserPO("toDelete","sbsbsb",5);
+        SystemUserManagementDataService service = databaseFactory.getSystemUserManagementDataService();
+>>>>>>> master
 		assertEquals(true,service.addUser(po));
 	}
 
 //	@Test
 	public void testRemoveUser() throws Exception {
         UserPO po = new UserPO("test1",null,0);
+<<<<<<< HEAD
         SystemUserManagementDataService service = DatabaseFactory.getSystemUserManagementDataInstance();
+=======
+        SystemUserManagementDataService service = databaseFactory.getSystemUserManagementDataService();
+>>>>>>> master
         assertEquals(true,service.removeUser(po));
 	}
 
 //    @Test
     public void testInquireUser() throws Exception {
         UserPO a=new UserPO("admin",null,0);
+<<<<<<< HEAD
         SystemUserManagementDataService service = DatabaseFactory.getSystemUserManagementDataInstance();
+=======
+        SystemUserManagementDataService service = databaseFactory.getSystemUserManagementDataService();
+>>>>>>> master
         ArrayList<UserPO> result = service.inquireUser(a);
         for (UserPO po2:result) {
             System.out.println(po2);
@@ -43,7 +73,11 @@ public class SystemUserManagementData_Test {
 
 //	@Test
 	public void testGetAllUsers() throws Exception {
+<<<<<<< HEAD
         SystemUserManagementDataService service = DatabaseFactory.getSystemUserManagementDataInstance();
+=======
+        SystemUserManagementDataService service = databaseFactory.getSystemUserManagementDataService();
+>>>>>>> master
         ArrayList<UserPO> result = service.getAllUsers();
         for (UserPO po2:result) {
             System.out.println(po2);

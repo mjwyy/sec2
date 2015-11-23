@@ -18,12 +18,7 @@ public class ChartOutputBLService_Driver {
 		}else{
 			System.out.println("Null return");
 		}
-		
-		if(service.exportChart("C:/").isPass()){
-			System.out.println("Passed");
-		}else{
-			System.out.println("Failed");
-		}
+
 		
 	}
 }

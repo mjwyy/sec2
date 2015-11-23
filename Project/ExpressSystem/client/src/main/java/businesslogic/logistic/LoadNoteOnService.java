@@ -38,6 +38,10 @@ public class LoadNoteOnService implements LoadNoteOnServiceBLService {
             this.dataService.insert(this.po);
         } catch (RemoteException e) {
             e.printStackTrace();
+<<<<<<< HEAD
+=======
+            return new ResultMsg(false,e.getMessage());
+>>>>>>> master
         }
         return new ResultMsg(true,"营业厅装车单已提交!");
     }

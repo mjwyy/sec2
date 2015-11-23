@@ -31,6 +31,11 @@ public class StorageInquiryAll implements StorageInquiryAllBLService {
 	
     @Override
     public ResultMsg inputFirst(String firstTime) {
+<<<<<<< HEAD
+=======
+    	//TODO 要先修改数据层接口！
+    	
+>>>>>>> master
         ResultMsg msg = FormatCheck.isDate(firstTime);
         
         if(!msg.isPass()) {
@@ -46,7 +51,11 @@ public class StorageInquiryAll implements StorageInquiryAllBLService {
     @Override
     public ArrayList<InventoryVO> request() {
     	
+<<<<<<< HEAD
     	
+=======
+    	//TODO 要修改数据层接口：增加一个传入用户账户信息的参数
+>>>>>>> master
     	
         return null;
     }

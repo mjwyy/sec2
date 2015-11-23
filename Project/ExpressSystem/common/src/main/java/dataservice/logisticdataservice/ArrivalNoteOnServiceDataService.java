@@ -5,6 +5,10 @@
  */
 package dataservice.logisticdataservice;
 
+<<<<<<< HEAD
+=======
+import java.io.Serializable;
+>>>>>>> master
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -13,9 +17,15 @@ import po.ArrivalNoteOnServicePO;
 import po.DeliverNoteOnServicePO;
 
 
+<<<<<<< HEAD
 public interface ArrivalNoteOnServiceDataService extends Remote {
 
     // TODO 数据层的接口过大问题
+=======
+public interface ArrivalNoteOnServiceDataService extends Remote, Serializable {
+
+    // wTODO 数据层的接口过大问题
+>>>>>>> master
     /**
      * 在数据库中插入单一持久化对象
      */

@@ -6,6 +6,8 @@
 package po;
 
 import util.enums.DeliverCategory;
+import vo.DeliveryNoteVO;
+import vo.NoteVO;
 
 import java.io.Serializable;
 
@@ -150,5 +152,12 @@ public class DeliveryNotePO extends NotePO implements Serializable {
 
     public String getBarCode() {
         return barCode;
+    }
+
+    @Override
+    public NoteVO toVO() {
+        return new DeliveryNoteVO(this.senderName, this.senderAddress, this.senderTeleNumber, this.receiverName,
+                this.receiverAddress, this.receiverTeleNumber, this.name, this.goodsNumber, this.weight,
+                this.volume, this.category, this.packPrice, this.barCode);
     }
 }

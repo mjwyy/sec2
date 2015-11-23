@@ -51,6 +51,7 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
             date = presumedMsg.getDate();
         } catch (RemoteException e) {
             e.printStackTrace();
+            return new sendDocMsg(false,e.getMessage(),0,null);
         }
         return new sendDocMsg(true,"寄件单已成功提交!",price,date);
     }

@@ -38,6 +38,10 @@ public class ReceivingNoteInput implements ReceivingNoteInputBLService {
             this.dataService.insert(this.po);
         } catch (RemoteException e) {
             e.printStackTrace();
+<<<<<<< HEAD
+=======
+            return new ResultMsg(false,e.getMessage());
+>>>>>>> master
         }
         return new ResultMsg(true,"收件单已提交!");
     }

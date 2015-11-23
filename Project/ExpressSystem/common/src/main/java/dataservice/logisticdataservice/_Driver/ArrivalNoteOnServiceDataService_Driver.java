@@ -21,11 +21,7 @@ public class ArrivalNoteOnServiceDataService_Driver {
     public ArrivalNoteOnServiceDataService_Driver() {
     	ArrayList<BarcodeAndState> BarcodeAndStates=new ArrayList<BarcodeAndState>();
         pos = new ArrayList<ArrivalNoteOnServicePO>();
-        arrivalNoteOnServicePO = new ArrivalNoteOnServicePO("2011-11-11","250000201510130000000",
-        		"北京",BarcodeAndStates);
-        arrivalNoteOnServicePO2 = new ArrivalNoteOnServicePO("2011-11-11","250000201510130000001",
-        		"北京",BarcodeAndStates);
-        arrivalNoteOnServicePO3 = new ArrivalNoteOnServicePO("2011-11-11","250000201510130000002",
+        arrivalNoteOnServicePO = new ArrivalNoteOnServicePO("2011-11-11",true,"250000201510130000000",
         		"北京",BarcodeAndStates);
         pos.add(arrivalNoteOnServicePO);
         pos.add(arrivalNoteOnServicePO2);

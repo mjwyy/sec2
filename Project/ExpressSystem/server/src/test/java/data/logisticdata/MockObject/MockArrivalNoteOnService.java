@@ -16,11 +16,18 @@ public class MockArrivalNoteOnService extends ArrivalNoteOnServicePO {
 
 	public MockArrivalNoteOnService(String date, String transferNumber,
                                     String from, ArrayList<BarcodeAndState> barcodeAndStates) {
-        super(date, transferNumber, from, barcodeAndStates);
+        super(date,true, transferNumber, from, barcodeAndStates);
     }
 
+    public MockArrivalNoteOnService(String date, String transferNumber, String from){
+        super(date,true, transferNumber,from,null);
+    }
+
+<<<<<<< HEAD
     public MockArrivalNoteOnService(String date, String transferNumber, String from){
         super(date,transferNumber,from,null);
     }
 
+=======
+>>>>>>> master
 }

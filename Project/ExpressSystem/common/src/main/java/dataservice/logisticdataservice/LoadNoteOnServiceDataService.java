@@ -5,13 +5,21 @@
  */
 package dataservice.logisticdataservice;
 
+<<<<<<< HEAD
+=======
+import java.io.Serializable;
+>>>>>>> master
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.LoadNoteOnServicePO;
 
+<<<<<<< HEAD
 public interface LoadNoteOnServiceDataService extends Remote {
+=======
+public interface LoadNoteOnServiceDataService extends Remote, Serializable {
+>>>>>>> master
 	/**
 	 * 在数据库中增加一个po记录
 	 */

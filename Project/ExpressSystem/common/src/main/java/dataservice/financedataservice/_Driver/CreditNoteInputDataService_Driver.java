@@ -16,8 +16,8 @@ public class CreditNoteInputDataService_Driver {
 	private CreditNotePO creditNotePO;
 	
 	public CreditNoteInputDataService_Driver() {
-		BigDecimal b = new BigDecimal(2000.50);
-		creditNotePO = new CreditNotePO("2015-10-10","王小二",b);
+
+		creditNotePO = new CreditNotePO("2015-10-10","王小二","2000");
 	}
 	
 	public void drive(CreditNoteInputDataService creditNoteInputDataService) throws RemoteException, FailToPassApprovingException {

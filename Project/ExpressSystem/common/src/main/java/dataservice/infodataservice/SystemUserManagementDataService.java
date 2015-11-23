@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
 import po.UserPO;
+import util.LogInMsg;
 
 /**
 * @author River
@@ -30,7 +31,11 @@ public interface SystemUserManagementDataService extends Remote, Serializable {
 	 * @throws InterruptWithExistedElementException
 	 */
 	public boolean addUser(UserPO user)
+<<<<<<< HEAD
             throws Exception;
+=======
+            throws RemoteException, InterruptWithExistedElementException, SQLException;
+>>>>>>> master
 
 	/**
 	 * Data从数据库中删除对应UserPO条目
@@ -41,7 +46,11 @@ public interface SystemUserManagementDataService extends Remote, Serializable {
 	 * @throws ElementNotFoundException
 	 */
 	public boolean removeUser(UserPO user)
+<<<<<<< HEAD
             throws Exception;
+=======
+            throws RemoteException, ElementNotFoundException, SQLException;
+>>>>>>> master
 
 	/**
 	 * Data将originalUserPO替换为modifiedUserPO
@@ -53,7 +62,11 @@ public interface SystemUserManagementDataService extends Remote, Serializable {
 	 * @throws ElementNotFoundException
 	 */
 	public boolean modifyUser(UserPO originalUser,UserPO modified)
+<<<<<<< HEAD
 			throws RemoteException, ElementNotFoundException,InterruptWithExistedElementException, Exception;
+=======
+			throws RemoteException, ElementNotFoundException, SQLException, InterruptWithExistedElementException;
+>>>>>>> master
 	/**
 	 * Data查询对应的用户并返回其UserPO
      *
@@ -63,7 +76,11 @@ public interface SystemUserManagementDataService extends Remote, Serializable {
 	 * @throws ElementNotFoundException
 	 */
 	public ArrayList<UserPO> inquireUser(UserPO info)
+<<<<<<< HEAD
 			throws RemoteException, ElementNotFoundException, Exception;
+=======
+            throws RemoteException, ElementNotFoundException, SQLException;
+>>>>>>> master
 
 	/**
 	 * Data返回所有的UserPO
@@ -72,7 +89,11 @@ public interface SystemUserManagementDataService extends Remote, Serializable {
 	 * @throws RemoteException
 	 */
 	public ArrayList<UserPO> getAllUsers()
+<<<<<<< HEAD
             throws Exception;
 
+=======
+            throws RemoteException, ElementNotFoundException, SQLException;
+>>>>>>> master
 
 }

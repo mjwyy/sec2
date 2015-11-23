@@ -15,8 +15,11 @@ import java.util.ArrayList;
  */
 public class DeliverNoteOnServiceVO extends NoteVO {
 
+<<<<<<< HEAD
     //TODO (唯一标示符)
 
+=======
+>>>>>>> master
 	/**
 	 * 货物到达日期
 	 */

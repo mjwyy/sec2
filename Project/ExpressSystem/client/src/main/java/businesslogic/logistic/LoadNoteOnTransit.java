@@ -38,6 +38,10 @@ public class LoadNoteOnTransit implements LoadNoteOnTransitBLService {
             this.dataService.insert(this.po);
         } catch (RemoteException e) {
             e.printStackTrace();
+<<<<<<< HEAD
+=======
+            return new ResultMsg(false,e.getMessage());
+>>>>>>> master
         }
         return new ResultMsg(true,"中转中心装车单已提交!");
     }

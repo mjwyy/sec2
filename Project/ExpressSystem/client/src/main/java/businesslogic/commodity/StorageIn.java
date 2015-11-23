@@ -54,6 +54,10 @@ public class StorageIn implements StorageInBLService {
      */
     @Override
     public InventoryStatus alarm() {
+<<<<<<< HEAD
+=======
+    	// TODO 先要修改数据层！
+>>>>>>> master
         return null;
     }
 }

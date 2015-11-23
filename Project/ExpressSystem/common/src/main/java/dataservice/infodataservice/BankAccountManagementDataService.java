@@ -1,5 +1,6 @@
 package dataservice.infodataservice;
 
+import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import po.BankAccountPO;
 /**
 * @author River
 */
-public interface BankAccountManagementDataService extends Remote {
+public interface BankAccountManagementDataService extends Remote, Serializable {
 
 	/**
 	 * Data向数据库中添加对应PO信息
@@ -38,13 +39,12 @@ public interface BankAccountManagementDataService extends Remote {
 	/**
 	 * Data将originalAccount 替换为modifiedAccount
      *
-	 * @param originalAccount
-	 * @param modifiedAccount
+	 * @param account--BankAccount的账号account作为唯一标识符
 	 * @return true for successful remove operation
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException
 	 */
-	public boolean modifyBankAccount(BankAccountPO originalAccount,BankAccountPO modifiedAccount)
+	public boolean modifyBankAccount(BankAccountPO account)
 			throws RemoteException,	ElementNotFoundException,InterruptWithExistedElementException;
 
 	/**

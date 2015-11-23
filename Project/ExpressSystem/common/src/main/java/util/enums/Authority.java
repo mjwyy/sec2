@@ -20,4 +20,20 @@ public enum Authority {
     public int getAuthority() {
         return Authority;
     }
+<<<<<<< HEAD
+=======
+    
+    /**
+     * 
+     * @param i
+     * @return null if the integer is beyond enum range
+     */
+    public Authority getAuthObject(int i) {
+    	for(Authority a:values()) {
+    		if(a.Authority==i) return a;
+    	}
+    	
+    	return null;
+    }
+>>>>>>> master
 }

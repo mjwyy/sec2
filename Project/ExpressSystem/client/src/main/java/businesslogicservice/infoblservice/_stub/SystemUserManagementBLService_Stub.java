@@ -8,6 +8,7 @@ package businesslogicservice.infoblservice._stub;
 import java.util.ArrayList;
 
 import businesslogicservice.infoblservice.SystemUserManagementBLService;
+import util.LogInMsg;
 import util.ResultMsg;
 import vo.UserVO;
 
@@ -38,6 +39,7 @@ public class SystemUserManagementBLService_Stub implements SystemUserManagementB
 	}
 
     @Override
+<<<<<<< HEAD
     public ResultMsg logIn(String userNum, String initialPassword) {
         return null;
     }
@@ -46,4 +48,18 @@ public class SystemUserManagementBLService_Stub implements SystemUserManagementB
 		
 	
  
+=======
+    public LogInMsg logIn(String userNum, String initialPassword) {
+        return null;
+    }
+
+
+	@Override
+	public ResultMsg modify(UserVO origunal, UserVO modified) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+>>>>>>> master
 }

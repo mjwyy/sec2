@@ -5,13 +5,21 @@
  */
 package dataservice.commoditydataservice;
 
+<<<<<<< HEAD
+=======
+import java.io.Serializable;
+>>>>>>> master
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.InventoryPO;
 
+<<<<<<< HEAD
 public interface InventoryDataService extends Remote {
+=======
+public interface InventoryDataService extends Remote, Serializable {
+>>>>>>> master
 
 	/**
 	 * 按起止时间进行查找返回相应的PO结果

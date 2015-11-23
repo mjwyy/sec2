@@ -1,6 +1,11 @@
 package vo;
 
+import java.security.spec.RSAKeyGenParameterSpec;
 import java.util.ArrayList;
+
+import po.CreditNotePO;
+import util.FormatCheck;
+import util.ResultMsg;
 
 /**
  * 快递收款单
@@ -58,5 +63,31 @@ public class CreditNoteVO {
 
 	public ArrayList<String> getBarcode() {
 		return barcode;
+	}
+	
+	public ResultMsg checkFormat() {
+		ResultMsg[] msgs = new ResultMsg[3];
+		
+		msgs[0] = FormatCheck.isDate(date);
+		msgs[1] = FormatCheck.isChineseName(CourierName);
+		msgs[2] = FormatCheck.isMoney(moneySum);
+		
+		for(int i=0;i<msgs.length;i++) {
+			if(!msgs[i].isPass()) return msgs[i];
+		}
+		
+		ResultMsg msg = null;
+		for(String s: barcode) {
+			msg = FormatCheck.isBarcode(s);
+			if(!msg.isPass()) return msg;
+		}
+		
+		
+		return new ResultMsg(true);
+	}
+	
+	public Object toPO(){
+		CreditNotePO po = new CreditNotePO(CourierName, date, moneySum);
+		return po;
 	}
 }

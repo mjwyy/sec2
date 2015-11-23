@@ -41,6 +41,10 @@ public class ArrivalNoteOnService implements ArrivalNoteOnServiceBLService {
             this.dataService.insertArrivalNote(this.arrivalNoteOnServicePO);
         } catch (RemoteException e) {
             e.printStackTrace();
+<<<<<<< HEAD
+=======
+            return new ResultMsg(false,e.getMessage());
+>>>>>>> master
         }
         return new ResultMsg(true,"营业厅到达单已提交!");
     }
@@ -60,6 +64,10 @@ public class ArrivalNoteOnService implements ArrivalNoteOnServiceBLService {
             this.dataService.insertDeliverNote(this.deliverNoteOnServicePO);
         } catch (RemoteException e) {
             e.printStackTrace();
+<<<<<<< HEAD
+=======
+            return new ResultMsg(false,e.getMessage());
+>>>>>>> master
         }
         return new ResultMsg(true,"营业厅装车单已提交!");
     }

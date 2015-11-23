@@ -5,6 +5,9 @@
  */
 package po;
 
+import vo.LoadNoteOnServiceVO;
+import vo.NoteVO;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -18,6 +21,11 @@ public class LoadNoteOnTransitPO extends NotePO implements Serializable{
 	 * 装车日期
 	 */
 	private String date;
+
+    /**
+     * 本营业厅编号
+     */
+    private String hallNumber;
 
 	/**
 	 * 本中转中心汽运编号
@@ -49,19 +57,20 @@ public class LoadNoteOnTransitPO extends NotePO implements Serializable{
 	 */
 	private ArrayList<String> barcodes;
 
-	public LoadNoteOnTransitPO(String date, String transpotationNumber, String destination, String carNumber,
-			String guardMan, String supercargoMan, ArrayList<String> barcodes) {
-		super();
-		this.date = date;
-		this.transpotationNumber = transpotationNumber;
-		Destination = destination;
-		this.carNumber = carNumber;
-		this.guardMan = guardMan;
-		this.supercargoMan = supercargoMan;
-		this.barcodes = barcodes;
-	}
+    public LoadNoteOnTransitPO(String date, String hallNumber, String transpotationNumber,
+                               String destination, String carNumber, String guardMan,
+                               String supercargoMan, ArrayList<String> barcodes) {
+        this.date = date;
+        this.hallNumber = hallNumber;
+        this.transpotationNumber = transpotationNumber;
+        this.Destination = destination;
+        this.carNumber = carNumber;
+        this.guardMan = guardMan;
+        this.supercargoMan = supercargoMan;
+        this.barcodes = barcodes;
+    }
 
-	public String getDate() {
+    public String getDate() {
 		return date;
 	}
 
@@ -89,4 +98,9 @@ public class LoadNoteOnTransitPO extends NotePO implements Serializable{
 		return barcodes;
 	}
 
+    @Override
+    public NoteVO toVO() {
+        return new LoadNoteOnServiceVO(this.date, this.hallNumber, this.transpotationNumber,
+                this.Destination, this.carNumber, this.guardMan, this.supercargoMan, this.barcodes);
+    }
 }

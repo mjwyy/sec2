@@ -11,6 +11,10 @@ public class MockCostAndProfitChart extends CostAndProfitChartPO{
 
     public MockCostAndProfitChart(String starttime, String endtime,
                                   double cost, double profit) {
+<<<<<<< HEAD
         super(starttime, endtime, cost, profit);
+=======
+        super(starttime, endtime, null, null);
+>>>>>>> master
     }
 }

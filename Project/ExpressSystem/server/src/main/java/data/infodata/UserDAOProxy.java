@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class UserDAOProxy extends UnicastRemoteObject implements SystemUserManagementDataService {
     //实现RMI接口的类必须继承自java.rmi.server.UnicastRemoteObject
 
+<<<<<<< HEAD
     private DatabaseConnection connection;
     private SystemUserManagementData dataImpl;
 
@@ -28,6 +29,18 @@ public class UserDAOProxy extends UnicastRemoteObject implements SystemUserManag
 
     @Override
     public boolean addUser(UserPO user) throws InterruptWithExistedElementException, SQLException {
+=======
+
+    //由于基类UnicastRemoteObject的默认构造方法抛出异常，因此实现类必须同时提供一个构造方法
+    public UserDAOProxy() throws RemoteException {
+
+    }
+
+    @Override
+    public boolean addUser(UserPO user) throws InterruptWithExistedElementException, SQLException, RemoteException {
+        DatabaseConnection connection = new DatabaseConnection();
+        SystemUserManagementData dataImpl = new SystemUserManagementData(connection.getConnection());
+>>>>>>> master
         boolean result = dataImpl.addUser(user);
         System.out.println("server addUser success!");
         connection.close();
@@ -35,30 +48,58 @@ public class UserDAOProxy extends UnicastRemoteObject implements SystemUserManag
     }
 
     @Override
+<<<<<<< HEAD
     public boolean removeUser(UserPO user) throws ElementNotFoundException, SQLException {
         boolean result = dataImpl.removeUser(user);
+=======
+    public boolean removeUser(UserPO user) throws ElementNotFoundException, SQLException, RemoteException {
+        DatabaseConnection connection = new DatabaseConnection();
+        SystemUserManagementData dataImpl = new SystemUserManagementData(connection.getConnection());boolean result = dataImpl.removeUser(user);
+>>>>>>> master
         connection.close();
         return result;
     }
 
     @Override
+<<<<<<< HEAD
     public boolean modifyUser(UserPO originalUser, UserPO modified) throws ElementNotFoundException, SQLException, InterruptWithExistedElementException {
         boolean result = dataImpl.modifyUser(originalUser,modified);
+=======
+    public boolean modifyUser(UserPO originalUser, UserPO modified) throws ElementNotFoundException, SQLException, RemoteException {
+        DatabaseConnection connection = new DatabaseConnection();
+        SystemUserManagementData dataImpl = new SystemUserManagementData(connection.getConnection()); boolean result = dataImpl.modifyUser(originalUser,modified);
+>>>>>>> master
         connection.close();
         return result;
     }
 
     @Override
+<<<<<<< HEAD
     public ArrayList<UserPO> inquireUser(UserPO info) throws ElementNotFoundException, SQLException {
         ArrayList<UserPO> result = dataImpl.inquireUser(info);
+=======
+    public ArrayList<UserPO> inquireUser(UserPO info) throws ElementNotFoundException, SQLException, RemoteException {
+        DatabaseConnection connection = new DatabaseConnection();
+        SystemUserManagementData dataImpl = new SystemUserManagementData(connection.getConnection()); ArrayList<UserPO> result = dataImpl.inquireUser(info);
+>>>>>>> master
         connection.close();
         return result;
     }
 
     @Override
+<<<<<<< HEAD
     public ArrayList<UserPO> getAllUsers() throws SQLException {
         ArrayList<UserPO> result = dataImpl.getAllUsers();
         connection.close();
         return result;
     }
+=======
+    public ArrayList<UserPO> getAllUsers() throws SQLException, RemoteException {
+        DatabaseConnection connection = new DatabaseConnection();
+        SystemUserManagementData dataImpl = new SystemUserManagementData(connection.getConnection());ArrayList<UserPO> result = dataImpl.getAllUsers();
+        connection.close();
+        return result;
+    }
+
+>>>>>>> master
 }

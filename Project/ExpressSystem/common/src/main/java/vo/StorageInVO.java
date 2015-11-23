@@ -5,7 +5,10 @@
  */
 package vo;
 
+<<<<<<< HEAD
 import java.text.Format;
+=======
+>>>>>>> master
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -64,7 +67,11 @@ public class StorageInVO {
 		Iterator<CommodityGoodsVO> it = GoodsInStorageInfo.iterator();
 		
 		while(it.hasNext()) {
+<<<<<<< HEAD
 			list.add(it.next().toPO());
+=======
+			list.add((CommodityGoodsPO) it.next().toPO());
+>>>>>>> master
 		}
 		
 		StorageInPO po = new StorageInPO(date, list);

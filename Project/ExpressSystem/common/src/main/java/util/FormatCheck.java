@@ -376,7 +376,11 @@ public class FormatCheck {
 
     /**
      * 检查中转中心内人员职位名称是否规范：只有“库存管理人员”、“中转中心业务员”
+<<<<<<< HEAD
      *
+=======
+     *(库存管理人员)|(中转中心业务员)|(快递员)|(营业厅业务员)|(司机)
+>>>>>>> master
      * @param str
      * @return
      */
@@ -475,4 +479,13 @@ public class FormatCheck {
         return Pattern.matches(trueExpression,areacode)? new ResultMsg(true) :
                 new ResultMsg(false,"地名格式错误,应为");
     }
+<<<<<<< HEAD
+=======
+
+	public static ResultMsg isVocation(String vocation) {
+		String trueExpression = "(库存管理人员)|(中转中心业务员)|(快递员)|(营业厅业务员)|(司机)|(财务人员)|(经理)";
+        return Pattern.matches(trueExpression,vocation)? new ResultMsg(true) :
+                new ResultMsg(false,"职位只可为：库存管理人员,中转中心业务员,快递员,营业厅业务员,司机,财务人员,经理等");
+	}
+>>>>>>> master
 }

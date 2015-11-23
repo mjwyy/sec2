@@ -34,5 +34,5 @@ public interface ChartOutputBLService {
 	 *
 	 * @param path
 	 */
-	public ResultMsg exportChart(String path);
+	public ResultMsg exportChart(ChartVO inputChartVO, String path);
 }

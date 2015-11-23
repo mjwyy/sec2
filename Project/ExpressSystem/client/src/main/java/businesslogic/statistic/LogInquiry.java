@@ -49,6 +49,10 @@ public class LogInquiry implements LogInquiryBLService {
             }
         } catch (RemoteException e) {
             e.printStackTrace();
+<<<<<<< HEAD
+=======
+            return null;
+>>>>>>> master
         }
         return results;
     }

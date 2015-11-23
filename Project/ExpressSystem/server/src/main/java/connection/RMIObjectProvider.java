@@ -1,9 +1,26 @@
 package connection;
 
+<<<<<<< HEAD
 import data.dao.DatabaseFactory;
 import data.infodata.SystemUserManagementData;
 import data.infodata.UserDAOProxy;
 import dataservice.infodataservice.SystemUserManagementDataService;
+=======
+import data.dao.DatabaseFactoryMysqlImpl;
+import data.dao.DatabaseFactory;
+import dataservice.commoditydataservice.InventoryDataService;
+import dataservice.commoditydataservice.StorageInDataService;
+import dataservice.commoditydataservice.StorageOutDataService;
+import dataservice.financedataservice.CreditNoteInputDataService;
+import dataservice.financedataservice.PaymentInputDataService;
+import dataservice.financedataservice.SettlementManagementDataService;
+import dataservice.infodataservice.BankAccountManagementDataService;
+import dataservice.infodataservice.DriverVehicleManagementDataService;
+import dataservice.infodataservice.StaffOrganizationManagementDataService;
+import dataservice.infodataservice.SystemUserManagementDataService;
+import dataservice.logisticdataservice.*;
+import dataservice.statisticdataservice.*;
+>>>>>>> master
 
 import java.io.Serializable;
 import java.net.MalformedURLException;
@@ -29,12 +46,81 @@ public class RMIObjectProvider extends UnicastRemoteObject implements RMIObjectP
     }
 
     private void initiateMap() throws RemoteException {
+<<<<<<< HEAD
         //TODO Put all available objects into the map.
         SystemUserManagementDataService dataService = DatabaseFactory.getSystemUserManagementDataInstance();
         objMap.put("SystemUserManagementDataService", dataService);
         System.out.println("RMIObjectProvider 初始化完毕");
     }
 
+=======
+        DatabaseFactory databaseFactory = DatabaseFactoryMysqlImpl.getInstance();
+
+        //commodity
+        InventoryDataService inventoryDataService = databaseFactory.getInventoryDataService();
+        StorageInDataService storageInDataService = databaseFactory.getStorageInDataService();
+        StorageOutDataService storageOutDataService = databaseFactory.getStorageOutDataService();
+
+        objMap.put("InventoryDataService",inventoryDataService);
+        objMap.put("StorageInDataService",storageInDataService);
+        objMap.put("StorageOutDataService",storageOutDataService);
+
+        //finance
+        CreditNoteInputDataService creditNoteInputDataService = databaseFactory.getCreditNoteInputDataService();
+        PaymentInputDataService paymentInputDataService = databaseFactory.getPaymentInputDataService();
+        SettlementManagementDataService settlementManagementDataService = databaseFactory.getSettlementManagementDataService();
+
+        objMap.put("CreditNoteInputDataService",creditNoteInputDataService);
+        objMap.put("PaymentInputDataService",paymentInputDataService);
+        objMap.put("SettlementManagementDataService",settlementManagementDataService);
+
+        //info
+        BankAccountManagementDataService bankAccountManagementDataService = databaseFactory.getBankAccountManagementDataService();
+        DriverVehicleManagementDataService driverVehicleManagementDataService = databaseFactory.getDriverVehicleManagementDataService();
+        StaffOrganizationManagementDataService staffOrganizationManagementDataService = databaseFactory.getStaffOrganizationManagementDataService();
+        SystemUserManagementDataService systemUserManagementDataService = databaseFactory.getSystemUserManagementDataService();
+
+        objMap.put("BankAccountManagementDataService",bankAccountManagementDataService);
+        objMap.put("DriverVehicleManagementDataService",driverVehicleManagementDataService);
+        objMap.put("StaffOrganizationManagementDataService",staffOrganizationManagementDataService);
+        objMap.put("SystemUserManagementDataService",systemUserManagementDataService);
+
+        //logistic
+        ArrivalNoteOnServiceDataService arrivalNoteOnServiceDataService = databaseFactory.getArrivalNoteOnServiceDataService();
+        ArrivalNoteOnTransitDataService arrivalNoteOnTransitDataService = databaseFactory.getArrivalNoteOnTransitDataService();
+        DeliveryNoteInputDataService deliveryNoteInputDataService = databaseFactory.getDeliveryNoteInputDataService();
+        LoadNoteOnServiceDataService loadNoteOnServiceDataService = databaseFactory.getLoadNoteOnServiceDataService();
+        LoadNoteOnTransitDataService loadNoteOnTransitDataService = databaseFactory.getLoadNoteOnTransitDataService();
+        ReceivingNoteInputDataService receivingNoteInputDataService = databaseFactory.getReceivingNoteInputDataService();
+        TransitNoteInputDataService transitNoteInputDataService = databaseFactory.getTransitNoteInputDataService();
+
+        objMap.put("ArrivalNoteOnServiceDataService",arrivalNoteOnServiceDataService);
+        objMap.put("ArrivalNoteOnTransitDataService",arrivalNoteOnTransitDataService);
+        objMap.put("DeliveryNoteInputDataService",deliveryNoteInputDataService);
+        objMap.put("LoadNoteOnServiceDataService",loadNoteOnServiceDataService);
+        objMap.put("LoadNoteOnTransitDataService",loadNoteOnTransitDataService);
+        objMap.put("ReceivingNoteInputDataService",receivingNoteInputDataService);
+        objMap.put("TransitNoteInputDataService",transitNoteInputDataService);
+
+        //statistic
+        BaseDataBuildingDataService baseDataBuildingDataService = databaseFactory.getBaseDataBuildingDataService();
+        BusinessDataModificationDataService businessDataModificationDataService = databaseFactory.getBusinessDataModificationDataService();
+        ChartOutputDataService chartOutputDataService = databaseFactory.getChartOutputDataService();
+        LogInquiryDataService logInquiryDataService = databaseFactory.getLogInquiryDataService();
+        NoteApprovingDataService noteApprovingDataService = databaseFactory.getNoteApprovingDataService();
+        OrderInquiryDataService orderInquiryDataService = databaseFactory.getOrderInquiryDataService();
+
+        objMap.put("BaseDataBuildingDataService",baseDataBuildingDataService);
+        objMap.put("BusinessDataModificationDataService",businessDataModificationDataService);
+        objMap.put("ChartOutputDataService",chartOutputDataService);
+        objMap.put("LogInquiryDataService",logInquiryDataService);
+        objMap.put("NoteApprovingDataService",noteApprovingDataService);
+        objMap.put("OrderInquiryDataService",orderInquiryDataService);
+
+        System.out.println("RMIObjectProvider-objMap 初始化完毕");
+    }
+
+>>>>>>> master
     @Override
     public Object getObjectByName(String name) throws RemoteException {
         return objMap.get(name);

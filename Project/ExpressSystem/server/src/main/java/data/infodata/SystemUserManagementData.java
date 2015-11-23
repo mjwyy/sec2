@@ -4,6 +4,10 @@ import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.infodataservice.SystemUserManagementDataService;
 import po.UserPO;
+<<<<<<< HEAD
+=======
+import util.LogInMsg;
+>>>>>>> master
 import util.enums.Authority;
 
 import java.net.ConnectException;
@@ -56,7 +60,11 @@ public class SystemUserManagementData  implements SystemUserManagementDataServic
     }
 
     @Override
+<<<<<<< HEAD
     public boolean modifyUser(UserPO originalUser, UserPO modified) throws ElementNotFoundException, InterruptWithExistedElementException, SQLException {
+=======
+    public boolean modifyUser(UserPO originalUser, UserPO modified) throws ElementNotFoundException, SQLException {
+>>>>>>> master
         if(!originalUser.getAccount().equals(modified.getAccount()))
             return false;
         String modify;
@@ -109,4 +117,8 @@ public class SystemUserManagementData  implements SystemUserManagementDataServic
         statement.close();
         return result;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 }

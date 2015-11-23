@@ -1,5 +1,6 @@
 package dataservice.statisticdataservice;
 
+import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ import util.enums.DocType;
  * @author River
  *
  */
-public interface NoteApprovingDataService extends Remote{
+public interface NoteApprovingDataService extends Remote, Serializable {
 	
 	/**
 	 * 获得所有未审批NotePO

@@ -58,7 +58,11 @@ public class ArrivalNoteOnService_Test {
         MockArrivalNoteOnService mock1 = new MockArrivalNoteOnService("2015-11-11",
                 "250000201510130000005", "北京");
         //service.insertArrivalNote(mock1);
+<<<<<<< HEAD
         ArrivalNoteOnServicePO toFind = new ArrivalNoteOnServicePO(null,"250000201510130000005",null,null);
+=======
+        ArrivalNoteOnServicePO toFind = new ArrivalNoteOnServicePO(null,true,"250000201510130000005",null,null);
+>>>>>>> master
         //ArrayList<ArrivalNoteOnServicePO> list = service.findArrivalNote(toFind);
         //ArrivalNoteOnServicePO found = list.get(0);
         //assertEquals(1,list.size());

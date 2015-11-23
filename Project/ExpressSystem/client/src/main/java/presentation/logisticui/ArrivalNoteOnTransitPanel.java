@@ -41,8 +41,13 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 	private JTextField textField_5;
 	private JTextField textField_6;
 	private ArrivalNoteOnTransitBLService service;
+<<<<<<< HEAD
 	//private BarcodeAndState brcodeAndState;
 	//private ResultMsg res;
+=======
+	private BarcodeAndState brcodeAndState;
+	private ResultMsg res;
+>>>>>>> master
 	private JTextField box;
 	
 

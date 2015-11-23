@@ -1,5 +1,10 @@
 package vo;
 
+import po.BankAccountPO;
+import po.IncomeNotePO;
+import util.FormatCheck;
+import util.ResultMsg;
+
 /**
  * 收款记录
  * 
@@ -8,6 +13,7 @@ package vo;
  */
 public class IncomeNoteVO {
      
+
 	/**
 	 * 金额
 	 */
@@ -19,12 +25,12 @@ public class IncomeNoteVO {
 	private String date;
 	
 	/**
-	 * 机构
+	 * 收款单位
 	 */
 	private String institution;
 	
 	/**
-	 * 收款人
+	 * 收款人（即财务人员）
 	 */
 	private String payee;
 	
@@ -33,10 +39,6 @@ public class IncomeNoteVO {
 	 */
 	private String payService;
 	
-	/**
-	 * 收款地点
-	 */
-	private String place;
 	
 	private BankAccountVO bankAccount;
 	
@@ -50,13 +52,12 @@ public class IncomeNoteVO {
 	 * @param place
 	 */
 	public IncomeNoteVO(String money,String date,String institution,
-			String payee,String payService,String place,BankAccountVO bankAccount){
+			String payee,String payService,BankAccountVO bankAccount){
 		this.date = date;
 		this.institution =institution;
 		this.money = money;
 		this.payee = payee;
 		this.payService = payService;
-		this.place = place;
 		this.bankAccount = bankAccount;
 	}
 
@@ -80,12 +81,32 @@ public class IncomeNoteVO {
 		return payService;
 	}
 
-	public String getPlace() {
-		return place;
-	}
+
 
 	public BankAccountVO getBankAccount() {
 		return bankAccount;
+	}
+	
+	public ResultMsg checkFormat(){
+		ResultMsg[] msgs = new ResultMsg[7];
+		msgs[0] = FormatCheck.isDate(date);
+		msgs[1] = FormatCheck.isOrganizationName(institution);
+		msgs[2] = FormatCheck.isMoney(money);
+		msgs[3] = FormatCheck.isChineseName(payee);
+		msgs[4] = FormatCheck.isServiceHall(payService);
+		msgs[6] = bankAccount.checkFormat();
+		
+		for(int i=0;i<msgs.length;i++) {
+			if(!msgs[i].isPass()) return msgs[i];
+		}
+		
+		return new ResultMsg(true);
+	}
+	
+	public Object toPO() {
+		IncomeNotePO po = new IncomeNotePO(date, institution, payee, 
+				payService, money,(BankAccountPO) bankAccount.toPO());
+		return po;
 	}
 	
 }

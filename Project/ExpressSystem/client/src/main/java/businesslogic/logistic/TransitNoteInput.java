@@ -39,6 +39,10 @@ public class TransitNoteInput implements TransitNoteInputBLService {
             this.dataService.insert(this.po);
         } catch (RemoteException e) {
             e.printStackTrace();
+<<<<<<< HEAD
+=======
+            return new ResultMsg(false,e.getMessage());
+>>>>>>> master
         }
         return new ResultMsg(true,"中转单已提交!");
     }

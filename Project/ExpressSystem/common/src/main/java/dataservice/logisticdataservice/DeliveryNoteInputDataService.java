@@ -5,6 +5,10 @@
  */
 package dataservice.logisticdataservice;
 
+<<<<<<< HEAD
+=======
+import java.io.Serializable;
+>>>>>>> master
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -14,7 +18,11 @@ import po.OrderPO;
 import util.PresumedMsg;
 import util.sendDocMsg;
 
+<<<<<<< HEAD
 public interface DeliveryNoteInputDataService extends Remote {
+=======
+public interface DeliveryNoteInputDataService extends Remote, Serializable {
+>>>>>>> master
 	/**
 	 * 在数据库中增加一个po记录
 	 */

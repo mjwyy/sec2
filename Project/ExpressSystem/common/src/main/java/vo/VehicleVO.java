@@ -2,6 +2,8 @@ package vo;
 
 import java.io.File;
 
+import util.ResultMsg;
+
 public class VehicleVO {
 	
 	/**
@@ -48,5 +50,15 @@ public class VehicleVO {
 	
 	public File getPicture(){
 		return picture;
+	}
+	
+	public Object toPO(){
+		return null;
+		//TODO Fill up!
+	}
+	
+	public ResultMsg checkFormat(){
+		return null;
+		//TODO So it is!
 	}
 }

@@ -2,6 +2,8 @@ package po;
 
 import java.io.Serializable;
 
+import vo.DriverVO;
+
 /**
  * 表示司机信息的PO
  * @author River
@@ -82,6 +84,10 @@ public class DriverPO implements Serializable {
 	}
 	public String getLicenseDate() {
 		return licenseDate;
+	}
+	public Object toVO() {
+		// TODO Fill up!
+		return null;
 	}
 	
 }

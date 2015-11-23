@@ -3,6 +3,8 @@ package po;
 import java.io.File;
 import java.io.Serializable;
 
+import vo.VehicleVO;
+
 public class VehiclePO implements Serializable {
 
 	private static final long serialVersionUID = -843114324702086467L;
@@ -50,6 +52,11 @@ public class VehiclePO implements Serializable {
 
 	public String getFirstUseTime() {
 		return firstUseTime;
+	}
+
+	public Object toVO() {
+		// TODO Fill up!
+		return null;
 	}
 	
 }

@@ -43,7 +43,7 @@ public class StaffOrgManageProxy extends UnicastRemoteObject implements StaffOrg
 
     @Override
     public boolean removeStaff(StaffPO staff) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException, SQLException {
-        boolean result = this.staffOrganizationManagementDataService.addStaff(staff);
+        boolean result = this.staffOrganizationManagementDataService.removeStaff(staff);
         connection.close();
         return result;
     }
@@ -57,14 +57,16 @@ public class StaffOrgManageProxy extends UnicastRemoteObject implements StaffOrg
 
     @Override
     public boolean modifyStaff(StaffPO staff) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException, SQLException {
-        boolean result = this.staffOrganizationManagementDataService.addStaff(staff);
+        boolean result = this.staffOrganizationManagementDataService.modifyStaff(staff);
         connection.close();
         return result;
     }
 
     @Override
-    public boolean modifyOrganization(OrganizationPO org) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException {
-        return false;
+    public boolean modifyOrganization(OrganizationPO org) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException, SQLException {
+        boolean result = this.staffOrganizationManagementDataService.modifyOrganization(org);
+        connection.close();
+        return result;
     }
 
     @Override

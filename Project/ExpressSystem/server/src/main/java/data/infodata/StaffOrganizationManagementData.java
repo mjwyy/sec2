@@ -79,20 +79,22 @@ public class StaffOrganizationManagementData implements
     public boolean modifyStaff(StaffPO staff) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException, SQLException {
         int gender = staff.getGender().equals("男") ? 0 : 1;
         String sql = "UPDATE staff SET name = '" + staff.getName() + "'," +
-                "organization = '" + staff.getOrganization() + "'," +
-                "gender = '" + gender + "'," +
-                "idCardNumber = '" + staff.getIDCardNumber() + "'," +
-                "salary = '" + staff.getSalary() + "'," +
-                "phoneNumber = '" + staff.getPhoneNumber() + "'," +
-                "position = '" + staff.getPosition().getIntStaffType() + "'," +
-                "workHour = '" + staff.getWorkHour() + "',";
+                " organization = '" + staff.getOrganization() + "'," +
+                " gender = '" + gender + "'," +
+                " idCardNumber = '" + staff.getIDCardNumber() + "'," +
+                " salary = '" + staff.getSalary() + "'," +
+                " phoneNumber = '" + staff.getPhoneNumber() + "'," +
+                " position = '" + staff.getPosition().getIntStaffType() + "'," +
+                " workHour = '" + staff.getWorkHour() + "'" +
+                " WHERE staff_id = '" + staff.getStaffID() + "'";
         return this.excStatement(sql);
     }
 
     @Override
     public boolean modifyOrganization(OrganizationPO org) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException, SQLException {
-        String sql = "UPDATE organization SET type = '" + org.getType().getType()
-                + "', name = '" + org.getName() + "' WHERE organization_id = '" + org.getCode() + "'";
+        String sql = "UPDATE organization SET type = '" + org.getType().getType() + "'," +
+                " name = '" + org.getName() + "'" +
+                " WHERE organization_id = '" + org.getCode() + "'";
         return this.excStatement(sql);
     }
 

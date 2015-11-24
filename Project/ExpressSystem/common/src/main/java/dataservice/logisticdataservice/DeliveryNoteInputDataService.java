@@ -8,6 +8,7 @@ package dataservice.logisticdataservice;
 import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import po.DeliveryNotePO;
@@ -19,12 +20,12 @@ public interface DeliveryNoteInputDataService extends Remote, Serializable {
 	/**
 	 * 在数据库中增加一个po记录
 	 */
-	public sendDocMsg insert(DeliveryNotePO po) throws RemoteException;
+    public sendDocMsg insert(DeliveryNotePO po) throws RemoteException, SQLException;
 
     /**
      * 在数据库中增加一个po记录
      */
-    public PresumedMsg insertOrderPO(OrderPO po) throws RemoteException;
+    public PresumedMsg insertOrderPO(OrderPO po) throws RemoteException, SQLException;
 
 	/**
 	 * 查找返回相应的DeliveryNoteInputPO结果

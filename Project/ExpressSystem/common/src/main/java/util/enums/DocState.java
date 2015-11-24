@@ -2,8 +2,8 @@ package util.enums;
 
 public enum DocState {
     NONCHECKED(0), // 未审批
-    PASSED(1), //通过
-    FAILED(2); // 不通过
+    FAILED(1), // 不通过
+    PASSED(2);//通过
 
     private int intState;
 

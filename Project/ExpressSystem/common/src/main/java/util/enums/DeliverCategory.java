@@ -8,7 +8,25 @@ package util.enums;
  *
  */
 public enum DeliverCategory {
-	ECNOMIC,//经济快递
-	NORMAL,//标准快递
-	EXPRESS//特快专递
+    ECNOMIC("经济快递"),
+    NORMAL("标准快递"),
+    EXPRESS("特快专递");
+
+    private String category;
+
+    DeliverCategory(String s) {
+        this.category = s;
+    }
+
+    public String getStrCategory() {
+        return category;
+    }
+
+    public static DeliverCategory getDeliverCategory(String s) {
+        for (DeliverCategory category : values()) {
+            if (category.category.equals(s))
+                return category;
+        }
+        return null;
+    }
 }

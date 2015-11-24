@@ -15,14 +15,14 @@ import java.util.ArrayList;
 /**
  * Created by kylin on 15/11/18.
  */
-public class UserDAOProxy extends UnicastRemoteObject implements SystemUserManagementDataService {
+public class SystemUserManageProxy extends UnicastRemoteObject implements SystemUserManagementDataService {
     //实现RMI接口的类必须继承自java.rmi.server.UnicastRemoteObject
     //TODO connection的单例问题
     private DatabaseConnection connection;
     private SystemUserManagementData dataImpl;
 
     //由于基类UnicastRemoteObject的默认构造方法抛出异常，因此实现类必须同时提供一个无参数构造方法
-    public UserDAOProxy() throws RemoteException {
+    public SystemUserManageProxy() throws RemoteException {
         connection = new DatabaseConnection();
         dataImpl = new SystemUserManagementData(connection.getConnection());
     }

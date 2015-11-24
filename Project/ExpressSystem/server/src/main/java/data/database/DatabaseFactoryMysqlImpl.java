@@ -1,6 +1,6 @@
 package data.database;
 
-import data.infodata.Proxy.UserDAOProxy;
+import data.infodata.Proxy.SystemUserManageProxy;
 import dataservice.commoditydataservice.InventoryDataService;
 import dataservice.commoditydataservice.StorageInDataService;
 import dataservice.commoditydataservice.StorageOutDataService;
@@ -30,7 +30,7 @@ public class DatabaseFactoryMysqlImpl implements DatabaseFactory{
 
     //TODO 初始化所有的数据层实现
     private DatabaseFactoryMysqlImpl() throws RemoteException {
-        systemUserManagementDataService = new UserDAOProxy();
+        systemUserManagementDataService = new SystemUserManageProxy();
     }
 
     public static DatabaseFactoryMysqlImpl getInstance() throws RemoteException {

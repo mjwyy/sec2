@@ -16,11 +16,11 @@ import java.util.ArrayList;
 /**
  * Created by kylin on 15/11/24.
  */
-public class StaffOrgDaoProxy extends UnicastRemoteObject implements StaffOrganizationManagementDataService{
+public class StaffOrgManageProxy extends UnicastRemoteObject implements StaffOrganizationManagementDataService{
     private DatabaseConnection connection;
     private StaffOrganizationManagementDataService staffOrganizationManagementDataService;
 
-    public StaffOrgDaoProxy() throws RemoteException {
+    public StaffOrgManageProxy() throws RemoteException {
         connection = new DatabaseConnection();
         staffOrganizationManagementDataService =
                 new StaffOrganizationManagementData(connection.getConnection());

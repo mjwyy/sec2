@@ -1,5 +1,6 @@
 package data.logisticdata;
 
+import data.database.DatabaseManager;
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
 import po.DeliveryNotePO;
 import po.OrderPO;
@@ -17,14 +18,9 @@ import java.util.ArrayList;
  */
 public class DeliveryNoteInputData implements DeliveryNoteInputDataService {
 
-    private Connection connection;
-
-    public DeliveryNoteInputData(Connection connection) {
-        this.connection = connection;
-    }
-
     @Override
     public sendDocMsg insert(DeliveryNotePO po) throws RemoteException, SQLException {
+        Connection connection = DatabaseManager.getConnection();
         String sql = "insert into note_delivery ( `volume`, `category`, `senderTeleNumber`, " +
                 "`receiverAddress`, `packPrice`, `weight`, `docState`, " + "`receiverName`," +
                 " `goodsNumber`, `userName`, `receiverTeleNumber`, `senderAddress`," +
@@ -50,11 +46,14 @@ public class DeliveryNoteInputData implements DeliveryNoteInputDataService {
         if (result < 0)
             throw new SQLException();
         //等待总经理审批过程
+
+        DatabaseManager.releaseConnection(connection,statement,null);
         return null;
     }
 
     @Override
     public PresumedMsg insertOrderPO(OrderPO po) throws RemoteException, SQLException {
+        Connection connection = DatabaseManager.getConnection();
         String sql = "insert into order( `barcode`, `stateOfTransport`, `history`) " +
                 "values (?,?,?)";
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -71,22 +70,29 @@ public class DeliveryNoteInputData implements DeliveryNoteInputDataService {
             throw new SQLException();
         //获取运费与预计到达日期
 
+        DatabaseManager.releaseConnection(connection,statement,null);
         return null;
     }
 
     @Override
     public ArrayList<DeliveryNotePO> find(DeliveryNotePO po) throws RemoteException {
+        Connection connection = DatabaseManager.getConnection();
         DeliveryNotePO pox = new DeliveryNotePO(null,null,null,null,null,null,null,0,0,0,null,0,null);
         ArrayList<DeliveryNotePO> list =  new ArrayList<DeliveryNotePO>();
         list.add(pox);
+
+        DatabaseManager.releaseConnection(connection,null,null);
         return list;
     }
 
     @Override
     public ArrayList<DeliveryNotePO> findAll() throws RemoteException {
+        Connection connection = DatabaseManager.getConnection();
         DeliveryNotePO pox = new DeliveryNotePO(null,null,null,null,null,null,null,0,0,0,null,0,null);
         ArrayList<DeliveryNotePO> list =  new ArrayList<DeliveryNotePO>();
         list.add(pox);
+
+        DatabaseManager.releaseConnection(connection,null,null);
         return list;
     }
 }

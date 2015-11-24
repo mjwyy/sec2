@@ -55,7 +55,7 @@ public class UserVO {
     }
     
     public Object toPO(){
-    	UserPO po = new UserPO(userNum, initialPassword, authority.getAuthority());
+    	UserPO po = new UserPO(userNum, initialPassword, authority);
     	return po;
     }
 }

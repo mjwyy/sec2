@@ -1,7 +1,6 @@
 package data.logisticdata;
 
 import data.logisticdata.MockObject.MockDeliveryNote;
-import data.logisticdata.Proxy.DeliveryNoteInputProxy;
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,7 +25,7 @@ public class DeliveryNoteInput_Test {
 
     @Before
     public void setUp() throws Exception {
-        service = new DeliveryNoteInputProxy();
+        service = new DeliveryNoteInputData();
     }
 
     @Test

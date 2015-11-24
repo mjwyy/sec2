@@ -7,44 +7,44 @@ import java.util.ArrayList;
 
 import data.database.DatabaseFactoryMysqlImpl;
 import data.database.DatabaseFactory;
+import dataservice.infodataservice.StaffOrganizationManagementDataService;
 import dataservice.infodataservice.SystemUserManagementDataService;
 
+import org.junit.Test;
 import po.UserPO;
+import util.enums.Authority;
 
 public class SystemUserManagementData_Test {
-    DatabaseFactory databaseFactory;
+
+    private SystemUserManagementDataService service;
 
     public SystemUserManagementData_Test() throws RemoteException {
-        databaseFactory = DatabaseFactoryMysqlImpl.getInstance();
+        service = new SystemUserManagementData();
     }
 
-    //	@Test
+//    @Test
 	public void testAddUser() throws Exception {
-		UserPO po = new UserPO("toDelete","sbsbsb",5);
-        SystemUserManagementDataService service = databaseFactory.getSystemUserManagementDataService();
+		UserPO po = new UserPO("toDelete","sbsbsb",Authority.ACCOUNTANT_LOW);
 		assertEquals(true,service.addUser(po));
 	}
 
 //	@Test
 	public void testRemoveUser() throws Exception {
-        UserPO po = new UserPO("test1",null,0);
-        SystemUserManagementDataService service = databaseFactory.getSystemUserManagementDataService();
+        UserPO po = new UserPO("toDelete","sbsbsb", Authority.ACCOUNTANT_LOW);
         assertEquals(true,service.removeUser(po));
 	}
 
 //    @Test
     public void testInquireUser() throws Exception {
-        UserPO a=new UserPO("admin",null,0);
-        SystemUserManagementDataService service = databaseFactory.getSystemUserManagementDataService();
+        UserPO a=new UserPO("admin",null,Authority.ACCOUNTANT_HIGH);
         ArrayList<UserPO> result = service.inquireUser(a);
         for (UserPO po2:result) {
             System.out.println(po2);
         }
     }
 
-//	@Test
+	@Test
 	public void testGetAllUsers() throws Exception {
-        SystemUserManagementDataService service = databaseFactory.getSystemUserManagementDataService();
         ArrayList<UserPO> result = service.getAllUsers();
         for (UserPO po2:result) {
             System.out.println(po2);

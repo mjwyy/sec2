@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import data.database.DatabaseManager;
 import po.OrganizationPO;
 import po.StaffPO;
 import dataservice.exception.ElementNotFoundException;
@@ -18,16 +19,14 @@ import util.enums.StaffType;
 public class StaffOrganizationManagementData implements
 		StaffOrganizationManagementDataService {
 
-    private Connection connection;
-
-    public StaffOrganizationManagementData(Connection con) throws RemoteException {
+    public StaffOrganizationManagementData() throws RemoteException {
         super();
-        this.connection = con;
     }
 
     @Override
 	public boolean addStaff(StaffPO staff) throws RemoteException,
             InterruptWithExistedElementException, SQLException {
+        Connection connection = DatabaseManager.getConnection();
         String sql = "insert into `staff` ( `gender`, `salary`, `position`, `organization`," +
                 " `workHour`, `staff_id`, `idCardNumber`, `name`, `phoneNumber`) " +
                 "values ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -43,21 +42,22 @@ public class StaffOrganizationManagementData implements
         statement.setString(8, staff.getName());
         statement.setString(9, staff.getPhoneNumber());
         int result = statement.executeUpdate();
-        statement.close();
+        DatabaseManager.releaseConnection(connection,statement,null);
         return result > 0;
     }
 
 	@Override
 	public boolean addOrganization(OrganizationPO org) throws RemoteException,
             InterruptWithExistedElementException, SQLException {
-        String sql = "insert into `staff` (type,name,organization_id) " +
+        Connection connection = DatabaseManager.getConnection();
+        String sql = "insert into `organization` (type,name,organization_id) " +
                 "values (?,?,?)";
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1,org.getType().getType());
         statement.setString(2,org.getName());
-        statement.setInt(3,Integer.parseInt(org.getCode()));
+        statement.setString(3,org.getCode());
         int result = statement.executeUpdate();
-        statement.close();
+        DatabaseManager.releaseConnection(connection,statement,null);
 		return result>0;
 	}
 
@@ -147,6 +147,7 @@ public class StaffOrganizationManagementData implements
     }
 
     private ArrayList<StaffPO> excFindStaffStatement(String str) throws SQLException {
+        Connection connection = DatabaseManager.getConnection();
         PreparedStatement statement = connection.prepareStatement(str);
         ResultSet resultSet = statement.executeQuery();
         ArrayList<StaffPO> result = new ArrayList<>();
@@ -165,11 +166,12 @@ public class StaffOrganizationManagementData implements
                     idCardNumber, salary, phone, StaffType.getStaffType(intPosition), workhour);
             result.add(po);
         }
-        statement.close();
+        DatabaseManager.releaseConnection(connection,statement,resultSet);
         return result;
     }
 
     private ArrayList<OrganizationPO> excFindOrgStatement(String str) throws SQLException {
+        Connection connection = DatabaseManager.getConnection();
         PreparedStatement statement = connection.prepareStatement(str);
         ResultSet resultSet = statement.executeQuery();
         ArrayList<OrganizationPO> result = new ArrayList<>();
@@ -181,14 +183,15 @@ public class StaffOrganizationManagementData implements
             OrganizationPO po = new OrganizationPO(Integer.toString(organization_id), type, name);
             result.add(po);
         }
-        statement.close();
+        DatabaseManager.releaseConnection(connection,statement,resultSet);
         return result;
     }
 
     private boolean excStatement(String str) throws SQLException {
+        Connection connection = DatabaseManager.getConnection();
         PreparedStatement statement = connection.prepareStatement(str);
         int result = statement.executeUpdate();
-        statement.close();
+        DatabaseManager.releaseConnection(connection,statement,null);
         return result > 0;
     }
 

@@ -54,14 +54,8 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
             e.printStackTrace();
             return new sendDocMsg(false,e.getMessage(),0,null);
         } catch (SQLException e) {
-<<<<<<< HEAD
             e.printStackTrace();
         }
-=======
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
->>>>>>> origin/master
         return new sendDocMsg(true,"寄件单已成功提交!",price,date);
     }
 }

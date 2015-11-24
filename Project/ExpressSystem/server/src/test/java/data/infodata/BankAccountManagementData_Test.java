@@ -3,6 +3,7 @@ package data.infodata;
 import static junit.framework.TestCase.assertEquals;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.junit.Test;
@@ -13,9 +14,18 @@ import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
 
 public class BankAccountManagementData_Test {
-	static BankAccountManagementData bmd=new BankAccountManagementData();
-	public static void init() throws RemoteException, InterruptWithExistedElementException{
-		MockBankAccountManagement bam=new MockBankAccountManagement("李明");
+    static BankAccountManagementData bmd;
+
+    static {
+        try {
+            bmd = new BankAccountManagementData(null);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void init() throws RemoteException, InterruptWithExistedElementException, SQLException {
+        MockBankAccountManagement bam=new MockBankAccountManagement("李明");
 		bmd.addBankAccount(bam);
 		MockBankAccountManagement bam1=new MockBankAccountManagement("小明");
 		bmd.addBankAccount(bam1);

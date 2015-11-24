@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import data.database.DatabaseConnection;
+import data.database.DatabaseManager;
 import data.statisticdata.inte.LogInsertDataService;
 
 public class LogInsertData implements LogInsertDataService {
@@ -13,8 +13,8 @@ public class LogInsertData implements LogInsertDataService {
 	
 	public LogInsertData() {
 		super();
-        this.connection = new DatabaseConnection().getConnection();
-	}
+        this.connection = DatabaseManager.getConnection();
+    }
 	
 	@Override
 	public void insertSystemLog(String log) throws SQLException {

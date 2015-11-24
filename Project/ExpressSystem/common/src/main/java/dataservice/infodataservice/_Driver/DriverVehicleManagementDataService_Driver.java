@@ -5,6 +5,7 @@ package dataservice.infodataservice._Driver;
  *
  */
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dataservice.infodataservice.DriverVehicleManagementDataService;
@@ -40,11 +41,11 @@ public class DriverVehicleManagementDataService_Driver {
 		vehicleList.add(vehiclePO2);
 		vehicleList.add(vehiclePO3);
 	}
-	
-	public void drive(DriverVehicleManagementDataService driverVehicleManagementDataService) throws RemoteException, 
-	InterruptWithExistedElementException, ElementNotFoundException {
-	
-		driverVehicleManagementDataService.addDriver(driverPO1);
+
+    public void drive(DriverVehicleManagementDataService driverVehicleManagementDataService) throws RemoteException,
+            InterruptWithExistedElementException, ElementNotFoundException, SQLException {
+
+        driverVehicleManagementDataService.addDriver(driverPO1);
 		driverVehicleManagementDataService.addDriver(driverPO2);
 		driverVehicleManagementDataService.addDriver(driverPO3);
 		driverVehicleManagementDataService.addVehicle(vehiclePO1);
@@ -102,9 +103,9 @@ public class DriverVehicleManagementDataService_Driver {
 			System.out.println("fail");
 			
 	}
-	
-	public static void main(String[] args) throws RemoteException, InterruptWithExistedElementException, ElementNotFoundException {
-		DriverVehicleManagementDataService_Stub stub = new DriverVehicleManagementDataService_Stub();
+
+    public static void main(String[] args) throws RemoteException, InterruptWithExistedElementException, ElementNotFoundException, SQLException {
+        DriverVehicleManagementDataService_Stub stub = new DriverVehicleManagementDataService_Stub();
 		DriverVehicleManagementDataService_Driver driver  = new DriverVehicleManagementDataService_Driver();
 		driver.drive(stub);
 		

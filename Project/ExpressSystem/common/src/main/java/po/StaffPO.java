@@ -73,7 +73,6 @@ public class StaffPO implements Serializable {
 	 */
 	double workHour = 0.0;
 
-<<<<<<< HEAD
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
@@ -114,38 +113,9 @@ public class StaffPO implements Serializable {
         return workHour;
     }
 
-    public Object toVO() {
-        //TODO PO,VO 不一致！
+
+    public StaffVO toVO() {
+        //TODO 冲突了
         return null;
-=======
-	public String getStaffID(){
-		return staffID;
-	}
-	
-	public String getName() {
-		return name;
-	}
-	public String getOrganization() {
-		return organization;
-	}
-	public String getIDCardNumber() {
-		return IDCardNumber;
-	}
-	public double getSalary() {
-		return salary;
-	}
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-	public String getPosition() {
-		return position;
-	}
-	public double getWorkHour() {
-		return workHour;
-	}
-	public Object toVO() {
-		//TODO PO,VO 不一致！
-		return null;
->>>>>>> origin/master
-	}
+    }
 }

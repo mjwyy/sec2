@@ -2,13 +2,9 @@ package data.logisticdata;
 
 import data.logisticdata.MockObject.MockDeliveryNote;
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
-<<<<<<< HEAD
+
 import org.junit.Before;
-=======
-
->>>>>>> origin/master
 import org.junit.Test;
-
 import po.DeliveryNotePO;
 import util.enums.DeliverCategory;
 import util.sendDocMsg;
@@ -24,26 +20,17 @@ import static junit.framework.TestCase.assertEquals;
  */
 public class DeliveryNoteInput_Test {
 
-<<<<<<< HEAD
-    private DeliveryNoteInputDataService service;
-=======
-    private DeliveryNoteInputDataService service = new DeliveryNoteInputData(null);
->>>>>>> origin/master
+    private DeliveryNoteInputDataService service = new DeliveryNoteInputData();
 
     //这个测试类之间的方法没有顺序,但是方法之间互相依赖十分严重
-
     @Before
     public void setUp() throws Exception {
         service = new DeliveryNoteInputData();
     }
 
     @Test
-<<<<<<< HEAD
-    public void testInsert() throws Exception {
-        setUp();
-=======
     public void testInsert() throws RemoteException, SQLException {
->>>>>>> origin/master
+
         MockDeliveryNote po1 = new MockDeliveryNote("王二狗","江苏省南京市栖霞区南京大学仙林校区","150052120000",
                 "Tom Hanks","江苏省徐州市沛县第三中学语文组","19883490000","爆炸物",10,
                 10,2, DeliverCategory.EXPRESS,5,"0000000001");

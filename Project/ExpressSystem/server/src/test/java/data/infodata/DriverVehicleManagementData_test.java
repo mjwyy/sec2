@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.io.File;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 import org.junit.Test;
 
@@ -15,9 +16,18 @@ import dataservice.infodataservice.DriverVehicleManagementDataService;
 import util.enums.StaffType;
 
 public class DriverVehicleManagementData_test {
-	
-	private static DriverVehicleManagementDataService service = new DriverVehicleManagementData();
-	private static MockDriver driver1 = new MockDriver("0001","吴秦月","苏州营业厅","女",
+
+    private static DriverVehicleManagementDataService service;
+
+    static {
+        try {
+            service = new DriverVehicleManagementData(null);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static MockDriver driver1 = new MockDriver("0001", "吴秦月", "苏州营业厅", "女",
             "320318199601297895", 7000.0, "18362926754", StaffType.DELIVERY_MAN, 10.0, "2015-12-2");
     private static MockDriver driver2 = new MockDriver("0001","吴秦月","苏州营业厅","女",
             "320318199601297895", 7000.0, "18362926754", StaffType.DELIVERY_MAN, 10.0, "2015-12-2");
@@ -35,7 +45,7 @@ public class DriverVehicleManagementData_test {
 
 
 	@Test
-	public void testAddDriver() throws RemoteException, InterruptWithExistedElementException {
+    public void testAddDriver() throws RemoteException, InterruptWithExistedElementException, SQLException {
         service.addDriver(driver1);
         service.addDriver(driver2);
         MockDriver driver3 = new MockDriver("0001", "吴秦月", "苏州营业厅", "女",
@@ -53,8 +63,8 @@ public class DriverVehicleManagementData_test {
 	}
 
     //    @Test
-    public void testRemoveDriver() throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException {
-		MockDriver driver4 = new MockDriver("0001","吴秦月","苏州营业厅","女",
+    public void testRemoveDriver() throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException, SQLException {
+        MockDriver driver4 = new MockDriver("0001","吴秦月","苏州营业厅","女",
                 "320318199601297895", 7000.0, "18362926754", StaffType.DELIVERY_MAN, 10.0, "2015-12-2");
         service.addDriver(driver4);
 		//assertEquals(true,service.removeDriver(driver4));

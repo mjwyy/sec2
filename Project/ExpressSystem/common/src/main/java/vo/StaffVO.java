@@ -5,6 +5,7 @@ import javax.print.DocFlavor.READER;
 import po.StaffPO;
 import util.FormatCheck;
 import util.ResultMsg;
+import util.enums.StaffType;
 
 public class StaffVO {
 	
@@ -31,9 +32,9 @@ public class StaffVO {
 	/**
 	 * 职位
 	 */
-	private String  postion;
-	
-	/**
+    private StaffType postion;
+
+    /**
 	 * 身份证
 	 */
 	private String IDNum;
@@ -62,8 +63,8 @@ public class StaffVO {
 	 * @param phoneNum
 	 * @param wage
 	 */
-	public StaffVO(String name,String sex,String organization,String postion,String IDNum,int workingtime,String phoneNum,String wage){
-		this.name = name;
+    public StaffVO(String name, String sex, String organization, StaffType postion, String IDNum, int workingtime, String phoneNum, String wage) {
+        this.name = name;
 		this.sex = sex;
 		this.IDNum = IDNum;
 		this.organization = organization;
@@ -81,8 +82,8 @@ public class StaffVO {
 		return sex;
 	}
 
-	public String getPostion() {
-		return postion;
+    public StaffType getPostion() {
+        return postion;
 	}
 
 	public String getIDNum() {
@@ -108,8 +109,8 @@ public class StaffVO {
 		msgs[1] = FormatCheck.isGender(sex);
 		msgs[2] = FormatCheck.isPhoneNumber(phoneNum);
 		msgs[3] = FormatCheck.isIDNumber(IDNum);
-		msgs[4] = FormatCheck.isVocation(postion);
-		msgs[5] = FormatCheck.isSalary(wage);
+        msgs[4].setPass(true);
+        msgs[5] = FormatCheck.isSalary(wage);
 		msgs[6] = workingtime>0?new ResultMsg(true):new ResultMsg(false,"工作时间应为正数");
 
 		for(int i=0;i<msgs.length;i++) {

@@ -1,13 +1,9 @@
 package data.database;
 
-<<<<<<< HEAD
+
 import data.infodata.StaffOrganizationManagementData;
 import data.infodata.SystemUserManagementData;
-=======
-import data.infodata.Proxy.SystemUserManageProxy;
-import data.statisticdata.LogInsertData;
 import data.statisticdata.inte.LogInsertDataService;
->>>>>>> origin/master
 import dataservice.commoditydataservice.InventoryDataService;
 import dataservice.commoditydataservice.StorageInDataService;
 import dataservice.commoditydataservice.StorageOutDataService;
@@ -37,15 +33,10 @@ public class DatabaseFactoryMysqlImpl implements DatabaseFactory{
 
     //TODO 初始化所有的数据层实现
     private DatabaseFactoryMysqlImpl() throws RemoteException {
-<<<<<<< HEAD
+
         systemUserManagementDataService = new SystemUserManagementData();
         staffOrganizationManagementDataService = new StaffOrganizationManagementData();
-=======
-        systemUserManagementDataService = new SystemUserManageProxy();
-        
-        
-        logInsertDataService = new LogInsertData();
->>>>>>> origin/master
+
     }
 
     public static DatabaseFactoryMysqlImpl getInstance() throws RemoteException {

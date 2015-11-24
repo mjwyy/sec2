@@ -23,12 +23,12 @@ public class DriverVehicleManagementDataService_Driver {
 	private VehiclePO vehiclePO3;
 	
 	public DriverVehicleManagementDataService_Driver() {
-		driverPO1 = new DriverPO("025010009","魏彦淑","1995-12-12"
-				,"320323199512122345","18362921190","女","2014-09-20");
-		driverPO2 = new DriverPO("025010007","王会","1996-11-12"
-				,"320323199611122345","18362922345","男","2015-09-20");
-		driverPO3 = new DriverPO("025010007","王小二","1997-11-12"
-				,"320323199711122345","18367922345","男","2015-01-20");
+		driverPO1 = new DriverPO("0001","吴秦月","苏州营业厅","女",
+                "320318199601297895",7000.0,"18362926754","营业厅业务员",10.0,"2015-12-2");
+		driverPO2 = new DriverPO("0001","吴秦月","苏州营业厅","女",
+                "320318199601297895",7000.0,"18362926754","营业厅业务员",10.0,"2015-12-2");
+		driverPO3 = new DriverPO("0001","吴秦月","苏州营业厅","女",
+                "320318199601297895",7000.0,"18362926754","营业厅业务员",10.0,"2015-12-2");
 		vehiclePO1 = new VehiclePO("025010001","0251010",null, "2013-01-01");
 		vehiclePO2 = new VehiclePO("025010002","0251010",null,"2013-02-01");
 		vehiclePO3 = new VehiclePO("025010002","0251010",null,"2013-03-01");	
@@ -53,7 +53,8 @@ public class DriverVehicleManagementDataService_Driver {
 		driverVehicleManagementDataService.modifyDriver(driverPO1);
 		driverVehicleManagementDataService.removeDriver(driverPO2);
 		driverVehicleManagementDataService.removeVehicle(vehiclePO1);
-		driverVehicleManagementDataService.inquireDriver(new DriverPO(null, null, null, null, null, null, null));
+		driverVehicleManagementDataService.inquireDriver(new DriverPO("0001","吴秦月","苏州营业厅","女",
+                "320318199601297895",7000.0,"18362926754","营业厅业务员",10.0,"2015-12-2"));
 		driverVehicleManagementDataService.inquireVehicle(new VehiclePO(null, null,null, null));
 		driverVehicleManagementDataService.getAllDriver();
 		driverVehicleManagementDataService.getAllVehicles();	

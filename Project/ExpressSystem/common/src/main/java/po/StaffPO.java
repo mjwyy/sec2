@@ -12,21 +12,25 @@ import vo.StaffVO;
 public class StaffPO implements Serializable {
 
 	private static final long serialVersionUID = 7037298481421583099L;
-	
-	public StaffPO(String name, String organization, String iDCardNumber,String gender,
-			double salary, String phoneNumber, String position, double workHour) {
-		super();
-		this.name = name;
-		this.organization = organization;
-		this.gender = gender;
-		IDCardNumber = iDCardNumber;
-		this.salary = salary;
-		this.phoneNumber = phoneNumber;
-		this.position = position;
-		this.workHour = workHour;
-	}
-	
-	
+
+    public StaffPO(String staffID, String name, String organization, String gender,
+                   String IDCardNumber, double salary, String phoneNumber,
+                   String position, double workHour) {
+        this.staffID = staffID;
+        this.name = name;
+        this.organization = organization;
+        this.gender = gender;
+        this.IDCardNumber = IDCardNumber;
+        this.salary = salary;
+        this.phoneNumber = phoneNumber;
+        this.position = position;
+        this.workHour = workHour;
+    }
+
+    /**
+     * 新增:人员编号(唯一ID)
+     */
+	String staffID;
 
 	/**
 	 * 人员姓名

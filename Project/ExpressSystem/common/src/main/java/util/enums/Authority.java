@@ -30,7 +30,6 @@ public enum Authority {
     	for(Authority a:values()) {
     		if(a.Authority==i) return a;
     	}
-    	
     	return null;
     }
 }

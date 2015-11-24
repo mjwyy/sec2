@@ -23,8 +23,6 @@ public class SystemUserManagementData  implements SystemUserManagementDataServic
 
     private Connection connection;
 
-    private PreparedStatement statement;
-
     public SystemUserManagementData(Connection con) throws RemoteException {
         super();
         this.connection = con;
@@ -32,8 +30,8 @@ public class SystemUserManagementData  implements SystemUserManagementDataServic
 
     @Override
     public boolean addUser(UserPO user) throws InterruptWithExistedElementException, SQLException {
-        String sqlInsert = "insert into user (account,rights,password) values(?,?,?)";
-        statement = connection.prepareStatement(sqlInsert);
+        String sqlInsert = "INSERT into user (account,rights,password) values(?,?,?)";
+        PreparedStatement statement = connection.prepareStatement(sqlInsert);
         statement.setString(1,user.getAccount());
         statement.setInt(2,user.getAuthority());
         statement.setString(3,user.getPassword());
@@ -45,8 +43,8 @@ public class SystemUserManagementData  implements SystemUserManagementDataServic
     @Override
     public boolean removeUser(UserPO user) throws ElementNotFoundException, SQLException {
         String account = user.getAccount();
-        String delete = "delete from user where account = '"+account+"'";
-        statement = connection.prepareStatement(delete);
+        String delete = "DELETE from user where account = '"+account+"'";
+        PreparedStatement statement = connection.prepareStatement(delete);
         int result = statement.executeUpdate();
         statement.close();
         return result > 0;
@@ -64,7 +62,7 @@ public class SystemUserManagementData  implements SystemUserManagementDataServic
             modify = "update user set password="+modified.getPassword()+" where account = "+modified.getAccount();
         }else
             modify = "update user set rights="+modified.getAuthority()+" where account = "+modified.getAccount();
-        statement = connection.prepareStatement(modify);
+        PreparedStatement statement = connection.prepareStatement(modify);
         int result = statement.executeUpdate();
         statement.close();
         return result > 0;
@@ -73,8 +71,8 @@ public class SystemUserManagementData  implements SystemUserManagementDataServic
     @Override
     public ArrayList<UserPO> inquireUser(UserPO info) throws ElementNotFoundException, SQLException {
         String accountToFind = info.getAccount();
-        String sqlFindAll = "select * from user where account = '"+accountToFind+"'";
-        statement = connection.prepareStatement(sqlFindAll);
+        String sqlFindAll = "SELECT * from user where account = '"+accountToFind+"'";
+        PreparedStatement statement = connection.prepareStatement(sqlFindAll);
         ResultSet resultSet = statement.executeQuery();
         ArrayList<UserPO> result = new ArrayList<>();
         UserPO userPO;
@@ -91,8 +89,8 @@ public class SystemUserManagementData  implements SystemUserManagementDataServic
 
     @Override
     public ArrayList<UserPO> getAllUsers() throws SQLException {
-        String sqlFindAll = "select * from user";
-        statement = connection.prepareStatement(sqlFindAll);
+        String sqlFindAll = "SELECT * from user";
+        PreparedStatement statement = connection.prepareStatement(sqlFindAll);
         ResultSet resultSet = statement.executeQuery();
         ArrayList<UserPO> result = new ArrayList<>();
         UserPO userPO;

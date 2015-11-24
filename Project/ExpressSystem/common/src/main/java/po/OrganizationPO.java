@@ -3,6 +3,7 @@ package po;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import util.enums.OrganizationType;
 import vo.OrganizationInfoVO;
 
 /**
@@ -18,36 +19,30 @@ public class OrganizationPO implements Serializable {
 	public static final String TRANSMIT = "中转中心";
 	
 	
-	public OrganizationPO(String type, String code, String name,
-			ArrayList<StaffPO> staff) {
+	public OrganizationPO(String code,OrganizationType type,String name) {
 		super();
 		this.type = type;
 		this.code = code;
 		this.name = name;
-		this.staff = staff;
 	}
-	
+
+
+    /**
+     * 机构编码
+     */
+    String code = null;
+
 	/**
 	 * 机构种类：引用类变量SERIVICE_HALL,TRANSMIT
 	 */
-	String type = null;
-	
-	/**
-	 * 机构编码
-	 */
-	String code = null;
-	
+	OrganizationType type = null;
+
 	/**
 	 * 机构名称
 	 */
 	String name = null;
-	
-	/**
-	 * 机构人员信息
-	 */
-	ArrayList<StaffPO> staff = null;
-	
-	public String getType() {
+
+	public OrganizationType getType() {
 		return type;
 	}
 	public String getCode() {
@@ -56,9 +51,7 @@ public class OrganizationPO implements Serializable {
 	public String getName() {
 		return name;
 	}
-	public ArrayList<StaffPO> getStaff() {
-		return staff;
-	}
+
 	public Object toVO() {
 		// TODO 写个转VO
 		return null;

@@ -39,18 +39,11 @@ public class DeliveryNoteInputBLService_Stub implements DeliveryNoteInputBLServi
 	}
 	//输入寄件单界面得到对输入的寄件单的反馈检查结果
 	public ResultMsg inputSendDoc(DeliveryNoteVO sendDocVO) {
-		if(sendDocVO.getNumber().equals("1"))
 			return new ResultMsg(true,"输入寄件单格式正确");
-		else
-			return new ResultMsg(false,"输入寄件单格式不正确");
 	}
 	//提交界面得到对提交的寄件单的反馈结果
 	public sendDocMsg submitSendDoc(DeliveryNoteVO sendDocVO) {
-		if(sendDocVO.getNumber().equals("1"))
 			return new sendDocMsg(true,"提交成功",10,"3days");
-		else
-			return new sendDocMsg(false,"提交失败",0,"0");
-
 	}
 
 }

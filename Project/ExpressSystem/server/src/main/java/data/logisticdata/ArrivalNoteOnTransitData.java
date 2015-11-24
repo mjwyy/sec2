@@ -17,16 +17,6 @@ public class ArrivalNoteOnTransitData implements ArrivalNoteOnTransitDataService
     }
 
     @Override
-    public boolean delete(ArrivalNoteOnTransitPO po) throws RemoteException {
-        return false;
-    }
-
-    @Override
-    public boolean update(ArrivalNoteOnTransitPO po) throws RemoteException {
-        return false;
-    }
-
-    @Override
     public ArrayList<ArrivalNoteOnTransitPO> find(ArrivalNoteOnTransitPO po) throws RemoteException {
         ArrivalNoteOnTransitPO pox = new ArrivalNoteOnTransitPO();
         ArrayList<ArrivalNoteOnTransitPO> list =  new ArrayList<ArrivalNoteOnTransitPO>();

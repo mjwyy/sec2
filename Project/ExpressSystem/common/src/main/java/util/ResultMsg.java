@@ -22,17 +22,29 @@ public class ResultMsg {
 		this.pass = pass;
 		this.message = message;
 	}
-	
-	@Override
-	public String toString(){
-		return message;
-	}
-	
+
+    public ResultMsg(){
+
+    }
+
+    public ResultMsg(boolean pass){
+        this.pass = pass;
+        this.message = "";
+    }
+
+    public void setPass(boolean pass) {
+        this.pass = pass;
+    }
+
     public boolean isPass() {
         return pass;
     }
 
     public String getMessage() {
         return message;
+    }
+
+    public void appendMessage(String newMsg){
+        this.message+= newMsg;
     }
 }

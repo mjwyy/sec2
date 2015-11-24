@@ -2,6 +2,8 @@ package po;
 
 import java.io.Serializable;
 
+import vo.StaffVO;
+
 /**
  * 用于人员增删改查的PO
  * @author River
@@ -11,11 +13,12 @@ public class StaffPO implements Serializable {
 
 	private static final long serialVersionUID = 7037298481421583099L;
 	
-	public StaffPO(String name, String organization, String iDCardNumber,
+	public StaffPO(String name, String organization, String iDCardNumber,String gender,
 			double salary, String phoneNumber, String position, double workHour) {
 		super();
 		this.name = name;
 		this.organization = organization;
+		this.gender = gender;
 		IDCardNumber = iDCardNumber;
 		this.salary = salary;
 		this.phoneNumber = phoneNumber;
@@ -23,15 +26,22 @@ public class StaffPO implements Serializable {
 		this.workHour = workHour;
 	}
 	
+	
+
 	/**
 	 * 人员姓名
 	 */
 	String name = null;
 	
 	/**
-	 * 机构编号
+	 * 机构名
 	 */
 	String organization = null;
+	
+	/**
+	 * 性别
+	 */
+	String gender = null;
 	
 	/**
 	 * 身份证号
@@ -78,5 +88,9 @@ public class StaffPO implements Serializable {
 	}
 	public double getWorkHour() {
 		return workHour;
+	}
+	public Object toVO() {
+		//TODO PO,VO 不一致！
+		return null;
 	}
 }

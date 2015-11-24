@@ -5,25 +5,27 @@
  */
 package dataservice.logisticdataservice;
 
+import java.io.Serializable;
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.DeliveryNotePO;
+import po.OrderPO;
+import util.PresumedMsg;
 import util.sendDocMsg;
 
-public interface DeliveryNoteInputDataService {
+public interface DeliveryNoteInputDataService extends Remote, Serializable {
 	/**
 	 * 在数据库中增加一个po记录
 	 */
 	public sendDocMsg insert(DeliveryNotePO po) throws RemoteException;
-	/**
-	 * 在数据库中删除一个po记录
-	 */
-	public boolean delete(DeliveryNotePO po) throws RemoteException;
-	/**
-	 * 在数据库中更新一个po记录
-	 */
-	public boolean update(DeliveryNotePO po) throws RemoteException;
+
+    /**
+     * 在数据库中增加一个po记录
+     */
+    public PresumedMsg insertOrderPO(OrderPO po) throws RemoteException;
+
 	/**
 	 * 查找返回相应的DeliveryNoteInputPO结果
 	 */

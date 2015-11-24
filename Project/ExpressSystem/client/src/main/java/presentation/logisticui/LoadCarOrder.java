@@ -1,3 +1,9 @@
+/**
+ * 营业厅装车单界面
+ * 
+ * @author wqy
+ *
+ */
 package presentation.logisticui;
 
 import javax.swing.JPanel;
@@ -30,11 +36,29 @@ public class LoadCarOrder extends JPanel {
 	private JTextField textField_13;
 	private JTextField textField_14;
 	private JTextField textField_15;
+	/**
+	 * 窗口宽度
+	 */
+	private static final int WIDTH = 1152;
+	
+	/**
+	 * 窗口高度
+	 */
+	private static final int HEIGHT = 446;
+	/**
+	 * 右边标签
+	 */
+	private static final int WIDTHL = WIDTH/3*2+19;
+	/**
+	 * 右边field
+	 */
+	private static final int WIDTHT = WIDTHL+76;
 
 	/**
 	 * Create the panel.
 	 */
 	public LoadCarOrder() {
+		setSize(WIDTH,HEIGHT);
 		setBackground(Color.WHITE);
 		setLayout(null);
 		
@@ -138,46 +162,46 @@ public class LoadCarOrder extends JPanel {
 		textField_7.setColumns(10);
 		
 		JLabel label_7 = new JLabel("日期");
-		label_7.setBounds(508, 10, 54, 15);
+		label_7.setBounds(WIDTHL, 10, 54, 15);
 		add(label_7);
 		
 		textField_8 = new JTextField();
-		textField_8.setBounds(592, 7, 66, 21);
+		textField_8.setBounds(WIDTHT, 7, 66, 21);
 		add(textField_8);
 		textField_8.setColumns(10);
 		
 		JLabel label_8 = new JLabel("营业厅编号");
-		label_8.setBounds(508, 43, 78, 15);
+		label_8.setBounds(WIDTHL, 43, 78, 15);
 		add(label_8);
 		
 		textField_9 = new JTextField();
-		textField_9.setBounds(592, 40, 66, 21);
+		textField_9.setBounds(WIDTHT, 40, 66, 21);
 		add(textField_9);
 		textField_9.setColumns(10);
 		
 		JLabel label_9 = new JLabel("汽运编号");
-		label_9.setBounds(508, 81, 78, 15);
+		label_9.setBounds(WIDTHL, 81, 78, 15);
 		add(label_9);
 		
 		textField_10 = new JTextField();
-		textField_10.setBounds(592, 78, 66, 21);
+		textField_10.setBounds(WIDTHT, 78, 66, 21);
 		add(textField_10);
 		textField_10.setColumns(10);
 		
 		JLabel label_10 = new JLabel("目的地");
-		label_10.setBounds(508, 122, 54, 15);
+		label_10.setBounds(WIDTHL, 122, 54, 15);
 		add(label_10);
 		
 		JLabel label_11 = new JLabel("车辆编号");
-		label_11.setBounds(508, 150, 74, 15);
+		label_11.setBounds(WIDTHL, 150, 74, 15);
 		add(label_11);
 		
 		JLabel label_12 = new JLabel("监装员");
-		label_12.setBounds(508, 188, 54, 15);
+		label_12.setBounds(WIDTHL, 188, 54, 15);
 		add(label_12);
 		
 		JLabel label_13 = new JLabel("押运员");
-		label_13.setBounds(508, 226, 54, 15);
+		label_13.setBounds(WIDTHL, 226, 54, 15);
 		add(label_13);
 		
 		JButton btnNewButton_1 = new JButton("确认");
@@ -185,11 +209,11 @@ public class LoadCarOrder extends JPanel {
 		add(btnNewButton_1);
 		
 		JLabel label_14 = new JLabel("货物编码");
-		label_14.setBounds(508, 281, 78, 15);
+		label_14.setBounds(WIDTHL, 281, 78, 15);
 		add(label_14);
 		
 		textField_11 = new JTextField();
-		textField_11.setBounds(591, 278, 140, 21);
+		textField_11.setBounds(WIDTHT, 278, 140, 21);
 		add(textField_11);
 		textField_11.setColumns(10);
 		
@@ -198,22 +222,22 @@ public class LoadCarOrder extends JPanel {
 		add(button);
 		
 		textField_12 = new JTextField();
-		textField_12.setBounds(592, 119, 66, 21);
+		textField_12.setBounds(WIDTHT, 119, 66, 21);
 		add(textField_12);
 		textField_12.setColumns(10);
 		
 		textField_13 = new JTextField();
-		textField_13.setBounds(592, 150, 66, 21);
+		textField_13.setBounds(WIDTHT, 150, 66, 21);
 		add(textField_13);
 		textField_13.setColumns(10);
 		
 		textField_14 = new JTextField();
-		textField_14.setBounds(592, 181, 66, 21);
+		textField_14.setBounds(WIDTHT, 181, 66, 21);
 		add(textField_14);
 		textField_14.setColumns(10);
 		
 		textField_15 = new JTextField();
-		textField_15.setBounds(592, 223, 66, 21);
+		textField_15.setBounds(WIDTHT, 223, 66, 21);
 		add(textField_15);
 		textField_15.setColumns(10);
 		
@@ -228,6 +252,6 @@ public class LoadCarOrder extends JPanel {
 		 g.drawImage(img.getImage(), 0, 0, null);
 		 float lineWidth = 3.0f;
 	      ((Graphics2D)g).setStroke(new BasicStroke(lineWidth));
-	      g.drawLine(450, 0, 450, 400);
+	      g.drawLine(WIDTH/3*2, 0, WIDTH/3*2, HEIGHT);
 		}
 }

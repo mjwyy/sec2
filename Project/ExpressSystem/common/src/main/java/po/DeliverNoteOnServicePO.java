@@ -5,9 +5,12 @@
  */
 package po;
 
+import vo.DeliverNoteOnServiceVO;
+import vo.NoteVO;
+
 import java.util.ArrayList;
 
-public class DeliverNoteOnServicePO {
+public class DeliverNoteOnServicePO extends NotePO{
 	/**
 	 * 货物到达日期
 	 */
@@ -43,5 +46,8 @@ public class DeliverNoteOnServicePO {
 		DeliveryMan = deliveryMan;
 	}
 
-
+    @Override
+    public NoteVO toVO() {
+        return new DeliverNoteOnServiceVO(date,BarCode,DeliveryMan);
+    }
 }

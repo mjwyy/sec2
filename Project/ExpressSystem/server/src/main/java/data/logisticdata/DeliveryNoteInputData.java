@@ -2,6 +2,8 @@ package data.logisticdata;
 
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
 import po.DeliveryNotePO;
+import po.OrderPO;
+import util.PresumedMsg;
 import util.sendDocMsg;
 
 import java.rmi.RemoteException;
@@ -19,13 +21,8 @@ public class DeliveryNoteInputData implements DeliveryNoteInputDataService {
     }
 
     @Override
-    public boolean delete(DeliveryNotePO po) throws RemoteException {
-        return false;
-    }
-
-    @Override
-    public boolean update(DeliveryNotePO po) throws RemoteException {
-        return false;
+    public PresumedMsg insertOrderPO(OrderPO po) throws RemoteException {
+        return null;
     }
 
     @Override

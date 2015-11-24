@@ -12,13 +12,13 @@ public class ArrivalNoteOnServiceBLService_Driver {
 
     public void driver(ArrivalNoteOnServiceBLService service){
         ResultMsg result = service.inputHallArrivalDoc(new ArrivalNoteOnServiceVO
-                ("2015-10-22","02500020151009","nanjing",null));
+                ("2015-10-22",true,"02500020151009","nanjing",null));
         if(result.isPass()==true)
             System.out.println("输入的中转中心到达单格式正确");
         else
             System.out.println("输入的中转中心到达单格式不正确");
         result = service.submitHallArrivalDoc(new ArrivalNoteOnServiceVO
-                ("2015-10-22","02500020151009","nanjing",null));
+                ("2015-10-22",true,"02500020151009","nanjing",null));
         if(result.isPass()==true)
             System.out.println("输入的中转中心到达单格式正确");
         else

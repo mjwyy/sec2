@@ -9,7 +9,6 @@ public class MockStorageOutPO extends StorageOutPO {
     public MockStorageOutPO(ArrayList<String> expressCode, String date,
                             String destination, String type, String transferCode, boolean TorC) {
         super(expressCode, date, destination, type, transferCode, TorC);
-        // TODO Auto-generated constructor stub
     }
 
 }

@@ -5,10 +5,13 @@
  */
 package po;
 
+import vo.LoadNoteOnServiceVO;
+import vo.NoteVO;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class LoadNoteOnServicePO implements Serializable{
+public class LoadNoteOnServicePO extends NotePO implements Serializable{
 	/**
 	 * 
 	 */
@@ -104,5 +107,11 @@ public class LoadNoteOnServicePO implements Serializable{
 
     public void setTransferPrice(double transferPrice) {
         this.transferPrice = transferPrice;
+    }
+
+    @Override
+    public NoteVO toVO() {
+        return new LoadNoteOnServiceVO(this.date, this.hallNumber, this.transpotationNumber,
+                this.Destination, this.carNumber, this.guardMan, this.supercargoMan, this.barcodes);
     }
 }

@@ -1,5 +1,6 @@
 package businesslogicservice.financeblservice._stub;
 
+import po.CreditNotePO;
 import vo.CreditNoteVO;
 import businesslogicservice.financeblservice.CreditNoteInputBLService;
 import util.ResultMsg;
@@ -12,14 +13,15 @@ public class CreditNoteInputBLService_Stub implements
 	}
 
 	public ResultMsg addReceipeDoc(CreditNoteVO vo) {
-		// TODO Auto-generated method stub
-		
-		return new ResultMsg(true,"lala");
-	}
+		 ResultMsg msg = vo.checkFormat();
+	        if(!msg.isPass()) return msg;
+	        else return submitReceipeDoc(vo);	
+	        }
 
 	public ResultMsg submitReceipeDoc(CreditNoteVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+
+    	
+        return new ResultMsg(true);
 	}
 
 }

@@ -49,8 +49,8 @@ public class DriverVehicleManagementDataService_Driver {
 		driverVehicleManagementDataService.addVehicle(vehiclePO1);
 		driverVehicleManagementDataService.addVehicle(vehiclePO2);
 		driverVehicleManagementDataService.addVehicle(vehiclePO3);
-		driverVehicleManagementDataService.modifyVehicle(vehiclePO1, vehiclePO2);
-		driverVehicleManagementDataService.modifyDriver(driverPO1, driverPO2);
+		driverVehicleManagementDataService.modifyVehicle(vehiclePO1);
+		driverVehicleManagementDataService.modifyDriver(driverPO1);
 		driverVehicleManagementDataService.removeDriver(driverPO2);
 		driverVehicleManagementDataService.removeVehicle(vehiclePO1);
 		driverVehicleManagementDataService.inquireDriver(new DriverPO(null, null, null, null, null, null, null));
@@ -82,11 +82,11 @@ public class DriverVehicleManagementDataService_Driver {
 			System.out.println("success");
 		else
 			System.out.println("fail");
-		if(driverVehicleManagementDataService.modifyVehicle(vehiclePO1, vehiclePO2))
+		if(driverVehicleManagementDataService.modifyVehicle(vehiclePO1))
 			System.out.println("success");
 		else
 			System.out.println("fail");
-		if(driverVehicleManagementDataService.modifyDriver(driverPO1, driverPO2))
+		if(driverVehicleManagementDataService.modifyDriver(driverPO1))
 			System.out.println("success");
 		else
 			System.out.println("fail");

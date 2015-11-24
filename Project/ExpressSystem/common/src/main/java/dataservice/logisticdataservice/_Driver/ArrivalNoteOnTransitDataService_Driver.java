@@ -34,17 +34,7 @@ public class ArrivalNoteOnTransitDataService_Driver {
         service.findAll();
         service.find(po1);
         service.find(po2);
-        if(service.delete(po1))
-        	System.out.println("delete succeed");
-        else
-        	System.out.println("delete failed");
-        service.findAll();
-        po2= new ArrivalNoteOnTransitPO("2011-11-11","025100","025100201510200000002","上海",BarcodeAndStates);
-        if(service.update(po2))
-        	System.out.println("update succeed");
-        else
-        	System.out.println("update failed");
-        service.findAll();
+
     }
 
 }

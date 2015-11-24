@@ -17,18 +17,10 @@ public class LoadNoteOnTransitData implements LoadNoteOnTransitDataService {
     }
 
     @Override
-    public boolean delete(LoadNoteOnTransitPO po) throws RemoteException {
-        return false;
-    }
-
-    @Override
-    public boolean update(LoadNoteOnTransitPO po) throws RemoteException {
-        return false;
-    }
-
-    @Override
     public ArrayList<LoadNoteOnTransitPO> find(LoadNoteOnTransitPO po) throws RemoteException {
-        LoadNoteOnTransitPO pox = new LoadNoteOnTransitPO(null,null,null,null,null,null,null);
+
+        LoadNoteOnTransitPO pox = new LoadNoteOnTransitPO(null,null,null,null,null,null,null, null);
+
         ArrayList<LoadNoteOnTransitPO> list =  new ArrayList<LoadNoteOnTransitPO>();
         list.add(pox);
         return list;
@@ -36,7 +28,9 @@ public class LoadNoteOnTransitData implements LoadNoteOnTransitDataService {
 
     @Override
     public ArrayList<LoadNoteOnTransitPO> findAll() throws RemoteException {
-        LoadNoteOnTransitPO pox = new LoadNoteOnTransitPO(null,null,null,null,null,null,null);
+
+        LoadNoteOnTransitPO pox = new LoadNoteOnTransitPO(null,null,null,null,null,null,null, null);
+
         ArrayList<LoadNoteOnTransitPO> list =  new ArrayList<LoadNoteOnTransitPO>();
         list.add(pox);
         return list;

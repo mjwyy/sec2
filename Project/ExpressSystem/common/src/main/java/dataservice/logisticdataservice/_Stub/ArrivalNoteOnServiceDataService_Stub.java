@@ -16,7 +16,6 @@ import java.util.ArrayList;
 public class ArrivalNoteOnServiceDataService_Stub implements ArrivalNoteOnServiceDataService {
 	private ArrivalNoteOnServicePO arrivalNoteOnServicePO;
 	private ArrivalNoteOnServicePO arrivalNoteOnServicePO2;
-	private ArrivalNoteOnServicePO arrivalNoteOnServicePO3;
 	private ArrayList<ArrivalNoteOnServicePO> pos;
 
 	public ArrivalNoteOnServiceDataService_Stub() {
@@ -24,75 +23,48 @@ public class ArrivalNoteOnServiceDataService_Stub implements ArrivalNoteOnServic
 		ArrayList<BarcodeAndState> BarcodeAndStates=new ArrayList<BarcodeAndState> ();
 		BarcodeAndStates.add(bar);
         pos = new ArrayList<ArrivalNoteOnServicePO>();
-        arrivalNoteOnServicePO = new ArrivalNoteOnServicePO("2011-11-11","250000201510130000000",
+        arrivalNoteOnServicePO = new ArrivalNoteOnServicePO("2011-11-11",true,"250000201510130000000",
         		"北京",BarcodeAndStates);
-        arrivalNoteOnServicePO2 = new ArrivalNoteOnServicePO("2011-11-11","250000201510130000001",
-        		"北京",BarcodeAndStates);
-        arrivalNoteOnServicePO3 = new ArrivalNoteOnServicePO("2011-11-11","250000201510130000002",
-        		"北京",BarcodeAndStates);
+        arrivalNoteOnServicePO2 = new ArrivalNoteOnServicePO("2011-11-12",true,"250000201510130000000",
+                "北京",BarcodeAndStates);
 		pos.add(arrivalNoteOnServicePO);
-		pos.add(this.arrivalNoteOnServicePO2);
-		pos.add(arrivalNoteOnServicePO3);
+        pos.add(arrivalNoteOnServicePO2);
 	}
 
 
     @Override
     public boolean insertArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException {
         System.out.println("insertArrivalNote success");
-        return false;
-    }
-
-    @Override
-    public boolean deleteArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException {
-        System.out.println("deleteArrivalNote success");
-        return false;
-    }
-
-    @Override
-    public boolean updateArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException {
-        System.out.println("updateArrivalNote success");
-        return false;
+        return true;
     }
 
     @Override
     public ArrayList<ArrivalNoteOnServicePO> findArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException {
         System.out.println("findArrivalNote success");
-        return null;
+        return pos;
     }
 
     @Override
     public ArrayList<ArrivalNoteOnServicePO> findAllArrivalNote() throws RemoteException {
         System.out.println("findAllArrivalNote success");
-        return null;
+        return pos;
     }
 
     @Override
     public boolean insertDeliverNote(DeliverNoteOnServicePO po) throws RemoteException {
         System.out.println("insertDeliverNote success");
-        return false;
-    }
-
-    @Override
-    public boolean deleteDeliverNote(DeliverNoteOnServicePO po) throws RemoteException {
-        System.out.println("deleteDeliverNote success");
-        return false;
-    }
-
-    @Override
-    public boolean updateDeliverNote(DeliverNoteOnServicePO po) throws RemoteException {
-        System.out.println("updateDeliverNote success");
-        return false;
+        return true;
     }
 
     @Override
     public ArrayList<DeliverNoteOnServicePO> findDeliverNote(DeliverNoteOnServicePO po) throws RemoteException {
         System.out.println("findDeliverNote success");
-        return null;
+        return new ArrayList<DeliverNoteOnServicePO>();
     }
 
     @Override
     public ArrayList<DeliverNoteOnServicePO> findAllDeliverNote() throws RemoteException {
         System.out.println("findAllDeliverNote success");
-        return null;
+        return new ArrayList<DeliverNoteOnServicePO>();
     }
 }

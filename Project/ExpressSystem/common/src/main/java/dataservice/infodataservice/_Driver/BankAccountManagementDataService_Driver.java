@@ -17,9 +17,8 @@ public class BankAccountManagementDataService_Driver {
 	private BankAccountPO bankAccountPO1;
 	
 	public BankAccountManagementDataService_Driver() {
-		BigDecimal b = new BigDecimal(2000);
-		bankAccountPO = new BankAccountPO("金三胖","12344567890",b);
-		bankAccountPO1 = new BankAccountPO("金二胖","12344567890",b);
+		bankAccountPO = new BankAccountPO("金三胖","12344567890","2000");
+		bankAccountPO1 = new BankAccountPO("金二胖","12344567890","2000");
 	}
 	
 	public void drive(BankAccountManagementDataService bankAccountManagementDataService)
@@ -27,7 +26,7 @@ public class BankAccountManagementDataService_Driver {
 		bankAccountManagementDataService.addBankAccount(bankAccountPO);
 		bankAccountManagementDataService.removeBankAccount(bankAccountPO);
 		bankAccountManagementDataService.findBankAccount(new BankAccountPO("Mark", null, null));
-		bankAccountManagementDataService.modifyBankAccount(bankAccountPO,bankAccountPO1 );
+		bankAccountManagementDataService.modifyBankAccount(bankAccountPO );
 		bankAccountManagementDataService.getAllAccounts();
 		
 		if(bankAccountManagementDataService.addBankAccount(bankAccountPO))
@@ -39,7 +38,7 @@ public class BankAccountManagementDataService_Driver {
 			System.out.println("remove success");
 		else
 			System.out.println("remove fail");
-		if(bankAccountManagementDataService.modifyBankAccount(bankAccountPO,bankAccountPO1 ))
+		if(bankAccountManagementDataService.modifyBankAccount(bankAccountPO ))
 			System.out.println("modify success");
 		else 
 			System.out.println("modify fail");

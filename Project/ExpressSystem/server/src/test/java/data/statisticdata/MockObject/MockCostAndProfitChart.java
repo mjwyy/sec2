@@ -8,9 +8,9 @@ import util.enums.ChartType;
 
 public class MockCostAndProfitChart extends CostAndProfitChartPO{
 
-	public MockCostAndProfitChart(String starttime, String endtime,
-			double cost, double profit) {
-		super(starttime, endtime, cost, profit);
 
-	}
+    public MockCostAndProfitChart(String starttime, String endtime,
+                                  double cost, double profit) {
+        super(starttime, endtime, null, null);
+    }
 }

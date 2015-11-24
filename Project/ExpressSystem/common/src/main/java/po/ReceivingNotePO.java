@@ -8,7 +8,7 @@ package po;
 
 import java.io.Serializable;
 
-public class ReceivingNotePO implements Serializable{
+public class ReceivingNotePO extends NotePO implements Serializable{
 	/**
 	 * 
 	 */

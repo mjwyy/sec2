@@ -22,8 +22,8 @@ public class StaffOrganizationMangaementDataService_Driver {
 	private ArrayList<OrganizationPO> orList = new ArrayList<OrganizationPO>();
 	
 	public StaffOrganizationMangaementDataService_Driver() {
-		staffPO1 = new StaffPO("吴秦月","苏州营业厅","320318199601297895",7000.0,"18362926754","营业厅业务员",10.0);
-		staffPO2 = new StaffPO("金三胖","苏州营业厅","320319199401287995",7000.0,"18362457854","营业厅业务员",10.0);
+		staffPO1 = new StaffPO("吴秦月","苏州营业厅","320318199601297895","女", 7000.0,"18362926754","营业厅业务员",10.0);
+		staffPO2 = new StaffPO("金三胖","苏州营业厅","320319199401287995","男", 7000.0,"18362457854","营业厅业务员",10.0);
 		staffList.add(staffPO1);
 		staffList.add(staffPO2);
 		orPO = new OrganizationPO("营业厅","0250101","苏州营业厅",staffList);
@@ -36,9 +36,9 @@ public class StaffOrganizationMangaementDataService_Driver {
 		somDataService.addStaff(staffPO2);
 		somDataService.removeStaff(staffPO1);
 		somDataService.removeOrganization(orPO);
-		somDataService.modifyOrganization(orPO, orPO);
-		somDataService.modifyStaff(staffPO1, staffPO2);
-		somDataService.findStaff(new StaffPO(null, null, null, 0, null, null, 0));
+		somDataService.modifyOrganization(orPO);
+		somDataService.modifyStaff(staffPO1);
+		somDataService.findStaff(new StaffPO(null, null, null, null, 0, null, null, 0));
 		somDataService.findOrganization(new OrganizationPO(null, null, null, null));	
 		
 	    if(somDataService.addOrganization(orPO))
@@ -61,11 +61,11 @@ public class StaffOrganizationMangaementDataService_Driver {
     	        System.out.println("success");
         else
       	    System.out.println("fail");
-	    if(somDataService.modifyOrganization(orPO, orPO))
+	    if(somDataService.modifyOrganization(orPO))
     	        System.out.println("success");
         else
       	    System.out.println("fail");
-	    if(somDataService.modifyStaff(staffPO1, staffPO2))
+	    if(somDataService.modifyStaff(staffPO1))
     	        System.out.println("success");
         else
       	    System.out.println("fail");

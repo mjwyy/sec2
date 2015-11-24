@@ -1,5 +1,6 @@
 package dataservice.infodataservice;
 
+import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import po.StaffPO;
 /**
 * @author River
 */
-public interface StaffOrganizationManagementDataService extends Remote {
+public interface StaffOrganizationManagementDataService extends Remote, Serializable {
 	/**
 	 * Data向数据库中添加对应StaffPO项
      *
@@ -60,33 +61,30 @@ public interface StaffOrganizationManagementDataService extends Remote {
 	/**
 	 * Data将originalStaffPO替换为modifiedStaffPO
      *
-	 * @param original
-	 * @param modified
+	 * @param staff--唯一标识符为IDCardNumber，不可修改
 	 * @return
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException
 	 * @throws InterruptWithExistedElementException
 	 */
-	public boolean modifyStaff(StaffPO original,StaffPO modified)
+	public boolean modifyStaff(StaffPO staff)
 			throws RemoteException,ElementNotFoundException,InterruptWithExistedElementException;
-	// TODO 替换的参数一个还是两个问题
 	/**
 	 * Data将originalOrganizationPO数据替换为modifiedOrganizationPO
      *
-	 * @param original
-	 * @param modified
+	 * @param org--唯一标识符为编号，不可修改
 	 * @return
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException
 	 * @throws InterruptWithExistedElementException
 	 */
-	public boolean modifyOrganization(OrganizationPO original,OrganizationPO modified)
+	public boolean modifyOrganization(OrganizationPO org)
 			throws RemoteException,ElementNotFoundException,InterruptWithExistedElementException;
 
 	/**
      * Data返回符合关键字的员工数据
      *
-	 * @param name
+	 * @param info
 	 * @return
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException
@@ -97,7 +95,7 @@ public interface StaffOrganizationManagementDataService extends Remote {
 	/**
 	 * Data返回符合关键字的机构记录
      *
-	 * @param name
+	 * @param info
 	 * @return
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException

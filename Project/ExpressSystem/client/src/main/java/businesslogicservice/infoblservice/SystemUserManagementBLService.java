@@ -7,6 +7,7 @@ package businesslogicservice.infoblservice;
 
 import java.util.ArrayList;
 
+import util.LogInMsg;
 import util.ResultMsg;
 import vo.UserVO;
 
@@ -31,15 +32,22 @@ public interface SystemUserManagementBLService {
 	 * @param vo
 	 * @return 结果消息
 	 */
-	public ResultMsg modify(UserVO vo);
+	public ResultMsg modify(UserVO origunal,UserVO modified);
 	
 	/**
 	 * 通过账号查找账户信息
-	 * @param userNum
+	 * @param vo
 	 * @return
 	 */
 	public ArrayList<UserVO> find(UserVO vo);
-		
-	
+
+    /**
+     * 用户登陆接口
+     *
+     * @param userNum
+     * @param initialPassword
+     * @return
+     */
+	public LogInMsg logIn(String userNum, String initialPassword);
  
 }

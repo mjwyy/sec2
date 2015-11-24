@@ -1,3 +1,9 @@
+/**
+ * 营业厅派送单界面
+ * 
+ * @author wqy
+ *
+ */
 package presentation.logisticui;
 
 import java.awt.BasicStroke;
@@ -15,10 +21,19 @@ public class SendOrder extends JPanel {
 	private JTextField textField_11;
 	private JTextField textField_1;
 	/**
+	 * 窗口宽度
+	 */
+	private static final int WIDTH = 1152;
+	
+	/**
+	 * 窗口高度
+	 */
+	private static final int HEIGHT = 446;
+	/**
 	 * Create the panel.
 	 */
 	public SendOrder() {
-
+		setSize(WIDTH,HEIGHT);
 		setBackground(Color.WHITE);
 		setLayout(null);
 		
@@ -67,33 +82,33 @@ public class SendOrder extends JPanel {
 		textField_7.setColumns(10);
 		
 		JLabel label_7 = new JLabel("日期");
-		label_7.setBounds(508, 43, 54, 15);
+		label_7.setBounds(787, 43, 54, 15);
 		add(label_7);
 		
 		textField_8 = new JTextField();
-		textField_8.setBounds(592, 40, 66, 21);
+		textField_8.setBounds(863, 40, 66, 21);
 		add(textField_8);
 		textField_8.setColumns(10);
 		
 		JLabel label_13 = new JLabel("派件员");
-		label_13.setBounds(508, 132, 82, 15);
+		label_13.setBounds(787, 132, 82, 15);
 		add(label_13);
 		
 		JButton btnNewButton_1 = new JButton("确认");
-		btnNewButton_1.setBounds(672, 174, 93, 23);
+		btnNewButton_1.setBounds(953, 174, 93, 23);
 		add(btnNewButton_1);
 		
 		JLabel label_14 = new JLabel("货物编码");
-		label_14.setBounds(508, 247, 66, 15);
+		label_14.setBounds(787, 247, 66, 15);
 		add(label_14);
 		
 		textField_11 = new JTextField();
-		textField_11.setBounds(594, 244, 140, 21);
+		textField_11.setBounds(863, 244, 140, 21);
 		add(textField_11);
 		textField_11.setColumns(10);
 		
 		JButton button = new JButton("添加");
-		button.setBounds(672, 304, 93, 23);
+		button.setBounds(964, 304, 93, 23);
 		add(button);
 		
 	
@@ -103,7 +118,7 @@ public class SendOrder extends JPanel {
 		add(label_2);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(592, 129, 66, 21);
+		textField_1.setBounds(863, 129, 66, 21);
 		add(textField_1);
 		textField_1.setColumns(10);
 
@@ -115,6 +130,6 @@ public class SendOrder extends JPanel {
 		 g.drawImage(img.getImage(), 0, 0, null);
 		 float lineWidth = 3.0f;
 	      ((Graphics2D)g).setStroke(new BasicStroke(lineWidth));
-	      g.drawLine(450, 0, 450, 400);
+	      g.drawLine(WIDTH/3*2, 0, WIDTH/3*2, HEIGHT);
 		}
 }

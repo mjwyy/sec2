@@ -66,6 +66,6 @@ public class StaffOrganizationManagementBLService_Stub implements StaffOrganizat
 	public ArrayList<OrganizationInfoVO> showAll(){
 		System.out.println("showing all");
 		return new ArrayList<OrganizationInfoVO>();
-	};
+	}
 
 }

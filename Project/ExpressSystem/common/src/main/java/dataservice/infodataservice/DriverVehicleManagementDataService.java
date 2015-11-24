@@ -1,5 +1,6 @@
 package dataservice.infodataservice;
 
+import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import po.VehiclePO;
 /**
 * @author River
 */
-public interface DriverVehicleManagementDataService extends Remote {
+public interface DriverVehicleManagementDataService extends Remote, Serializable {
 
 	/**
 	 * Data向数据库中添加对应司机PO项
@@ -61,27 +62,25 @@ public interface DriverVehicleManagementDataService extends Remote {
 	/**
 	 * Data将originalDriver替换为modified
      *
-	 * @param originalDriver
-	 * @param modified
+	 * @param driver--唯一标识符为IDCardNumber
 	 * @return
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException
 	 * @throws InterruptWithExistedElementException
 	 */
-	public boolean modifyDriver(DriverPO originalDriver,DriverPO modified)
+	public boolean modifyDriver(DriverPO driver)
 			throws RemoteException,ElementNotFoundException,InterruptWithExistedElementException;
 
 	/**
 	 * Data将originalVehicle数据替换为modified
      *
-	 * @param originalVehicle
-	 * @param modified
+	 * @param vehicle--唯一标识符为车辆编号
 	 * @return
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException
 	 * @throws InterruptWithExistedElementException
 	 */
-	public boolean modifyVehicle(VehiclePO originalVehicle,VehiclePO modified)
+	public boolean modifyVehicle(VehiclePO originalVehicle)
 			throws RemoteException,ElementNotFoundException,InterruptWithExistedElementException;
 
 	/**

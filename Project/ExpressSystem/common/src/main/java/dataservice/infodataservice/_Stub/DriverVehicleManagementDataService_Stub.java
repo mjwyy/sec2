@@ -40,20 +40,6 @@ public class DriverVehicleManagementDataService_Stub implements DriverVehicleMan
 		return true;
 	}
 
-	public boolean modifyDriver(DriverPO originalDriver, DriverPO modified)
-			throws RemoteException, ElementNotFoundException,
-			InterruptWithExistedElementException {
-		System.out.println("modify driver success");
-		return true;
-	}
-
-	public boolean modifyVehicle(VehiclePO originalVehicle, VehiclePO modified)
-			throws RemoteException, ElementNotFoundException,
-			InterruptWithExistedElementException {
-		System.out.println("modifi vehicle success");
-		return true;
-	}
-
 	public ArrayList<DriverPO> getAllDriver() throws RemoteException {
 		System.out.println("success getting");
 		return null;
@@ -74,6 +60,21 @@ public class DriverVehicleManagementDataService_Stub implements DriverVehicleMan
 			throws RemoteException {
 		System.out.println("inquire success");
 		return null;
+	}
+
+	@Override
+	public boolean modifyDriver(DriverPO driver) throws RemoteException,
+			ElementNotFoundException, InterruptWithExistedElementException {
+		System.out.println("modify driver success");
+		return true;
+	}
+
+	@Override
+	public boolean modifyVehicle(VehiclePO originalVehicle)
+			throws RemoteException, ElementNotFoundException,
+			InterruptWithExistedElementException {
+		System.out.println("modifi vehicle success");
+		return true;
 	}
 
 

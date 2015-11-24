@@ -49,6 +49,7 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import java.awt.Toolkit;
 import java.awt.event.ContainerAdapter;
 import java.awt.event.ContainerEvent;
+import javax.swing.border.EtchedBorder;
 
 public class Service extends JFrame {
 	/**
@@ -60,6 +61,15 @@ public class Service extends JFrame {
 	 * 窗口高度
 	 */
 	private static final int HEIGHT = 720;
+	/**
+	 * MIDDLE宽度
+	 */
+	private static final int WIDTHM = 1152;
+	
+	/**
+	 * MIDDLE高度
+	 */
+	private static final int HEIGHTM = 446;
 	private JPanel contentPane;
 
 	/**
@@ -86,7 +96,7 @@ public class Service extends JFrame {
 	 */
 	private static void changeLook() {
 	    try {
-	    	BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.translucencyAppleLike;
+	    	BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.translucencySmallShadow;
 	        org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
 	        // 关闭右上角设置
 	       UIManager.put("RootPane.setupButtonVisible", false);
@@ -150,7 +160,7 @@ public void setCaiDanLan(){
 	public Service() {
 	
 		this.setResizable(false);//不可调整大小
-		setIconImage(Toolkit.getDefaultToolkit().getImage("image/0001.jpg"));//frameIcon
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Administrator\\Desktop\\u=161254158,2603628643&fm=21&gp=0.jpg"));
 		setTitle("快递物流系统");
 		this.setSize(WIDTH, HEIGHT);
 		((JComponent) this.getContentPane()).setOpaque(true);//不透明
@@ -177,18 +187,18 @@ public void setCaiDanLan(){
 		
 		JLabel lblNewLabel = new JLabel("MinJW快递物流系统");
 		lblNewLabel.requestFocus();
-		lblNewLabel.setBounds(0, 0, WIDTH, 79);
+		lblNewLabel.setBounds(0, 0, 1280, 100);
 		panel.add(lblNewLabel);
-		lblNewLabel.setIcon(new ImageIcon("image/0010.jpg"));
+		lblNewLabel.setIcon(new ImageIcon("image/0000.jpg"));
 		
 		final JPanel middle = new JPanel(){
 			public void paintComponent(Graphics g) {
 				 super.paintComponent(g);
-				 ImageIcon img = new ImageIcon("image/0011.jpg");//背景
+				 ImageIcon img = new ImageIcon("C:\\Users\\Administrator\\Desktop\\0111.jpg");
 				 g.drawImage(img.getImage(), 0, 0, null);
 				}
 				}; 
-		middle.setBounds(150, 116, 855, 329);
+		middle.setBounds(138, 125, WIDTHM, HEIGHTM);
 		middle.setBackground(Color.YELLOW);
 		contentPane.add(middle);
 		middle.setLayout(null);
@@ -197,7 +207,8 @@ public void setCaiDanLan(){
 		
 		
 		JPanel QUANXIANW = new JPanel();
-		QUANXIANW.setBounds(0, 457, 350, 123);
+		QUANXIANW.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
+		QUANXIANW.setBounds(0, 570, 350, 124);
 		
 	
 		
@@ -205,11 +216,11 @@ public void setCaiDanLan(){
 		QUANXIANW.setLayout(null);
 		
 		JLabel user = new JLabel("用户：");
-		user.setBounds(10, 0, 54, 15);
+		user.setBounds(10, 2, 54, 15);
 		QUANXIANW.add(user);
 		
 		JLabel username = new JLabel("李四");
-		username.setBounds(56, 0, 54, 15);
+		username.setBounds(56, 2, 54, 15);
 		QUANXIANW.add(username);
 		
 		JLabel quanxian = new JLabel("权限：");
@@ -229,77 +240,26 @@ public void setCaiDanLan(){
 		QUANXIANW.add(label_2);
 		
 		JPanel right = new JPanel();
-		right.setBounds(0, 115, 140, 309);
+		right.setBounds(5, 115, 140, 456);
 		contentPane.add(right);
 		right.setLayout(null);
 		
 		JButton PayMentRegis = new JButton("登记收款");
-		PayMentRegis.setBounds(0, 229, 130, 80);
+		PayMentRegis.setBounds(10, 280, 120, 120);
 		right.add(PayMentRegis);
 		PayMentRegis.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				PayMent a=new PayMent();
-				a.setBounds(0, 0, 855, 329);
+				a.setBounds(0, 0, 1152, 446);
 				a.setVisible(true);
 				middle.removeAll();
 				middle.add(a);
 				middle.repaint();
 			}
 		});
-		
-		JMenuBar processOrder = new JMenuBar();
-		processOrder.setBounds(0, 6, 130, 80);
-		right.add(processOrder);
-		
-		JMenu mnNewMenu = new JMenu("       处理运单");
-		processOrder.add(mnNewMenu);
-		mnNewMenu.setForeground(Color.BLACK);
-		mnNewMenu.setBackground(Color.WHITE);
-		
-		JMenuItem mntmNewMenuItem = new JMenuItem("到达单");
-		mntmNewMenuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ArrivalOrder a=new ArrivalOrder();
-				a.setBounds(0, 0, 855, 329);//以middle为原点
-				a.setVisible(true);
-				middle.removeAll();
-				middle.add(a);
-				middle.repaint();
-				
-			}
-		});
-		
-		mnNewMenu.add(mntmNewMenuItem);
-		
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("装车单");
-		mntmNewMenuItem_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				LoadCarOrder a=new LoadCarOrder();
-				a.setBounds(0, 0, 855, 329);
-				a.setVisible(true);
-				middle.removeAll();
-				middle.add(a);
-				
-				middle.repaint();
-			}
-		});
-		mnNewMenu.add(mntmNewMenuItem_1);
-		
-		JMenuItem mntmNewMenuItem_2 = new JMenuItem("派送单");
-		mntmNewMenuItem_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				SendOrder a=new SendOrder();
-				a.setBounds(0, 0, 855, 329);
-				a.setVisible(true);
-				middle.removeAll();
-				middle.add(a);
-				middle.repaint();
-			}
-		});
-		mnNewMenu.add(mntmNewMenuItem_2);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(0, 117, 130, 80);
+		panel_1.setBounds(0, 158, 130, 80);
 		right.add(panel_1);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -322,7 +282,7 @@ public void setCaiDanLan(){
 		menuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Driver a=new Driver();
-				a.setBounds(0, 0, 855, 329);
+				a.setBounds(0, 0, WIDTHM, HEIGHTM);
 				a.setVisible(true);
 				middle.removeAll();
 				middle.add(a);
@@ -330,5 +290,64 @@ public void setCaiDanLan(){
 			}
 		});
 		menu.add(menuItem_1);
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBounds(0, 35, 130, 80);
+		right.add(panel_3);
+		
+		JMenuBar processOrder = new JMenuBar();
+		panel_3.add(processOrder);
+		
+		JMenu mnNewMenu = new JMenu("处理运单");
+		processOrder.add(mnNewMenu);
+		mnNewMenu.setForeground(Color.BLACK);
+		mnNewMenu.setBackground(Color.WHITE);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("到达单");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ArrivalOrder a=new ArrivalOrder();
+				a.setBounds(0, 0, WIDTHM, HEIGHTM);//以middle为原点
+				a.setVisible(true);
+				middle.removeAll();
+				middle.add(a);
+				middle.repaint();
+				
+			}
+		});
+		
+		mnNewMenu.add(mntmNewMenuItem);
+		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("装车单");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LoadCarOrder a=new LoadCarOrder();
+				a.setBounds(0, 0, WIDTHM, HEIGHTM);
+				a.setVisible(true);
+				middle.removeAll();
+				middle.add(a);
+				
+				middle.repaint();
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_1);
+		
+		JMenuItem mntmNewMenuItem_2 = new JMenuItem("派送单");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SendOrder a=new SendOrder();
+				a.setBounds(0, 0, WIDTHM, HEIGHTM);
+				a.setVisible(true);
+				middle.removeAll();
+				middle.add(a);
+				middle.repaint();
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_2);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
+		panel_2.setBounds(341, 570, 939, 124);
+		contentPane.add(panel_2);
 	}
 }

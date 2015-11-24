@@ -1,13 +1,16 @@
 package data.logisticdata;
 
 import data.logisticdata.MockObject.MockDeliveryNote;
+import data.logisticdata.Proxy.DeliveryNoteInputProxy;
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
+import org.junit.Before;
 import org.junit.Test;
 import po.DeliveryNotePO;
 import util.enums.DeliverCategory;
 import util.sendDocMsg;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static junit.framework.TestCase.assertEquals;
@@ -17,12 +20,18 @@ import static junit.framework.TestCase.assertEquals;
  */
 public class DeliveryNoteInput_Test {
 
-    private DeliveryNoteInputDataService service = new DeliveryNoteInputData();
+    private DeliveryNoteInputDataService service;
 
     //这个测试类之间的方法没有顺序,但是方法之间互相依赖十分严重
 
+    @Before
+    public void setUp() throws Exception {
+        service = new DeliveryNoteInputProxy();
+    }
+
     @Test
-    public void testInsert() throws RemoteException {
+    public void testInsert() throws Exception {
+        setUp();
         MockDeliveryNote po1 = new MockDeliveryNote("王二狗","江苏省南京市栖霞区南京大学仙林校区","150052120000",
                 "Tom Hanks","江苏省徐州市沛县第三中学语文组","19883490000","爆炸物",10,
                 10,2, DeliverCategory.EXPRESS,5,"0000000001");
@@ -39,7 +48,7 @@ public class DeliveryNoteInput_Test {
     }
 
     @Test
-    public void testDelete() throws RemoteException {
+    public void testDelete() throws RemoteException, SQLException {
         MockDeliveryNote po1 = new MockDeliveryNote("王二狗","江苏省南京市栖霞区南京大学仙林校区","150052120000",
                 "Tom Hanks","江苏省徐州市沛县第三中学语文组","19883490000","爆炸物",10,
                 10,2, DeliverCategory.EXPRESS,5,"0000000001");
@@ -55,7 +64,7 @@ public class DeliveryNoteInput_Test {
     }
 
     @Test
-    public void testUpdate() throws RemoteException {
+    public void testUpdate() throws RemoteException, SQLException {
         MockDeliveryNote po1 = new MockDeliveryNote("王二狗","江苏省南京市栖霞区南京大学仙林校区","150052120000",
                 "Tom Hanks","江苏省徐州市沛县第三中学语文组","19883490000","爆炸物",10,
                 10,2, DeliverCategory.EXPRESS,5,"0000000001");
@@ -67,7 +76,7 @@ public class DeliveryNoteInput_Test {
     }
 
     @Test
-    public void testFind() throws RemoteException {
+    public void testFind() throws RemoteException, SQLException {
         MockDeliveryNote po1 =  new MockDeliveryNote("王二狗","江苏省南京市栖霞区南京大学仙林校区","150052120000",
                 "Tom Hanks","江苏省徐州市沛县第三中学语文组","19883490000","爆炸物",10,
                 10,2, DeliverCategory.EXPRESS,5,"0000000001");
@@ -83,7 +92,7 @@ public class DeliveryNoteInput_Test {
     }
 
     @Test
-    public void testFindAll() throws RemoteException {
+    public void testFindAll() throws RemoteException, SQLException {
         MockDeliveryNote po1 = new MockDeliveryNote("王二狗","江苏省南京市栖霞区南京大学仙林校区","150052120000",
                 "Tom Hanks","江苏省徐州市沛县第三中学语文组","19883490000","爆炸物",10,
                 10,2, DeliverCategory.EXPRESS,5,"0000000001");

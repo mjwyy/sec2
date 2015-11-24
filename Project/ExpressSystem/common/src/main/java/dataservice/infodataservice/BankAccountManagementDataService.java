@@ -3,6 +3,7 @@ package dataservice.infodataservice;
 import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dataservice.exception.ElementNotFoundException;
@@ -21,9 +22,10 @@ public interface BankAccountManagementDataService extends Remote, Serializable {
 	 * @return true for successful add operation
 	 * @throws RemoteException
 	 * @throws InterruptWithExistedElementException
+	 * @throws SQLException 
 	 */
 	public boolean addBankAccount(BankAccountPO account) 
-			throws RemoteException,	InterruptWithExistedElementException;
+			throws RemoteException,	InterruptWithExistedElementException, SQLException;
 
 	/**
 	 * Data删除对应PO记录

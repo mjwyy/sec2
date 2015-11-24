@@ -6,19 +6,20 @@ import po.DeliveryNotePO;
 import util.enums.DeliverCategory;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 /**
  * Created by kylin on 15/10/21.
  */
 public class DeliveryNoteInputDataService_Driver {
 
-    public static void main(String[] args) throws RemoteException {
+    public static void main(String[] args) throws RemoteException, SQLException {
         DeliveryNoteInputDataService service = new DeliveryNoteInputDataService_Stub();
         DeliveryNoteInputDataService_Driver driver = new DeliveryNoteInputDataService_Driver();
         driver.drive(service);
     }
 
-    public void drive(DeliveryNoteInputDataService service) throws RemoteException {
+    public void drive(DeliveryNoteInputDataService service) throws RemoteException, SQLException {
         DeliveryNotePO po1 = new DeliveryNotePO("王二狗","江苏省南京市栖霞区南京大学仙林校区","150052120000",
                 "Tom Hanks","江苏省徐州市沛县第三中学语文组","19883490000","爆炸物",10,
                 10,2,DeliverCategory.EXPRESS,5,"0000000001");

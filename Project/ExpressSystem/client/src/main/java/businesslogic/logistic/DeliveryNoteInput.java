@@ -11,6 +11,7 @@ import util.sendDocMsg;
 import vo.DeliveryNoteVO;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -52,7 +53,10 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
         } catch (RemoteException e) {
             e.printStackTrace();
             return new sendDocMsg(false,e.getMessage(),0,null);
-        }
+        } catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         return new sendDocMsg(true,"寄件单已成功提交!",price,date);
     }
 }

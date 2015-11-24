@@ -1,6 +1,8 @@
 package data.database;
 
 import data.infodata.Proxy.SystemUserManageProxy;
+import data.statisticdata.LogInsertData;
+import data.statisticdata.inte.LogInsertDataService;
 import dataservice.commoditydataservice.InventoryDataService;
 import dataservice.commoditydataservice.StorageInDataService;
 import dataservice.commoditydataservice.StorageOutDataService;
@@ -31,6 +33,9 @@ public class DatabaseFactoryMysqlImpl implements DatabaseFactory{
     //TODO 初始化所有的数据层实现
     private DatabaseFactoryMysqlImpl() throws RemoteException {
         systemUserManagementDataService = new SystemUserManageProxy();
+        
+        
+        logInsertDataService = new LogInsertData();
     }
 
     public static DatabaseFactoryMysqlImpl getInstance() throws RemoteException {
@@ -79,7 +84,8 @@ public class DatabaseFactoryMysqlImpl implements DatabaseFactory{
     private LogInquiryDataService logInquiryDataService;
     private NoteApprovingDataService noteApprovingDataService;
     private OrderInquiryDataService orderInquiryDataService;
-
+    private LogInsertDataService logInsertDataService;
+    
     @Override
     public InventoryDataService getInventoryDataService() {
         return inventoryDataService;
@@ -193,4 +199,9 @@ public class DatabaseFactoryMysqlImpl implements DatabaseFactory{
     public OrderInquiryDataService getOrderInquiryDataService() {
         return orderInquiryDataService;
     }
+
+	@Override
+	public LogInsertDataService getLogInsertDataService() {
+		return logInsertDataService;
+	}
 }

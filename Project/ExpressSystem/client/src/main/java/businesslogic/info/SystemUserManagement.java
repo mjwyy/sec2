@@ -91,7 +91,6 @@ public class SystemUserManagement implements SystemUserManagementBLService {
 
     @Override
     public ArrayList<UserVO> find(UserVO vo) {
-    	// 此项查找无需格式检查，因为VO内保存的是关键字而非真实数据
     	
     	ArrayList<UserVO> result = new ArrayList<>();
     	ArrayList<UserPO> get = null;

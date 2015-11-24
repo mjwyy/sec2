@@ -1,5 +1,6 @@
 package data.database;
 
+import data.statisticdata.inte.LogInsertDataService;
 import dataservice.commoditydataservice.InventoryDataService;
 import dataservice.commoditydataservice.StorageInDataService;
 import dataservice.commoditydataservice.StorageOutDataService;
@@ -63,5 +64,7 @@ public interface DatabaseFactory{
     public NoteApprovingDataService getNoteApprovingDataService();
 
     public OrderInquiryDataService getOrderInquiryDataService();
+    
+    public LogInsertDataService getLogInsertDataService();
 
 }

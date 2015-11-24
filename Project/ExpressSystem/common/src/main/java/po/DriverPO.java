@@ -18,6 +18,11 @@ public class DriverPO extends StaffPO implements Serializable {
 	 */
 	String licenseDate = null;
 
+	public DriverPO(StaffPO staff,String licenseDate) {
+		super(staff.getStaffID(), staff.getName(), staff.getOrganization(), staff.gender, staff.getIDCardNumber(), staff.getSalary(), staff.getPhoneNumber(), staff.getPosition(), staff.getWorkHour());
+		this.licenseDate = licenseDate;
+	}
+	
     public DriverPO(String staffID, String name, String organization, String gender,
                     String IDCardNumber, double salary, String phoneNumber,
                     String position, double workHour, String licenseDate) {

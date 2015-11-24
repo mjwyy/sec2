@@ -72,6 +72,10 @@ public class StaffPO implements Serializable {
 	 */
 	double workHour = 0.0;
 
+	public String getStaffID(){
+		return staffID;
+	}
+	
 	public String getName() {
 		return name;
 	}

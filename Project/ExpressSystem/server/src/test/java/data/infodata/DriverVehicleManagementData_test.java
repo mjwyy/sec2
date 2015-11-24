@@ -12,15 +12,16 @@ import data.infodata.MockObject.MockVehicle;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.infodataservice.DriverVehicleManagementDataService;
+import util.enums.StaffType;
 
 public class DriverVehicleManagementData_test {
 	
 	private static DriverVehicleManagementDataService service = new DriverVehicleManagementData();
 	private static MockDriver driver1 = new MockDriver("0001","吴秦月","苏州营业厅","女",
-            "320318199601297895",7000.0,"18362926754","营业厅业务员",10.0,"2015-12-2");
-	private static MockDriver driver2 = new MockDriver("0001","吴秦月","苏州营业厅","女",
-            "320318199601297895",7000.0,"18362926754","营业厅业务员",10.0,"2015-12-2");
-	private static MockVehicle vehicle1 = new MockVehicle("0250100001", "六合营业厅", null,
+            "320318199601297895", 7000.0, "18362926754", StaffType.DELIVERY_MAN, 10.0, "2015-12-2");
+    private static MockDriver driver2 = new MockDriver("0001","吴秦月","苏州营业厅","女",
+            "320318199601297895", 7000.0, "18362926754", StaffType.DELIVERY_MAN, 10.0, "2015-12-2");
+    private static MockVehicle vehicle1 = new MockVehicle("0250100001", "六合营业厅", null,
 				"2015-10-10");
 	 private static MockVehicle vehicle2 = new MockVehicle("02501000002","鼓楼营业厅",null,
 				"2015-10-10");
@@ -36,22 +37,22 @@ public class DriverVehicleManagementData_test {
 	@Test
 	public void testAddDriver() throws RemoteException, InterruptWithExistedElementException {
 		MockDriver driver3 = new MockDriver("0001","吴秦月","苏州营业厅","女",
-                "320318199601297895",7000.0,"18362926754","营业厅业务员",10.0,"2015-12-2");
-		//assertEquals(true,service.addDriver(driver3));
+                "320318199601297895", 7000.0, "18362926754", StaffType.DELIVERY_MAN, 10.0, "2015-12-2");
+        //assertEquals(true,service.addDriver(driver3));
 		
 	}
     @Test
 	public void testAddVehicle() throws RemoteException, InterruptWithExistedElementException {
-		MockVehicle vehicle3 = new MockVehicle("02501000008","鼓楼营业厅",null,
-				"2015-11-10");
+        MockVehicle vehicle3 = new MockVehicle("a casd", "02501000008", null,
+                "2015-11-10");
 		//assertEquals(true,service.addVehicle(vehicle3));
 		
 	}
     @Test
 	public void testRemoveDriver() throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException {
 		MockDriver driver4 = new MockDriver("0001","吴秦月","苏州营业厅","女",
-                "320318199601297895",7000.0,"18362926754","营业厅业务员",10.0,"2015-12-2");
-		service.addDriver(driver4);
+                "320318199601297895", 7000.0, "18362926754", StaffType.DELIVERY_MAN, 10.0, "2015-12-2");
+        service.addDriver(driver4);
 		//assertEquals(true,service.removeDriver(driver4));
 	}
     @Test

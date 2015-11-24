@@ -2,6 +2,7 @@ package po;
 
 import java.io.Serializable;
 
+import util.enums.StaffType;
 import vo.DriverVO;
 
 /**
@@ -20,7 +21,7 @@ public class DriverPO extends StaffPO implements Serializable {
 
     public DriverPO(String staffID, String name, String organization, String gender,
                     String IDCardNumber, double salary, String phoneNumber,
-                    String position, double workHour, String licenseDate) {
+                    StaffType position, double workHour, String licenseDate) {
         super(staffID, name, organization, gender, IDCardNumber, salary, phoneNumber, position, workHour);
         this.licenseDate = licenseDate;
     }

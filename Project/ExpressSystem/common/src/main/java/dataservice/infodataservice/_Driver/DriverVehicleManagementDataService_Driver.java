@@ -13,6 +13,7 @@ import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
 import po.DriverPO;
 import po.VehiclePO;
+import util.enums.StaffType;
 
 public class DriverVehicleManagementDataService_Driver {
 	private DriverPO driverPO1;
@@ -24,12 +25,12 @@ public class DriverVehicleManagementDataService_Driver {
 	
 	public DriverVehicleManagementDataService_Driver() {
 		driverPO1 = new DriverPO("0001","吴秦月","苏州营业厅","女",
-                "320318199601297895",7000.0,"18362926754","营业厅业务员",10.0,"2015-12-2");
-		driverPO2 = new DriverPO("0001","吴秦月","苏州营业厅","女",
-                "320318199601297895",7000.0,"18362926754","营业厅业务员",10.0,"2015-12-2");
-		driverPO3 = new DriverPO("0001","吴秦月","苏州营业厅","女",
-                "320318199601297895",7000.0,"18362926754","营业厅业务员",10.0,"2015-12-2");
-		vehiclePO1 = new VehiclePO("025010001","0251010",null, "2013-01-01");
+                "320318199601297895", 7000.0, "18362926754", StaffType.ACCOUNTANT, 10.0, "2015-12-2");
+        driverPO2 = new DriverPO("0001","吴秦月","苏州营业厅","女",
+                "320318199601297895", 7000.0, "18362926754", StaffType.ACCOUNTANT, 10.0, "2015-12-2");
+        driverPO3 = new DriverPO("0001","吴秦月","苏州营业厅","女",
+                "320318199601297895", 7000.0, "18362926754", StaffType.ACCOUNTANT, 10.0, "2015-12-2");
+        vehiclePO1 = new VehiclePO("025010001","0251010",null, "2013-01-01");
 		vehiclePO2 = new VehiclePO("025010002","0251010",null,"2013-02-01");
 		vehiclePO3 = new VehiclePO("025010002","0251010",null,"2013-03-01");	
 		ArrayList<DriverPO> driverList = new ArrayList<DriverPO>();
@@ -54,8 +55,8 @@ public class DriverVehicleManagementDataService_Driver {
 		driverVehicleManagementDataService.removeDriver(driverPO2);
 		driverVehicleManagementDataService.removeVehicle(vehiclePO1);
 		driverVehicleManagementDataService.inquireDriver(new DriverPO("0001","吴秦月","苏州营业厅","女",
-                "320318199601297895",7000.0,"18362926754","营业厅业务员",10.0,"2015-12-2"));
-		driverVehicleManagementDataService.inquireVehicle(new VehiclePO(null, null,null, null));
+                "320318199601297895", 7000.0, "18362926754", StaffType.ACCOUNTANT, 10.0, "2015-12-2"));
+        driverVehicleManagementDataService.inquireVehicle(new VehiclePO(null, null,null, null));
 		driverVehicleManagementDataService.getAllDriver();
 		driverVehicleManagementDataService.getAllVehicles();	
 		

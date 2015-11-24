@@ -15,6 +15,7 @@ import dataservice.exception.InterruptWithExistedElementException;
 import po.OrganizationPO;
 import po.StaffPO;
 import util.enums.OrganizationType;
+import util.enums.StaffType;
 
 public class StaffOrganizationMangaementDataService_Driver {
 	private StaffPO staffPO1;
@@ -25,10 +26,10 @@ public class StaffOrganizationMangaementDataService_Driver {
 	
 	public StaffOrganizationMangaementDataService_Driver() {
 		staffPO1 = new StaffPO("0002","吴秦月","苏州营业厅","女",
-                "320318199601297895",7000.0,"18362926754","营业厅业务员",10.0);
-		staffPO2 = new StaffPO("0001","吴秦月","苏州营业厅","女",
-                "320318199601297895",7000.0,"18362926754","营业厅业务员",10.0);
-		staffList.add(staffPO1);
+                "320318199601297895", 7000.0, "18362926754", StaffType.ACCOUNTANT, 10.0);
+        staffPO2 = new StaffPO("0001","吴秦月","苏州营业厅","女",
+                "320318199601297895", 7000.0, "18362926754", StaffType.ACCOUNTANT, 10.0);
+        staffList.add(staffPO1);
 		staffList.add(staffPO2);
 		orPO = new OrganizationPO("营业厅", OrganizationType.HEADQUARTERS,"苏州营业厅");
 		orList.add(orPO);
@@ -43,8 +44,8 @@ public class StaffOrganizationMangaementDataService_Driver {
 		somDataService.modifyOrganization(orPO);
 		somDataService.modifyStaff(staffPO1);
 		somDataService.findStaff(new StaffPO("0001","吴秦月","苏州营业厅","女",
-                "320318199601297895",7000.0,"18362926754","营业厅业务员",10.0));
-		somDataService.findOrganization(new OrganizationPO("营业厅", OrganizationType.HEADQUARTERS,"苏州营业厅"));
+                "320318199601297895", 7000.0, "18362926754", StaffType.ACCOUNTANT, 10.0));
+        somDataService.findOrganization(new OrganizationPO("营业厅", OrganizationType.HEADQUARTERS,"苏州营业厅"));
 		
 	    if(somDataService.addOrganization(orPO))
 	    	    System.out.println("success");

@@ -8,6 +8,7 @@ import util.sendDocMsg;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -19,7 +20,7 @@ public class DeliveryNoteInputProxy extends UnicastRemoteObject implements Deliv
     }
 
     @Override
-    public sendDocMsg insert(DeliveryNotePO po) throws RemoteException {
+    public sendDocMsg insert(DeliveryNotePO po) throws RemoteException, SQLException {
         return null;
     }
 

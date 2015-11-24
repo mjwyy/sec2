@@ -26,7 +26,7 @@ public enum StaffType {
         return intStaffType;
     }
 
-    public StaffType getStaffType(int i) {
+    public static StaffType getStaffType(int i) {
         for(StaffType a:values()) {
             if(a.intStaffType==i) return a;
         }

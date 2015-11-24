@@ -80,7 +80,7 @@ public interface StaffOrganizationManagementDataService extends Remote, Serializ
 	 * @throws InterruptWithExistedElementException
 	 */
 	public boolean modifyOrganization(OrganizationPO org)
-			throws RemoteException,ElementNotFoundException,InterruptWithExistedElementException;
+            throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException, SQLException;
 
 	/**
      * Data返回符合关键字的员工数据

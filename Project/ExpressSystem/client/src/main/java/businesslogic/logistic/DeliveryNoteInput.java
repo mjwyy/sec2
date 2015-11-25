@@ -21,7 +21,6 @@ import java.util.ArrayList;
 public class DeliveryNoteInput implements DeliveryNoteInputBLService {
 
     private DeliveryNoteInputDataService dataService;
-    private OrderInquiryDataService orderInquiryDataService;
 
     private DeliveryNotePO notePO;
     private OrderPO orderPO;
@@ -29,8 +28,6 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
     public DeliveryNoteInput(DeliveryNoteInputDataService dataService) {
         RemoteObjectGetter getter = new RemoteObjectGetter();
         this.dataService = (DeliveryNoteInputDataService) getter.getObjectByName("DeliveryNoteInputData");
-        this.orderInquiryDataService =
-                (OrderInquiryDataService) getter.getObjectByName("OrderInquiryDataService");
     }
 
     @Override

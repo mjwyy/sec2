@@ -1,5 +1,6 @@
 package dataservice.logisticdataservice._Driver;
 
+import dataservice.exception.ElementNotFoundException;
 import dataservice.logisticdataservice.ArrivalNoteOnServiceDataService;
 import dataservice.logisticdataservice._Stub.ArrivalNoteOnServiceDataService_Stub;
 import po.ArrivalNoteOnServicePO;
@@ -30,7 +31,7 @@ public class ArrivalNoteOnServiceDataService_Driver {
     }
 
 
-    public void drive(ArrivalNoteOnServiceDataService arrivalNoteOnServiceDataService) throws RemoteException, SQLException {
+    public void drive(ArrivalNoteOnServiceDataService arrivalNoteOnServiceDataService) throws RemoteException, SQLException, ElementNotFoundException {
         if(arrivalNoteOnServiceDataService.insertArrivalNote(arrivalNoteOnServicePO));
         	System.out.println("insert succeed");
         if(arrivalNoteOnServiceDataService.insertArrivalNote(arrivalNoteOnServicePO2));
@@ -41,7 +42,7 @@ public class ArrivalNoteOnServiceDataService_Driver {
 
     }
 
-    public static void main(String[] args) throws RemoteException, SQLException {
+    public static void main(String[] args) throws RemoteException, SQLException, ElementNotFoundException {
         ArrivalNoteOnServiceDataService stub = new ArrivalNoteOnServiceDataService_Stub();
         ArrivalNoteOnServiceDataService_Driver driver = new ArrivalNoteOnServiceDataService_Driver();
         driver.drive(stub);

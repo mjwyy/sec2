@@ -12,8 +12,9 @@ import dataservice.statisticdataservice.LogInquiryDataService;
 
 public class LogInquiry_Test {
 
-	private LogInquiryDataService service = new LogInquiryData();
-	@Test
+    private LogInquiryDataService service = new LogInquiryData(null);
+
+    @Test
 	public void testfind() throws RemoteException{
 		MockLogEntry logEntry1 = new MockLogEntry("2015-11-11","中转中心业务员王小二录入南京中转中心装车单");
 		MockLogEntry logEntry2 = new MockLogEntry("2015-11-11","中转中心业务员王小三录入南京中转中心装车单");

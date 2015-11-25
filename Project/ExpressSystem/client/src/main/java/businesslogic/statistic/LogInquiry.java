@@ -8,6 +8,7 @@ import util.ResultMsg;
 import vo.SystemLogVO;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -50,6 +51,8 @@ public class LogInquiry implements LogInquiryBLService {
         } catch (RemoteException e) {
             e.printStackTrace();
             return null;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return results;
     }

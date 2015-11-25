@@ -40,7 +40,7 @@ public class DeliveryNoteInputData implements DeliveryNoteInputDataService {
         statement.setInt(7, po.getState().getIntState());
         statement.setString(8, po.getReceiverName());
         statement.setInt(9, po.getGoodsNumber());
-        statement.setString(10, po.getUserName());
+//        statement.setString(10, po.getUserName());
         statement.setString(11, po.getReceiverTeleNumber());
         statement.setString(12, po.getSenderAddress());
         statement.setString(13, po.getSenderName());

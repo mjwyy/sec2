@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import data.database.DatabaseManager;
+import data.database.SqlHelper;
 import po.OrganizationPO;
 import po.StaffPO;
 import dataservice.exception.ElementNotFoundException;
@@ -65,14 +66,14 @@ public class StaffOrganizationManagementData implements
 	public boolean removeStaff(StaffPO staff) throws RemoteException,
             ElementNotFoundException, SQLException {
         String sql = "DELETE from `staff` where staff_id = " + staff.getStaffID();
-        return this.excStatement(sql);
+        return SqlHelper.excSqlStatement(sql);
     }
 
 	@Override
 	public boolean removeOrganization(OrganizationPO org)
             throws RemoteException, ElementNotFoundException, SQLException {
         String sql = "DELETE from `organization` where organization_id = "+org.getCode();
-        return this.excStatement(sql);
+        return SqlHelper.excSqlStatement(sql);
     }
 
     @Override
@@ -87,7 +88,7 @@ public class StaffOrganizationManagementData implements
                 " position = '" + staff.getPosition().getIntStaffType() + "'," +
                 " workHour = '" + staff.getWorkHour() + "'" +
                 " WHERE staff_id = '" + staff.getStaffID() + "'";
-        return this.excStatement(sql);
+        return SqlHelper.excSqlStatement(sql);
     }
 
     @Override
@@ -95,7 +96,7 @@ public class StaffOrganizationManagementData implements
         String sql = "UPDATE organization SET type = '" + org.getType().getType() + "'," +
                 " name = '" + org.getName() + "'" +
                 " WHERE organization_id = '" + org.getCode() + "'";
-        return this.excStatement(sql);
+        return SqlHelper.excSqlStatement(sql);
     }
 
 	@Override
@@ -187,12 +188,5 @@ public class StaffOrganizationManagementData implements
         return result;
     }
 
-    private boolean excStatement(String str) throws SQLException {
-        Connection connection = DatabaseManager.getConnection();
-        PreparedStatement statement = connection.prepareStatement(str);
-        int result = statement.executeUpdate();
-        DatabaseManager.releaseConnection(connection,statement,null);
-        return result > 0;
-    }
 
 }

@@ -2,6 +2,7 @@ package data.infodata;
 
 import data.database.DatabaseFactory;
 import data.database.DatabaseFactoryMysqlImpl;
+import data.database.DatabaseManager;
 import data.statisticdata.inte.LogInsertDataService;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
@@ -25,7 +26,7 @@ public class BankAccountManagementData implements BankAccountManagementDataServi
 	
 	public BankAccountManagementData(Connection con) throws RemoteException {
 		super();
-		connection = con;
+		connection = DatabaseManager.getConnection();
 		dataFac = DatabaseFactoryMysqlImpl.getInstance();
 	}
 	

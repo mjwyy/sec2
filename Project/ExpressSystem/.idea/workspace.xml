@@ -2,161 +2,35 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/server/src/test/java/data/logisticdata/MockObject/MockArrivalNoteOnTransit.java" line="25" />
-    <bookmark url="file://$PROJECT_DIR$/client/src/main/java/businesslogic/logistic/DeliveryNoteInput.java" line="49" />
+    <bookmark url="file://$PROJECT_DIR$/client/src/main/java/businesslogic/logistic/DeliveryNoteInput.java" line="46" />
     <bookmark url="file://$PROJECT_DIR$/common/src/main/java/vo/ArrivalNoteOnServiceVO.java" line="42" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80e1d396-4d24-4864-b9b7-ee0530b48260" name="Default" comment="修改中转单的PO,VO,桩,驱动,Mock">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/commodity/StorageInquiryAll.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/commodity/StorageInquiryAll.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/commodity/StorageInquiryPart.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/commodity/StorageInquiryPart.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/commodity/StorageOut.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/commodity/StorageOut.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/finance/SettlementManagement.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/finance/SettlementManagement.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/info/BankAccountManagement.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/info/BankAccountManagement.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/info/DriverVehicleManagement.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/info/DriverVehicleManagement.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/info/StaffOrganizationManagement.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/info/StaffOrganizationManagement.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/logistic/ArrivalNoteOnService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/logistic/ArrivalNoteOnService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/logistic/ArrivalNoteOnTransit.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/logistic/ArrivalNoteOnTransit.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/logistic/DeliveryNoteInput.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/logistic/DeliveryNoteInput.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/logistic/LoadNoteOnService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/logistic/LoadNoteOnService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/logistic/LoadNoteOnTransit.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/logistic/LoadNoteOnTransit.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/logistic/ReceivingNoteInput.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/logistic/ReceivingNoteInput.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/logistic/TransitNoteInput.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/logistic/TransitNoteInput.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/statistic/ChartOutput$1.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/statistic/ChartOutput$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/statistic/ChartOutput$2.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/statistic/ChartOutput$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/statistic/ChartOutput$3.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/statistic/ChartOutput$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/statistic/ChartOutput.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/statistic/ChartOutput.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/statistic/LogInquiry.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/statistic/LogInquiry.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/statistic/OrderInquiry.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/statistic/OrderInquiry.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/StorageOutBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/StorageOutBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Driver/StorageOutBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Driver/StorageOutBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Stub/StorageOutBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Stub/StorageOutBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/SettlementManagementBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/SettlementManagementBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_driver/SettlementManagementBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_driver/SettlementManagementBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_stub/SettlementManagementBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_stub/SettlementManagementBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/BankAccountManagementBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/BankAccountManagementBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/DriverVehicleManagementBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/DriverVehicleManagementBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/StaffOrganizationManagementBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/StaffOrganizationManagementBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/BankAccountManagemntBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/BankAccountManagemntBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/DriverVehicleManagementBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/DriverVehicleManagementBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/StaffOrganizationManagementBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/StaffOrganizationManagementBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_stub/BankAccountManagemntBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_stub/BankAccountManagemntBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_stub/DriverVehicleManagementBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_stub/DriverVehicleManagementBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_stub/StaffOrganizationManagementBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_stub/StaffOrganizationManagementBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/ArrivalNoteOnServiceBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/ArrivalNoteOnServiceBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/ArrivalNoteOnTransitBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/ArrivalNoteOnTransitBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/DeliveryNoteInputBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/DeliveryNoteInputBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/LoadNoteOnServiceBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/LoadNoteOnServiceBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/LoadNoteOnTransitBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/LoadNoteOnTransitBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/ReceivingNoteInputBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/ReceivingNoteInputBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/TransitNoteInputBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/TransitNoteInputBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/ArrivalNoteOnServiceBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/ArrivalNoteOnServiceBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/ArrivalNoteOnTransitBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/ArrivalNoteOnTransitBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/DeliveryNoteInputBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/DeliveryNoteInputBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/LoadNoteOnServiceBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/LoadNoteOnServiceBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/LoadNoteOnTransitBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/LoadNoteOnTransitBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/ReceivingNoteInputBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/ReceivingNoteInputBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/TransitNoteInputBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/TransitNoteInputBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/ArrivalNoteOnServiceBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/ArrivalNoteOnServiceBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/ArrivalNoteOnTransitBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/ArrivalNoteOnTransitBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/DeliveryNoteInputBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/DeliveryNoteInputBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/LoadNoteOnServiceBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/LoadNoteOnServiceBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/LoadNoteOnTransitBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/LoadNoteOnTransitBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/ReceivingNoteInputBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/ReceivingNoteInputBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/TransitNoteInputBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/TransitNoteInputBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/LogInquiryBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/LogInquiryBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/OrderInquiryBLService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/OrderInquiryBLService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/LogInquiryBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/LogInquiryBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/OrderInquiryBLService_Driver.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/OrderInquiryBLService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/LogInquiryBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/LogInquiryBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/OrderInquiryBLService_Stub.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/OrderInquiryBLService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/commodityui/StorageOutUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/commodityui/StorageOutUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/financeui/BankAccountManagementUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/financeui/BankAccountManagementUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/financeui/SettlementManagementUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/financeui/SettlementManagementUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/infoui/DriverVehicleManagementUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/infoui/DriverVehicleManagementUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/ArrivalNoteOnServiceUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/ArrivalNoteOnServiceUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/ArrivalNoteOnTransitUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/ArrivalNoteOnTransitUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/DeliveryNoteInputUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/DeliveryNoteInputUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/LoadNoteOnServiceUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/LoadNoteOnServiceUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/LoadNoteOnTransitUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/LoadNoteOnTransitUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/ReceivingNoteInputUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/ReceivingNoteInputUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/TransitNoteInputUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/logisticui/TransitNoteInputUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/presentation/statisticui/LogInquiryUI.class" afterPath="$PROJECT_DIR$/client/target/classes/presentation/statisticui/LogInquiryUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/test-classes/businesslogic/FormatCheck_Test.class" afterPath="$PROJECT_DIR$/client/target/test-classes/businesslogic/FormatCheck_Test.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/BankAccountManagementDataService.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/BankAccountManagementDataService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/_Driver/BankAccountManagementDataService_Driver.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/_Driver/BankAccountManagementDataService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/_Driver/DriverVehicleManagementDataService_Driver.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/_Driver/DriverVehicleManagementDataService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/_Stub/BankAccountManagementDataService_Stub.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/_Stub/BankAccountManagementDataService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/TransitNoteInputDataService.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/TransitNoteInputDataService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/TransitNoteInputDataService_Driver.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/TransitNoteInputDataService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Stub/TransitNoteInputDataService_Stub.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Stub/TransitNoteInputDataService_Stub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/po/ArrivalNoteOnServicePO.class" afterPath="$PROJECT_DIR$/common/target/classes/po/ArrivalNoteOnServicePO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/po/ArrivalNoteOnTransitPO.class" afterPath="$PROJECT_DIR$/common/target/classes/po/ArrivalNoteOnTransitPO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/po/BankAccountPO.class" afterPath="$PROJECT_DIR$/common/target/classes/po/BankAccountPO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/po/DeliverNoteOnServicePO.class" afterPath="$PROJECT_DIR$/common/target/classes/po/DeliverNoteOnServicePO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/po/DeliveryNotePO.class" afterPath="$PROJECT_DIR$/common/target/classes/po/DeliveryNotePO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/po/DriverPO.class" afterPath="$PROJECT_DIR$/common/target/classes/po/DriverPO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/po/IncomeNotePO.class" afterPath="$PROJECT_DIR$/common/target/classes/po/IncomeNotePO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/po/LoadNoteOnServicePO.class" afterPath="$PROJECT_DIR$/common/target/classes/po/LoadNoteOnServicePO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/po/LoadNoteOnTransitPO.class" afterPath="$PROJECT_DIR$/common/target/classes/po/LoadNoteOnTransitPO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/po/StaffPO.class" afterPath="$PROJECT_DIR$/common/target/classes/po/StaffPO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/po/TransitNotePO.class" afterPath="$PROJECT_DIR$/common/target/classes/po/TransitNotePO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/po/VehiclePO.class" afterPath="$PROJECT_DIR$/common/target/classes/po/VehiclePO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/util/FormatCheck.class" afterPath="$PROJECT_DIR$/common/target/classes/util/FormatCheck.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/vo/ArrivalNoteOnServiceVO.class" afterPath="$PROJECT_DIR$/common/target/classes/vo/ArrivalNoteOnServiceVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/vo/ArrivalNoteOnTransitVO.class" afterPath="$PROJECT_DIR$/common/target/classes/vo/ArrivalNoteOnTransitVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/vo/BankAccountVO.class" afterPath="$PROJECT_DIR$/common/target/classes/vo/BankAccountVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/vo/ChartVO.class" afterPath="$PROJECT_DIR$/common/target/classes/vo/ChartVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/vo/CommodityGoodsVO.class" afterPath="$PROJECT_DIR$/common/target/classes/vo/CommodityGoodsVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/vo/CreditNoteVO.class" afterPath="$PROJECT_DIR$/common/target/classes/vo/CreditNoteVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/vo/DeliverNoteOnServiceVO.class" afterPath="$PROJECT_DIR$/common/target/classes/vo/DeliverNoteOnServiceVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/vo/DeliveryNoteVO.class" afterPath="$PROJECT_DIR$/common/target/classes/vo/DeliveryNoteVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/vo/DriverVO.class" afterPath="$PROJECT_DIR$/common/target/classes/vo/DriverVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/vo/IncomeNoteVO.class" afterPath="$PROJECT_DIR$/common/target/classes/vo/IncomeNoteVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/vo/InventoryVO.class" afterPath="$PROJECT_DIR$/common/target/classes/vo/InventoryVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/vo/LoadNoteOnServiceVO.class" afterPath="$PROJECT_DIR$/common/target/classes/vo/LoadNoteOnServiceVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/vo/LoadNoteOnTransitVO.class" afterPath="$PROJECT_DIR$/common/target/classes/vo/LoadNoteOnTransitVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/vo/OrderVO.class" afterPath="$PROJECT_DIR$/common/target/classes/vo/OrderVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/vo/OrganizationInfoVO.class" afterPath="$PROJECT_DIR$/common/target/classes/vo/OrganizationInfoVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/vo/PaymentVO.class" afterPath="$PROJECT_DIR$/common/target/classes/vo/PaymentVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/vo/ReceivingNoteVO.class" afterPath="$PROJECT_DIR$/common/target/classes/vo/ReceivingNoteVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/vo/StaffVO.class" afterPath="$PROJECT_DIR$/common/target/classes/vo/StaffVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/vo/StorageInVO.class" afterPath="$PROJECT_DIR$/common/target/classes/vo/StorageInVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/vo/StorageOutVO.class" afterPath="$PROJECT_DIR$/common/target/classes/vo/StorageOutVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/vo/SystemLogVO.class" afterPath="$PROJECT_DIR$/common/target/classes/vo/SystemLogVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/vo/TransitNoteOnTransitVO.class" afterPath="$PROJECT_DIR$/common/target/classes/vo/TransitNoteOnTransitVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/vo/UserVO.class" afterPath="$PROJECT_DIR$/common/target/classes/vo/UserVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/vo/VehicleVO.class" afterPath="$PROJECT_DIR$/common/target/classes/vo/VehicleVO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/connection/RMIObjectProvider.class" afterPath="$PROJECT_DIR$/server/target/classes/connection/RMIObjectProvider.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/data/infodata/BankAccountManagementData.class" afterPath="$PROJECT_DIR$/server/target/classes/data/infodata/BankAccountManagementData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/data/infodata/DriverVehicleManagementData.class" afterPath="$PROJECT_DIR$/server/target/classes/data/infodata/DriverVehicleManagementData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/data/logisticdata/TransitNoteInputData.class" afterPath="$PROJECT_DIR$/server/target/classes/data/logisticdata/TransitNoteInputData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/infodata/BankAccountManagementData_Test.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/infodata/BankAccountManagementData_Test.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/infodata/DriverVehicleManagementData_test.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/infodata/DriverVehicleManagementData_test.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/infodata/MockObject/MockDriver.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/infodata/MockObject/MockDriver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/infodata/MockObject/MockStaffPO.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/infodata/MockObject/MockStaffPO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/infodata/MockObject/MockVehicle.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/infodata/MockObject/MockVehicle.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockTransitNote.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockTransitNote.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/TransitNoteInput_Test.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/TransitNoteInput_Test.class" />
+    <list default="true" id="80e1d396-4d24-4864-b9b7-ee0530b48260" name="Default" comment="修改orderPO,请注意变更">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/ArrivalNoteOnServiceDataService.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/ArrivalNoteOnServiceDataService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/DeliveryNoteInputDataService.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/DeliveryNoteInputDataService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/ArrivalNoteOnServiceDataService_Driver.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/ArrivalNoteOnServiceDataService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/DeliveryNoteInputDataService_Driver.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/DeliveryNoteInputDataService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Stub/ArrivalNoteOnServiceDataService_Stub.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Stub/ArrivalNoteOnServiceDataService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Stub/DeliveryNoteInputDataService_Stub.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Stub/DeliveryNoteInputDataService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/po/OrderPO.class" afterPath="$PROJECT_DIR$/common/target/classes/po/OrderPO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/util/enums/GoodsState.class" afterPath="$PROJECT_DIR$/common/target/classes/util/enums/GoodsState.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/util/sendDocMsg.class" afterPath="$PROJECT_DIR$/common/target/classes/util/sendDocMsg.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/data/logisticdata/ArrivalNoteOnServiceData.class" afterPath="$PROJECT_DIR$/server/target/classes/data/logisticdata/ArrivalNoteOnServiceData.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/data/logisticdata/DeliveryNoteInputData.class" afterPath="$PROJECT_DIR$/server/target/classes/data/logisticdata/DeliveryNoteInputData.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/data/statisticdata/OrderInquiryData.class" afterPath="$PROJECT_DIR$/server/target/classes/data/statisticdata/OrderInquiryData.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/DeliveryNoteInput_Test.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/DeliveryNoteInput_Test.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/statisticdata/MockObject/MockOrderInquiry.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/statisticdata/MockObject/MockOrderInquiry.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/statisticdata/OrderInquiry_Test.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/statisticdata/OrderInquiry_Test.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/businesslogic/logistic/ArrivalNoteOnService.java" afterPath="$PROJECT_DIR$/client/src/main/java/businesslogic/logistic/ArrivalNoteOnService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/businesslogic/logistic/DeliveryNoteInput.java" afterPath="$PROJECT_DIR$/client/src/main/java/businesslogic/logistic/DeliveryNoteInput.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/businesslogic/statistic/OrderInquiry.java" afterPath="$PROJECT_DIR$/client/src/main/java/businesslogic/statistic/OrderInquiry.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/businesslogicservice/logisticblservice/DeliveryNoteInputBLService.java" afterPath="$PROJECT_DIR$/client/src/main/java/businesslogicservice/logisticblservice/DeliveryNoteInputBLService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/businesslogicservice/logisticblservice/_Driver/DeliveryNoteInputBLService_Driver.java" afterPath="$PROJECT_DIR$/client/src/main/java/businesslogicservice/logisticblservice/_Driver/DeliveryNoteInputBLService_Driver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/businesslogicservice/logisticblservice/_Stub/DeliveryNoteInputBLService_Stub.java" afterPath="$PROJECT_DIR$/client/src/main/java/businesslogicservice/logisticblservice/_Stub/DeliveryNoteInputBLService_Stub.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/ArrivalNoteOnServiceDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/ArrivalNoteOnServiceDataService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/DeliveryNoteInputDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/DeliveryNoteInputDataService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Driver/ArrivalNoteOnServiceDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Driver/ArrivalNoteOnServiceDataService_Driver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Stub/DeliveryNoteInputDataService_Stub.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Stub/DeliveryNoteInputDataService_Stub.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/po/OrderPO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/OrderPO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/util/enums/GoodsState.java" afterPath="$PROJECT_DIR$/common/src/main/java/util/enums/GoodsState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/vo/OrderVO.java" afterPath="$PROJECT_DIR$/common/src/main/java/vo/OrderVO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/dataservice/statisticdataservice/LogInquiryDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/statisticdataservice/LogInquiryDataService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/po/NotePO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/NotePO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/util/sendDocMsg.java" afterPath="$PROJECT_DIR$/common/src/main/java/util/sendDocMsg.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnServiceData.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnServiceData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/data/logisticdata/DeliveryNoteInputData.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/logisticdata/DeliveryNoteInputData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/data/statisticdata/LogInquiryData.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/statisticdata/LogInquiryData.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/data/statisticdata/OrderInquiryData.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/statisticdata/OrderInquiryData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/test/java/data/logisticdata/DeliveryNoteInput_Test.java" afterPath="$PROJECT_DIR$/server/src/test/java/data/logisticdata/DeliveryNoteInput_Test.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/test/java/data/statisticdata/MockObject/MockOrderInquiry.java" afterPath="$PROJECT_DIR$/server/src/test/java/data/statisticdata/MockObject/MockOrderInquiry.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/test/java/data/statisticdata/OrderInquiry_Test.java" afterPath="$PROJECT_DIR$/server/src/test/java/data/statisticdata/OrderInquiry_Test.java" />
     </list>
     <ignored path="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -181,11 +55,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="OrderInquiryData.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/data/statisticdata/OrderInquiryData.java">
+      <file leaf-file-name="ArrivalNoteOnServiceData.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnServiceData.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.5951294">
-              <caret line="33" column="58" selection-start-line="33" selection-start-column="58" selection-end-line="33" selection-end-column="58" />
+              <caret line="52" column="31" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ArrivalNoteOnServicePO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/src/main/java/po/ArrivalNoteOnServicePO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="48" column="29" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OrderInquiryData.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/data/statisticdata/OrderInquiryData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="52" column="38" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -212,8 +106,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/server/src/main/java/data/database/DatabaseConnection.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/data/infodata/Proxy/StaffOrgManageProxy.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/data/infodata/Proxy/SystemUserManageProxy.java" />
         <option value="$PROJECT_DIR$/server/src/test/java/data/infodata/StaffOrganizationManagementData_Test.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/data/database/DatabaseManager.java" />
@@ -249,20 +141,22 @@
         <option value="$PROJECT_DIR$/server/src/test/java/data/logisticdata/MockObject/MockTransitNote.java" />
         <option value="$PROJECT_DIR$/client/src/main/java/businesslogicservice/logisticblservice/_Driver/TransitNoteInputBLService_Driver.java" />
         <option value="$PROJECT_DIR$/client/src/main/java/businesslogic/logistic/TransitNoteInput.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnServiceData.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/DeliveryNoteInputDataService.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/po/OrderPO.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/data/logisticdata/DeliveryNoteInputData.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/data/statisticdata/OrderInquiryData.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Stub/DeliveryNoteInputDataService_Stub.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Driver/ArrivalNoteOnServiceDataService_Driver.java" />
         <option value="$PROJECT_DIR$/server/src/test/java/data/statisticdata/MockObject/MockOrderInquiry.java" />
         <option value="$PROJECT_DIR$/server/src/test/java/data/statisticdata/OrderInquiry_Test.java" />
-        <option value="$PROJECT_DIR$/client/src/main/java/businesslogic/logistic/DeliveryNoteInput.java" />
         <option value="$PROJECT_DIR$/client/src/main/java/businesslogic/statistic/OrderInquiry.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/vo/OrderVO.java" />
         <option value="$PROJECT_DIR$/client/src/main/java/businesslogic/logistic/ArrivalNoteOnService.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/util/enums/GoodsState.java" />
+        <option value="$PROJECT_DIR$/client/src/main/java/businesslogic/logistic/DeliveryNoteInput.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/data/statisticdata/LogInquiryData.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/data/statisticdata/OrderInquiryData.java" />
+        <option value="$PROJECT_DIR$/common/src/main/java/po/NotePO.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnServiceData.java" />
       </list>
     </option>
   </component>
@@ -690,6 +584,128 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ExpressSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ExpressSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ExpressSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ExpressSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ExpressSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ExpressSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ExpressSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ExpressSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="businesslogic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ExpressSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ExpressSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="businesslogic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="logistic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -704,7 +720,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$USER_HOME$/Homework/DataStructure" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
-    <property name="SearchEverywhereHistoryKey" value="transitnoteontransitvo&#9;PSI&#9;JAVA://vo.TransitNoteOnTransitVO&#10;delovo&#9;PSI&#9;JAVA://vo.DeliverNoteOnServiceVO&#10;arrivalservicev&#9;PSI&#9;JAVA://vo.ArrivalNoteOnServiceVO&#10;arrivalvo&#9;PSI&#9;JAVA://vo.ArrivalNoteOnTransitVO&#10;d&#9;FILE&#9;file:///Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/vo/DriverVO.java&#10;driverv&#9;FILE&#9;file:///Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/vo/DriverVO.java&#10;uservo&#9;PSI&#9;JAVA://vo.UserVO&#10;user&#9;FILE&#9;file:///Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/po/UserPO.java&#10;IncomeN&#9;PSI&#9;JAVA://vo.IncomeNoteVO&#10;ArrivalNoteOnService&#9;FILE&#9;file:///Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/po/ArrivalNoteOnServicePO.java&#10;Inc&#9;PSI&#9;JAVA://vo.IncomeNoteVO&#10;chartv&#9;FILE&#9;file:///Users/kylin/Desktop/sec2/Project/ExpressSystem/client/src/main/java/vo/ChartVO.java&#10;Ba&#9;PSI&#9;JAVA://dataservice.infodataservice.BankAccountManagementDataService" />
+    <property name="SearchEverywhereHistoryKey" value="notepo&#9;PSI&#9;JAVA://po.NotePO&#10;transitnoteontransitvo&#9;PSI&#9;JAVA://vo.TransitNoteOnTransitVO&#10;delovo&#9;PSI&#9;JAVA://vo.DeliverNoteOnServiceVO&#10;arrivalservicev&#9;PSI&#9;JAVA://vo.ArrivalNoteOnServiceVO&#10;arrivalvo&#9;PSI&#9;JAVA://vo.ArrivalNoteOnTransitVO&#10;d&#9;FILE&#9;file:///Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/vo/DriverVO.java&#10;driverv&#9;FILE&#9;file:///Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/vo/DriverVO.java&#10;uservo&#9;PSI&#9;JAVA://vo.UserVO&#10;user&#9;FILE&#9;file:///Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/po/UserPO.java&#10;IncomeN&#9;PSI&#9;JAVA://vo.IncomeNoteVO&#10;ArrivalNoteOnService&#9;FILE&#9;file:///Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/po/ArrivalNoteOnServicePO.java&#10;Inc&#9;PSI&#9;JAVA://vo.IncomeNoteVO&#10;chartv&#9;FILE&#9;file:///Users/kylin/Desktop/sec2/Project/ExpressSystem/client/src/main/java/vo/ChartVO.java&#10;Ba&#9;PSI&#9;JAVA://dataservice.infodataservice.BankAccountManagementDataService" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="93" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="95" />
@@ -1189,7 +1205,13 @@
       <option name="project" value="LOCAL" />
       <updated>1448447873745</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="修改orderPO,请注意变更">
+      <created>1448450639202</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1448450639202</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1244,10 +1266,10 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875606" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.004109589" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25969645" sideWeight="0.86738354" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3010118" sideWeight="0.86738354" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24957842" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1307,7 +1329,8 @@
     <MESSAGE value="增加StaffOrg数据层的实现与测试" />
     <MESSAGE value="修改增加连接池后的好多冲突" />
     <MESSAGE value="修改中转单的PO,VO,桩,驱动,Mock" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改中转单的PO,VO,桩,驱动,Mock" />
+    <MESSAGE value="修改orderPO,请注意变更" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改orderPO,请注意变更" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1321,65 +1344,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/po/StaffPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5644531">
-          <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
-          <folding>
-            <element signature="e#1260#1261#0" expanded="false" />
-            <element signature="e#1299#1300#0" expanded="false" />
-            <element signature="e#1333#1334#0" expanded="false" />
-            <element signature="e#1363#1364#0" expanded="false" />
-            <element signature="e#1394#1395#0" expanded="false" />
-            <element signature="e#1421#1422#0" expanded="false" />
-            <element signature="e#1460#1461#0" expanded="false" />
-            <element signature="e#1495#1496#0" expanded="false" />
-            <element signature="e#1528#1529#0" expanded="false" />
-            <element signature="e#1557#1558#0" expanded="false" />
-            <element signature="e#1596#1597#0" expanded="false" />
-            <element signature="e#1631#1632#0" expanded="false" />
-            <element signature="e#1664#1665#0" expanded="false" />
-            <element signature="e#1693#1694#0" expanded="false" />
-            <element signature="e#1731#1732#0" expanded="false" />
-            <element signature="e#1765#1766#0" expanded="false" />
-            <element signature="e#1803#1804#0" expanded="false" />
-            <element signature="e#1834#1835#0" expanded="false" />
-            <element signature="e#1869#1870#0" expanded="false" />
-            <element signature="e#1900#1901#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/main/java/businesslogicservice/infoblservice/_driver/DriverVehicleManagementBLService_Driver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26254827">
-          <caret line="12" column="59" selection-start-line="12" selection-start-column="59" selection-end-line="12" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/po/DriverPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.507722">
-          <caret line="32" column="5" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/main/java/businesslogic/info/DriverVehicleManagement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6389961">
-          <caret line="159" column="9" selection-start-line="159" selection-start-column="9" selection-end-line="159" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/database/DatabaseFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.24200913">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/data/database/UsingConnection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2587519">
@@ -1486,14 +1450,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.16951567">
           <caret line="22" column="7" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnTransitData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33903134">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -1618,30 +1574,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/util/BarcodeAndState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19373219">
-          <caret line="8" column="22" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnServiceData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/statisticdata/LogInquiryData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18112633">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/DeliveryNoteInputDataService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.28462708">
@@ -1650,34 +1582,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/po/ArrivalNoteOnServicePO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="7" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/po/OrderPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.08675799">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/src/main/java/util/SendDocMsg.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1412556">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/main/java/businesslogic/logistic/DeliveryNoteInput.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9237668">
-          <caret line="48" column="43" selection-start-line="48" selection-start-column="43" selection-end-line="48" selection-end-column="43" />
           <folding />
         </state>
       </provider>
@@ -1738,33 +1646,133 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/logisticdata/DeliveryNoteInputData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20700152">
-          <caret line="25" column="21" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/src/main/java/util/enums/GoodsState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.49635038">
           <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
-            <element signature="e#165#166#0" expanded="true" />
-            <element signature="e#196#197#0" expanded="true" />
-            <element signature="e#262#263#0" expanded="true" />
-            <element signature="e#296#297#0" expanded="true" />
-            <element signature="e#342#343#0" expanded="true" />
-            <element signature="e#407#408#0" expanded="true" />
+            <element signature="e#171#172#0" expanded="true" />
+            <element signature="e#202#203#0" expanded="true" />
+            <element signature="e#268#269#0" expanded="true" />
+            <element signature="e#302#303#0" expanded="true" />
+            <element signature="e#348#349#0" expanded="true" />
+            <element signature="e#413#414#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/businesslogic/logistic/DeliveryNoteInput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37899545">
+          <caret line="43" column="27" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnTransitData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36225265">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/util/BarcodeAndState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49162862">
+          <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/logisticdata/DeliveryNoteInputData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15525115">
+          <caret line="35" column="57" selection-start-line="35" selection-start-column="57" selection-end-line="35" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/statisticdata/ChartOutputData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18112633">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/statisticdata/LogInsertData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7503805">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/statisticdata/LogInquiryData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7762557">
+          <caret line="30" column="59" selection-start-line="30" selection-start-column="59" selection-end-line="30" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/po/OrderPO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5175038">
+          <caret line="25" column="25" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/po/UserPO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.07762557">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/po/StaffPO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2587519">
+          <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/po/NotePO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28462708">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/po/ArrivalNoteOnServicePO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="48" column="29" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/data/statisticdata/OrderInquiryData.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="52" column="38" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnServiceData.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5951294">
-          <caret line="33" column="58" selection-start-line="33" selection-start-column="58" selection-end-line="33" selection-end-column="58" />
+          <caret line="52" column="31" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
           <folding />
         </state>
       </provider>

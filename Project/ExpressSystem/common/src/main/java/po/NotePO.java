@@ -19,7 +19,8 @@ public abstract class NotePO implements Serializable{
 	private static final long serialVersionUID = 5768739830941620932L;
 
 	// 创建这个单据的业务员信息
-	private String userName;
+    private StaffPO userName;
+
 	private DocState state;
 
 	public DocState getState() {
@@ -30,8 +31,8 @@ public abstract class NotePO implements Serializable{
 		this.state = state;
 	}
 
-	public String getUserName() {
-		return userName;
+    public StaffPO getUserName() {
+        return userName;
 	}
 
     public NoteVO toVO(){

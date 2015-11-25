@@ -11,6 +11,7 @@ import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import dataservice.exception.ElementNotFoundException;
 import po.ArrivalNoteOnServicePO;
 import po.DeliverNoteOnServicePO;
 
@@ -20,7 +21,7 @@ public interface ArrivalNoteOnServiceDataService extends Remote, Serializable {
     /**
      * 在数据库中插入单一持久化对象
      */
-    public boolean insertArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException, SQLException;
+    public boolean insertArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException, SQLException, ElementNotFoundException;
 
     /**
      * 按关键字进行查找返回相应的ArrivalNoteOnServicePO结果

@@ -12,9 +12,12 @@ import dataservice.statisticdataservice.OrderInquiryDataService;
 import util.PresumedMsg;
 import util.enums.GoodsState;
 
-/** 
- * @author wwz
- *@date 2015/11/14
+/**
+ *
+ * @author kylin
+ *
+ * @date 2015/11/14
+ *
  */
 public class OrderInquiryData implements OrderInquiryDataService{
 
@@ -34,7 +37,7 @@ public class OrderInquiryData implements OrderInquiryDataService{
         StringBuilder stringBuilder = new StringBuilder();
         for (String history : po.getHistory()) {
             stringBuilder.append(history);
-            stringBuilder.append('\n');
+            stringBuilder.append(';');
         }
         statement.setString(3, stringBuilder.toString());
         int result = statement.executeUpdate();
@@ -46,7 +49,7 @@ public class OrderInquiryData implements OrderInquiryDataService{
         return null;
     }
 
-    public OrderPO updateOrder(OrderPO po) throws RemoteException,
+    public OrderPO updateOrder(String barcode, GoodsState goodsStatem, String newMesg) throws RemoteException,
             ElementNotFoundException {
         return null;
     }

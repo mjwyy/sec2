@@ -75,6 +75,11 @@ public class ArrivalNoteOnServicePO extends NotePO implements Serializable{
     }
 
     @Override
+    public String getID() {
+        return this.TransferNumber;
+    }
+
+    @Override
     public NoteVO toVO() {
         return new ArrivalNoteOnServiceVO(date,isTransit,TransferNumber,from,BarcodeAndStates);
     }

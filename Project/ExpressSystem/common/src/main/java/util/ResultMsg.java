@@ -47,4 +47,8 @@ public class ResultMsg {
     public void appendMessage(String newMsg){
         this.message+= newMsg;
     }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }

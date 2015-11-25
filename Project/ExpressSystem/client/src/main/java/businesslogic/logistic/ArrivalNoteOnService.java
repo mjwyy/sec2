@@ -31,32 +31,27 @@ public class ArrivalNoteOnService implements ArrivalNoteOnServiceBLService {
     @Override
     public ResultMsg inputHallArrivalDoc(ArrivalNoteOnServiceVO arrialDocVO) {
         ResultMsg formatCheck = arrialDocVO.checkFormat();
-        if(formatCheck.isPass())
-            this.submitHallArrivalDoc(arrialDocVO);
         return formatCheck;
     }
 
     @Override
     public ResultMsg submitHallArrivalDoc(ArrivalNoteOnServiceVO arrialDocVO) {
+        ResultMsg resultMsg = new ResultMsg();
         try {
             this.arrivalNoteOnServicePO = arrialDocVO.toPO();
-            this.dataService.insertArrivalNote(this.arrivalNoteOnServicePO);
+            resultMsg = this.dataService.insertArrivalNote(this.arrivalNoteOnServicePO);
         } catch (RemoteException e) {
             e.printStackTrace();
             return new ResultMsg(false,e.getMessage());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ElementNotFoundException e) {
+        } catch (SQLException | ElementNotFoundException e) {
             e.printStackTrace();
         }
-        return new ResultMsg(true,"营业厅到达单已提交!");
+        return resultMsg;
     }
 
     @Override
     public ResultMsg inputHallDeliverDoc(DeliverNoteOnServiceVO deliverDocVO) {
         ResultMsg formatCheck = deliverDocVO.checkFormat();
-        if(formatCheck.isPass())
-            this.submitHallDeliverDoc(deliverDocVO);
         return formatCheck;
     }
 

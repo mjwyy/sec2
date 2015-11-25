@@ -83,4 +83,9 @@ public class ArrivalNoteOnTransitPO extends NotePO implements Serializable{
         return new ArrivalNoteOnTransitVO(this.transferNumber, this.centerNumber,
                 this.date, this.departurePlace, BarcodeAndStates);
     }
+
+    @Override
+    public String getID() {
+        return this.transferNumber;
+    }
 }

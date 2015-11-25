@@ -32,10 +32,10 @@ public class ArrivalNoteOnServiceDataService_Driver {
 
 
     public void drive(ArrivalNoteOnServiceDataService arrivalNoteOnServiceDataService) throws RemoteException, SQLException, ElementNotFoundException {
-        if(arrivalNoteOnServiceDataService.insertArrivalNote(arrivalNoteOnServicePO));
-        	System.out.println("insert succeed");
-        if(arrivalNoteOnServiceDataService.insertArrivalNote(arrivalNoteOnServicePO2));
-        	System.out.println("insert succeed");
+        if (arrivalNoteOnServiceDataService.insertArrivalNote(arrivalNoteOnServicePO).isPass()) ;
+        System.out.println("insert succeed");
+        if (arrivalNoteOnServiceDataService.insertArrivalNote(arrivalNoteOnServicePO2).isPass()) ;
+        System.out.println("insert succeed");
         arrivalNoteOnServiceDataService.findArrivalNote(arrivalNoteOnServicePO);
         arrivalNoteOnServiceDataService.findArrivalNote(arrivalNoteOnServicePO2);
         arrivalNoteOnServiceDataService.findAllArrivalNote();

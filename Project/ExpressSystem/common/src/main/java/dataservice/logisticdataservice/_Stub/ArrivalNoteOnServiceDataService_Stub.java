@@ -5,6 +5,7 @@ import dataservice.logisticdataservice.ArrivalNoteOnServiceDataService;
 import po.ArrivalNoteOnServicePO;
 import po.DeliverNoteOnServicePO;
 import util.BarcodeAndState;
+import util.ResultMsg;
 import util.enums.GoodsState;
 
 import java.rmi.RemoteException;
@@ -33,9 +34,9 @@ public class ArrivalNoteOnServiceDataService_Stub implements ArrivalNoteOnServic
 
 
     @Override
-    public boolean insertArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException {
+    public ResultMsg insertArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException {
         System.out.println("insertArrivalNote success");
-        return true;
+        return new ResultMsg(true);
     }
 
     @Override

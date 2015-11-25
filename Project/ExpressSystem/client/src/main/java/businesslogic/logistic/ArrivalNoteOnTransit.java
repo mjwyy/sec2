@@ -2,12 +2,14 @@ package businesslogic.logistic;
 
 import businesslogicservice.logisticblservice.ArrivalNoteOnTransitBLService;
 import connection.RemoteObjectGetter;
+import dataservice.exception.ElementNotFoundException;
 import dataservice.logisticdataservice.ArrivalNoteOnTransitDataService;
 import po.ArrivalNoteOnTransitPO;
 import util.ResultMsg;
 import vo.ArrivalNoteOnTransitVO;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 /**
  * Created by kylin on 15/11/17.
@@ -39,6 +41,10 @@ public class ArrivalNoteOnTransit implements ArrivalNoteOnTransitBLService {
         } catch (RemoteException e) {
             e.printStackTrace();
             return new ResultMsg(false,e.getMessage());
+        } catch (ElementNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return new ResultMsg(true,"中转中心到达单已提交!");
     }

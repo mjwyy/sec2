@@ -32,7 +32,7 @@ public class ArrivalNoteOnTransit_Test {
 		BarcodeAndStates.add(bar2);
 		BarcodeAndStates.add(bar3);
         ArrivalNoteOnTransitPO mock = new ArrivalNoteOnTransitPO(
-                "88888", "025100", "2011-11-11", "北京", BarcodeAndStates);
+                "99999", "025100", "2011-11-11", "北京", BarcodeAndStates);
         service.insert(mock);
     }
 

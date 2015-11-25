@@ -22,22 +22,22 @@ public class NoteApprovingData_Test {
 	
 	private NoteApprovingDataService service = new NoteApprovingData();
 
-    //	@Test
+    //    	@Test
     public void testPassDoc() throws RemoteException, ElementNotFoundException, SQLException {
 //        ArrivalNoteOnServicePO arrivalNoteOnServicePO = new ArrivalNoteOnServicePO(null, false,
 //                "250001201512120002", null, null);
 //        service.passDoc(arrivalNoteOnServicePO);
 
         ArrivalNoteOnTransitPO mock = new ArrivalNoteOnTransitPO(
-                "666666", "025100", "2011-11-11", "北京", null);
+                "99999", "025100", "2011-11-11", "北京", null);
         service.passDoc(mock);
     }
 
     @Test
     public void testFailDoc() throws RemoteException, ElementNotFoundException, SQLException {
         ArrivalNoteOnTransitPO mock = new ArrivalNoteOnTransitPO(
-                "88888", "025100", "2011-11-11", "北京", null);
+                "99999", "025100", "2011-11-11", "北京", null);
         service.passDoc(mock);
-        service.failDoc(mock, "不高兴88888");
+        service.failDoc(mock, "不高兴99999");
     }
 }

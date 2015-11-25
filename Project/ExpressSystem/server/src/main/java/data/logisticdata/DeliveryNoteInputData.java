@@ -17,7 +17,7 @@ import java.util.ArrayList;
 /**
  * Created by kylin on 15/11/10.
  */
-public class DeliveryNoteInputData implements DeliveryNoteInputDataService {
+public class DeliveryNoteInputData extends NoteInputData implements DeliveryNoteInputDataService {
 
     private OrderInquiryData orderInquiryData;
     private OrderPO orderPO;

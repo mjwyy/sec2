@@ -22,7 +22,7 @@ import java.util.ArrayList;
 /**
  * Created by kylin on 15/11/16.
  */
-public class ArrivalNoteOnServiceData implements ArrivalNoteOnServiceDataService {
+public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNoteOnServiceDataService {
 
     private OrderInquiryData orderDataService;
     private LogInsertData logInsertData;
@@ -54,23 +54,10 @@ public class ArrivalNoteOnServiceData implements ArrivalNoteOnServiceDataService
         statement.close();
         //记录系统日志
         logInsertData = new LogInsertData();
-        logInsertData.insertSystemLog("某某营业员添加营业厅到达单,单据编号:" + po.getTransferNumber());
-
+        logInsertData.insertSystemLog("营业员添加营业厅到达单,单据编号:" + po.getTransferNumber());
         //等待总经理审批过程,反复查询
-        String id = po.getTransferNumber();
-        DocState result;
-        while (true) {
-            result = this.checkNoteState(id);
-            //单据被审批了
-            if (!(result == DocState.UNCHECKED))
-                break;
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.out.println("ArrivalNoteOnService is not checked yet...");
-        }
+        DocState result = this.waitForCheck("note_arrival_on_service",
+                "TransferNumber", po.getTransferNumber());
         ResultMsg resultMsg = new ResultMsg(false);
         //审批通过
         if (result == DocState.PASSED) {
@@ -85,36 +72,13 @@ public class ArrivalNoteOnServiceData implements ArrivalNoteOnServiceDataService
             //审批没有通过
         } else {
             System.out.println("ArrivalNoteOnServicePO is failed!");
-            String advice = this.getFailedAdvice(po.getID());
+            String advice = this.getFailedAdvice("note_arrival_on_service",
+                    "TransferNumber", po.getTransferNumber());
             resultMsg.setMessage(advice);
         }
         //操作结束
         DatabaseManager.releaseConnection(connection, statement, null);
         return resultMsg;
-    }
-
-    private String getFailedAdvice(String id) throws SQLException {
-        Connection connection = DatabaseManager.getConnection();
-        String sql = "select advice from note_arrival_on_service" +
-                " where TransferNumber = '" + id + "'";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        ResultSet resultSet = statement.executeQuery();
-        String advice = resultSet.getString(1);
-        DatabaseManager.releaseConnection(connection, statement, resultSet);
-        return advice;
-    }
-
-    private DocState checkNoteState(String TransferNumber) throws SQLException {
-        Connection connection = DatabaseManager.getConnection();
-        int result = 0;
-        String sql = "select isPassed from note_arrival_on_service" +
-                " where TransferNumber = '" + TransferNumber + "'";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        ResultSet resultSet = statement.executeQuery();
-        while (resultSet.next())
-            result = resultSet.getInt(1);
-        DatabaseManager.releaseConnection(connection, statement, resultSet);
-        return DocState.getDocState(result);
     }
 
     @Override

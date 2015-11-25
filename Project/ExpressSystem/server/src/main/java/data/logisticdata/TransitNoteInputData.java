@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by kylin on 15/11/10.
  */
-public class TransitNoteInputData implements TransitNoteInputDataService {
+public class TransitNoteInputData extends NoteInputData implements TransitNoteInputDataService {
 
     @Override
     public boolean insert(TransitNotePO po) throws RemoteException {

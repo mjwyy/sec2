@@ -6,41 +6,25 @@
     <bookmark url="file://$PROJECT_DIR$/common/src/main/java/vo/ArrivalNoteOnServiceVO.java" line="42" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80e1d396-4d24-4864-b9b7-ee0530b48260" name="Default" comment="添加一个辅助类,增加半个实现">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/logistic/ArrivalNoteOnTransit.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/logistic/ArrivalNoteOnTransit.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/ArrivalNoteOnTransitDataService.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/ArrivalNoteOnTransitDataService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/ArrivalNoteOnTransitDataService_Driver.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/ArrivalNoteOnTransitDataService_Driver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/NoteApprovingDataService.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/NoteApprovingDataService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/po/ArrivalNoteOnServicePO.class" afterPath="$PROJECT_DIR$/common/target/classes/po/ArrivalNoteOnServicePO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/po/ArrivalNoteOnTransitPO.class" afterPath="$PROJECT_DIR$/common/target/classes/po/ArrivalNoteOnTransitPO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/po/NotePO.class" afterPath="$PROJECT_DIR$/common/target/classes/po/NotePO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/data/infodata/StaffOrganizationManagementData.class" afterPath="$PROJECT_DIR$/server/target/classes/data/infodata/StaffOrganizationManagementData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/data/logisticdata/ArrivalNoteOnServiceData.class" afterPath="$PROJECT_DIR$/server/target/classes/data/logisticdata/ArrivalNoteOnServiceData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/data/logisticdata/ArrivalNoteOnTransitData.class" afterPath="$PROJECT_DIR$/server/target/classes/data/logisticdata/ArrivalNoteOnTransitData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/data/statisticdata/NoteApprovingData.class" afterPath="$PROJECT_DIR$/server/target/classes/data/statisticdata/NoteApprovingData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/ArrivalNoteOnService_Test.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/ArrivalNoteOnService_Test.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/ArrivalNoteOnTransit_Test.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/ArrivalNoteOnTransit_Test.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/statisticdata/NoteApprovingData_Test.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/statisticdata/NoteApprovingData_Test.class" />
+    <list default="true" id="80e1d396-4d24-4864-b9b7-ee0530b48260" name="Default" comment="单据的输入.等待.审批实现">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/main/java/data/logisticdata/NoteInputData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/logistic/ArrivalNoteOnService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/logistic/ArrivalNoteOnService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/statistic/NoteApproving.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/statistic/NoteApproving.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/ArrivalNoteOnServiceDataService.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/ArrivalNoteOnServiceDataService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/ArrivalNoteOnServiceDataService_Driver.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/ArrivalNoteOnServiceDataService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Stub/ArrivalNoteOnServiceDataService_Stub.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Stub/ArrivalNoteOnServiceDataService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Stub/ArrivalNoteOnTransitDataService_Stub.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Stub/ArrivalNoteOnTransitDataService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/util/ResultMsg.class" afterPath="$PROJECT_DIR$/common/target/classes/util/ResultMsg.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/util/enums/DocState.class" afterPath="$PROJECT_DIR$/common/target/classes/util/enums/DocState.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/data/infodata/DriverVehicleManagementData.class" afterPath="$PROJECT_DIR$/server/target/classes/data/infodata/DriverVehicleManagementData.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/businesslogic/logistic/ArrivalNoteOnService.java" afterPath="$PROJECT_DIR$/client/src/main/java/businesslogic/logistic/ArrivalNoteOnService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/businesslogic/logistic/ArrivalNoteOnTransit.java" afterPath="$PROJECT_DIR$/client/src/main/java/businesslogic/logistic/ArrivalNoteOnTransit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/businesslogic/statistic/NoteApproving.java" afterPath="$PROJECT_DIR$/client/src/main/java/businesslogic/statistic/NoteApproving.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/ArrivalNoteOnServiceDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/ArrivalNoteOnServiceDataService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/ArrivalNoteOnTransitDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/ArrivalNoteOnTransitDataService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Driver/ArrivalNoteOnServiceDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Driver/ArrivalNoteOnServiceDataService_Driver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Driver/ArrivalNoteOnTransitDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Driver/ArrivalNoteOnTransitDataService_Driver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Stub/ArrivalNoteOnServiceDataService_Stub.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Stub/ArrivalNoteOnServiceDataService_Stub.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Stub/ArrivalNoteOnTransitDataService_Stub.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Stub/ArrivalNoteOnTransitDataService_Stub.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/dataservice/statisticdataservice/NoteApprovingDataService.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/statisticdataservice/NoteApprovingDataService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/po/ArrivalNoteOnServicePO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/ArrivalNoteOnServicePO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/po/ArrivalNoteOnTransitPO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/ArrivalNoteOnTransitPO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/po/NotePO.java" afterPath="$PROJECT_DIR$/common/src/main/java/po/NotePO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/util/ResultMsg.java" afterPath="$PROJECT_DIR$/common/src/main/java/util/ResultMsg.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/util/enums/DocState.java" afterPath="$PROJECT_DIR$/common/src/main/java/util/enums/DocState.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnServiceData.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnServiceData.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnTransitData.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnTransitData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/data/statisticdata/NoteApprovingData.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/statisticdata/NoteApprovingData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/test/java/data/logisticdata/ArrivalNoteOnService_Test.java" afterPath="$PROJECT_DIR$/server/src/test/java/data/logisticdata/ArrivalNoteOnService_Test.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/data/logisticdata/DeliveryNoteInputData.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/logisticdata/DeliveryNoteInputData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/data/logisticdata/LoadNoteOnServiceData.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/logisticdata/LoadNoteOnServiceData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/data/logisticdata/LoadNoteOnTransitData.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/logisticdata/LoadNoteOnTransitData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/data/logisticdata/ReceivingNoteInputData.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/logisticdata/ReceivingNoteInputData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/data/logisticdata/TransitNoteInputData.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/logisticdata/TransitNoteInputData.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/test/java/data/logisticdata/ArrivalNoteOnTransit_Test.java" afterPath="$PROJECT_DIR$/server/src/test/java/data/logisticdata/ArrivalNoteOnTransit_Test.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/test/java/data/statisticdata/NoteApprovingData_Test.java" afterPath="$PROJECT_DIR$/server/src/test/java/data/statisticdata/NoteApprovingData_Test.java" />
     </list>
@@ -66,48 +50,7 @@
     <favorites_list name="ExpressSystem" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="NoteApprovingData.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/data/statisticdata/NoteApprovingData.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="71" column="5" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ArrivalNoteOnTransitData.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnTransitData.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5589942">
-              <caret line="64" column="36" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ArrivalNoteOnTransit_Test.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/test/java/data/logisticdata/ArrivalNoteOnTransit_Test.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="34" column="22" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NoteApprovingData_Test.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/test/java/data/statisticdata/NoteApprovingData_Test.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="40" column="38" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -128,11 +71,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/client/src/main/java/businesslogicservice/infoblservice/_driver/DriverVehicleManagementBLService_Driver.java" />
-        <option value="$PROJECT_DIR$/common/src/main/java/util/BarcodesAndLocation.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/data/logisticdata/TransitNoteInputData.java" />
-        <option value="$PROJECT_DIR$/common/src/main/java/vo/TransitNoteOnTransitVO.java" />
-        <option value="$PROJECT_DIR$/common/src/main/java/po/TransitNotePO.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Driver/TransitNoteInputDataService_Driver.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Stub/TransitNoteInputDataService_Stub.java" />
         <option value="$PROJECT_DIR$/server/src/test/java/data/logisticdata/MockObject/MockTransitNote.java" />
@@ -149,7 +87,6 @@
         <option value="$PROJECT_DIR$/client/src/main/java/businesslogic/logistic/DeliveryNoteInput.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/data/statisticdata/LogInsertData.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/dataservice/statisticdataservice/_Driver/LogInquiryDataService_Driver.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/data/logisticdata/DeliveryNoteInputData.java" />
         <option value="$PROJECT_DIR$/server/src/test/java/data/statisticdata/LogInquiry_Test.java" />
         <option value="$PROJECT_DIR$/client/src/main/java/businesslogic/statistic/LogInquiry.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/data/database/ConnectionPool.java" />
@@ -169,16 +106,22 @@
         <option value="$PROJECT_DIR$/client/src/main/java/businesslogic/logistic/ArrivalNoteOnService.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/util/enums/DocState.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/util/ResultMsg.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnServiceData.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Stub/ArrivalNoteOnServiceDataService_Stub.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Driver/ArrivalNoteOnServiceDataService_Driver.java" />
         <option value="$PROJECT_DIR$/client/src/main/java/businesslogic/statistic/NoteApproving.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/data/statisticdata/NoteApprovingData.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Stub/ArrivalNoteOnTransitDataService_Stub.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Driver/ArrivalNoteOnTransitDataService_Driver.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnServiceData.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnTransitData.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/data/logisticdata/NoteInputData.java" />
         <option value="$PROJECT_DIR$/server/src/test/java/data/logisticdata/ArrivalNoteOnTransit_Test.java" />
         <option value="$PROJECT_DIR$/server/src/test/java/data/statisticdata/NoteApprovingData_Test.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnTransitData.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/data/logisticdata/DeliveryNoteInputData.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/data/logisticdata/LoadNoteOnServiceData.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/data/logisticdata/LoadNoteOnTransitData.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/data/logisticdata/ReceivingNoteInputData.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/data/logisticdata/TransitNoteInputData.java" />
       </list>
     </option>
   </component>
@@ -878,28 +821,6 @@
               <option name="myItemId" value="data" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="infodata" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ExpressSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="financedata" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -916,24 +837,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ExpressSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commoditydata" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1019,6 +922,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="870" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FullScreen" value="true" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/server/src/main/java/data/logisticdata" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -1047,6 +951,311 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/client/lib" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogic/commodity/StorageInquiryAll.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogic/commodity/StorageInquiryPart.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogic/commodity/StorageOut.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogic/finance/SettlementManagement.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogic/info/BankAccountManagement.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogic/info/DriverVehicleManagement.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogic/info/StaffOrganizationManagement.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogic/logistic/DeliveryNoteInput.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogic/logistic/LoadNoteOnService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogic/logistic/LoadNoteOnTransit.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogic/logistic/ReceivingNoteInput.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogic/logistic/TransitNoteInput.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogic/statistic/ChartOutput$1.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogic/statistic/ChartOutput$2.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogic/statistic/ChartOutput$3.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogic/statistic/ChartOutput.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogic/statistic/OrderInquiry.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/StorageOutBLService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Driver/StorageOutBLService_Driver.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/commodityblservice/_Stub/StorageOutBLService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/SettlementManagementBLService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_driver/ClientFinance.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_driver/SettlementManagementBLService_Driver.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/financeblservice/_stub/SettlementManagementBLService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/BankAccountManagementBLService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/DriverVehicleManagementBLService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/StaffOrganizationManagementBLService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/SystemUserManagementBLService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/BankAccountManagemntBLService_Driver.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/DriverVehicleManagementBLService_Driver.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/InfoClient.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/StaffOrganizationManagementBLService_Driver.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_driver/SystemUserManagementBLService_Driver.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_stub/BankAccountManagemntBLService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_stub/DriverVehicleManagementBLService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_stub/StaffOrganizationManagementBLService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/infoblservice/_stub/SystemUserManagementBLService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/ArrivalNoteOnServiceBLService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/ArrivalNoteOnTransitBLService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/DeliveryNoteInputBLService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/LoadNoteOnServiceBLService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/LoadNoteOnTransitBLService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/ReceivingNoteInputBLService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/TransitNoteInputBLService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/ArrivalNoteOnServiceBLService_Driver.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/ArrivalNoteOnTransitBLService_Driver.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/DeliveryNoteInputBLService_Driver.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/LoadNoteOnServiceBLService_Driver.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/LoadNoteOnTransitBLService_Driver.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/ReceivingNoteInputBLService_Driver.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Driver/TransitNoteInputBLService_Driver.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/ArrivalNoteOnServiceBLService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/ArrivalNoteOnTransitBLService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/DeliveryNoteInputBLService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/LoadNoteOnServiceBLService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/LoadNoteOnTransitBLService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/ReceivingNoteInputBLService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/logisticblservice/_Stub/TransitNoteInputBLService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/LogInquiryBLService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/OrderInquiryBLService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/LogInquiryBLService_Driver.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/OrderInquiryBLService_Driver.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_driver/StatisticClient.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/BaseDataBuildingBLService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/LogInquiryBLService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/businesslogicservice/statisticblservice/_stub/OrderInquiryBLService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/presentation/commodityui/StorageOutUI.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/presentation/financeui/BankAccountManagementUI.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/presentation/financeui/SettlementManagementUI.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/presentation/infoui/DriverVehicleManagementUI.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/presentation/infoui/StaffOrganizationManagementUI.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/presentation/infoui/SystemUserManagementUI.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/presentation/logisticui/ArrivalNoteOnServiceUI.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/presentation/logisticui/ArrivalNoteOnTransitUI.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/presentation/logisticui/DeliveryNoteInputUI.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/presentation/logisticui/LoadNoteOnServiceUI.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/presentation/logisticui/LoadNoteOnTransitUI.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/presentation/logisticui/ReceivingNoteInputUI.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/presentation/logisticui/TransitNoteInputUI.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/classes/presentation/statisticui/LogInquiryUI.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/client/target/test-classes/businesslogic/FormatCheck_Test.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/connection/RMIHelper.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/connection/RMIObjectProviderService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/commoditydataservice/StorageOutDataService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/commoditydataservice/_Driver/StorageOutDataService_Driver.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/commoditydataservice/_Stub/StorageOutDataService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/exception/ElementNotFoundException.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/exception/FailToPassApprovingException.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/exception/InterruptWithExistedElementException.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/financedataservice/PaymentInputDataService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/financedataservice/_Driver/PaymentInputDataService_Driver.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/financedataservice/_Stub/PaymentInputDataService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/BankAccountManagementDataService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/DriverVehicleManagementDataService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/SystemUserManagementDataService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/_Driver/BankAccountManagementDataService_Driver.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/_Driver/DriverVehicleManagementDataService_Driver.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/_Stub/BankAccountManagementDataService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/_Stub/DriverVehicleManagementDataService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/infodataservice/_Stub/SystemUserManagementDataService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/DeliveryNoteInputDataService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/TransitNoteInputDataService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/DeliveryNoteInputDataService_Driver.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/TransitNoteInputDataService_Driver.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Stub/DeliveryNoteInputDataService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Stub/TransitNoteInputDataService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/BaseDataBuildingDataService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/BusinessDataModificationDataService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/ChartOutputDataService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/OrderInquiryDataService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/_Driver/BaseDataBuildingDataService_Driver.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/_Driver/BusinessDataModificationDataService_Driver.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/_Driver/ChartOutputDataService_Driver.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/_Driver/NoteApprovingDataService_Driver.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/_Driver/OrderInquiryDataService_Driver.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/_Stub/BaseDataBuildingDataService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/_Stub/BusinessDataModificationDataService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/_Stub/ChartOutputDataService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/_Stub/LogInquiryDataService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/_Stub/NoteApprovingDataService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/_Stub/OrderInquiryDataService_Stub.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/po/BankAccountPO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/po/DeliverNoteOnServicePO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/po/DeliveryNotePO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/po/DistancePO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/po/DriverPO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/po/IncomeNotePO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/po/LoadNoteOnServicePO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/po/LoadNoteOnTransitPO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/po/LogEntryPO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/po/OrderPO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/po/PaymentPO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/po/ReceivingNotePO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/po/StaffPO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/po/StorageOutPO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/po/TransitNotePO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/po/VehiclePO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/util/BarcodeAndState.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/util/FormatCheck.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/util/PresumedMsg.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/util/ResultMsg.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/util/enums/ChartType.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/util/enums/DeliverCategory.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/util/enums/DeliveryState.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/util/enums/DocState.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/util/enums/DocType.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/util/enums/GoodsState.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/util/enums/InventoryStatus.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/util/enums/PriceType.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/util/sendDocMsg.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/vo/ArrivalNoteOnServiceVO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/vo/ArrivalNoteOnTransitVO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/vo/BankAccountVO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/vo/ChartVO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/vo/CommodityGoodsVO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/vo/CreditNoteVO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/vo/DeliverNoteOnServiceVO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/vo/DeliveryNoteVO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/vo/DriverVO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/vo/FinanceVO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/vo/IncomeNoteVO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/vo/InventoryVO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/vo/LoadNoteOnServiceVO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/vo/LoadNoteOnTransitVO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/vo/OrderVO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/vo/OrganizationInfoVO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/vo/PaymentVO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/vo/ReceivingNoteVO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/vo/StaffVO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/vo/StorageInVO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/vo/StorageOutVO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/vo/SystemLogVO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/vo/TransitNoteOnTransitVO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/vo/UserVO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/common/target/classes/vo/VehicleVO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/server/src/main/java/data/infodata/DriverVehicleManagementData.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/server/target/classes/connection/RMIObjectProvider.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/server/target/classes/connection/RMIPublisher.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/server/target/classes/connection/ServerMain.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/server/target/classes/data/commoditydata/StorageOutData.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/server/target/classes/data/financedata/PaymentInputData.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/server/target/classes/data/logisticdata/TransitNoteInputData.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/server/target/classes/data/statisticdata/BaseDataBuildingData.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/server/target/classes/data/statisticdata/BusinessDataModificationData.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/server/target/classes/data/statisticdata/ChartOutputData.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/server/target/test-classes/data/infodata/DriverVehicleManagementData_test.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/server/target/test-classes/data/infodata/MockObject/MockDriver.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/server/target/test-classes/data/infodata/MockObject/MockStaffPO.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/server/target/test-classes/data/infodata/MockObject/MockSystemUserManagement.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/server/target/test-classes/data/infodata/MockObject/MockVehicle.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/server/target/test-classes/data/logisticdata/DeliveryNoteInput_Test.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockTransitNote.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/server/target/test-classes/data/logisticdata/ReceivingNoteInput_Test.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/server/target/test-classes/data/logisticdata/TransitNoteInput_Test.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/server/target/test-classes/data/statisticdata/MockObject/MockOrderInquiry.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/server/target/test-classes/data/statisticdata/OrderInquiry_Test.class</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunManager" selected="JUnit.NoteApprovingData_Test">
     <configuration default="false" name="GoodsState" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -1511,38 +1720,44 @@
       <option name="project" value="LOCAL" />
       <updated>1448456852814</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="单据的输入.等待.审批实现">
+      <created>1448467269586</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1448467269586</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ArrivalNoteOnTransit_Test - 2015.11.25 at 23h 54m 28s.xml">
-      <configuration name="ArrivalNoteOnTransit_Test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ArrivalNoteOnTransit_Test - 2015.11.25 at 23h 55m 21s.xml">
-      <configuration name="ArrivalNoteOnTransit_Test" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ArrivalNoteOnTransit_Test - 2015.11.25 at 23h 56m 27s.xml">
       <configuration name="ArrivalNoteOnTransit_Test" configurationId="JUnit" />
     </history-entry>
     <history-entry file="ArrivalNoteOnTransit_Test - 2015.11.25 at 23h 57m 47s.xml">
       <configuration name="ArrivalNoteOnTransit_Test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="NoteApprovingData_Test - 2015.11.25 at 23h 52m 42s.xml">
-      <configuration name="NoteApprovingData_Test" configurationId="JUnit" />
+    <history-entry file="ArrivalNoteOnTransit_Test - 2015.11.26 at 00h 20m 54s.xml">
+      <configuration name="ArrivalNoteOnTransit_Test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="NoteApprovingData_Test - 2015.11.25 at 23h 53m 56s.xml">
-      <configuration name="NoteApprovingData_Test" configurationId="JUnit" />
+    <history-entry file="ArrivalNoteOnTransit_Test - 2015.11.26 at 00h 21m 44s.xml">
+      <configuration name="ArrivalNoteOnTransit_Test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="NoteApprovingData_Test - 2015.11.25 at 23h 55m 20s.xml">
-      <configuration name="NoteApprovingData_Test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="NoteApprovingData_Test - 2015.11.25 at 23h 56m 09s.xml">
-      <configuration name="NoteApprovingData_Test" configurationId="JUnit" />
+    <history-entry file="ArrivalNoteOnTransit_Test - 2015.11.26 at 00h 23m 37s.xml">
+      <configuration name="ArrivalNoteOnTransit_Test" configurationId="JUnit" />
     </history-entry>
     <history-entry file="NoteApprovingData_Test - 2015.11.25 at 23h 56m 27s.xml">
       <configuration name="NoteApprovingData_Test" configurationId="JUnit" />
     </history-entry>
     <history-entry file="NoteApprovingData_Test - 2015.11.25 at 23h 57m 46s.xml">
+      <configuration name="NoteApprovingData_Test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="NoteApprovingData_Test - 2015.11.26 at 00h 20m 53s.xml">
+      <configuration name="NoteApprovingData_Test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="NoteApprovingData_Test - 2015.11.26 at 00h 21m 43s.xml">
+      <configuration name="NoteApprovingData_Test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="NoteApprovingData_Test - 2015.11.26 at 00h 23m 36s.xml">
       <configuration name="NoteApprovingData_Test" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -1557,7 +1772,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1566,10 +1781,10 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875606" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25342464" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25205478" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25767368" sideWeight="0.86738354" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25767368" sideWeight="0.86738354" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24957842" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1585,9 +1800,9 @@
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329235" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23013699" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3041096" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1596,13 +1811,13 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875606" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25342464" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30775717" sideWeight="0.86738354" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25767368" sideWeight="0.86738354" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23972602" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24957842" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23101777" sideWeight="0.13261649" order="4" side_tool="true" content_ui="tabs" />
@@ -1634,7 +1849,8 @@
     <MESSAGE value="增加等待单据审批实现" />
     <MESSAGE value="增加DataFactory的所有初始化" />
     <MESSAGE value="添加一个辅助类,增加半个实现" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加一个辅助类,增加半个实现" />
+    <MESSAGE value="单据的输入.等待.审批实现" />
+    <option name="LAST_COMMIT_MESSAGE" value="单据的输入.等待.审批实现" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1648,53 +1864,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/util/enums/GoodsState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49635038">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding>
-            <element signature="e#171#172#0" expanded="false" />
-            <element signature="e#202#203#0" expanded="false" />
-            <element signature="e#268#269#0" expanded="false" />
-            <element signature="e#302#303#0" expanded="false" />
-            <element signature="e#348#349#0" expanded="false" />
-            <element signature="e#413#414#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/main/java/businesslogic/logistic/DeliveryNoteInput.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37899545">
-          <caret line="43" column="27" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/statisticdata/ChartOutputData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18112633">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/po/OrderPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5175038">
-          <caret line="25" column="25" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/po/UserPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07762557">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/data/statisticdata/LogInsertData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1745,14 +1914,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/database/DatabaseManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16951567">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/data/database/UsingConnection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.26638177">
@@ -1797,25 +1958,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/database/DatabaseFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.78205127">
-          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/database/DatabaseFactoryMysqlImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7094017">
-          <caret line="237" column="13" selection-start-line="237" selection-start-column="13" selection-end-line="237" selection-end-column="13" />
-          <folding>
-            <element signature="e#8802#8803#0" expanded="true" />
-            <element signature="e#8829#8830#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/data/infodata/StaffOrganizationManagementData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.58831906">
@@ -1828,14 +1970,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.024216523">
           <caret line="41" column="58" selection-start-line="41" selection-start-column="58" selection-end-line="41" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/infodata/BankAccountManagementData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.024216523">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1872,23 +2006,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/logisticdata/DeliveryNoteInputData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3148148">
-          <caret line="25" column="43" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/src/main/java/po/NotePO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.72649574">
           <caret line="46" column="20" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
           <folding>
-            <element signature="e#628#629#0" expanded="true" />
-            <element signature="e#682#683#0" expanded="true" />
-            <element signature="e#710#711#0" expanded="true" />
-            <element signature="e#737#738#0" expanded="true" />
+            <element signature="e#629#630#0" expanded="true" />
+            <element signature="e#683#684#0" expanded="true" />
+            <element signature="e#712#713#0" expanded="true" />
+            <element signature="e#739#740#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2023,24 +2149,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/database/SqlHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52668214">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnServiceData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9031339">
-          <caret line="117" column="5" selection-start-line="95" selection-start-column="3" selection-end-line="117" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Driver/ArrivalNoteOnTransitDataService_Driver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5811966">
@@ -2057,34 +2165,134 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/statisticdata/NoteApprovingData.java">
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/infodata/BankAccountManagementData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="71" column="5" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
+        <state vertical-scroll-proportion="-1.3005698">
+          <caret line="48" column="23" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/test/java/data/statisticdata/NoteApprovingData_Test.java">
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/database/DatabaseFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="40" column="38" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.78205127">
+          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/database/DatabaseFactoryMysqlImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="4.383191">
+          <caret line="237" column="13" selection-start-line="237" selection-start-column="13" selection-end-line="237" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/database/DatabaseManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16951567">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/database/SqlHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46011397">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/statisticdata/NoteApprovingData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.4045584">
+          <caret line="71" column="5" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/src/test/java/data/logisticdata/ArrivalNoteOnTransit_Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.53474903">
           <caret line="34" column="22" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/test/java/data/statisticdata/NoteApprovingData_Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7876448">
+          <caret line="40" column="39" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/logisticdata/DeliveryNoteInputData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.4285715">
+          <caret line="19" column="56" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/logisticdata/LoadNoteOnServiceData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22972973">
+          <caret line="11" column="57" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/logisticdata/LoadNoteOnTransitData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22972973">
+          <caret line="11" column="57" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/logisticdata/NoteInputData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43050194">
+          <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/logisticdata/TransitNoteInputData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22972973">
+          <caret line="11" column="55" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/logisticdata/ReceivingNoteInputData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22972973">
+          <caret line="11" column="58" selection-start-line="11" selection-start-column="58" selection-end-line="11" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnServiceData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.6081082">
+          <caret line="66" column="37" selection-start-line="66" selection-start-column="37" selection-end-line="66" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnTransitData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5589942">
-          <caret line="64" column="36" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.5405405">
+          <caret line="83" column="22" selection-start-line="83" selection-start-column="22" selection-end-line="83" selection-end-column="22" />
           <folding />
         </state>
       </provider>

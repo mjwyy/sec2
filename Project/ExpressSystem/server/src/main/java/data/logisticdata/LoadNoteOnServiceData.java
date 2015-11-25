@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by kylin on 15/11/10.
  */
-public class LoadNoteOnServiceData implements LoadNoteOnServiceDataService {
+public class LoadNoteOnServiceData extends NoteInputData implements LoadNoteOnServiceDataService {
 
     @Override
     public boolean insert(LoadNoteOnServicePO po) throws RemoteException {

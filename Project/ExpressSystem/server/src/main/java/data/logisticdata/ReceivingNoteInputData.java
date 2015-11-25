@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by kylin on 15/11/10.
  */
-public class ReceivingNoteInputData implements ReceivingNoteInputDataService {
+public class ReceivingNoteInputData extends NoteInputData implements ReceivingNoteInputDataService {
 
     @Override
     public boolean insert(ReceivingNotePO po) throws RemoteException {

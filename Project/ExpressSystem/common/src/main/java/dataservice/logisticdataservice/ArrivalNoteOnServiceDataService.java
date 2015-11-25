@@ -8,6 +8,7 @@ package dataservice.logisticdataservice;
 import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import po.ArrivalNoteOnServicePO;
@@ -19,7 +20,7 @@ public interface ArrivalNoteOnServiceDataService extends Remote, Serializable {
     /**
      * 在数据库中插入单一持久化对象
      */
-    public boolean insertArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException;
+    public boolean insertArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException, SQLException;
 
     /**
      * 按关键字进行查找返回相应的ArrivalNoteOnServicePO结果

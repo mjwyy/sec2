@@ -12,20 +12,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import po.DeliveryNotePO;
-import po.OrderPO;
-import util.PresumedMsg;
-import util.sendDocMsg;
+import util.SendDocMsg;
 
 public interface DeliveryNoteInputDataService extends Remote, Serializable {
 	/**
 	 * 在数据库中增加一个po记录
 	 */
-    public sendDocMsg insert(DeliveryNotePO po) throws RemoteException, SQLException;
-
-    /**
-     * 在数据库中增加一个po记录
-     */
-    public PresumedMsg insertOrderPO(OrderPO po) throws RemoteException, SQLException;
+    public SendDocMsg insert(DeliveryNotePO po) throws RemoteException, SQLException;
 
 	/**
 	 * 查找返回相应的DeliveryNoteInputPO结果

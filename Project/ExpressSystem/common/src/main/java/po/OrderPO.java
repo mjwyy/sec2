@@ -1,5 +1,7 @@
 package po;
 
+import util.enums.GoodsState;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -19,33 +21,43 @@ public class OrderPO implements Serializable {
 	String barcode = null;
 	
 	/**
-	 * 当前运送状态：“已收货”，“正在送货”，“已签收”
-	 */
-	String stateOfTransport = null;
-	
-	private ArrayList<String> history;
+     * 当前货物状态
+     */
+    GoodsState goodsState = null;
 
-	public OrderPO(String barcode, String stateOfTransport, ArrayList<String> history) {
-		super();
-		this.barcode = barcode;
-		this.stateOfTransport = stateOfTransport;
-		this.history = history;
-	}
+    private ArrayList<String> history;
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+    public OrderPO(String barcode, GoodsState goodsState, ArrayList<String> history) {
+        this.barcode = barcode;
+        this.goodsState = goodsState;
+        this.history = history;
+    }
 
-	public String getBarcode() {
-		return barcode;
-	}
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
-	public String getStateOfTransport() {
-		return stateOfTransport;
-	}
+    public String getBarcode() {
+        return barcode;
+    }
 
-	public ArrayList<String> getHistory() {
-		return history;
-	}
-	
+    public GoodsState getGoodsState() {
+        return goodsState;
+    }
+
+    public ArrayList<String> getHistory() {
+        return history;
+    }
+
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
+    }
+
+    public void setGoodsState(GoodsState goodsState) {
+        this.goodsState = goodsState;
+    }
+
+    public void setHistory(ArrayList<String> history) {
+        this.history = history;
+    }
 }

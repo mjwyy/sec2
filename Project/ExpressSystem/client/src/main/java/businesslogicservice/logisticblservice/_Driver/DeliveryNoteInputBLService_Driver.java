@@ -4,7 +4,7 @@ import vo.DeliveryNoteVO;
 import businesslogicservice.logisticblservice.DeliveryNoteInputBLService;
 import businesslogicservice.logisticblservice._Stub.DeliveryNoteInputBLService_Stub;
 import util.ResultMsg;
-import util.sendDocMsg;
+import util.SendDocMsg;
 import util.enums.DeliverCategory;
 
 public class DeliveryNoteInputBLService_Driver {
@@ -22,8 +22,8 @@ public class DeliveryNoteInputBLService_Driver {
 			System.out.println("输入的寄件单格式正确");
 		else
 			System.out.println("输入的寄件单格式不正确");
-		sendDocMsg result2=a.submitSendDoc(sendDocVO1);
-		if(result2.isPass()==true)
+        SendDocMsg result2 = a.submitSendDoc(sendDocVO1);
+        if(result2.isPass()==true)
 			System.out.println("提交成功");
 		else
 			System.out.println("提交失败");

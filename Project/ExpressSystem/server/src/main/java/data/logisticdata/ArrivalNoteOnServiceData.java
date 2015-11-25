@@ -1,10 +1,15 @@
 package data.logisticdata;
 
+import data.database.DatabaseManager;
+import data.statisticdata.OrderInquiryData;
 import dataservice.logisticdataservice.ArrivalNoteOnServiceDataService;
 import po.ArrivalNoteOnServicePO;
 import po.DeliverNoteOnServicePO;
 
 import java.rmi.RemoteException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -12,9 +17,20 @@ import java.util.ArrayList;
  */
 public class ArrivalNoteOnServiceData implements ArrivalNoteOnServiceDataService {
 
+    private OrderInquiryData orderDataService;
+
     @Override
-    public boolean insertArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException {
-        return false;
+    public boolean insertArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException, SQLException {
+        Connection connection = DatabaseManager.getConnection();
+        String sql = "insert into `note_arrival_on_service` ( " +
+                "`arrivalKind`, `from`, `barcodes`, `TransferNumber`, `date`)" +
+                " values ( ?, ?, ?, ?, ?)";
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+
+        DatabaseManager.releaseConnection(connection, statement, null);
+        int result = statement.executeUpdate();
+        return result > 0;
     }
 
     @Override

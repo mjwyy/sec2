@@ -7,7 +7,22 @@ package util.enums;
  *
  */
 public enum GoodsState {
-	COMPLETE,//完整
-	DAMAGED,//损坏
-	LOST//丢失
+    COMPLETE("完整"),
+    DAMAGED("损坏"),
+    LOST("丢失");
+
+    GoodsState(String s) {
+        this.string = s;
+    }
+
+    String string;
+
+    @Override
+    public String toString() {
+        return this.string;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(GoodsState.DAMAGED.toString());
+    }
 }

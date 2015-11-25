@@ -1,11 +1,12 @@
 package data.logisticdata;
 
 import data.database.DatabaseManager;
+import data.statisticdata.OrderInquiryData;
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
 import po.DeliveryNotePO;
 import po.OrderPO;
-import util.PresumedMsg;
-import util.sendDocMsg;
+import util.enums.GoodsState;
+import util.SendDocMsg;
 
 import java.rmi.RemoteException;
 import java.sql.Connection;
@@ -18,8 +19,11 @@ import java.util.ArrayList;
  */
 public class DeliveryNoteInputData implements DeliveryNoteInputDataService {
 
+    private OrderInquiryData orderInquiryData;
+    private OrderPO orderPO;
+
     @Override
-    public sendDocMsg insert(DeliveryNotePO po) throws RemoteException, SQLException {
+    public SendDocMsg insert(DeliveryNotePO po) throws RemoteException, SQLException {
         Connection connection = DatabaseManager.getConnection();
         String sql = "insert into note_delivery ( `volume`, `category`, `senderTeleNumber`, " +
                 "`receiverAddress`, `packPrice`, `weight`, `docState`, " + "`receiverName`," +
@@ -47,32 +51,17 @@ public class DeliveryNoteInputData implements DeliveryNoteInputDataService {
             throw new SQLException();
         //等待总经理审批过程
 
+        //审批通过
+        orderInquiryData = new OrderInquiryData();
+        ArrayList<String> history = new ArrayList<>();
+        history.add("快递员已收件!");
+        orderPO = new OrderPO(po.getBarCode(), GoodsState.COMPLETE, history);
+        orderInquiryData.insertOrderPO(orderPO);
         DatabaseManager.releaseConnection(connection,statement,null);
         return null;
     }
 
-    @Override
-    public PresumedMsg insertOrderPO(OrderPO po) throws RemoteException, SQLException {
-        Connection connection = DatabaseManager.getConnection();
-        String sql = "insert into order( `barcode`, `stateOfTransport`, `history`) " +
-                "values (?,?,?)";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString(1, po.getBarcode());
-        statement.setString(2, po.getStateOfTransport());
-        StringBuilder stringBuilder = new StringBuilder();
-        for (String history : po.getHistory()) {
-            stringBuilder.append(history);
-            stringBuilder.append('\n');
-        }
-        statement.setString(3, stringBuilder.toString());
-        int result = statement.executeUpdate();
-        if (result < 0)
-            throw new SQLException();
-        //获取运费与预计到达日期
 
-        DatabaseManager.releaseConnection(connection,statement,null);
-        return null;
-    }
 
     @Override
     public ArrayList<DeliveryNotePO> find(DeliveryNotePO po) throws RemoteException {

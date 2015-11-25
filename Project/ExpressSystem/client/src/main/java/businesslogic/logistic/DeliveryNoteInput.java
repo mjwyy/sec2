@@ -3,11 +3,12 @@ package businesslogic.logistic;
 import businesslogicservice.logisticblservice.DeliveryNoteInputBLService;
 import connection.RemoteObjectGetter;
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
+import dataservice.statisticdataservice.OrderInquiryDataService;
 import po.DeliveryNotePO;
 import po.OrderPO;
-import util.PresumedMsg;
 import util.ResultMsg;
-import util.sendDocMsg;
+import util.enums.GoodsState;
+import util.SendDocMsg;
 import vo.DeliveryNoteVO;
 
 import java.rmi.RemoteException;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 public class DeliveryNoteInput implements DeliveryNoteInputBLService {
 
     private DeliveryNoteInputDataService dataService;
+    private OrderInquiryDataService orderInquiryDataService;
 
     private DeliveryNotePO notePO;
     private OrderPO orderPO;
@@ -27,6 +29,8 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
     public DeliveryNoteInput(DeliveryNoteInputDataService dataService) {
         RemoteObjectGetter getter = new RemoteObjectGetter();
         this.dataService = (DeliveryNoteInputDataService) getter.getObjectByName("DeliveryNoteInputData");
+        this.orderInquiryDataService =
+                (OrderInquiryDataService) getter.getObjectByName("OrderInquiryDataService");
     }
 
     @Override
@@ -38,24 +42,23 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
     }
 
     @Override
-    public sendDocMsg submitSendDoc(DeliveryNoteVO sendDocVO) {
+    public SendDocMsg submitSendDoc(DeliveryNoteVO sendDocVO) {
         double price = 0;
         String date = null;
         try {
             this.notePO = sendDocVO.toPO();
-            this.dataService.insert(this.notePO);
+            SendDocMsg SendDocMsg = this.dataService.insert(this.notePO);
             ArrayList<String> history = new ArrayList<String>();
             history.add("快递员已收件");
-            this.orderPO = new OrderPO(sendDocVO.getBarCode(),"已收货",history);
-            PresumedMsg presumedMsg = this.dataService.insertOrderPO(this.orderPO);
-            price = presumedMsg.getPrice();
-            date = presumedMsg.getDate();
+            this.orderPO = new OrderPO(sendDocVO.getBarCode(), GoodsState.COMPLETE, history);
+            price = SendDocMsg.getPrice();
+            date = SendDocMsg.getPredectedDate();
         } catch (RemoteException e) {
             e.printStackTrace();
-            return new sendDocMsg(false,e.getMessage(),0,null);
+            return new SendDocMsg(false, e.getMessage(), 0, null);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return new sendDocMsg(true,"寄件单已成功提交!",price,date);
+        return new SendDocMsg(true, "寄件单已成功提交!", price, date);
     }
 }

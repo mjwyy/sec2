@@ -10,6 +10,7 @@ import vo.ArrivalNoteOnServiceVO;
 import vo.DeliverNoteOnServiceVO;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 /**
  * Created by kylin on 15/11/17.
@@ -42,6 +43,8 @@ public class ArrivalNoteOnService implements ArrivalNoteOnServiceBLService {
         } catch (RemoteException e) {
             e.printStackTrace();
             return new ResultMsg(false,e.getMessage());
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return new ResultMsg(true,"营业厅到达单已提交!");
     }

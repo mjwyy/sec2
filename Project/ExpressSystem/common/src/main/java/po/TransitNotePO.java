@@ -5,6 +5,10 @@
  */
 package po;
 
+import util.BarcodesAndLocation;
+import vo.NoteVO;
+import vo.TransitNoteOnTransitVO;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -40,73 +44,101 @@ public class TransitNotePO extends NotePO implements Serializable{
 	private String desitination;
 
 	/**
-	 * 货柜号
-	 */
-	private String containerNumber;
-
-	/**
 	 * 监装员
 	 */
 	private String supercargoMan;
 
 	/**
-	 * 装箱所有托运单号
-	 */
-	private ArrayList<String> barcodes;
-	
-	/**
+     * 装箱所有托运单号,货柜号
+     */
+    private ArrayList<BarcodesAndLocation> barcodes;
+
+    /**
 	 * 运费
 	 */
 	private double price;
 
-	public TransitNotePO(String date, String transitDocNumber, String flightNumber, String departurePlace,
-			String desitination, String containerNumber, String supercargoMan, ArrayList<String> barcodes) {
-		super();
-		this.date = date;
-		this.transitDocNumber = transitDocNumber;
-		this.flightNumber = flightNumber;
-		this.departurePlace = departurePlace;
-		this.desitination = desitination;
-		this.containerNumber = containerNumber;
-		this.supercargoMan = supercargoMan;
-		this.barcodes = barcodes;
-	}
+    public TransitNotePO(String date, String transitDocNumber, String flightNumber, String departurePlace,
+                         String desitination, String supercargoMan, ArrayList<BarcodesAndLocation> barcodes) {
+        this.date = date;
+        this.transitDocNumber = transitDocNumber;
+        this.flightNumber = flightNumber;
+        this.departurePlace = departurePlace;
+        this.desitination = desitination;
+        this.supercargoMan = supercargoMan;
+        this.barcodes = barcodes;
+    }
 
-	public String getDate() {
-		return date;
-	}
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
-	public String getTransitDocNumber() {
-		return transitDocNumber;
-	}
+    public String getDate() {
+        return date;
+    }
 
-	public String getFlightNumber() {
-		return flightNumber;
-	}
+    public String getTransitDocNumber() {
+        return transitDocNumber;
+    }
 
-	public String getDeparturePlace() {
-		return departurePlace;
-	}
+    public String getFlightNumber() {
+        return flightNumber;
+    }
 
-	public String getDesitination() {
-		return desitination;
-	}
+    public String getDeparturePlace() {
+        return departurePlace;
+    }
 
-	public String getContainerNumber() {
-		return containerNumber;
-	}
+    public String getDesitination() {
+        return desitination;
+    }
 
-	public String getSupercargoMan() {
-		return supercargoMan;
-	}
+    public String getSupercargoMan() {
+        return supercargoMan;
+    }
 
-	public ArrayList<String> getBarcodes() {
-		return barcodes;
-	}
+    public ArrayList<BarcodesAndLocation> getBarcodes() {
+        return barcodes;
+    }
 
-	public double getPrice() {
-		return price;
-	}
-	
-	
+    public double getPrice() {
+        return price;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setTransitDocNumber(String transitDocNumber) {
+        this.transitDocNumber = transitDocNumber;
+    }
+
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
+    }
+
+    public void setDeparturePlace(String departurePlace) {
+        this.departurePlace = departurePlace;
+    }
+
+    public void setDesitination(String desitination) {
+        this.desitination = desitination;
+    }
+
+    public void setSupercargoMan(String supercargoMan) {
+        this.supercargoMan = supercargoMan;
+    }
+
+    public void setBarcodes(ArrayList<BarcodesAndLocation> barcodes) {
+        this.barcodes = barcodes;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public NoteVO toPO() {
+        return new TransitNoteOnTransitVO(this.date, this.transitDocNumber, this.flightNumber,
+                this.departurePlace, this.desitination, this.supercargoMan, this.barcodes);
+    }
 }

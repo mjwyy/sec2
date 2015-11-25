@@ -18,7 +18,7 @@ public class TransitNoteInputData implements TransitNoteInputDataService {
 
     @Override
     public ArrayList<TransitNotePO> find(TransitNotePO po) throws RemoteException {
-        TransitNotePO pox = new TransitNotePO(null,null,null,null,null,null,null,null);
+        TransitNotePO pox = new TransitNotePO(null, null, null, null, null, null, null);
         ArrayList<TransitNotePO> list =  new ArrayList<TransitNotePO>();
         list.add(pox);
         return list;

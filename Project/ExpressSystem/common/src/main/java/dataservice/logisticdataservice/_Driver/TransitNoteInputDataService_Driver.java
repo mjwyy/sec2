@@ -30,9 +30,9 @@ public class TransitNoteInputDataService_Driver {
         list.add("3000111112");
         list.add("4000111113");
         TransitNotePO po1 = new TransitNotePO("2015-10-23","025100201510200000012","CA1206","南京",
-                "西安","0120","王小二",list);
+                "西安", "0120", null);
         TransitNotePO po2 = new TransitNotePO("2015-10-24","025100201510200000013","CZ3151","南京",
-                "深圳","0122","西北狼",list2);
+                "深圳", "0122", null);
         if(service.insert(po1))
         	System.out.println("insert succeed");
         else

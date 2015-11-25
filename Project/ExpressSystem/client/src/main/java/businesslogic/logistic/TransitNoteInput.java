@@ -35,7 +35,7 @@ public class TransitNoteInput implements TransitNoteInputBLService {
     public ResultMsg submitCenterTransitDoc(TransitNoteOnTransitVO centerTransitDocVO) {
 
         try {
-            this.po = centerTransitDocVO.toPO();
+            this.po = (TransitNotePO) centerTransitDocVO.toPO();
             this.dataService.insert(this.po);
         } catch (RemoteException e) {
             e.printStackTrace();

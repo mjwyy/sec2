@@ -11,21 +11,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import data.database.DatabaseManager;
 import po.LogEntryPO;
 import dataservice.statisticdataservice.LogInquiryDataService;
 
 public class LogInquiryData implements LogInquiryDataService{
 
-    private Connection connection;
-
-    public LogInquiryData(Connection con) {
+    public LogInquiryData() {
         super();
-        connection = con;
     }
-
     @Override
     public ArrayList<LogEntryPO> findLogEntries(String time, ArrayList<String> keyword)
             throws RemoteException, SQLException {
+        Connection connection = DatabaseManager.getConnection();
         //Constructing sql statement
         StringBuilder sb = new StringBuilder();
         sb.append("select time,log from SystemLog where ");

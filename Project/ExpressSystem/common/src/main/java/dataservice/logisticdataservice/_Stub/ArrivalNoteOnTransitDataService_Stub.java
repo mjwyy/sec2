@@ -3,6 +3,7 @@ package dataservice.logisticdataservice._Stub;
 import dataservice.logisticdataservice.ArrivalNoteOnTransitDataService;
 import po.ArrivalNoteOnTransitPO;
 import util.BarcodeAndState;
+import util.ResultMsg;
 import util.enums.GoodsState;
 
 import java.rmi.RemoteException;
@@ -28,10 +29,10 @@ public class ArrivalNoteOnTransitDataService_Stub implements ArrivalNoteOnTransi
         pos.add(po2);
     }
 
-     
-    public boolean insert(ArrivalNoteOnTransitPO po) throws RemoteException {
+
+    public ResultMsg insert(ArrivalNoteOnTransitPO po) throws RemoteException {
         System.out.println("insert succeed!");
-		return true;
+        return new ResultMsg(true);
     }
 
      

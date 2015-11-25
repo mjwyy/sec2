@@ -1,8 +1,18 @@
 package data.database;
 
 
+import data.commoditydata.InventoryData;
+import data.commoditydata.StorageInData;
+import data.commoditydata.StorageOutData;
+import data.financedata.CreditNoteInputData;
+import data.financedata.PaymentInputData;
+import data.financedata.SettlementManagementData;
+import data.infodata.BankAccountManagementData;
+import data.infodata.DriverVehicleManagementData;
 import data.infodata.StaffOrganizationManagementData;
 import data.infodata.SystemUserManagementData;
+import data.logisticdata.*;
+import data.statisticdata.*;
 import data.statisticdata.inte.LogInsertDataService;
 import dataservice.commoditydataservice.InventoryDataService;
 import dataservice.commoditydataservice.StorageInDataService;
@@ -31,12 +41,36 @@ public class DatabaseFactoryMysqlImpl implements DatabaseFactory{
      */
     private volatile static DatabaseFactoryMysqlImpl dataBaseFactoryMysql;
 
-    //TODO 初始化所有的数据层实现
     private DatabaseFactoryMysqlImpl() throws RemoteException {
+        inventoryDataService = new InventoryData();
+        storageInDataService = new StorageInData();
+        storageOutDataService = new StorageOutData();
 
+        creditNoteInputDataService = new CreditNoteInputData();
+        paymentInputDataService = new PaymentInputData();
+        settlementManagementDataService = new SettlementManagementData();
+
+        bankAccountManagementDataService = new BankAccountManagementData();
+        driverVehicleManagementDataService = new DriverVehicleManagementData();
         systemUserManagementDataService = new SystemUserManagementData();
         staffOrganizationManagementDataService = new StaffOrganizationManagementData();
 
+        arrivalNoteOnServiceDataService = new ArrivalNoteOnServiceData();
+        arrivalNoteOnTransitDataService = new ArrivalNoteOnTransitData();
+        deliveryNoteInputDataService = new DeliveryNoteInputData();
+        loadNoteOnServiceDataService = new LoadNoteOnServiceData();
+        loadNoteOnTransitDataService = new LoadNoteOnTransitData();
+        receivingNoteInputDataService = new ReceivingNoteInputData();
+        transitNoteInputDataService = new TransitNoteInputData();
+
+        baseDataBuildingDataService = new BaseDataBuildingData();
+        businessDataModificationDataService = new BusinessDataModificationData();
+        chartOutputDataService = new ChartOutputData();
+        logInquiryDataService = new LogInquiryData();
+        noteApprovingDataService = new NoteApprovingData();
+        orderInquiryDataService = new OrderInquiryData();
+
+        logInsertDataService = new LogInsertData();
     }
 
     public static DatabaseFactoryMysqlImpl getInstance() throws RemoteException {
@@ -86,7 +120,7 @@ public class DatabaseFactoryMysqlImpl implements DatabaseFactory{
     private NoteApprovingDataService noteApprovingDataService;
     private OrderInquiryDataService orderInquiryDataService;
     private LogInsertDataService logInsertDataService;
-    
+
     @Override
     public InventoryDataService getInventoryDataService() {
         return inventoryDataService;
@@ -201,8 +235,9 @@ public class DatabaseFactoryMysqlImpl implements DatabaseFactory{
         return orderInquiryDataService;
     }
 
-	@Override
-	public LogInsertDataService getLogInsertDataService() {
-		return logInsertDataService;
-	}
+    @Override
+    public LogInsertDataService getLogInsertDataService() {
+        return null;
+    }
+
 }

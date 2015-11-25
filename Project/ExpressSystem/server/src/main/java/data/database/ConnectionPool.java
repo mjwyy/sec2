@@ -33,10 +33,10 @@ public class ConnectionPool extends Thread {
     private boolean stopThread = false;
 
     /* 同步锁对象 */
-    private byte[] createdLock = new byte[0];
-    private byte[] usingLock = new byte[0];
-    private byte[] poolLock = new byte[0];
-    private byte[] returnedPoolLock = new byte[0];
+    private final byte[] createdLock = new byte[0];
+    private final byte[] usingLock = new byte[0];
+    private final byte[] poolLock = new byte[0];
+    private final byte[] returnedPoolLock = new byte[0];
 
     //单例模式
     private static ConnectionPool connectionPoolInstance;

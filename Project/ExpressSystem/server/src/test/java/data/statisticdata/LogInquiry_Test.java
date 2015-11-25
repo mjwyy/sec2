@@ -1,7 +1,5 @@
 package data.statisticdata;
 
-import static org.junit.Assert.*;
-
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -12,7 +10,7 @@ import dataservice.statisticdataservice.LogInquiryDataService;
 
 public class LogInquiry_Test {
 
-    private LogInquiryDataService service = new LogInquiryData(null);
+    private LogInquiryDataService service = new LogInquiryData();
 
     @Test
 	public void testfind() throws RemoteException{

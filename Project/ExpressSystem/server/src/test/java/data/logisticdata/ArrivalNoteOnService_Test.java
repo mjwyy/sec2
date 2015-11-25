@@ -33,7 +33,7 @@ public class ArrivalNoteOnService_Test {
         barcodes.add(new BarcodeAndState("1234567890", GoodsState.COMPLETE));
         barcodes.add(new BarcodeAndState("1234567890", GoodsState.COMPLETE));
         ArrivalNoteOnServicePO mock1 = new ArrivalNoteOnServicePO("2015-11-11", false,
-                "250000201510130000003", "北京", barcodes);
+                "250000201510130000005", "北京", barcodes);
         service.insertArrivalNote(mock1);
     }
 

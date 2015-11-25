@@ -39,9 +39,13 @@ public class DriverVehicleManagementData implements DriverVehicleManagementDataS
 		connection = DatabaseManager.getConnection();
 		dataFac = DatabaseFactoryMysqlImpl.getInstance();
 	}
-	
-	@Override
-	public boolean addDriver(DriverPO driver) throws RemoteException,
+
+    public DriverVehicleManagementData() {
+
+    }
+
+    @Override
+    public boolean addDriver(DriverPO driver) throws RemoteException,
 			InterruptWithExistedElementException, SQLException {
 		
 		//First, insert as a staff.

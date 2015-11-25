@@ -39,4 +39,12 @@ public abstract class NotePO implements Serializable{
         return null;
     }
 
+    public String getName() {
+        return this.getClass().getSimpleName();
+    }
+
+    public String getID() {
+        return null;
+    }
+
 }

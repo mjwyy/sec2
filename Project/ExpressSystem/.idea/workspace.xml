@@ -6,16 +6,50 @@
     <bookmark url="file://$PROJECT_DIR$/common/src/main/java/vo/ArrivalNoteOnServiceVO.java" line="42" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80e1d396-4d24-4864-b9b7-ee0530b48260" name="Default" comment="添加一个单据输入的实现">
+    <list default="true" id="80e1d396-4d24-4864-b9b7-ee0530b48260" name="Default" comment="增加等待单据审批实现">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/logistic/ArrivalNoteOnService.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/logistic/ArrivalNoteOnService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/businesslogic/statistic/LogInquiry.class" afterPath="$PROJECT_DIR$/client/target/classes/businesslogic/statistic/LogInquiry.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/ArrivalNoteOnServiceDataService.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/ArrivalNoteOnServiceDataService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/ArrivalNoteOnTransitDataService.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/ArrivalNoteOnTransitDataService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/LoadNoteOnTransitDataService.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/LoadNoteOnTransitDataService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/ReceivingNoteInputDataService.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/ReceivingNoteInputDataService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/ArrivalNoteOnServiceDataService_Driver.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/ArrivalNoteOnServiceDataService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/ArrivalNoteOnTransitDataService_Driver.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/ArrivalNoteOnTransitDataService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/LoadNoteOnTransitDataService_Driver.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/LoadNoteOnTransitDataService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/ReceivingNoteInputDataService_Driver.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Driver/ReceivingNoteInputDataService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Stub/ArrivalNoteOnTransitDataService_Stub.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Stub/ArrivalNoteOnTransitDataService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Stub/LoadNoteOnTransitDataService_Stub.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Stub/LoadNoteOnTransitDataService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Stub/ReceivingNoteInputDataService_Stub.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/logisticdataservice/_Stub/ReceivingNoteInputDataService_Stub.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/LogInquiryDataService.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/LogInquiryDataService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/_Driver/LogInquiryDataService_Driver.class" afterPath="$PROJECT_DIR$/common/target/classes/dataservice/statisticdataservice/_Driver/LogInquiryDataService_Driver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/po/NotePO.class" afterPath="$PROJECT_DIR$/common/target/classes/po/NotePO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/data/logisticdata/ArrivalNoteOnServiceData.class" afterPath="$PROJECT_DIR$/server/target/classes/data/logisticdata/ArrivalNoteOnServiceData.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/data/logisticdata/ArrivalNoteOnTransitData.class" afterPath="$PROJECT_DIR$/server/target/classes/data/logisticdata/ArrivalNoteOnTransitData.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/data/logisticdata/DeliveryNoteInputData.class" afterPath="$PROJECT_DIR$/server/target/classes/data/logisticdata/DeliveryNoteInputData.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/data/logisticdata/LoadNoteOnTransitData.class" afterPath="$PROJECT_DIR$/server/target/classes/data/logisticdata/LoadNoteOnTransitData.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/data/logisticdata/ReceivingNoteInputData.class" afterPath="$PROJECT_DIR$/server/target/classes/data/logisticdata/ReceivingNoteInputData.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/data/statisticdata/LogInquiryData.class" afterPath="$PROJECT_DIR$/server/target/classes/data/statisticdata/LogInquiryData.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/data/statisticdata/OrderInquiryData.class" afterPath="$PROJECT_DIR$/server/target/classes/data/statisticdata/OrderInquiryData.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/ArrivalNoteOnService_Test.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/ArrivalNoteOnService_Test.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/ArrivalNoteOnTransit_Test.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/ArrivalNoteOnTransit_Test.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/LoadNoteOnService_Test.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/LoadNoteOnService_Test.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/LoadNoteOnTransit_Test.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/LoadNoteOnTransit_Test.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockArrivalNoteOnService.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockArrivalNoteOnService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockArrivalNoteOnTransit.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockArrivalNoteOnTransit.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockDeliverNoteOnService.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockDeliverNoteOnService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockDeliveryNote.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockDeliveryNote.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockLoadNoteOnService.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockLoadNoteOnService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockLoadNoteOnTransit.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockLoadNoteOnTransit.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockReceivingNote.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/logisticdata/MockObject/MockReceivingNote.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/test-classes/data/statisticdata/LogInquiry_Test.class" afterPath="$PROJECT_DIR$/server/target/test-classes/data/statisticdata/LogInquiry_Test.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/businesslogic/logistic/ArrivalNoteOnService.java" afterPath="$PROJECT_DIR$/client/src/main/java/businesslogic/logistic/ArrivalNoteOnService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/businesslogic/statistic/LogInquiry.java" afterPath="$PROJECT_DIR$/client/src/main/java/businesslogic/statistic/LogInquiry.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Driver/ArrivalNoteOnServiceDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/logisticdataservice/_Driver/ArrivalNoteOnServiceDataService_Driver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/dataservice/statisticdataservice/_Driver/LogInquiryDataService_Driver.java" afterPath="$PROJECT_DIR$/common/src/main/java/dataservice/statisticdataservice/_Driver/LogInquiryDataService_Driver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnServiceData.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnServiceData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/data/logisticdata/DeliveryNoteInputData.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/logisticdata/DeliveryNoteInputData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/data/statisticdata/LogInsertData.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/statisticdata/LogInsertData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/test/java/data/logisticdata/ArrivalNoteOnService_Test.java" afterPath="$PROJECT_DIR$/server/src/test/java/data/logisticdata/ArrivalNoteOnService_Test.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/data/database/ConnectionPool.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/database/ConnectionPool.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/data/database/DatabaseFactory.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/database/DatabaseFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/data/database/DatabaseFactoryMysqlImpl.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/database/DatabaseFactoryMysqlImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/data/infodata/BankAccountManagementData.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/infodata/BankAccountManagementData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/data/infodata/DriverVehicleManagementData.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/infodata/DriverVehicleManagementData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/data/statisticdata/LogInquiryData.java" afterPath="$PROJECT_DIR$/server/src/main/java/data/statisticdata/LogInquiryData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/test/java/data/infodata/BankAccountManagementData_Test.java" afterPath="$PROJECT_DIR$/server/src/test/java/data/infodata/BankAccountManagementData_Test.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/test/java/data/statisticdata/LogInquiry_Test.java" afterPath="$PROJECT_DIR$/server/src/test/java/data/statisticdata/LogInquiry_Test.java" />
     </list>
     <ignored path="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD.iws" />
@@ -40,18 +74,7 @@
     <favorites_list name="ExpressSystem" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ArrivalNoteOnServiceData.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnServiceData.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6392694">
-              <caret line="69" column="42" selection-start-line="69" selection-start-column="42" selection-end-line="69" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -72,17 +95,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/server/src/main/java/data/infodata/StaffOrganizationManagementData.java" />
-        <option value="$PROJECT_DIR$/common/src/main/java/util/enums/Authority.java" />
-        <option value="$PROJECT_DIR$/common/src/main/java/po/UserPO.java" />
-        <option value="$PROJECT_DIR$/common/src/main/java/dataservice/infodataservice/_Driver/SystemUserManagementDataService_Driver.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/vo/UserVO.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/data/infodata/SystemUserManagementData.java" />
         <option value="$PROJECT_DIR$/client/src/main/java/connection/ClientMain.java" />
         <option value="$PROJECT_DIR$/server/src/test/java/data/infodata/SystemUserManagementData_Test.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/dataservice/infodataservice/_Driver/BankAccountManagementDataService_Driver.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/dataservice/infodataservice/_Driver/DriverVehicleManagementDataService_Driver.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/data/database/DatabaseFactoryMysqlImpl.java" />
         <option value="$PROJECT_DIR$/server/src/test/java/data/logisticdata/DeliveryNoteInput_Test.java" />
         <option value="$PROJECT_DIR$/server/src/test/java/data/infodata/DriverVehicleManagementData_test.java" />
         <option value="$PROJECT_DIR$/server/src/test/java/data/infodata/BankAccountManagementData_Test.java" />
@@ -111,7 +129,6 @@
         <option value="$PROJECT_DIR$/common/src/main/java/vo/OrderVO.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/util/enums/GoodsState.java" />
         <option value="$PROJECT_DIR$/client/src/main/java/businesslogic/logistic/DeliveryNoteInput.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/data/statisticdata/LogInquiryData.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/data/statisticdata/OrderInquiryData.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/po/NotePO.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/data/statisticdata/LogInsertData.java" />
@@ -123,6 +140,12 @@
         <option value="$PROJECT_DIR$/client/src/main/java/businesslogic/statistic/LogInquiry.java" />
         <option value="$PROJECT_DIR$/server/src/test/java/data/logisticdata/ArrivalNoteOnService_Test.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnServiceData.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/data/database/ConnectionPool.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/data/infodata/DriverVehicleManagementData.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/data/statisticdata/LogInquiryData.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/data/database/DatabaseFactory.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/data/database/DatabaseFactoryMysqlImpl.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/data/infodata/BankAccountManagementData.java" />
       </list>
     </option>
   </component>
@@ -142,10 +165,8 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="52" />
-    <option name="y" value="23" />
-    <option name="width" value="1228" />
-    <option name="height" value="777" />
+    <option name="width" value="1280" />
+    <option name="height" value="800" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -741,22 +762,23 @@
     <property name="last_opened_file_path" value="$USER_HOME$/Homework/DataStructure" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="SearchEverywhereHistoryKey" value="notepo&#9;PSI&#9;JAVA://po.NotePO&#10;transitnoteontransitvo&#9;PSI&#9;JAVA://vo.TransitNoteOnTransitVO&#10;delovo&#9;PSI&#9;JAVA://vo.DeliverNoteOnServiceVO&#10;arrivalservicev&#9;PSI&#9;JAVA://vo.ArrivalNoteOnServiceVO&#10;arrivalvo&#9;PSI&#9;JAVA://vo.ArrivalNoteOnTransitVO&#10;d&#9;FILE&#9;file:///Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/vo/DriverVO.java&#10;driverv&#9;FILE&#9;file:///Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/vo/DriverVO.java&#10;uservo&#9;PSI&#9;JAVA://vo.UserVO&#10;user&#9;FILE&#9;file:///Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/po/UserPO.java&#10;IncomeN&#9;PSI&#9;JAVA://vo.IncomeNoteVO&#10;ArrivalNoteOnService&#9;FILE&#9;file:///Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/po/ArrivalNoteOnServicePO.java&#10;Inc&#9;PSI&#9;JAVA://vo.IncomeNoteVO&#10;chartv&#9;FILE&#9;file:///Users/kylin/Desktop/sec2/Project/ExpressSystem/client/src/main/java/vo/ChartVO.java&#10;Ba&#9;PSI&#9;JAVA://dataservice.infodataservice.BankAccountManagementDataService" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="93" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="15" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="95" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="15" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="98" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="15" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="857" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="15" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="93" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="15" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="95" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="15" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="98" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="15" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="857" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="15" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="FullScreen" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -1231,13 +1253,16 @@
       <option name="project" value="LOCAL" />
       <updated>1448452608689</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="增加等待单据审批实现">
+      <created>1448454791624</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1448454791624</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ArrivalNoteOnService_Test - 2015.11.25 at 20h 21m 00s.xml">
-      <configuration name="ArrivalNoteOnService_Test" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ArrivalNoteOnService_Test - 2015.11.25 at 20h 21m 20s.xml">
       <configuration name="ArrivalNoteOnService_Test" configurationId="JUnit" />
     </history-entry>
@@ -1265,6 +1290,9 @@
     <history-entry file="ArrivalNoteOnService_Test - 2015.11.25 at 20h 30m 49s.xml">
       <configuration name="ArrivalNoteOnService_Test" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="ArrivalNoteOnService_Test - 2015.11.25 at 20h 33m 55s.xml">
+      <configuration name="ArrivalNoteOnService_Test" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -1276,20 +1304,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="52" y="23" width="1228" height="777" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3080292" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3068493" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875606" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.002919708" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.002739726" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3010118" sideWeight="0.86738354" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28513733" sideWeight="0.86738354" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24957842" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1351,7 +1379,8 @@
     <MESSAGE value="修改中转单的PO,VO,桩,驱动,Mock" />
     <MESSAGE value="修改orderPO,请注意变更" />
     <MESSAGE value="添加一个单据输入的实现" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加一个单据输入的实现" />
+    <MESSAGE value="增加等待单据审批实现" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加等待单据审批实现" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1365,50 +1394,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/infodata/StaffOrganizationManagementData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46575344">
-          <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/infodata/BankAccountManagementData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33637747">
-          <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/util/BarcodesAndLocation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.96866095">
-          <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
-          <folding>
-            <element signature="e#662#663#0" expanded="true" />
-            <element signature="e#693#694#0" expanded="true" />
-            <element signature="e#723#724#0" expanded="true" />
-            <element signature="e#751#752#0" expanded="true" />
-            <element signature="e#778#779#0" expanded="true" />
-            <element signature="e#805#806#0" expanded="true" />
-            <element signature="e#831#832#0" expanded="true" />
-            <element signature="e#861#862#0" expanded="true" />
-            <element signature="e#890#891#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/po/ArrivalNoteOnTransitPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.16951567">
-          <caret line="22" column="7" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/src/main/java/vo/DeliverNoteOnServiceVO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.2834758">
@@ -1497,30 +1482,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/infodata/DriverVehicleManagementData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7037037">
-          <caret line="84" column="28" selection-start-line="84" selection-start-column="28" selection-end-line="84" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/database/DatabaseFactoryMysqlImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21937323">
-          <caret line="33" column="6" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/main/java/businesslogic/commodity/StorageIn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.75783473">
-          <caret line="56" column="11" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/src/main/java/po/DeliverNoteOnServicePO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33903134">
@@ -1590,12 +1551,12 @@
         <state vertical-scroll-proportion="0.49635038">
           <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
-            <element signature="e#171#172#0" expanded="true" />
-            <element signature="e#202#203#0" expanded="true" />
-            <element signature="e#268#269#0" expanded="true" />
-            <element signature="e#302#303#0" expanded="true" />
-            <element signature="e#348#349#0" expanded="true" />
-            <element signature="e#413#414#0" expanded="true" />
+            <element signature="e#171#172#0" expanded="false" />
+            <element signature="e#202#203#0" expanded="false" />
+            <element signature="e#268#269#0" expanded="false" />
+            <element signature="e#302#303#0" expanded="false" />
+            <element signature="e#348#349#0" expanded="false" />
+            <element signature="e#413#414#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1706,16 +1667,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/statisticdata/LogInquiryData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1553398">
-          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/src/main/java/dataservice/statisticdataservice/_Driver/LogInquiryDataService_Driver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.59417474">
@@ -1756,22 +1707,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/database/ConnectionPool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.562341">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/database/DatabaseManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.4707379">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/test/java/data/logisticdata/ArrivalNoteOnService_Test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5951294">
@@ -1788,10 +1723,97 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/database/DatabaseManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16951567">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/data/logisticdata/ArrivalNoteOnServiceData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6392694">
-          <caret line="69" column="42" selection-start-line="69" selection-start-column="42" selection-end-line="69" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.95156693">
+          <caret line="116" column="1" selection-start-line="116" selection-start-column="1" selection-end-line="116" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/database/UsingConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26638177">
+          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/database/ConnectionPool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46011397">
+          <caret line="41" column="57" selection-start-line="41" selection-start-column="57" selection-end-line="41" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/statisticdata/LogInquiryData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1039886">
+          <caret line="25" column="64" selection-start-line="25" selection-start-column="64" selection-end-line="25" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#498#499#0" expanded="true" />
+            <element signature="e#521#522#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/statisticdata/inte/LogInsertDataService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09686609">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/businesslogic/commodity/StorageIn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.66096866">
+          <caret line="52" column="19" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/database/DatabaseFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.78205127">
+          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/database/DatabaseFactoryMysqlImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7094017">
+          <caret line="237" column="13" selection-start-line="237" selection-start-column="13" selection-end-line="237" selection-end-column="13" />
+          <folding>
+            <element signature="e#8802#8803#0" expanded="true" />
+            <element signature="e#8829#8830#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/infodata/DriverVehicleManagementData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6054131">
+          <caret line="41" column="58" selection-start-line="41" selection-start-column="58" selection-end-line="41" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/data/infodata/BankAccountManagementData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36820084">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding />
         </state>
       </provider>

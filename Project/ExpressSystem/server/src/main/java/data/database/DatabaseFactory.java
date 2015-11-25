@@ -19,52 +19,51 @@ import dataservice.statisticdataservice.*;
  */
 public interface DatabaseFactory{
 
-    public InventoryDataService getInventoryDataService();
+    InventoryDataService getInventoryDataService();
 
-    public StorageInDataService getStorageInDataService();
+    StorageInDataService getStorageInDataService();
 
-    public StorageOutDataService getStorageOutDataService();
+    StorageOutDataService getStorageOutDataService();
 
-    public CreditNoteInputDataService getCreditNoteInputDataService();
+    CreditNoteInputDataService getCreditNoteInputDataService();
 
-    public PaymentInputDataService getPaymentInputDataService();
+    PaymentInputDataService getPaymentInputDataService();
 
-    public SettlementManagementDataService getSettlementManagementDataService();
+    SettlementManagementDataService getSettlementManagementDataService();
 
-    public BankAccountManagementDataService getBankAccountManagementDataService();
+    BankAccountManagementDataService getBankAccountManagementDataService();
 
-    public DriverVehicleManagementDataService getDriverVehicleManagementDataService();
+    DriverVehicleManagementDataService getDriverVehicleManagementDataService();
 
-    public StaffOrganizationManagementDataService getStaffOrganizationManagementDataService();
+    StaffOrganizationManagementDataService getStaffOrganizationManagementDataService();
 
-    public SystemUserManagementDataService getSystemUserManagementDataService();
+    SystemUserManagementDataService getSystemUserManagementDataService();
 
-    public ArrivalNoteOnServiceDataService getArrivalNoteOnServiceDataService();
+    ArrivalNoteOnServiceDataService getArrivalNoteOnServiceDataService();
 
-    public ArrivalNoteOnTransitDataService getArrivalNoteOnTransitDataService();
+    ArrivalNoteOnTransitDataService getArrivalNoteOnTransitDataService();
 
-    public DeliveryNoteInputDataService getDeliveryNoteInputDataService();
+    DeliveryNoteInputDataService getDeliveryNoteInputDataService();
 
-    public LoadNoteOnServiceDataService getLoadNoteOnServiceDataService();
+    LoadNoteOnServiceDataService getLoadNoteOnServiceDataService();
 
-    public LoadNoteOnTransitDataService getLoadNoteOnTransitDataService();
+    LoadNoteOnTransitDataService getLoadNoteOnTransitDataService();
 
-    public ReceivingNoteInputDataService getReceivingNoteInputDataService();
+    ReceivingNoteInputDataService getReceivingNoteInputDataService();
 
-    public TransitNoteInputDataService getTransitNoteInputDataService();
+    TransitNoteInputDataService getTransitNoteInputDataService();
 
-    public BaseDataBuildingDataService getBaseDataBuildingDataService();
+    BaseDataBuildingDataService getBaseDataBuildingDataService();
 
-    public BusinessDataModificationDataService getBusinessDataModificationDataService();
+    BusinessDataModificationDataService getBusinessDataModificationDataService();
 
-    public ChartOutputDataService getChartOutputDataService();
+    ChartOutputDataService getChartOutputDataService();
 
-    public LogInquiryDataService getLogInquiryDataService();
+    LogInquiryDataService getLogInquiryDataService();
 
-    public NoteApprovingDataService getNoteApprovingDataService();
+    NoteApprovingDataService getNoteApprovingDataService();
 
-    public OrderInquiryDataService getOrderInquiryDataService();
-    
-    public LogInsertDataService getLogInsertDataService();
+    OrderInquiryDataService getOrderInquiryDataService();
 
+    LogInsertDataService getLogInsertDataService();
 }

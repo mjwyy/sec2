@@ -22,10 +22,9 @@ public class BankAccountManagementData implements BankAccountManagementDataServi
 	
 	private Connection connection;
 	DatabaseFactory dataFac = null;
-	
-	public BankAccountManagementData(Connection con) throws RemoteException {
-		super();
-		connection = con;
+
+    public BankAccountManagementData() throws RemoteException {
+        super();
 		dataFac = DatabaseFactoryMysqlImpl.getInstance();
 	}
 	

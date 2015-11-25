@@ -18,7 +18,7 @@ public class BankAccountManagementData_Test {
 
     static {
         try {
-            bmd = new BankAccountManagementData(null);
+            bmd = new BankAccountManagementData();
         } catch (RemoteException e) {
             e.printStackTrace();
         }

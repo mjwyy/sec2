@@ -109,6 +109,19 @@ public class FormatCheck {
     }
 
     /**
+     * 7检查输入是否是合法的中转中心
+     * 营业厅编号格式为“025城市编码+0中转中心+000鼓楼营业厅”
+     *
+     * @param str
+     * @return
+     */
+    public static ResultMsg isTransitCenterNumber(String str) {
+        String trueExpression = "\\d{3}0\\d{3}";
+        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
+                new ResultMsg(false,"中转中心编号格式错误,应为7位数字:3位城市编码+0代表中转中心+3位营业厅编码");
+    }
+    
+    /**
      * 7检查输入是否是合法的营业厅汽运编号
      * 营业厅汽运编号格式为“营业厅编号+20150921日期+00000编码五位数字”。
      *
@@ -480,5 +493,11 @@ public class FormatCheck {
 		String trueExpression = "(库存管理人员)|(中转中心业务员)|(快递员)|(营业厅业务员)|(司机)|(财务人员)|(经理)";
         return Pattern.matches(trueExpression,vocation)? new ResultMsg(true) :
                 new ResultMsg(false,"职位只可为：库存管理人员,中转中心业务员,快递员,营业厅业务员,司机,财务人员,经理等");
+	}
+
+	public static ResultMsg isOrganizationNumber(String str) {
+		String trueExpression = "\\d{3}[01]\\d{3}";
+        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
+                new ResultMsg(false,"机构编号格式错误,应为7位数字:3位城市编码+0或1+3位编码");
 	}
 }

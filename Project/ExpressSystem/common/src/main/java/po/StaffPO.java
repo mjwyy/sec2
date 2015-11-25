@@ -114,8 +114,10 @@ public class StaffPO implements Serializable {
     }
 
 
-    public StaffVO toVO() {
-        //TODO 冲突了
-        return null;
+    public Object toVO() {
+    	
+    	StaffVO vo = new StaffVO(staffID,name, gender, organization, position, IDCardNumber, (int) workHour, phoneNumber, salary+"");
+        
+        return vo;
     }
 }

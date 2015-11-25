@@ -3,6 +3,7 @@ package vo;
 import java.util.ArrayList;
 
 import po.StorageOutPO;
+import util.FormatCheck;
 import util.ResultMsg;
 
 public class StorageOutVO {
@@ -80,9 +81,29 @@ public class StorageOutVO {
 	}
 
 	public ResultMsg checkFormat() {
-		//TODO 那个双重属性是什么意思？
+		ResultMsg[] msgs = new ResultMsg[3];
 		
-		return null;
+		msgs[0] = FormatCheck.isDate(date);
+		msgs[1] = FormatCheck.isCity(destination);
+		if(TransferOrCar) {
+			msgs[2] = FormatCheck.isTransitNoteNumber(truckNum);
+		} else {
+			msgs[2] = FormatCheck.isCenterLoadNumber(truckNum);
+		}
+		
+		for(ResultMsg m:msgs) {
+			if(!m.isPass()) return m;
+		}
+		
+		ResultMsg messa = null;
+		
+		for(String b:barcode) {
+			messa = FormatCheck.isBarcode(b);
+			if(!messa.isPass()) return messa;
+		}
+		
+		
+		return new ResultMsg(true);
 	}
 
 	public Object toPO() {

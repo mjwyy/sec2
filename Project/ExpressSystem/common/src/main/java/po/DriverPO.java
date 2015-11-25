@@ -25,15 +25,15 @@ public class DriverPO extends StaffPO implements Serializable {
         this.licenseDate = licenseDate;
     }
 
-    public DriverPO(StaffPO temp, String licenseDate) {
-        super(temp.staffID, temp.name, temp.organization,
-                temp.gender, temp.IDCardNumber, temp.salary, temp.phoneNumber,
-                temp.position, temp.workHour);
+    public DriverPO(StaffPO staffPO, String licenseDate) {
+        super(staffPO.staffID, staffPO.name, staffPO.organization,
+                staffPO.gender, staffPO.IDCardNumber, staffPO.salary, staffPO.phoneNumber,
+                staffPO.position, staffPO.workHour);
         this.licenseDate = licenseDate;
     }
 
     public DriverVO toVO() {
-        return new DriverVO(name, gender, organization, position
+        return new DriverVO(staffID,name, gender, organization, position
                 , staffID, Integer.parseInt(Double.toString(workHour)), phoneNumber, Double.toString(salary), licenseDate);
     }
 

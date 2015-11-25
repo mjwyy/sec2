@@ -10,10 +10,10 @@ import util.enums.StaffType;
 public class StaffVO {
 	
 	/**
-	 * 姓名   性别       所属机构     职位     IDCard   工作时长（按月int）     手机号        工资（总经理制定）      
+	 * 人员唯一辨识码：员工编号
 	 */
+	private String staffID;
 	
-
 	/**
 	 * 姓名
 	 */
@@ -63,8 +63,9 @@ public class StaffVO {
 	 * @param phoneNum
 	 * @param wage
 	 */
-    public StaffVO(String name, String sex, String organization, StaffType postion, String IDNum, int workingtime, String phoneNum, String wage) {
-        this.name = name;
+    public StaffVO(String staffID,String name, String sex, String organization, StaffType postion, String IDNum, int workingtime, String phoneNum, String wage) {
+        this.staffID = staffID;
+    	this.name = name;
 		this.sex = sex;
 		this.IDNum = IDNum;
 		this.organization = organization;
@@ -74,6 +75,10 @@ public class StaffVO {
 		this.workingtime = workingtime;
 	}
 
+    public String getStaffID() {
+    	return staffID;
+    }
+    
 	public String getName() {
 		return name;
 	}
@@ -122,8 +127,8 @@ public class StaffVO {
 	}
 
 	public Object toPO() {
-		//TODO PO,VO 不一致！
-		StaffPO po = null;
+		
+		StaffPO po = new StaffPO(staffID, name, organization, sex, IDNum, Double.parseDouble(wage), phoneNum, postion, workingtime);
 		return po;
 	}
 	

@@ -62,7 +62,7 @@ public class BankAccountManagementData implements BankAccountManagementDataServi
     public boolean removeBankAccount(BankAccountPO account) throws RemoteException, ElementNotFoundException, SQLException {
     	LogInsertDataService logIns = dataFac.getLogInsertDataService();
 
-    	if(findBankAccount(account).size()==0) throw new ElementNotFoundException();
+    	if(findBankAccount(account).size()==0) throw new ElementNotFoundException("未找到此银行账户，删除操作取消");
     	
     	String stmt = "delete from BankAccounts where number='"+account.getNumber()+"'";
     	PreparedStatement stat = connection.prepareStatement(stmt);
@@ -125,7 +125,7 @@ public class BankAccountManagementData implements BankAccountManagementDataServi
 		BankAccountPO searched = new BankAccountPO(null, account.getNumber(), null);
 		if(findBankAccount(searched).size()==0){
 			logIns.insertSystemLog("修改银行账户,但账户不存在");
-			throw new ElementNotFoundException();
+			throw new ElementNotFoundException("未找到银行账户，修改操作取消");
 		}
 		
 		String stmt = "update BankAccounts name='"+account.getName()+"' where number='"+account.getNumber()+"'";

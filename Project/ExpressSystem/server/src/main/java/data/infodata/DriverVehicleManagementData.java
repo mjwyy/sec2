@@ -1,5 +1,11 @@
 package data.infodata;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PipedOutputStream;
 import java.rmi.RemoteException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,6 +27,10 @@ import dataservice.infodataservice.StaffOrganizationManagementDataService;
 
 public class DriverVehicleManagementData implements DriverVehicleManagementDataService{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7214249074956257035L;
 	Connection connection;
 	DatabaseFactory dataFac = null;
 	
@@ -61,10 +71,41 @@ public class DriverVehicleManagementData implements DriverVehicleManagementDataS
 	}
 
 	@Override
-	public boolean addVehicle(VehiclePO vehicle) throws RemoteException,
-			InterruptWithExistedElementException {
-		//TODO how to store the file?
-		return false;
+	public boolean addVehicle(VehiclePO vehicle) throws InterruptWithExistedElementException, SQLException, IOException {
+		
+		LogInsertDataService logIns = dataFac.getLogInsertDataService();
+		
+		ArrayList<VehiclePO> list = inquireVehicle(vehicle);
+		if(list.size()>0) {
+			logIns.insertSystemLog("尝试添加车辆："+vehicle.getCarNumber()+"但数据库已包含其数据");
+			return false;
+		}
+		
+		String sql = "insert into Vehicles (carNumber,organizationNumber,firstUseTime,"
+				+ "picName,picFile) values (?,?,?,?,?)";
+		PreparedStatement stmt = connection.prepareStatement(sql);
+		
+		stmt.setString(1, vehicle.getCarNumber());
+		stmt.setString(2, vehicle.getInstitutionNumber());
+		stmt.setString(3, vehicle.getFirstUseTime());
+		
+		File picture = vehicle.getPicture();
+		FileInputStream fis = null;
+		try {
+			fis = new FileInputStream(picture);
+		} catch (FileNotFoundException e) {
+			logIns.insertSystemLog("读取图片失败："+picture.getName());
+			return false;
+		}
+		
+		stmt.setString(4, picture.getName());
+		stmt.setBinaryStream(5, fis);
+		
+		int resultNum = stmt.executeUpdate();
+		
+		logIns.insertSystemLog("成功加入车辆信息："+vehicle.getCarNumber());
+		
+		return resultNum>0;
 	}
 
 	@Override
@@ -88,10 +129,23 @@ public class DriverVehicleManagementData implements DriverVehicleManagementDataS
 	}
 
 	@Override
-	public boolean removeVehicle(VehiclePO vehicle) throws RemoteException,
-			ElementNotFoundException {
-		 
-		return false;
+	public boolean removeVehicle(VehiclePO vehicle) throws ElementNotFoundException, SQLException, IOException {
+		
+		LogInsertDataService logIns = dataFac.getLogInsertDataService();
+		
+		ArrayList<VehiclePO> list = inquireVehicle(vehicle);
+		if(list.size()==0) {
+			logIns.insertSystemLog("欲删除车辆信息："+vehicle.getCarNumber()+",未找到此信息");
+			return false;
+		}
+		
+		String sql = "delete from Vehicles where carNumber='"+vehicle.getCarNumber()+"'";
+		PreparedStatement stmt = connection.prepareStatement(sql);
+		int resultNum = stmt.executeUpdate();
+		
+		logIns.insertSystemLog("成功删除车辆信息:"+vehicle.getCarNumber());
+		
+		return resultNum>0;
 	}
 
     @Override
@@ -113,8 +167,23 @@ public class DriverVehicleManagementData implements DriverVehicleManagementDataS
     }
 
     @Override
-    public boolean modifyVehicle(VehiclePO originalVehicle) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException {
-        return false;
+    public boolean modifyVehicle(VehiclePO originalVehicle) throws ElementNotFoundException, InterruptWithExistedElementException, SQLException, IOException {
+    	LogInsertDataService logIns = dataFac.getLogInsertDataService();
+    	
+    	ArrayList<VehiclePO> list = inquireVehicle(originalVehicle);
+    	if(list.size()==0) {
+    		logIns.insertSystemLog("欲修改车辆信息："+originalVehicle.getCarNumber()+",未找到记录");
+    		throw new ElementNotFoundException("未找到该车辆信息");
+    	}
+    	
+    	boolean result = removeVehicle(originalVehicle);
+    	if(!result) {
+    		result = addVehicle(originalVehicle);
+    	}
+    	
+    	logIns.insertSystemLog("成功修改车辆信息："+originalVehicle.getCarNumber());
+    	
+    	return result;
     }
 
 	@Override
@@ -141,9 +210,8 @@ public class DriverVehicleManagementData implements DriverVehicleManagementDataS
 	}
 
 	@Override
-	public ArrayList<VehiclePO> getAllVehicles() throws RemoteException {
-		 
-		return null;
+	public ArrayList<VehiclePO> getAllVehicles() throws SQLException, IOException {
+		return inquireVehicle(null);
 	}
 
 	@Override
@@ -186,9 +254,56 @@ public class DriverVehicleManagementData implements DriverVehicleManagementDataS
 
 	@Override
 	public ArrayList<VehiclePO> inquireVehicle(VehiclePO keywords)
-			throws RemoteException {
-		 
-		return null;
+			throws SQLException, IOException {
+		
+		LogInsertDataService logIns = dataFac.getLogInsertDataService();
+		ArrayList<VehiclePO> result = new ArrayList<>();
+		
+		String sql = "select * from Vehicles";
+		
+		if(keywords==null) {
+			// Do nothing
+		} else {
+			sql = sql + " where ";
+			if(keywords.getCarNumber()!=null) {
+				sql = sql + "(carNumber LIKE '%"+keywords.getCarNumber()+"%') ";
+			}
+			if(keywords.getInstitutionNumber()!=null) {
+				if(keywords.getCarNumber()!=null) {
+					sql = sql + " OR ";
+				}
+				sql = sql + "(organizationNumber LIKE '%"+keywords.getInstitutionNumber()+"%')";
+			}
+		}
+		
+		PreparedStatement stmt = connection.prepareStatement(sql);
+		ResultSet set = stmt.getResultSet();
+		while(set.next()) {
+			String carNum = set.getString("carNumber");
+			String org = set.getString("organizationNumber");
+			String first = set.getString("firstUseTime");
+			
+			
+			FileInputStream fis = (FileInputStream) set.getBinaryStream("picFile");
+			String picName = set.getString("picName");
+			File pic = File.createTempFile(picName, "");
+			FileOutputStream fos = new FileOutputStream(pic);
+			
+			byte[] buf = new byte[1024];
+			int data = 0;
+			while((data = fis.read(buf))!=-1) {
+				fos.write(buf, 0, data);
+			}
+			fis.close();
+			fos.close();
+			
+			VehiclePO po = new VehiclePO(carNum, org, pic, first);
+			result.add(po);
+		}
+		
+		logIns.insertSystemLog("成功查找车辆信息");
+		
+		return result;
 	}
 
 }

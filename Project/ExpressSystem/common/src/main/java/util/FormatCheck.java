@@ -478,9 +478,9 @@ public class FormatCheck {
     }
 
     public static ResultMsg isUserAccount(String account) {
-        String trueExpression = "";
+        String trueExpression = "\\d{6,}";
         return Pattern.matches(trueExpression,account)? new ResultMsg(true) :
-                new ResultMsg(false,"用户账号格式错误,应为");
+                new ResultMsg(false,"用户账号格式错误,应为不少于六位数字");
     }
 
     public static ResultMsg isAreaCode(String areacode) {

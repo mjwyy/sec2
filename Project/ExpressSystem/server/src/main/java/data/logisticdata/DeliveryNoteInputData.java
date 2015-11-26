@@ -1,13 +1,16 @@
 package data.logisticdata;
 
 import data.database.DatabaseManager;
+import data.statisticdata.BusinessDataModificationData;
 import data.statisticdata.LogInsertData;
 import data.statisticdata.OrderInquiryData;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
 import po.DeliveryNotePO;
+import po.DistancePO;
 import util.ResultMsg;
 import util.SendDocMsg;
+import util.enums.DeliverCategory;
 import util.enums.DocState;
 import util.enums.GoodsState;
 
@@ -23,6 +26,7 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
 
     private LogInsertData logInsertData;
     private OrderInquiryData orderDataService;
+    private BusinessDataModificationData businessDataModificationData;
 
     @Override
     public SendDocMsg insert(DeliveryNotePO po) throws RemoteException, SQLException, ElementNotFoundException {
@@ -58,26 +62,46 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
         //等待总经理审批过程,反复查询
         DocState docState = this.waitForCheck("note_delivery",
                 "barCode", po.getBarCode());
-        ResultMsg resultMsg = new ResultMsg(false);
         //审批通过
+        double price = 0;
+        String presumedDate = "";
         if (docState == DocState.PASSED) {
             System.out.println("DeliveryNote is passed!");
             //追加修改物流信息
             orderDataService = new OrderInquiryData();
             orderDataService.updateOrder(po.getBarCode(),GoodsState.COMPLETE,
                     "?营业厅已收件!");
-            resultMsg.setPass(true);
-            //TODO 获取总价格与预计到达日期
+            //TODO 策略模式
+            //获取总价
+            businessDataModificationData = new BusinessDataModificationData();
+            String city1, city2;
+            city1 = po.getSenderCity();
+            city2 = po.getReceiverCity();
+            double distance = businessDataModificationData.getDistance(city1, city2);
+            double pricePerKG = distance / 1000 * 23;
+            double weightPrice = pricePerKG * po.getWeight();
+            if (po.getWeight() / po.getVolume() < 0.01) {
+                double volumeWeight = po.getVolume() / 5000;
+                double volumePrice = pricePerKG * volumeWeight;
+                weightPrice = volumePrice > weightPrice ? volumePrice : weightPrice;
+            }
+            if (po.getCategory() == DeliverCategory.ECNOMIC)
+                weightPrice = weightPrice * 18 / 23;
+            else if (po.getCategory() == DeliverCategory.EXPRESS)
+                weightPrice = weightPrice * 25 / 23;
+            price = weightPrice + po.getPackPrice();
+            //TODO 获取预计到达日期
+            presumedDate = "";
 
         } else { //审批没有通过
             System.out.println("DeliveryNote is failed!");
             String advice = this.getFailedAdvice("note_delivery",
                     "barCode", po.getBarCode());
-            resultMsg.setMessage(advice);
+            return new SendDocMsg(false, advice, 0, null);
         }
         //操作结束
         DatabaseManager.releaseConnection(connection, statement, null);
-        return null;
+        return new SendDocMsg(true, "寄件单已通过审批", price, presumedDate);
     }
 
 }

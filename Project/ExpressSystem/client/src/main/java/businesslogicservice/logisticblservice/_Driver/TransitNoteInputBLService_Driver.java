@@ -2,6 +2,7 @@ package businesslogicservice.logisticblservice._Driver;
 
 import java.util.ArrayList;
 
+import util.enums.TransitType;
 import vo.TransitNoteOnTransitVO;
 import businesslogicservice.logisticblservice.TransitNoteInputBLService;
 import businesslogicservice.logisticblservice._Stub.TransitNoteInputBLService_Stub;
@@ -17,7 +18,7 @@ public class TransitNoteInputBLService_Driver {
 		ArrayList<String> bar=new ArrayList<String>();
 		bar.add("1234567890");
         TransitNoteOnTransitVO transitNoteOnTransitVO = new TransitNoteOnTransitVO("2011-11-11",
-                "025000201510120000003", "MF8190", "北京",
+                "025000201510120000003", "MF8190", TransitType.Aircraft, "北京",
                 "南京", "001", null);
         ResultMsg result=a.inputCenterTransitDoc(transitNoteOnTransitVO);
 		if(result.isPass()==true)

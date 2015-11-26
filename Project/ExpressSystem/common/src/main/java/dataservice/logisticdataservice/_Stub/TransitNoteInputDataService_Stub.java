@@ -3,6 +3,7 @@ package dataservice.logisticdataservice._Stub;
 import dataservice.logisticdataservice.TransitNoteInputDataService;
 import po.TransitNotePO;
 import util.ResultMsg;
+import util.enums.TransitType;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -28,9 +29,9 @@ public class TransitNoteInputDataService_Stub implements TransitNoteInputDataSer
         list.add("3000111112");
         list.add("4000111113");
         pos = new ArrayList<TransitNotePO>();
-        po1 = new TransitNotePO("2015-10-23","025100201510200000012","CA1206","南京",
+        po1 = new TransitNotePO("2015-10-23", "025100201510200000012", "CA1206", TransitType.Aircraft, "南京",
                 "西安", "0120", null);
-        po2 = new TransitNotePO("2015-10-24","025100201510200000013","CZ3151","南京",
+        po2 = new TransitNotePO("2015-10-24", "025100201510200000013", "CZ3151", TransitType.Aircraft, "南京",
                 "深圳", "0122", null);
         pos.add(po1);
         pos.add(po2);

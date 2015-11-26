@@ -32,7 +32,7 @@ public class TransitNoteInput_Test {
         list.add(new BarcodesAndLocation("0123456790", 1, 2, 3, 5));
         list.add(new BarcodesAndLocation("0123456791", 1, 2, 3, 6));
         list.add(new BarcodesAndLocation("0123456792", 1, 2, 3, 7));
-        TransitNotePO po1 = new TransitNotePO("2011-11-11", "025000201510120000003",
+        TransitNotePO po1 = new TransitNotePO("2011-11-11", "025000201510120000007",
                 "MF8190", TransitType.Aircraft, "北京",
                 "南京", "Tom", list);
         service.insert(po1);

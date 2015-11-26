@@ -18,6 +18,7 @@ import po.*;
 import util.BarcodeAndState;
 import util.enums.DeliverCategory;
 import util.enums.GoodsState;
+import util.enums.TransitType;
 import vo.LoadNoteOnServiceVO;
 
 public class NoteApprovingData_Test {
@@ -117,12 +118,14 @@ public class NoteApprovingData_Test {
 
     @Test
     public void testTransitDoc() throws RemoteException, ElementNotFoundException, SQLException {
-        ArrivalNoteOnTransitPO po1 = new ArrivalNoteOnTransitPO(
-                "025001201511260001", "025100", "2011-11-11", "北京", null);
+        TransitNotePO po1 = new TransitNotePO("2011-11-11", "025000201510120000005",
+                "MF8190", TransitType.Aircraft, "北京",
+                "南京", "Tom", null);
         service.passDoc(po1);
 
-        ArrivalNoteOnTransitPO po2 = new ArrivalNoteOnTransitPO(
-                "025001201511260002", "025100", "2011-11-11", "北京", null);
+        TransitNotePO po2 = new TransitNotePO("2011-11-11", "025000201510120000006",
+                "MF8190", TransitType.Aircraft, "北京",
+                "南京", "Tom", null);
         service.failDoc(po2, "不高兴2");
     }
 

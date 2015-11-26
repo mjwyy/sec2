@@ -3,6 +3,7 @@ package dataservice.statisticdataservice;
 import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dataservice.exception.ElementNotFoundException;
@@ -46,7 +47,7 @@ public interface BusinessDataModificationDataService extends Remote, Serializabl
      * @throws ElementNotFoundException
      */
     public boolean setPrice(PriceType name, double price)
-            throws RemoteException,ElementNotFoundException;
+            throws RemoteException, ElementNotFoundException, SQLException;
 
     /**
      * Data返回对应的价格数值
@@ -57,7 +58,7 @@ public interface BusinessDataModificationDataService extends Remote, Serializabl
      * @throws ElementNotFoundException
      */
     public double getPrice(PriceType name)
-            throws RemoteException,ElementNotFoundException;
+            throws RemoteException, ElementNotFoundException, SQLException;
 
 
     /**
@@ -69,16 +70,18 @@ public interface BusinessDataModificationDataService extends Remote, Serializabl
      * @throws ElementNotFoundException
      */
     public boolean setDistance(DistancePO distancePO)
-            throws RemoteException,ElementNotFoundException;
+            throws RemoteException, ElementNotFoundException, SQLException;
 
     /**
      * Data返回两个城市对应距离数值
+     *s
+     * @param city1
+     * @param city2
      *
-     * @param distancePO
      * @return
      * @throws RemoteException
      * @throws ElementNotFoundException
      */
-    public DistancePO getDistance(DistancePO distancePO)
-            throws RemoteException,ElementNotFoundException;
+    public double getDistance(String city1, String city2)
+            throws RemoteException, ElementNotFoundException, SQLException;
 }

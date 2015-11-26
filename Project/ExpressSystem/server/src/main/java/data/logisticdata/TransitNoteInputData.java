@@ -27,9 +27,10 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
 
     @Override
     public ResultMsg insert(TransitNotePO po) throws RemoteException, SQLException, ElementNotFoundException {
-        String sql = "insert into `note_transit` ( `barcodes`, `transitDocNumber`, `supercargoMan`, " +
-                "`departurePlace`, `date`, `desitination`, `flightNumber`) " +
-                "values ( ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into `Express`.`note_transit`" +
+                " ( `barcodes`, `transitDocNumber`, `supercargoMan`, `departurePlace`, " +
+                "`transitType`, `date`, `desitination`, `transportNumber`)" +
+                " values ( ?, ?, ?, ?, ?, ?, ?, ?)";
         Connection connection = DatabaseManager.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         StringBuilder stringBuilder = new StringBuilder();
@@ -42,9 +43,10 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
         statement.setString(2,po.getTransitDocNumber());
         statement.setString(3,po.getSupercargoMan());
         statement.setString(4,po.getDeparturePlace());
-        statement.setString(5,po.getDate());
-        statement.setString(6,po.getDesitination());
-        statement.setString(7, po.getTransportationNumber());
+        statement.setString(5, po.getTransitType().toString());
+        statement.setString(6, po.getDate());
+        statement.setString(7, po.getDesitination());
+        statement.setString(8, po.getTransportationNumber());
         statement.executeUpdate();
         statement.close();
 

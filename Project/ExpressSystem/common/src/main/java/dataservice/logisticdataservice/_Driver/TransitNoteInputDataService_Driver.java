@@ -4,6 +4,7 @@ import dataservice.exception.ElementNotFoundException;
 import dataservice.logisticdataservice.TransitNoteInputDataService;
 import dataservice.logisticdataservice._Stub.TransitNoteInputDataService_Stub;
 import po.TransitNotePO;
+import util.enums.TransitType;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -31,9 +32,9 @@ public class TransitNoteInputDataService_Driver {
         list.add("2000111111");
         list.add("3000111112");
         list.add("4000111113");
-        TransitNotePO po1 = new TransitNotePO("2015-10-23","025100201510200000012","CA1206","南京",
+        TransitNotePO po1 = new TransitNotePO("2015-10-23", "025100201510200000012", "CA1206", TransitType.Aircraft, "南京",
                 "西安", "0120", null);
-        TransitNotePO po2 = new TransitNotePO("2015-10-24","025100201510200000013","CZ3151","南京",
+        TransitNotePO po2 = new TransitNotePO("2015-10-24", "025100201510200000013", "CZ3151", TransitType.Aircraft, "南京",
                 "深圳", "0122", null);
         if(service.insert(po1).isPass())
         	System.out.println("insert succeed");

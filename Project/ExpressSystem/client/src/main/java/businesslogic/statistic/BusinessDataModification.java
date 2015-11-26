@@ -9,6 +9,7 @@ import util.ResultMsg;
 import util.enums.PriceType;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 /**
  * Created by kylin on 15/11/17.
@@ -64,6 +65,8 @@ public class BusinessDataModification implements BusinessDataModificationBLServi
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
             return new ResultMsg(false,e.getMessage());
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return new ResultMsg(true,"城市距离修改成功!");
     }

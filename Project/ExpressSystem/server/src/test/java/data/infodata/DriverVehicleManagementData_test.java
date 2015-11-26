@@ -3,6 +3,7 @@ package data.infodata;
 import static org.junit.Assert.*;
 
 import java.io.File;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
@@ -21,7 +22,7 @@ public class DriverVehicleManagementData_test {
 
     static {
         try {
-            service = new DriverVehicleManagementData(null);
+            service = new DriverVehicleManagementData();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -71,7 +72,7 @@ public class DriverVehicleManagementData_test {
 	}
 
     //    @Test
-    public void testRemoveVehicle() throws RemoteException, InterruptWithExistedElementException, ElementNotFoundException {
+    public void testRemoveVehicle() throws IOException, InterruptWithExistedElementException, ElementNotFoundException, SQLException {
 		MockVehicle vehicle4 = new MockVehicle("02501000003","鼓楼营业厅",null,
 				"2015-11-10");
 		service.addVehicle(vehicle4);

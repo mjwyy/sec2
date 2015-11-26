@@ -6,6 +6,7 @@ import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import data.database.DatabaseFactory;
 import data.logisticdata.MockObject.MockArrivalNoteOnTransit;
 import org.junit.Test;
 
@@ -22,22 +23,81 @@ public class NoteApprovingData_Test {
 	
 	private NoteApprovingDataService service = new NoteApprovingData();
 
-    //    	@Test
-    public void testPassDoc() throws RemoteException, ElementNotFoundException, SQLException {
-//        ArrivalNoteOnServicePO arrivalNoteOnServicePO = new ArrivalNoteOnServicePO(null, false,
-//                "250001201512120002", null, null);
-//        service.passDoc(arrivalNoteOnServicePO);
+    @Test
+    public void testArrivalOnServiceDoc() throws RemoteException, ElementNotFoundException, SQLException {
+        ArrivalNoteOnServicePO po1 = new ArrivalNoteOnServicePO(null, false,
+                "025001201511260001", null, null);
+        service.passDoc(po1);
 
-        ArrivalNoteOnTransitPO mock = new ArrivalNoteOnTransitPO(
-                "99999", "025100", "2011-11-11", "北京", null);
-        service.passDoc(mock);
+        ArrivalNoteOnTransitPO po2 = new ArrivalNoteOnTransitPO(
+                "025001201511260002", "025100", "2011-11-11", "北京", null);
+        service.failDoc(po2, "不高兴1");
     }
 
     @Test
-    public void testFailDoc() throws RemoteException, ElementNotFoundException, SQLException {
-        ArrivalNoteOnTransitPO mock = new ArrivalNoteOnTransitPO(
-                "99999", "025100", "2011-11-11", "北京", null);
-        service.passDoc(mock);
-        service.failDoc(mock, "不高兴99999");
+    public void testArrivalOnTransitDoc() throws RemoteException, ElementNotFoundException, SQLException {
+        ArrivalNoteOnTransitPO po1 = new ArrivalNoteOnTransitPO(
+                "025001201511260001", "025100", "2011-11-11", "北京", null);
+        service.passDoc(po1);
+
+        ArrivalNoteOnTransitPO po2 = new ArrivalNoteOnTransitPO(
+                "025001201511260002", "025100", "2011-11-11", "北京", null);
+        service.failDoc(po2, "不高兴2");
     }
+
+    @Test
+    public void testDeliveryDoc() throws RemoteException, ElementNotFoundException, SQLException {
+        ArrivalNoteOnTransitPO po1 = new ArrivalNoteOnTransitPO(
+                "025001201511260001", "025100", "2011-11-11", "北京", null);
+        service.passDoc(po1);
+
+        ArrivalNoteOnTransitPO po2 = new ArrivalNoteOnTransitPO(
+                "025001201511260002", "025100", "2011-11-11", "北京", null);
+        service.failDoc(po2, "不高兴2");
+    }
+
+    @Test
+    public void testLoadOnServiceDoc() throws RemoteException, ElementNotFoundException, SQLException {
+        ArrivalNoteOnTransitPO po1 = new ArrivalNoteOnTransitPO(
+                "025001201511260001", "025100", "2011-11-11", "北京", null);
+        service.passDoc(po1);
+
+        ArrivalNoteOnTransitPO po2 = new ArrivalNoteOnTransitPO(
+                "025001201511260002", "025100", "2011-11-11", "北京", null);
+        service.failDoc(po2, "不高兴2");
+    }
+
+    @Test
+    public void testLoadOnTransitDoc() throws RemoteException, ElementNotFoundException, SQLException {
+        ArrivalNoteOnTransitPO po1 = new ArrivalNoteOnTransitPO(
+                "025001201511260001", "025100", "2011-11-11", "北京", null);
+        service.passDoc(po1);
+
+        ArrivalNoteOnTransitPO po2 = new ArrivalNoteOnTransitPO(
+                "025001201511260002", "025100", "2011-11-11", "北京", null);
+        service.failDoc(po2, "不高兴2");
+    }
+
+    @Test
+    public void testReceivingDoc() throws RemoteException, ElementNotFoundException, SQLException {
+        ArrivalNoteOnTransitPO po1 = new ArrivalNoteOnTransitPO(
+                "025001201511260001", "025100", "2011-11-11", "北京", null);
+        service.passDoc(po1);
+
+        ArrivalNoteOnTransitPO po2 = new ArrivalNoteOnTransitPO(
+                "025001201511260002", "025100", "2011-11-11", "北京", null);
+        service.failDoc(po2, "不高兴2");
+    }
+
+    @Test
+    public void testTransitDoc() throws RemoteException, ElementNotFoundException, SQLException {
+        ArrivalNoteOnTransitPO po1 = new ArrivalNoteOnTransitPO(
+                "025001201511260001", "025100", "2011-11-11", "北京", null);
+        service.passDoc(po1);
+
+        ArrivalNoteOnTransitPO po2 = new ArrivalNoteOnTransitPO(
+                "025001201511260002", "025100", "2011-11-11", "北京", null);
+        service.failDoc(po2, "不高兴2");
+    }
+
 }

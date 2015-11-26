@@ -15,6 +15,11 @@ import java.util.ArrayList;
  */
 public class DeliverNoteOnServiceVO extends NoteVO {
 
+    /**
+     * 唯一ID
+     */
+    private String DeliverNoteOnServiceID;
+
 	/**
 	 * 货物到达日期
 	 */
@@ -30,12 +35,15 @@ public class DeliverNoteOnServiceVO extends NoteVO {
 	 */
 	private String DeliveryMan;
 
-	public DeliverNoteOnServiceVO(String date, ArrayList<String> barCode, String deliveryMan) {
+	public DeliverNoteOnServiceVO(String deliverNoteOnServiceID,String date, ArrayList<String> barCode, String deliveryMan) {
 		super();
+        this.DeliverNoteOnServiceID = deliverNoteOnServiceID;
 		this.date = date;
 		BarCode = barCode;
 		DeliveryMan = deliveryMan;
 	}
+
+
 
     public String getDate() {
         return date;
@@ -74,6 +82,7 @@ public class DeliverNoteOnServiceVO extends NoteVO {
 
     @Override
     public DeliverNoteOnServicePO toPO() {
-        return new DeliverNoteOnServicePO(this.getDate(),this.getBarCode(),this.getDeliveryMan());
+        return new DeliverNoteOnServicePO(this.DeliverNoteOnServiceID,this.getDate(),
+                this.getBarCode(),this.getDeliveryMan());
     }
 }

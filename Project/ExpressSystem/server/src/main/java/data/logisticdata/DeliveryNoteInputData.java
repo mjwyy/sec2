@@ -3,30 +3,29 @@ package data.logisticdata;
 import data.database.DatabaseManager;
 import data.statisticdata.LogInsertData;
 import data.statisticdata.OrderInquiryData;
+import dataservice.exception.ElementNotFoundException;
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
 import po.DeliveryNotePO;
-import po.OrderPO;
 import util.ResultMsg;
+import util.SendDocMsg;
 import util.enums.DocState;
 import util.enums.GoodsState;
-import util.SendDocMsg;
 
 import java.rmi.RemoteException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 /**
  * Created by kylin on 15/11/10.
  */
 public class DeliveryNoteInputData extends NoteInputData implements DeliveryNoteInputDataService {
 
-    private OrderInquiryData orderInquiryData;
     private LogInsertData logInsertData;
+    private OrderInquiryData orderDataService;
 
     @Override
-    public SendDocMsg insert(DeliveryNotePO po) throws RemoteException, SQLException {
+    public SendDocMsg insert(DeliveryNotePO po) throws RemoteException, SQLException, ElementNotFoundException {
         Connection connection = DatabaseManager.getConnection();
         String sql = "insert into note_delivery ( `volume`, `category`, `senderTeleNumber`, " +
                 "`receiverAddress`, `packPrice`, `weight`, `docState`, " + "`receiverName`," +
@@ -43,6 +42,7 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
         statement.setInt(7, po.getState().getIntState());
         statement.setString(8, po.getReceiverName());
         statement.setInt(9, po.getGoodsNumber());
+        //TODO 获取业务员的信息
 //        statement.setString(10, po.getUserName());
         statement.setString(11, po.getReceiverTeleNumber());
         statement.setString(12, po.getSenderAddress());
@@ -54,28 +54,30 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
             throw new SQLException();
         //记录系统日志
         logInsertData = new LogInsertData();
-        logInsertData.insertSystemLog("营业厅业务员?新增营业厅到达单,单据编号:" + po.getBarCode());
+        logInsertData.insertSystemLog("营业厅业务员?新增寄件单,单据编号:" + po.getBarCode());
 
         //等待总经理审批过程,反复查询
-//        SendDocMsg result = this.waitForCheck("note_arrival_on_transit",
-//                "transferNumber", po.getBarCode());
-//        ResultMsg resultMsg = new ResultMsg(false);
-//        //审批通过
-//        if (result == DocState.PASSED) {
-//            System.out.println("ArrivalNoteOnTransitPO is passed!");
-//            //追加修改物流信息
-//            orderDataService = new OrderInquiryData();
-//            orderDataService.updateOrder("", GoodsState.COMPLETE,"");
-//            resultMsg.setPass(true);
-//            //审批没有通过
-//        } else {
-//            System.out.println("ArrivalNoteOnTransitPO is failed!");
-//            String advice = this.getFailedAdvice("note_arrival_on_transit",
-//                    "transferNumber", po.getBarCode());
-//            resultMsg.setMessage(advice);
-//        }
-//        //操作结束
-//        DatabaseManager.releaseConnection(connection, statement, null);
+        DocState docState = this.waitForCheck("note_delivery",
+                "barCode", po.getBarCode());
+        ResultMsg resultMsg = new ResultMsg(false);
+        //审批通过
+        if (docState == DocState.PASSED) {
+            System.out.println("DeliveryNote is passed!");
+            //追加修改物流信息
+            orderDataService = new OrderInquiryData();
+            orderDataService.updateOrder(po.getBarCode(),GoodsState.COMPLETE,
+                        "x营业厅已收件!");
+            resultMsg.setPass(true);
+            //TODO 获取总价格与预计到达日期
+
+        } else { //审批没有通过
+            System.out.println("DeliveryNote is failed!");
+            String advice = this.getFailedAdvice("note_delivery",
+                    "barCode", po.getBarCode());
+            resultMsg.setMessage(advice);
+        }
+        //操作结束
+        DatabaseManager.releaseConnection(connection, statement, null);
         return null;
     }
 

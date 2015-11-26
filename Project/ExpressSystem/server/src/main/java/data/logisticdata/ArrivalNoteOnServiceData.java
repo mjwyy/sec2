@@ -10,6 +10,7 @@ import po.DeliverNoteOnServicePO;
 import util.BarcodeAndState;
 import util.ResultMsg;
 import util.enums.DocState;
+import util.enums.GoodsState;
 
 import java.rmi.RemoteException;
 import java.sql.Connection;
@@ -80,7 +81,51 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
     }
 
     @Override
-    public ResultMsg insertDeliverNote(DeliverNoteOnServicePO po) throws RemoteException {
+    public ResultMsg insertDeliverNote(DeliverNoteOnServicePO po) throws RemoteException, SQLException, ElementNotFoundException {
+        Connection connection = DatabaseManager.getConnection();
+        String sql = "insert into `note_delivery_on_service` ( `deliveryMan`, `id`, `barcodes`, `date`)" +
+                " values ( ?, ?, ?, ?)";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        //存储所有条形码
+        StringBuilder stringBuilder = new StringBuilder();
+        ArrayList<String> barcodes = po.getBarCode();
+        for (String barcode : barcodes) {
+            stringBuilder.append(barcode);
+            stringBuilder.append(';');
+        }
+        statement.setString(1, po.getDeliveryMan());
+        statement.setString(2, po.getID());
+        statement.setString(3, stringBuilder.toString());
+        statement.setString(4, po.getDate());
+        //向数据库添加到达单
+        statement.executeUpdate();
+        statement.close();
+        //记录系统日志
+        logInsertData = new LogInsertData();
+        logInsertData.insertSystemLog("?营业员添加派件单,派件员:"+po.getDeliveryMan());
+        //等待总经理审批过程,反复查询
+        DocState result = this.waitForCheck("note_delivery_on_service",
+                "id", po.getID());
+        ResultMsg resultMsg = new ResultMsg(false);
+        //审批通过
+        if (result == DocState.PASSED) {
+            System.out.println("DeliverNoteOnService is passed!");
+            //追加修改物流信息
+            orderDataService = new OrderInquiryData();
+            for (String barcode : barcodes) {
+                orderDataService.updateOrder(barcode,GoodsState.COMPLETE,
+                        "正由?快递员派送!");
+            }
+            resultMsg.setPass(true);
+            //审批没有通过
+        } else {
+            System.out.println("DeliverNoteOnService is failed!");
+            String advice = this.getFailedAdvice("note_delivery_on_service",
+                    "id", po.getID());
+            resultMsg.setMessage(advice);
+        }
+        //操作结束
+        DatabaseManager.releaseConnection(connection, statement, null);
         return null;
     }
 }

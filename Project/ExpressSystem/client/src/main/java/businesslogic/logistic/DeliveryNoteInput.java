@@ -2,12 +2,13 @@ package businesslogic.logistic;
 
 import businesslogicservice.logisticblservice.DeliveryNoteInputBLService;
 import connection.RemoteObjectGetter;
+import dataservice.exception.ElementNotFoundException;
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
 import po.DeliveryNotePO;
 import po.OrderPO;
 import util.ResultMsg;
-import util.enums.GoodsState;
 import util.SendDocMsg;
+import util.enums.GoodsState;
 import vo.DeliveryNoteVO;
 
 import java.rmi.RemoteException;
@@ -53,6 +54,8 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
             e.printStackTrace();
             return new SendDocMsg(false, e.getMessage(), 0, null);
         } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ElementNotFoundException e) {
             e.printStackTrace();
         }
         return new SendDocMsg(true, "寄件单已成功提交!", price, date);

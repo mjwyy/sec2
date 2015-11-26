@@ -27,6 +27,6 @@ public interface ArrivalNoteOnServiceDataService extends Remote, Serializable {
     /**
      * 在数据库中插入单一持久化对象
      */
-    ResultMsg insertDeliverNote(DeliverNoteOnServicePO po) throws RemoteException;
+    ResultMsg insertDeliverNote(DeliverNoteOnServicePO po) throws RemoteException, SQLException, ElementNotFoundException;
 
 }

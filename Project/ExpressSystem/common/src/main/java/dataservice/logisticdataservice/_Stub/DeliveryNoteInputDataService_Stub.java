@@ -2,8 +2,8 @@ package dataservice.logisticdataservice._Stub;
 
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
 import po.DeliveryNotePO;
-import util.enums.DeliverCategory;
 import util.SendDocMsg;
+import util.enums.DeliverCategory;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;

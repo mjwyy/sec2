@@ -98,6 +98,10 @@ public class LoadNoteOnTransitPO extends NotePO implements Serializable{
 		return barcodes;
 	}
 
+    public String getHallNumber() {
+        return hallNumber;
+    }
+
     @Override
     public NoteVO toVO() {
         return new LoadNoteOnServiceVO(this.date, this.hallNumber, this.transpotationNumber,

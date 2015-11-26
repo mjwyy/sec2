@@ -1,17 +1,16 @@
 package data.logisticdata;
 
 import data.logisticdata.MockObject.MockDeliveryNote;
+import dataservice.exception.ElementNotFoundException;
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
 
 import org.junit.Before;
 import org.junit.Test;
-import po.DeliveryNotePO;
-import util.enums.DeliverCategory;
 import util.SendDocMsg;
+import util.enums.DeliverCategory;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -29,7 +28,7 @@ public class DeliveryNoteInput_Test {
     }
 
     @Test
-    public void testInsert() throws RemoteException, SQLException {
+    public void testInsert() throws RemoteException, SQLException, ElementNotFoundException {
 
         MockDeliveryNote po1 = new MockDeliveryNote("王二狗","江苏省南京市栖霞区南京大学仙林校区","150052120000",
                 "Tom Hanks","江苏省徐州市沛县第三中学语文组","19883490000","爆炸物",10,

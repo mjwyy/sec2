@@ -23,12 +23,12 @@ public class ArrivalNoteOnServiceBLService_Driver {
             System.out.println("输入的中转中心到达单格式正确");
         else
             System.out.println("输入的中转中心到达单格式不正确");
-        result = service.inputHallDeliverDoc(new DeliverNoteOnServiceVO("2015-10-22",null,"tom"));
+        result = service.inputHallDeliverDoc(new DeliverNoteOnServiceVO(null,"2015-10-22",null,"tom"));
         if(result.isPass()==true)
             System.out.println("输入的中转中心到达单格式正确");
         else
             System.out.println("输入的中转中心到达单格式不正确");
-        result = service.submitHallDeliverDoc(new DeliverNoteOnServiceVO("2015-10-22",null,"tom"));
+        result = service.submitHallDeliverDoc(new DeliverNoteOnServiceVO(null,"2015-10-22",null,"tom"));
         if(result.isPass()==true)
             System.out.println("输入的中转中心到达单格式正确");
         else

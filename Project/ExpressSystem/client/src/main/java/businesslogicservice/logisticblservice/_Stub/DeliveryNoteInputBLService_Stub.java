@@ -1,9 +1,9 @@
 package businesslogicservice.logisticblservice._Stub;
 
+import util.SendDocMsg;
 import vo.DeliveryNoteVO;
 import businesslogicservice.logisticblservice.DeliveryNoteInputBLService;
 import util.ResultMsg;
-import util.SendDocMsg;
 import util.enums.DeliverCategory;
 
 public class DeliveryNoteInputBLService_Stub implements DeliveryNoteInputBLService{

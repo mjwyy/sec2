@@ -32,31 +32,46 @@ public class LoadNoteOnTransitData extends NoteInputData implements LoadNoteOnTr
                 " values ( ?, ?, ?, ?, ?, ?, ?, ?)";
         Connection connection = DatabaseManager.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
-
-        statement.setString(1,po.getTranspotationNumber());
+        StringBuilder stringBuilder = new StringBuilder();
+        ArrayList<String> barcodes = po.getBarcodes();
+        for (String barcode : barcodes) {
+            stringBuilder.append(barcode);
+            stringBuilder.append(';');
+        }
+        statement.setString(1, stringBuilder.toString());
+        statement.setString(2,po.getDestination());
+        statement.setString(3,po.getSupercargoMan());
+        statement.setString(4,po.getGuardMan());
+        statement.setString(5,po.getDate());
+        statement.setString(6,po.getCarNumber());
+        statement.setString(7,po.getHallNumber());
+        statement.setString(8,po.getTranspotationNumber());
         statement.executeUpdate();
         statement.close();
 
         //记录系统日志
         logInsertData = new LogInsertData();
-        logInsertData.insertSystemLog("营业厅业务员?新增营业厅到达单,单据编号:" + po.getTranspotationNumber());
+        logInsertData.insertSystemLog("中转中心业务员?新增中转中心装车单,单据编号:" + po.getTranspotationNumber());
 
         //等待总经理审批过程,反复查询
         DocState result = this.waitForCheck("note_arrival_on_transit",
-                "transferNumber", po.getTranspotationNumber());
+                "transpotationNumber", po.getTranspotationNumber());
         ResultMsg resultMsg = new ResultMsg(false);
         //审批通过
         if (result == DocState.PASSED) {
-            System.out.println("ArrivalNoteOnTransitPO is passed!");
+            System.out.println("LoadNoteOnTransit is passed!");
             //追加修改物流信息
             orderDataService = new OrderInquiryData();
-            orderDataService.updateOrder("",GoodsState.COMPLETE,"");
+            for (String barcode : barcodes) {
+                orderDataService.updateOrder(barcode,GoodsState.COMPLETE,
+                        "已从?中转中心装车,发往本地营业厅!");
+            }
             resultMsg.setPass(true);
             //审批没有通过
         } else {
-            System.out.println("ArrivalNoteOnTransitPO is failed!");
+            System.out.println("LoadNoteOnTransit is failed!");
             String advice = this.getFailedAdvice("note_arrival_on_transit",
-                    "transferNumber", po.getTranspotationNumber());
+                    "transpotationNumber", po.getTranspotationNumber());
             resultMsg.setMessage(advice);
         }
         //操作结束

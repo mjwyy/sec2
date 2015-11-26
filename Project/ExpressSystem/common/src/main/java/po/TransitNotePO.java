@@ -23,6 +23,7 @@ public class TransitNotePO extends NotePO implements Serializable{
 	 */
 	private String date;
 
+    //TODO 或者火车车次号
 	/**
 	 * 中转单编号	
 	 */

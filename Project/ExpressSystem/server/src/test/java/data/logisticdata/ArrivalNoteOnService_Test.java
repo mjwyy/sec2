@@ -24,7 +24,7 @@ public class ArrivalNoteOnService_Test {
 
     private ArrivalNoteOnServiceDataService service = new ArrivalNoteOnServiceData();
 
-    @Test
+//    @Test
     public void testInsertArrivalNote() throws RemoteException, SQLException, ElementNotFoundException {
         ArrayList<BarcodeAndState> barcodes = new ArrayList<>();
         barcodes.add(new BarcodeAndState("1234567890", GoodsState.COMPLETE));
@@ -37,12 +37,14 @@ public class ArrivalNoteOnService_Test {
         service.insertArrivalNote(mock1);
     }
 
-    //    @Test
-    public void testInsertDeliverNote() throws RemoteException {
-        MockDeliverNoteOnService mock1 = new MockDeliverNoteOnService("2015-11-16","王小二");
-        MockDeliverNoteOnService mock2 = new MockDeliverNoteOnService("2015-11-17","王小三");
-        //assertEquals(true,service.insertDeliverNote(mock1));
-        //assertEquals(true,service.insertDeliverNote(mock2));
+    @Test
+    public void testInsertDeliverNote() throws RemoteException, SQLException, ElementNotFoundException {
+        ArrayList<String> barcodes = new ArrayList<>();
+        barcodes.add("1234567890");
+        barcodes.add("1234567891");
+        barcodes.add("1234567892");
+        DeliverNoteOnServicePO po1 = new DeliverNoteOnServicePO(null,"2015-11-16",barcodes,"test2");
+        service.insertDeliverNote(po1);
     }
 
 }

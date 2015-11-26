@@ -10,10 +10,10 @@ import java.util.ArrayList;
 public class MockDeliverNoteOnService extends DeliverNoteOnServicePO {
 
     public MockDeliverNoteOnService(String date, ArrayList<String> barCode, String deliveryMan) {
-        super(date, barCode, deliveryMan);
+        super(null,date, barCode, deliveryMan);
     }
 
     public MockDeliverNoteOnService(String date, String deliveryMan){
-        super(date, null, deliveryMan);
+        super(null,date, null, deliveryMan);
     }
 }

@@ -1,10 +1,10 @@
 package businesslogicservice.logisticblservice._Driver;
 
+import util.SendDocMsg;
 import vo.DeliveryNoteVO;
 import businesslogicservice.logisticblservice.DeliveryNoteInputBLService;
 import businesslogicservice.logisticblservice._Stub.DeliveryNoteInputBLService_Stub;
 import util.ResultMsg;
-import util.SendDocMsg;
 import util.enums.DeliverCategory;
 
 public class DeliveryNoteInputBLService_Driver {

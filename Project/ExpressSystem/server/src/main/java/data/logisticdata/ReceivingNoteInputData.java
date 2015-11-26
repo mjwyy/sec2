@@ -13,6 +13,8 @@ public class ReceivingNoteInputData extends NoteInputData implements ReceivingNo
 
     @Override
     public boolean insert(ReceivingNotePO po) throws RemoteException {
+        String sql = "insert into `note_receive_note` ( `barcode`, `time`, `receiveCustomer`) " +
+                "values ( ?, ?, ?)";
         return false;
     }
 

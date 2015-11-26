@@ -32,7 +32,7 @@ public class LoadNoteOnServicePO extends NotePO implements Serializable{
 	/**
 	 * 目的地
 	 */
-	private String Destination;
+	private String destination;
 
 	/**
 	 * 车辆代号
@@ -62,7 +62,7 @@ public class LoadNoteOnServicePO extends NotePO implements Serializable{
 		this.date = date;
 		this.hallNumber = hallNumber;
 		this.transpotationNumber = transpotationNumber;
-		Destination = destination;
+		this.destination = destination;
 		this.carNumber = carNumber;
 		this.guardMan = guardMan;
 		this.supercargoMan = supercargoMan;
@@ -82,7 +82,7 @@ public class LoadNoteOnServicePO extends NotePO implements Serializable{
 	}
 
 	public String getDestination() {
-		return Destination;
+		return destination;
 	}
 
 	public String getCarNumber() {
@@ -112,6 +112,6 @@ public class LoadNoteOnServicePO extends NotePO implements Serializable{
     @Override
     public NoteVO toVO() {
         return new LoadNoteOnServiceVO(this.date, this.hallNumber, this.transpotationNumber,
-                this.Destination, this.carNumber, this.guardMan, this.supercargoMan, this.barcodes);
+                this.destination, this.carNumber, this.guardMan, this.supercargoMan, this.barcodes);
     }
 }

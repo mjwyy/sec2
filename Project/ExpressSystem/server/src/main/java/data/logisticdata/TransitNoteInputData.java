@@ -13,6 +13,9 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
 
     @Override
     public boolean insert(TransitNotePO po) throws RemoteException {
+        String sql = "insert into `note_transit` ( `barcodes`, `transitDocNumber`, `supercargoMan`, " +
+                "`departurePlace`, `date`, `desitination`, `flightNumber`) " +
+                "values ( ?, ?, ?, ?, ?, ?, ?)";
         return false;
     }
 

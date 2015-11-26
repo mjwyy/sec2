@@ -1,5 +1,6 @@
 package data.logisticdata;
 
+import data.statisticdata.inte.LogInsertDataService;
 import dataservice.logisticdataservice.LoadNoteOnServiceDataService;
 import po.LoadNoteOnServicePO;
 
@@ -11,8 +12,13 @@ import java.util.ArrayList;
  */
 public class LoadNoteOnServiceData extends NoteInputData implements LoadNoteOnServiceDataService {
 
+    private LogInsertDataService logInsertDataService;
+
     @Override
     public boolean insert(LoadNoteOnServicePO po) throws RemoteException {
+        String sql = "insert into `note_load_on_service` ( `barcodes`, `destination`, `supercargoMan`, " +
+                "`guardMan`, `date`, `carNumber`, `hallNumber`, `transpotationNumber`) " +
+                "values ( ?, ?, ?, ?, ?, ?, ?, ?";
         return false;
     }
 

@@ -20,29 +20,16 @@ public class StorageOutDataService_Driver {
     public void drive(StorageOutDataService storageOutDataService) throws RemoteException {
         StorageOutPO po = new StorageOutPO(null, null, null, null, null, false);
         StorageOutPO po2 = new StorageOutPO(null, null, null, null, null, false);
-        storageOutDataService.find(po);
-        storageOutDataService.find(po2);
-        if(storageOutDataService.insert(po))
+
+        if(storageOutDataService.insert(po, null))
         	System.out.println("insert succeed");
         else
         	System.out.println("insert failed");
-        if(storageOutDataService.insert(po2))
+        if(storageOutDataService.insert(po2, null))
     		System.out.println("insert succeed");
     	else
         	System.out.println("insert failed");
-        po2 = po;
-        if(storageOutDataService.update(po2))
-        	System.out.println("update succeed");
-        else
-        	System.out.println("update failed");
-        if( storageOutDataService.delete(po))
-        	System.out.println("delete succeed");
-        else
-        	System.out.println("delete failed");
-        if(storageOutDataService.delete(po2))
-        	System.out.println("delete succeed");
-        else
-        	System.out.println("delete failed");
+  
     }
 
 }

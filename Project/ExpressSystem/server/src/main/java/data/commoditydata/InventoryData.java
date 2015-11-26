@@ -16,7 +16,7 @@ public class InventoryData implements InventoryDataService {
         list.add(po1);
         return list;
     }
-
+    
     @Override
     public ArrayList<InventoryPO> findAll() throws RemoteException {
         InventoryPO po1 = new InventoryPO(null,null,null,null);

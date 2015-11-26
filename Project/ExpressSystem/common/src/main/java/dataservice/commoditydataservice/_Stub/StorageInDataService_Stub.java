@@ -11,23 +11,9 @@ import java.util.ArrayList;
  */
 public class StorageInDataService_Stub implements StorageInDataService {
 
-    public boolean insert(StorageInPO po) throws RemoteException {
+    public boolean insert(StorageInPO po,String staffID) throws RemoteException {
         System.out.println("insert succeed!");
 		return true;
     }
 
-    public boolean delete(StorageInPO po) throws RemoteException {
-        System.out.println("delete succeed!");
-		return true;
-    }
-
-    public boolean update(StorageInPO po) throws RemoteException {
-        System.out.println("update succeed!");
-		return true;
-    }
-
-    public ArrayList<StorageInPO> find(StorageInPO po) throws RemoteException {
-        System.out.println("find succeed!");
-        return new ArrayList<StorageInPO>();
-    }
 }

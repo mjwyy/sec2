@@ -3,7 +3,6 @@ package businesslogic.logistic;
 import businesslogicservice.logisticblservice.DeliveryNoteInputBLService;
 import connection.RemoteObjectGetter;
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
-import dataservice.statisticdataservice.OrderInquiryDataService;
 import po.DeliveryNotePO;
 import po.OrderPO;
 import util.ResultMsg;

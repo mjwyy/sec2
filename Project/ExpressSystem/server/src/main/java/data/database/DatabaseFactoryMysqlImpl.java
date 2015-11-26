@@ -66,7 +66,7 @@ public class DatabaseFactoryMysqlImpl implements DatabaseFactory{
         baseDataBuildingDataService = new BaseDataBuildingData();
         businessDataModificationDataService = new BusinessDataModificationData();
         chartOutputDataService = new ChartOutputData();
-//        logInquiryDataService = new LogInquiryData();
+        logInquiryDataService = new LogInquiryData();
         noteApprovingDataService = new NoteApprovingData();
         orderInquiryDataService = new OrderInquiryData();
 
@@ -120,11 +120,6 @@ public class DatabaseFactoryMysqlImpl implements DatabaseFactory{
     private NoteApprovingDataService noteApprovingDataService;
     private OrderInquiryDataService orderInquiryDataService;
     private LogInsertDataService logInsertDataService;
-
-    @Override
-    public LogInsertDataService getLogInsertDataService(){
-        return logInsertDataService;
-    }
 
     @Override
     public InventoryDataService getInventoryDataService() {
@@ -238,6 +233,11 @@ public class DatabaseFactoryMysqlImpl implements DatabaseFactory{
     @Override
     public OrderInquiryDataService getOrderInquiryDataService() {
         return orderInquiryDataService;
+    }
+
+    @Override
+    public LogInsertDataService getLogInsertDataService() {
+        return null;
     }
 
 }

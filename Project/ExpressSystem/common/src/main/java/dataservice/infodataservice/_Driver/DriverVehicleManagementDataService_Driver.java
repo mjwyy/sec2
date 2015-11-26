@@ -4,7 +4,6 @@ package dataservice.infodataservice._Driver;
  * @data 2015/10/22
  *
  */
-import java.io.IOException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -43,7 +42,7 @@ public class DriverVehicleManagementDataService_Driver {
 		vehicleList.add(vehiclePO3);
 	}
 
-    public void drive(DriverVehicleManagementDataService driverVehicleManagementDataService) throws IOException,
+    public void drive(DriverVehicleManagementDataService driverVehicleManagementDataService) throws RemoteException,
             InterruptWithExistedElementException, ElementNotFoundException, SQLException {
 
         driverVehicleManagementDataService.addDriver(driverPO1);
@@ -105,7 +104,7 @@ public class DriverVehicleManagementDataService_Driver {
 			
 	}
 
-    public static void main(String[] args) throws IOException, InterruptWithExistedElementException, ElementNotFoundException, SQLException {
+    public static void main(String[] args) throws RemoteException, InterruptWithExistedElementException, ElementNotFoundException, SQLException {
         DriverVehicleManagementDataService_Stub stub = new DriverVehicleManagementDataService_Stub();
 		DriverVehicleManagementDataService_Driver driver  = new DriverVehicleManagementDataService_Driver();
 		driver.drive(stub);

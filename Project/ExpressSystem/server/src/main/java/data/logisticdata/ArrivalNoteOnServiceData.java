@@ -1,7 +1,6 @@
 package data.logisticdata;
 
 import data.database.DatabaseManager;
-import data.database.SqlHelper;
 import data.statisticdata.LogInsertData;
 import data.statisticdata.OrderInquiryData;
 import dataservice.exception.ElementNotFoundException;
@@ -15,7 +14,6 @@ import util.enums.DocState;
 import java.rmi.RemoteException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 

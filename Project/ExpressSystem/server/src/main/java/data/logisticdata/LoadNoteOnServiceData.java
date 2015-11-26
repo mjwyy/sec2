@@ -1,6 +1,5 @@
 package data.logisticdata;
 
-import data.statisticdata.inte.LogInsertDataService;
 import dataservice.logisticdataservice.LoadNoteOnServiceDataService;
 import po.LoadNoteOnServicePO;
 
@@ -11,8 +10,6 @@ import java.util.ArrayList;
  * Created by kylin on 15/11/10.
  */
 public class LoadNoteOnServiceData extends NoteInputData implements LoadNoteOnServiceDataService {
-
-    private LogInsertDataService logInsertDataService;
 
     @Override
     public boolean insert(LoadNoteOnServicePO po) throws RemoteException {

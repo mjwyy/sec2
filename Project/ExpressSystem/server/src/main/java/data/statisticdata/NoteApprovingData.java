@@ -1,14 +1,10 @@
 package data.statisticdata;
 
 import java.rmi.RemoteException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import data.database.DatabaseManager;
 import data.database.SqlHelper;
 import po.NotePO;
 import util.enums.DocType;

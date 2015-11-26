@@ -1,5 +1,6 @@
 package dataservice.infodataservice;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -35,9 +36,11 @@ public interface DriverVehicleManagementDataService extends Remote, Serializable
 	 * @return
 	 * @throws RemoteException
 	 * @throws InterruptWithExistedElementException
+	 * @throws IOException 
+	 * @throws SQLException 
 	 */
 	public boolean addVehicle(VehiclePO vehicle)
-			throws RemoteException,InterruptWithExistedElementException;
+			throws RemoteException,InterruptWithExistedElementException, SQLException, IOException;
 
 	/**
 	 * Data删除对应司机PO记录
@@ -58,9 +61,11 @@ public interface DriverVehicleManagementDataService extends Remote, Serializable
 	 * @return
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException
+	 * @throws IOException 
+	 * @throws SQLException 
 	 */
 	public boolean removeVehicle(VehiclePO vehicle)
-			throws RemoteException,ElementNotFoundException;
+			throws RemoteException,ElementNotFoundException, SQLException, IOException;
 
 	/**
 	 * Data将originalDriver替换为modified
@@ -83,9 +88,11 @@ public interface DriverVehicleManagementDataService extends Remote, Serializable
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException
 	 * @throws InterruptWithExistedElementException
+	 * @throws IOException 
+	 * @throws SQLException 
 	 */
 	public boolean modifyVehicle(VehiclePO originalVehicle)
-			throws RemoteException,ElementNotFoundException,InterruptWithExistedElementException;
+			throws RemoteException,ElementNotFoundException,InterruptWithExistedElementException, SQLException, IOException;
 
 	/**
 	 * Data返回所有司机数据
@@ -102,9 +109,11 @@ public interface DriverVehicleManagementDataService extends Remote, Serializable
      *
 	 * @return
 	 * @throws RemoteException
+	 * @throws IOException 
+	 * @throws SQLException 
 	 */
 	public ArrayList<VehiclePO> getAllVehicles()
-			throws RemoteException;
+			throws RemoteException, SQLException, IOException;
 
 	/**
 	 * Data返回所有符合关键字的司机数据
@@ -124,9 +133,11 @@ public interface DriverVehicleManagementDataService extends Remote, Serializable
 	 * @param keywords
 	 * @return
 	 * @throws RemoteException
+	 * @throws IOException 
+	 * @throws SQLException 
 	 */
 	public ArrayList<VehiclePO> inquireVehicle(VehiclePO keywords)
-			throws RemoteException;
+			throws RemoteException, SQLException, IOException;
 	
 	
 }

@@ -6,6 +6,9 @@
  */
 package po;
 
+import vo.NoteVO;
+import vo.ReceivingNoteVO;
+
 import java.io.Serializable;
 
 public class ReceivingNotePO extends NotePO implements Serializable{
@@ -47,5 +50,15 @@ public class ReceivingNotePO extends NotePO implements Serializable{
 	public String getTime() {
 		return time;
 	}
-	
+
+
+    @Override
+    public NoteVO toVO() {
+        return new ReceivingNoteVO(this.barcode, this.receiveCustomer, this.time);
+    }
+
+    @Override
+    public String getID() {
+        return this.barcode;
+    }
 }

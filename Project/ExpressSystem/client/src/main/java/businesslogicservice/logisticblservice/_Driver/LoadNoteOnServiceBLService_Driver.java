@@ -16,8 +16,9 @@ public class LoadNoteOnServiceBLService_Driver {
 	public void driver(LoadNoteOnServiceBLService a){
 		ArrayList<String> bar=new ArrayList<String>();
 		bar.add("1234567890");
-		LoadNoteOnServiceVO loadNoteOnServiceVO=new LoadNoteOnServiceVO("2015-11-11", "0251000", "02510002015092100000","北京","025000000","李明","张三",bar);
-		ResultMsg result=a.inputHallLoadDoc(loadNoteOnServiceVO);
+        LoadNoteOnServiceVO loadNoteOnServiceVO = new LoadNoteOnServiceVO("2015-11-11", "0251000",
+                "02510002015092100000", "北京", "025000000", "李明", "张三", bar);
+        ResultMsg result=a.inputHallLoadDoc(loadNoteOnServiceVO);
 		if(result.isPass()==true)
 			System.out.println("输入的营业厅装车单格式正确");
 		else

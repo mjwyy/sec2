@@ -33,7 +33,7 @@ public class LoadNoteOnServiceData extends NoteInputData implements LoadNoteOnSe
         Connection connection = DatabaseManager.getConnection();
         String sql = "insert into `note_load_on_service` ( `barcodes`, `destination`, `supercargoMan`, " +
                 "`guardMan`, `date`, `carNumber`, `hallNumber`, `transpotationNumber`) " +
-                "values ( ?, ?, ?, ?, ?, ?, ?, ?";
+                "values ( ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(sql);
         StringBuilder stringBuilder = new StringBuilder();
         ArrayList<String> barcodes = po.getBarcodes();
@@ -57,8 +57,8 @@ public class LoadNoteOnServiceData extends NoteInputData implements LoadNoteOnSe
         logInsertData.insertSystemLog("营业厅业务员?新增营业厅到达单,单据编号:" + po.getTranspotationNumber());
 
         //等待总经理审批过程,反复查询
-        DocState result = this.waitForCheck("note_arrival_on_transit",
-                "transferNumber", po.getTranspotationNumber());
+        DocState result = this.waitForCheck("note_load_on_service",
+                "transpotationNumber", po.getTranspotationNumber());
         ResultMsg resultMsg = new ResultMsg(false);
         //审批通过
         if (result == DocState.PASSED) {
@@ -73,8 +73,8 @@ public class LoadNoteOnServiceData extends NoteInputData implements LoadNoteOnSe
             //审批没有通过
         } else {
             System.out.println("ArrivalNoteOnTransitPO is failed!");
-            String advice = this.getFailedAdvice("note_arrival_on_transit",
-                    "transferNumber", po.getTranspotationNumber());
+            String advice = this.getFailedAdvice("note_load_on_service",
+                    "transpotationNumber", po.getTranspotationNumber());
             resultMsg.setMessage(advice);
         }
         //操作结束

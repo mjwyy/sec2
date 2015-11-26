@@ -25,13 +25,23 @@ public class NoteApprovingData implements NoteApprovingDataService {
         nameAndTableName = new HashMap<>();
         nameAndTableID = new HashMap<>();
 
-        nameAndTableName.put("ArrivalNoteOnTransitPO", "note_arrival_on_transit");
         nameAndTableName.put("ArrivalNoteOnServicePO", "note_arrival_on_service");
+        nameAndTableName.put("DeliverNoteOnServicePO", "note_delivery_on_service");
+        nameAndTableName.put("ArrivalNoteOnTransitPO", "note_arrival_on_transit");
         nameAndTableName.put("DeliveryNotePO", "note_delivery");
+        nameAndTableName.put("LoadNoteOnServicePO", "note_load_on_service");
+        nameAndTableName.put("LoadNoteOnTransitPO", "note_load_on_transit");
+        nameAndTableName.put("ReceivingNotePO", "note_receive_note");
+        nameAndTableName.put("TransitNotePO", "note_transit");
 
-        nameAndTableID.put("ArrivalNoteOnTransitPO", "transferNumber");
         nameAndTableID.put("ArrivalNoteOnServicePO", "TransferNumber");
+        nameAndTableID.put("DeliverNoteOnServicePO", "id");
+        nameAndTableID.put("ArrivalNoteOnTransitPO", "transferNumber");
         nameAndTableID.put("DeliveryNotePO", "barCode");
+        nameAndTableID.put("LoadNoteOnServicePO", "transpotationNumber");
+        nameAndTableID.put("LoadNoteOnTransitPO", "transpotationNumber");
+        nameAndTableID.put("ReceivingNotePO", "barcode");
+        nameAndTableID.put("TransitNotePO", "transitDocNumber");
     }
 
     @Override
@@ -50,7 +60,8 @@ public class NoteApprovingData implements NoteApprovingDataService {
         String name = docPO.getName();
         String tableName = nameAndTableName.get(name);
         String tableID = nameAndTableID.get(name);
-        String sql = "update `" + tableName + "` set `isPassed` = 2 where `" + tableID + "` = " + docPO.getID();
+        String sql = "update `" + tableName + "` set `isPassed` = 2 where `" + tableID
+                + "` = '" + docPO.getID() + "'";
         System.out.println(sql);
         return SqlHelper.excSqlStatement(sql);
     }
@@ -62,7 +73,7 @@ public class NoteApprovingData implements NoteApprovingDataService {
         String tableName = nameAndTableName.get(name);
         String tableID = nameAndTableID.get(name);
         String sql = "update " + tableName + " set isPassed = 1" + ", advice = '" + comment +
-                "' where " + tableID + " = " + docPO.getID();
+                "' where " + tableID + " = '" + docPO.getID() + "'";
         System.out.println(sql);
         return SqlHelper.excSqlStatement(sql);
     }

@@ -5,6 +5,7 @@ import util.FormatCheck;
 import po.NotePO;
 import po.TransitNotePO;
 import util.ResultMsg;
+import util.enums.TransitType;
 
 import java.util.ArrayList;
 
@@ -19,7 +20,6 @@ public class TransitNoteOnTransitVO extends NoteVO {
      *
      */
     private static final long serialVersionUID = -4056108594719181855L;
-
     /**
      * 装车日期
      */
@@ -31,9 +31,15 @@ public class TransitNoteOnTransitVO extends NoteVO {
     private String transitDocNumber;
 
     /**
-     * 航班号
+     * 航班号,或者火车车次号,或者汽运编号
      */
-    private String flightNumber;
+    private String transportationNumber;
+
+    /**
+     * 在两个中转中心之间的三种运输类型
+     * 汽车,铁路,飞机
+     */
+    private TransitType transitType;
 
     /**
      * 出发地
@@ -60,15 +66,24 @@ public class TransitNoteOnTransitVO extends NoteVO {
      */
     private double price;
 
-    public TransitNoteOnTransitVO(String date, String transitDocNumber, String flightNumber, String departurePlace,
+    public TransitNoteOnTransitVO(String date, String transitDocNumber, String flightNumber, TransitType transitType, String departurePlace,
                                   String desitination, String supercargoMan, ArrayList<BarcodesAndLocation> barcodes) {
         this.date = date;
         this.transitDocNumber = transitDocNumber;
-        this.flightNumber = flightNumber;
+        this.transportationNumber = flightNumber;
         this.departurePlace = departurePlace;
+        this.transitType = transitType;
         this.desitination = desitination;
         this.supercargoMan = supercargoMan;
         this.barcodes = barcodes;
+    }
+
+    public TransitType getTransitType() {
+        return transitType;
+    }
+
+    public void setTransitType(TransitType transitType) {
+        this.transitType = transitType;
     }
 
     public static long getSerialVersionUID() {
@@ -83,8 +98,8 @@ public class TransitNoteOnTransitVO extends NoteVO {
         return transitDocNumber;
     }
 
-    public String getFlightNumber() {
-        return flightNumber;
+    public String getTransportationNumber() {
+        return transportationNumber;
     }
 
     public String getDeparturePlace() {
@@ -115,8 +130,8 @@ public class TransitNoteOnTransitVO extends NoteVO {
         this.transitDocNumber = transitDocNumber;
     }
 
-    public void setFlightNumber(String flightNumber) {
-        this.flightNumber = flightNumber;
+    public void setTransportationNumber(String transportationNumber) {
+        this.transportationNumber = transportationNumber;
     }
 
     public void setDeparturePlace(String departurePlace) {
@@ -138,9 +153,8 @@ public class TransitNoteOnTransitVO extends NoteVO {
     public void setPrice(double price) {
         this.price = price;
     }
-
     public NotePO toPO() {
-        return new TransitNotePO(this.date, this.transitDocNumber, this.flightNumber,
+        return new TransitNotePO(this.date, this.transitDocNumber, this.transportationNumber, this.transitType,
                 this.departurePlace, this.desitination, this.supercargoMan, this.barcodes);
     }
 }

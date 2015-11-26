@@ -6,6 +6,7 @@ import dataservice.logisticdataservice.DeliveryNoteInputDataService;
 
 import org.junit.Before;
 import org.junit.Test;
+import po.DeliveryNotePO;
 import util.SendDocMsg;
 import util.enums.DeliverCategory;
 
@@ -30,19 +31,18 @@ public class DeliveryNoteInput_Test {
     @Test
     public void testInsert() throws RemoteException, SQLException, ElementNotFoundException {
 
-        MockDeliveryNote po1 = new MockDeliveryNote("王二狗","江苏省南京市栖霞区南京大学仙林校区","150052120000",
-                "Tom Hanks","江苏省徐州市沛县第三中学语文组","19883490000","爆炸物",10,
-                10,2, DeliverCategory.EXPRESS,5,"0000000001");
-        SendDocMsg msg = service.insert(po1);
-        assertEquals(msg.getPrice(),235);
-        assertEquals(msg.getPredectedDate(),2015-12-22);
+//        MockDeliveryNote po1 = new MockDeliveryNote("王二狗","江苏省南京市栖霞区南京大学仙林校区","150052120000",
+//                "Tom Hanks","江苏省徐州市沛县第三中学语文组","19883490000","爆炸物",10,
+//                10,2, DeliverCategory.EXPRESS,5,"0000000001");
+//        SendDocMsg msg = service.insert(po1);
+//        assertEquals(msg.getPrice(),235);
+//        assertEquals(msg.getPredectedDate(),2015-12-22);
 
-        MockDeliveryNote po2 = new MockDeliveryNote("王二狗","江苏省南京市栖霞区南京大学仙林校区","150052120000",
-                "Tom Hanks","上海环球金融中心78层优则金融有限公司","19883490000","爆炸物",10,
-                1,2, DeliverCategory.EXPRESS,5,"0000000001");
+        DeliveryNotePO po1 = new DeliveryNotePO("王二狗", "江苏省", "15005"
+                , "Tom Hanks", "江苏省徐州市沛县第三中学语文组", "19883490000", "book", 1, 2, 3
+                , DeliverCategory.EXPRESS, 5, "000000008");
+//        System.out.println(po1.getName());
         SendDocMsg msg2 = service.insert(po1);
-        //assertEquals(msg2.getPrice(),28);
-        //assertEquals(msg2.getPredectedDate(),2015-11-22);
     }
 
 

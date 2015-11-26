@@ -43,7 +43,7 @@ public class ArrivalNoteOnService_Test {
         barcodes.add("1234567890");
         barcodes.add("1234567891");
         barcodes.add("1234567892");
-        DeliverNoteOnServicePO po1 = new DeliverNoteOnServicePO(null,"2015-11-16",barcodes,"test2");
+        DeliverNoteOnServicePO po1 = new DeliverNoteOnServicePO("025123456", "2015-11-16", barcodes, "test3");
         service.insertDeliverNote(po1);
     }
 

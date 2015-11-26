@@ -16,7 +16,8 @@ public class TransitNoteInputBLService_Driver {
 	public void driver(TransitNoteInputBLService a){
 		ArrayList<String> bar=new ArrayList<String>();
 		bar.add("1234567890");
-		TransitNoteOnTransitVO transitNoteOnTransitVO=new TransitNoteOnTransitVO("2011-11-11", "025000201510120000003", "MF8190", "北京",
+        TransitNoteOnTransitVO transitNoteOnTransitVO = new TransitNoteOnTransitVO("2011-11-11",
+                "025000201510120000003", "MF8190", "北京",
                 "南京", "001", null);
         ResultMsg result=a.inputCenterTransitDoc(transitNoteOnTransitVO);
 		if(result.isPass()==true)

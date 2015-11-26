@@ -54,7 +54,7 @@ public class LoadNoteOnTransitData extends NoteInputData implements LoadNoteOnTr
         logInsertData.insertSystemLog("中转中心业务员?新增中转中心装车单,单据编号:" + po.getTranspotationNumber());
 
         //等待总经理审批过程,反复查询
-        DocState result = this.waitForCheck("note_arrival_on_transit",
+        DocState result = this.waitForCheck("note_load_on_transit",
                 "transpotationNumber", po.getTranspotationNumber());
         ResultMsg resultMsg = new ResultMsg(false);
         //审批通过
@@ -70,7 +70,7 @@ public class LoadNoteOnTransitData extends NoteInputData implements LoadNoteOnTr
             //审批没有通过
         } else {
             System.out.println("LoadNoteOnTransit is failed!");
-            String advice = this.getFailedAdvice("note_arrival_on_transit",
+            String advice = this.getFailedAdvice("note_load_on_transit",
                     "transpotationNumber", po.getTranspotationNumber());
             resultMsg.setMessage(advice);
         }

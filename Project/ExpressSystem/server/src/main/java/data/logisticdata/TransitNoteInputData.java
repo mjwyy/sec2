@@ -44,7 +44,7 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
         statement.setString(4,po.getDeparturePlace());
         statement.setString(5,po.getDate());
         statement.setString(6,po.getDesitination());
-        statement.setString(7,po.getFlightNumber());
+        statement.setString(7, po.getTransportationNumber());
         statement.executeUpdate();
         statement.close();
 

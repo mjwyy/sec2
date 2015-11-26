@@ -107,4 +107,9 @@ public class LoadNoteOnTransitPO extends NotePO implements Serializable{
         return new LoadNoteOnServiceVO(this.date, this.hallNumber, this.transpotationNumber,
                 this.Destination, this.carNumber, this.guardMan, this.supercargoMan, this.barcodes);
     }
+
+    @Override
+    public String getID() {
+        return this.transpotationNumber;
+    }
 }

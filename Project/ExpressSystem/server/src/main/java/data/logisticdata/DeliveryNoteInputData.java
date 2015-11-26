@@ -5,8 +5,8 @@ import data.statisticdata.OrderInquiryData;
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
 import po.DeliveryNotePO;
 import po.OrderPO;
-import util.enums.GoodsState;
 import util.SendDocMsg;
+import util.enums.GoodsState;
 
 import java.rmi.RemoteException;
 import java.sql.Connection;

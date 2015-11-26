@@ -32,11 +32,9 @@ public class DriverVehicleManagementData implements DriverVehicleManagementDataS
      */
     private static final long serialVersionUID = 7214249074956257035L;
     Connection connection;
-    DatabaseFactory dataFac = null;
     
     public DriverVehicleManagementData() throws RemoteException {
         super();
-        dataFac = DatabaseFactoryMysqlImpl.getInstance();
     }
 
     @Override
@@ -44,8 +42,8 @@ public class DriverVehicleManagementData implements DriverVehicleManagementDataS
             InterruptWithExistedElementException, SQLException {
     	connection = DatabaseManager.getConnection();
         //First, insert as a staff.
-        StaffOrganizationManagementDataService staffIns = dataFac.getStaffOrganizationManagementDataService();
-        LogInsertDataService logIns = dataFac.getLogInsertDataService();
+        StaffOrganizationManagementDataService staffIns = DatabaseFactoryMysqlImpl.getInstance().getStaffOrganizationManagementDataService();
+        LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
         boolean result = staffIns.addStaff(driver);
 
         //If insertion failed then skip the operation
@@ -76,7 +74,7 @@ public class DriverVehicleManagementData implements DriverVehicleManagementDataS
     @Override
     public boolean addVehicle(VehiclePO vehicle) throws InterruptWithExistedElementException, SQLException, IOException {
     	connection = DatabaseManager.getConnection();
-        LogInsertDataService logIns = dataFac.getLogInsertDataService();
+        LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
 
         ArrayList<VehiclePO> list = inquireVehicle(vehicle);
         if(list.size()>0) {
@@ -118,8 +116,8 @@ public class DriverVehicleManagementData implements DriverVehicleManagementDataS
             ElementNotFoundException, SQLException {
     	connection = DatabaseManager.getConnection();
         //First, delete as a staff.
-        StaffOrganizationManagementDataService staffIns = dataFac.getStaffOrganizationManagementDataService();
-        LogInsertDataService logIns = dataFac.getLogInsertDataService();
+        StaffOrganizationManagementDataService staffIns = DatabaseFactoryMysqlImpl.getInstance().getStaffOrganizationManagementDataService();
+        LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
         try {
             boolean result = staffIns.removeStaff(driver);
             if(!result) throw new Exception();
@@ -143,7 +141,7 @@ public class DriverVehicleManagementData implements DriverVehicleManagementDataS
     @Override
     public boolean removeVehicle(VehiclePO vehicle) throws ElementNotFoundException, SQLException, IOException {
     	connection = DatabaseManager.getConnection();
-        LogInsertDataService logIns = dataFac.getLogInsertDataService();
+        LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
 
         ArrayList<VehiclePO> list = inquireVehicle(vehicle);
         if(list.size()==0) {
@@ -165,8 +163,8 @@ public class DriverVehicleManagementData implements DriverVehicleManagementDataS
     public boolean modifyDriver(DriverPO driver) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException, SQLException {
     	connection = DatabaseManager.getConnection();
     	
-    	StaffOrganizationManagementDataService staffIns = dataFac.getStaffOrganizationManagementDataService();
-        LogInsertDataService logIns = dataFac.getLogInsertDataService();
+    	StaffOrganizationManagementDataService staffIns = DatabaseFactoryMysqlImpl.getInstance().getStaffOrganizationManagementDataService();
+        LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
         try {
             boolean result = staffIns.modifyStaff(driver);
             if(!result) throw new Exception();
@@ -187,7 +185,7 @@ public class DriverVehicleManagementData implements DriverVehicleManagementDataS
     @Override
     public boolean modifyVehicle(VehiclePO originalVehicle) throws ElementNotFoundException, InterruptWithExistedElementException, SQLException, IOException {
     	connection = DatabaseManager.getConnection();
-    	LogInsertDataService logIns = dataFac.getLogInsertDataService();
+    	LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
 
         ArrayList<VehiclePO> list = inquireVehicle(originalVehicle);
         if(list.size()==0) {
@@ -209,8 +207,8 @@ public class DriverVehicleManagementData implements DriverVehicleManagementDataS
     @Override
     public ArrayList<DriverPO> getAllDriver() throws RemoteException, SQLException {
     	connection = DatabaseManager.getConnection();
-    	StaffOrganizationManagementDataService staffIns = dataFac.getStaffOrganizationManagementDataService();
-        LogInsertDataService logIns = dataFac.getLogInsertDataService();
+    	StaffOrganizationManagementDataService staffIns = DatabaseFactoryMysqlImpl.getInstance().getStaffOrganizationManagementDataService();
+        LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
         ArrayList<DriverPO> result = new ArrayList<>();
 
         String stat = "select * from Drivers";
@@ -241,8 +239,8 @@ public class DriverVehicleManagementData implements DriverVehicleManagementDataS
     public ArrayList<DriverPO> inquireDriver(DriverPO keywords)
             throws RemoteException, ElementNotFoundException, SQLException {
     	connection = DatabaseManager.getConnection();
-        StaffOrganizationManagementDataService staffIns = dataFac.getStaffOrganizationManagementDataService();
-        LogInsertDataService logIns = dataFac.getLogInsertDataService();
+        StaffOrganizationManagementDataService staffIns = DatabaseFactoryMysqlImpl.getInstance().getStaffOrganizationManagementDataService();
+        LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
         ArrayList<DriverPO> result = new ArrayList<>();
 
         String stat = null;
@@ -282,7 +280,7 @@ public class DriverVehicleManagementData implements DriverVehicleManagementDataS
     public ArrayList<VehiclePO> inquireVehicle(VehiclePO keywords)
             throws SQLException, IOException {
     	connection = DatabaseManager.getConnection();
-        LogInsertDataService logIns = dataFac.getLogInsertDataService();
+        LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
         ArrayList<VehiclePO> result = new ArrayList<>();
 
         String sql = "select * from Vehicles";

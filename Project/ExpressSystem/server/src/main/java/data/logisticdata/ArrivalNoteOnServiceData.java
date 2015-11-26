@@ -80,27 +80,7 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
     }
 
     @Override
-    public ArrayList<ArrivalNoteOnServicePO> findArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException {
-        return null;
-    }
-
-    @Override
-    public ArrayList<ArrivalNoteOnServicePO> findAllArrivalNote() throws RemoteException {
-        return null;
-    }
-
-    @Override
-    public boolean insertDeliverNote(DeliverNoteOnServicePO po) throws RemoteException {
-        return false;
-    }
-
-    @Override
-    public ArrayList<DeliverNoteOnServicePO> findDeliverNote(DeliverNoteOnServicePO po) throws RemoteException {
-        return null;
-    }
-
-    @Override
-    public ArrayList<DeliverNoteOnServicePO> findAllDeliverNote() throws RemoteException {
+    public ResultMsg insertDeliverNote(DeliverNoteOnServicePO po) throws RemoteException {
         return null;
     }
 }

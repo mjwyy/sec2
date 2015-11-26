@@ -2,6 +2,7 @@ package dataservice.logisticdataservice._Stub;
 
 import dataservice.logisticdataservice.TransitNoteInputDataService;
 import po.TransitNotePO;
+import util.ResultMsg;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -36,9 +37,9 @@ public class TransitNoteInputDataService_Stub implements TransitNoteInputDataSer
     }
 
      
-    public boolean insert(TransitNotePO po) throws RemoteException {
+    public ResultMsg insert(TransitNotePO po) throws RemoteException {
         System.out.println("insert succeed!");
-		return true;
+		return null;
     }
 
      

@@ -36,10 +36,6 @@ public class ArrivalNoteOnServiceDataService_Driver {
         System.out.println("insert succeed");
         if (arrivalNoteOnServiceDataService.insertArrivalNote(arrivalNoteOnServicePO2).isPass()) ;
         System.out.println("insert succeed");
-        arrivalNoteOnServiceDataService.findArrivalNote(arrivalNoteOnServicePO);
-        arrivalNoteOnServiceDataService.findArrivalNote(arrivalNoteOnServicePO2);
-        arrivalNoteOnServiceDataService.findAllArrivalNote();
-
     }
 
     public static void main(String[] args) throws RemoteException, SQLException, ElementNotFoundException {

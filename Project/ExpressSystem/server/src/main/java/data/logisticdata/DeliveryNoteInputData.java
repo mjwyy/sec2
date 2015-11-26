@@ -1,10 +1,13 @@
 package data.logisticdata;
 
 import data.database.DatabaseManager;
+import data.statisticdata.LogInsertData;
 import data.statisticdata.OrderInquiryData;
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
 import po.DeliveryNotePO;
 import po.OrderPO;
+import util.ResultMsg;
+import util.enums.DocState;
 import util.enums.GoodsState;
 import util.SendDocMsg;
 
@@ -20,7 +23,7 @@ import java.util.ArrayList;
 public class DeliveryNoteInputData extends NoteInputData implements DeliveryNoteInputDataService {
 
     private OrderInquiryData orderInquiryData;
-    private OrderPO orderPO;
+    private LogInsertData logInsertData;
 
     @Override
     public SendDocMsg insert(DeliveryNotePO po) throws RemoteException, SQLException {
@@ -49,39 +52,31 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
         int result = statement.executeUpdate();
         if (result < 0)
             throw new SQLException();
-        //等待总经理审批过程
+        //记录系统日志
+        logInsertData = new LogInsertData();
+        logInsertData.insertSystemLog("营业厅业务员?新增营业厅到达单,单据编号:" + po.getBarCode());
 
-        //审批通过
-        orderInquiryData = new OrderInquiryData();
-        ArrayList<String> history = new ArrayList<>();
-        history.add("快递员已收件!");
-        orderPO = new OrderPO(po.getBarCode(), GoodsState.COMPLETE, history);
-        orderInquiryData.insertOrderPO(orderPO);
-        DatabaseManager.releaseConnection(connection,statement,null);
+        //等待总经理审批过程,反复查询
+//        SendDocMsg result = this.waitForCheck("note_arrival_on_transit",
+//                "transferNumber", po.getBarCode());
+//        ResultMsg resultMsg = new ResultMsg(false);
+//        //审批通过
+//        if (result == DocState.PASSED) {
+//            System.out.println("ArrivalNoteOnTransitPO is passed!");
+//            //追加修改物流信息
+//            orderDataService = new OrderInquiryData();
+//            orderDataService.updateOrder("", GoodsState.COMPLETE,"");
+//            resultMsg.setPass(true);
+//            //审批没有通过
+//        } else {
+//            System.out.println("ArrivalNoteOnTransitPO is failed!");
+//            String advice = this.getFailedAdvice("note_arrival_on_transit",
+//                    "transferNumber", po.getBarCode());
+//            resultMsg.setMessage(advice);
+//        }
+//        //操作结束
+//        DatabaseManager.releaseConnection(connection, statement, null);
         return null;
     }
 
-
-
-    @Override
-    public ArrayList<DeliveryNotePO> find(DeliveryNotePO po) throws RemoteException {
-        Connection connection = DatabaseManager.getConnection();
-        DeliveryNotePO pox = new DeliveryNotePO(null,null,null,null,null,null,null,0,0,0,null,0,null);
-        ArrayList<DeliveryNotePO> list =  new ArrayList<DeliveryNotePO>();
-        list.add(pox);
-
-        DatabaseManager.releaseConnection(connection,null,null);
-        return list;
-    }
-
-    @Override
-    public ArrayList<DeliveryNotePO> findAll() throws RemoteException {
-        Connection connection = DatabaseManager.getConnection();
-        DeliveryNotePO pox = new DeliveryNotePO(null,null,null,null,null,null,null,0,0,0,null,0,null);
-        ArrayList<DeliveryNotePO> list =  new ArrayList<DeliveryNotePO>();
-        list.add(pox);
-
-        DatabaseManager.releaseConnection(connection,null,null);
-        return list;
-    }
 }

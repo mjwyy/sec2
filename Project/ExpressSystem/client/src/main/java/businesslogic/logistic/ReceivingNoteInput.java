@@ -2,12 +2,14 @@ package businesslogic.logistic;
 
 import businesslogicservice.logisticblservice.ReceivingNoteInputBLService;
 import connection.RemoteObjectGetter;
+import dataservice.exception.ElementNotFoundException;
 import dataservice.logisticdataservice.ReceivingNoteInputDataService;
 import po.ReceivingNotePO;
 import util.ResultMsg;
 import vo.ReceivingNoteVO;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 /**
  * Created by kylin on 15/11/17.
@@ -39,6 +41,10 @@ public class ReceivingNoteInput implements ReceivingNoteInputBLService {
         } catch (RemoteException e) {
             e.printStackTrace();
             return new ResultMsg(false,e.getMessage());
+        } catch (ElementNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return new ResultMsg(true,"收件单已提交!");
     }

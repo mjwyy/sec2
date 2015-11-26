@@ -36,17 +36,5 @@ public class ArrivalNoteOnTransit_Test {
         service.insert(mock);
     }
 
-    //    @Test
-    public void testFindAll() throws RemoteException, SQLException, ElementNotFoundException {
-        BarcodeAndState bar=new BarcodeAndState("0123456790",GoodsState.COMPLETE);
-		ArrayList<BarcodeAndState> BarcodeAndStates=new ArrayList<BarcodeAndState> ();
-		BarcodeAndStates.add(bar);
-    	MockArrivalNoteOnTransit mock = new MockArrivalNoteOnTransit(
-    			"025100201510200000001","025100","2011-11-11","北京",BarcodeAndStates);
-    	MockArrivalNoteOnTransit mock2 = new MockArrivalNoteOnTransit(
-    			"025100201510200000002","025100","2011-12-2","北京",BarcodeAndStates);
-    	service.insert(mock);
-    	service.insert(mock2);
-    	//assertEquals(true,service.findAll().size()>=2);
-    }
+
 }

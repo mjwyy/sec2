@@ -48,7 +48,7 @@ public class ArrivalNoteOnTransitData extends NoteInputData implements ArrivalNo
         statement.close();
         //记录系统日志
         logInsertData = new LogInsertData();
-        logInsertData.insertSystemLog("ArrivalNoteOnTransitPO,单据编号:" + po.getTransferNumber());
+        logInsertData.insertSystemLog("中转中心业务员?新增中转中心到达单,单据编号:" + po.getTransferNumber());
 
         //等待总经理审批过程,反复查询
         DocState result = this.waitForCheck("note_arrival_on_transit",
@@ -61,7 +61,7 @@ public class ArrivalNoteOnTransitData extends NoteInputData implements ArrivalNo
             orderDataService = new OrderInquiryData();
             for (BarcodeAndState history : barcodeAndState) {
                 orderDataService.updateOrder(history.getBarcode(),
-                        history.getState(), "货物已到达中转中心!");
+                        history.getState(), "已到达?中转中心!");
             }
             resultMsg.setPass(true);
             //审批没有通过
@@ -76,19 +76,4 @@ public class ArrivalNoteOnTransitData extends NoteInputData implements ArrivalNo
         return resultMsg;
     }
 
-    @Override
-    public ArrayList<ArrivalNoteOnTransitPO> find(ArrivalNoteOnTransitPO po) throws RemoteException {
-        ArrivalNoteOnTransitPO pox = new ArrivalNoteOnTransitPO();
-        ArrayList<ArrivalNoteOnTransitPO> list =  new ArrayList<ArrivalNoteOnTransitPO>();
-        list.add(pox);
-        return list;
-    }
-
-    @Override
-    public ArrayList<ArrivalNoteOnTransitPO> findAll() throws RemoteException {
-        ArrivalNoteOnTransitPO pox = new ArrivalNoteOnTransitPO();
-        ArrayList<ArrivalNoteOnTransitPO> list =  new ArrayList<ArrivalNoteOnTransitPO>();
-        list.add(pox);
-        return list;
-    }
 }

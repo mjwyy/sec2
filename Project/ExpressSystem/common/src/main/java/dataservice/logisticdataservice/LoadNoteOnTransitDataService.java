@@ -8,23 +8,17 @@ package dataservice.logisticdataservice;
 import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+import dataservice.exception.ElementNotFoundException;
 import po.LoadNoteOnTransitPO;
+import util.ResultMsg;
 
 public interface LoadNoteOnTransitDataService extends Remote, Serializable {
 	/**
 	 * 在数据库中增加一个po记录
 	 */
-	public boolean insert(LoadNoteOnTransitPO po) throws RemoteException;
+    ResultMsg insert(LoadNoteOnTransitPO po) throws RemoteException, SQLException, ElementNotFoundException;
 
-	/**
-	 * 查找返回相应的LoadNoteOnTransitPO结果
-	 */
-	public ArrayList<LoadNoteOnTransitPO> find(LoadNoteOnTransitPO po) throws RemoteException;
-	
-	/**
-	 * 返回所有的LoadNoteOnServicePO
-	 */
-	public ArrayList<LoadNoteOnTransitPO> findAll() throws RemoteException;
 }

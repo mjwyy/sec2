@@ -34,9 +34,6 @@ public class ArrivalNoteOnTransitDataService_Driver {
             System.out.println("insert succeed");
         else
         	System.out.println("insert failed");
-        service.findAll();
-        service.find(po1);
-        service.find(po2);
 
     }
 

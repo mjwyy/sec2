@@ -35,15 +35,6 @@ public class DeliveryNoteInputDataService_Driver {
         	System.out.println("insert succeed");
         else
         	System.out.println("insert failed");
-        service.findAll();
-        service.find(po1);
-        service.find(po2);
 
-        service.findAll();
-        po2 = new DeliveryNotePO("王四狗","江苏省南京市栖霞区南京大学仙林校区","150052120000",
-                "Tom Hanks","江苏省徐州市沛县第三中学语文组","19883490000","爆炸物",10,
-                10,2,DeliverCategory.EXPRESS,5,"0000000003");
-
-        service.findAll();
     }
 }

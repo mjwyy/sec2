@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 import po.OrganizationPO;
 import po.StaffPO;
+import util.enums.OrganizationType;
 
 public class MockOrganizationPO extends OrganizationPO {
 
-	public MockOrganizationPO(String type, String code, String name,
-			ArrayList<StaffPO> staff) {
-		super(type, code, name, staff);
-	}
 
+    public MockOrganizationPO(String code, OrganizationType type, String name) {
+        super(code, type, name);
+    }
 }

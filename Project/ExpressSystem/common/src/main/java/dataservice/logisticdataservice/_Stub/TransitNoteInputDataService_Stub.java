@@ -2,6 +2,7 @@ package dataservice.logisticdataservice._Stub;
 
 import dataservice.logisticdataservice.TransitNoteInputDataService;
 import po.TransitNotePO;
+import util.ResultMsg;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -28,17 +29,17 @@ public class TransitNoteInputDataService_Stub implements TransitNoteInputDataSer
         list.add("4000111113");
         pos = new ArrayList<TransitNotePO>();
         po1 = new TransitNotePO("2015-10-23","025100201510200000012","CA1206","南京",
-                "西安","0120","王小二",list);
+                "西安", "0120", null);
         po2 = new TransitNotePO("2015-10-24","025100201510200000013","CZ3151","南京",
-                "深圳","0122","西北狼",list2);
+                "深圳", "0122", null);
         pos.add(po1);
         pos.add(po2);
     }
 
      
-    public boolean insert(TransitNotePO po) throws RemoteException {
+    public ResultMsg insert(TransitNotePO po) throws RemoteException {
         System.out.println("insert succeed!");
-		return true;
+		return null;
     }
 
      

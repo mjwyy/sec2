@@ -4,7 +4,9 @@ package dataservice.infodataservice._Driver;
  * @data 2015/10/22
  *
  */
+import java.io.IOException;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dataservice.infodataservice.DriverVehicleManagementDataService;
@@ -13,6 +15,7 @@ import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
 import po.DriverPO;
 import po.VehiclePO;
+import util.enums.StaffType;
 
 public class DriverVehicleManagementDataService_Driver {
 	private DriverPO driverPO1;
@@ -23,13 +26,13 @@ public class DriverVehicleManagementDataService_Driver {
 	private VehiclePO vehiclePO3;
 	
 	public DriverVehicleManagementDataService_Driver() {
-		driverPO1 = new DriverPO("025010009","魏彦淑","1995-12-12"
-				,"320323199512122345","18362921190","女","2014-09-20");
-		driverPO2 = new DriverPO("025010007","王会","1996-11-12"
-				,"320323199611122345","18362922345","男","2015-09-20");
-		driverPO3 = new DriverPO("025010007","王小二","1997-11-12"
-				,"320323199711122345","18367922345","男","2015-01-20");
-		vehiclePO1 = new VehiclePO("025010001","0251010",null, "2013-01-01");
+		driverPO1 = new DriverPO("0001","吴秦月","苏州营业厅","女",
+                "320318199601297895", 7000.0, "18362926754", StaffType.ACCOUNTANT, 10.0, "2015-12-2");
+        driverPO2 = new DriverPO("0001","吴秦月","苏州营业厅","女",
+                "320318199601297895", 7000.0, "18362926754", StaffType.ACCOUNTANT, 10.0, "2015-12-2");
+        driverPO3 = new DriverPO("0001","吴秦月","苏州营业厅","女",
+                "320318199601297895", 7000.0, "18362926754", StaffType.ACCOUNTANT, 10.0, "2015-12-2");
+        vehiclePO1 = new VehiclePO("025010001","0251010",null, "2013-01-01");
 		vehiclePO2 = new VehiclePO("025010002","0251010",null,"2013-02-01");
 		vehiclePO3 = new VehiclePO("025010002","0251010",null,"2013-03-01");	
 		ArrayList<DriverPO> driverList = new ArrayList<DriverPO>();
@@ -39,11 +42,11 @@ public class DriverVehicleManagementDataService_Driver {
 		vehicleList.add(vehiclePO2);
 		vehicleList.add(vehiclePO3);
 	}
-	
-	public void drive(DriverVehicleManagementDataService driverVehicleManagementDataService) throws RemoteException, 
-	InterruptWithExistedElementException, ElementNotFoundException {
-	
-		driverVehicleManagementDataService.addDriver(driverPO1);
+
+    public void drive(DriverVehicleManagementDataService driverVehicleManagementDataService) throws IOException,
+            InterruptWithExistedElementException, ElementNotFoundException, SQLException {
+
+        driverVehicleManagementDataService.addDriver(driverPO1);
 		driverVehicleManagementDataService.addDriver(driverPO2);
 		driverVehicleManagementDataService.addDriver(driverPO3);
 		driverVehicleManagementDataService.addVehicle(vehiclePO1);
@@ -53,8 +56,9 @@ public class DriverVehicleManagementDataService_Driver {
 		driverVehicleManagementDataService.modifyDriver(driverPO1);
 		driverVehicleManagementDataService.removeDriver(driverPO2);
 		driverVehicleManagementDataService.removeVehicle(vehiclePO1);
-		driverVehicleManagementDataService.inquireDriver(new DriverPO(null, null, null, null, null, null, null));
-		driverVehicleManagementDataService.inquireVehicle(new VehiclePO(null, null,null, null));
+		driverVehicleManagementDataService.inquireDriver(new DriverPO("0001","吴秦月","苏州营业厅","女",
+                "320318199601297895", 7000.0, "18362926754", StaffType.ACCOUNTANT, 10.0, "2015-12-2"));
+        driverVehicleManagementDataService.inquireVehicle(new VehiclePO(null, null,null, null));
 		driverVehicleManagementDataService.getAllDriver();
 		driverVehicleManagementDataService.getAllVehicles();	
 		
@@ -100,9 +104,9 @@ public class DriverVehicleManagementDataService_Driver {
 			System.out.println("fail");
 			
 	}
-	
-	public static void main(String[] args) throws RemoteException, InterruptWithExistedElementException, ElementNotFoundException {
-		DriverVehicleManagementDataService_Stub stub = new DriverVehicleManagementDataService_Stub();
+
+    public static void main(String[] args) throws IOException, InterruptWithExistedElementException, ElementNotFoundException, SQLException {
+        DriverVehicleManagementDataService_Stub stub = new DriverVehicleManagementDataService_Stub();
 		DriverVehicleManagementDataService_Driver driver  = new DriverVehicleManagementDataService_Driver();
 		driver.drive(stub);
 		

@@ -30,49 +30,4 @@ public class LoadNoteOnService_Test {
         //assertEquals(460,mock1.getTransferPrice());
     }
 
-    @Test
-    public void testDelete() throws RemoteException {
-        MockLoadNoteOnService po1 = new MockLoadNoteOnService(
-                "0251001201510220003","上海","苏A 00003");
-        MockLoadNoteOnService po2 = new MockLoadNoteOnService(
-                "0251001201510220004","厦门","苏A 00004");
-        service.insert(po1);
-        service.insert(po2);
-        //assertEquals(true,service.delete(po1));
-        //assertEquals(false,service.delete(po1));
-        //assertEquals(true,service.delete(po2));
-    }
-
-    @Test
-    public void testUpdate() throws RemoteException {
-        MockLoadNoteOnService po1 = new MockLoadNoteOnService(
-                "0251001201510220005","上海","苏A 00003");
-        service.insert(po1);
-        po1 = new MockLoadNoteOnService(
-                "0251001201510220099","上海","苏A 09999");
-        //assertEquals(true,service.update(po1));
-    }
-
-    @Test
-    public void testFind() throws RemoteException {
-        MockLoadNoteOnService po1 = new MockLoadNoteOnService(
-                "0251001201510220006","上海","苏A 00006");
-        service.insert(po1);
-        LoadNoteOnServicePO poToFind =  new MockLoadNoteOnService("0251001201510220006",null,null);
-        ArrayList<LoadNoteOnServicePO> foundList = service.find(poToFind);
-        LoadNoteOnServicePO found = foundList.get(0);
-        //assertEquals(foundList.size(),1);
-        //assertEquals(found.getCarNumber(),"苏A 00006");
-    }
-
-    @Test
-    public void testFindAll() throws RemoteException {
-        MockLoadNoteOnService po1 = new MockLoadNoteOnService(
-                "0251001201510220003","上海","苏A 00003");
-        MockLoadNoteOnService po2 = new MockLoadNoteOnService(
-                "0251001201510220004","厦门","苏A 00004");
-        service.insert(po1);
-        service.insert(po2);
-        //assertEquals(true,service.findAll().size()>=2);
-    }
 }

@@ -26,12 +26,10 @@ public class ArrivalNoteOnServiceBLService_Stub implements ArrivalNoteOnServiceB
 	}
 	//输入到达单界面得到对输入的到达单的反馈检查结果
 	public ResultMsg inputHallArrivalDoc(ArrivalNoteOnServiceVO arrialDocVO) {
-		ArrayList<String> bar=new ArrayList<String>();
-		bar.add("1234567890");
-		if(arrialDocVO.getBarcodeAndStates().equals(bar))
-			return new ResultMsg(true,"输入的到达单格式正确");
-		else
-			return new ResultMsg(false,"输入的到达单格式不正确");
+		  ResultMsg formatCheck = arrialDocVO.checkFormat();
+	        if(formatCheck.isPass())
+	            this.submitHallArrivalDoc(arrialDocVO);
+	        return formatCheck;
 	}
 	//提交界面得到对提交的到达单的反馈结果
 	public ResultMsg submitHallArrivalDoc(ArrivalNoteOnServiceVO arrialDocVO) {
@@ -44,12 +42,10 @@ public class ArrivalNoteOnServiceBLService_Stub implements ArrivalNoteOnServiceB
 	}
 	//输入派件单界面得到对输入的派件单的反馈检查结果
 	public ResultMsg inputHallDeliverDoc(DeliverNoteOnServiceVO deliverDocVO) {
-		ArrayList<String> bar=new ArrayList<String>();
-		bar.add("1234567890");
-		if(deliverDocVO.getBarCode().equals(bar))
-			return new ResultMsg(true,"输入的派件单格式正确");
-		else
-			return new ResultMsg(false,"输入的派件单格式不正确");
+		  ResultMsg formatCheck = deliverDocVO.checkFormat();
+	        if(formatCheck.isPass())
+	            this.submitHallDeliverDoc(deliverDocVO);
+	        return formatCheck;
 	}
 	//提交界面得到对提交的派件单的反馈结果
 	public ResultMsg submitHallDeliverDoc(DeliverNoteOnServiceVO deliverDocVO) {

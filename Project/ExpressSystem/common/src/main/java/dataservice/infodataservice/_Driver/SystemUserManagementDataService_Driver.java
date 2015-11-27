@@ -12,6 +12,7 @@ import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.infodataservice._Stub.SystemUserManagementDataService_Stub;
 import po.UserPO;
+import util.enums.Authority;
 
 public class SystemUserManagementDataService_Driver {
 	private UserPO userPO1;
@@ -20,9 +21,9 @@ public class SystemUserManagementDataService_Driver {
 	private ArrayList<UserPO> list = new ArrayList<UserPO>();
 
 	public SystemUserManagementDataService_Driver() {
-		userPO1 = new UserPO("test1","test1",1);
-		userPO2 = new UserPO("test2","test2",1);
-		userPO3 = new UserPO("test3","test3",1);
+		userPO1 = new UserPO("test1","test1",Authority.ACCOUNTANT_HIGH);
+		userPO2 = new UserPO("test2","test2",Authority.ACCOUNTANT_LOW);
+		userPO3 = new UserPO("test3","test3",Authority.DELIVERY_MAN);
 		list.add(userPO1);
 		list.add(userPO2);
 		list.add(userPO3);

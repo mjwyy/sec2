@@ -17,8 +17,8 @@ public class TransitNoteInputBLService_Driver {
 		ArrayList<String> bar=new ArrayList<String>();
 		bar.add("1234567890");
 		TransitNoteOnTransitVO transitNoteOnTransitVO=new TransitNoteOnTransitVO("2011-11-11", "025000201510120000003", "MF8190", "北京",
-				"南京", "001", "李明", bar);
-		ResultMsg result=a.inputCenterTransitDoc(transitNoteOnTransitVO);
+                "南京", "001", null);
+        ResultMsg result=a.inputCenterTransitDoc(transitNoteOnTransitVO);
 		if(result.isPass()==true)
 			System.out.println("输入的中转单格式正确");
 		else

@@ -5,14 +5,15 @@ import javax.print.DocFlavor.READER;
 import po.StaffPO;
 import util.FormatCheck;
 import util.ResultMsg;
+import util.enums.StaffType;
 
 public class StaffVO {
 	
 	/**
-	 * 姓名   性别       所属机构     职位     IDCard   工作时长（按月int）     手机号        工资（总经理制定）      
+	 * 人员唯一辨识码：员工编号
 	 */
+	private String staffID;
 	
-
 	/**
 	 * 姓名
 	 */
@@ -31,9 +32,9 @@ public class StaffVO {
 	/**
 	 * 职位
 	 */
-	private String  postion;
-	
-	/**
+    private StaffType postion;
+
+    /**
 	 * 身份证
 	 */
 	private String IDNum;
@@ -62,8 +63,9 @@ public class StaffVO {
 	 * @param phoneNum
 	 * @param wage
 	 */
-	public StaffVO(String name,String sex,String organization,String postion,String IDNum,int workingtime,String phoneNum,String wage){
-		this.name = name;
+    public StaffVO(String staffID,String name, String sex, String organization, StaffType postion, String IDNum, int workingtime, String phoneNum, String wage) {
+        this.staffID = staffID;
+    	this.name = name;
 		this.sex = sex;
 		this.IDNum = IDNum;
 		this.organization = organization;
@@ -73,6 +75,10 @@ public class StaffVO {
 		this.workingtime = workingtime;
 	}
 
+    public String getStaffID() {
+    	return staffID;
+    }
+    
 	public String getName() {
 		return name;
 	}
@@ -81,8 +87,8 @@ public class StaffVO {
 		return sex;
 	}
 
-	public String getPostion() {
-		return postion;
+    public StaffType getPostion() {
+        return postion;
 	}
 
 	public String getIDNum() {
@@ -108,8 +114,8 @@ public class StaffVO {
 		msgs[1] = FormatCheck.isGender(sex);
 		msgs[2] = FormatCheck.isPhoneNumber(phoneNum);
 		msgs[3] = FormatCheck.isIDNumber(IDNum);
-		msgs[4] = FormatCheck.isVocation(postion);
-		msgs[5] = FormatCheck.isSalary(wage);
+        msgs[4].setPass(true);
+        msgs[5] = FormatCheck.isSalary(wage);
 		msgs[6] = workingtime>0?new ResultMsg(true):new ResultMsg(false,"工作时间应为正数");
 
 		for(int i=0;i<msgs.length;i++) {
@@ -121,8 +127,8 @@ public class StaffVO {
 	}
 
 	public Object toPO() {
-		//TODO PO,VO 不一致！
-		StaffPO po = null;
+		
+		StaffPO po = new StaffPO(staffID, name, organization, sex, IDNum, Double.parseDouble(wage), phoneNum, postion, workingtime);
 		return po;
 	}
 	

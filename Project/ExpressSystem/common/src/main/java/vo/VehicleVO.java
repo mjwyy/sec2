@@ -1,7 +1,10 @@
 package vo;
 
 import java.io.File;
+import java.text.Format;
 
+import po.VehiclePO;
+import util.FormatCheck;
 import util.ResultMsg;
 
 public class VehicleVO {
@@ -12,12 +15,12 @@ public class VehicleVO {
 	private String vehiclecode;
 	
 	/**
-	 * 车牌号
+	 * 所属机构编号
 	 */
-	private String platenumber;
+	private String organization;
 	
 	/**
-	 * 服役时间
+	 * 首次服役时间
 	 */
 	private String serviceTimeLimit;
 	
@@ -25,13 +28,13 @@ public class VehicleVO {
 	
 	/**
 	 * 
-	 * @param vehiclecode
-	 * @param platenumber
-	 * @param serviceTimeLimit
+	 * @param vehiclecode 车辆代号
+	 * @param organization 所属机构编号
+	 * @param serviceTimeLimit 首次服役时间
 	 */
-	public VehicleVO(String vehiclecode,String platenumber,String serviceTimeLimit,File picture){
+	public VehicleVO(String vehiclecode,String organization,String serviceTimeLimit,File picture){
 		this.vehiclecode = vehiclecode;
-		this.platenumber = platenumber;
+		this.organization = organization;
 		this.serviceTimeLimit =serviceTimeLimit;
 		this.picture = picture;
 	}
@@ -40,8 +43,8 @@ public class VehicleVO {
 		return vehiclecode;
 	}
 
-	public String getPlatenumber() {
-		return platenumber;
+	public String getOrganization() {
+		return organization;
 	}
 
 	public String getServiceTimeLimit() {
@@ -53,12 +56,22 @@ public class VehicleVO {
 	}
 	
 	public Object toPO(){
-		return null;
-		//TODO Fill up!
+		VehiclePO po = new VehiclePO(vehiclecode, organization, picture, serviceTimeLimit);
+		
+		return po;
 	}
 	
 	public ResultMsg checkFormat(){
-		return null;
-		//TODO So it is!
+		ResultMsg[] msgs = new ResultMsg[3];
+		
+		msgs[0] = FormatCheck.isCarNumber(vehiclecode);
+		msgs[1] = FormatCheck.isDate(serviceTimeLimit);
+		msgs[2] = FormatCheck.isOrganizationNumber(organization);
+		
+		for(ResultMsg m:msgs) {
+			if(!m.isPass()) return m;
+		}
+		
+		return new ResultMsg(true);
 	}
 }

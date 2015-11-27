@@ -5,6 +5,7 @@ package dataservice.infodataservice._Driver;
  */
 import java.math.BigDecimal;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 import dataservice.infodataservice.BankAccountManagementDataService;
 import dataservice.infodataservice._Stub.BankAccountManagementDataService_Stub;
@@ -22,8 +23,8 @@ public class BankAccountManagementDataService_Driver {
 	}
 	
 	public void drive(BankAccountManagementDataService bankAccountManagementDataService)
-	throws RemoteException, InterruptWithExistedElementException, ElementNotFoundException{
-		bankAccountManagementDataService.addBankAccount(bankAccountPO);
+            throws RemoteException, InterruptWithExistedElementException, ElementNotFoundException, SQLException {
+        bankAccountManagementDataService.addBankAccount(bankAccountPO);
 		bankAccountManagementDataService.removeBankAccount(bankAccountPO);
 		bankAccountManagementDataService.findBankAccount(new BankAccountPO("Mark", null, null));
 		bankAccountManagementDataService.modifyBankAccount(bankAccountPO );
@@ -44,9 +45,9 @@ public class BankAccountManagementDataService_Driver {
 			System.out.println("modify fail");
 		
 	}
-	
-	public static void main(String[] args) throws RemoteException, InterruptWithExistedElementException, ElementNotFoundException{
-		 BankAccountManagementDataService_Stub bankAccountManagementDataService_Stub = new BankAccountManagementDataService_Stub();
+
+    public static void main(String[] args) throws RemoteException, InterruptWithExistedElementException, ElementNotFoundException, SQLException {
+        BankAccountManagementDataService_Stub bankAccountManagementDataService_Stub = new BankAccountManagementDataService_Stub();
          BankAccountManagementDataService_Driver  bankAccountManagementDataService_Driver = new BankAccountManagementDataService_Driver();
 	     
          bankAccountManagementDataService_Driver.drive(bankAccountManagementDataService_Stub);

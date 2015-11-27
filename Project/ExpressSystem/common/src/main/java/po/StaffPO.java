@@ -2,6 +2,7 @@ package po;
 
 import java.io.Serializable;
 
+import util.enums.StaffType;
 import vo.StaffVO;
 
 /**
@@ -12,21 +13,25 @@ import vo.StaffVO;
 public class StaffPO implements Serializable {
 
 	private static final long serialVersionUID = 7037298481421583099L;
-	
-	public StaffPO(String name, String organization, String iDCardNumber,String gender,
-			double salary, String phoneNumber, String position, double workHour) {
-		super();
-		this.name = name;
-		this.organization = organization;
-		this.gender = gender;
-		IDCardNumber = iDCardNumber;
-		this.salary = salary;
-		this.phoneNumber = phoneNumber;
-		this.position = position;
-		this.workHour = workHour;
-	}
-	
-	
+
+    public StaffPO(String staffID, String name, String organization, String gender,
+                   String IDCardNumber, double salary, String phoneNumber,
+                   StaffType position, double workHour) {
+        this.staffID = staffID;
+        this.name = name;
+        this.organization = organization;
+        this.gender = gender;
+        this.IDCardNumber = IDCardNumber;
+        this.salary = salary;
+        this.phoneNumber = phoneNumber;
+        this.position = position;
+        this.workHour = workHour;
+    }
+
+    /**
+     * 新增:人员编号(唯一ID)
+     */
+	String staffID;
 
 	/**
 	 * 人员姓名
@@ -61,36 +66,58 @@ public class StaffPO implements Serializable {
 	/**
 	 * 职务
 	 */
-	String position = null;
-	
-	/**
-	 * 工作时间
+    StaffType position = null;
+
+    /**
+     * 工作时间
 	 */
 	double workHour = 0.0;
 
-	public String getName() {
-		return name;
-	}
-	public String getOrganization() {
-		return organization;
-	}
-	public String getIDCardNumber() {
-		return IDCardNumber;
-	}
-	public double getSalary() {
-		return salary;
-	}
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-	public String getPosition() {
-		return position;
-	}
-	public double getWorkHour() {
-		return workHour;
-	}
-	public Object toVO() {
-		//TODO PO,VO 不一致！
-		return null;
-	}
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public String getStaffID() {
+        return staffID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getOrganization() {
+        return organization;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getIDCardNumber() {
+        return IDCardNumber;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public StaffType getPosition() {
+        return position;
+    }
+
+    public double getWorkHour() {
+        return workHour;
+    }
+
+
+    public Object toVO() {
+    	
+    	StaffVO vo = new StaffVO(staffID,name, gender, organization, position, IDCardNumber, (int) workHour, phoneNumber, salary+"");
+        
+        return vo;
+    }
 }

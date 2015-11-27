@@ -35,7 +35,7 @@ public class Tempo extends JFrame {
 this.setResizable(false);
 		JPanel pppp = (JPanel)this.getContentPane();
 		// 加载背景图片 
-		 ImageIcon img = new ImageIcon("C:\\Users\\Administrator\\Desktop\\0011.jpg");
+		 ImageIcon img = new ImageIcon("image/0111.jpg");
 		JLabel llll=new JLabel(img);
 		llll.setBounds(0,0,img.getIconWidth(),img.getIconHeight());
 		pppp.setOpaque(false);//最上层透明

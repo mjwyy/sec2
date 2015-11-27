@@ -2,10 +2,8 @@ package dataservice.logisticdataservice._Stub;
 
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
 import po.DeliveryNotePO;
-import po.OrderPO;
-import util.PresumedMsg;
+import util.SendDocMsg;
 import util.enums.DeliverCategory;
-import util.sendDocMsg;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -32,15 +30,10 @@ public class DeliveryNoteInputDataService_Stub implements DeliveryNoteInputDataS
         pos.add(po2);
     }
 
-     
-    public sendDocMsg insert(DeliveryNotePO po) throws RemoteException {
-        System.out.println("insert succeed!");
-		return new sendDocMsg(true,"pass",100,"2015-12-12");
-    }
 
-    @Override
-    public PresumedMsg insertOrderPO(OrderPO po) throws RemoteException {
-        return null;
+    public SendDocMsg insert(DeliveryNotePO po) throws RemoteException {
+        System.out.println("insert succeed!");
+        return new SendDocMsg(true, "pass", 100, "2015-12-12");
     }
 
 

@@ -1,8 +1,11 @@
 package data.statisticdata;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import data.database.SqlHelper;
 import po.NotePO;
 import util.enums.DocType;
 import dataservice.exception.ElementNotFoundException;
@@ -14,29 +17,55 @@ import dataservice.statisticdataservice.NoteApprovingDataService;
  *
  */
 public class NoteApprovingData implements NoteApprovingDataService {
-	
 
-	@Override
-	public ArrayList<NotePO> getAllDoc() throws RemoteException {
-		return null;
-	}
+    private HashMap<String, String> nameAndTableName;
+    private HashMap<String, String> nameAndTableID;
 
-	@Override
-	public ArrayList<NotePO> getDocByType(DocType type) throws RemoteException {
-		return null;
-	}
+    public NoteApprovingData() {
+        nameAndTableName = new HashMap<>();
+        nameAndTableID = new HashMap<>();
 
-	@Override
-	public boolean passDoc(NotePO docPO) throws RemoteException,
-			ElementNotFoundException {
-		return true;
-	}
+        nameAndTableName.put("ArrivalNoteOnTransitPO", "note_arrival_on_transit");
+        nameAndTableName.put("ArrivalNoteOnServicePO", "note_arrival_on_service");
+        nameAndTableName.put("DeliveryNotePO", "note_delivery");
 
-	@Override
-	public boolean failDoc(NotePO docPO, String comment)
-			throws RemoteException, ElementNotFoundException {
-		return false;
-	}
-	
+        nameAndTableID.put("ArrivalNoteOnTransitPO", "transferNumber");
+        nameAndTableID.put("ArrivalNoteOnServicePO", "TransferNumber");
+        nameAndTableID.put("DeliveryNotePO", "barCode");
+    }
+
+    @Override
+    public ArrayList<NotePO> getAllDoc() throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<NotePO> getDocByType(DocType type) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public boolean passDoc(NotePO docPO) throws RemoteException,
+            ElementNotFoundException, SQLException {
+        String name = docPO.getName();
+        String tableName = nameAndTableName.get(name);
+        String tableID = nameAndTableID.get(name);
+        String sql = "update `" + tableName + "` set `isPassed` = 2 where `" + tableID + "` = " + docPO.getID();
+        System.out.println(sql);
+        return SqlHelper.excSqlStatement(sql);
+    }
+
+    @Override
+    public boolean failDoc(NotePO docPO, String comment)
+            throws RemoteException, ElementNotFoundException, SQLException {
+        String name = docPO.getName();
+        String tableName = nameAndTableName.get(name);
+        String tableID = nameAndTableID.get(name);
+        String sql = "update " + tableName + " set isPassed = 1" + ", advice = '" + comment +
+                "' where " + tableID + " = " + docPO.getID();
+        System.out.println(sql);
+        return SqlHelper.excSqlStatement(sql);
+    }
+
 
 }

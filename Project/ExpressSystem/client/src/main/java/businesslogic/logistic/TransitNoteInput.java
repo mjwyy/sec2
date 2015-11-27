@@ -2,12 +2,14 @@ package businesslogic.logistic;
 
 import businesslogicservice.logisticblservice.TransitNoteInputBLService;
 import connection.RemoteObjectGetter;
+import dataservice.exception.ElementNotFoundException;
 import dataservice.logisticdataservice.TransitNoteInputDataService;
 import po.TransitNotePO;
 import util.ResultMsg;
 import vo.TransitNoteOnTransitVO;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 /**
  * Created by kylin on 15/11/17.
@@ -35,11 +37,15 @@ public class TransitNoteInput implements TransitNoteInputBLService {
     public ResultMsg submitCenterTransitDoc(TransitNoteOnTransitVO centerTransitDocVO) {
 
         try {
-            this.po = centerTransitDocVO.toPO();
+            this.po = (TransitNotePO) centerTransitDocVO.toPO();
             this.dataService.insert(this.po);
         } catch (RemoteException e) {
             e.printStackTrace();
             return new ResultMsg(false,e.getMessage());
+        } catch (ElementNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return new ResultMsg(true,"中转单已提交!");
     }

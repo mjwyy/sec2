@@ -3,7 +3,7 @@ package businesslogicservice.logisticblservice._Stub;
 import vo.DeliveryNoteVO;
 import businesslogicservice.logisticblservice.DeliveryNoteInputBLService;
 import util.ResultMsg;
-import util.sendDocMsg;
+import util.SendDocMsg;
 import util.enums.DeliverCategory;
 
 public class DeliveryNoteInputBLService_Stub implements DeliveryNoteInputBLService{
@@ -42,8 +42,8 @@ public class DeliveryNoteInputBLService_Stub implements DeliveryNoteInputBLServi
 			return new ResultMsg(true,"输入寄件单格式正确");
 	}
 	//提交界面得到对提交的寄件单的反馈结果
-	public sendDocMsg submitSendDoc(DeliveryNoteVO sendDocVO) {
-			return new sendDocMsg(true,"提交成功",10,"3days");
+	public SendDocMsg submitSendDoc(DeliveryNoteVO sendDocVO) {
+			return new SendDocMsg(true,"提交成功",10,"3days");
 	}
 
 }

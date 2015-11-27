@@ -137,10 +137,10 @@ public class PayMent extends JPanel {
 		add(codeF);
 		codeF.setColumns(10);
 
-		JButton add = new JButton("");
-		add.setIcon(new ImageIcon("C:\\Users\\Administrator\\Desktop\\QQ图片20151124123624.jpg"));
+		JButton add = new JButton("添加");
+		add.setIcon(null);
 		add.addActionListener(new addListener());
-		add.setBounds(1076, 218, 54, 23);
+		add.setBounds(1076, 218, 66, 23);
 		add(add);
 
 
@@ -208,9 +208,11 @@ public class PayMent extends JPanel {
 
 	}
 	public class submitListener implements ActionListener{
-		//CreditNoteVO vo=new CreditNoteVO(DATA.getText(), MONEY.getText(), SENDER.getText(), );null
+		CreditNoteVO vo=null;
+		 
 		
 		public void actionPerformed(ActionEvent e) {
+			vo=new CreditNoteVO(DATA.getText(), MONEY.getText(), SENDER.getText(), barcode);
 			int result = JOptionPane.showConfirmDialog(null, "确认提交审批？","系统提示",
 					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 			if(result == JOptionPane.YES_OPTION) {
@@ -226,7 +228,7 @@ public class PayMent extends JPanel {
 		}
 		public void paintComponent(Graphics g) {
 			super.paintComponents(g);
-			ImageIcon img = new ImageIcon("C:\\Users\\Administrator\\Desktop\\0111.jpg");
+			ImageIcon img = new ImageIcon("image/0111.jpg");
 			g.drawImage(img.getImage(), 0, 0, null);
 			float lineWidth = 3.0f;
 			((Graphics2D)g).setStroke(new BasicStroke(lineWidth));

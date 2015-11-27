@@ -2,6 +2,7 @@ package dataservice.logisticdataservice._Stub;
 
 import dataservice.logisticdataservice.ReceivingNoteInputDataService;
 import po.ReceivingNotePO;
+import util.ResultMsg;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -27,9 +28,9 @@ public class ReceivingNoteInputDataService_Stub implements ReceivingNoteInputDat
     }
 
      
-    public boolean insert(ReceivingNotePO po) throws RemoteException {
+    public ResultMsg insert(ReceivingNotePO po) throws RemoteException {
         System.out.println("insert succeed!");
-        return true;
+        return null;
     }
 
      

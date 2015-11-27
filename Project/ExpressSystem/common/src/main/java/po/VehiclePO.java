@@ -9,11 +9,11 @@ public class VehiclePO implements Serializable {
 
 	private static final long serialVersionUID = -843114324702086467L;
 
-	public VehiclePO(String carNumber, String hallNumber,File picture,
-			String firstUseTime) {
+	public VehiclePO(String carNumber, String institutionNumber, File picture,
+                     String firstUseTime) {
 		super();
 		this.carNumber = carNumber;
-		this.hallNumber = hallNumber;
+		this.institutionNumber = institutionNumber;
 		this.picture = picture;
 		this.firstUseTime = firstUseTime;
 	}
@@ -26,7 +26,7 @@ public class VehiclePO implements Serializable {
 	/**
 	 * 所属营业厅或中转中心编号
 	 */
-	String hallNumber = null;
+	String institutionNumber = null;
 	
 	/**
 	 * 车辆照片
@@ -42,8 +42,8 @@ public class VehiclePO implements Serializable {
 		return carNumber;
 	}
 
-	public String getHallNumber() {
-		return hallNumber;
+	public String getInstitutionNumber() {
+		return institutionNumber;
 	}
 
 	public File getPicture() {
@@ -55,8 +55,8 @@ public class VehiclePO implements Serializable {
 	}
 
 	public Object toVO() {
-		// TODO Fill up!
-		return null;
+		VehicleVO vo = new VehicleVO(carNumber, institutionNumber, firstUseTime, picture);
+		return vo;
 	}
 	
 }

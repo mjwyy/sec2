@@ -8,31 +8,16 @@ package dataservice.logisticdataservice;
 import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
+import java.sql.SQLException;
 
+import dataservice.exception.ElementNotFoundException;
 import po.DeliveryNotePO;
-import po.OrderPO;
-import util.PresumedMsg;
-import util.sendDocMsg;
+import util.SendDocMsg;
 
 public interface DeliveryNoteInputDataService extends Remote, Serializable {
 	/**
 	 * 在数据库中增加一个po记录
 	 */
-	public sendDocMsg insert(DeliveryNotePO po) throws RemoteException;
+    SendDocMsg insert(DeliveryNotePO po) throws RemoteException, SQLException, ElementNotFoundException;
 
-    /**
-     * 在数据库中增加一个po记录
-     */
-    public PresumedMsg insertOrderPO(OrderPO po) throws RemoteException;
-
-	/**
-	 * 查找返回相应的DeliveryNoteInputPO结果
-	 */
-	public ArrayList<DeliveryNotePO> find(DeliveryNotePO po) throws RemoteException;
-	
-	/**
-	 * 返回所有的DeliveryNoteInputPO
-	 */
-	public ArrayList<DeliveryNotePO> findAll() throws RemoteException;
 }

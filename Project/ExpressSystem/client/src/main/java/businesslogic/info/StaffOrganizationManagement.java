@@ -88,7 +88,7 @@ public class StaffOrganizationManagement implements StaffOrganizationManagementB
     	}
     	
     	for(StaffPO po:get) {
-    		result.add((StaffVO) po.toVO());//TODO Now returns null and throws exception
+    		result.add((StaffVO) po.toVO());
     	}
     	
         return result;

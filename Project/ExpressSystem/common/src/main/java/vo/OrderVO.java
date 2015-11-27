@@ -2,6 +2,7 @@ package vo;
 
 import util.FormatCheck;
 import util.ResultMsg;
+import util.enums.GoodsState;
 
 import java.util.ArrayList;
 
@@ -16,15 +17,15 @@ public class OrderVO {
 	/**
 	 * 当前运送状态：“已收货”，“正在送货”，“已签收”
 	 */
-	String stateOfTransport = null;
-	
-	/**
+    GoodsState stateOfTransport = null;
+
+    /**
 	 * 保存了所有历史记录的字符串数组
 	 */
 	ArrayList<String> history;
 
-	public OrderVO(String barcode, String stateOfTransport, ArrayList<String> history) {
-		super();
+    public OrderVO(String barcode, GoodsState stateOfTransport, ArrayList<String> history) {
+        super();
 		this.barcode = barcode;
 		this.stateOfTransport = stateOfTransport;
 		this.history = history;
@@ -34,8 +35,8 @@ public class OrderVO {
 		return barcode;
 	}
 
-	public String getStateOfTransport() {
-		return stateOfTransport;
+    public GoodsState getStateOfTransport() {
+        return stateOfTransport;
 	}
 
 	public ArrayList<String> getHistory() {

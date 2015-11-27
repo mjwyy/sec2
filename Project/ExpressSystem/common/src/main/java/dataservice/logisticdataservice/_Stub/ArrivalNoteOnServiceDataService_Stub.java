@@ -5,6 +5,7 @@ import dataservice.logisticdataservice.ArrivalNoteOnServiceDataService;
 import po.ArrivalNoteOnServicePO;
 import po.DeliverNoteOnServicePO;
 import util.BarcodeAndState;
+import util.ResultMsg;
 import util.enums.GoodsState;
 
 import java.rmi.RemoteException;
@@ -33,38 +34,15 @@ public class ArrivalNoteOnServiceDataService_Stub implements ArrivalNoteOnServic
 
 
     @Override
-    public boolean insertArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException {
+    public ResultMsg insertArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException {
         System.out.println("insertArrivalNote success");
-        return true;
+        return new ResultMsg(true);
     }
 
     @Override
-    public ArrayList<ArrivalNoteOnServicePO> findArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException {
-        System.out.println("findArrivalNote success");
-        return pos;
-    }
-
-    @Override
-    public ArrayList<ArrivalNoteOnServicePO> findAllArrivalNote() throws RemoteException {
-        System.out.println("findAllArrivalNote success");
-        return pos;
-    }
-
-    @Override
-    public boolean insertDeliverNote(DeliverNoteOnServicePO po) throws RemoteException {
+    public ResultMsg insertDeliverNote(DeliverNoteOnServicePO po) throws RemoteException {
         System.out.println("insertDeliverNote success");
-        return true;
+        return null;
     }
 
-    @Override
-    public ArrayList<DeliverNoteOnServicePO> findDeliverNote(DeliverNoteOnServicePO po) throws RemoteException {
-        System.out.println("findDeliverNote success");
-        return new ArrayList<DeliverNoteOnServicePO>();
-    }
-
-    @Override
-    public ArrayList<DeliverNoteOnServicePO> findAllDeliverNote() throws RemoteException {
-        System.out.println("findAllDeliverNote success");
-        return new ArrayList<DeliverNoteOnServicePO>();
-    }
 }

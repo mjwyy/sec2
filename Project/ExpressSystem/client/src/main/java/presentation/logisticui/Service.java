@@ -71,7 +71,8 @@ public class Service extends JFrame {
 	 */
 	private static final int HEIGHTM = 446;
 	private JPanel contentPane;
-
+	private JPanel middle;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -160,7 +161,7 @@ public void setCaiDanLan(){
 	public Service() {
 	
 		this.setResizable(false);//不可调整大小
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Administrator\\Desktop\\u=161254158,2603628643&fm=21&gp=0.jpg"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("image/0010.jpg"));
 		setTitle("快递物流系统");
 		this.setSize(WIDTH, HEIGHT);
 		((JComponent) this.getContentPane()).setOpaque(true);//不透明
@@ -191,10 +192,10 @@ public void setCaiDanLan(){
 		panel.add(lblNewLabel);
 		lblNewLabel.setIcon(new ImageIcon("image/0000.jpg"));
 		
-		final JPanel middle = new JPanel(){
+		  middle = new JPanel(){
 			public void paintComponent(Graphics g) {
 				 super.paintComponent(g);
-				 ImageIcon img = new ImageIcon("C:\\Users\\Administrator\\Desktop\\0111.jpg");
+				 ImageIcon img = new ImageIcon("image/0111.jpg");
 				 g.drawImage(img.getImage(), 0, 0, null);
 				}
 				}; 
@@ -250,7 +251,7 @@ public void setCaiDanLan(){
 		PayMentRegis.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				PayMent a=new PayMent();
-				a.setBounds(0, 0, 1152, 446);
+				a.setBounds(0, 0, WIDTHM, HEIGHTM);
 				a.setVisible(true);
 				middle.removeAll();
 				middle.add(a);
@@ -272,7 +273,12 @@ public void setCaiDanLan(){
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				
+				Car a=new Car();
+				a.setBounds(0, 0, WIDTHM, HEIGHTM);
+				a.setVisible(true);
+				middle.removeAll();
+				middle.add(a);
+				middle.repaint();	
 				
 			}
 		});

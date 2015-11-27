@@ -3,6 +3,7 @@ package dataservice.infodataservice;
 import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dataservice.exception.ElementNotFoundException;
@@ -21,9 +22,10 @@ public interface BankAccountManagementDataService extends Remote, Serializable {
 	 * @return true for successful add operation
 	 * @throws RemoteException
 	 * @throws InterruptWithExistedElementException
+	 * @throws SQLException 
 	 */
 	public boolean addBankAccount(BankAccountPO account) 
-			throws RemoteException,	InterruptWithExistedElementException;
+			throws RemoteException,	InterruptWithExistedElementException, SQLException;
 
 	/**
 	 * Data删除对应PO记录
@@ -32,9 +34,10 @@ public interface BankAccountManagementDataService extends Remote, Serializable {
 	 * @return true for successful remove operation
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException
+	 * @throws SQLException 
 	 */
 	public boolean removeBankAccount(BankAccountPO account)
-			throws RemoteException,	ElementNotFoundException;
+			throws RemoteException,	ElementNotFoundException, SQLException;
 
 	/**
 	 * Data将originalAccount 替换为modifiedAccount
@@ -43,9 +46,10 @@ public interface BankAccountManagementDataService extends Remote, Serializable {
 	 * @return true for successful remove operation
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException
+	 * @throws SQLException 
 	 */
 	public boolean modifyBankAccount(BankAccountPO account)
-			throws RemoteException,	ElementNotFoundException,InterruptWithExistedElementException;
+			throws RemoteException,	ElementNotFoundException,InterruptWithExistedElementException, SQLException;
 
 	/**
 	 * Data返回符合信息的BankAccountPO
@@ -54,16 +58,19 @@ public interface BankAccountManagementDataService extends Remote, Serializable {
 	 * @return
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException
+	 * @throws SQLException 
 	 */
 	public ArrayList<BankAccountPO> findBankAccount(BankAccountPO accountInfo)
-			throws RemoteException, ElementNotFoundException;
+			throws RemoteException, ElementNotFoundException, SQLException;
 	/**
      * Data返回所有BankAccountPO记录
      *
 	 * @return
 	 * @throws RemoteException
+	 * @throws SQLException 
+	 * @throws ElementNotFoundException 
 	 */
 	public ArrayList<BankAccountPO>  getAllAccounts()
-			throws RemoteException;
+			throws RemoteException, ElementNotFoundException, SQLException;
 	
 }

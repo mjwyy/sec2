@@ -27,6 +27,9 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
     private LogInsertData logInsertData;
     private OrderInquiryData orderDataService;
 
+    public TransitNoteInputData() throws RemoteException {
+    }
+
     @Override
     public ResultMsg insert(TransitNotePO po) throws RemoteException, SQLException, ElementNotFoundException {
         String sql = "insert into `Express`.`note_transit`" +

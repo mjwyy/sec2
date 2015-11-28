@@ -17,6 +17,7 @@ import util.ResultMsg;
 import vo.CreditNoteVO;
 import vo.PaymentVO;
 import vo.ReceivingNoteVO;
+import businesslogic.finance.CreditNoteInput;
 import businesslogicservice.financeblservice.CreditNoteInputBLService;
 import businesslogicservice.financeblservice.PaymentInputBLService;
 import businesslogicservice.financeblservice._stub.CreditNoteInputBLService_Stub;
@@ -41,9 +42,27 @@ public class PayMent extends JPanel {
 	private JTextArea CODE;
 	private ArrayList<String> barcode=new ArrayList<String>();
 	/**
+	 * 窗口宽度
+	 */
+	private static final int WIDTH = 1152;
+	
+	/**
+	 * 窗口高度
+	 */
+	private static final int HEIGHT = 446;
+	/**
+	 * 右边标签
+	 */
+	private static final int WIDTHL = WIDTH/3*2+19;
+	/**
+	 * 右边field
+	 */
+	private static final int WIDTHT = WIDTHL+76;
+	/**
 	 * Create the panel.
 	 */
 	public PayMent() {
+		setSize(WIDTH,HEIGHT);
 		setBackground(Color.WHITE);
 		setLayout(null);
 
@@ -54,23 +73,23 @@ public class PayMent extends JPanel {
 		DATA = new JTextField();
 		DATA.setEnabled(false);
 		DATA.setEditable(false);
-		DATA.setBounds(122, 40, 94, 31);
+		DATA.setBounds(122, 35, 185, 31);
 		add(DATA);
 		DATA.setColumns(10);
 
 		JLabel label_4 = new JLabel("金额");
-		label_4.setBounds(58, 81, 93, 15);
+		label_4.setBounds(58, 91, 93, 15);
 		add(label_4);
 
 		MONEY = new JTextField();
 		MONEY.setEnabled(false);
 		MONEY.setEditable(false);
-		MONEY.setBounds(122, 78, 94, 28);
+		MONEY.setBounds(122, 85, 185, 28);
 		add(MONEY);
 		MONEY.setColumns(10);
 
 		JLabel label_6 = new JLabel("货物编码");
-		label_6.setBounds(150, 163, 93, 15);
+		label_6.setBounds(190, 147, 93, 15);
 		add(label_6);
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -79,11 +98,11 @@ public class PayMent extends JPanel {
 
 		JButton submit = new JButton("提交");
 		submit.addActionListener(new submitListener());
-		submit.setBounds(278, 304, 93, 23);
+		submit.setBounds(438, 340, 93, 23);
 		add(submit);
 
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(58, 188, 334, 99);
+		scrollPane_1.setBounds(122, 188, 468, 99);
 		add(scrollPane_1);
 
 		CODE = new JTextArea();
@@ -91,83 +110,86 @@ public class PayMent extends JPanel {
 		scrollPane_1.setViewportView(CODE);
 
 		JLabel label_7 = new JLabel("日期");
-		label_7.setBounds(497, 43, 54, 15);
+		label_7.setBounds(WIDTHL, 43, 54, 15);
 		add(label_7);
 
 		dataF = new JTextField();
-		dataF.setBounds(592, 40, 110, 28);
+		dataF.setBounds(WIDTHT, 37, 211, 28);
 		add(dataF);
 		dataF.setColumns(10);
 
 		JLabel label_13 = new JLabel("派件员");
-		label_13.setBounds(497, 132, 82, 15);
+		label_13.setBounds(WIDTHL, 163, 82, 15);
 		add(label_13);
 
 		JButton confirm = new JButton("确认");
 		confirm.addActionListener(new confirmListener());
 
-		confirm.setBounds(672, 174, 93, 23);
+		confirm.setBounds(1012, 295, 93, 23);
 		add(confirm);
 
 		JLabel label_14 = new JLabel("货物编码");
-		label_14.setBounds(497, 247, 66, 15);
+		label_14.setBounds(WIDTHL, 222, 66, 15);
 		add(label_14);
 
 		codeF = new JTextField();
-		codeF.setBounds(594, 244, 171, 31);
+		codeF.setBounds(WIDTHT, 214, 211, 31);
 		add(codeF);
 		codeF.setColumns(10);
 
 		JButton add = new JButton("添加");
+		add.setIcon(null);
 		add.addActionListener(new addListener());
-		add.setBounds(672, 304, 93, 23);
+		add.setBounds(1076, 218, 66, 23);
 		add(add);
 
 
 
 		JLabel label_2 = new JLabel("新增收款单");
-		label_2.setBounds(10, 0, 102, 15);
+		label_2.setBounds(10, 16, 102, 15);
 		add(label_2);
 
 		senderF = new JTextField();
-		senderF.setBounds(592, 129, 110, 28);
+		senderF.setBounds(WIDTHT, 157, 211, 28);
 		add(senderF);
 		senderF.setColumns(10);
 
 		JLabel label_1 = new JLabel("快递员");
-		label_1.setBounds(258, 43, 54, 15);
+		label_1.setBounds(329, 43, 54, 15);
 		add(label_1);
 
 		SENDER = new JTextField();
 		SENDER.setEnabled(false);
 		SENDER.setEditable(false);
-		SENDER.setBounds(306, 40, 86, 31);
+		SENDER.setBounds(410, 35, 180, 31);
 		add(SENDER);
 		SENDER.setColumns(10);
 
 		JLabel label_3 = new JLabel("收款金额");
-		label_3.setBounds(497, 81, 77, 15);
+		label_3.setBounds(WIDTHL, 91, 77, 15);
 		add(label_3);
 
 		moneyF = new JTextField();
-		moneyF.setBounds(592, 78, 110, 28);
+		moneyF.setBounds(WIDTHT, 85, 211, 28);
 		add(moneyF);
 		moneyF.setColumns(10);
 	}
 
 	public class confirmListener implements ActionListener{
 
-		//	CreditNoteVO vo=new CreditNoteVO(dataF.getText(), moneyF.getText(), senderF.getText(), null);
-		//ResultMsg result=payment.addReceipeDoc(vo);
-		boolean result=true;
+		CreditNoteVO vo=null;
+		//初始化顺序问题
+
 		public void actionPerformed(ActionEvent arg0) {
-			if(result){//格式检查正确
+			vo=new CreditNoteVO(dataF.getText(), moneyF.getText(), senderF.getText(), barcode);
+			ResultMsg result=payment.addReceipeDoc(vo);
+			if(result.isPass()){//格式检查正确
 				DATA.setText(dataF.getText());
 				MONEY.setText(moneyF.getText());
 				SENDER.setText(senderF.getText());
 			}
 			else{//格式有误
-				int result1 = JOptionPane.showConfirmDialog(null, "格式错误，请检查输入","系统提示",
+				int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
 						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 
 			}
@@ -186,8 +208,11 @@ public class PayMent extends JPanel {
 
 	}
 	public class submitListener implements ActionListener{
-	//	CreditNoteVO vo=new CreditNoteVO(DATA.getText(), MONEY.getText(), SENDER.getText(), barcode);
+		CreditNoteVO vo=null;
+		 
+		
 		public void actionPerformed(ActionEvent e) {
+			vo=new CreditNoteVO(DATA.getText(), MONEY.getText(), SENDER.getText(), barcode);
 			int result = JOptionPane.showConfirmDialog(null, "确认提交审批？","系统提示",
 					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 			if(result == JOptionPane.YES_OPTION) {
@@ -203,10 +228,10 @@ public class PayMent extends JPanel {
 		}
 		public void paintComponent(Graphics g) {
 			super.paintComponents(g);
-			ImageIcon img = new ImageIcon("C:\\Users\\Administrator\\Desktop\\0011.jpg");
+			ImageIcon img = new ImageIcon("image/0111.jpg");
 			g.drawImage(img.getImage(), 0, 0, null);
 			float lineWidth = 3.0f;
 			((Graphics2D)g).setStroke(new BasicStroke(lineWidth));
-			g.drawLine(450, 0, 450, 400);
+			g.drawLine(WIDTH/3*2, 0, WIDTH/3*2, HEIGHT);
 		}
 	}

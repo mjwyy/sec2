@@ -1,5 +1,6 @@
 package businesslogic.commodity;
 
+import businesslogic.info.RuntimeUserInfo;
 import util.FormatCheck;
 import businesslogicservice.commodityblservice.StorageInquiryPartBLService;
 import util.ResultMsg;
@@ -48,7 +49,7 @@ public class StorageInquiryPart implements StorageInquiryPartBLService {
     	ArrayList<InventoryPO> list = null;
     	
     	try {
-    		list = dataService.findByTime(time1, time2);
+    		list = dataService.findByTime(time1, time2, RuntimeUserInfo.getNum());
     	} catch(RemoteException e) {
     		System.err.println(e.getMessage());
     		return null;

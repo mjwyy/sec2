@@ -22,9 +22,13 @@ import static junit.framework.TestCase.assertEquals;
  */
 public class ArrivalNoteOnService_Test {
 
-    private ArrivalNoteOnServiceDataService service = new ArrivalNoteOnServiceData();
+    private ArrivalNoteOnServiceDataService service;
 
-//    @Test
+    public ArrivalNoteOnService_Test() throws RemoteException {
+        service = new ArrivalNoteOnServiceData();
+    }
+
+    //    @Test
     public void testInsertArrivalNote() throws RemoteException, SQLException, ElementNotFoundException {
         ArrayList<BarcodeAndState> barcodes = new ArrayList<>();
         barcodes.add(new BarcodeAndState("1234567890", GoodsState.COMPLETE));

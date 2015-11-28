@@ -29,6 +29,9 @@ public class LoadNoteOnServiceData extends NoteInputData implements LoadNoteOnSe
     private LogInsertDataService logInsertData;
     private OrderInquiryData orderDataService;
 
+    public LoadNoteOnServiceData() throws RemoteException {
+    }
+
     @Override
     public ResultMsg insert(LoadNoteOnServicePO po) throws RemoteException, SQLException, ElementNotFoundException {
         Connection connection = DatabaseManager.getConnection();

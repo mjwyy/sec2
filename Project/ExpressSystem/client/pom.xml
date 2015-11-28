@@ -37,6 +37,13 @@
           <scope>system</scope>
           <systemPath>${project.basedir}/lib/beautyeye_lnf.jar</systemPath>
       </dependency>
+      <dependency>
+          <groupId>DatePicker</groupId>
+          <artifactId>DatePicker</artifactId>
+          <version>1.0.0</version>
+          <scope>system</scope>
+          <systemPath>${project.basedir}/lib/DatePicker-V0.99-2006.09.01.jar</systemPath>
+      </dependency>
   </dependencies>
   
 </project>

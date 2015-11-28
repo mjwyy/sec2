@@ -15,10 +15,6 @@ public class OrganizationPO implements Serializable {
 
 	private static final long serialVersionUID = 7828206175791394318L;
 
-	public static final String SERIVICE_HALL = "营业厅";
-	public static final String TRANSMIT = "中转中心";
-	
-	
 	public OrganizationPO(String code,OrganizationType type,String name) {
 		super();
 		this.type = type;

@@ -16,15 +16,15 @@ public class InventoryData_Test {
 		
 		InventoryData id = new InventoryData();
 		
-		ArrayList<InventoryPO> list = id.findByTime("2015-06-07", "2015-11-15");
-		for(InventoryPO po:list) {
-			System.out.println("Time:"+po.getInNum());
-		}
-
-		list = id.findAll();
-		for(InventoryPO po:list) {
-			System.out.println("Time:"+po.getInNum());
-		}
+//		ArrayList<InventoryPO> list = id.findByTime("2015-06-07", "2015-11-15");
+//		for(InventoryPO po:list) {
+//			System.out.println("Time:"+po.getInNum());
+//		}
+//
+//		list = id.findAll();
+//		for(InventoryPO po:list) {
+//			System.out.println("Time:"+po.getInNum());
+//		}
 	}
 
 }

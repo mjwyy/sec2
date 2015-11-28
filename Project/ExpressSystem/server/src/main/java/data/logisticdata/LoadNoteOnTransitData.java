@@ -22,6 +22,9 @@ import java.util.ArrayList;
  */
 public class LoadNoteOnTransitData extends NoteInputData implements LoadNoteOnTransitDataService {
 
+    public LoadNoteOnTransitData() throws RemoteException {
+    }
+
     private LogInsertData logInsertData;
     private OrderInquiryData orderDataService;
 

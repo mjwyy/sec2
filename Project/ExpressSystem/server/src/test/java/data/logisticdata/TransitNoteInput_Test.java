@@ -21,7 +21,11 @@ import static junit.framework.TestCase.assertEquals;
  */
 public class TransitNoteInput_Test {
 
-    private TransitNoteInputDataService service = new TransitNoteInputData();
+    private TransitNoteInputDataService service;
+
+    public TransitNoteInput_Test() throws RemoteException {
+        service = new TransitNoteInputData();
+    }
 
     @Test
     public void testInsert() throws RemoteException, SQLException, ElementNotFoundException {

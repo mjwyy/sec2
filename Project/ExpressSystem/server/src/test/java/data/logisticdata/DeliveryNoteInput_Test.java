@@ -19,7 +19,11 @@ import static junit.framework.TestCase.assertEquals;
  */
 public class DeliveryNoteInput_Test {
 
-    private DeliveryNoteInputDataService service = new DeliveryNoteInputData();
+    private DeliveryNoteInputDataService service;
+
+    public DeliveryNoteInput_Test() throws RemoteException {
+        service = new DeliveryNoteInputData();
+    }
 
     //这个测试类之间的方法没有顺序,但是方法之间互相依赖十分严重
     @Before

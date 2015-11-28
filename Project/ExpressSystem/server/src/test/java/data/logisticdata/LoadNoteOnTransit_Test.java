@@ -17,7 +17,11 @@ import static junit.framework.TestCase.assertEquals;
  */
 public class LoadNoteOnTransit_Test {
 
-    private LoadNoteOnTransitDataService service = new LoadNoteOnTransitData();
+    private LoadNoteOnTransitDataService service;
+
+    public LoadNoteOnTransit_Test() throws RemoteException {
+        service = new LoadNoteOnTransitData();
+    }
 
     @Test
     public void testInsert() throws RemoteException, SQLException, ElementNotFoundException {

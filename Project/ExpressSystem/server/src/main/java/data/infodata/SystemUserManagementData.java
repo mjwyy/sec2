@@ -20,6 +20,8 @@ import java.util.ArrayList;
  */
 public class SystemUserManagementData extends UnicastRemoteObject implements SystemUserManagementDataService{
 
+    private static final long serialVersionUID = 72164956257035L;
+
     public SystemUserManagementData() throws RemoteException {
 
     }

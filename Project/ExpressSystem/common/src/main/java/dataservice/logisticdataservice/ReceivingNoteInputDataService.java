@@ -9,13 +9,14 @@ import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import dataservice.exception.ElementNotFoundException;
 import po.ReceivingNotePO;
 import util.ResultMsg;
 
-public interface ReceivingNoteInputDataService extends Remote, Serializable {
+public interface ReceivingNoteInputDataService extends Remote,Serializable {
+
+
 	/**
 	 * 在数据库中增加一个po记录
 	 */

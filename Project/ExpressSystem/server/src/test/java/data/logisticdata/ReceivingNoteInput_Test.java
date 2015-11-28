@@ -17,7 +17,11 @@ import static junit.framework.TestCase.assertEquals;
  */
 public class ReceivingNoteInput_Test {
 
-    private ReceivingNoteInputData service = new ReceivingNoteInputData();
+    private ReceivingNoteInputData service;
+
+    public ReceivingNoteInput_Test() throws RemoteException {
+        service = new ReceivingNoteInputData();
+    }
 
     @Test
     public void testInsert() throws RemoteException, SQLException, ElementNotFoundException {

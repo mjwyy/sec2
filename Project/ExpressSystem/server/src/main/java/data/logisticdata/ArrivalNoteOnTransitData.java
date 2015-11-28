@@ -25,6 +25,9 @@ public class ArrivalNoteOnTransitData extends NoteInputData implements ArrivalNo
     private OrderInquiryData orderDataService;
     private LogInsertData logInsertData;
 
+    public ArrivalNoteOnTransitData() throws RemoteException {
+    }
+
     @Override
     public ResultMsg insert(ArrivalNoteOnTransitPO po) throws RemoteException, SQLException, ElementNotFoundException {
         System.out.println("insert(ArrivalNoteOnTransitPO ");

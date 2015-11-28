@@ -29,6 +29,9 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
     private OrderInquiryData orderDataService;
     private BusinessDataModificationData businessDataModificationData;
 
+    public DeliveryNoteInputData() throws RemoteException {
+    }
+
     @Override
     public SendDocMsg insert(DeliveryNotePO po) throws RemoteException, SQLException, ElementNotFoundException {
         Connection connection = DatabaseManager.getConnection();

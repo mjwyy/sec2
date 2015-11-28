@@ -20,7 +20,11 @@ import util.enums.GoodsState;
  */
 public class ArrivalNoteOnTransit_Test {
 
-    private ArrivalNoteOnTransitData service = new ArrivalNoteOnTransitData();
+    private ArrivalNoteOnTransitData service;
+
+    public ArrivalNoteOnTransit_Test() throws RemoteException {
+        service = new ArrivalNoteOnTransitData();
+    }
 
     @Test
     public void testInsert() throws RemoteException, SQLException, ElementNotFoundException {

@@ -23,5 +23,14 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: DatePicker:DatePicker:1.0.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/DatePicker-V0.99-2006.09.01.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

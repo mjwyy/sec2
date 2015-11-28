@@ -2,6 +2,7 @@ package presentation.util;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.Toolkit;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -10,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -18,6 +20,15 @@ public class checkstyleDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField;
+	/**
+	 * 窗口宽度
+	 */
+	private static final int WIDTH = 450;
+	
+	/**
+	 * 窗口高度
+	 */
+	private static final int HEIGHT = 300;
 
 	/**
 	 * Launch the application.
@@ -36,15 +47,16 @@ public class checkstyleDialog extends JDialog {
 	 * Create the dialog.
 	 */
 	public checkstyleDialog(String errors) {
-		setBounds(100, 100, 450, 300);
+		
+	    setSize(WIDTH , HEIGHT);
 		getContentPane().setLayout(null);
-		contentPanel.setBounds(0, 0, 450, 1);
+		contentPanel.setBounds(0, 0, WIDTH, 1);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel);
 		contentPanel.setLayout(null);
 		{
 			JPanel buttonPane = new JPanel();
-			buttonPane.setBounds(0, 239, 450, 39);
+			buttonPane.setBounds(0, 239, WIDTH, 39);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane);
 			{
@@ -72,5 +84,9 @@ public class checkstyleDialog extends JDialog {
 		textField.setBounds(55, 61, 312, 146);
 		getContentPane().add(textField);
 		textField.setColumns(10);
+		
+		int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
+		int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
+		setLocation((screenWidth-WIDTH)>>1, (screenHeight-HEIGHT)>>1);
 	}
 }

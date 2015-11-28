@@ -1,6 +1,7 @@
 package data.commoditydata;
 
 import java.rmi.RemoteException;
+import java.sql.Connection;
 import java.util.ArrayList;
 
 import po.StorageOutPO;
@@ -15,9 +16,17 @@ import dataservice.commoditydataservice.StorageOutDataService;
  */
 
 public class StorageOutData implements StorageOutDataService {
-
+	private Connection connection;
+	
+	public StorageOutData() {
+		super();
+	}
+	
     @Override
     public boolean insert(StorageOutPO po,String staffID) throws RemoteException {
+    	
+    	
+    	// 添加staffID的日志记录
         return false;
     }
 

@@ -53,8 +53,10 @@ public class OrganizationPO implements Serializable {
 	}
 
 	public Object toVO() {
-		// TODO 写个转VO
-		return null;
+		//TODO PO是否应该包含所有员工信息
+		OrganizationInfoVO vo = new OrganizationInfoVO(code, type, name, null);
+		
+		return vo;
 	}
 	
 }

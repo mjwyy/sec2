@@ -36,13 +36,18 @@ public class InventoryDataService_Stub implements InventoryDataService {
         inventoryPOs.add(inventoryPO2);
     }
 
-    public ArrayList<InventoryPO> findByTime(String sTime, String eTime) throws RemoteException {
+    public ArrayList<InventoryPO> findByTime(String sTime, String eTime,String staffID) throws RemoteException {
         System.out.println("InventoryDataService findByTime succeed");
         return inventoryPOs;
     }
 
-    public ArrayList<InventoryPO> findAll() throws RemoteException {
+    public ArrayList<InventoryPO> findAll(String staffID) throws RemoteException {
         System.out.println("InventoryDataService findAll succeed");
         return inventoryPOs;
     }
+
+	@Override
+	public boolean setRecentTime(String staffID) {
+		return true;
+	}
 }

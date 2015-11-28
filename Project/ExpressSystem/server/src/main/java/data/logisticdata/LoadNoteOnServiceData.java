@@ -16,6 +16,7 @@ import util.enums.GoodsState;
 import java.rmi.RemoteException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -80,6 +81,30 @@ public class LoadNoteOnServiceData extends NoteInputData implements LoadNoteOnSe
         //操作结束
         DatabaseManager.releaseConnection(connection, statement, null);
         return resultMsg;
+    }
+
+    public ArrayList<LoadNoteOnServicePO> getLoadNoteOnService() throws SQLException {
+        ArrayList<LoadNoteOnServicePO> result = new ArrayList<>();
+        Connection connection = DatabaseManager.getConnection();
+        String sql = "select * from `note_load_on_service` where isPassed = 0";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+        LoadNoteOnServicePO arrivalNoteOnServicePO;
+        while(resultSet.next()){
+            String date = resultSet.getString(1);
+            String hallNumber = resultSet.getString(2);
+            String transNumber = resultSet.getString(3);
+            String des = resultSet.getString(4);
+            String car = resultSet.getString(5);
+            String guard = resultSet.getString(6);
+            String supercargo = resultSet.getString(7);
+            String barcodes = resultSet.getString(8);
+            arrivalNoteOnServicePO = new LoadNoteOnServicePO(date,hallNumber,transNumber,des,car,
+                    guard,supercargo,null);
+            result.add(arrivalNoteOnServicePO);
+        }
+        DatabaseManager.releaseConnection(connection, statement, resultSet);
+        return result;
     }
 
 }

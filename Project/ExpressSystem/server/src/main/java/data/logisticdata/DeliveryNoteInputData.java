@@ -7,8 +7,7 @@ import data.statisticdata.OrderInquiryData;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
 import po.DeliveryNotePO;
-import po.DistancePO;
-import util.ResultMsg;
+import util.BarcodeAndState;
 import util.SendDocMsg;
 import util.enums.DeliverCategory;
 import util.enums.DocState;
@@ -17,7 +16,9 @@ import util.enums.GoodsState;
 import java.rmi.RemoteException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * Created by kylin on 15/11/10.
@@ -102,6 +103,36 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
         //操作结束
         DatabaseManager.releaseConnection(connection, statement, null);
         return new SendDocMsg(true, "寄件单已通过审批", price, presumedDate);
+    }
+
+    public ArrayList<DeliveryNotePO> getDeliveryNote() throws SQLException {
+        ArrayList<DeliveryNotePO> result = new ArrayList<>();
+        Connection connection = DatabaseManager.getConnection();
+        String sql = "select * from `note_delivery` where isPassed = 0";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+        DeliveryNotePO arrivalNoteOnServicePO;
+        while(resultSet.next()){
+            String senderName = resultSet.getString(1);
+            String senderAdd = resultSet.getString(2);
+            String senderTel = resultSet.getString(3);
+            String recName = resultSet.getString(4);
+            String recADD = resultSet.getString(5);
+            String recTel = resultSet.getString(6);
+            String name = resultSet.getString(7);
+            int goodsNumber = resultSet.getInt(8);
+            int weight = resultSet.getInt(9);
+            int volume = resultSet.getInt(10);
+            String category = resultSet.getString(11);
+            double packprice = resultSet.getDouble(12);
+            String barcode = resultSet.getString(13);
+            arrivalNoteOnServicePO = new DeliveryNotePO(senderName,senderAdd,senderTel,recName,
+                    recADD,recTel,name,goodsNumber,weight,volume,DeliverCategory.getDeliverCategory(category),
+                    packprice,barcode);
+            result.add(arrivalNoteOnServicePO);
+        }
+        DatabaseManager.releaseConnection(connection, statement, resultSet);
+        return result;
     }
 
 }

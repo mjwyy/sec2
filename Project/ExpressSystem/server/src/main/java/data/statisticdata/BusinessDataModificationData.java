@@ -21,12 +21,6 @@ import dataservice.exception.InterruptWithExistedElementException;
 
 public class BusinessDataModificationData implements BusinessDataModificationDataService {
 
-    private HashMap<String, String> citys;
-
-    public BusinessDataModificationData() {
-        citys = new HashMap();
-    }
-
 	@Override
 	public boolean addCity(String name) throws RemoteException,
 			InterruptWithExistedElementException {
@@ -43,7 +37,7 @@ public class BusinessDataModificationData implements BusinessDataModificationDat
             throws RemoteException, ElementNotFoundException, SQLException {
         String sql = "update `Express`.`businessPrice` set `price`='" + newValue
                 + "' where `type`= '" + name.toString() + "'";
-        return SqlHelper.excSqlStatement(sql);
+        return SqlHelper.excUpdate(sql);
     }
 
 	@Override
@@ -64,7 +58,7 @@ public class BusinessDataModificationData implements BusinessDataModificationDat
             ElementNotFoundException, SQLException {
         String sql = "update `Express`.`distance` set `" + distancePO.getCity1() + "` = " + distancePO.getDistance()
                 + " where `city` = '" + distancePO.getCity2() + "'";
-        return SqlHelper.excSqlStatement(sql);
+        return SqlHelper.excUpdate(sql);
 
     }
 

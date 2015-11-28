@@ -51,6 +51,8 @@ public class BusinessDataModification implements BusinessDataModificationBLServi
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
             return new ResultMsg(false,e.getMessage());
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return new ResultMsg(true,"价格常量修改成功!");
     }

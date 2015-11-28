@@ -13,6 +13,7 @@ import util.enums.DocState;
 import java.rmi.RemoteException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -74,6 +75,27 @@ public class ArrivalNoteOnTransitData extends NoteInputData implements ArrivalNo
         //操作结束
         DatabaseManager.releaseConnection(connection, statement, null);
         return resultMsg;
+    }
+
+    public ArrayList<ArrivalNoteOnTransitPO> getArrivalNoteOnTransit() throws SQLException {
+        ArrayList<ArrivalNoteOnTransitPO> result = new ArrayList<>();
+        Connection connection = DatabaseManager.getConnection();
+        String sql = "select * from `note_arrival_on_transit` where isPassed = 0";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+        ArrivalNoteOnTransitPO arrivalNoteOnServicePO;
+        while(resultSet.next()){
+            String transferNumber = resultSet.getString(1);
+            String centerNumber = resultSet.getString(2);
+            String date = resultSet.getString(3);
+            String departure = resultSet.getString(4);
+            String barcodes = resultSet.getString(5);
+            arrivalNoteOnServicePO = new ArrivalNoteOnTransitPO
+                    (transferNumber,centerNumber,date,departure,null);
+            result.add(arrivalNoteOnServicePO);
+        }
+        DatabaseManager.releaseConnection(connection, statement, resultSet);
+        return result;
     }
 
 }

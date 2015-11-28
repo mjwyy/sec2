@@ -66,14 +66,14 @@ public class StaffOrganizationManagementData implements
 	public boolean removeStaff(StaffPO staff) throws RemoteException,
             ElementNotFoundException, SQLException {
         String sql = "DELETE from `staff` where staff_id = " + staff.getStaffID();
-        return SqlHelper.excSqlStatement(sql);
+        return SqlHelper.excUpdate(sql);
     }
 
 	@Override
 	public boolean removeOrganization(OrganizationPO org)
             throws RemoteException, ElementNotFoundException, SQLException {
         String sql = "DELETE from `organization` where organization_id = "+org.getCode();
-        return SqlHelper.excSqlStatement(sql);
+        return SqlHelper.excUpdate(sql);
     }
 
     @Override
@@ -88,7 +88,7 @@ public class StaffOrganizationManagementData implements
                 " position = '" + staff.getPosition().getIntStaffType() + "'," +
                 " workHour = '" + staff.getWorkHour() + "'" +
                 " WHERE staff_id = '" + staff.getStaffID() + "'";
-        return SqlHelper.excSqlStatement(sql);
+        return SqlHelper.excUpdate(sql);
     }
 
     @Override
@@ -96,7 +96,7 @@ public class StaffOrganizationManagementData implements
         String sql = "UPDATE organization SET type = '" + org.getType().getType() + "'," +
                 " name = '" + org.getName() + "'" +
                 " WHERE organization_id = '" + org.getCode() + "'";
-        return SqlHelper.excSqlStatement(sql);
+        return SqlHelper.excUpdate(sql);
     }
 
 	@Override

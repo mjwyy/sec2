@@ -31,7 +31,7 @@ public class DatabaseManager {
         finally{
             ConnectionPool.getInstance().freeConnection(connection);
         }
-        System.out.println("DataBase is closed!");
+        System.out.println("Connection is released!");
         return flag;
     }
 

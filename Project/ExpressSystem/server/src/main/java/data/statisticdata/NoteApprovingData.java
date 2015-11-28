@@ -63,7 +63,7 @@ public class NoteApprovingData implements NoteApprovingDataService {
         String sql = "update `" + tableName + "` set `isPassed` = 2 where `" + tableID
                 + "` = '" + docPO.getID() + "'";
         System.out.println(sql);
-        return SqlHelper.excSqlStatement(sql);
+        return SqlHelper.excUpdate(sql);
     }
 
     @Override
@@ -75,7 +75,7 @@ public class NoteApprovingData implements NoteApprovingDataService {
         String sql = "update " + tableName + " set isPassed = 1" + ", advice = '" + comment +
                 "' where " + tableID + " = '" + docPO.getID() + "'";
         System.out.println(sql);
-        return SqlHelper.excSqlStatement(sql);
+        return SqlHelper.excUpdate(sql);
     }
 
 

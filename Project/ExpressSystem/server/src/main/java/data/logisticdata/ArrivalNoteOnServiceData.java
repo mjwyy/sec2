@@ -15,6 +15,7 @@ import util.enums.GoodsState;
 import java.rmi.RemoteException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -78,6 +79,34 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
         //操作结束
         DatabaseManager.releaseConnection(connection, statement, null);
         return resultMsg;
+    }
+
+    public ArrayList<ArrivalNoteOnServicePO> getArrivalNoteOnService() throws SQLException {
+        ArrayList<ArrivalNoteOnServicePO> result = new ArrayList<>();
+        Connection connection = DatabaseManager.getConnection();
+        String sql = "select * from `note_arrival_on_service` where isPassed = 0";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+        ArrivalNoteOnServicePO arrivalNoteOnServicePO;
+        while(resultSet.next()){
+            String date = resultSet.getString(1);
+            String arrivalType = resultSet.getString(2);
+            boolean isTransit = arrivalType.equals("中转到达");
+            String transferNumber =  resultSet.getString(3);
+            String from =  resultSet.getString(4);
+            String barcodes =  resultSet.getString(5);
+            String[] allBarcode = barcodes.split(";");
+            ArrayList<BarcodeAndState> barcodeAndStates = new ArrayList<>();
+            for(String str:allBarcode){
+                if(!str.equals("")){
+                    barcodeAndStates.add(new BarcodeAndState(str,GoodsState.COMPLETE));
+                }
+            }
+            arrivalNoteOnServicePO = new ArrivalNoteOnServicePO(date,isTransit,transferNumber,from,barcodeAndStates);
+            result.add(arrivalNoteOnServicePO);
+        }
+        DatabaseManager.releaseConnection(connection, statement, resultSet);
+        return result;
     }
 
     @Override

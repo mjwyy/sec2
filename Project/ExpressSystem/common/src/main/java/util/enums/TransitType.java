@@ -20,4 +20,12 @@ public enum TransitType {
         return "'" + this.type + "'";
     }
 
+    public static TransitType getTransitType(String type){
+        for(TransitType transitType:values()){
+            if(transitType.equals(type))
+                return transitType;
+        }
+        return null;
+    }
+
 }

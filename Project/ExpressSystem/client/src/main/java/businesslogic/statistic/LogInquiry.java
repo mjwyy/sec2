@@ -27,8 +27,6 @@ public class LogInquiry implements LogInquiryBLService {
     @Override
     public ResultMsg inputKeywords(SystemLogVO log) {
         ResultMsg formatCheck = log.checkFormat();
-        if(formatCheck.isPass())
-            this.getLogInfo(log);
         return formatCheck;
     }
 

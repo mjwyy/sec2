@@ -30,7 +30,6 @@ public class BusinessDataModification implements BusinessDataModificationBLServi
     public ResultMsg inputPrice(PriceType type, double price) {
         if(price < 0)
             return new ResultMsg(false,"价格不能是负数!");
-        this.submitPrice(type,price);
         return new ResultMsg(true);
     }
 
@@ -38,7 +37,6 @@ public class BusinessDataModification implements BusinessDataModificationBLServi
     public ResultMsg inputCityDistance(String city1, String city2, double distance) {
         if(distance < 0)
             return new ResultMsg(false,"城市距离不能是负数!");
-        this.submitCityDistance(city1,city2,distance);
         return new ResultMsg(true);
     }
 

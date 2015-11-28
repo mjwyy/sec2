@@ -24,9 +24,7 @@ public class CreditNoteInput implements CreditNoteInputBLService {
     @Override
     public ResultMsg addReceipeDoc(CreditNoteVO vo) {
         ResultMsg msg = vo.checkFormat();
-        if(!msg.isPass()) return msg;
-        else return submitReceipeDoc(vo);
-        
+        return msg;
     }
 
     @Override

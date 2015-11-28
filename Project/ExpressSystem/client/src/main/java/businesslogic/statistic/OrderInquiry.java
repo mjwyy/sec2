@@ -31,8 +31,6 @@ public class OrderInquiry implements OrderInquiryBLService {
     public ResultMsg inputBarcode(String inputBarcode) {
         this.orderVO = new OrderVO(inputBarcode,null,null);
         ResultMsg resultMsg = this.orderVO.checkFormat();
-        if(resultMsg.isPass())
-            this.submitBarcode(inputBarcode);
         return resultMsg;
     }
 

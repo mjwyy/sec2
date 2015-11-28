@@ -28,8 +28,6 @@ public class TransitNoteInput implements TransitNoteInputBLService {
     @Override
     public ResultMsg inputCenterTransitDoc(TransitNoteOnTransitVO centerTransitDocVO) {
         ResultMsg formatCheck = centerTransitDocVO.checkFormat();
-        if(formatCheck.isPass())
-            this.submitCenterTransitDoc(centerTransitDocVO);
         return formatCheck;
     }
 

@@ -28,8 +28,6 @@ public class ReceivingNoteInput implements ReceivingNoteInputBLService {
     @Override
     public ResultMsg inputReceiveDoc(ReceivingNoteVO receiveDocVO) {
         ResultMsg formatCheck = receiveDocVO.checkFormat();
-        if(formatCheck.isPass())
-            this.submitSendDoc(receiveDocVO);
         return formatCheck;
     }
 

@@ -32,11 +32,7 @@ public class StorageIn implements StorageInBLService {
     @Override
     public ResultMsg addPutInStorgaeDoc(StorageInVO putInStorageVo) {
         ResultMsg msg = putInStorageVo.checkFormat();
-        if(msg.isPass()) {
-        	return submitPutInStorageDoc(putInStorageVo);
-        } else {
         	return msg;
-        }
     }
 
     @Override

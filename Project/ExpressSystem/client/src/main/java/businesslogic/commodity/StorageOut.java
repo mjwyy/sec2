@@ -25,11 +25,7 @@ public class StorageOut implements StorageOutBLService {
     @Override
     public ResultMsg addStorageOutDoc(StorageOutVO storageOutVo) {
     	ResultMsg msg = storageOutVo.checkFormat();
-        if(msg.isPass()) {
-        	return submitStorageOutDoc(storageOutVo);
-        } else {
         	return msg;
-        }
     }
 
     @Override

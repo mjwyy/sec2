@@ -28,8 +28,6 @@ public class LoadNoteOnService implements LoadNoteOnServiceBLService {
     @Override
     public ResultMsg inputHallLoadDoc(LoadNoteOnServiceVO hallLoadDocVO) {
         ResultMsg formatCheck = hallLoadDocVO.checkFormat();
-        if(formatCheck.isPass())
-            this.submitHallLoadDoc(hallLoadDocVO);
         return formatCheck;
     }
 

@@ -5,13 +5,11 @@ import util.ResultMsg;
 import util.LogInMsg;
 import vo.UserVO;
 
-import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import po.UserPO;
 import connection.RemoteObjectGetter;
-import dataservice.exception.ElementNotFoundException;
 import dataservice.infodataservice.SystemUserManagementDataService;
 
 /**
@@ -110,17 +108,11 @@ public class SystemUserManagement implements SystemUserManagementBLService {
     }
 
     @Override
-    public LogInMsg logIn(String userNum, String initialPassword) {
-        UserVO vo = new UserVO(userNum,initialPassword,null);
-        ArrayList<UserVO> found = this.find(vo);
-        if(found.size()==0)
-            return new LogInMsg(false,null);
-        UserVO foundVO = found.get(0);
-        if(foundVO.getInitialPassword().equals(initialPassword)){
-        	RuntimeUserInfo.setUserNum(userNum);
-            return new LogInMsg(true,foundVO.getAuthority());
-        }
-        else
-            return new LogInMsg(false,null);
+    public LogInMsg logIn(String userNum, String initialPassword)  {
+    	try {
+			return dataService.logIn(userNum, initialPassword);
+		} catch (SQLException e) {
+			return new LogInMsg(false, null, "网络连接异常，目前无法登陆。");
+		}
     }
 }

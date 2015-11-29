@@ -5,8 +5,10 @@
  */
 package businesslogicservice.infoblservice;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+import dataservice.exception.ElementNotFoundException;
 import util.LogInMsg;
 import util.ResultMsg;
 import vo.UserVO;
@@ -47,6 +49,8 @@ public interface SystemUserManagementBLService {
      * @param userNum
      * @param initialPassword
      * @return
+     * @throws SQLException 
+     * @throws ElementNotFoundException 
      */
 	public LogInMsg logIn(String userNum, String initialPassword);
  

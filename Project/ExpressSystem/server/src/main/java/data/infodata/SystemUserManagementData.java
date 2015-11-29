@@ -5,6 +5,7 @@ import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.infodataservice.SystemUserManagementDataService;
 import po.UserPO;
+import util.LogInMsg;
 import util.enums.Authority;
 
 import java.rmi.RemoteException;
@@ -29,7 +30,7 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
     @Override
     public boolean addUser(UserPO user) throws InterruptWithExistedElementException, SQLException {
         Connection connection = DatabaseManager.getConnection();
-        String sqlInsert = "INSERT into user (account,rights,password) values(?,?,?)";
+        String sqlInsert = "INSERT into user (account,rights,password) values(?,?,MD5(?))";
         PreparedStatement statement = connection.prepareStatement(sqlInsert);
         statement.setString(1,user.getAccount());
         statement.setInt(2,user.getAuthority().getIntAuthority());
@@ -58,10 +59,10 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
         String modify;
         if(originalUser.getPassword()!=null && originalUser.getAuthority().getIntAuthority()!=0){
             modify = "update user set rights="+modified.getAuthority()
-                    +",password = '"+modified.getPassword()+"' where account = '"+modified.getAccount()+"'";
+                    +",password = MD5('"+modified.getPassword()+"') where account = '"+modified.getAccount()+"'";
         }else if(originalUser.getPassword()!=null&& originalUser.getAuthority().getIntAuthority()==0){
-            modify = "update user set password = '"+modified.getPassword()+
-                    " where account = '"+modified.getAccount()+"'";
+            modify = "update user set password = MD5('"+modified.getPassword()+
+                    "') where account = '"+modified.getAccount()+"'";
         }else
             modify = "update user set rights = "+modified.getAuthority()
                     +" where account = '"+modified.getAccount()+"'";
@@ -109,5 +110,32 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
         DatabaseManager.releaseConnection(connection,statement,resultSet);
         return result;
     }
+
+	@Override
+	public LogInMsg logIn(String account, String password) throws SQLException {
+		Connection connection = DatabaseManager.getConnection();
+		
+		//First, find if the account exist.
+		ArrayList<UserPO> list;
+		try {
+			list = inquireUser(new UserPO(account, password, null));
+		} catch (ElementNotFoundException e) {
+			//由于未明确异常的行为，所以有一点代码重复，不过还好
+			return new LogInMsg(false, null, "账户名为"+account+"的用户不存在，请检查输入。");
+		}
+		if(list.size()==0) return new LogInMsg(false, null, "账户名为"+account+"的用户不存在，请检查输入。");
+		
+		//Second, find if there exists an account that has the same password.
+		String sql = "SELECT * from user where account='"+account+"' AND password=MD5('"+password+"')";
+		PreparedStatement stmt = connection.prepareStatement(sql);
+		ResultSet set = stmt.executeQuery();
+		
+		if(set.next()) { // Found it!
+			Authority a = Authority.getAuthObject(set.getInt("rights"));
+			return new LogInMsg(true, a, "登陆成功！");
+		} else { // No such user.
+			return new LogInMsg(false, null, "密码错误，请检查输入");
+		}
+	}
 
 }

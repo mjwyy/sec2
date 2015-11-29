@@ -75,4 +75,13 @@ public interface SystemUserManagementDataService extends Remote, Serializable {
 	public ArrayList<UserPO> getAllUsers()
             throws RemoteException, ElementNotFoundException, SQLException;
 
+	/**
+	 * 登录接口
+	 * @param account
+	 * @param password
+	 * @return 登录是否成功，若失败，则会附送失败信息
+	 * @throws SQLException 
+	 * @throws ElementNotFoundException 
+	 */
+	public LogInMsg logIn(String account,String password) throws SQLException;
 }

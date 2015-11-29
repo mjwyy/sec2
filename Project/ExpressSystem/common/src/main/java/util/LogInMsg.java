@@ -13,9 +13,12 @@ public class LogInMsg {
 
     private Authority authority;
 
-    public LogInMsg(boolean pass, Authority authority) {
+    private String message;
+    
+    public LogInMsg(boolean pass, Authority authority,String message) {
         this.pass = pass;
         this.authority = authority;
+        this.message = message;
     }
 
     public boolean isPass() {
@@ -24,5 +27,9 @@ public class LogInMsg {
 
     public Authority getAuthority() {
         return authority;
+    }
+    
+    public String getMessage() {
+    	return message;
     }
 }

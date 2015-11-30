@@ -15,7 +15,8 @@ import java.rmi.registry.Registry;
  *
  */
 public class RMIPublisher {
-    private String hostIP = "localhost";
+    private String hostIP = "192.168.43.46";
+    private int regPort = 1099;
 
     private static RMIPublisher thisObj = null;
 
@@ -32,7 +33,8 @@ public class RMIPublisher {
             //服务器开启RMI服务，第一步就是为其注册端口，
             // 通过方法LocateRegistry.createRegistry(1)实现，
             // 该方法返回一个Registry对象，代表对远程对象的一个注册实例。
-            Registry registry = LocateRegistry.createRegistry(1099);
+            StaticRmiSocketFactory regFac = new StaticRmiSocketFactory(hostIP, regPort);
+            Registry reg = LocateRegistry.createRegistry(regPort, regFac, regFac);
             System.out.println("java RMI registry created.");
             // Bind this object instance to the name "RmiServer"
             //第二步，为注册实例绑定RMI服务，通过方法registry.rebind(2)
@@ -40,7 +42,7 @@ public class RMIPublisher {
             System.out.println("Rebinding");
             //Instantiate RmiServer
             RMIObjectProvider obj = new RMIObjectProvider();
-            registry.rebind("RMIObjectProvider", obj);
+            reg.rebind("RMIObjectProvider", obj);
             System.out.println("PeerServer bound in registry");
         } catch (RemoteException e) {
             // 当端口注册失败时（例如，端口被占用或者不存在的端口号），

@@ -55,4 +55,15 @@ public class ChartPO implements Serializable {
         return everyDay;
     }
 
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public ChartType getType() {
+        return type;
+    }
 }

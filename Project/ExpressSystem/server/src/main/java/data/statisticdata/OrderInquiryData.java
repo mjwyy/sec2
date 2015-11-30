@@ -5,16 +5,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import data.database.DatabaseManager;
 import data.database.SqlHelper;
-import dataservice.statisticdataservice.BusinessDataModificationDataService;
 import po.OrderPO;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.statisticdataservice.OrderInquiryDataService;
-import util.PresumedMsg;
-import util.enums.DeliverCategory;
 import util.enums.GoodsState;
 
 /**
@@ -25,8 +24,6 @@ import util.enums.GoodsState;
  *
  */
 public class OrderInquiryData implements OrderInquiryDataService{
-
-    private BusinessDataModificationDataService businessDataModificationData;
 
 	@Override
 	public OrderPO findOrder(String barcode) throws RemoteException,
@@ -51,7 +48,7 @@ public class OrderInquiryData implements OrderInquiryDataService{
         return po;
 	}
 
-    public boolean insertOrderPO(String barcode,String info) throws RemoteException, SQLException {
+    public boolean insertOrderPO(String barcode, String info) throws RemoteException, SQLException {
         Connection connection = DatabaseManager.getConnection();
         String sql = "insert into order( `barcode`, `stateOfTransport`, `history`) " +
                 "values (?,?,?)";
@@ -60,20 +57,21 @@ public class OrderInquiryData implements OrderInquiryDataService{
         statement.setString(2, GoodsState.COMPLETE.toString());
         statement.setString(3, info);
         int result = statement.executeUpdate();
-        if (result < 0)
-            throw new SQLException();
         DatabaseManager.releaseConnection(connection, statement, null);
-        return true;
+        return result > 0;
     }
 
-    public OrderPO updateOrder(String barcode, GoodsState goodsState, String newMesg) throws RemoteException,
-            ElementNotFoundException {
-        return null;
-    }
-
-    public OrderPO deleteOrder(String barcode) throws RemoteException,
-            ElementNotFoundException {
-        return null;
+    public boolean updateOrder(String barcode, GoodsState goodsState, String newMesg) throws RemoteException,
+            ElementNotFoundException, SQLException {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String currentTime = df.format(new Date());
+        String sql2 = "update `order` set `stateOfTransport` = '"+goodsState.toString()+"' "
+                +"where barcode = '"+barcode+"'";
+        SqlHelper.excUpdate(sql2);
+        String msg = (currentTime+","+newMesg);
+        String sql = "update `order` set `history` = concat(`history`, '"+msg+"') " +
+                "where barcode = '"+barcode+"'";
+        return SqlHelper.excUpdate(sql);
     }
 
 }

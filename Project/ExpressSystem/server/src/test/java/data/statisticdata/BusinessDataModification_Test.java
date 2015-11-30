@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import dataservice.statisticdataservice.BusinessDataModificationDataService;
 import org.junit.Test;
 
+import po.DistancePO;
 import util.enums.PriceType;
 import data.statisticdata.MockObject.MockDistance;
 import dataservice.exception.ElementNotFoundException;
@@ -18,21 +19,20 @@ public class BusinessDataModification_Test {
 	
 	private BusinessDataModificationDataService service = new BusinessDataModificationData();
 
-    //	@Test
-    public void testAddCity() throws RemoteException, InterruptWithExistedElementException {
-		//assertEquals(true,service.addCity("南京"));	
-		//assertEquals(true,service.addCity("上海"));
-		//assertEquals(true,service.addCity("深圳"));	
-	}
 
-    //    @Test
-    public void testGetAllCity() throws RemoteException {
+//    @Test
+    public void testAddCity() throws RemoteException, ElementNotFoundException, SQLException, InterruptWithExistedElementException {
+        service.addCity("香港");
+    }
+
+//    @Test
+    public void testGetAllCity() throws RemoteException, SQLException {
 	     ArrayList<String> city = new ArrayList<String>();
-	     city.add("南京");
-	     city.add("上海");
-	     city.add("深圳");
-		//assertEquals(true,city.equals(service.getAllCities()));	
-	}
+            city = service.getAllCities();
+            for (String str:city) {
+                System.out.println(str);
+            }
+        }
 
     //    @Test
     public void testSetandGetPrice() throws RemoteException, ElementNotFoundException, SQLException {
@@ -44,11 +44,14 @@ public class BusinessDataModification_Test {
     }
 
     @Test
-    public void testSetandGetDistance() throws RemoteException, ElementNotFoundException, SQLException {
-        MockDistance distance4 = new MockDistance("nanJing", "nanJing", 0);
-        service.setDistance(distance4);
-        System.out.println(service.getDistance("nanJing", "nanJing"));
+    public void testSetDistance() throws RemoteException, ElementNotFoundException, SQLException {
+        service.setDistance(new DistancePO("南京","香港",333));
     }
 
+//    @Test
+    public void testGetDistance() throws RemoteException, ElementNotFoundException, SQLException {
+        double distance = service.getDistance("上海","123");
+        System.out.println(distance);
+    }
 
 }

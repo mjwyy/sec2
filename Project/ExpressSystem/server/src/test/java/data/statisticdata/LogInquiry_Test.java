@@ -12,7 +12,7 @@ public class LogInquiry_Test {
 
     private LogInquiryDataService service = new LogInquiryData();
 
-    @Test
+//    @Test
 	public void testfind() throws RemoteException{
 		MockLogEntry logEntry1 = new MockLogEntry("2015-11-11","中转中心业务员王小二录入南京中转中心装车单");
 		MockLogEntry logEntry2 = new MockLogEntry("2015-11-11","中转中心业务员王小三录入南京中转中心装车单");
@@ -30,5 +30,7 @@ public class LogInquiry_Test {
 		//assertEquals(true,log2.equals(service.findLogEntries(null, keyword)));
 		//assertEquals(true,log1.equals(service.findLogEntries("2015-11-11", keyword)));
 	}
+
+
 
 }

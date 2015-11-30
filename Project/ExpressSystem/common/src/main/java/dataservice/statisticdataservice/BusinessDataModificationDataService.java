@@ -26,7 +26,7 @@ public interface BusinessDataModificationDataService extends Remote, Serializabl
      * @throws InterruptWithExistedElementException
      */
     public boolean addCity(String name)
-            throws RemoteException,InterruptWithExistedElementException;
+            throws RemoteException, InterruptWithExistedElementException, SQLException;
 
     /**
      * Data返回所有城市名
@@ -35,7 +35,7 @@ public interface BusinessDataModificationDataService extends Remote, Serializabl
      * @throws RemoteException
      */
     public ArrayList<String> getAllCities()
-            throws RemoteException;
+            throws RemoteException, SQLException;
 
     /**
      * Data将name表示的价格条目数值改为newValue

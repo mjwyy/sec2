@@ -2,12 +2,16 @@ package data.logisticdata;
 
 import data.database.DatabaseManager;
 import data.infodata.UserInfoHelper;
+import data.logisticdata.deliverystrategy.CityManager;
 import data.logisticdata.deliverystrategy.PriceStrategy;
 import data.logisticdata.deliverystrategy.TimePresumeStrategy;
+import data.statisticdata.BusinessDataModificationData;
 import data.statisticdata.LogInsHelper;
 import data.statisticdata.OrderInquiryData;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
+import dataservice.statisticdataservice.BusinessDataModificationDataService;
+import dataservice.statisticdataservice.OrderInquiryDataService;
 import po.DeliveryNotePO;
 import util.SendDocMsg;
 import util.enums.DeliverCategory;
@@ -25,10 +29,13 @@ import java.util.ArrayList;
  */
 public class DeliveryNoteInputData extends NoteInputData implements DeliveryNoteInputDataService {
 
-    private OrderInquiryData orderDataService = new OrderInquiryData();
+    private OrderInquiryDataService orderDataService = new OrderInquiryData();
+    private BusinessDataModificationDataService businessDataModificationDataService
+             = new BusinessDataModificationData();
 
     private PriceStrategy priceStrategy = new PriceStrategy();
     private TimePresumeStrategy timePresumeStrategy = new TimePresumeStrategy();
+    private CityManager cityManager = new CityManager();
 
     public DeliveryNoteInputData() throws RemoteException {
     }
@@ -65,18 +72,19 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
         //记录系统日志
         LogInsHelper.insertLog("营业厅业务员"+deliveryMan+"新增寄件单,单据编号:" + po.getBarCode());
         //等待总经理审批过程,反复查询
-        DocState docState = this.waitForCheck("note_delivery",
-                "barCode", po.getBarCode());
+        DocState docState = this.waitForCheck("note_delivery", "barCode", po.getBarCode());
         //审批通过
         SendDocMsg sendDocMsg;
         if (docState == DocState.PASSED) {
             //追加修改物流信息
             orderDataService.insertOrderPO(po.getBarCode(),orderInfo);
             //委托,获取价格与预计日期
-            double price = priceStrategy.getPrice(po.getReceiverCity(),po.getSenderCity(),po.getWeight(),
+            ArrayList<String> cites = businessDataModificationDataService.getAllCities();
+            String city1 = cityManager.findCity(cites,po.getSenderAddress());
+            String city2 = cityManager.findCity(cites,po.getReceiverAddress());
+            double price = priceStrategy.getPrice(city1,city2,po.getWeight(),
                     po.getVolume(),po.getCategory(),po.getPackPrice());
-            String presumedDate = timePresumeStrategy.getPresumedTime(
-                    po.getReceiverCity(),po.getSenderCity(),po.getCategory());
+            String presumedDate = timePresumeStrategy.getPresumedTime(city1,city2,po.getCategory());
             sendDocMsg = new SendDocMsg(true,"寄件单已成功提交!",price,presumedDate);
         } else {
             //审批没有通过

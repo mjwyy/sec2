@@ -137,17 +137,17 @@ public class ChartOutput implements ChartOutputBLService {
             }
         }
         // 第六步，将文件存到指定位置
-        try
-        {
+        try {
             FileOutputStream fout = new FileOutputStream(path+"test3.xls");
             wb.write(fout);
             fout.close();
+            return new ResultMsg(true,"已导出EXCEL表格!");
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             e.printStackTrace();
+            return new ResultMsg(false,"无法导出EXCEL表格!");
         }
-        return null;
+
     }
 
     public static void main(String[] args) {

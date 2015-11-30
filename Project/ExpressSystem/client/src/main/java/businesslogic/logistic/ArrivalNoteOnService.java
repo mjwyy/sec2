@@ -36,15 +36,22 @@ public class ArrivalNoteOnService implements ArrivalNoteOnServiceBLService {
 
     @Override
     public ResultMsg submitHallArrivalDoc(ArrivalNoteOnServiceVO arrialDocVO) {
-        ResultMsg resultMsg = new ResultMsg();
+        ResultMsg resultMsg;
         try {
             this.arrivalNoteOnServicePO = arrialDocVO.toPO();
+            //从VO中获取营业员的名字与工作地点
+            arrivalNoteOnServicePO.setOrganization(arrialDocVO.getOrganization());
+            arrivalNoteOnServicePO.setUserName(arrialDocVO.getUserName());
             resultMsg = this.dataService.insertArrivalNote(this.arrivalNoteOnServicePO);
         } catch (RemoteException e) {
             e.printStackTrace();
             return new ResultMsg(false,e.getMessage());
-        } catch (SQLException | ElementNotFoundException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
+            return new ResultMsg(false,e.getMessage());
+        } catch (ElementNotFoundException e) {
+            e.printStackTrace();
+            return new ResultMsg(false,"输入的到达单有误,请重新输入");
         }
         return resultMsg;
     }

@@ -35,15 +35,19 @@ public class LoadNoteOnService implements LoadNoteOnServiceBLService {
     public ResultMsg submitHallLoadDoc(LoadNoteOnServiceVO hallLoadDocVO) {
         try {
             this.po = hallLoadDocVO.toPO();
+            this.po.setOrganization(hallLoadDocVO.getOrganization());
+            this.po.setUserName(hallLoadDocVO.getUserName());
             this.dataService.insert(this.po);
+            return new ResultMsg(true,"营业厅装车单已提交!");
         } catch (RemoteException e) {
             e.printStackTrace();
             return new ResultMsg(false,e.getMessage());
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
+            return new ResultMsg(false,e.getMessage());
         } catch (SQLException e) {
             e.printStackTrace();
+            return new ResultMsg(false,e.getMessage());
         }
-        return new ResultMsg(true,"营业厅装车单已提交!");
     }
 }

@@ -129,13 +129,24 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
 		String sql = "SELECT * from user where account='"+account+"' AND password=MD5('"+password+"')";
 		PreparedStatement stmt = connection.prepareStatement(sql);
 		ResultSet set = stmt.executeQuery();
-		
+        LogInMsg logInMsg;
 		if(set.next()) { // Found it!
 			Authority a = Authority.getAuthObject(set.getInt("rights"));
-			return new LogInMsg(true, a, "登陆成功！");
+            sql = "SELECT name,organization from staff where staff_id = '"+account+"'";
+            stmt = connection.prepareStatement(sql);
+            set = stmt.executeQuery();
+            String userName = "";
+            String organization = "";
+            while (set.next()){
+                userName = set.getString("name");
+                organization =  set.getString("organization");
+            }
+            logInMsg = new LogInMsg(true,a,"",userName,organization);
 		} else { // No such user.
-			return new LogInMsg(false, null, "密码错误，请检查输入");
+            logInMsg = new LogInMsg(false, null, "密码错误，请检查输入");
 		}
+        DatabaseManager.releaseConnection(connection,stmt,set);
+        return logInMsg;
 	}
 
 }

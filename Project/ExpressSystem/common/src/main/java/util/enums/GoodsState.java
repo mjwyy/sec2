@@ -9,8 +9,7 @@ package util.enums;
 public enum GoodsState {
     COMPLETE("完整"),
     DAMAGED("损坏"),
-    LOST("丢失"),
-    RECEIVED("已收件");
+    LOST("丢失");
 
     GoodsState(String s) {
         this.string = s;
@@ -23,7 +22,16 @@ public enum GoodsState {
         return this.string;
     }
 
+    public static GoodsState getGoodsState(String str) {
+        for (GoodsState state : values()) {
+            if (state.toString().equals(str)) {
+                return state;
+            }
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
-        System.out.println(GoodsState.RECEIVED.toString());
+        System.out.println();
     }
 }

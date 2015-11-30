@@ -3,6 +3,7 @@ package dataservice.statisticdataservice;
 import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 import dataservice.exception.ElementNotFoundException;
 import po.OrderPO;
@@ -21,6 +22,6 @@ public interface OrderInquiryDataService extends Remote, Serializable {
 	 * @throws ElementNotFoundException
 	 */
 	public OrderPO findOrder(String barcode)
-		throws RemoteException, ElementNotFoundException;
+            throws RemoteException, ElementNotFoundException, SQLException;
 	
 }

@@ -14,11 +14,25 @@ public class LogInMsg {
     private Authority authority;
 
     private String message;
+
+    // 创建这个单据的业务员信息
+    private String userName;
+
+    // 创建这个单据的业务员所在的机构名称
+    private String organization;
     
     public LogInMsg(boolean pass, Authority authority,String message) {
         this.pass = pass;
         this.authority = authority;
         this.message = message;
+    }
+
+    public LogInMsg(boolean pass, Authority authority, String message, String userName, String organization) {
+        this.pass = pass;
+        this.authority = authority;
+        this.message = message;
+        this.userName = userName;
+        this.organization = organization;
     }
 
     public boolean isPass() {
@@ -31,5 +45,13 @@ public class LogInMsg {
     
     public String getMessage() {
     	return message;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getOrganization() {
+        return organization;
     }
 }

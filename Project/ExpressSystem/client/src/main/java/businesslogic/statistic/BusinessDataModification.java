@@ -44,15 +44,17 @@ public class BusinessDataModification implements BusinessDataModificationBLServi
     public ResultMsg submitPrice(PriceType type, double price) {
         try {
             dataService.setPrice(type,price);
+            return new ResultMsg(true,"价格常量修改成功!");
         } catch (RemoteException e) {
             e.printStackTrace();
+            return new ResultMsg(false,"无法修改价格常量!");
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
-            return new ResultMsg(false,e.getMessage());
+            return new ResultMsg(false,"无法修改价格常量!");
         } catch (SQLException e) {
             e.printStackTrace();
+            return new ResultMsg(false,"无法修改价格常量!");
         }
-        return new ResultMsg(true,"价格常量修改成功!");
     }
 
     @Override
@@ -60,15 +62,17 @@ public class BusinessDataModification implements BusinessDataModificationBLServi
         this.distancePO = new DistancePO(city1,city2,distance);
         try {
             dataService.setDistance(this.distancePO);
+            return new ResultMsg(true,"城市距离修改成功!");
         } catch (RemoteException e) {
             e.printStackTrace();
+            return new ResultMsg(false,"无法修改价格常量!");
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
             return new ResultMsg(false,e.getMessage());
         } catch (SQLException e) {
             e.printStackTrace();
+            return new ResultMsg(false,"无法修改价格常量!");
         }
-        return new ResultMsg(true,"城市距离修改成功!");
     }
 
 }

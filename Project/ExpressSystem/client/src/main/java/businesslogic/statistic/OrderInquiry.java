@@ -9,6 +9,7 @@ import util.ResultMsg;
 import vo.OrderVO;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 /**
  * Created by kylin on 15/11/17.
@@ -42,6 +43,9 @@ public class OrderInquiry implements OrderInquiryBLService {
             e.printStackTrace();
             return null;
         } catch (ElementNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }

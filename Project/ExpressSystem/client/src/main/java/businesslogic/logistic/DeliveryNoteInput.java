@@ -38,24 +38,23 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
 
     @Override
     public SendDocMsg submitSendDoc(DeliveryNoteVO sendDocVO) {
-        double price = 0;
-        String date = null;
         try {
             this.notePO = sendDocVO.toPO();
-            SendDocMsg SendDocMsg = this.dataService.insert(this.notePO);
-            ArrayList<String> history = new ArrayList<String>();
-            history.add("快递员已收件");
-            this.orderPO = new OrderPO(sendDocVO.getBarCode(), GoodsState.COMPLETE, history);
-            price = SendDocMsg.getPrice();
-            date = SendDocMsg.getPredectedDate();
+            this.notePO.setOrganization(sendDocVO.getOrganization());
+            this.notePO.setUserName(sendDocVO.getUserName());
+            SendDocMsg sendDocMsg = this.dataService.insert(this.notePO);
+            double price = sendDocMsg.getPrice();
+            String date = sendDocMsg.getPredectedDate();
+            return new SendDocMsg(true, "寄件单已成功提交!", price, date);
         } catch (RemoteException e) {
             e.printStackTrace();
             return new SendDocMsg(false, e.getMessage(), 0, null);
         } catch (SQLException e) {
             e.printStackTrace();
+            return new SendDocMsg(false, e.getMessage(), 0, null);
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
+            return new SendDocMsg(false, e.getMessage(), 0, null);
         }
-        return new SendDocMsg(true, "寄件单已成功提交!", price, date);
     }
 }

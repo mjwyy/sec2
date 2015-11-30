@@ -35,7 +35,10 @@ public class ReceivingNoteInput implements ReceivingNoteInputBLService {
     public ResultMsg submitSendDoc(ReceivingNoteVO receiveDocVO) {
         try {
             this.po = receiveDocVO.toPO();
+            this.po.setOrganization(receiveDocVO.getOrganization());
+            this.po.setUserName(receiveDocVO.getUserName());
             this.dataService.insert(this.po);
+            return new ResultMsg(true,"收件单已提交!");
         } catch (RemoteException e) {
             e.printStackTrace();
             return new ResultMsg(false,e.getMessage());
@@ -46,6 +49,5 @@ public class ReceivingNoteInput implements ReceivingNoteInputBLService {
             e.printStackTrace();
             return new ResultMsg(false,e.getMessage());
         }
-        return new ResultMsg(true,"收件单已提交!");
     }
 }

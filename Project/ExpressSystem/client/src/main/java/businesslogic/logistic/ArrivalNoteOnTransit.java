@@ -35,6 +35,8 @@ public class ArrivalNoteOnTransit implements ArrivalNoteOnTransitBLService {
     public ResultMsg submitCenterArrivalDoc(ArrivalNoteOnTransitVO centerArrivalDocVO) {
         try {
             this.po = centerArrivalDocVO.toPO();
+            this.po.setUserName(centerArrivalDocVO.getUserName());
+            this.po.setOrganization(centerArrivalDocVO.getOrganization());
             this.dataService.insert(this.po);
         } catch (RemoteException e) {
             e.printStackTrace();

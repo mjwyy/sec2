@@ -33,18 +33,21 @@ public class TransitNoteInput implements TransitNoteInputBLService {
 
     @Override
     public ResultMsg submitCenterTransitDoc(TransitNoteOnTransitVO centerTransitDocVO) {
-
         try {
             this.po = (TransitNotePO) centerTransitDocVO.toPO();
+            this.po.setUserName(centerTransitDocVO.getUserName());
+            this.po.setOrganization(centerTransitDocVO.getOrganization());
             this.dataService.insert(this.po);
+            return new ResultMsg(true,"中转单已提交!");
         } catch (RemoteException e) {
             e.printStackTrace();
             return new ResultMsg(false,e.getMessage());
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
+            return new ResultMsg(false,e.getMessage());
         } catch (SQLException e) {
             e.printStackTrace();
+            return new ResultMsg(false,e.getMessage());
         }
-        return new ResultMsg(true,"中转单已提交!");
     }
 }

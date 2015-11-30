@@ -10,7 +10,8 @@ import data.database.DatabaseManager;
 import data.statisticdata.inte.LogInsertDataService;
 
 public class LogInsertData implements LogInsertDataService {
-	
+
+    //TODO connection即用即还,不应该是成员变量,释放语句应该写在方法里面
 	private Connection connection;
 	
 	public LogInsertData() {

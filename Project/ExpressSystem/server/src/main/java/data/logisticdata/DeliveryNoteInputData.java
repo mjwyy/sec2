@@ -1,17 +1,17 @@
 package data.logisticdata;
 
 import data.database.DatabaseManager;
-import data.statisticdata.BusinessDataModificationData;
-import data.statisticdata.LogInsertData;
+import data.infodata.UserInfoHelper;
+import data.logisticdata.deliverystrategy.PriceStrategy;
+import data.logisticdata.deliverystrategy.TimePresumeStrategy;
+import data.statisticdata.LogInsHelper;
 import data.statisticdata.OrderInquiryData;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
 import po.DeliveryNotePO;
-import util.BarcodeAndState;
 import util.SendDocMsg;
 import util.enums.DeliverCategory;
 import util.enums.DocState;
-import util.enums.GoodsState;
 
 import java.rmi.RemoteException;
 import java.sql.Connection;
@@ -25,9 +25,10 @@ import java.util.ArrayList;
  */
 public class DeliveryNoteInputData extends NoteInputData implements DeliveryNoteInputDataService {
 
-    private LogInsertData logInsertData;
-    private OrderInquiryData orderDataService;
-    private BusinessDataModificationData businessDataModificationData;
+    private OrderInquiryData orderDataService = new OrderInquiryData();
+
+    private PriceStrategy priceStrategy = new PriceStrategy();
+    private TimePresumeStrategy timePresumeStrategy = new TimePresumeStrategy();
 
     public DeliveryNoteInputData() throws RemoteException {
     }
@@ -58,54 +59,34 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
         int result = statement.executeUpdate();
         if (result < 0)
             throw new SQLException();
-        //记录系统日志
-        logInsertData = new LogInsertData();
         //TODO 获取业务员的信息
-        logInsertData.insertSystemLog("营业厅业务员?新增寄件单,单据编号:" + po.getBarCode());
-
+        String deliveryMan = UserInfoHelper.getName("");
+        String orderInfo = "货物已被快递员 "+deliveryMan+" 签收;";
+        //记录系统日志
+        LogInsHelper.insertLog("营业厅业务员"+deliveryMan+"新增寄件单,单据编号:" + po.getBarCode());
         //等待总经理审批过程,反复查询
         DocState docState = this.waitForCheck("note_delivery",
                 "barCode", po.getBarCode());
         //审批通过
-        double price = 0;
-        String presumedDate = "";
+        SendDocMsg sendDocMsg;
         if (docState == DocState.PASSED) {
-            System.out.println("DeliveryNote is passed!");
             //追加修改物流信息
-            orderDataService = new OrderInquiryData();
-            orderDataService.updateOrder(po.getBarCode(),GoodsState.COMPLETE,
-                    "?营业厅已收件!");
-            //TODO 策略模式
-            //获取总价
-            businessDataModificationData = new BusinessDataModificationData();
-            String city1, city2;
-            city1 = po.getSenderCity();
-            city2 = po.getReceiverCity();
-            double distance = businessDataModificationData.getDistance(city1, city2);
-            double pricePerKG = distance / 1000 * 23;
-            double weightPrice = pricePerKG * po.getWeight();
-            if (po.getWeight() / po.getVolume() < 0.01) {
-                double volumeWeight = po.getVolume() / 5000;
-                double volumePrice = pricePerKG * volumeWeight;
-                weightPrice = volumePrice > weightPrice ? volumePrice : weightPrice;
-            }
-            if (po.getCategory() == DeliverCategory.ECNOMIC)
-                weightPrice = weightPrice * 18 / 23;
-            else if (po.getCategory() == DeliverCategory.EXPRESS)
-                weightPrice = weightPrice * 25 / 23;
-            price = weightPrice + po.getPackPrice();
-            //TODO 获取预计到达日期
-            presumedDate = "";
-
-        } else { //审批没有通过
-            System.out.println("DeliveryNote is failed!");
+            orderDataService.insertOrderPO(po.getBarCode(),orderInfo);
+            //委托,获取价格与预计日期
+            double price = priceStrategy.getPrice(po.getReceiverCity(),po.getSenderCity(),po.getWeight(),
+                    po.getVolume(),po.getCategory(),po.getPackPrice());
+            String presumedDate = timePresumeStrategy.getPresumedTime(
+                    po.getReceiverCity(),po.getSenderCity(),po.getCategory());
+            sendDocMsg = new SendDocMsg(true,"寄件单已成功提交!",price,presumedDate);
+        } else {
+            //审批没有通过
             String advice = this.getFailedAdvice("note_delivery",
                     "barCode", po.getBarCode());
-            return new SendDocMsg(false, advice, 0, null);
+            sendDocMsg = new SendDocMsg(false, advice, 0, null);
         }
         //操作结束
         DatabaseManager.releaseConnection(connection, statement, null);
-        return new SendDocMsg(true, "寄件单已通过审批", price, presumedDate);
+        return sendDocMsg;
     }
 
     public ArrayList<DeliveryNotePO> getDeliveryNote() throws SQLException {

@@ -51,6 +51,7 @@ public class LogInquiry implements LogInquiryBLService {
             return null;
         } catch (SQLException e) {
             e.printStackTrace();
+            return null;
         }
         return results;
     }

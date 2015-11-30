@@ -99,9 +99,8 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
             String[] allBarcode = barcodes.split(";");
             ArrayList<BarcodeAndState> barcodeAndStates = new ArrayList<>();
             for(String str:allBarcode){
-                if(!str.equals("")){
+                if(!str.equals(""))
                     barcodeAndStates.add(new BarcodeAndState(str,this.getGoodsState(str)));
-                }
             }
             arrivalNoteOnServicePO = new ArrivalNoteOnServicePO(date,isTransit,transferNumber,from,barcodeAndStates);
             result.add(arrivalNoteOnServicePO);

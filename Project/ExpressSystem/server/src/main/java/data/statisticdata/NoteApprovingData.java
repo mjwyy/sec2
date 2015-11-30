@@ -31,14 +31,20 @@ public class NoteApprovingData implements NoteApprovingDataService {
     private HashMap<String, String> nameAndTableName;
     private HashMap<String, String> nameAndTableID;
 
-    public NoteApprovingData() throws RemoteException {
-        arrivalNoteOnServiceDataService = new ArrivalNoteOnServiceData();
-        arrivalNoteOnTransitDataService = new ArrivalNoteOnTransitData();
-        deliveryNoteInputDataService = new DeliveryNoteInputData();
-        loadNoteOnServiceDataService = new LoadNoteOnServiceData();
-        loadNoteOnTransitDataService = new LoadNoteOnTransitData();
-        receivingNoteInputDataService = new ReceivingNoteInputData();
-        transitNoteInputDataService = new TransitNoteInputData();
+    public NoteApprovingData(ArrivalNoteOnServiceDataService arrivalNoteOnServiceDataService,
+             ArrivalNoteOnTransitDataService arrivalNoteOnTransitDataService,
+             DeliveryNoteInputDataService deliveryNoteInputDataService,
+             LoadNoteOnServiceDataService loadNoteOnServiceDataService,
+             LoadNoteOnTransitDataService loadNoteOnTransitDataService,
+             ReceivingNoteInputDataService receivingNoteInputDataService,
+             TransitNoteInputDataService transitNoteInputDataService) throws RemoteException {
+        this.arrivalNoteOnServiceDataService = arrivalNoteOnServiceDataService;
+        this.arrivalNoteOnTransitDataService = arrivalNoteOnTransitDataService;
+        this.deliveryNoteInputDataService = deliveryNoteInputDataService;
+        this.loadNoteOnServiceDataService = loadNoteOnServiceDataService;
+        this.loadNoteOnTransitDataService = loadNoteOnTransitDataService;
+        this.receivingNoteInputDataService = receivingNoteInputDataService;
+        this.transitNoteInputDataService = transitNoteInputDataService;
 
         nameAndTableName = new HashMap<>();
         nameAndTableID = new HashMap<>();

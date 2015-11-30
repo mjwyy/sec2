@@ -20,7 +20,8 @@ import java.util.Date;
  */
 public class NoteInputData extends UnicastRemoteObject{
 
-    protected NoteInputData() throws RemoteException {
+
+    public NoteInputData() throws RemoteException {
         super();
     }
 
@@ -98,11 +99,6 @@ public class NoteInputData extends UnicastRemoteObject{
             DatabaseManager.releaseConnection(connection, statement, resultSet);
             return null;
         }
-    }
-
-    public static void main(String[] args) throws RemoteException, SQLException {
-        NoteInputData data = new NoteInputData();
-        data.changeGoodsState("0123456789",GoodsState.COMPLETE);
     }
 
 }

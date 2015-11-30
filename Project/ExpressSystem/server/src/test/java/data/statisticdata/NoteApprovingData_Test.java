@@ -26,7 +26,7 @@ public class NoteApprovingData_Test {
     protected NoteApprovingDataService service;
 
     public NoteApprovingData_Test() throws RemoteException {
-        service = new NoteApprovingData();
+//        service = new NoteApprovingData();
     }
 
     //    @Test

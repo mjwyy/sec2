@@ -29,15 +29,18 @@ import java.util.ArrayList;
  */
 public class DeliveryNoteInputData extends NoteInputData implements DeliveryNoteInputDataService {
 
-    private OrderInquiryDataService orderDataService = new OrderInquiryData();
-    private BusinessDataModificationDataService businessDataModificationDataService
-             = new BusinessDataModificationData();
+    private OrderInquiryDataService orderDataService;
+    private BusinessDataModificationDataService businessDataModificationDataService;
 
     private PriceStrategy priceStrategy = new PriceStrategy();
     private TimePresumeStrategy timePresumeStrategy = new TimePresumeStrategy();
     private CityManager cityManager = new CityManager();
 
-    public DeliveryNoteInputData() throws RemoteException {
+    public DeliveryNoteInputData(OrderInquiryDataService orderDataService,
+                                 BusinessDataModificationDataService businessDataModificationDataService)
+            throws RemoteException {
+        this.orderDataService = orderDataService;
+        this.businessDataModificationDataService = businessDataModificationDataService;
     }
 
     @Override
@@ -55,18 +58,16 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
         statement.setString(4, po.getReceiverAddress());
         statement.setDouble(5, po.getPackPrice());
         statement.setDouble(6, po.getWeight());
-        statement.setString(7, "测试");
-        statement.setString(8, po.getReceiverName());
-        statement.setInt(9, po.getGoodsNumber());
-        statement.setString(10, po.getReceiverTeleNumber());
-        statement.setString(11, po.getSenderAddress());
-        statement.setString(12, po.getSenderName());
-        statement.setString(13, po.getName());
-        statement.setString(14, po.getBarCode());
+        statement.setString(7, po.getReceiverName());
+        statement.setInt(8, po.getGoodsNumber());
+        statement.setString(9, po.getReceiverTeleNumber());
+        statement.setString(10, po.getSenderAddress());
+        statement.setString(11, po.getSenderName());
+        statement.setString(12, po.getName());
+        statement.setString(13, po.getBarCode());
         int result = statement.executeUpdate();
         if (result < 0)
             throw new SQLException();
-        //TODO 获取业务员的信息
         String deliveryMan = UserInfoHelper.getName("");
         String orderInfo = "货物已被快递员 "+deliveryMan+" 签收;";
         //记录系统日志

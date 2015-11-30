@@ -1,6 +1,5 @@
 package data.logisticdata;
 
-import static org.junit.Assert.*;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -9,8 +8,6 @@ import java.util.ArrayList;
 import dataservice.exception.ElementNotFoundException;
 import org.junit.Test;
 
-import data.logisticdata.MockObject.MockArrivalNoteOnTransit;
-import dataservice.logisticdataservice.ArrivalNoteOnTransitDataService;
 import po.ArrivalNoteOnTransitPO;
 import util.BarcodeAndState;
 import util.enums.GoodsState;
@@ -38,6 +35,11 @@ public class ArrivalNoteOnTransit_Test {
         ArrivalNoteOnTransitPO mock = new ArrivalNoteOnTransitPO(
                 "025001201511260003", "025100", "2011-11-11", "北京", BarcodeAndStates);
         service.insert(mock);
+    }
+
+    @Test
+    public void test(){
+        System.out.println("123");
     }
 
 }

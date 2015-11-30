@@ -5,6 +5,7 @@ import po.ReceivingNotePO;
 import util.ResultMsg;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -33,7 +34,12 @@ public class ReceivingNoteInputDataService_Stub implements ReceivingNoteInputDat
         return null;
     }
 
-     
+    @Override
+    public ArrayList<ReceivingNotePO> getReceivingNote() throws SQLException {
+        return null;
+    }
+
+
     public boolean delete(ReceivingNotePO po) throws RemoteException {
         System.out.println("delete succeed!");
         return true;

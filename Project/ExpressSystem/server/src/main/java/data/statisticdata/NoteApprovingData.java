@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import data.database.SqlHelper;
-import po.NotePO;
+import data.logisticdata.*;
+import dataservice.logisticdataservice.*;
+import po.*;
 import util.enums.DocType;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.statisticdataservice.NoteApprovingDataService;
@@ -18,10 +20,26 @@ import dataservice.statisticdataservice.NoteApprovingDataService;
  */
 public class NoteApprovingData implements NoteApprovingDataService {
 
+    private ArrivalNoteOnServiceDataService arrivalNoteOnServiceDataService;
+    private ArrivalNoteOnTransitDataService arrivalNoteOnTransitDataService;
+    private DeliveryNoteInputDataService deliveryNoteInputDataService;
+    private LoadNoteOnServiceDataService loadNoteOnServiceDataService;
+    private LoadNoteOnTransitDataService loadNoteOnTransitDataService;
+    private ReceivingNoteInputDataService receivingNoteInputDataService;
+    private TransitNoteInputDataService transitNoteInputDataService;
+
     private HashMap<String, String> nameAndTableName;
     private HashMap<String, String> nameAndTableID;
 
-    public NoteApprovingData() {
+    public NoteApprovingData() throws RemoteException {
+        arrivalNoteOnServiceDataService = new ArrivalNoteOnServiceData();
+        arrivalNoteOnTransitDataService = new ArrivalNoteOnTransitData();
+        deliveryNoteInputDataService = new DeliveryNoteInputData();
+        loadNoteOnServiceDataService = new LoadNoteOnServiceData();
+        loadNoteOnTransitDataService = new LoadNoteOnTransitData();
+        receivingNoteInputDataService = new ReceivingNoteInputData();
+        transitNoteInputDataService = new TransitNoteInputData();
+
         nameAndTableName = new HashMap<>();
         nameAndTableID = new HashMap<>();
 
@@ -44,14 +62,45 @@ public class NoteApprovingData implements NoteApprovingDataService {
         nameAndTableID.put("TransitNotePO", "transitDocNumber");
     }
 
+
     @Override
-    public ArrayList<NotePO> getAllDoc() throws RemoteException {
-        return null;
+    public ArrayList<ArrivalNoteOnServicePO> getArrivalNoteOnServicePO() throws RemoteException, SQLException {
+        return this.arrivalNoteOnServiceDataService.getArrivalNoteOnService();
     }
 
     @Override
-    public ArrayList<NotePO> getDocByType(DocType type) throws RemoteException {
-        return null;
+    public ArrayList<DeliverNoteOnServicePO> getDeliverNoteOnServicePO() throws RemoteException, SQLException {
+        return this.arrivalNoteOnServiceDataService.getDeliverNoteOnService();
+    }
+
+    @Override
+    public ArrayList<ArrivalNoteOnTransitPO> getArrivalNoteOnTransitPO() throws RemoteException, SQLException {
+        return this.arrivalNoteOnTransitDataService.getArrivalNoteOnTransit();
+    }
+
+    @Override
+    public ArrayList<DeliveryNotePO> getDeliveryNotePO() throws RemoteException, SQLException {
+        return this.deliveryNoteInputDataService.getDeliveryNote();
+    }
+
+    @Override
+    public ArrayList<LoadNoteOnServicePO> getLoadNoteOnServicePO() throws RemoteException, SQLException {
+        return this.loadNoteOnServiceDataService.getLoadNoteOnService();
+    }
+
+    @Override
+    public ArrayList<LoadNoteOnTransitPO> getLoadNoteOnTransitPO() throws RemoteException, SQLException {
+        return this.loadNoteOnTransitDataService.getLoadNoteOnTransit();
+    }
+
+    @Override
+    public ArrayList<ReceivingNotePO> getReceivingNotePO() throws RemoteException, SQLException {
+        return this.receivingNoteInputDataService.getReceivingNote();
+    }
+
+    @Override
+    public ArrayList<TransitNotePO> getTransitNotePO() throws RemoteException, SQLException {
+        return this.transitNoteInputDataService.getTransitNotePO();
     }
 
     @Override

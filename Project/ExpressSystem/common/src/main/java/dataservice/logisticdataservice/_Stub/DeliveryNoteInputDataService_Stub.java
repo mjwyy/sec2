@@ -6,6 +6,7 @@ import util.SendDocMsg;
 import util.enums.DeliverCategory;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -34,6 +35,11 @@ public class DeliveryNoteInputDataService_Stub implements DeliveryNoteInputDataS
     public SendDocMsg insert(DeliveryNotePO po) throws RemoteException {
         System.out.println("insert succeed!");
         return new SendDocMsg(true, "pass", 100, "2015-12-12");
+    }
+
+    @Override
+    public ArrayList<DeliveryNotePO> getDeliveryNote() throws SQLException {
+        return null;
     }
 
 

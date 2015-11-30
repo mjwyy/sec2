@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dataservice.exception.ElementNotFoundException;
-import po.NotePO;
+import po.*;
 import util.enums.DocType;
 
 /**
@@ -17,22 +17,29 @@ import util.enums.DocType;
  */
 public interface NoteApprovingDataService extends Remote, Serializable {
 	
-	/**
-	 * 获得所有未审批NotePO
-	 *
-	 * @return
-	 */
-	public ArrayList<NotePO> getAllDoc()
-			throws RemoteException;
-	
-	/**
-	 * 根据类型获取NotePO
-	 *
-	 * @param type
-	 * @return
-	 */
-	public ArrayList<NotePO> getDocByType(DocType type)
-			throws RemoteException;
+	ArrayList<ArrivalNoteOnServicePO> getArrivalNoteOnServicePO()
+            throws RemoteException, SQLException;
+    
+	ArrayList<DeliverNoteOnServicePO> getDeliverNoteOnServicePO()
+            throws RemoteException, SQLException;
+
+	ArrayList<ArrivalNoteOnTransitPO> getArrivalNoteOnTransitPO()
+            throws RemoteException, SQLException;
+
+	ArrayList<DeliveryNotePO> getDeliveryNotePO()
+            throws RemoteException, SQLException;
+
+	ArrayList<LoadNoteOnServicePO> getLoadNoteOnServicePO()
+            throws RemoteException, SQLException;
+
+	ArrayList<LoadNoteOnTransitPO> getLoadNoteOnTransitPO()
+            throws RemoteException, SQLException;
+
+	ArrayList<ReceivingNotePO> getReceivingNotePO()
+            throws RemoteException, SQLException;
+
+	ArrayList<TransitNotePO> getTransitNotePO()
+            throws RemoteException, SQLException;
 	
 	/**
 	 * 搜索docPO并通过之
@@ -40,7 +47,7 @@ public interface NoteApprovingDataService extends Remote, Serializable {
 	 * @param docPO
 	 * @return true for successful pass operation
 	 */
-	public boolean passDoc(NotePO docPO)
+	boolean passDoc(NotePO docPO)
             throws RemoteException, ElementNotFoundException, SQLException;
 
     /**
@@ -49,6 +56,6 @@ public interface NoteApprovingDataService extends Remote, Serializable {
 	 * @param docPO
 	 * @return true for successful decline operation
 	 */
-	public boolean failDoc(NotePO docPO, String comment)
+	boolean failDoc(NotePO docPO, String comment)
             throws RemoteException, ElementNotFoundException, SQLException;
 }

@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import dataservice.exception.ElementNotFoundException;
 import po.ReceivingNotePO;
@@ -22,4 +23,5 @@ public interface ReceivingNoteInputDataService extends Remote,Serializable {
 	 */
     ResultMsg insert(ReceivingNotePO po) throws RemoteException, SQLException, ElementNotFoundException;
 
+    ArrayList<ReceivingNotePO> getReceivingNote() throws SQLException;
 }

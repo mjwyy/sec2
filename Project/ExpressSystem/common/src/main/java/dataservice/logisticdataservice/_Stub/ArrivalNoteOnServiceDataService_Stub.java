@@ -9,6 +9,7 @@ import util.ResultMsg;
 import util.enums.GoodsState;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -40,8 +41,18 @@ public class ArrivalNoteOnServiceDataService_Stub implements ArrivalNoteOnServic
     }
 
     @Override
+    public ArrayList<ArrivalNoteOnServicePO> getArrivalNoteOnService() throws SQLException {
+        return null;
+    }
+
+    @Override
     public ResultMsg insertDeliverNote(DeliverNoteOnServicePO po) throws RemoteException {
         System.out.println("insertDeliverNote success");
+        return null;
+    }
+
+    @Override
+    public ArrayList<DeliverNoteOnServicePO> getDeliverNoteOnService() throws SQLException {
         return null;
     }
 

@@ -1,6 +1,7 @@
 package data.logisticdata;
 
 import data.database.DatabaseManager;
+import data.statisticdata.LogInsHelper;
 import data.statisticdata.LogInsertData;
 import data.statisticdata.OrderInquiryData;
 import dataservice.exception.ElementNotFoundException;
@@ -21,9 +22,6 @@ import java.util.ArrayList;
  * Created by kylin on 15/11/10.
  */
 public class ArrivalNoteOnTransitData extends NoteInputData implements ArrivalNoteOnTransitDataService {
-
-    private OrderInquiryData orderDataService;
-    private LogInsertData logInsertData;
 
     public ArrivalNoteOnTransitData() throws RemoteException {
     }
@@ -51,8 +49,8 @@ public class ArrivalNoteOnTransitData extends NoteInputData implements ArrivalNo
         statement.executeUpdate();
         statement.close();
         //记录系统日志
-        logInsertData = new LogInsertData();
-        logInsertData.insertSystemLog("中转中心业务员?新增中转中心到达单,单据编号:" + po.getTransferNumber());
+        LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+po.getUserName()+
+                "新增中转中心到达单,单据编号:" + po.getTransferNumber());
 
         //等待总经理审批过程,反复查询
         DocState result = this.waitForCheck("note_arrival_on_transit",
@@ -62,10 +60,9 @@ public class ArrivalNoteOnTransitData extends NoteInputData implements ArrivalNo
         if (result == DocState.PASSED) {
             System.out.println("ArrivalNoteOnTransitPO is passed!");
             //追加修改物流信息
-            orderDataService = new OrderInquiryData();
             for (BarcodeAndState history : barcodeAndState) {
-                orderDataService.updateOrder(history.getBarcode(),
-                        history.getState(), "已到达?中转中心!");
+                this.updateOrder(history.getBarcode(),
+                        history.getState(), "已到达"+po.getTransferNumber());
             }
             resultMsg.setPass(true);
             //审批没有通过
@@ -80,6 +77,7 @@ public class ArrivalNoteOnTransitData extends NoteInputData implements ArrivalNo
         return resultMsg;
     }
 
+    @Override
     public ArrayList<ArrivalNoteOnTransitPO> getArrivalNoteOnTransit() throws SQLException {
         ArrayList<ArrivalNoteOnTransitPO> result = new ArrayList<>();
         Connection connection = DatabaseManager.getConnection();

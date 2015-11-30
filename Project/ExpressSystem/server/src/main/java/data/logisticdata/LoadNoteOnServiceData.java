@@ -1,6 +1,7 @@
 package data.logisticdata;
 
 import data.database.DatabaseManager;
+import data.statisticdata.LogInsHelper;
 import data.statisticdata.LogInsertData;
 import data.statisticdata.OrderInquiryData;
 import data.statisticdata.inte.LogInsertDataService;
@@ -24,10 +25,6 @@ import java.util.ArrayList;
  * Created by kylin on 15/11/10.
  */
 public class LoadNoteOnServiceData extends NoteInputData implements LoadNoteOnServiceDataService {
-
-
-    private LogInsertDataService logInsertData;
-    private OrderInquiryData orderDataService;
 
     public LoadNoteOnServiceData() throws RemoteException {
     }
@@ -57,8 +54,7 @@ public class LoadNoteOnServiceData extends NoteInputData implements LoadNoteOnSe
         statement.close();
 
         //记录系统日志
-        logInsertData = new LogInsertData();
-        logInsertData.insertSystemLog("营业厅业务员?新增营业厅到达单,单据编号:" + po.getTranspotationNumber());
+        LogInsHelper.insertLog("营业厅业务员?新增营业厅到达单,单据编号:" + po.getTranspotationNumber());
 
         //等待总经理审批过程,反复查询
         DocState result = this.waitForCheck("note_load_on_service",
@@ -68,10 +64,9 @@ public class LoadNoteOnServiceData extends NoteInputData implements LoadNoteOnSe
         if (result == DocState.PASSED) {
             System.out.println("ArrivalNoteOnTransitPO is passed!");
             //追加修改物流信息
-            orderDataService = new OrderInquiryData();
             for (String barcode : barcodes) {
-                orderDataService.updateOrder(barcode,GoodsState.COMPLETE,
-                        "已到达?营业厅!");
+                this.updateOrder(barcode,GoodsState.COMPLETE,
+                        "已到达"+po.getOrganization());
             }
             resultMsg.setPass(true);
             //审批没有通过
@@ -86,6 +81,7 @@ public class LoadNoteOnServiceData extends NoteInputData implements LoadNoteOnSe
         return resultMsg;
     }
 
+    @Override
     public ArrayList<LoadNoteOnServicePO> getLoadNoteOnService() throws SQLException {
         ArrayList<LoadNoteOnServicePO> result = new ArrayList<>();
         Connection connection = DatabaseManager.getConnection();

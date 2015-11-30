@@ -1,7 +1,10 @@
 package data.logisticdata;
 
 import data.database.DatabaseManager;
+import data.database.SqlHelper;
+import dataservice.exception.ElementNotFoundException;
 import util.enums.DocState;
+import util.enums.GoodsState;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -9,6 +12,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by kylin on 15/11/26.
@@ -60,6 +65,44 @@ public class NoteInputData extends UnicastRemoteObject{
             System.out.println("note is waiting for check...");
         }
         return result;
+    }
+
+    public boolean updateOrder(String barcode, GoodsState goodsState, String newMesg) throws RemoteException,
+            ElementNotFoundException, SQLException {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String currentTime = df.format(new Date());
+        this.changeGoodsState(barcode,goodsState);
+        String msg = (currentTime+","+newMesg+";");
+        String sql = "update `order` set `history` = concat(`history`, '"+msg+"') " +
+                "where barcode = '"+barcode+"'";
+        return SqlHelper.excUpdate(sql);
+    }
+
+    public boolean changeGoodsState(String barcode, GoodsState goodsState) throws SQLException {
+        String sql = "update `order` set `stateOfTransport` = '"+goodsState.toString()+"' "
+                +"where barcode = '"+barcode+"'";
+        return SqlHelper.excUpdate(sql);
+    }
+
+    public GoodsState getGoodsState(String barcode) throws SQLException {
+        Connection connection = DatabaseManager.getConnection();
+        String sql = "select `stateOfTransport` from `order` where `barcode` = '"+barcode+"'";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+        if(resultSet.next()){
+            String state = resultSet.getString("stateOfTransport");
+            DatabaseManager.releaseConnection(connection, statement, resultSet);
+            return GoodsState.getGoodsState(state);
+        }
+        else{
+            DatabaseManager.releaseConnection(connection, statement, resultSet);
+            return null;
+        }
+    }
+
+    public static void main(String[] args) throws RemoteException, SQLException {
+        NoteInputData data = new NoteInputData();
+        data.changeGoodsState("0123456789",GoodsState.COMPLETE);
     }
 
 }

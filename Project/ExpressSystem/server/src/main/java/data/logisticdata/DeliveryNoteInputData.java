@@ -70,7 +70,8 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
         String deliveryMan = UserInfoHelper.getName("");
         String orderInfo = "货物已被快递员 "+deliveryMan+" 签收;";
         //记录系统日志
-        LogInsHelper.insertLog("营业厅业务员"+deliveryMan+"新增寄件单,单据编号:" + po.getBarCode());
+        LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+deliveryMan+
+                "新增寄件单,单据编号:" + po.getBarCode());
         //等待总经理审批过程,反复查询
         DocState docState = this.waitForCheck("note_delivery", "barCode", po.getBarCode());
         //审批通过
@@ -97,6 +98,7 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
         return sendDocMsg;
     }
 
+    @Override
     public ArrayList<DeliveryNotePO> getDeliveryNote() throws SQLException {
         ArrayList<DeliveryNotePO> result = new ArrayList<>();
         Connection connection = DatabaseManager.getConnection();

@@ -1,6 +1,7 @@
 package data.logisticdata;
 
 import data.database.DatabaseManager;
+import data.statisticdata.LogInsHelper;
 import data.statisticdata.LogInsertData;
 import data.statisticdata.OrderInquiryData;
 import dataservice.exception.ElementNotFoundException;
@@ -24,9 +25,6 @@ public class LoadNoteOnTransitData extends NoteInputData implements LoadNoteOnTr
 
     public LoadNoteOnTransitData() throws RemoteException {
     }
-
-    private LogInsertData logInsertData;
-    private OrderInquiryData orderDataService;
 
     @Override
     public ResultMsg insert(LoadNoteOnTransitPO po) throws RemoteException, SQLException, ElementNotFoundException {
@@ -54,8 +52,8 @@ public class LoadNoteOnTransitData extends NoteInputData implements LoadNoteOnTr
         statement.close();
 
         //记录系统日志
-        logInsertData = new LogInsertData();
-        logInsertData.insertSystemLog("中转中心业务员?新增中转中心装车单,单据编号:" + po.getTranspotationNumber());
+        LogInsHelper.insertLog(po.getOrganization()+" 业务员"+po.getUserName()+
+                "新增中转中心装车单,单据编号:" + po.getTranspotationNumber());
 
         //等待总经理审批过程,反复查询
         DocState result = this.waitForCheck("note_load_on_transit",
@@ -65,10 +63,9 @@ public class LoadNoteOnTransitData extends NoteInputData implements LoadNoteOnTr
         if (result == DocState.PASSED) {
             System.out.println("LoadNoteOnTransit is passed!");
             //追加修改物流信息
-            orderDataService = new OrderInquiryData();
             for (String barcode : barcodes) {
-                orderDataService.updateOrder(barcode,GoodsState.COMPLETE,
-                        "已从?中转中心装车,发往本地营业厅!");
+                this.updateOrder(barcode,GoodsState.COMPLETE,
+                        "已从"+po.getOrganization()+"装车发往本地营业厅");
             }
             resultMsg.setPass(true);
             //审批没有通过
@@ -83,6 +80,7 @@ public class LoadNoteOnTransitData extends NoteInputData implements LoadNoteOnTr
         return resultMsg;
     }
 
+    @Override
     public ArrayList<LoadNoteOnTransitPO> getLoadNoteOnTransit() throws SQLException {
         ArrayList<LoadNoteOnTransitPO> result = new ArrayList<>();
         Connection connection = DatabaseManager.getConnection();

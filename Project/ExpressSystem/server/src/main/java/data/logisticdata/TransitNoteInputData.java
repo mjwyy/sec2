@@ -1,6 +1,7 @@
 package data.logisticdata;
 
 import data.database.DatabaseManager;
+import data.statisticdata.LogInsHelper;
 import data.statisticdata.LogInsertData;
 import data.statisticdata.OrderInquiryData;
 import dataservice.exception.ElementNotFoundException;
@@ -23,9 +24,6 @@ import java.util.ArrayList;
  * Created by kylin on 15/11/10.
  */
 public class TransitNoteInputData extends NoteInputData implements TransitNoteInputDataService {
-
-    private LogInsertData logInsertData;
-    private OrderInquiryData orderDataService;
 
     public TransitNoteInputData() throws RemoteException {
     }
@@ -56,8 +54,8 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
         statement.close();
 
         //记录系统日志
-        logInsertData = new LogInsertData();
-        logInsertData.insertSystemLog("中转中心业务员?新增中转单,单据编号:" + po.getTransitDocNumber());
+        LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+po.getUserName()+
+                "新增中转单,单据编号:" + po.getTransitDocNumber());
 
         //等待总经理审批过程,反复查询
         DocState result = this.waitForCheck("note_transit",
@@ -67,11 +65,10 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
         if (result == DocState.PASSED) {
             System.out.println("TransitNote is passed!");
             //追加修改物流信息
-            orderDataService = new OrderInquiryData();
             for (BarcodesAndLocation barcodesAndLocation : barcodesAndLocationArrayList) {
                 String barcode = barcodesAndLocation.getBarcode();
-                orderDataService.updateOrder(barcode, GoodsState.COMPLETE,
-                        "已从?中转中心发往"+po.getDesitination()+"中转中心");
+                this.updateOrder(barcode, GoodsState.COMPLETE,
+                        "已从 "+po.getOrganization()+" 发往 "+po.getDesitination()+" 中转中心");
             }
             resultMsg.setPass(true);
             //审批没有通过
@@ -86,6 +83,7 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
         return resultMsg;
     }
 
+    @Override
     public ArrayList<TransitNotePO> getTransitNotePO() throws SQLException {
         ArrayList<TransitNotePO> result = new ArrayList<>();
         Connection connection = DatabaseManager.getConnection();

@@ -12,12 +12,7 @@ public class NoteApprovingBLService_Driver {
 		}else{
 			System.out.println("Null return");
 		}
-		
-		if(service.getDocByType(null)!=null){
-			System.out.println("Got list");
-		}else{
-			System.out.println("Null return");
-		}
+
 		
 		service.passAllDoc();
 

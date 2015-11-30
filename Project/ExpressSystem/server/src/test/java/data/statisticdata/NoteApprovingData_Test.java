@@ -22,8 +22,12 @@ import util.enums.TransitType;
 import vo.LoadNoteOnServiceVO;
 
 public class NoteApprovingData_Test {
-	
-	private NoteApprovingDataService service = new NoteApprovingData();
+
+    protected NoteApprovingDataService service;
+
+    public NoteApprovingData_Test() throws RemoteException {
+        service = new NoteApprovingData();
+    }
 
     //    @Test
     public void testArrivalOnServiceDoc() throws RemoteException, ElementNotFoundException, SQLException {

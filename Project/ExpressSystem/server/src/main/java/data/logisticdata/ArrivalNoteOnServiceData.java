@@ -1,6 +1,7 @@
 package data.logisticdata;
 
 import data.database.DatabaseManager;
+import data.statisticdata.LogInsHelper;
 import data.statisticdata.LogInsertData;
 import data.statisticdata.OrderInquiryData;
 import dataservice.exception.ElementNotFoundException;
@@ -23,9 +24,6 @@ import java.util.ArrayList;
  * Created by kylin on 15/11/16.
  */
 public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNoteOnServiceDataService {
-
-    private OrderInquiryData orderDataService;
-    private LogInsertData logInsertData;
 
     public ArrivalNoteOnServiceData() throws RemoteException {
     }
@@ -56,8 +54,8 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
         statement.executeUpdate();
         statement.close();
         //记录系统日志
-        logInsertData = new LogInsertData();
-        logInsertData.insertSystemLog("营业员添加营业厅到达单,单据编号:" + po.getTransferNumber());
+        LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+po.getUserName()+
+                "添加营业厅到达单,单据编号:" + po.getTransferNumber());
         //等待总经理审批过程,反复查询
         DocState result = this.waitForCheck("note_arrival_on_service",
                 "TransferNumber", po.getTransferNumber());
@@ -66,10 +64,9 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
         if (result == DocState.PASSED) {
             System.out.println("ArrivalNoteOnServicePO is passed!");
             //追加修改物流信息
-            orderDataService = new OrderInquiryData();
             for (BarcodeAndState history : barcodeAndState) {
-                orderDataService.updateOrder(history.getBarcode(),
-                        history.getState(), "货物已到达某某营业厅!");
+                this.updateOrder(history.getBarcode(), history.getState(),
+                        "已到达"+po.getOrganization());
             }
             resultMsg.setPass(true);
             //审批没有通过
@@ -84,6 +81,7 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
         return resultMsg;
     }
 
+    @Override
     public ArrayList<ArrivalNoteOnServicePO> getArrivalNoteOnService() throws SQLException {
         ArrayList<ArrivalNoteOnServicePO> result = new ArrayList<>();
         Connection connection = DatabaseManager.getConnection();
@@ -102,7 +100,7 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
             ArrayList<BarcodeAndState> barcodeAndStates = new ArrayList<>();
             for(String str:allBarcode){
                 if(!str.equals("")){
-                    barcodeAndStates.add(new BarcodeAndState(str,GoodsState.COMPLETE));
+                    barcodeAndStates.add(new BarcodeAndState(str,this.getGoodsState(str)));
                 }
             }
             arrivalNoteOnServicePO = new ArrivalNoteOnServicePO(date,isTransit,transferNumber,from,barcodeAndStates);
@@ -133,8 +131,8 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
         statement.executeUpdate();
         statement.close();
         //记录系统日志
-        logInsertData = new LogInsertData();
-        logInsertData.insertSystemLog("?营业员添加派件单,派件员:"+po.getDeliveryMan());
+        LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+po.getUserName()+
+                "添加派件单,派件员:"+po.getDeliveryMan());
         //等待总经理审批过程,反复查询
         DocState result = this.waitForCheck("note_delivery_on_service",
                 "id", po.getID());
@@ -143,10 +141,9 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
         if (result == DocState.PASSED) {
             System.out.println("DeliverNoteOnService is passed!");
             //追加修改物流信息
-            orderDataService = new OrderInquiryData();
             for (String barcode : barcodes) {
-                orderDataService.updateOrder(barcode,GoodsState.COMPLETE,
-                        "正由?快递员派送!");
+                this.updateOrder(barcode,GoodsState.COMPLETE,
+                        "正由 "+po.getUserName()+" 快递员派送");
             }
             resultMsg.setPass(true);
             //审批没有通过
@@ -160,4 +157,32 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
         DatabaseManager.releaseConnection(connection, statement, null);
         return null;
     }
+
+    @Override
+    public ArrayList<DeliverNoteOnServicePO> getDeliverNoteOnService() throws SQLException {
+        ArrayList<DeliverNoteOnServicePO> result = new ArrayList<>();
+        Connection connection = DatabaseManager.getConnection();
+        String sql = "select * from `note_arrival_on_service` where isPassed = 0";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+        DeliverNoteOnServicePO deliverNoteOnServicePO;
+        while(resultSet.next()){
+            String id = resultSet.getString("id");
+            String date = resultSet.getString("date");
+            String man = resultSet.getString("deliveryMan");
+            String barcodes =  resultSet.getString("barcodes");
+            String[] split = barcodes.split(";");
+            ArrayList<String> allBarcodes = new ArrayList<>();
+            for(String str : split){
+                if(!str.equals("")){
+                    allBarcodes.add(str);
+                }
+            }
+            deliverNoteOnServicePO = new DeliverNoteOnServicePO(id,date,allBarcodes,man);
+            result.add(deliverNoteOnServicePO);
+        }
+        DatabaseManager.releaseConnection(connection, statement, resultSet);
+        return result;
+    }
+
 }

@@ -5,6 +5,7 @@ import po.LoadNoteOnTransitPO;
 import util.ResultMsg;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -41,7 +42,12 @@ public class LoadNoteOnTransitDataService_Stub implements LoadNoteOnTransitDataS
 		return null;
     }
 
-     
+    @Override
+    public ArrayList<LoadNoteOnTransitPO> getLoadNoteOnTransit() throws SQLException {
+        return null;
+    }
+
+
     public boolean delete(LoadNoteOnTransitPO po) throws RemoteException {
         System.out.println("delete succeed!");
 		return true;

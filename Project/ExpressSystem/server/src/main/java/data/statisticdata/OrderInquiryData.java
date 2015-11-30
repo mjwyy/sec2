@@ -25,7 +25,21 @@ import util.enums.GoodsState;
  */
 public class OrderInquiryData implements OrderInquiryDataService{
 
-	@Override
+    @Override
+    public boolean insertOrderPO(String barcode, String info) throws RemoteException, SQLException {
+        Connection connection = DatabaseManager.getConnection();
+        String sql = "insert into order( `barcode`, `stateOfTransport`, `history`) " +
+                "values (?,?,?)";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, barcode);
+        statement.setString(2, GoodsState.COMPLETE.toString());
+        statement.setString(3, info);
+        int result = statement.executeUpdate();
+        DatabaseManager.releaseConnection(connection, statement, null);
+        return result > 0;
+    }
+
+    @Override
 	public OrderPO findOrder(String barcode) throws RemoteException,
             ElementNotFoundException, SQLException {
         Connection connection = DatabaseManager.getConnection();
@@ -48,30 +62,5 @@ public class OrderInquiryData implements OrderInquiryDataService{
         return po;
 	}
 
-    public boolean insertOrderPO(String barcode, String info) throws RemoteException, SQLException {
-        Connection connection = DatabaseManager.getConnection();
-        String sql = "insert into order( `barcode`, `stateOfTransport`, `history`) " +
-                "values (?,?,?)";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString(1, barcode);
-        statement.setString(2, GoodsState.COMPLETE.toString());
-        statement.setString(3, info);
-        int result = statement.executeUpdate();
-        DatabaseManager.releaseConnection(connection, statement, null);
-        return result > 0;
-    }
-
-    public boolean updateOrder(String barcode, GoodsState goodsState, String newMesg) throws RemoteException,
-            ElementNotFoundException, SQLException {
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String currentTime = df.format(new Date());
-        String sql2 = "update `order` set `stateOfTransport` = '"+goodsState.toString()+"' "
-                +"where barcode = '"+barcode+"'";
-        SqlHelper.excUpdate(sql2);
-        String msg = (currentTime+","+newMesg);
-        String sql = "update `order` set `history` = concat(`history`, '"+msg+"') " +
-                "where barcode = '"+barcode+"'";
-        return SqlHelper.excUpdate(sql);
-    }
 
 }

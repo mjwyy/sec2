@@ -1,6 +1,7 @@
 package data.logisticdata;
 
 import data.database.DatabaseManager;
+import data.statisticdata.LogInsHelper;
 import data.statisticdata.LogInsertData;
 import data.statisticdata.OrderInquiryData;
 import dataservice.exception.ElementNotFoundException;
@@ -25,9 +26,6 @@ public class ReceivingNoteInputData extends NoteInputData implements ReceivingNo
 
     private static final long serialVersionUID = 7218888874956257035L;
 
-    private LogInsertData logInsertData;
-    private OrderInquiryData orderDataService;
-
     public ReceivingNoteInputData() throws RemoteException {
 
     }
@@ -45,8 +43,8 @@ public class ReceivingNoteInputData extends NoteInputData implements ReceivingNo
         statement.close();
 
         //记录系统日志
-        logInsertData = new LogInsertData();
-        logInsertData.insertSystemLog("营业厅业务员?新增收件单,单据编号:" + po.getBarcode());
+        LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+po.getUserName()+
+                "新增收件单,单据编号:" + po.getBarcode());
         System.out.println("Entered method insert");
         //等待总经理审批过程,反复查询
         DocState result = this.waitForCheck("note_receive_note",
@@ -54,14 +52,11 @@ public class ReceivingNoteInputData extends NoteInputData implements ReceivingNo
         ResultMsg resultMsg = new ResultMsg(false);
         //审批通过
         if (result == DocState.PASSED) {
-            System.out.println("ReceivingNote is passed!");
             //追加修改物流信息
-            orderDataService = new OrderInquiryData();
-            orderDataService.updateOrder("", GoodsState.COMPLETE,"");
+            this.updateOrder(po.getBarcode(), GoodsState.COMPLETE,"已被 "+po.getReceiveCustomer()+" 签收");
             resultMsg.setPass(true);
             //审批没有通过
         } else {
-            System.out.println("ReceivingNote is failed!");
             String advice = this.getFailedAdvice("note_receive_note",
                     "barcode", po.getBarcode());
             resultMsg.setMessage(advice);
@@ -72,6 +67,7 @@ public class ReceivingNoteInputData extends NoteInputData implements ReceivingNo
 
     }
 
+    @Override
     public ArrayList<ReceivingNotePO> getReceivingNote() throws SQLException {
         ArrayList<ReceivingNotePO> result = new ArrayList<>();
         Connection connection = DatabaseManager.getConnection();

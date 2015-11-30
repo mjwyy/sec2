@@ -34,7 +34,6 @@ public class OrderInquiry_Test {
 	
     @Test
     public void testUpdate() throws ElementNotFoundException, RemoteException, SQLException {
-        service.updateOrder("123456789", GoodsState.COMPLETE,"message2;");
     }
 
 

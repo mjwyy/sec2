@@ -7,6 +7,7 @@ import util.ResultMsg;
 import util.enums.GoodsState;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -35,7 +36,12 @@ public class ArrivalNoteOnTransitDataService_Stub implements ArrivalNoteOnTransi
         return new ResultMsg(true);
     }
 
-     
+    @Override
+    public ArrayList<ArrivalNoteOnTransitPO> getArrivalNoteOnTransit() throws SQLException {
+        return null;
+    }
+
+
     public boolean delete(ArrivalNoteOnTransitPO po) throws RemoteException {
         System.out.println("delete succeed!");
 		return true;

@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import dataservice.exception.ElementNotFoundException;
 import po.DeliveryNotePO;
@@ -20,4 +21,5 @@ public interface DeliveryNoteInputDataService extends Remote, Serializable {
 	 */
     SendDocMsg insert(DeliveryNotePO po) throws RemoteException, SQLException, ElementNotFoundException;
 
+    ArrayList<DeliveryNotePO> getDeliveryNote() throws SQLException;
 }

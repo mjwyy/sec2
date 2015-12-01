@@ -1,6 +1,7 @@
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/server/src/main/java/data/commoditydata/StorageInData.java
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/server/src/main/java/data/database/DatabaseFactory.java
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/server/src/main/java/data/database/DatabaseManager.java
+/Users/kylin/Desktop/sec2/Project/ExpressSystem/server/src/main/java/data/logisticdata/deliverystrategy/PriceStrategy.java
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/server/src/main/java/data/database/SqlHelper.java
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/server/src/main/java/data/statisticdata/NoteApprovingData.java
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/server/src/main/java/data/statisticdata/LogInsertData.java
@@ -25,10 +26,13 @@
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/server/src/main/java/data/database/ConnectionPool.java
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/server/src/main/java/data/logisticdata/ArrivalNoteOnTransitData.java
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/server/src/main/java/connection/RMIObjectProvider.java
+/Users/kylin/Desktop/sec2/Project/ExpressSystem/server/src/main/java/connection/StaticRmiSocketFactory.java
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/server/src/main/java/data/commoditydata/StorageOutData.java
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/server/src/main/java/data/logisticdata/DeliveryNoteInputData.java
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/server/src/main/java/data/statisticdata/inte/LogInsertDataService.java
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/server/src/main/java/data/infodata/SystemUserManagementData.java
+/Users/kylin/Desktop/sec2/Project/ExpressSystem/server/src/main/java/data/logisticdata/deliverystrategy/TimePresumeStrategy.java
+/Users/kylin/Desktop/sec2/Project/ExpressSystem/server/src/main/java/data/logisticdata/deliverystrategy/CityManager.java
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/server/src/main/java/data/statisticdata/LogInquiryData.java
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/server/src/main/java/data/infodata/StaffOrganizationManagementData.java
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/server/src/main/java/data/infodata/DriverVehicleManagementData.java
@@ -37,3 +41,4 @@
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/server/src/main/java/data/financedata/CreditNoteInputData.java
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/server/src/main/java/data/financedata/PaymentInputData.java
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/server/src/main/java/data/logisticdata/LoadNoteOnServiceData.java
+/Users/kylin/Desktop/sec2/Project/ExpressSystem/server/src/main/java/data/statisticdata/LogInsHelper.java

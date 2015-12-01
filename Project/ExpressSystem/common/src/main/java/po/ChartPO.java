@@ -55,6 +55,10 @@ public class ChartPO implements Serializable {
         return everyDay;
     }
 
+    public ArrayList<String> getEveryDay() {
+        return everyDay;
+    }
+
     public String getStartTime() {
         return startTime;
     }

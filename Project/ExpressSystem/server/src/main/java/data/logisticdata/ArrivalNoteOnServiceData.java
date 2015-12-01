@@ -64,10 +64,7 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
         if (result == DocState.PASSED) {
             System.out.println("ArrivalNoteOnServicePO is passed!");
             //追加修改物流信息
-            for (BarcodeAndState history : barcodeAndState) {
-                this.updateOrder(history.getBarcode(), history.getState(),
-                        "已到达"+po.getOrganization());
-            }
+            this.updateOrder(barcodeAndState, "已到达"+po.getOrganization());
             resultMsg.setPass(true);
             //审批没有通过
         } else {
@@ -82,7 +79,7 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
     }
 
     @Override
-    public ArrayList<ArrivalNoteOnServicePO> getArrivalNoteOnService() throws SQLException {
+    public ArrayList<ArrivalNoteOnServicePO> getArrivalNoteOnService() throws RemoteException,SQLException {
         ArrayList<ArrivalNoteOnServicePO> result = new ArrayList<>();
         Connection connection = DatabaseManager.getConnection();
         String sql = "select * from `note_arrival_on_service` where isPassed = 0";
@@ -140,10 +137,7 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
         if (result == DocState.PASSED) {
             System.out.println("DeliverNoteOnService is passed!");
             //追加修改物流信息
-            for (String barcode : barcodes) {
-                this.updateOrder(barcode,GoodsState.COMPLETE,
-                        "正由 "+po.getUserName()+" 快递员派送");
-            }
+            this.updateOrder("正由 "+po.getUserName()+" 快递员派送",barcodes);
             resultMsg.setPass(true);
             //审批没有通过
         } else {
@@ -158,10 +152,10 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
     }
 
     @Override
-    public ArrayList<DeliverNoteOnServicePO> getDeliverNoteOnService() throws SQLException {
+    public ArrayList<DeliverNoteOnServicePO> getDeliverNoteOnService() throws RemoteException,SQLException {
         ArrayList<DeliverNoteOnServicePO> result = new ArrayList<>();
         Connection connection = DatabaseManager.getConnection();
-        String sql = "select * from `note_arrival_on_service` where isPassed = 0";
+        String sql = "select * from `note_delivery_on_service` where isPassed = 0";
         PreparedStatement statement = connection.prepareStatement(sql);
         ResultSet resultSet = statement.executeQuery();
         DeliverNoteOnServicePO deliverNoteOnServicePO;

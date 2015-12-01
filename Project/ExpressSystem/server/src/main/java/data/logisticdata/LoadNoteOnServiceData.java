@@ -64,10 +64,7 @@ public class LoadNoteOnServiceData extends NoteInputData implements LoadNoteOnSe
         if (result == DocState.PASSED) {
             System.out.println("ArrivalNoteOnTransitPO is passed!");
             //追加修改物流信息
-            for (String barcode : barcodes) {
-                this.updateOrder(barcode,GoodsState.COMPLETE,
-                        "已到达"+po.getOrganization());
-            }
+            this.updateOrder("已到达"+po.getOrganization(),barcodes);
             resultMsg.setPass(true);
             //审批没有通过
         } else {
@@ -82,7 +79,7 @@ public class LoadNoteOnServiceData extends NoteInputData implements LoadNoteOnSe
     }
 
     @Override
-    public ArrayList<LoadNoteOnServicePO> getLoadNoteOnService() throws SQLException {
+    public ArrayList<LoadNoteOnServicePO> getLoadNoteOnService() throws RemoteException,SQLException {
         ArrayList<LoadNoteOnServicePO> result = new ArrayList<>();
         Connection connection = DatabaseManager.getConnection();
         String sql = "select * from `note_load_on_service` where isPassed = 0";

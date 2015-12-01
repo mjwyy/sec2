@@ -3,9 +3,12 @@ package data.logisticdata;
 import data.database.DatabaseManager;
 import data.database.SqlHelper;
 import dataservice.exception.ElementNotFoundException;
+import util.BarcodeAndState;
 import util.enums.DocState;
 import util.enums.GoodsState;
 
+import java.io.Serializable;
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
@@ -13,12 +16,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
  * Created by kylin on 15/11/26.
  */
-public class NoteInputData extends UnicastRemoteObject{
+public class NoteInputData extends UnicastRemoteObject implements Remote, Serializable {
 
     public NoteInputData() throws RemoteException {
         super();
@@ -67,23 +71,6 @@ public class NoteInputData extends UnicastRemoteObject{
         return result;
     }
 
-    public boolean updateOrder(String barcode, GoodsState goodsState, String newMesg) throws RemoteException,
-            ElementNotFoundException, SQLException {
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String currentTime = df.format(new Date());
-        this.changeGoodsState(barcode,goodsState);
-        String msg = (currentTime+","+newMesg+";");
-        String sql = "update `order` set `history` = concat(`history`, '"+msg+"') " +
-                "where barcode = '"+barcode+"'";
-        return SqlHelper.excUpdate(sql);
-    }
-
-    public boolean changeGoodsState(String barcode, GoodsState goodsState) throws SQLException {
-        String sql = "update `order` set `stateOfTransport` = '"+goodsState.toString()+"' "
-                +"where barcode = '"+barcode+"'";
-        return SqlHelper.excUpdate(sql);
-    }
-
     public GoodsState getGoodsState(String barcode) throws SQLException {
         Connection connection = DatabaseManager.getConnection();
         String sql = "select `stateOfTransport` from `order` where `barcode` = '"+barcode+"'";
@@ -98,6 +85,50 @@ public class NoteInputData extends UnicastRemoteObject{
             DatabaseManager.releaseConnection(connection, statement, resultSet);
             return null;
         }
+    }
+
+    public void updateOrder(ArrayList<BarcodeAndState> barcodeAndState, String newMesg) throws SQLException {
+        Connection connection = DatabaseManager.getConnection();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String currentTime = df.format(new Date());
+        String msg = (currentTime+","+newMesg+";");
+        String barcode;
+        GoodsState goodsState;
+        PreparedStatement statement = connection.prepareStatement("");
+        for(BarcodeAndState barcodeState : barcodeAndState){
+            barcode = barcodeState.getBarcode();
+            goodsState = barcodeState.getState();
+            statement.executeUpdate("update `order` set `history` = concat(`history`, '" + msg + "'), " +
+                    "`stateOfTransport` = '"+goodsState.toString()+"' where barcode = '"+barcode+"'");
+        }
+        DatabaseManager.releaseConnection(connection, statement, null);
+    }
+
+    public void updateOrder(String newMesg, ArrayList<String> barcodes) throws SQLException {
+        Connection connection = DatabaseManager.getConnection();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String currentTime = df.format(new Date());
+        String msg = (currentTime+","+newMesg+";");
+        PreparedStatement statement = connection.prepareStatement("");
+        for(String bar : barcodes){
+            statement.executeUpdate("update `order` set `history` = concat(`history`, '" + msg + "') " +
+                    " where `barcode` = '"+bar+"'");
+        }
+        DatabaseManager.releaseConnection(connection, statement, null);
+    }
+
+    public static void main(String[] args) throws RemoteException, SQLException {
+        NoteInputData data = new NoteInputData();
+        ArrayList<String> barcodes = new ArrayList<>();
+        barcodes.add("1234567891");
+        barcodes.add("1234567892");
+        barcodes.add("1234567890");
+//        data.updateOrder("test2",barcodes);
+        ArrayList<BarcodeAndState> barcodeAndState = new ArrayList<>();
+        barcodeAndState.add(new BarcodeAndState("1234567891",GoodsState.COMPLETE));
+        barcodeAndState.add(new BarcodeAndState("1234567892",GoodsState.DAMAGED));
+        barcodeAndState.add(new BarcodeAndState("1234567890",GoodsState.LOST));
+        data.updateOrder(barcodeAndState,"aaa");
     }
 
 }

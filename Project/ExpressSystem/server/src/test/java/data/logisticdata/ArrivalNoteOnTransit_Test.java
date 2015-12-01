@@ -23,7 +23,7 @@ public class ArrivalNoteOnTransit_Test {
         service = new ArrivalNoteOnTransitData();
     }
 
-    @Test
+//    @Test
     public void testInsert() throws RemoteException, SQLException, ElementNotFoundException {
         BarcodeAndState bar=new BarcodeAndState("0123456789",GoodsState.COMPLETE);
     	BarcodeAndState bar2=new BarcodeAndState("0123456790",GoodsState.COMPLETE);
@@ -38,8 +38,8 @@ public class ArrivalNoteOnTransit_Test {
     }
 
     @Test
-    public void test(){
-        System.out.println("123");
+    public void testFind() throws SQLException, RemoteException {
+        service.getArrivalNoteOnTransit();
     }
 
 }

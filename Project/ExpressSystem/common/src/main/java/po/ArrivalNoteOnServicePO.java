@@ -83,4 +83,5 @@ public class ArrivalNoteOnServicePO extends NotePO implements Serializable{
     public NoteVO toVO() {
         return new ArrivalNoteOnServiceVO(date,isTransit,TransferNumber,from,BarcodeAndStates);
     }
+
 }

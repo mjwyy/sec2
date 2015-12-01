@@ -53,7 +53,9 @@ public class ReceivingNoteInputData extends NoteInputData implements ReceivingNo
         //审批通过
         if (result == DocState.PASSED) {
             //追加修改物流信息
-            this.updateOrder(po.getBarcode(), GoodsState.COMPLETE,"已被 "+po.getReceiveCustomer()+" 签收");
+            ArrayList<String> bars = new ArrayList<>();
+            bars.add(po.getBarcode());
+            this.updateOrder("已被 "+po.getReceiveCustomer()+" 签收",bars);
             resultMsg.setPass(true);
             //审批没有通过
         } else {
@@ -68,7 +70,7 @@ public class ReceivingNoteInputData extends NoteInputData implements ReceivingNo
     }
 
     @Override
-    public ArrayList<ReceivingNotePO> getReceivingNote() throws SQLException {
+    public ArrayList<ReceivingNotePO> getReceivingNote() throws RemoteException,SQLException {
         ArrayList<ReceivingNotePO> result = new ArrayList<>();
         Connection connection = DatabaseManager.getConnection();
         String sql = "select * from `note_receive_note` where isPassed = 0";

@@ -21,5 +21,5 @@ public interface ArrivalNoteOnTransitDataService extends Remote, Serializable {
 	 */
     ResultMsg insert(ArrivalNoteOnTransitPO po) throws RemoteException, SQLException, ElementNotFoundException;
 
-    ArrayList<ArrivalNoteOnTransitPO> getArrivalNoteOnTransit() throws SQLException;
+    ArrayList<ArrivalNoteOnTransitPO> getArrivalNoteOnTransit() throws SQLException, RemoteException;
 }

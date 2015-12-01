@@ -21,5 +21,5 @@ public interface DeliveryNoteInputDataService extends Remote, Serializable {
 	 */
     SendDocMsg insert(DeliveryNotePO po) throws RemoteException, SQLException, ElementNotFoundException;
 
-    ArrayList<DeliveryNotePO> getDeliveryNote() throws SQLException;
+    ArrayList<DeliveryNotePO> getDeliveryNote() throws SQLException, RemoteException;
 }

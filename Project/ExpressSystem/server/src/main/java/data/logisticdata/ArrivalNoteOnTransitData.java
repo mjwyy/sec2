@@ -11,6 +11,7 @@ import util.BarcodeAndState;
 import util.ResultMsg;
 import util.enums.DocState;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -60,10 +61,7 @@ public class ArrivalNoteOnTransitData extends NoteInputData implements ArrivalNo
         if (result == DocState.PASSED) {
             System.out.println("ArrivalNoteOnTransitPO is passed!");
             //追加修改物流信息
-            for (BarcodeAndState history : barcodeAndState) {
-                this.updateOrder(history.getBarcode(),
-                        history.getState(), "已到达"+po.getTransferNumber());
-            }
+            this.updateOrder(barcodeAndState,"已到达"+po.getTransferNumber());
             resultMsg.setPass(true);
             //审批没有通过
         } else {
@@ -78,7 +76,7 @@ public class ArrivalNoteOnTransitData extends NoteInputData implements ArrivalNo
     }
 
     @Override
-    public ArrayList<ArrivalNoteOnTransitPO> getArrivalNoteOnTransit() throws SQLException {
+    public ArrayList<ArrivalNoteOnTransitPO> getArrivalNoteOnTransit() throws RemoteException,SQLException {
         ArrayList<ArrivalNoteOnTransitPO> result = new ArrayList<>();
         Connection connection = DatabaseManager.getConnection();
         String sql = "select * from `note_arrival_on_transit` where isPassed = 0";

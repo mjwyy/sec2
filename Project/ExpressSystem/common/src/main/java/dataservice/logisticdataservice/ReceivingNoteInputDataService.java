@@ -23,5 +23,5 @@ public interface ReceivingNoteInputDataService extends Remote,Serializable {
 	 */
     ResultMsg insert(ReceivingNotePO po) throws RemoteException, SQLException, ElementNotFoundException;
 
-    ArrayList<ReceivingNotePO> getReceivingNote() throws SQLException;
+    ArrayList<ReceivingNotePO> getReceivingNote() throws SQLException, RemoteException;
 }

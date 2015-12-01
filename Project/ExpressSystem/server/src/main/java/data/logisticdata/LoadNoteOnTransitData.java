@@ -63,10 +63,7 @@ public class LoadNoteOnTransitData extends NoteInputData implements LoadNoteOnTr
         if (result == DocState.PASSED) {
             System.out.println("LoadNoteOnTransit is passed!");
             //追加修改物流信息
-            for (String barcode : barcodes) {
-                this.updateOrder(barcode,GoodsState.COMPLETE,
-                        "已从"+po.getOrganization()+"装车发往本地营业厅");
-            }
+            this.updateOrder( "已从"+po.getOrganization()+"装车发往本地营业厅",barcodes);
             resultMsg.setPass(true);
             //审批没有通过
         } else {
@@ -81,7 +78,7 @@ public class LoadNoteOnTransitData extends NoteInputData implements LoadNoteOnTr
     }
 
     @Override
-    public ArrayList<LoadNoteOnTransitPO> getLoadNoteOnTransit() throws SQLException {
+    public ArrayList<LoadNoteOnTransitPO> getLoadNoteOnTransit() throws RemoteException,SQLException {
         ArrayList<LoadNoteOnTransitPO> result = new ArrayList<>();
         Connection connection = DatabaseManager.getConnection();
         String sql = "select * from `note_load_on_transit` where isPassed = 0";

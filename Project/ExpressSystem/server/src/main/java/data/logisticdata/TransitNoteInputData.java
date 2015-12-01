@@ -65,11 +65,10 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
         if (result == DocState.PASSED) {
             System.out.println("TransitNote is passed!");
             //追加修改物流信息
-            for (BarcodesAndLocation barcodesAndLocation : barcodesAndLocationArrayList) {
-                String barcode = barcodesAndLocation.getBarcode();
-                this.updateOrder(barcode, GoodsState.COMPLETE,
-                        "已从 "+po.getOrganization()+" 发往 "+po.getDesitination()+" 中转中心");
-            }
+            ArrayList<String> bars = new ArrayList<>();
+            for (BarcodesAndLocation barcodesAndLocation : barcodesAndLocationArrayList)
+                bars.add(barcodesAndLocation.getBarcode());
+            this.updateOrder("已从 "+po.getOrganization()+" 发往 "+po.getDesitination()+" 中转中心",bars);
             resultMsg.setPass(true);
             //审批没有通过
         } else {
@@ -84,7 +83,7 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
     }
 
     @Override
-    public ArrayList<TransitNotePO> getTransitNotePO() throws SQLException {
+    public ArrayList<TransitNotePO> getTransitNotePO() throws RemoteException,SQLException {
         ArrayList<TransitNotePO> result = new ArrayList<>();
         Connection connection = DatabaseManager.getConnection();
         String sql = "select * from `note_transit` where isPassed = 0";

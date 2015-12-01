@@ -24,7 +24,7 @@ public class LoadNoteOnService_Test {
         service = new LoadNoteOnServiceData();
     }
 
-    @Test
+//    @Test
     public void testInsert() throws RemoteException, SQLException, ElementNotFoundException {
         ArrayList<String> bar = new ArrayList<String>();
         bar.add("1234567890");
@@ -33,6 +33,11 @@ public class LoadNoteOnService_Test {
         LoadNoteOnServicePO po1 = new LoadNoteOnServicePO("2015-11-11", "0251000",
                 "02510002015092100004", "北京", "025000000", "李明", "张三", bar);
         service.insert(po1);
+    }
+
+    @Test
+    public void testFind() throws SQLException, RemoteException {
+        service.getLoadNoteOnService();
     }
 
 }

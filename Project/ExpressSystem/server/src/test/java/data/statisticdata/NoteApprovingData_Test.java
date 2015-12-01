@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import data.database.DatabaseFactory;
+import data.database.DatabaseFactoryMysqlImpl;
 import data.logisticdata.MockObject.MockArrivalNoteOnTransit;
 import data.logisticdata.MockObject.MockDeliveryNote;
 import org.junit.Test;
@@ -120,7 +121,7 @@ public class NoteApprovingData_Test {
         service.failDoc(po2, "不高兴3333");
     }
 
-    @Test
+//    @Test
     public void testTransitDoc() throws RemoteException, ElementNotFoundException, SQLException {
         TransitNotePO po1 = new TransitNotePO("2011-11-11", "025000201510120000005",
                 "MF8190", TransitType.Aircraft, "北京",
@@ -131,6 +132,28 @@ public class NoteApprovingData_Test {
                 "MF8190", TransitType.Aircraft, "北京",
                 "南京", "Tom", null);
         service.failDoc(po2, "不高兴2");
+    }
+
+
+    @Test
+    public void testFindeliverNote() throws RemoteException, SQLException {
+        NoteApprovingDataService dataService = DatabaseFactoryMysqlImpl.getInstance()
+                .getNoteApprovingDataService();
+        dataService.getDeliverNoteOnServicePO();
+    }
+
+//    @Test
+    public void testFind() throws RemoteException, SQLException {
+        NoteApprovingDataService dataService = DatabaseFactoryMysqlImpl.getInstance()
+                .getNoteApprovingDataService();
+        dataService.getTransitNotePO();
+        dataService.getArrivalNoteOnServicePO();
+        dataService.getArrivalNoteOnTransitPO();
+//        dataService.getDeliverNoteOnServicePO();
+        dataService.getDeliveryNotePO();
+        dataService.getLoadNoteOnServicePO();
+        dataService.getLoadNoteOnTransitPO();
+        dataService.getReceivingNotePO();
     }
 
 }

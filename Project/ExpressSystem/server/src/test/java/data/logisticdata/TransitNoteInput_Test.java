@@ -1,5 +1,6 @@
 package data.logisticdata;
 
+import data.database.DatabaseFactoryMysqlImpl;
 import data.logisticdata.MockObject.MockTransitNote;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.logisticdataservice.TransitNoteInputDataService;
@@ -24,10 +25,10 @@ public class TransitNoteInput_Test {
     private TransitNoteInputDataService service;
 
     public TransitNoteInput_Test() throws RemoteException {
-        service = new TransitNoteInputData();
+        service = DatabaseFactoryMysqlImpl.getInstance().getTransitNoteInputDataService();
     }
 
-    @Test
+//    @Test
     public void testInsert() throws RemoteException, SQLException, ElementNotFoundException {
         ArrayList<String> bar = new ArrayList<String>();
         bar.add("1234567890");
@@ -40,6 +41,12 @@ public class TransitNoteInput_Test {
                 "MF8190", TransitType.Aircraft, "北京",
                 "南京", "Tom", list);
         service.insert(po1);
+    }
+
+
+    @Test
+    public void testFind() throws SQLException, RemoteException {
+        service.getTransitNotePO();
     }
 
 }

@@ -19,7 +19,6 @@
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/dataservice/statisticdataservice/_Stub/LogInquiryDataService_Stub.java
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/po/VehiclePO.java
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/vo/IncomeNoteVO.java
-/Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/util/enums/CityManager.java
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/dataservice/infodataservice/_Driver/BankAccountManagementDataService_Driver.java
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/dataservice/logisticdataservice/_Driver/LoadNoteOnTransitDataService_Driver.java
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/po/DeliverNoteOnServicePO.java
@@ -93,8 +92,8 @@
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/dataservice/statisticdataservice/LogInquiryDataService.java
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/dataservice/statisticdataservice/_Driver/BaseDataBuildingDataService_Driver.java
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/dataservice/logisticdataservice/_Driver/LoadNoteOnServiceDataService_Driver.java
-/Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/dataservice/logisticdataservice/LoadNoteOnServiceDataService.java
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/vo/CostAndProfitChartVO.java
+/Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/dataservice/logisticdataservice/LoadNoteOnServiceDataService.java
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/po/chart/CostAndProfitChartPO.java
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/util/enums/StaffType.java
 /Users/kylin/Desktop/sec2/Project/ExpressSystem/common/src/main/java/util/enums/OrganizationType.java

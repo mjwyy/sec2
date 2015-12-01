@@ -5,6 +5,7 @@ import util.ResultMsg;
 import util.LogInMsg;
 import vo.UserVO;
 
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -113,6 +114,9 @@ public class SystemUserManagement implements SystemUserManagementBLService {
 			return dataService.logIn(userNum, initialPassword);
 		} catch (SQLException e) {
 			return new LogInMsg(false, null, "网络连接异常，目前无法登陆。");
-		}
+		} catch (RemoteException e) {
+            e.printStackTrace();
+            return new LogInMsg(false, null, "网络连接异常，目前无法登陆。");
+        }
     }
 }

@@ -23,10 +23,15 @@ public class ReceivingNoteInput_Test {
         service = new ReceivingNoteInputData();
     }
 
-    @Test
+//    @Test
     public void testInsert() throws RemoteException, SQLException, ElementNotFoundException {
         ReceivingNotePO po1 = new ReceivingNotePO("1234567893", "旭爷2", "2015-11-26 21:00");
         service.insert(po1);
     }
 
+
+    @Test
+    public void testFind() throws SQLException, RemoteException {
+        service.getReceivingNote();
+    }
 }

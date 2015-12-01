@@ -100,7 +100,7 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
     }
 
     @Override
-    public ArrayList<DeliveryNotePO> getDeliveryNote() throws SQLException {
+    public ArrayList<DeliveryNotePO> getDeliveryNote() throws RemoteException,SQLException {
         ArrayList<DeliveryNotePO> result = new ArrayList<>();
         Connection connection = DatabaseManager.getConnection();
         String sql = "select * from `note_delivery` where isPassed = 0";

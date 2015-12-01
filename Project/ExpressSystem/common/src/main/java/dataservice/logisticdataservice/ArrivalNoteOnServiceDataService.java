@@ -31,5 +31,5 @@ public interface ArrivalNoteOnServiceDataService extends Remote, Serializable {
      */
     ResultMsg insertDeliverNote(DeliverNoteOnServicePO po) throws RemoteException, SQLException, ElementNotFoundException;
 
-    ArrayList<DeliverNoteOnServicePO> getDeliverNoteOnService() throws SQLException;
+    ArrayList<DeliverNoteOnServicePO> getDeliverNoteOnService() throws RemoteException,SQLException;
 }

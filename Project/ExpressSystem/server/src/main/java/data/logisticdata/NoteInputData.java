@@ -20,7 +20,6 @@ import java.util.Date;
  */
 public class NoteInputData extends UnicastRemoteObject{
 
-
     public NoteInputData() throws RemoteException {
         super();
     }

@@ -45,7 +45,7 @@ public class BusinessDataModification_Test {
 
     @Test
     public void testSetDistance() throws RemoteException, ElementNotFoundException, SQLException {
-        service.setDistance(new DistancePO("南京","香港",333));
+        service.setDistance(new DistancePO("北京","香港",333));
     }
 
 //    @Test

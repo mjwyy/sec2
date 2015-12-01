@@ -1,5 +1,8 @@
 package connection;
 
+import config.ConnectionConfig;
+import config.ServerConfig;
+
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RMISecurityManager;
@@ -15,14 +18,13 @@ import java.rmi.registry.Registry;
  *
  */
 public class RMIPublisher {
-    private String hostIP = "192.168.43.46";
-    private int regPort = 1099;
+    private String hostIP;
+    private int regPort;
 
     private static RMIPublisher thisObj = null;
 
     public RMIPublisher() throws RemoteException, MalformedURLException {
         System.out.println("RMI server starting...");
-
         setHostIP();
 
         if (System.getSecurityManager() == null) {
@@ -30,15 +32,9 @@ public class RMIPublisher {
         }
 
         try {
-            //服务器开启RMI服务，第一步就是为其注册端口，
-            // 通过方法LocateRegistry.createRegistry(1)实现，
-            // 该方法返回一个Registry对象，代表对远程对象的一个注册实例。
             StaticRmiSocketFactory regFac = new StaticRmiSocketFactory(hostIP, regPort);
             Registry reg = LocateRegistry.createRegistry(regPort, regFac, regFac);
             System.out.println("java RMI registry created.");
-            // Bind this object instance to the name "RmiServer"
-            //第二步，为注册实例绑定RMI服务，通过方法registry.rebind(2)
-            //第一个参数表示RMI服务的名称，第二个参数表示RMI服务的实现类对象
             System.out.println("Rebinding");
             //Instantiate RmiServer
             RMIObjectProvider obj = new RMIObjectProvider();
@@ -52,8 +48,10 @@ public class RMIPublisher {
 
     }
 
-    private void setHostIP() {}
-
+    private void setHostIP() {
+        hostIP =  ServerConfig.getConnectionConfig().getServerIP();
+        regPort =  Integer.parseInt(ServerConfig.getConnectionConfig().getPort());
+    }
 
     public static boolean buildConnection() {
         try {

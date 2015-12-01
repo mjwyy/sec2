@@ -1,5 +1,7 @@
 package data.database;
 
+import config.ServerConfig;
+
 import java.sql.*;
 import java.util.*;
 
@@ -23,11 +25,10 @@ public class ConnectionPool extends Thread {
     /* 连接池最大数 */
     private final int MAX_CONNCTION = 100;
 
-    private static final String DB_DRIVER = "com.mysql.jdbc.Driver";
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/Express?" +
-            "useUnicode=true&characterEncoding=UTF-8";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "861910";
+    private static final String DB_DRIVER;
+    private static final String DB_URL;
+    private static final String DB_USER;
+    private static final String DB_PASSWORD;
 
     /* 是否需要停止线程 */
     private boolean stopThread = false;
@@ -41,9 +42,18 @@ public class ConnectionPool extends Thread {
     //单例模式
     private static ConnectionPool connectionPoolInstance;
 
+    static{
+        HashMap<String, String> hashMap = ServerConfig.getDatabaseConfig().getParams();
+        DB_DRIVER = hashMap.get("dbDriver");
+        String dbLocation = hashMap.get("dbLocation");
+        String dbUnicode = hashMap.get("dbUnicode");
+        String dbEncoding = hashMap.get("dbEncoding");
+        DB_URL = dbLocation + "?" + dbUnicode + "&" + dbEncoding;
+        DB_USER = hashMap.get("dbUser");
+        DB_PASSWORD = hashMap.get("dbPassword");
+    }
+
     private ConnectionPool(){
-        //初始化
-        this.init();
         //启动线程
         this.start();
     }
@@ -58,9 +68,6 @@ public class ConnectionPool extends Thread {
         return connectionPoolInstance;
     }
 
-    private void init() {
-
-    }
 
     public Connection getConnection(String poolname, String caller){
         Connection connection = null;

@@ -20,7 +20,7 @@ public class ReceivingNoteInput implements ReceivingNoteInputBLService {
 
     private ReceivingNoteInputDataService dataService;
 
-    public ReceivingNoteInput(ReceivingNotePO po) {
+    public ReceivingNoteInput() {
         RemoteObjectGetter getter = new RemoteObjectGetter();
         this.dataService = (ReceivingNoteInputDataService) getter.getObjectByName("ReceivingNoteInputDataService");
     }
@@ -28,8 +28,6 @@ public class ReceivingNoteInput implements ReceivingNoteInputBLService {
     @Override
     public ResultMsg inputReceiveDoc(ReceivingNoteVO receiveDocVO) {
         ResultMsg formatCheck = receiveDocVO.checkFormat();
-        if(formatCheck.isPass())
-            this.submitSendDoc(receiveDocVO);
         return formatCheck;
     }
 
@@ -43,8 +41,10 @@ public class ReceivingNoteInput implements ReceivingNoteInputBLService {
             return new ResultMsg(false,e.getMessage());
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
+            return new ResultMsg(false,e.getMessage());
         } catch (SQLException e) {
             e.printStackTrace();
+            return new ResultMsg(false,e.getMessage());
         }
         return new ResultMsg(true,"收件单已提交!");
     }

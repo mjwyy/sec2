@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 import po.StorageInPO;
 import connection.RemoteObjectGetter;
 import dataservice.commoditydataservice.StorageInDataService;
+import businesslogic.info.RuntimeUserInfo;
 import businesslogicservice.commodityblservice.StorageInBLService;
 import util.ResultMsg;
 import util.enums.InventoryStatus;
@@ -31,17 +32,13 @@ public class StorageIn implements StorageInBLService {
     @Override
     public ResultMsg addPutInStorgaeDoc(StorageInVO putInStorageVo) {
         ResultMsg msg = putInStorageVo.checkFormat();
-        if(msg.isPass()) {
-        	return submitPutInStorageDoc(putInStorageVo);
-        } else {
         	return msg;
-        }
     }
 
     @Override
     public ResultMsg submitPutInStorageDoc(StorageInVO putInStorageVo) {
     	try {
-			boolean msg = dataService.insert((StorageInPO) putInStorageVo.toPO());
+			boolean msg = dataService.insert((StorageInPO) putInStorageVo.toPO(),RuntimeUserInfo.getNum());
 		} catch (RemoteException e) {
 			return new ResultMsg(false,e.getMessage());
 		}

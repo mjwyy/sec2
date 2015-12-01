@@ -13,8 +13,6 @@ public class LoadNoteOnServiceBLService_Stub implements LoadNoteOnServiceBLServi
 	//输入营业厅装车单界面得到对输入的装车单的反馈检查结果
 	public ResultMsg inputHallLoadDoc(LoadNoteOnServiceVO hallLoadDocVO) {
 		ResultMsg formatCheck = hallLoadDocVO.checkFormat();
-        if(formatCheck.isPass())
-            this.submitHallLoadDoc(hallLoadDocVO);
         return formatCheck;
 	}
 	//输入营业厅装车单界面得到对提交的装车单的反馈结果

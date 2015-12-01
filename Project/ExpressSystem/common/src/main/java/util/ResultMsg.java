@@ -1,12 +1,20 @@
 package util;
 
+import java.io.Serializable;
+
 /**
  * 输入单据等的返回信息
  * 
  * @author kylin
  *
  */
-public class ResultMsg {
+public class ResultMsg implements Serializable{
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 888889074956257035L;
+
 	/**
 	 * 是否通过该阶段的检查
 	 */

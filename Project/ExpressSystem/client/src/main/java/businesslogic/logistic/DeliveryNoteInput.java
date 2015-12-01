@@ -33,8 +33,6 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
     @Override
     public ResultMsg inputSendDoc(DeliveryNoteVO sendDocVO) {
         ResultMsg formatCheck = sendDocVO.checkFormat();
-        if(formatCheck.isPass())
-            this.submitSendDoc(sendDocVO);
         return formatCheck;
     }
 

@@ -11,8 +11,10 @@ import util.enums.DocState;
 import util.enums.GoodsState;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -21,8 +23,14 @@ import java.util.ArrayList;
  */
 public class ReceivingNoteInputData extends NoteInputData implements ReceivingNoteInputDataService {
 
+    private static final long serialVersionUID = 7218888874956257035L;
+
     private LogInsertData logInsertData;
     private OrderInquiryData orderDataService;
+
+    public ReceivingNoteInputData() throws RemoteException {
+
+    }
 
     @Override
     public ResultMsg insert(ReceivingNotePO po) throws RemoteException, SQLException, ElementNotFoundException {
@@ -39,7 +47,7 @@ public class ReceivingNoteInputData extends NoteInputData implements ReceivingNo
         //记录系统日志
         logInsertData = new LogInsertData();
         logInsertData.insertSystemLog("营业厅业务员?新增收件单,单据编号:" + po.getBarcode());
-
+        System.out.println("Entered method insert");
         //等待总经理审批过程,反复查询
         DocState result = this.waitForCheck("note_receive_note",
                 "barcode", po.getBarcode());
@@ -61,6 +69,25 @@ public class ReceivingNoteInputData extends NoteInputData implements ReceivingNo
         //操作结束
         DatabaseManager.releaseConnection(connection, statement, null);
         return resultMsg;
+
+    }
+
+    public ArrayList<ReceivingNotePO> getReceivingNote() throws SQLException {
+        ArrayList<ReceivingNotePO> result = new ArrayList<>();
+        Connection connection = DatabaseManager.getConnection();
+        String sql = "select * from `note_receive_note` where isPassed = 0";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+        ReceivingNotePO receivingNotePO;
+        while(resultSet.next()){
+            String barcode = resultSet.getString(1);
+            String receiver = resultSet.getString(2);
+            String time = resultSet.getString(3);
+            receivingNotePO = new ReceivingNotePO(barcode,receiver,time);
+            result.add(receivingNotePO);
+        }
+        DatabaseManager.releaseConnection(connection, statement, resultSet);
+        return result;
     }
 
 }

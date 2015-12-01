@@ -4,6 +4,7 @@ package dataservice.statisticdataservice._Driver;
  * @data 2015-10-22
  */
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 import dataservice.statisticdataservice.BusinessDataModificationDataService;
 import dataservice.statisticdataservice._Stub.BusinessDataModificationDataService_Stub;
@@ -18,13 +19,13 @@ public class BusinessDataModificationDataService_Driver {
 	distancePO = new DistancePO("上海","南京",1000000.0);
 	}
 
-	public void drive(BusinessDataModificationDataService businessDataService) throws RemoteException, InterruptWithExistedElementException, ElementNotFoundException {
-		businessDataService.addCity("");
+    public void drive(BusinessDataModificationDataService businessDataService) throws RemoteException, InterruptWithExistedElementException, ElementNotFoundException, SQLException {
+        businessDataService.addCity("");
 		businessDataService.setDistance(distancePO);
 		businessDataService.setPrice(null, 0);
 		businessDataService.getAllCities();
-		businessDataService.getDistance(distancePO);	
-		if(businessDataService.addCity(""))
+        businessDataService.getDistance("nanjing", "beijing");
+        if(businessDataService.addCity(""))
 			System.out.println("success");
 		else
 			System.out.println("fail");
@@ -33,9 +34,9 @@ public class BusinessDataModificationDataService_Driver {
 		else
 			System.out.println("fail");
 	}
-	
-	public static void main(String[] args) throws RemoteException, InterruptWithExistedElementException, ElementNotFoundException {
-		BusinessDataModificationDataService_Stub stub = new BusinessDataModificationDataService_Stub();
+
+    public static void main(String[] args) throws RemoteException, InterruptWithExistedElementException, ElementNotFoundException, SQLException {
+        BusinessDataModificationDataService_Stub stub = new BusinessDataModificationDataService_Stub();
 		BusinessDataModificationDataService_Driver driver = new BusinessDataModificationDataService_Driver();
 		driver.drive(stub);
 	}

@@ -3,6 +3,7 @@ package businesslogic.commodity;
 import po.StorageOutPO;
 import connection.RemoteObjectGetter;
 import dataservice.commoditydataservice.StorageOutDataService;
+import businesslogic.info.RuntimeUserInfo;
 import businesslogicservice.commodityblservice.StorageOutBLService;
 import util.ResultMsg;
 import vo.StorageOutVO;
@@ -24,17 +25,13 @@ public class StorageOut implements StorageOutBLService {
     @Override
     public ResultMsg addStorageOutDoc(StorageOutVO storageOutVo) {
     	ResultMsg msg = storageOutVo.checkFormat();
-        if(msg.isPass()) {
-        	return submitStorageOutDoc(storageOutVo);
-        } else {
         	return msg;
-        }
     }
 
     @Override
     public ResultMsg submitStorageOutDoc(StorageOutVO storageOutVo) {
         try {
-        	boolean result = dataService.insert((StorageOutPO) storageOutVo.toPO());
+        	boolean result = dataService.insert((StorageOutPO) storageOutVo.toPO(),RuntimeUserInfo.getNum());
         	if(!result) {
         		return new ResultMsg(false,"提交出库单失败，请重试");
         	}

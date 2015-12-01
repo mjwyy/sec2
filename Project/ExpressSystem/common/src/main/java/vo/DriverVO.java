@@ -13,7 +13,8 @@ public class DriverVO extends StaffVO {
      */
     String licenseDate = null;
 
-    public DriverVO(String staffID,String name, String sex, String organization, StaffType postion, String IDNum,
+    public DriverVO(String staffID,String name, String sex, String organization, 
+    		StaffType postion, String IDNum,
                     int workingtime, String phoneNum, String wage, String licenseDate) {
         super(staffID,name, sex, organization, postion, IDNum, workingtime, phoneNum, wage);
         this.licenseDate = licenseDate;
@@ -25,6 +26,10 @@ public class DriverVO extends StaffVO {
         return po;
 	}
 	
+	public String getLicenseDate() {
+		return licenseDate;
+	}
+
 	public ResultMsg checkFormat(){
 		
 		ResultMsg msg = super.checkFormat();

@@ -17,6 +17,15 @@ public class PaymentInputPanel extends JPanel {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	/**
+	 * 窗口宽度
+	 */
+	private static final int WIDTH = 1152;
+	
+	/**
+	 * 窗口高度
+	 */
+	private static final int HEIGHT = 446;
 
 	/**
 	 * Create the panel.
@@ -31,6 +40,7 @@ public class PaymentInputPanel extends JPanel {
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}*/
 	public PaymentInputPanel() {
+		setSize(WIDTH,HEIGHT);
 		setLayout(null);
 		
 		JLabel label = new JLabel("付款日期");
@@ -38,7 +48,7 @@ public class PaymentInputPanel extends JPanel {
 		add(label);
 		
 		textField = new JTextField();
-		textField.setBounds(426, 73, 134, 28);
+		textField.setBounds(426, 73, 168, 28);
 		add(textField);
 		textField.setColumns(10);
 		
@@ -47,7 +57,7 @@ public class PaymentInputPanel extends JPanel {
 		add(lblNewLabel);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(426, 123, 134, 28);
+		textField_1.setBounds(426, 123, 168, 28);
 		add(textField_1);
 		textField_1.setColumns(10);
 		
@@ -56,12 +66,12 @@ public class PaymentInputPanel extends JPanel {
 		add(label_1);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(426, 173, 134, 28);
+		textField_2.setBounds(426, 173, 168, 28);
 		add(textField_2);
 		textField_2.setColumns(10);
 		
 		JLabel label_2 = new JLabel("付款种类");
-		label_2.setBounds(305, 229, 61, 16);
+		label_2.setBounds(305, 235, 61, 16);
 		add(label_2);
 		
 		JButton btnNewButton = new JButton("提交");
@@ -69,7 +79,7 @@ public class PaymentInputPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(506, 270, 117, 29);
+		btnNewButton.setBounds(565, 322, 94, 47);
 		add(btnNewButton);
 		
 		String[] payway = {"租金","运费","工资","奖金"};

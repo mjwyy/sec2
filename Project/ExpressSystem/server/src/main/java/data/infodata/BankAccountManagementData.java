@@ -22,17 +22,16 @@ import java.util.ArrayList;
 public class BankAccountManagementData implements BankAccountManagementDataService{
 
     private Connection connection;
-    DatabaseFactory dataFac = null;
 
     public BankAccountManagementData() throws RemoteException {
         super();
-        dataFac = DatabaseFactoryMysqlImpl.getInstance();
+        
     }
 
     @Override
     public boolean addBankAccount(BankAccountPO account) throws RemoteException, InterruptWithExistedElementException, SQLException {
     	connection = DatabaseManager.getConnection();
-        LogInsertDataService logIns = dataFac.getLogInsertDataService();
+        LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
 
         try {
             if(findBankAccount(account).size()>0) {
@@ -63,7 +62,7 @@ public class BankAccountManagementData implements BankAccountManagementDataServi
     @Override
     public boolean removeBankAccount(BankAccountPO account) throws RemoteException, ElementNotFoundException, SQLException {
     	connection = DatabaseManager.getConnection();
-    	LogInsertDataService logIns = dataFac.getLogInsertDataService();
+    	LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
 
         if(findBankAccount(account).size()==0) {
         	DatabaseManager.releaseConnection(connection,null,null);
@@ -89,7 +88,7 @@ public class BankAccountManagementData implements BankAccountManagementDataServi
     @Override
     public ArrayList<BankAccountPO> findBankAccount(BankAccountPO accountInfo) throws RemoteException, ElementNotFoundException, SQLException {
     	connection = DatabaseManager.getConnection();
-    	LogInsertDataService logIns = dataFac.getLogInsertDataService();
+    	LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
 
         String stmt = "select * from BankAccounts ";
 
@@ -130,7 +129,7 @@ public class BankAccountManagementData implements BankAccountManagementDataServi
     public boolean modifyBankAccount(BankAccountPO account)	throws RemoteException, ElementNotFoundException,
             InterruptWithExistedElementException, SQLException {
     	connection = DatabaseManager.getConnection();
-    	LogInsertDataService logIns = dataFac.getLogInsertDataService();
+    	LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
 
         BankAccountPO searched = new BankAccountPO(null, account.getNumber(), null);
         if(findBankAccount(searched).size()==0){

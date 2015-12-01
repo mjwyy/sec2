@@ -116,8 +116,10 @@ public class SystemUserManagement implements SystemUserManagementBLService {
         if(found.size()==0)
             return new LogInMsg(false,null);
         UserVO foundVO = found.get(0);
-        if(foundVO.getInitialPassword().equals(initialPassword))
+        if(foundVO.getInitialPassword().equals(initialPassword)){
+        	RuntimeUserInfo.setUserNum(userNum);
             return new LogInMsg(true,foundVO.getAuthority());
+        }
         else
             return new LogInMsg(false,null);
     }

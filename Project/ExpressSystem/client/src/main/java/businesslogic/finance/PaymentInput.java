@@ -28,10 +28,7 @@ public class PaymentInput implements PaymentInputBLService {
     @Override
     public ResultMsg addPaymentRecord(PaymentVO vo) {
         ResultMsg msg = vo.checkFormat();
-        
-        if(!msg.isPass()) return msg;
-        
-        return submitPaymentRecord(vo);
+        return msg;
     }
 
     @Override

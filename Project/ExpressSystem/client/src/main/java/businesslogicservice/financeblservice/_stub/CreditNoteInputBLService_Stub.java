@@ -1,6 +1,5 @@
 package businesslogicservice.financeblservice._stub;
 
-import po.CreditNotePO;
 import vo.CreditNoteVO;
 import businesslogicservice.financeblservice.CreditNoteInputBLService;
 import util.ResultMsg;
@@ -13,15 +12,12 @@ public class CreditNoteInputBLService_Stub implements
 	}
 
 	public ResultMsg addReceipeDoc(CreditNoteVO vo) {
-		 ResultMsg msg = vo.checkFormat();
-	        if(!msg.isPass()) return msg;
-	        else return submitReceipeDoc(vo);	
-	        }
+		ResultMsg msg = vo.checkFormat();
+        return msg;
+	}
 
 	public ResultMsg submitReceipeDoc(CreditNoteVO vo) {
-
-    	
-        return new ResultMsg(true);
+		return null;
 	}
 
 }

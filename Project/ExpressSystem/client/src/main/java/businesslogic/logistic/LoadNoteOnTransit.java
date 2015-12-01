@@ -28,8 +28,6 @@ public class LoadNoteOnTransit implements LoadNoteOnTransitBLService {
     @Override
     public ResultMsg inputCenterLoadDoc(LoadNoteOnTransitVO centerLoadDocVO) {
         ResultMsg formatCheck = centerLoadDocVO.checkFormat();
-        if(formatCheck.isPass())
-            this.submitCenterLoadDoc(centerLoadDocVO);
         return formatCheck;
     }
 

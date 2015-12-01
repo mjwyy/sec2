@@ -3,6 +3,8 @@ package data.logisticdata;
 import data.database.DatabaseManager;
 import util.enums.DocState;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +13,11 @@ import java.sql.SQLException;
 /**
  * Created by kylin on 15/11/26.
  */
-public class NoteInputData {
+public class NoteInputData extends UnicastRemoteObject{
+
+    protected NoteInputData() throws RemoteException {
+        super();
+    }
 
     public String getFailedAdvice(String table, String keyName, String key) throws SQLException {
         Connection connection = DatabaseManager.getConnection();

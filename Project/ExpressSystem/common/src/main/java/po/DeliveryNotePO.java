@@ -5,6 +5,7 @@
  */
 package po;
 
+import util.enums.CityManager;
 import util.enums.DeliverCategory;
 import vo.DeliveryNoteVO;
 import vo.NoteVO;
@@ -126,10 +127,6 @@ public class DeliveryNotePO extends NotePO implements Serializable {
         return receiverTeleNumber;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public int getGoodsNumber() {
         return goodsNumber;
     }
@@ -159,5 +156,19 @@ public class DeliveryNotePO extends NotePO implements Serializable {
         return new DeliveryNoteVO(this.senderName, this.senderAddress, this.senderTeleNumber, this.receiverName,
                 this.receiverAddress, this.receiverTeleNumber, this.name, this.goodsNumber, this.weight,
                 this.volume, this.category, this.packPrice, this.barCode);
+    }
+
+    @Override
+    public String getID() {
+        return this.barCode;
+    }
+
+
+    public String getSenderCity() {
+        return CityManager.getCityName(this.senderAddress);
+    }
+
+    public String getReceiverCity() {
+        return CityManager.getCityName(this.receiverAddress);
     }
 }

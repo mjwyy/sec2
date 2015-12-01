@@ -17,19 +17,6 @@ public interface StorageOutDataService extends Remote, Serializable {
 	/**
 	 * 在数据库中增加一个po记录
 	 */
-	public boolean insert(StorageOutPO po) throws RemoteException;
-	/**
-	 * 在数据库中删除一个po记录
-	 */
-	public boolean delete(StorageOutPO po) throws RemoteException;
-	/**
-	 * 在数据库中更新一个po记录
-	 */
-	public boolean update(StorageOutPO po) throws RemoteException;
-	/**
-	 * 查找返回相应的StorageOutPOPO结果
-	 */
-	public ArrayList<StorageOutPO> find(StorageOutPO po) throws RemoteException;
-	
-	
+	public boolean insert(StorageOutPO po,String staffID) throws RemoteException;
+
 }

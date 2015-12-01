@@ -1,12 +1,14 @@
 package data.logisticdata;
 
 import data.logisticdata.MockObject.MockLoadNoteOnService;
+import dataservice.exception.ElementNotFoundException;
 import dataservice.logisticdataservice.LoadNoteOnServiceDataService;
 import org.junit.Assert;
 import org.junit.Test;
 import po.LoadNoteOnServicePO;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static junit.framework.TestCase.assertEquals;
@@ -16,18 +18,21 @@ import static junit.framework.TestCase.assertEquals;
  */
 public class LoadNoteOnService_Test {
 
-    private LoadNoteOnServiceDataService service = new LoadNoteOnServiceData();
+    private LoadNoteOnServiceDataService service;
+
+    public LoadNoteOnService_Test() throws RemoteException {
+        service = new LoadNoteOnServiceData();
+    }
 
     @Test
-    public void testInsert() throws RemoteException {
-        MockLoadNoteOnService mock1 = new MockLoadNoteOnService(
-                "0251001201510220001","上海","苏A 00001");
-        //assertEquals(true,service.insert(mock1));
-        //assertEquals(80,mock1.getTransferPrice());
-        MockLoadNoteOnService mock2 = new MockLoadNoteOnService(
-                "0251001201510220002","厦门","苏A 00002");
-        //assertEquals(true,service.insert(mock1));
-        //assertEquals(460,mock1.getTransferPrice());
+    public void testInsert() throws RemoteException, SQLException, ElementNotFoundException {
+        ArrayList<String> bar = new ArrayList<String>();
+        bar.add("1234567890");
+        bar.add("1234567891");
+        bar.add("1234567892");
+        LoadNoteOnServicePO po1 = new LoadNoteOnServicePO("2015-11-11", "0251000",
+                "02510002015092100004", "北京", "025000000", "李明", "张三", bar);
+        service.insert(po1);
     }
 
 }

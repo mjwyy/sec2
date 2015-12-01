@@ -1,11 +1,13 @@
 package data.logisticdata;
 
 import data.logisticdata.MockObject.MockReceivingNote;
+import dataservice.exception.ElementNotFoundException;
 import org.junit.Assert;
 import org.junit.Test;
 import po.ReceivingNotePO;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static junit.framework.TestCase.assertEquals;
@@ -15,14 +17,16 @@ import static junit.framework.TestCase.assertEquals;
  */
 public class ReceivingNoteInput_Test {
 
-    private ReceivingNoteInputData service = new ReceivingNoteInputData();
+    private ReceivingNoteInputData service;
+
+    public ReceivingNoteInput_Test() throws RemoteException {
+        service = new ReceivingNoteInputData();
+    }
 
     @Test
-    public void testInsert() throws RemoteException {
-        MockReceivingNote po1 = new MockReceivingNote("0123456789","旭爷","2015-10-23 14:00");
-        MockReceivingNote po2 = new MockReceivingNote("0123456790","闪电球","2015-10-23 14:00");
-        //assertEquals(true,service.insert(po1));
-        //assertEquals(true,service.insert(po2));
+    public void testInsert() throws RemoteException, SQLException, ElementNotFoundException {
+        ReceivingNotePO po1 = new ReceivingNotePO("1234567893", "旭爷2", "2015-11-26 21:00");
+        service.insert(po1);
     }
 
 }

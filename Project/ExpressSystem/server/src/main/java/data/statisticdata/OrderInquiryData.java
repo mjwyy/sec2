@@ -49,7 +49,7 @@ public class OrderInquiryData implements OrderInquiryDataService{
         return null;
     }
 
-    public OrderPO updateOrder(String barcode, GoodsState goodsStatem, String newMesg) throws RemoteException,
+    public OrderPO updateOrder(String barcode, GoodsState goodsState, String newMesg) throws RemoteException,
             ElementNotFoundException {
         return null;
     }

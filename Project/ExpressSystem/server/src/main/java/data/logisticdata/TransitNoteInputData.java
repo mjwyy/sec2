@@ -10,10 +10,12 @@ import util.BarcodesAndLocation;
 import util.ResultMsg;
 import util.enums.DocState;
 import util.enums.GoodsState;
+import util.enums.TransitType;
 
 import java.rmi.RemoteException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -25,11 +27,15 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
     private LogInsertData logInsertData;
     private OrderInquiryData orderDataService;
 
+    public TransitNoteInputData() throws RemoteException {
+    }
+
     @Override
     public ResultMsg insert(TransitNotePO po) throws RemoteException, SQLException, ElementNotFoundException {
-        String sql = "insert into `note_transit` ( `barcodes`, `transitDocNumber`, `supercargoMan`, " +
-                "`departurePlace`, `date`, `desitination`, `flightNumber`) " +
-                "values ( ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into `Express`.`note_transit`" +
+                " ( `barcodes`, `transitDocNumber`, `supercargoMan`, `departurePlace`, " +
+                "`transitType`, `date`, `desitination`, `transportNumber`)" +
+                " values ( ?, ?, ?, ?, ?, ?, ?, ?)";
         Connection connection = DatabaseManager.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         StringBuilder stringBuilder = new StringBuilder();
@@ -42,9 +48,10 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
         statement.setString(2,po.getTransitDocNumber());
         statement.setString(3,po.getSupercargoMan());
         statement.setString(4,po.getDeparturePlace());
-        statement.setString(5,po.getDate());
-        statement.setString(6,po.getDesitination());
-        statement.setString(7,po.getFlightNumber());
+        statement.setString(5, po.getTransitType().toString());
+        statement.setString(6, po.getDate());
+        statement.setString(7, po.getDesitination());
+        statement.setString(8, po.getTransportationNumber());
         statement.executeUpdate();
         statement.close();
 
@@ -77,6 +84,30 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
         //操作结束
         DatabaseManager.releaseConnection(connection, statement, null);
         return resultMsg;
+    }
+
+    public ArrayList<TransitNotePO> getTransitNotePO() throws SQLException {
+        ArrayList<TransitNotePO> result = new ArrayList<>();
+        Connection connection = DatabaseManager.getConnection();
+        String sql = "select * from `note_transit` where isPassed = 0";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+        TransitNotePO receivingNotePO;
+        while(resultSet.next()){
+            String date = resultSet.getString(1);
+            String docNumber = resultSet.getString(2);
+            String transport = resultSet.getString(3);
+            String type = resultSet.getString(4);
+            String depar = resultSet.getString(5);
+            String des = resultSet.getString(6);
+            String supercargo = resultSet.getString(7);
+            String barcodes = resultSet.getString(8);
+            receivingNotePO = new TransitNotePO(date,docNumber,transport, TransitType.getTransitType(type),
+                    depar,des,supercargo,null);
+            result.add(receivingNotePO);
+        }
+        DatabaseManager.releaseConnection(connection, statement, resultSet);
+        return result;
     }
 
 }

@@ -6,6 +6,7 @@
 package po;
 
 import util.BarcodesAndLocation;
+import util.enums.TransitType;
 import vo.NoteVO;
 import vo.TransitNoteOnTransitVO;
 
@@ -23,16 +24,21 @@ public class TransitNotePO extends NotePO implements Serializable{
 	 */
 	private String date;
 
-    //TODO 或者火车车次号
 	/**
-	 * 中转单编号	
-	 */
+     * 中转单编号
+     */
 	private String transitDocNumber;
 
 	/**
-	 * 航班号	
-	 */
-	private String flightNumber;
+     * 航班号,或者火车车次号,或者汽运编号
+     */
+    private String transportationNumber;
+
+    /**
+     * 在两个中转中心之间的三种运输类型
+     * 汽车,铁路,飞机
+     */
+    private TransitType transitType;
 
 	/**
 	 * 出发地
@@ -59,15 +65,24 @@ public class TransitNotePO extends NotePO implements Serializable{
 	 */
 	private double price;
 
-    public TransitNotePO(String date, String transitDocNumber, String flightNumber, String departurePlace,
+    public TransitNotePO(String date, String transitDocNumber, String flightNumber, TransitType transitType, String departurePlace,
                          String desitination, String supercargoMan, ArrayList<BarcodesAndLocation> barcodes) {
         this.date = date;
         this.transitDocNumber = transitDocNumber;
-        this.flightNumber = flightNumber;
+        this.transportationNumber = flightNumber;
         this.departurePlace = departurePlace;
+        this.transitType = transitType;
         this.desitination = desitination;
         this.supercargoMan = supercargoMan;
         this.barcodes = barcodes;
+    }
+
+    public TransitType getTransitType() {
+        return transitType;
+    }
+
+    public void setTransitType(TransitType transitType) {
+        this.transitType = transitType;
     }
 
     public static long getSerialVersionUID() {
@@ -82,8 +97,8 @@ public class TransitNotePO extends NotePO implements Serializable{
         return transitDocNumber;
     }
 
-    public String getFlightNumber() {
-        return flightNumber;
+    public String getTransportationNumber() {
+        return transportationNumber;
     }
 
     public String getDeparturePlace() {
@@ -114,8 +129,8 @@ public class TransitNotePO extends NotePO implements Serializable{
         this.transitDocNumber = transitDocNumber;
     }
 
-    public void setFlightNumber(String flightNumber) {
-        this.flightNumber = flightNumber;
+    public void setTransportationNumber(String transportationNumber) {
+        this.transportationNumber = transportationNumber;
     }
 
     public void setDeparturePlace(String departurePlace) {
@@ -138,8 +153,14 @@ public class TransitNotePO extends NotePO implements Serializable{
         this.price = price;
     }
 
-    public NoteVO toPO() {
-        return new TransitNoteOnTransitVO(this.date, this.transitDocNumber, this.flightNumber,
+    @Override
+    public NoteVO toVO() {
+        return new TransitNoteOnTransitVO(this.date, this.transitDocNumber, this.transportationNumber, this.transitType,
                 this.departurePlace, this.desitination, this.supercargoMan, this.barcodes);
+    }
+
+    @Override
+    public String getID() {
+        return this.transitDocNumber;
     }
 }

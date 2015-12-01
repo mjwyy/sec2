@@ -11,18 +11,28 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+import util.ResultMsg;
+import vo.VehicleVO;
+import businesslogicservice.infoblservice.DriverVehicleManagementBLService;
+import businesslogicservice.infoblservice._stub.DriverVehicleManagementBLService_Stub;
+
 public class Car extends JPanel {
-	private JTextField textField;
+	private JTextField key;
 private JTextField code;
 private JTextField name;
 private JTextField time;
 private JTable table;
 private DefaultTableModel model;
+ DriverVehicleManagementBLService  dvm=new DriverVehicleManagementBLService_Stub();
+ private JTextField textField_1;
+private JComboBox comboBox;
 	/**
 	 * Create the panel.
 	 */
@@ -41,31 +51,13 @@ private DefaultTableModel model;
 	         * 设置JTable的列名 
 	         */  
 	        String[] columnNames =  
-	        { "车辆代号", "所属机构编号", "首次服役时间"};  
+	        { "车辆代号", "所属机构编号", "首次服役时间","车辆照片"};  
 	  
 	        /* 
 	         * 初始化JTable里面各项的值 
 	         */  
-	        Object[][] obj = new Object[1][3];  
-	        for (int i = 0; i < 1; i++)  
-	        {  
-	            for (int j = 0; j < 3; j++)  
-	            {  
-	                switch (j)  
-	                {  
-	                case 0:  
-	                    obj[i][j] = "001";  
-	                    break;  
-	                case 1:  
-	                    obj[i][j] = "王翔翔";  
-	                    break;  
-	                case 2:  
-	                    obj[i][j] = "男";  
-	                    break;  
-	               
-	                }  
-	            }  
-	        }  
+	        Object[][] obj = new Object[1][4];  
+	         
 	          
 	          
 	        /* 
@@ -73,6 +65,7 @@ private DefaultTableModel model;
 	         */  
 	        model=new DefaultTableModel(obj,columnNames);
 	        table = new JTable(model);
+	        model.removeRow(0);
 	        table.addMouseListener(new MouseAdapter() {
 	        	public void mouseClicked(MouseEvent arg0) {
 	        	int selectedRow= table.getSelectedRow();
@@ -82,7 +75,8 @@ private DefaultTableModel model;
 	        	name.setText(ob.toString());
 	        	Object oc=model.getValueAt(selectedRow, 2);
 	        	time.setText(oc.toString());
-	        	
+	        	Object od=model.getValueAt(selectedRow, 3);
+	        	textField_1.setText(oc.toString());
 	        	}
 	        });
 	        /* 
@@ -109,6 +103,7 @@ private DefaultTableModel model;
 	          
 	        add(scroll);
 	        this.setVisible(true); 
+	        initTabel();
 	        
 	        JLabel label = new JLabel("车辆信息管理");
 	        label.setBounds(10, 10, 103, 15);
@@ -118,28 +113,37 @@ private DefaultTableModel model;
 	        label_1.setBounds(145, 8, 93, 18);
 	        add(label_1);
 	        
-	        JComboBox comboBox = new JComboBox();
+	        comboBox = new JComboBox();
 	        comboBox.setModel(new DefaultComboBoxModel(new String[] {"车辆代号", "所属机构编号", "首次服役时间"}));
-	        comboBox.setBounds(259, 7, 117, 21);
+	        comboBox.setBounds(217, 7, 159, 21);
 	        add(comboBox);
 	        
-	        textField = new JTextField();
-	        textField.setText("请输入关键字");
-	        textField.setBounds(425, 4, 117, 28);
-	        add(textField);
-	        textField.setColumns(10);
+	        key = new JTextField();
+	        key.setText("请输入关键字");
+	        key.setBounds(398, 4, 117, 28);
+	        add(key);
+	        key.setColumns(10);
 	        
 	        JButton button = new JButton("查询");
-	        button.setBounds(568, 7, 63, 23);
+	        button.addActionListener(new findListener() );
+	        button.setBounds(525, 6, 63, 23);
 	        add(button);
 	        
 	        JButton btnNewButton = new JButton("新增");
 	        btnNewButton.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent e) {
-	        		int rowCount=table.getRowCount()+1;
-	        		String[] rowValues={rowCount+"",code.getText(),name.getText(),
-	        				time.getText()};
+	        		File file=new File(textField_1.getText());
+		        	VehicleVO vo=new VehicleVO(code.getText(),name.getText(),time.getText(),file);
+		        	ResultMsg result=dvm.addVehicle(vo);
+		        	if(result.isPass()){
+	        		String[] rowValues={code.getText(),name.getText(),
+	        				time.getText(),textField_1.getText()};
 	        	model.addRow(rowValues);
+		        	}
+		        	else{
+		        		int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
+								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+		        	}
 	        	}
 	        });
 	        btnNewButton.setBounds(685, 352, 70, 23);
@@ -149,23 +153,47 @@ private DefaultTableModel model;
 	        btnNewButton_1.setBounds(792, 352, 70, 23);
 	        btnNewButton_1.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent arg0) {
-	        	int seletedRow=table.getSelectedRow();
-	        		if(seletedRow!=-1)
+	        		int seletedRow=table.getSelectedRow();
+	        		if(seletedRow!=-1){
+	        		File file=new File(textField_1.getText());
+		        	VehicleVO vo=new VehicleVO(code.getText(),name.getText(),time.getText(),file);
+		        	ResultMsg result=dvm.deleteVehicle(vo);
+	        		
+	        		if(result.isPass()){
+	        		
 	        			model.removeRow(seletedRow);
+	        		}
+	        		else{
+		        		int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
+								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+		        	}
+	        	
+	        		}
 	        	}
-	        });
+	        }
+	        );
 	        add(btnNewButton_1);
 	        
 	        JButton btnNewButton_2 = new JButton("修改");
 	        btnNewButton_2.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent e) {
 	        		int selectedRow =table.getSelectedRow();
-		        	if(selectedRow!=-1){
+	        		if(selectedRow!=-1){
+	        		File file=new File(textField_1.getText());
+		        	VehicleVO vo=new VehicleVO(code.getText(),name.getText(),time.getText(),file);
+		        	ResultMsg result=dvm.modifyVehicle(vo);
+	        		
+	        		if(result.isPass()){
+	        		
 		        		
 		        		model.setValueAt(code.getText(),selectedRow, 0);
 			        	model.setValueAt(name.getText(),selectedRow, 1);
 			        	model.setValueAt(time.getText(),selectedRow, 2);
-			        	
+	        		}	
+	        		else{
+		        		int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
+								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+		        	}
 	        	}
 	        	}
 	        });
@@ -199,9 +227,67 @@ private DefaultTableModel model;
 	        time.setBounds(830, 210, 170, 28);
 	        add(time);
 	        
+	        JLabel picture = new JLabel("车辆照片(文件路径)");
+	        picture.setBounds(722, 272, 117, 27);
+	        add(picture);
+	        
+	        textField_1 = new JTextField();
+	        textField_1.setBounds(836, 271, 164, 28);
+	        add(textField_1);
+	        textField_1.setColumns(10);
+	        
+	        JButton button_1 = new JButton("显示全部");
+	        button_1.addActionListener(new ActionListener() {
+	        	public void actionPerformed(ActionEvent e) {
+	        	initTabel();
+	        	}
+	        });
+	        button_1.setBounds(597, 7, 84, 23);
+	        add(button_1);
+	        
 	       
 	        
 	    }  
+	    public void initTabel(){
+	    	ArrayList<VehicleVO> vvoo=dvm.findVehicle(null);//得到所有车辆信息
+	    	for(int i=0;i<vvoo.size();i++){
+	    		VehicleVO vo=vvoo.get(i);
+	    		String vehiclecode=vo.getVehiclecode();
+	    		String organization=vo.getOrganization();
+	    		String serviceTimeLimit=vo.getServiceTimeLimit();
+	    		File picture=vo.getPicture();
+	    		Object[] oo={vehiclecode,organization,serviceTimeLimit,picture};
+	    		model.addRow(oo);
+	    	}
+	    }
+	    public class findListener implements ActionListener{
+        	VehicleVO vo=null;
+			public void actionPerformed(ActionEvent e) {
+				if(comboBox.getSelectedIndex()==0){//车辆代号
+					vo=new VehicleVO(key.getText(),null,null,null);
+				}
+				else if(comboBox.getSelectedIndex()==1){//所属机构编号
+					vo=new VehicleVO(null,key.getText(),null,null);
+				}
+				else{//首次服役时间
+					vo=new VehicleVO(null,null,key.getText(),null);
+				}
+				//显示到tabel里,先清空
+				for(int i=0;i<model.getRowCount();i++)
+					model.removeRow(i);
+				ArrayList<VehicleVO> vvoo=dvm.findVehicle(vo);
+				for(int i=0;i<vvoo.size();i++){
+		    		VehicleVO vo=vvoo.get(i);
+		    		String vehiclecode=vo.getVehiclecode();
+		    		String organization=vo.getOrganization();
+		    		String serviceTimeLimit=vo.getServiceTimeLimit();
+		    		File picture=vo.getPicture();
+		    		Object[] oo={vehiclecode,organization,serviceTimeLimit,picture};
+		    		model.addRow(oo);
+		    	}
+			}
+	    	
+	    }
 	    public void paintComponent(Graphics g) {
 			 super.paintComponents(g);
 			 ImageIcon img = new ImageIcon("image/0111.jpg");

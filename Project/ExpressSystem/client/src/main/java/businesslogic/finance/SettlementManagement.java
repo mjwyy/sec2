@@ -28,18 +28,7 @@ public class SettlementManagement implements SettlementManagementBLService {
     @Override
     public ResultMsg addReceiveRecord(IncomeNoteVO vo) {
     	ResultMsg msg = vo.checkFormat();
-    	if(!msg.isPass()) return msg;
-    	
-    	try {
-    		boolean result = dataService.addIncomeNote((IncomeNotePO) vo.toPO());
-    		if(!result) {
-    			return new ResultMsg(false, "提交失败，请重试");
-    		}
-    	} catch (Exception e) {
-    		return new ResultMsg(false, e.getMessage());
-    	}
-    	
-    	return new ResultMsg(true);
+    	return msg;
     }
 
     @Override

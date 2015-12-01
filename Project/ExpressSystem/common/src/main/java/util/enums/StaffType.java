@@ -14,8 +14,9 @@ public enum StaffType {
     ACCOUNTANT(5),
     MANAGER(6),
 
-    SYSTEM_MANAGER(7);
+    SYSTEM_MANAGER(7),
 
+    DRIVER(8);
     private int intStaffType;
 
     StaffType(int i) {

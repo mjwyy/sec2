@@ -28,8 +28,6 @@ public class ArrivalNoteOnTransit implements ArrivalNoteOnTransitBLService {
     @Override
     public ResultMsg inputCenterArrivalDoc(ArrivalNoteOnTransitVO centerArrivalDocVO) {
         ResultMsg formatCheck = centerArrivalDocVO.checkFormat();
-        if(formatCheck.isPass())
-            this.submitCenterArrivalDoc(centerArrivalDocVO);
         return formatCheck;
     }
 

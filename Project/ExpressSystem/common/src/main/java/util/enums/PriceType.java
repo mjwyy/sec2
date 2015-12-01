@@ -7,17 +7,28 @@ public enum PriceType {
 	/**
 	 * 每公里的运费
 	 */
-	PricePerKg,
-	/**
+    PricePerKg("PricePerKg"),
+    /**
 	 * 纸箱价格
 	 */
-	PaperBox,
-	/**
+    PaperBox("PaperBox"),
+    /**
 	 * 木箱价格
 	 */
-	WoodenBox,
-	/**
+    WoodenBox("WoodenBox"),
+    /**
 	 * 快递袋价格
 	 */
-	Bag,
+    Bag("Bag");
+
+    private String type;
+
+    PriceType(String s) {
+        type = s;
+    }
+
+    @Override
+    public String toString() {
+        return this.type;
+    }
 }

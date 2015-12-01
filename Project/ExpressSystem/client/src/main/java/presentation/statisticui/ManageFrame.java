@@ -37,9 +37,6 @@ public class ManageFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		OrderApprove a=new OrderApprove();
-		add(a);
-		a.setVisible(true);
 	}
 
 }

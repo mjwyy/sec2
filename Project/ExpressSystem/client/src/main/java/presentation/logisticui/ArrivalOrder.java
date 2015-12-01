@@ -12,6 +12,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -22,6 +24,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 
+import businesslogic.logistic.ArrivalNoteOnService;
 import businesslogicservice.logisticblservice.ArrivalNoteOnServiceBLService;
 import businesslogicservice.logisticblservice._Stub.ArrivalNoteOnServiceBLService_Stub;
 import util.BarcodeAndState;
@@ -35,18 +38,23 @@ import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 public class ArrivalOrder extends JPanel {
 	ArrivalNoteOnServiceBLService arrive=new ArrivalNoteOnServiceBLService_Stub();
 	private JTextField DATA;
 	private JTextField FROM;
 	private JTextField CODE;
-	private JTextField codeee;
 	private JTextField dataF;
 	private JTextField barcodeF;
 	private JTextField fromF;
 	private ArrayList<BarcodeAndState> BarcodeAndStates =new ArrayList<BarcodeAndState>();
 	private JComboBox state;
+
+	
+	
 	/**
 	 * 窗口宽度
 	 */
@@ -65,8 +73,10 @@ public class ArrivalOrder extends JPanel {
 	 */
 	private static final int WIDTHT = WIDTHL+76;
 	private JTextField codeF;
-	private JTextField textField;
+	private JTextField TYPE;
 	private JComboBox typeF;
+	private JTable table;
+	private DefaultTableModel model;
 	/**
 	 * Create the panel.
 	 */
@@ -122,26 +132,64 @@ public class ArrivalOrder extends JPanel {
 		add(scrollPane);
 
 		JButton btnNewButton = new JButton("提交");
-		btnNewButton.setBounds(299, 330, 93, 23);
+		btnNewButton.setBounds(310, 356, 93, 23);
 		btnNewButton.addActionListener(new submitListener());
 		add(btnNewButton);
 
-		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(120, 188, 334, 99);
-		add(scrollPane_1);
-
-		codeee = new JTextField();
-		codeee.setEditable(false);
-		codeee.setEnabled(false);
-		scrollPane_1.setViewportView(codeee);
-		codeee.setColumns(10);
+	
+		
+		
+		 String[] columnNames =  
+		        { "货物编码", "货物状态"};  
+		  
+		        Object[][] obj = new Object[1][2];  
+		      
+		          
+		          
+		        /* 
+		         * JTable的其中一种构造方法 
+		         */  
+		        model=new DefaultTableModel(obj,columnNames);
+		        table = new JTable(model);
+		        model.removeRow(0);
+		        table.addMouseListener(new MouseAdapter() {
+		        	public void mouseClicked(MouseEvent arg0) {
+		        	int selectedRow= table.getSelectedRow();
+		        	Object oa=model.getValueAt(selectedRow, 0);
+		        	codeF.setText(oa.toString());
+		        	Object ob=model.getValueAt(selectedRow, 1);
+		        	state.setSelectedItem(ob.toString());;
+		        	
+		        	}
+		        });
+		        /* 
+		         * 设置JTable的列默认的宽度和高度 
+		         */  
+		        TableColumn column = null;  
+		        int colunms = table.getColumnCount();  
+		        for(int i = 0; i < colunms; i++)  
+		        {  
+		            column = table.getColumnModel().getColumn(i);  
+		            /*将每一列的默认宽度设置为100*/  
+		            column.setPreferredWidth(200);  
+		        }  
+		        /* 
+		         * 设置JTable自动调整列表的状态，此处设置为关闭 
+		         */  
+		        table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);  
+		          
+		        /*用JScrollPane装载JTable，这样超出范围的列就可以通过滚动条来查看*/  
+		        JScrollPane scroll = new JScrollPane(table); 
+		    	scroll.setBounds(120, 188, 353, 138);
+		scroll.setViewportView(table);
+		add(scroll);
 
 		JLabel label_7 = new JLabel("日期");
 		label_7.setBounds(WIDTHL, 43, 54, 15);
 		add(label_7);
 
 		dataF = new JTextField();
-		dataF.setBounds(863, 40, 102, 28);
+		dataF.setBounds(863, 40, 140, 28);
 		add(dataF);
 		dataF.setColumns(10);
 
@@ -159,7 +207,7 @@ public class ArrivalOrder extends JPanel {
 		add(label_14);
 
 		barcodeF = new JTextField();
-		barcodeF.setBounds(863, 157, 140, 28);
+		barcodeF.setBounds(863, 157, 255, 28);
 		add(barcodeF);
 		barcodeF.setColumns(10);
 
@@ -169,7 +217,7 @@ public class ArrivalOrder extends JPanel {
 		add(button);
 
 		fromF = new JTextField();
-		fromF.setBounds(863, 78, 102, 28);
+		fromF.setBounds(863, 78, 140, 28);
 		add(fromF);
 		fromF.setColumns(10);
 
@@ -202,19 +250,19 @@ public class ArrivalOrder extends JPanel {
 		
 		 typeF = new JComboBox();
 		typeF.setModel(new DefaultComboBoxModel(new String[] {"中转单编号", "汽运编号"}));
-		typeF.setBounds(863, 119, 102, 21);
+		typeF.setBounds(863, 119, 140, 21);
 		add(typeF);
 		
 		JLabel lblNewLabel_1 = new JLabel("编号类型");
 		lblNewLabel_1.setBounds(97, 81, 82, 15);
 		add(lblNewLabel_1);
 		
-		textField = new JTextField();
-		textField.setEnabled(false);
-		textField.setEditable(false);
-		textField.setBounds(189, 81, 87, 28);
-		add(textField);
-		textField.setColumns(10);
+		TYPE = new JTextField();
+		TYPE.setEnabled(false);
+		TYPE.setEditable(false);
+		TYPE.setBounds(189, 81, 87, 28);
+		add(TYPE);
+		TYPE.setColumns(10);
 
 
 
@@ -224,18 +272,24 @@ public class ArrivalOrder extends JPanel {
 		ArrivalNoteOnServiceVO  vo=null;
 		//初始化顺序问题
 		Boolean isT;
+		//伪造的vo
+		
 		public void actionPerformed(ActionEvent arg0) {
+			ArrayList<BarcodeAndState> wei =new ArrayList<BarcodeAndState>();
+			GoodsState state1=GoodsState.COMPLETE;
+			BarcodeAndState bas=new BarcodeAndState("0123456789",state1);
+			wei.add(bas);
 			if(typeF.getSelectedIndex()==0)
 				isT=false;
 			else isT=true;
-			vo=new ArrivalNoteOnServiceVO (dataF.getText(),isT, codeF.getText(),fromF.getText(),  BarcodeAndStates);
-			
+			vo=new ArrivalNoteOnServiceVO (dataF.getText(),isT, barcodeF.getText(),fromF.getText(),wei);
 			ResultMsg result=arrive.inputHallArrivalDoc(vo);
 			if(result.isPass()){//格式检查正确
 			DATA.setText(dataF.getText());
 			CODE.setText(barcodeF.getText());
 			FROM.setText(fromF.getText());
-			textField.setText(typeF.getSelectedItem().toString());
+			TYPE.setText(typeF.getSelectedItem().toString());
+			
 			}
 			else{//格式有误
 				int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
@@ -258,24 +312,63 @@ public class ArrivalOrder extends JPanel {
 			else
 				state1=GoodsState.LOST;
 			bas=new BarcodeAndState(codeF.getText(),state1);
-			s=s+codeF.getText()+"状态："+state.getSelectedItem().toString()+"\r\n";
-			codeee.setText(s);
-			codeF.setText("");
-			BarcodeAndStates.add(bas);
+			//伪造的vo
+			ArrayList<BarcodeAndState> wei =new ArrayList<BarcodeAndState>();
+			wei.add(bas);
+			ArrivalNoteOnServiceVO  aa=new ArrivalNoteOnServiceVO("2015-10-22",false,"025000201510120000003","南京",wei);
+			ResultMsg result=arrive.inputHallArrivalDoc(aa);
+			if(result.isPass()){//格式检查正确
+				String[] row={codeF.getText(),state.getSelectedItem().toString()};
+				model.addRow(row);
+				codeF.setText("");
+			}
+			else{//格式有误
+				int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
+					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+
+				}
 		}
 
 
 	}
 	public class submitListener implements ActionListener{
 		ArrivalNoteOnServiceVO  vo=null;
-
+		Boolean isT;
 
 		public void actionPerformed(ActionEvent e) {
-			vo=new ArrivalNoteOnServiceVO (dataF.getText(),true, codeF.getText(),fromF.getText(),  BarcodeAndStates);
-			int result = JOptionPane.showConfirmDialog(null, "确认提交审批？","系统提示",
+			if(TYPE.getText().isEmpty()){
+				JOptionPane.showConfirmDialog(null, "有咚咚漏填啦","系统提示",
+						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+			return ;
+			}
+			if(model.getRowCount()==0){
+				JOptionPane.showConfirmDialog(null, "有咚咚漏填啦","系统提示",
+						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+			return ;
+			}
+			if(TYPE.getText().equals("中转单编号"))
+				isT=false;
+			else isT=true;
+			//获取table里的数据BarcodeAndStates加到
+			int count=model.getRowCount();
+			for(int i=0;i<count;i++){
+				String cc=model.getValueAt(i, 0).toString();
+				String gs=model.getValueAt(i, 1).toString();
+				GoodsState gss;
+				if(gs.equals("完整"))
+					gss=GoodsState.COMPLETE;
+				else if(gs.equals("损坏"))
+					gss=GoodsState.DAMAGED;
+				else
+					gss=GoodsState.LOST;
+				BarcodeAndState aaaa=new BarcodeAndState(cc,gss);
+				BarcodeAndStates.add(aaaa);
+			}
+			vo=new ArrivalNoteOnServiceVO (DATA.getText(),isT, CODE.getText(),FROM.getText(),BarcodeAndStates);
+			int result1 = JOptionPane.showConfirmDialog(null, "确认提交审批？","系统提示",
 					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-			if(result == JOptionPane.YES_OPTION) {
-				arrive.submitHallArrivalDoc(vo);
+			if(result1 == JOptionPane.YES_OPTION) {
+			arrive.submitHallArrivalDoc(vo);
 
 			}
 			else {

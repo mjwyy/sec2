@@ -123,17 +123,17 @@ public class Service extends JFrame {
 	/**
 	 * 设置关闭按钮
 	 */
-	private  void setClose() {
+	public  void setClose() {
 		this.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				super.windowClosing(e);
-				int result = JOptionPane.showConfirmDialog(Service.this, "确认退出？","系统提示",
+				int result = JOptionPane.showConfirmDialog( Service.this, "确认退出？","系统提示",
 						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 				if(result == JOptionPane.YES_OPTION) {
-					System.exit(0);
+					dispose();
 				} else {
-					return;
+					setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 				}
 			}
 		});
@@ -332,7 +332,6 @@ public void setCaiDanLan(){
 				a.setVisible(true);
 				middle.removeAll();
 				middle.add(a);
-				
 				middle.repaint();
 			}
 		});

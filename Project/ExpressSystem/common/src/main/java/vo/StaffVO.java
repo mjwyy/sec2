@@ -126,6 +126,10 @@ public class StaffVO {
 		
 	}
 
+	public String getOrganization() {
+		return organization;
+	}
+
 	public Object toPO() {
 		
 		StaffPO po = new StaffPO(staffID, name, organization, sex, IDNum, Double.parseDouble(wage), phoneNum, postion, workingtime);

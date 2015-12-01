@@ -4,6 +4,7 @@ package dataservice.statisticdataservice._Stub;
  * @data 2015-10-22
  */
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dataservice.exception.ElementNotFoundException;
@@ -34,9 +35,14 @@ public class BusinessDataModificationDataService_Stub implements BusinessDataMod
 		return false;
 	}
 
-	 
-	public DistancePO getDistance(DistancePO distancePO) {		
-		System.out.println("got distance");
+    @Override
+    public double getDistance(String city1, String city2) throws RemoteException, ElementNotFoundException, SQLException {
+        return 0;
+    }
+
+
+    public DistancePO getDistance(DistancePO distancePO) {
+        System.out.println("got distance");
 		return distancePO;
 	}
 

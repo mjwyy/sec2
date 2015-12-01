@@ -20,6 +20,8 @@ import java.util.ArrayList;
  */
 public class SystemUserManagementData extends UnicastRemoteObject implements SystemUserManagementDataService{
 
+    private static final long serialVersionUID = 72164956257035L;
+
     public SystemUserManagementData() throws RemoteException {
 
     }
@@ -56,11 +58,13 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
         String modify;
         if(originalUser.getPassword()!=null && originalUser.getAuthority().getIntAuthority()!=0){
             modify = "update user set rights="+modified.getAuthority()
-                    +",password="+modified.getPassword()+" where account = "+modified.getAccount();
+                    +",password = '"+modified.getPassword()+"' where account = '"+modified.getAccount()+"'";
         }else if(originalUser.getPassword()!=null&& originalUser.getAuthority().getIntAuthority()==0){
-            modify = "update user set password="+modified.getPassword()+" where account = "+modified.getAccount();
+            modify = "update user set password = '"+modified.getPassword()+
+                    " where account = '"+modified.getAccount()+"'";
         }else
-            modify = "update user set rights="+modified.getAuthority()+" where account = "+modified.getAccount();
+            modify = "update user set rights = "+modified.getAuthority()
+                    +" where account = '"+modified.getAccount()+"'";
         PreparedStatement statement = connection.prepareStatement(modify);
         int result = statement.executeUpdate();
         DatabaseManager.releaseConnection(connection,statement,null);

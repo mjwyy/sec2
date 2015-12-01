@@ -45,7 +45,7 @@ public class InventoryPO implements Serializable{
 	/**
 	 * 货物信息
 	 */
-	private ArrayList<CommodityGoodsPO> goodsInfo;;
+	private ArrayList<CommodityGoodsPO> goodsInfo;
 
 	/**
 	 * 构造方法

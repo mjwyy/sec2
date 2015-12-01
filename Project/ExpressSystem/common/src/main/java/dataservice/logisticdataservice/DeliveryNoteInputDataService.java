@@ -19,7 +19,7 @@ public interface DeliveryNoteInputDataService extends Remote, Serializable {
 	/**
 	 * 在数据库中增加一个po记录
 	 */
-    SendDocMsg insert(DeliveryNotePO po) throws RemoteException, SQLException, ElementNotFoundException;
+    SendDocMsg insert(DeliveryNotePO po) throws RemoteException, ElementNotFoundException;
 
-    ArrayList<DeliveryNotePO> getDeliveryNote() throws SQLException, RemoteException;
+    ArrayList<DeliveryNotePO> getDeliveryNote() throws RemoteException;
 }

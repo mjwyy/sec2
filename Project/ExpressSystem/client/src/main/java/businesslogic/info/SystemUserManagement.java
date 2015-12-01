@@ -112,8 +112,6 @@ public class SystemUserManagement implements SystemUserManagementBLService {
     public LogInMsg logIn(String userNum, String initialPassword)  {
     	try {
 			return dataService.logIn(userNum, initialPassword);
-		} catch (SQLException e) {
-			return new LogInMsg(false, null, "网络连接异常，目前无法登陆。");
 		} catch (RemoteException e) {
             e.printStackTrace();
             return new LogInMsg(false, null, "网络连接异常，目前无法登陆。");

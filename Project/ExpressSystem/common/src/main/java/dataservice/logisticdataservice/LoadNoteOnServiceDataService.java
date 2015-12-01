@@ -19,7 +19,7 @@ public interface LoadNoteOnServiceDataService extends Remote, Serializable {
 	/**
 	 * 在数据库中增加一个po记录
 	 */
-    ResultMsg insert(LoadNoteOnServicePO po) throws RemoteException, SQLException, ElementNotFoundException;
+    ResultMsg insert(LoadNoteOnServicePO po) throws RemoteException, ElementNotFoundException;
 
-    ArrayList<LoadNoteOnServicePO> getLoadNoteOnService() throws SQLException, RemoteException;
+    ArrayList<LoadNoteOnServicePO> getLoadNoteOnService() throws RemoteException;
 }

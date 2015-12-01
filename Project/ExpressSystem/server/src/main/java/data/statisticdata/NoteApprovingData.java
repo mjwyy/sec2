@@ -70,67 +70,79 @@ public class NoteApprovingData implements NoteApprovingDataService {
 
 
     @Override
-    public ArrayList<ArrivalNoteOnServicePO> getArrivalNoteOnServicePO() throws RemoteException, SQLException {
+    public ArrayList<ArrivalNoteOnServicePO> getArrivalNoteOnServicePO() throws RemoteException {
         return this.arrivalNoteOnServiceDataService.getArrivalNoteOnService();
     }
 
     @Override
-    public ArrayList<DeliverNoteOnServicePO> getDeliverNoteOnServicePO() throws RemoteException, SQLException {
+    public ArrayList<DeliverNoteOnServicePO> getDeliverNoteOnServicePO() throws RemoteException {
         return this.arrivalNoteOnServiceDataService.getDeliverNoteOnService();
     }
 
     @Override
-    public ArrayList<ArrivalNoteOnTransitPO> getArrivalNoteOnTransitPO() throws RemoteException, SQLException {
+    public ArrayList<ArrivalNoteOnTransitPO> getArrivalNoteOnTransitPO() throws RemoteException {
         return this.arrivalNoteOnTransitDataService.getArrivalNoteOnTransit();
     }
 
     @Override
-    public ArrayList<DeliveryNotePO> getDeliveryNotePO() throws RemoteException, SQLException {
+    public ArrayList<DeliveryNotePO> getDeliveryNotePO() throws RemoteException {
         return this.deliveryNoteInputDataService.getDeliveryNote();
     }
 
     @Override
-    public ArrayList<LoadNoteOnServicePO> getLoadNoteOnServicePO() throws RemoteException, SQLException {
+    public ArrayList<LoadNoteOnServicePO> getLoadNoteOnServicePO() throws RemoteException {
         return this.loadNoteOnServiceDataService.getLoadNoteOnService();
     }
 
     @Override
-    public ArrayList<LoadNoteOnTransitPO> getLoadNoteOnTransitPO() throws RemoteException, SQLException {
+    public ArrayList<LoadNoteOnTransitPO> getLoadNoteOnTransitPO() throws RemoteException {
         return this.loadNoteOnTransitDataService.getLoadNoteOnTransit();
     }
 
     @Override
-    public ArrayList<ReceivingNotePO> getReceivingNotePO() throws RemoteException, SQLException {
+    public ArrayList<ReceivingNotePO> getReceivingNotePO() throws RemoteException {
         return this.receivingNoteInputDataService.getReceivingNote();
     }
 
     @Override
-    public ArrayList<TransitNotePO> getTransitNotePO() throws RemoteException, SQLException {
+    public ArrayList<TransitNotePO> getTransitNotePO() throws RemoteException {
         return this.transitNoteInputDataService.getTransitNotePO();
     }
 
     @Override
     public boolean passDoc(NotePO docPO) throws RemoteException,
-            ElementNotFoundException, SQLException {
+            ElementNotFoundException {
         String name = docPO.getName();
         String tableName = nameAndTableName.get(name);
         String tableID = nameAndTableID.get(name);
         String sql = "update `" + tableName + "` set `isPassed` = 2 where `" + tableID
                 + "` = '" + docPO.getID() + "'";
         System.out.println(sql);
-        return SqlHelper.excUpdate(sql);
+        try {
+            SqlHelper.excUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
     @Override
     public boolean failDoc(NotePO docPO, String comment)
-            throws RemoteException, ElementNotFoundException, SQLException {
+            throws RemoteException, ElementNotFoundException {
         String name = docPO.getName();
         String tableName = nameAndTableName.get(name);
         String tableID = nameAndTableID.get(name);
         String sql = "update " + tableName + " set isPassed = 1" + ", advice = '" + comment +
                 "' where " + tableID + " = '" + docPO.getID() + "'";
         System.out.println(sql);
-        return SqlHelper.excUpdate(sql);
+        try {
+            SqlHelper.excUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
 

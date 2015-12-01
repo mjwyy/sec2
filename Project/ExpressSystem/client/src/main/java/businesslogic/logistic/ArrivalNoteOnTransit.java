@@ -43,8 +43,6 @@ public class ArrivalNoteOnTransit implements ArrivalNoteOnTransitBLService {
             return new ResultMsg(false,e.getMessage());
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         return new ResultMsg(true,"中转中心到达单已提交!");
     }

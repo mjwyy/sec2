@@ -45,9 +45,6 @@ public class TransitNoteInput implements TransitNoteInputBLService {
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
             return new ResultMsg(false,e.getMessage());
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return new ResultMsg(false,e.getMessage());
         }
     }
 }

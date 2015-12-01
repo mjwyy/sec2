@@ -21,7 +21,7 @@ public interface ReceivingNoteInputDataService extends Remote,Serializable {
 	/**
 	 * 在数据库中增加一个po记录
 	 */
-    ResultMsg insert(ReceivingNotePO po) throws RemoteException, SQLException, ElementNotFoundException;
+    ResultMsg insert(ReceivingNotePO po) throws RemoteException, ElementNotFoundException;
 
-    ArrayList<ReceivingNotePO> getReceivingNote() throws SQLException, RemoteException;
+    ArrayList<ReceivingNotePO> getReceivingNote() throws RemoteException;
 }

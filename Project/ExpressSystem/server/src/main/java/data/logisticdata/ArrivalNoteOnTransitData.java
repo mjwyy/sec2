@@ -1,6 +1,7 @@
 package data.logisticdata;
 
 import data.database.DatabaseManager;
+import data.logisticdata.barcode.BarcodeUtil;
 import data.statisticdata.LogInsHelper;
 import data.statisticdata.LogInsertData;
 import data.statisticdata.OrderInquiryData;
@@ -24,76 +25,84 @@ import java.util.ArrayList;
  */
 public class ArrivalNoteOnTransitData extends NoteInputData implements ArrivalNoteOnTransitDataService {
 
+    private BarcodeUtil barcodeUtil = new BarcodeUtil();
+
     public ArrivalNoteOnTransitData() throws RemoteException {
     }
 
     @Override
-    public ResultMsg insert(ArrivalNoteOnTransitPO po) throws RemoteException, SQLException, ElementNotFoundException {
-        System.out.println("insert(ArrivalNoteOnTransitPO ");
+    public ResultMsg insert(ArrivalNoteOnTransitPO po) throws RemoteException, ElementNotFoundException {
         Connection connection = DatabaseManager.getConnection();
         String sql = "insert into `note_arrival_on_transit` " +
                 "( `date`, `barcodes`, `departurePlace`, `centerNumber`, `transferNumber`) " +
                 "values ( ?, ?, ?, ?, ?)";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString(1, po.getDate());
-        StringBuilder stringBuilder = new StringBuilder();
-        ArrayList<BarcodeAndState> barcodeAndState = po.getBarcodeAndStates();
-        for (BarcodeAndState history : barcodeAndState) {
-            stringBuilder.append(history.getBarcode());
-            stringBuilder.append(';');
-        }
-        statement.setString(2, stringBuilder.toString());
-        statement.setString(3, po.getDeparturePlace());
-        statement.setString(4, po.getCenterNumber());
-        statement.setString(5, po.getTransferNumber());
-        //向数据库添加到达单
-        statement.executeUpdate();
-        statement.close();
-        //记录系统日志
-        LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+po.getUserName()+
-                "新增中转中心到达单,单据编号:" + po.getTransferNumber());
-
-        //等待总经理审批过程,反复查询
-        DocState result = this.waitForCheck("note_arrival_on_transit",
-                "transferNumber", po.getTransferNumber());
+        PreparedStatement statement = null;
         ResultMsg resultMsg = new ResultMsg(false);
-        //审批通过
-        if (result == DocState.PASSED) {
-            System.out.println("ArrivalNoteOnTransitPO is passed!");
-            //追加修改物流信息
-            this.updateOrder(barcodeAndState,"已到达"+po.getTransferNumber());
-            resultMsg.setPass(true);
-            //审批没有通过
-        } else {
-            System.out.println("ArrivalNoteOnTransitPO is failed!");
-            String advice = this.getFailedAdvice("note_arrival_on_transit",
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, po.getDate());
+            ArrayList<BarcodeAndState> barcodeAndState = po.getBarcodeAndStates();
+            statement.setString(2, barcodeUtil.getDBbarsFromBarAndStateList(barcodeAndState));
+            statement.setString(3, po.getDeparturePlace());
+            statement.setString(4, po.getCenterNumber());
+            statement.setString(5, po.getTransferNumber());
+            //向数据库添加到达单
+            statement.executeUpdate();
+
+            //记录系统日志
+            LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+po.getUserName()+
+                    "新增中转中心到达单,单据编号:" + po.getTransferNumber());
+
+            //等待总经理审批过程,反复查询
+            DocState result = this.waitForCheck("note_arrival_on_transit",
                     "transferNumber", po.getTransferNumber());
-            resultMsg.setMessage(advice);
+
+            //审批通过
+            if (result == DocState.PASSED) {
+                //追加修改物流信息
+                this.updateOrder(barcodeAndState,"已到达"+po.getOrganization());
+                resultMsg.setPass(true);
+            } else {
+                String advice = this.getFailedAdvice("note_arrival_on_transit",
+                        "transferNumber", po.getTransferNumber());
+                resultMsg.setMessage(advice);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            resultMsg.setMessage("无法添加中转中心到达单");
+            LogInsHelper.insertLog(po.getUserName()+"添加中转中心到达单失败");
         }
-        //操作结束
         DatabaseManager.releaseConnection(connection, statement, null);
         return resultMsg;
     }
 
     @Override
-    public ArrayList<ArrivalNoteOnTransitPO> getArrivalNoteOnTransit() throws RemoteException,SQLException {
+    public ArrayList<ArrivalNoteOnTransitPO> getArrivalNoteOnTransit() throws RemoteException {
         ArrayList<ArrivalNoteOnTransitPO> result = new ArrayList<>();
         Connection connection = DatabaseManager.getConnection();
         String sql = "select * from `note_arrival_on_transit` where isPassed = 0";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        ResultSet resultSet = statement.executeQuery();
-        ArrivalNoteOnTransitPO arrivalNoteOnServicePO;
-        while(resultSet.next()){
-            String transferNumber = resultSet.getString(1);
-            String centerNumber = resultSet.getString(2);
-            String date = resultSet.getString(3);
-            String departure = resultSet.getString(4);
-            String barcodes = resultSet.getString(5);
-            arrivalNoteOnServicePO = new ArrivalNoteOnTransitPO
-                    (transferNumber,centerNumber,date,departure,null);
-            result.add(arrivalNoteOnServicePO);
+        PreparedStatement statement = null;
+        try {
+            statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+            ArrivalNoteOnTransitPO arrivalNoteOnServicePO;
+            ArrayList<BarcodeAndState> barcodeAndStates;
+            while(resultSet.next()){
+                String transferNumber = resultSet.getString(1);
+                String centerNumber = resultSet.getString(2);
+                String date = resultSet.getString(3);
+                String departure = resultSet.getString(4);
+                String barcodes = resultSet.getString(5);
+                barcodeAndStates = barcodeUtil.getBarcodeAndStateFromDBbars(barcodes);
+                arrivalNoteOnServicePO = new ArrivalNoteOnTransitPO
+                        (transferNumber,centerNumber,date,departure,barcodeAndStates);
+                result.add(arrivalNoteOnServicePO);
+            }
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        DatabaseManager.releaseConnection(connection, statement, resultSet);
+        DatabaseManager.releaseConnection(connection, statement, null);
         return result;
     }
 

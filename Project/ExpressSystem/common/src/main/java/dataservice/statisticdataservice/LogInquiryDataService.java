@@ -22,6 +22,6 @@ public interface LogInquiryDataService extends Remote, Serializable {
 	 * @throws RemoteException
 	 */
 	public ArrayList<LogEntryPO> findLogEntries(String time,ArrayList<String> keyword)
-            throws RemoteException, SQLException;
+            throws RemoteException;
 
 }

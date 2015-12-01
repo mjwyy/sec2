@@ -49,9 +49,6 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
         } catch (RemoteException e) {
             e.printStackTrace();
             return new SendDocMsg(false, e.getMessage(), 0, null);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return new SendDocMsg(false, e.getMessage(), 0, null);
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
             return new SendDocMsg(false, e.getMessage(), 0, null);

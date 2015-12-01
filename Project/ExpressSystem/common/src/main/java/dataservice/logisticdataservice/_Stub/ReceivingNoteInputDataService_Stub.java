@@ -35,7 +35,7 @@ public class ReceivingNoteInputDataService_Stub implements ReceivingNoteInputDat
     }
 
     @Override
-    public ArrayList<ReceivingNotePO> getReceivingNote() throws SQLException {
+    public ArrayList<ReceivingNotePO> getReceivingNote() {
         return null;
     }
 

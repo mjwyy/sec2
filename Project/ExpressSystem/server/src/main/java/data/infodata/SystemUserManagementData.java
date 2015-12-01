@@ -28,31 +28,43 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
     }
 
     @Override
-    public boolean addUser(UserPO user) throws InterruptWithExistedElementException, SQLException {
+    public boolean addUser(UserPO user) throws InterruptWithExistedElementException {
         Connection connection = DatabaseManager.getConnection();
         String sqlInsert = "INSERT into user (account,rights,password) values(?,?,MD5(?))";
-        PreparedStatement statement = connection.prepareStatement(sqlInsert);
-        statement.setString(1,user.getAccount());
-        statement.setInt(2,user.getAuthority().getIntAuthority());
-        statement.setString(3,user.getPassword());
-        int result = statement.executeUpdate();
+        PreparedStatement statement = null;
+        int result = 0;
+        try {
+            statement = connection.prepareStatement(sqlInsert);
+            statement.setString(1,user.getAccount());
+            statement.setInt(2,user.getAuthority().getIntAuthority());
+            statement.setString(3,user.getPassword());
+            result = statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         DatabaseManager.releaseConnection(connection,statement,null);
         return result > 0;
     }
 
     @Override
-    public boolean removeUser(UserPO user) throws ElementNotFoundException, SQLException {
+    public boolean removeUser(UserPO user) throws ElementNotFoundException {
         Connection connection = DatabaseManager.getConnection();
         String account = user.getAccount();
         String delete = "DELETE from user where account = '"+account+"'";
-        PreparedStatement statement = connection.prepareStatement(delete);
-        int result = statement.executeUpdate();
-        DatabaseManager.releaseConnection(connection,statement,null);
+        PreparedStatement statement = null;
+        int result = 0;
+        try {
+            statement = connection.prepareStatement(delete);
+            result = statement.executeUpdate();
+            DatabaseManager.releaseConnection(connection,statement,null);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return result > 0;
     }
 
     @Override
-    public boolean modifyUser(UserPO originalUser, UserPO modified) throws ElementNotFoundException, SQLException {
+    public boolean modifyUser(UserPO originalUser, UserPO modified) throws ElementNotFoundException {
         Connection connection = DatabaseManager.getConnection();
         if(!originalUser.getAccount().equals(modified.getAccount()))
             return false;
@@ -66,53 +78,71 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
         }else
             modify = "update user set rights = "+modified.getAuthority()
                     +" where account = '"+modified.getAccount()+"'";
-        PreparedStatement statement = connection.prepareStatement(modify);
-        int result = statement.executeUpdate();
+        PreparedStatement statement = null;
+        int result = 0;
+        try {
+            statement = connection.prepareStatement(modify);
+            result = statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         DatabaseManager.releaseConnection(connection,statement,null);
         return result > 0;
     }
 
     @Override
-    public ArrayList<UserPO> inquireUser(UserPO info) throws ElementNotFoundException, SQLException {
+    public ArrayList<UserPO> inquireUser(UserPO info) throws ElementNotFoundException {
         Connection connection = DatabaseManager.getConnection();
         String accountToFind = info.getAccount();
         String sqlFindAll = "SELECT * from user where account = '"+accountToFind+"'";
-        PreparedStatement statement = connection.prepareStatement(sqlFindAll);
-        ResultSet resultSet = statement.executeQuery();
+        PreparedStatement statement = null;
         ArrayList<UserPO> result = new ArrayList<>();
-        UserPO userPO;
-        while(resultSet.next()){
-            String account = resultSet.getString(1);
-            String password = resultSet.getString(2);
-            int authority = resultSet.getInt(3);
-            userPO = new UserPO(account,password,Authority.getAuthObject(authority));
-            result.add(userPO);
+        try {
+            statement = connection.prepareStatement(sqlFindAll);
+            ResultSet resultSet = statement.executeQuery();
+            UserPO userPO;
+            while(resultSet.next()){
+                String account = resultSet.getString(1);
+                String password = resultSet.getString(2);
+                int authority = resultSet.getInt(3);
+                userPO = new UserPO(account,password,Authority.getAuthObject(authority));
+                result.add(userPO);
+            }
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        DatabaseManager.releaseConnection(connection,statement,resultSet);
+        DatabaseManager.releaseConnection(connection,statement,null);
         return result;
     }
 
     @Override
-    public ArrayList<UserPO> getAllUsers() throws SQLException {
+    public ArrayList<UserPO> getAllUsers(){
         Connection connection = DatabaseManager.getConnection();
         String sqlFindAll = "SELECT * from user";
-        PreparedStatement statement = connection.prepareStatement(sqlFindAll);
-        ResultSet resultSet = statement.executeQuery();
+        PreparedStatement statement = null;
         ArrayList<UserPO> result = new ArrayList<>();
-        UserPO userPO;
-        while(resultSet.next()){
-            String account = resultSet.getString(1);
-            String password = resultSet.getString(2);
-            int authority = resultSet.getInt(3);
-            userPO = new UserPO(account,password,Authority.getAuthObject(authority));
-            result.add(userPO);
+        try {
+            statement = connection.prepareStatement(sqlFindAll);
+            ResultSet resultSet = statement.executeQuery();
+            UserPO userPO;
+            while(resultSet.next()){
+                String account = resultSet.getString(1);
+                String password = resultSet.getString(2);
+                int authority = resultSet.getInt(3);
+                userPO = new UserPO(account,password,Authority.getAuthObject(authority));
+                result.add(userPO);
+            }
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        DatabaseManager.releaseConnection(connection,statement,resultSet);
+        DatabaseManager.releaseConnection(connection,statement,null);
         return result;
     }
 
 	@Override
-	public LogInMsg logIn(String account, String password) throws RemoteException,SQLException {
+	public LogInMsg logIn(String account, String password) throws RemoteException{
 		Connection connection = DatabaseManager.getConnection();
 		
 		//First, find if the account exist.
@@ -127,26 +157,34 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
 		
 		//Second, find if there exists an account that has the same password.
 		String sql = "SELECT * from user where account='"+account+"' AND password=MD5('"+password+"')";
-		PreparedStatement stmt = connection.prepareStatement(sql);
-		ResultSet set = stmt.executeQuery();
+        PreparedStatement stmt = null;
         LogInMsg logInMsg;
-		if(set.next()) { // Found it!
-			Authority a = Authority.getAuthObject(set.getInt("rights"));
-            sql = "SELECT name,organization from staff where staff_id = '"+account+"'";
+        try {
             stmt = connection.prepareStatement(sql);
-            set = stmt.executeQuery();
-            String userName = "";
-            String organization = "";
-            while (set.next()){
-                userName = set.getString("name");
-                organization =  set.getString("organization");
+            ResultSet set = stmt.executeQuery();
+            if(set.next()) { // Found it!
+                Authority a = Authority.getAuthObject(set.getInt("rights"));
+                sql = "SELECT name,organization from staff where staff_id = '"+account+"'";
+                stmt = connection.prepareStatement(sql);
+                set = stmt.executeQuery();
+                String userName = "";
+                String organization = "";
+                while (set.next()){
+                    userName = set.getString("name");
+                    organization =  set.getString("organization");
+                }
+                logInMsg = new LogInMsg(true,a,"",userName,organization);
+            } else { // No such user.
+                logInMsg = new LogInMsg(false, null, "密码错误，请检查输入");
             }
-            logInMsg = new LogInMsg(true,a,"",userName,organization);
-		} else { // No such user.
-            logInMsg = new LogInMsg(false, null, "密码错误，请检查输入");
-		}
-        DatabaseManager.releaseConnection(connection,stmt,set);
-        return logInMsg;
+            set.close();
+            DatabaseManager.releaseConnection(connection,stmt,null);
+            return logInMsg;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            DatabaseManager.releaseConnection(connection,stmt,null);
+        }
+        return null;
 	}
 
 }

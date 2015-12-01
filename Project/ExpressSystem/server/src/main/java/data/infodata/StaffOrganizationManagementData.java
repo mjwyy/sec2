@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import data.database.DatabaseManager;
 import data.database.SqlHelper;
+import data.statisticdata.LogInsHelper;
 import po.OrganizationPO;
 import po.StaffPO;
 import dataservice.exception.ElementNotFoundException;
@@ -26,58 +27,94 @@ public class StaffOrganizationManagementData implements
 
     @Override
 	public boolean addStaff(StaffPO staff) throws RemoteException,
-            InterruptWithExistedElementException, SQLException {
+            InterruptWithExistedElementException{
         Connection connection = DatabaseManager.getConnection();
         String sql = "insert into `staff` ( `gender`, `salary`, `position`, `organization`," +
                 " `workHour`, `staff_id`, `idCardNumber`, `name`, `phoneNumber`) " +
                 "values ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        int gender = staff.getGender().equals("男") ? 0 : 1;
-        statement.setInt(1, gender);
-        statement.setDouble(2, staff.getSalary());
-        statement.setInt(3, staff.getPosition().getIntStaffType());
-        statement.setString(4, staff.getOrganization());
-        statement.setDouble(5, staff.getWorkHour());
-        statement.setString(6, staff.getStaffID());
-        statement.setString(7, staff.getIDCardNumber());
-        statement.setString(8, staff.getName());
-        statement.setString(9, staff.getPhoneNumber());
-        int result = statement.executeUpdate();
+        PreparedStatement statement = null;
+        int result = 0;
+        try {
+            statement = connection.prepareStatement(sql);
+            int gender = staff.getGender().equals("男") ? 0 : 1;
+            statement.setInt(1, gender);
+            statement.setDouble(2, staff.getSalary());
+            statement.setInt(3, staff.getPosition().getIntStaffType());
+            statement.setString(4, staff.getOrganization());
+            statement.setDouble(5, staff.getWorkHour());
+            statement.setString(6, staff.getStaffID());
+            statement.setString(7, staff.getIDCardNumber());
+            statement.setString(8, staff.getName());
+            statement.setString(9, staff.getPhoneNumber());
+            result = statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         DatabaseManager.releaseConnection(connection,statement,null);
         return result > 0;
     }
 
 	@Override
 	public boolean addOrganization(OrganizationPO org) throws RemoteException,
-            InterruptWithExistedElementException, SQLException {
+            InterruptWithExistedElementException{
         Connection connection = DatabaseManager.getConnection();
         String sql = "insert into `organization` (type,name,organization_id) " +
                 "values (?,?,?)";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setInt(1,org.getType().getType());
-        statement.setString(2,org.getName());
-        statement.setString(3,org.getCode());
-        int result = statement.executeUpdate();
-        DatabaseManager.releaseConnection(connection,statement,null);
+        PreparedStatement statement = null;
+        int result = 0;
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.setInt(1,org.getType().getType());
+            statement.setString(2,org.getName());
+            statement.setString(3,org.getCode());
+            result = statement.executeUpdate();
+            DatabaseManager.releaseConnection(connection,statement,null);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 		return result>0;
 	}
 
 	@Override
 	public boolean removeStaff(StaffPO staff) throws RemoteException,
-            ElementNotFoundException, SQLException {
+            ElementNotFoundException{
+        if(this.findStaff(staff).isEmpty()){
+            LogInsHelper.insertLog("人员信息已存在,添加失败");
+            throw new ElementNotFoundException();
+        }
         String sql = "DELETE from `staff` where staff_id = " + staff.getStaffID();
-        return SqlHelper.excUpdate(sql);
+        try {
+            SqlHelper.excUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            LogInsHelper.insertLog("新增人员信息失败");
+            return false;
+        }
+        LogInsHelper.insertLog("新增人员:"+staff.getName());
+        return true;
     }
 
 	@Override
 	public boolean removeOrganization(OrganizationPO org)
-            throws RemoteException, ElementNotFoundException, SQLException {
+            throws RemoteException, ElementNotFoundException{
+        if(this.findOrganization(org).isEmpty()){
+            LogInsHelper.insertLog("机构信息已存在,添加失败");
+            throw new ElementNotFoundException();
+        }
         String sql = "DELETE from `organization` where organization_id = "+org.getCode();
-        return SqlHelper.excUpdate(sql);
+        try {
+            SqlHelper.excUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            LogInsHelper.insertLog("新增机构信息失败");
+            return false;
+        }
+        LogInsHelper.insertLog("新增机构:"+org.getName());
+        return true;
     }
 
     @Override
-    public boolean modifyStaff(StaffPO staff) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException, SQLException {
+    public boolean modifyStaff(StaffPO staff) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException{
         int gender = staff.getGender().equals("男") ? 0 : 1;
         String sql = "UPDATE staff SET name = '" + staff.getName() + "'," +
                 " organization = '" + staff.getOrganization() + "'," +
@@ -88,20 +125,32 @@ public class StaffOrganizationManagementData implements
                 " position = '" + staff.getPosition().getIntStaffType() + "'," +
                 " workHour = '" + staff.getWorkHour() + "'" +
                 " WHERE staff_id = '" + staff.getStaffID() + "'";
-        return SqlHelper.excUpdate(sql);
+        try {
+            SqlHelper.excUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            LogInsHelper.insertLog("修改人员信息失败");
+            return false;
+        }
+        return true;
     }
 
     @Override
-    public boolean modifyOrganization(OrganizationPO org) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException, SQLException {
+    public boolean modifyOrganization(OrganizationPO org) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException{
         String sql = "UPDATE organization SET type = '" + org.getType().getType() + "'," +
                 " name = '" + org.getName() + "'" +
                 " WHERE organization_id = '" + org.getCode() + "'";
-        return SqlHelper.excUpdate(sql);
+        try {
+            SqlHelper.excUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return true;
     }
 
 	@Override
 	public ArrayList<StaffPO> findStaff(StaffPO info) throws RemoteException,
-            ElementNotFoundException, SQLException {
+            ElementNotFoundException{
         String sql = "";
         if (info.getName() != null)
             sql = "SELECT * FROM staff WHERE name LIKE '%" + info.getName() + "%'";
@@ -125,7 +174,7 @@ public class StaffOrganizationManagementData implements
 
 	@Override
 	public ArrayList<OrganizationPO> findOrganization(OrganizationPO info)
-            throws RemoteException, ElementNotFoundException, SQLException {
+            throws RemoteException, ElementNotFoundException{
         String sql = "";
         if (info.getName() != null)
             sql = "SELECT * FROM organization WHERE name LIKE '%" + info.getName() + "%'";
@@ -135,56 +184,68 @@ public class StaffOrganizationManagementData implements
     }
 
 	@Override
-    public ArrayList<StaffPO> getAllStaff() throws RemoteException, SQLException {
+    public ArrayList<StaffPO> getAllStaff() throws RemoteException{
         String sql = "SELECT * from `staff`";
         return this.excFindStaffStatement(sql);
     }
 
 	@Override
 	public ArrayList<OrganizationPO> getAllOrganizations()
-            throws RemoteException, SQLException {
+            throws RemoteException{
         String sql = "SELECT * from organization";
         return this.excFindOrgStatement(sql);
     }
 
-    private ArrayList<StaffPO> excFindStaffStatement(String str) throws SQLException {
+    private ArrayList<StaffPO> excFindStaffStatement(String str){
         Connection connection = DatabaseManager.getConnection();
-        PreparedStatement statement = connection.prepareStatement(str);
-        ResultSet resultSet = statement.executeQuery();
+        PreparedStatement statement = null;
         ArrayList<StaffPO> result = new ArrayList<>();
-        while (resultSet.next()) {
-            String staff_id = resultSet.getString(1);
-            String name = resultSet.getString(2);
-            String orgnization = resultSet.getString(3);
-            int intGender = resultSet.getInt(4);
-            String idCardNumber = resultSet.getString(5);
-            double salary = resultSet.getDouble(6);
-            String phone = resultSet.getString(7);
-            int intPosition = resultSet.getInt(8);
-            double workhour = resultSet.getDouble(9);
-            String strGender = intGender == 0 ? "男" : "女";
-            StaffPO po = new StaffPO(staff_id, name, orgnization, strGender,
-                    idCardNumber, salary, phone, StaffType.getStaffType(intPosition), workhour);
-            result.add(po);
+        try {
+            statement = connection.prepareStatement(str);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                String staff_id = resultSet.getString(1);
+                String name = resultSet.getString(2);
+                String orgnization = resultSet.getString(3);
+                int intGender = resultSet.getInt(4);
+                String idCardNumber = resultSet.getString(5);
+                double salary = resultSet.getDouble(6);
+                String phone = resultSet.getString(7);
+                int intPosition = resultSet.getInt(8);
+                double workhour = resultSet.getDouble(9);
+                String strGender = intGender == 0 ? "男" : "女";
+                StaffPO po = new StaffPO(staff_id, name, orgnization, strGender,
+                        idCardNumber, salary, phone, StaffType.getStaffType(intPosition), workhour);
+                result.add(po);
+            }
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        DatabaseManager.releaseConnection(connection,statement,resultSet);
+        DatabaseManager.releaseConnection(connection,statement,null);
         return result;
     }
 
-    private ArrayList<OrganizationPO> excFindOrgStatement(String str) throws SQLException {
+    private ArrayList<OrganizationPO> excFindOrgStatement(String str){
         Connection connection = DatabaseManager.getConnection();
-        PreparedStatement statement = connection.prepareStatement(str);
-        ResultSet resultSet = statement.executeQuery();
+        PreparedStatement statement = null;
         ArrayList<OrganizationPO> result = new ArrayList<>();
-        while (resultSet.next()) {
-            int organization_id = resultSet.getInt(1);
-            int intType = resultSet.getInt(2);
-            String name = resultSet.getString(3);
-            OrganizationType type = OrganizationType.getOrgType(intType);
-            OrganizationPO po = new OrganizationPO(Integer.toString(organization_id), type, name);
-            result.add(po);
+        try {
+            statement = connection.prepareStatement(str);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int organization_id = resultSet.getInt(1);
+                int intType = resultSet.getInt(2);
+                String name = resultSet.getString(3);
+                OrganizationType type = OrganizationType.getOrgType(intType);
+                OrganizationPO po = new OrganizationPO(Integer.toString(organization_id), type, name);
+                result.add(po);
+            }
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        DatabaseManager.releaseConnection(connection,statement,resultSet);
+        DatabaseManager.releaseConnection(connection,statement,null);
         return result;
     }
 

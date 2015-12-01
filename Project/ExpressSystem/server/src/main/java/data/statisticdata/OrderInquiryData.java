@@ -26,40 +26,53 @@ import util.enums.GoodsState;
 public class OrderInquiryData implements OrderInquiryDataService{
 
     @Override
-    public boolean insertOrderPO(String barcode, String info) throws RemoteException, SQLException {
+    public boolean insertOrderPO(String barcode, String info) throws RemoteException {
         Connection connection = DatabaseManager.getConnection();
         String sql = "insert into order( `barcode`, `stateOfTransport`, `history`) " +
                 "values (?,?,?)";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString(1, barcode);
-        statement.setString(2, GoodsState.COMPLETE.toString());
-        statement.setString(3, info);
-        int result = statement.executeUpdate();
-        DatabaseManager.releaseConnection(connection, statement, null);
+        PreparedStatement statement = null;
+        int result = 0;
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, barcode);
+            statement.setString(2, GoodsState.COMPLETE.toString());
+            statement.setString(3, info);
+            result = statement.executeUpdate();
+            DatabaseManager.releaseConnection(connection, statement, null);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return result > 0;
     }
 
     @Override
 	public OrderPO findOrder(String barcode) throws RemoteException,
-            ElementNotFoundException, SQLException {
+            ElementNotFoundException {
         Connection connection = DatabaseManager.getConnection();
         String sql = "select `stateOfTransport`,`history` from `order` where `barcode` = '"+barcode+"'";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        ResultSet resultSet = statement.executeQuery();
-        ArrayList<String> listHistory = new ArrayList<>();
+        PreparedStatement statement = null;
         OrderPO po;
-        if (resultSet.next()){
-            String stateOfTransport = resultSet.getString(1);
-            String history = resultSet.getString(2);
-            String[] historys = history.split(";");
-            for(String str:historys){
-                listHistory.add(str);
-            }
-            po = new OrderPO(barcode,GoodsState.getGoodsState(stateOfTransport),listHistory);
-        }else
-            throw new ElementNotFoundException();
-        DatabaseManager.releaseConnection(connection, statement, resultSet);
-        return po;
+        try {
+            statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+            ArrayList<String> listHistory = new ArrayList<>();
+            if (resultSet.next()){
+                String stateOfTransport = resultSet.getString(1);
+                String history = resultSet.getString(2);
+                String[] historys = history.split(";");
+                for(String str:historys){
+                    listHistory.add(str);
+                }
+                po = new OrderPO(barcode,GoodsState.getGoodsState(stateOfTransport),listHistory);
+            }else
+                throw new ElementNotFoundException();
+            resultSet.close();
+            return po;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        DatabaseManager.releaseConnection(connection, statement, null);
+        return null;
 	}
 
 

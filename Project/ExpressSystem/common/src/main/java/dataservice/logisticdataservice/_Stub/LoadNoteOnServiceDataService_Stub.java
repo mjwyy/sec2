@@ -38,7 +38,7 @@ public class LoadNoteOnServiceDataService_Stub implements LoadNoteOnServiceDataS
     }
 
     @Override
-    public ArrayList<LoadNoteOnServicePO> getLoadNoteOnService() throws SQLException {
+    public ArrayList<LoadNoteOnServicePO> getLoadNoteOnService() {
         return null;
     }
 

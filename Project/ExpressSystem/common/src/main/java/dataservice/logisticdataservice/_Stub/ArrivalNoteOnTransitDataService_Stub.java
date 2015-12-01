@@ -37,7 +37,7 @@ public class ArrivalNoteOnTransitDataService_Stub implements ArrivalNoteOnTransi
     }
 
     @Override
-    public ArrayList<ArrivalNoteOnTransitPO> getArrivalNoteOnTransit() throws SQLException {
+    public ArrayList<ArrivalNoteOnTransitPO> getArrivalNoteOnTransit() {
         return null;
     }
 

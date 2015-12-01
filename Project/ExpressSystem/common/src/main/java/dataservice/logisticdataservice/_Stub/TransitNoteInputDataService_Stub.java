@@ -45,7 +45,7 @@ public class TransitNoteInputDataService_Stub implements TransitNoteInputDataSer
     }
 
     @Override
-    public ArrayList<TransitNotePO> getTransitNotePO() throws SQLException {
+    public ArrayList<TransitNotePO> getTransitNotePO() {
         return null;
     }
 

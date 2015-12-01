@@ -18,28 +18,28 @@ import util.enums.DocType;
 public interface NoteApprovingDataService extends Remote, Serializable {
 	
 	ArrayList<ArrivalNoteOnServicePO> getArrivalNoteOnServicePO()
-            throws RemoteException, SQLException;
+            throws RemoteException;
     
 	ArrayList<DeliverNoteOnServicePO> getDeliverNoteOnServicePO()
-            throws RemoteException, SQLException;
+            throws RemoteException;
 
 	ArrayList<ArrivalNoteOnTransitPO> getArrivalNoteOnTransitPO()
-            throws RemoteException, SQLException;
+            throws RemoteException;
 
 	ArrayList<DeliveryNotePO> getDeliveryNotePO()
-            throws RemoteException, SQLException;
+            throws RemoteException;
 
 	ArrayList<LoadNoteOnServicePO> getLoadNoteOnServicePO()
-            throws RemoteException, SQLException;
+            throws RemoteException;
 
 	ArrayList<LoadNoteOnTransitPO> getLoadNoteOnTransitPO()
-            throws RemoteException, SQLException;
+            throws RemoteException;
 
 	ArrayList<ReceivingNotePO> getReceivingNotePO()
-            throws RemoteException, SQLException;
+            throws RemoteException;
 
 	ArrayList<TransitNotePO> getTransitNotePO()
-            throws RemoteException, SQLException;
+            throws RemoteException;
 	
 	/**
 	 * 搜索docPO并通过之
@@ -48,7 +48,7 @@ public interface NoteApprovingDataService extends Remote, Serializable {
 	 * @return true for successful pass operation
 	 */
 	boolean passDoc(NotePO docPO)
-            throws RemoteException, ElementNotFoundException, SQLException;
+            throws RemoteException, ElementNotFoundException;
 
     /**
 	 * 搜索docPO并且否决之
@@ -57,5 +57,5 @@ public interface NoteApprovingDataService extends Remote, Serializable {
 	 * @return true for successful decline operation
 	 */
 	boolean failDoc(NotePO docPO, String comment)
-            throws RemoteException, ElementNotFoundException, SQLException;
+            throws RemoteException, ElementNotFoundException;
 }

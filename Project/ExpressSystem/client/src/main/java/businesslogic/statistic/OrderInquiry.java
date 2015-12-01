@@ -45,9 +45,6 @@ public class OrderInquiry implements OrderInquiryBLService {
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
             return null;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
         }
         this.resultVO = new OrderVO(this.resultPO.getBarcode(), resultPO.getGoodsState(),
                 resultPO.getHistory());

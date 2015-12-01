@@ -28,42 +28,42 @@ public class NoteApprovingDataService_Stub implements NoteApprovingDataService{
 
 
     @Override
-    public ArrayList<ArrivalNoteOnServicePO> getArrivalNoteOnServicePO() throws RemoteException, SQLException {
+    public ArrayList<ArrivalNoteOnServicePO> getArrivalNoteOnServicePO() throws RemoteException {
         return null;
     }
 
     @Override
-    public ArrayList<DeliverNoteOnServicePO> getDeliverNoteOnServicePO() throws RemoteException, SQLException {
+    public ArrayList<DeliverNoteOnServicePO> getDeliverNoteOnServicePO() throws RemoteException {
         return null;
     }
 
     @Override
-    public ArrayList<ArrivalNoteOnTransitPO> getArrivalNoteOnTransitPO() throws RemoteException, SQLException {
+    public ArrayList<ArrivalNoteOnTransitPO> getArrivalNoteOnTransitPO() throws RemoteException {
         return null;
     }
 
     @Override
-    public ArrayList<DeliveryNotePO> getDeliveryNotePO() throws RemoteException, SQLException {
+    public ArrayList<DeliveryNotePO> getDeliveryNotePO() throws RemoteException {
         return null;
     }
 
     @Override
-    public ArrayList<LoadNoteOnServicePO> getLoadNoteOnServicePO() throws RemoteException, SQLException {
+    public ArrayList<LoadNoteOnServicePO> getLoadNoteOnServicePO() throws RemoteException {
         return null;
     }
 
     @Override
-    public ArrayList<LoadNoteOnTransitPO> getLoadNoteOnTransitPO() throws RemoteException, SQLException {
+    public ArrayList<LoadNoteOnTransitPO> getLoadNoteOnTransitPO() throws RemoteException {
         return null;
     }
 
     @Override
-    public ArrayList<ReceivingNotePO> getReceivingNotePO() throws RemoteException, SQLException {
+    public ArrayList<ReceivingNotePO> getReceivingNotePO() throws RemoteException {
         return null;
     }
 
     @Override
-    public ArrayList<TransitNotePO> getTransitNotePO() throws RemoteException, SQLException {
+    public ArrayList<TransitNotePO> getTransitNotePO() throws RemoteException {
         return null;
     }
 

@@ -45,9 +45,6 @@ public class ReceivingNoteInput implements ReceivingNoteInputBLService {
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
             return new ResultMsg(false,e.getMessage());
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return new ResultMsg(false,e.getMessage());
         }
     }
 }

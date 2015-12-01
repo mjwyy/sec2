@@ -51,9 +51,6 @@ public class BusinessDataModification implements BusinessDataModificationBLServi
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
             return new ResultMsg(false,"无法修改价格常量!");
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return new ResultMsg(false,"无法修改价格常量!");
         }
     }
 
@@ -69,9 +66,6 @@ public class BusinessDataModification implements BusinessDataModificationBLServi
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
             return new ResultMsg(false,e.getMessage());
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return new ResultMsg(false,"无法修改价格常量!");
         }
     }
 

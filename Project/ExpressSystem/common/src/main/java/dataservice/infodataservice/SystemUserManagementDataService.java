@@ -31,7 +31,7 @@ public interface SystemUserManagementDataService extends Remote, Serializable {
 	 * @throws InterruptWithExistedElementException
 	 */
 	public boolean addUser(UserPO user)
-            throws RemoteException, InterruptWithExistedElementException, SQLException;
+            throws RemoteException, InterruptWithExistedElementException;
 
 	/**
 	 * Data从数据库中删除对应UserPO条目
@@ -42,7 +42,7 @@ public interface SystemUserManagementDataService extends Remote, Serializable {
 	 * @throws ElementNotFoundException
 	 */
 	public boolean removeUser(UserPO user)
-            throws RemoteException, ElementNotFoundException, SQLException;
+            throws RemoteException, ElementNotFoundException;
 
 	/**
 	 * Data将originalUserPO替换为modifiedUserPO
@@ -54,7 +54,7 @@ public interface SystemUserManagementDataService extends Remote, Serializable {
 	 * @throws ElementNotFoundException
 	 */
 	public boolean modifyUser(UserPO originalUser,UserPO modified)
-			throws RemoteException, ElementNotFoundException, SQLException, InterruptWithExistedElementException;
+			throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException;
 	/**
 	 * Data查询对应的用户并返回其UserPO
      *
@@ -64,7 +64,7 @@ public interface SystemUserManagementDataService extends Remote, Serializable {
 	 * @throws ElementNotFoundException
 	 */
 	public ArrayList<UserPO> inquireUser(UserPO info)
-            throws RemoteException, ElementNotFoundException, SQLException;
+            throws RemoteException, ElementNotFoundException;
 
 	/**
 	 * Data返回所有的UserPO
@@ -73,7 +73,7 @@ public interface SystemUserManagementDataService extends Remote, Serializable {
 	 * @throws RemoteException
 	 */
 	public ArrayList<UserPO> getAllUsers()
-            throws RemoteException, ElementNotFoundException, SQLException;
+            throws RemoteException, ElementNotFoundException;
 
 	/**
 	 * 登录接口
@@ -83,5 +83,5 @@ public interface SystemUserManagementDataService extends Remote, Serializable {
 	 * @throws SQLException 
 	 * @throws ElementNotFoundException 
 	 */
-	public LogInMsg logIn(String account,String password) throws RemoteException, SQLException;
+	public LogInMsg logIn(String account,String password) throws RemoteException;
 }

@@ -43,7 +43,7 @@ public class LoadNoteOnTransitDataService_Stub implements LoadNoteOnTransitDataS
     }
 
     @Override
-    public ArrayList<LoadNoteOnTransitPO> getLoadNoteOnTransit() throws SQLException {
+    public ArrayList<LoadNoteOnTransitPO> getLoadNoteOnTransit() {
         return null;
     }
 

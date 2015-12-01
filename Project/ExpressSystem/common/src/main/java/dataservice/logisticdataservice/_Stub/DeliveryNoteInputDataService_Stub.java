@@ -38,7 +38,7 @@ public class DeliveryNoteInputDataService_Stub implements DeliveryNoteInputDataS
     }
 
     @Override
-    public ArrayList<DeliveryNotePO> getDeliveryNote() throws SQLException {
+    public ArrayList<DeliveryNotePO> getDeliveryNote() {
         return null;
     }
 

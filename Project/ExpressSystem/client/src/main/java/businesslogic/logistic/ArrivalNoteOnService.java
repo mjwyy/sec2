@@ -46,9 +46,6 @@ public class ArrivalNoteOnService implements ArrivalNoteOnServiceBLService {
         } catch (RemoteException e) {
             e.printStackTrace();
             return new ResultMsg(false,e.getMessage());
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return new ResultMsg(false,e.getMessage());
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
             return new ResultMsg(false,"输入的到达单有误,请重新输入");
@@ -71,8 +68,6 @@ public class ArrivalNoteOnService implements ArrivalNoteOnServiceBLService {
             e.printStackTrace();
             return new ResultMsg(false,e.getMessage());
         } catch (ElementNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
             e.printStackTrace();
         }
         return new ResultMsg(true,"营业厅装车单已提交!");

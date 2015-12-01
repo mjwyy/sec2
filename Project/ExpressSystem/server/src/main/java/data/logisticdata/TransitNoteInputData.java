@@ -29,53 +29,59 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
     }
 
     @Override
-    public ResultMsg insert(TransitNotePO po) throws RemoteException, SQLException, ElementNotFoundException {
+    public ResultMsg insert(TransitNotePO po) throws RemoteException, ElementNotFoundException {
         String sql = "insert into `Express`.`note_transit`" +
                 " ( `barcodes`, `transitDocNumber`, `supercargoMan`, `departurePlace`, " +
                 "`transitType`, `date`, `desitination`, `transportNumber`)" +
                 " values ( ?, ?, ?, ?, ?, ?, ?, ?)";
         Connection connection = DatabaseManager.getConnection();
-        PreparedStatement statement = connection.prepareStatement(sql);
-        StringBuilder stringBuilder = new StringBuilder();
-        ArrayList<BarcodesAndLocation> barcodesAndLocationArrayList = po.getBarcodes();
-        for (BarcodesAndLocation barcodesAndLocation : barcodesAndLocationArrayList) {
-            stringBuilder.append(barcodesAndLocation.getBarcode());
-            stringBuilder.append(';');
-        }
-        statement.setString(1, stringBuilder.toString());
-        statement.setString(2,po.getTransitDocNumber());
-        statement.setString(3,po.getSupercargoMan());
-        statement.setString(4,po.getDeparturePlace());
-        statement.setString(5, po.getTransitType().toString());
-        statement.setString(6, po.getDate());
-        statement.setString(7, po.getDesitination());
-        statement.setString(8, po.getTransportationNumber());
-        statement.executeUpdate();
-        statement.close();
-
-        //记录系统日志
-        LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+po.getUserName()+
-                "新增中转单,单据编号:" + po.getTransitDocNumber());
-
-        //等待总经理审批过程,反复查询
-        DocState result = this.waitForCheck("note_transit",
-                "transitDocNumber", po.getTransitDocNumber());
+        PreparedStatement statement = null;
         ResultMsg resultMsg = new ResultMsg(false);
-        //审批通过
-        if (result == DocState.PASSED) {
-            System.out.println("TransitNote is passed!");
-            //追加修改物流信息
-            ArrayList<String> bars = new ArrayList<>();
-            for (BarcodesAndLocation barcodesAndLocation : barcodesAndLocationArrayList)
-                bars.add(barcodesAndLocation.getBarcode());
-            this.updateOrder("已从 "+po.getOrganization()+" 发往 "+po.getDesitination()+" 中转中心",bars);
-            resultMsg.setPass(true);
-            //审批没有通过
-        } else {
-            System.out.println("TransitNote is failed!");
-            String advice = this.getFailedAdvice("note_transit",
+        try {
+            statement = connection.prepareStatement(sql);
+            StringBuilder stringBuilder = new StringBuilder();
+            ArrayList<BarcodesAndLocation> barcodesAndLocationArrayList = po.getBarcodes();
+            for (BarcodesAndLocation barcodesAndLocation : barcodesAndLocationArrayList) {
+                stringBuilder.append(barcodesAndLocation.getBarcode());
+                stringBuilder.append(';');
+            }
+            statement.setString(1, stringBuilder.toString());
+            statement.setString(2,po.getTransitDocNumber());
+            statement.setString(3,po.getSupercargoMan());
+            statement.setString(4,po.getDeparturePlace());
+            statement.setString(5, po.getTransitType().toString());
+            statement.setString(6, po.getDate());
+            statement.setString(7, po.getDesitination());
+            statement.setString(8, po.getTransportationNumber());
+            statement.executeUpdate();
+            statement.close();
+
+            //记录系统日志
+            LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+po.getUserName()+
+                    "新增中转单,单据编号:" + po.getTransitDocNumber());
+
+            //等待总经理审批过程,反复查询
+            DocState result = this.waitForCheck("note_transit",
                     "transitDocNumber", po.getTransitDocNumber());
-            resultMsg.setMessage(advice);
+
+            //审批通过
+            if (result == DocState.PASSED) {
+                System.out.println("TransitNote is passed!");
+                //追加修改物流信息
+                ArrayList<String> bars = new ArrayList<>();
+                for (BarcodesAndLocation barcodesAndLocation : barcodesAndLocationArrayList)
+                    bars.add(barcodesAndLocation.getBarcode());
+                this.updateOrder("已从 "+po.getOrganization()+" 发往 "+po.getDesitination()+" 中转中心",bars);
+                resultMsg.setPass(true);
+                //审批没有通过
+            } else {
+                System.out.println("TransitNote is failed!");
+                String advice = this.getFailedAdvice("note_transit",
+                        "transitDocNumber", po.getTransitDocNumber());
+                resultMsg.setMessage(advice);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         //操作结束
         DatabaseManager.releaseConnection(connection, statement, null);
@@ -83,27 +89,33 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
     }
 
     @Override
-    public ArrayList<TransitNotePO> getTransitNotePO() throws RemoteException,SQLException {
+    public ArrayList<TransitNotePO> getTransitNotePO() throws RemoteException {
         ArrayList<TransitNotePO> result = new ArrayList<>();
         Connection connection = DatabaseManager.getConnection();
         String sql = "select * from `note_transit` where isPassed = 0";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        ResultSet resultSet = statement.executeQuery();
-        TransitNotePO receivingNotePO;
-        while(resultSet.next()){
-            String date = resultSet.getString(1);
-            String docNumber = resultSet.getString(2);
-            String transport = resultSet.getString(3);
-            String type = resultSet.getString(4);
-            String depar = resultSet.getString(5);
-            String des = resultSet.getString(6);
-            String supercargo = resultSet.getString(7);
-            String barcodes = resultSet.getString(8);
-            receivingNotePO = new TransitNotePO(date,docNumber,transport, TransitType.getTransitType(type),
-                    depar,des,supercargo,null);
-            result.add(receivingNotePO);
+        PreparedStatement statement = null;
+        try {
+            statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+            TransitNotePO receivingNotePO;
+            while(resultSet.next()){
+                String date = resultSet.getString(1);
+                String docNumber = resultSet.getString(2);
+                String transport = resultSet.getString(3);
+                String type = resultSet.getString(4);
+                String depar = resultSet.getString(5);
+                String des = resultSet.getString(6);
+                String supercargo = resultSet.getString(7);
+                String barcodes = resultSet.getString(8);
+                receivingNotePO = new TransitNotePO(date,docNumber,transport, TransitType.getTransitType(type),
+                        depar,des,supercargo,null);
+                result.add(receivingNotePO);
+            }
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        DatabaseManager.releaseConnection(connection, statement, resultSet);
+        DatabaseManager.releaseConnection(connection, statement, null);
         return result;
     }
 

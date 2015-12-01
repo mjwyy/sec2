@@ -26,7 +26,7 @@ public interface BusinessDataModificationDataService extends Remote, Serializabl
      * @throws InterruptWithExistedElementException
      */
     public boolean addCity(String name)
-            throws RemoteException, InterruptWithExistedElementException, SQLException;
+            throws RemoteException, InterruptWithExistedElementException;
 
     /**
      * Data返回所有城市名
@@ -35,7 +35,7 @@ public interface BusinessDataModificationDataService extends Remote, Serializabl
      * @throws RemoteException
      */
     public ArrayList<String> getAllCities()
-            throws RemoteException, SQLException;
+            throws RemoteException;
 
     /**
      * Data将name表示的价格条目数值改为newValue
@@ -47,7 +47,7 @@ public interface BusinessDataModificationDataService extends Remote, Serializabl
      * @throws ElementNotFoundException
      */
     public boolean setPrice(PriceType name, double price)
-            throws RemoteException, ElementNotFoundException, SQLException;
+            throws RemoteException, ElementNotFoundException;
 
     /**
      * Data返回对应的价格数值
@@ -58,7 +58,7 @@ public interface BusinessDataModificationDataService extends Remote, Serializabl
      * @throws ElementNotFoundException
      */
     public double getPrice(PriceType name)
-            throws RemoteException, ElementNotFoundException, SQLException;
+            throws RemoteException, ElementNotFoundException;
 
 
     /**
@@ -70,7 +70,7 @@ public interface BusinessDataModificationDataService extends Remote, Serializabl
      * @throws ElementNotFoundException
      */
     public boolean setDistance(DistancePO distancePO)
-            throws RemoteException, ElementNotFoundException, SQLException;
+            throws RemoteException, ElementNotFoundException;
 
     /**
      * Data返回两个城市对应距离数值
@@ -83,5 +83,5 @@ public interface BusinessDataModificationDataService extends Remote, Serializabl
      * @throws ElementNotFoundException
      */
     public double getDistance(String city1, String city2)
-            throws RemoteException, ElementNotFoundException, SQLException;
+            throws RemoteException, ElementNotFoundException;
 }

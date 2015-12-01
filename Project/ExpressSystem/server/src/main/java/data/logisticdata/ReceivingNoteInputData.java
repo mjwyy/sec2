@@ -31,37 +31,42 @@ public class ReceivingNoteInputData extends NoteInputData implements ReceivingNo
     }
 
     @Override
-    public ResultMsg insert(ReceivingNotePO po) throws RemoteException, SQLException, ElementNotFoundException {
+    public ResultMsg insert(ReceivingNotePO po) throws RemoteException, ElementNotFoundException {
         String sql = "insert into `note_receive_note` ( `barcode`, `time`, `receiveCustomer`) " +
                 "values ( ?, ?, ?)";
         Connection connection = DatabaseManager.getConnection();
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString(1,po.getBarcode());
-        statement.setString(2,po.getTime());
-        statement.setString(3,po.getReceiveCustomer());
-        statement.executeUpdate();
-        statement.close();
-
-        //记录系统日志
-        LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+po.getUserName()+
-                "新增收件单,单据编号:" + po.getBarcode());
-        System.out.println("Entered method insert");
-        //等待总经理审批过程,反复查询
-        DocState result = this.waitForCheck("note_receive_note",
-                "barcode", po.getBarcode());
+        PreparedStatement statement = null;
         ResultMsg resultMsg = new ResultMsg(false);
-        //审批通过
-        if (result == DocState.PASSED) {
-            //追加修改物流信息
-            ArrayList<String> bars = new ArrayList<>();
-            bars.add(po.getBarcode());
-            this.updateOrder("已被 "+po.getReceiveCustomer()+" 签收",bars);
-            resultMsg.setPass(true);
-            //审批没有通过
-        } else {
-            String advice = this.getFailedAdvice("note_receive_note",
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.setString(1,po.getBarcode());
+            statement.setString(2,po.getTime());
+            statement.setString(3,po.getReceiveCustomer());
+            statement.executeUpdate();
+            statement.close();
+
+            //记录系统日志
+            LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+po.getUserName()+
+                    "新增收件单,单据编号:" + po.getBarcode());
+            System.out.println("Entered method insert");
+            //等待总经理审批过程,反复查询
+            DocState result = this.waitForCheck("note_receive_note",
                     "barcode", po.getBarcode());
-            resultMsg.setMessage(advice);
+            //审批通过
+            if (result == DocState.PASSED) {
+                //追加修改物流信息
+                ArrayList<String> bars = new ArrayList<>();
+                bars.add(po.getBarcode());
+                this.updateOrder("已被 "+po.getReceiveCustomer()+" 签收",bars);
+                resultMsg.setPass(true);
+                //审批没有通过
+            } else {
+                String advice = this.getFailedAdvice("note_receive_note",
+                        "barcode", po.getBarcode());
+                resultMsg.setMessage(advice);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         //操作结束
         DatabaseManager.releaseConnection(connection, statement, null);
@@ -70,21 +75,27 @@ public class ReceivingNoteInputData extends NoteInputData implements ReceivingNo
     }
 
     @Override
-    public ArrayList<ReceivingNotePO> getReceivingNote() throws RemoteException,SQLException {
+    public ArrayList<ReceivingNotePO> getReceivingNote() throws RemoteException {
         ArrayList<ReceivingNotePO> result = new ArrayList<>();
         Connection connection = DatabaseManager.getConnection();
         String sql = "select * from `note_receive_note` where isPassed = 0";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        ResultSet resultSet = statement.executeQuery();
-        ReceivingNotePO receivingNotePO;
-        while(resultSet.next()){
-            String barcode = resultSet.getString(1);
-            String receiver = resultSet.getString(2);
-            String time = resultSet.getString(3);
-            receivingNotePO = new ReceivingNotePO(barcode,receiver,time);
-            result.add(receivingNotePO);
+        PreparedStatement statement = null;
+        try {
+            statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+            ReceivingNotePO receivingNotePO;
+            while(resultSet.next()){
+                String barcode = resultSet.getString(1);
+                String receiver = resultSet.getString(2);
+                String time = resultSet.getString(3);
+                receivingNotePO = new ReceivingNotePO(barcode,receiver,time);
+                result.add(receivingNotePO);
+            }
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        DatabaseManager.releaseConnection(connection, statement, resultSet);
+        DatabaseManager.releaseConnection(connection, statement, null);
         return result;
     }
 

@@ -41,7 +41,7 @@ public class ArrivalNoteOnServiceDataService_Stub implements ArrivalNoteOnServic
     }
 
     @Override
-    public ArrayList<ArrivalNoteOnServicePO> getArrivalNoteOnService() throws SQLException {
+    public ArrayList<ArrivalNoteOnServicePO> getArrivalNoteOnService() {
         return null;
     }
 
@@ -52,7 +52,7 @@ public class ArrivalNoteOnServiceDataService_Stub implements ArrivalNoteOnServic
     }
 
     @Override
-    public ArrayList<DeliverNoteOnServicePO> getDeliverNoteOnService() throws SQLException {
+    public ArrayList<DeliverNoteOnServicePO> getDeliverNoteOnService() {
         return null;
     }
 

@@ -22,14 +22,14 @@ public interface ArrivalNoteOnServiceDataService extends Remote, Serializable {
     /**
      * 在数据库中插入单一持久化对象
      */
-    ResultMsg insertArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException, SQLException, ElementNotFoundException;
+    ResultMsg insertArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException, ElementNotFoundException;
 
-    ArrayList<ArrivalNoteOnServicePO> getArrivalNoteOnService() throws RemoteException,SQLException;
+    ArrayList<ArrivalNoteOnServicePO> getArrivalNoteOnService() throws RemoteException;
 
     /**
      * 在数据库中插入单一持久化对象
      */
-    ResultMsg insertDeliverNote(DeliverNoteOnServicePO po) throws RemoteException, SQLException, ElementNotFoundException;
+    ResultMsg insertDeliverNote(DeliverNoteOnServicePO po) throws RemoteException, ElementNotFoundException;
 
-    ArrayList<DeliverNoteOnServicePO> getDeliverNoteOnService() throws RemoteException,SQLException;
+    ArrayList<DeliverNoteOnServicePO> getDeliverNoteOnService() throws RemoteException;
 }

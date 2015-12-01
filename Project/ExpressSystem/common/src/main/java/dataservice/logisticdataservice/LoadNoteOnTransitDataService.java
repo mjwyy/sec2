@@ -19,7 +19,7 @@ public interface LoadNoteOnTransitDataService extends Remote, Serializable {
 	/**
 	 * 在数据库中增加一个po记录
 	 */
-    ResultMsg insert(LoadNoteOnTransitPO po) throws RemoteException, SQLException, ElementNotFoundException;
+    ResultMsg insert(LoadNoteOnTransitPO po) throws RemoteException, ElementNotFoundException;
 
-    ArrayList<LoadNoteOnTransitPO> getLoadNoteOnTransit() throws SQLException, RemoteException;
+    ArrayList<LoadNoteOnTransitPO> getLoadNoteOnTransit() throws RemoteException;
 }

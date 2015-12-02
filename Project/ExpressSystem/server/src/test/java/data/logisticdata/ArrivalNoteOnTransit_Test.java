@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import org.junit.Test;
 
 import po.ArrivalNoteOnTransitPO;
@@ -24,7 +25,7 @@ public class ArrivalNoteOnTransit_Test {
     }
 
 //    @Test
-    public void testInsert() throws RemoteException, SQLException, ElementNotFoundException {
+    public void testInsert() throws RemoteException, SQLException, ElementNotFoundException, InterruptWithExistedElementException {
         BarcodeAndState bar=new BarcodeAndState("0123456789",GoodsState.COMPLETE);
     	BarcodeAndState bar2=new BarcodeAndState("0123456790",GoodsState.COMPLETE);
     	BarcodeAndState bar3=new BarcodeAndState("0123456790",GoodsState.COMPLETE);

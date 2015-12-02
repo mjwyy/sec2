@@ -27,18 +27,18 @@ public class NoteApprovingData_Test {
     protected NoteApprovingDataService service;
 
     public NoteApprovingData_Test() throws RemoteException {
-//        service = new NoteApprovingData();
+        service = DatabaseFactoryMysqlImpl.getInstance().getNoteApprovingDataService();
     }
 
-    //    @Test
+        @Test
     public void testArrivalOnServiceDoc() throws RemoteException, ElementNotFoundException, SQLException {
         ArrivalNoteOnServicePO po1 = new ArrivalNoteOnServicePO(null, false,
-                "025001201511260001", null, null);
-        service.passDoc(po1);
+                "250000201510130000016", null, null);
+        service.failDoc(po1, "不高兴15");
 
-        ArrivalNoteOnTransitPO po2 = new ArrivalNoteOnTransitPO(
-                "025001201511260002", "025100", "2011-11-11", "北京", null);
-        service.failDoc(po2, "不高兴1");
+//        ArrivalNoteOnTransitPO po2 = new ArrivalNoteOnTransitPO(
+//                "250000201510130000015", "025100", "2011-11-11", "北京", null);
+//        service.failDoc(po2, "不高兴15");
     }
 
     //    @Test
@@ -135,7 +135,7 @@ public class NoteApprovingData_Test {
     }
 
 
-    @Test
+//    @Test
     public void testFindeliverNote() throws RemoteException, SQLException {
         NoteApprovingDataService dataService = DatabaseFactoryMysqlImpl.getInstance()
                 .getNoteApprovingDataService();

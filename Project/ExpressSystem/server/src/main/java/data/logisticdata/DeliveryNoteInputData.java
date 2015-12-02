@@ -1,5 +1,6 @@
 package data.logisticdata;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import data.database.DatabaseManager;
 import data.infodata.UserInfoHelper;
 import data.logisticdata.deliverystrategy.CityManager;
@@ -9,6 +10,7 @@ import data.statisticdata.BusinessDataModificationData;
 import data.statisticdata.LogInsHelper;
 import data.statisticdata.OrderInquiryData;
 import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
 import dataservice.statisticdataservice.BusinessDataModificationDataService;
 import dataservice.statisticdataservice.OrderInquiryDataService;
@@ -44,7 +46,7 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
     }
 
     @Override
-    public SendDocMsg insert(DeliveryNotePO po) throws RemoteException, ElementNotFoundException {
+    public SendDocMsg insert(DeliveryNotePO po) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException {
         Connection connection = DatabaseManager.getConnection();
         String sql = "insert into `Express`.`note_delivery` " +
                 "( `volume`, `category`, `senderTeleNumber`, `receiverAddress`, " +
@@ -70,6 +72,8 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
             statement.setString(13, po.getBarCode());
             statement.executeUpdate();
             return this.afterInsert(po);
+        } catch (MySQLIntegrityConstraintViolationException e){
+            throw new InterruptWithExistedElementException();
         } catch (SQLException e) {
             e.printStackTrace();
             sendDocMsg = new SendDocMsg(false, "寄件单提交失败!", 0, null);
@@ -117,6 +121,7 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
             statement = connection.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
             DeliveryNotePO arrivalNoteOnServicePO;
+
             while(resultSet.next()){
                 String senderName = resultSet.getString(1);
                 String senderAdd = resultSet.getString(2);
@@ -131,6 +136,7 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
                 String category = resultSet.getString(11);
                 double packprice = resultSet.getDouble(12);
                 String barcode = resultSet.getString(13);
+
                 arrivalNoteOnServicePO = new DeliveryNotePO(senderName,senderAdd,senderTel,recName,
                         recADD,recTel,name,goodsNumber,weight,volume,DeliverCategory.getDeliverCategory(category),
                         packprice,barcode);

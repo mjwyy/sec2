@@ -1,6 +1,7 @@
 package dataservice.logisticdataservice._Driver;
 
 import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
 import dataservice.logisticdataservice._Stub.DeliveryNoteInputDataService_Stub;
 import po.DeliveryNotePO;
@@ -14,13 +15,13 @@ import java.sql.SQLException;
  */
 public class DeliveryNoteInputDataService_Driver {
 
-    public static void main(String[] args) throws RemoteException, SQLException, ElementNotFoundException {
+    public static void main(String[] args) throws RemoteException, SQLException, ElementNotFoundException, InterruptWithExistedElementException {
         DeliveryNoteInputDataService service = new DeliveryNoteInputDataService_Stub();
         DeliveryNoteInputDataService_Driver driver = new DeliveryNoteInputDataService_Driver();
         driver.drive(service);
     }
 
-    public void drive(DeliveryNoteInputDataService service) throws RemoteException, SQLException, ElementNotFoundException {
+    public void drive(DeliveryNoteInputDataService service) throws RemoteException, SQLException, ElementNotFoundException, InterruptWithExistedElementException {
         DeliveryNotePO po1 = new DeliveryNotePO("王二狗","江苏省南京市栖霞区南京大学仙林校区","150052120000",
                 "Tom Hanks","江苏省徐州市沛县第三中学语文组","19883490000","爆炸物",10,
                 10,2,DeliverCategory.EXPRESS,5,"0000000001");

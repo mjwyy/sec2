@@ -3,6 +3,7 @@ package data.logisticdata;
 import data.database.DatabaseFactoryMysqlImpl;
 import data.logisticdata.MockObject.MockTransitNote;
 import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.logisticdataservice.TransitNoteInputDataService;
 import org.junit.Test;
 import po.TransitNotePO;
@@ -29,7 +30,7 @@ public class TransitNoteInput_Test {
     }
 
 //    @Test
-    public void testInsert() throws RemoteException, SQLException, ElementNotFoundException {
+    public void testInsert() throws RemoteException, SQLException, ElementNotFoundException, InterruptWithExistedElementException {
         ArrayList<String> bar = new ArrayList<String>();
         bar.add("1234567890");
         ArrayList<BarcodesAndLocation> list = new ArrayList<BarcodesAndLocation>();

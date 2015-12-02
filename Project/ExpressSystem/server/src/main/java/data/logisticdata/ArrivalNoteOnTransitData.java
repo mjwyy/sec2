@@ -1,9 +1,11 @@
 package data.logisticdata;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import data.database.DatabaseManager;
 import data.logisticdata.barcode.BarcodeUtil;
 import data.statisticdata.LogInsHelper;
 import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.logisticdataservice.ArrivalNoteOnTransitDataService;
 import po.ArrivalNoteOnTransitPO;
 import util.BarcodeAndState;
@@ -30,7 +32,7 @@ public class ArrivalNoteOnTransitData extends NoteInputData implements ArrivalNo
     }
 
     @Override
-    public ResultMsg insert(ArrivalNoteOnTransitPO po) throws RemoteException, ElementNotFoundException {
+    public ResultMsg insert(ArrivalNoteOnTransitPO po) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException {
         Connection connection = DatabaseManager.getConnection();
         String sql = "insert into `note_arrival_on_transit` " +
                 "( `date`, `barcodes`, `departurePlace`, `centerNumber`, `transferNumber`) " +
@@ -48,6 +50,8 @@ public class ArrivalNoteOnTransitData extends NoteInputData implements ArrivalNo
             statement.executeUpdate();
             //向数据库插入单据后续的操作
             resultMsg = this.afterInsert(po);
+        } catch (MySQLIntegrityConstraintViolationException e){
+            throw new InterruptWithExistedElementException();
         } catch (SQLException e) {
             e.printStackTrace();
             resultMsg.setMessage("无法添加中转中心到达单");

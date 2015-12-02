@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import data.database.DatabaseManager;
 import data.database.SqlHelper;
 import dataservice.statisticdataservice.BusinessDataModificationDataService;
@@ -41,7 +42,9 @@ public class BusinessDataModificationData implements BusinessDataModificationDat
                 statement.executeUpdate();
             }
             LogInsHelper.insertLog("新增城市:"+name+"成功!");
-        } catch (SQLException e) {
+        } catch (MySQLIntegrityConstraintViolationException e){
+            throw new InterruptWithExistedElementException();
+        }  catch (SQLException e) {
             e.printStackTrace();
             LogInsHelper.insertLog("新增城市失败!");
             return false;
@@ -81,6 +84,8 @@ public class BusinessDataModificationData implements BusinessDataModificationDat
             throws RemoteException, ElementNotFoundException {
         String sql = "update `Express`.`businessPrice` set `price`='" + newValue
                 + "' where `type`= '" + name.toString() + "'";
+        if(this.getPrice(name) == -1)
+            throw new ElementNotFoundException();
         try {
             SqlHelper.excUpdate(sql);
             LogInsHelper.insertLog("修改"+name+"价格为:"+newValue);
@@ -98,7 +103,7 @@ public class BusinessDataModificationData implements BusinessDataModificationDat
         Connection connection = DatabaseManager.getConnection();
         String sql = "select `price` from `Express`.`businessPrice` where  `type`= '" + name.toString() + "' ";
         PreparedStatement statement = null;
-        double distance = 0;
+        double distance = -1;
         try {
             statement = connection.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
@@ -116,13 +121,11 @@ public class BusinessDataModificationData implements BusinessDataModificationDat
             ElementNotFoundException {
         String city1 = distancePO.getCity1();
         String city2 = distancePO.getCity2();
-        if(this.getDistance(city1,city2) == -1)
-            throw new ElementNotFoundException();
         String sql = "select `id` from `Express`.`distance` where "+
                 "(city1 = '"+city1+"' AND city2 = '"+city2+"') " +
                 "OR (city1 = '"+city2+"' AND city2 = '"+city1+"')";
         Connection connection = DatabaseManager.getConnection();
-        PreparedStatement statement = null;
+        PreparedStatement statement;
         try {
             statement = connection.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
@@ -150,22 +153,23 @@ public class BusinessDataModificationData implements BusinessDataModificationDat
         String sql = "select `distance` from `Express`.`distance` where "+
                 "(city1 = '"+city1+"' AND city2 = '"+city2+"') " +
                 "OR (city1 = '"+city2+"' AND city2 = '"+city1+"')";
-        PreparedStatement statement = null;
+        PreparedStatement statement;
+        double result = -1;
         try {
             statement = connection.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()){
-                double result = resultSet.getDouble(1);
+                result = resultSet.getDouble(1);
                 DatabaseManager.releaseConnection(connection,statement,resultSet);
                 return result;
             }
             else{
                 DatabaseManager.releaseConnection(connection,statement,resultSet);
-                return -1;
+                throw new ElementNotFoundException();
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return 0;
+        return result;
     }
 }

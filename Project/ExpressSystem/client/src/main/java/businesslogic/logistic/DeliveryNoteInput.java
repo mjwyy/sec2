@@ -3,6 +3,7 @@ package businesslogic.logistic;
 import businesslogicservice.logisticblservice.DeliveryNoteInputBLService;
 import connection.RemoteObjectGetter;
 import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
 import po.DeliveryNotePO;
 import po.OrderPO;
@@ -48,6 +49,9 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
             return new SendDocMsg(false, "单据信息存在错误,提交寄件单失败!", 0, null);
+        } catch (InterruptWithExistedElementException e) {
+            e.printStackTrace();
+            return new SendDocMsg(false, "提交寄件单失败!单据编号已存在!", 0, null);
         }
     }
 }

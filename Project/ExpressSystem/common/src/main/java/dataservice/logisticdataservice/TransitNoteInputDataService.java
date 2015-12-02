@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import po.TransitNotePO;
 import util.ResultMsg;
 
@@ -20,7 +21,8 @@ public interface TransitNoteInputDataService extends Remote, Serializable {
 	/**
 	 * 在数据库中增加一个po记录
 	 */
-    ResultMsg insert(TransitNotePO po) throws RemoteException, ElementNotFoundException;
+    ResultMsg insert(TransitNotePO po)
+            throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException;
 
     ArrayList<TransitNotePO> getTransitNotePO() throws RemoteException;
 }

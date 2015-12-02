@@ -1,11 +1,13 @@
 package data.logisticdata;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import data.database.DatabaseManager;
 import data.logisticdata.barcode.BarcodeUtil;
 import data.statisticdata.LogInsHelper;
 import data.statisticdata.LogInsertData;
 import data.statisticdata.OrderInquiryData;
 import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.logisticdataservice.LoadNoteOnTransitDataService;
 import po.LoadNoteOnTransitPO;
 import util.ResultMsg;
@@ -31,7 +33,7 @@ public class LoadNoteOnTransitData extends NoteInputData implements LoadNoteOnTr
     }
 
     @Override
-    public ResultMsg insert(LoadNoteOnTransitPO po) throws RemoteException, ElementNotFoundException {
+    public ResultMsg insert(LoadNoteOnTransitPO po) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException {
 
         String sql = "insert into `note_load_on_transit` ( `barcodes`, `destination`, `supercargoMan`," +
                 " `guardMan`, `date`, `carNumber`, `hallNumber`, `transpotationNumber`)" +
@@ -61,6 +63,8 @@ public class LoadNoteOnTransitData extends NoteInputData implements LoadNoteOnTr
             statement.executeUpdate();
             resultMsg = this.afterInsert(po);
 
+        } catch (MySQLIntegrityConstraintViolationException e){
+            throw new InterruptWithExistedElementException();
         } catch (SQLException e) {
             e.printStackTrace();
             resultMsg = new ResultMsg(false,"中转中心装车单提交失败!");

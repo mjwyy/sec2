@@ -3,6 +3,7 @@ package businesslogic.logistic;
 import businesslogicservice.logisticblservice.LoadNoteOnTransitBLService;
 import connection.RemoteObjectGetter;
 import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.logisticdataservice.LoadNoteOnTransitDataService;
 import po.LoadNoteOnTransitPO;
 import util.ResultMsg;
@@ -43,6 +44,9 @@ public class LoadNoteOnTransit implements LoadNoteOnTransitBLService {
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
             return new ResultMsg(false,"输入的条形码对应订单不存在,请重新输入");
+        } catch (InterruptWithExistedElementException e) {
+            e.printStackTrace();
+            return new ResultMsg(false,"提交中转中心装车单失败!单据编号已存在!");
         }
     }
 }

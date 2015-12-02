@@ -1,5 +1,6 @@
 package data.logisticdata;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import data.database.DatabaseManager;
 import data.logisticdata.barcode.BarcodeUtil;
 import data.statisticdata.LogInsHelper;
@@ -7,6 +8,7 @@ import data.statisticdata.LogInsertData;
 import data.statisticdata.OrderInquiryData;
 import data.statisticdata.inte.LogInsertDataService;
 import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.logisticdataservice.LoadNoteOnServiceDataService;
 import dataservice.statisticdataservice.OrderInquiryDataService;
 import po.LoadNoteOnServicePO;
@@ -34,7 +36,7 @@ public class LoadNoteOnServiceData extends NoteInputData implements LoadNoteOnSe
     }
 
     @Override
-    public ResultMsg insert(LoadNoteOnServicePO po) throws RemoteException, ElementNotFoundException {
+    public ResultMsg insert(LoadNoteOnServicePO po) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException {
         Connection connection = DatabaseManager.getConnection();
         String sql = "insert into `note_load_on_service` ( `barcodes`, `destination`, `supercargoMan`, " +
                 "`guardMan`, `date`, `carNumber`, `hallNumber`, `transpotationNumber`) " +
@@ -60,6 +62,8 @@ public class LoadNoteOnServiceData extends NoteInputData implements LoadNoteOnSe
             statement.setString(8,po.getTranspotationNumber());
             statement.executeUpdate();
             resultMsg = this.afterInsert(po);
+        } catch (MySQLIntegrityConstraintViolationException e){
+            throw new InterruptWithExistedElementException();
         } catch (SQLException e) {
             e.printStackTrace();
             resultMsg = new ResultMsg(false,"提交营业厅装车单失败!");

@@ -1,11 +1,13 @@
 package data.logisticdata;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import data.database.DatabaseManager;
 import data.logisticdata.barcode.BarcodeUtil;
 import data.statisticdata.LogInsHelper;
 import data.statisticdata.LogInsertData;
 import data.statisticdata.OrderInquiryData;
 import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.logisticdataservice.ArrivalNoteOnServiceDataService;
 import po.ArrivalNoteOnServicePO;
 import po.DeliverNoteOnServicePO;
@@ -33,7 +35,8 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
     }
 
     @Override
-    public ResultMsg insertArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException, ElementNotFoundException {
+    public ResultMsg insertArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException,
+            ElementNotFoundException, InterruptWithExistedElementException {
         Connection connection = DatabaseManager.getConnection();
         //新增到达单
         String sql = "insert into `note_arrival_on_service` ( " +
@@ -53,6 +56,8 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
             //向数据库添加到达单
             statement.executeUpdate();
             resultMsg = this.afterInsertArrival(po);
+        } catch (MySQLIntegrityConstraintViolationException e){
+            throw new InterruptWithExistedElementException();
         } catch (SQLException e) {
             e.printStackTrace();
             resultMsg = new ResultMsg(false,"添加营业厅到达单失败");
@@ -63,7 +68,7 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
 
     private ResultMsg afterInsertArrival(ArrivalNoteOnServicePO po) throws ElementNotFoundException {
         ResultMsg resultMsg = new ResultMsg(false);
-        LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+po.getUserName()+
+        LogInsHelper.insertLog(po.getOrganization()+" 业务员 " +po.getUserName()+
                 "添加营业厅到达单,单据编号:" + po.getTransferNumber());
         DocState result = this.waitForCheck("note_arrival_on_service",
                 "TransferNumber", po.getTransferNumber());
@@ -113,7 +118,7 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
     }
 
     @Override
-    public ResultMsg insertDeliverNote(DeliverNoteOnServicePO po) throws RemoteException, ElementNotFoundException {
+    public ResultMsg insertDeliverNote(DeliverNoteOnServicePO po) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException {
         Connection connection = DatabaseManager.getConnection();
         String sql = "insert into `note_delivery_on_service` ( `deliveryMan`, `id`, `barcodes`, `date`)" +
                 " values ( ?, ?, ?, ?)";
@@ -128,6 +133,8 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
             //向数据库添加到达单
             statement.executeUpdate();
             resultMsg = this.afterInsertDelivery(po);
+        } catch (MySQLIntegrityConstraintViolationException e){
+            throw new InterruptWithExistedElementException();
         } catch (SQLException e) {
             e.printStackTrace();
             resultMsg = new ResultMsg(false,po.getUserName()+"添加派件单失败");

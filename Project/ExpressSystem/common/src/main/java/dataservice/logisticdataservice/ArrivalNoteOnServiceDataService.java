@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import po.ArrivalNoteOnServicePO;
 import po.DeliverNoteOnServicePO;
 import util.ResultMsg;
@@ -22,14 +23,16 @@ public interface ArrivalNoteOnServiceDataService extends Remote, Serializable {
     /**
      * 在数据库中插入单一持久化对象
      */
-    ResultMsg insertArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException, ElementNotFoundException;
+    ResultMsg insertArrivalNote(ArrivalNoteOnServicePO po)
+            throws RemoteException, ElementNotFoundException ,InterruptWithExistedElementException;
 
     ArrayList<ArrivalNoteOnServicePO> getArrivalNoteOnService() throws RemoteException;
 
     /**
      * 在数据库中插入单一持久化对象
      */
-    ResultMsg insertDeliverNote(DeliverNoteOnServicePO po) throws RemoteException, ElementNotFoundException;
+    ResultMsg insertDeliverNote(DeliverNoteOnServicePO po)
+            throws RemoteException, ElementNotFoundException,InterruptWithExistedElementException;
 
     ArrayList<DeliverNoteOnServicePO> getDeliverNoteOnService() throws RemoteException;
 }

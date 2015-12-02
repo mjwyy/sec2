@@ -3,6 +3,7 @@ package businesslogic.logistic;
 import businesslogicservice.logisticblservice.ArrivalNoteOnServiceBLService;
 import connection.RemoteObjectGetter;
 import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.logisticdataservice.ArrivalNoteOnServiceDataService;
 import po.ArrivalNoteOnServicePO;
 import po.DeliverNoteOnServicePO;
@@ -47,6 +48,9 @@ public class ArrivalNoteOnService implements ArrivalNoteOnServiceBLService {
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
             return new ResultMsg(false,"输入的条形码对应订单不存在,请重新输入");
+        } catch (InterruptWithExistedElementException e) {
+            e.printStackTrace();
+            return new ResultMsg(false,"添加营业厅到达单失败:单据编号已存在!");
         }
     }
 
@@ -66,6 +70,9 @@ public class ArrivalNoteOnService implements ArrivalNoteOnServiceBLService {
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
             return new ResultMsg(false,"输入的条形码对应订单不存在,请重新输入");
+        } catch (InterruptWithExistedElementException e) {
+            e.printStackTrace();
+            return new ResultMsg(false,"提交营业厅装车单失败:单据编号已存在!");
         }
     }
 }

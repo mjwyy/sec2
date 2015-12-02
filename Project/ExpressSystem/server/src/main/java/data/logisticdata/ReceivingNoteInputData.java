@@ -1,10 +1,12 @@
 package data.logisticdata;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import data.database.DatabaseManager;
 import data.statisticdata.LogInsHelper;
 import data.statisticdata.LogInsertData;
 import data.statisticdata.OrderInquiryData;
 import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.logisticdataservice.ReceivingNoteInputDataService;
 import po.ReceivingNotePO;
 import util.ResultMsg;
@@ -31,7 +33,7 @@ public class ReceivingNoteInputData extends NoteInputData implements ReceivingNo
     }
 
     @Override
-    public ResultMsg insert(ReceivingNotePO po) throws RemoteException, ElementNotFoundException {
+    public ResultMsg insert(ReceivingNotePO po) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException {
         String sql = "insert into `note_receive_note` ( `barcode`, `time`, `receiveCustomer`) " +
                 "values ( ?, ?, ?)";
         Connection connection = DatabaseManager.getConnection();
@@ -45,6 +47,8 @@ public class ReceivingNoteInputData extends NoteInputData implements ReceivingNo
             statement.setString(3,po.getReceiveCustomer());
             statement.executeUpdate();
             return this.afterInsert(po);
+        } catch (MySQLIntegrityConstraintViolationException e){
+            throw new InterruptWithExistedElementException();
         } catch (SQLException e) {
             e.printStackTrace();
         }

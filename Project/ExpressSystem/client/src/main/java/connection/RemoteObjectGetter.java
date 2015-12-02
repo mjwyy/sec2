@@ -48,17 +48,4 @@ public class RemoteObjectGetter {
         return object;
     }
 
-
-    public static void main(String[] args) throws RemoteException, NotBoundException, SQLException, ElementNotFoundException {
-        RMIHelper.tryConnect();
-
-        RemoteObjectGetter getter = new RemoteObjectGetter();
-        System.out.println("GOT2");
-        Object obj = getter.getObjectByName("ReceivingNoteInputDataService");
-        System.out.println("Got3");
-        ReceivingNoteInputDataService dataService = (ReceivingNoteInputDataService)obj;
-        System.out.println("Got4");
-        ResultMsg msg = dataService.insert(null);
-        System.out.println(msg.isPass());
-    }
 }

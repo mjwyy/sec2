@@ -243,7 +243,7 @@ public class DatabaseFactoryMysqlImpl implements DatabaseFactory{
 
     @Override
     public LogInsertDataService getLogInsertDataService() {
-        return null;
+        return logInsertDataService;
     }
 
 }

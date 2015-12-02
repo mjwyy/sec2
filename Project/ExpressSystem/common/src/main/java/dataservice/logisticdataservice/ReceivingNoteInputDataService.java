@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import po.ReceivingNotePO;
 import util.ResultMsg;
 
@@ -21,7 +22,8 @@ public interface ReceivingNoteInputDataService extends Remote,Serializable {
 	/**
 	 * 在数据库中增加一个po记录
 	 */
-    ResultMsg insert(ReceivingNotePO po) throws RemoteException, ElementNotFoundException;
+    ResultMsg insert(ReceivingNotePO po)
+            throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException;
 
     ArrayList<ReceivingNotePO> getReceivingNote() throws RemoteException;
 }

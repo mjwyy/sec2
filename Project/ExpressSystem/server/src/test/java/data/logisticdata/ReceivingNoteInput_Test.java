@@ -2,6 +2,7 @@ package data.logisticdata;
 
 import data.logisticdata.MockObject.MockReceivingNote;
 import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import org.junit.Assert;
 import org.junit.Test;
 import po.ReceivingNotePO;
@@ -24,7 +25,7 @@ public class ReceivingNoteInput_Test {
     }
 
 //    @Test
-    public void testInsert() throws RemoteException, SQLException, ElementNotFoundException {
+    public void testInsert() throws RemoteException, SQLException, ElementNotFoundException, InterruptWithExistedElementException {
         ReceivingNotePO po1 = new ReceivingNotePO("1234567893", "旭爷2", "2015-11-26 21:00");
         service.insert(po1);
     }

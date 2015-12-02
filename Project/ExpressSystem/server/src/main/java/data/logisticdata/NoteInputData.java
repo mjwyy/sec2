@@ -35,6 +35,7 @@ public class NoteInputData extends UnicastRemoteObject implements Remote, Serial
         ResultSet resultSet = null;
         PreparedStatement statement = null;
         String advice = null;
+
         try {
             statement = connection.prepareStatement(sql);
             resultSet = statement.executeQuery();
@@ -43,6 +44,7 @@ public class NoteInputData extends UnicastRemoteObject implements Remote, Serial
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         DatabaseManager.releaseConnection(connection, statement, resultSet);
         return advice;
     }
@@ -57,13 +59,16 @@ public class NoteInputData extends UnicastRemoteObject implements Remote, Serial
                         " where " + keyName + " = '" + key + "'";
                 PreparedStatement statement = connection.prepareStatement(sql);
                 ResultSet resultSet = statement.executeQuery();
+
                 if (resultSet.next())
                     state = resultSet.getInt(1);
                 DatabaseManager.releaseConnection(connection, statement, resultSet);
                 result = DocState.getDocState(state);
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+
             //单据被审批了
             if (!(result == DocState.UNCHECKED))
                 break;
@@ -72,12 +77,13 @@ public class NoteInputData extends UnicastRemoteObject implements Remote, Serial
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
             System.out.println("note is waiting for check...");
         }
         return result;
     }
 
-    public void updateOrder(ArrayList<BarcodeAndState> barcodeAndState, String newMesg){
+    public void updateOrder(ArrayList<BarcodeAndState> barcodeAndState, String newMesg) throws ElementNotFoundException {
         Connection connection = DatabaseManager.getConnection();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String currentTime = df.format(new Date());
@@ -85,11 +91,18 @@ public class NoteInputData extends UnicastRemoteObject implements Remote, Serial
         String barcode;
         GoodsState goodsState;
         PreparedStatement statement = null;
+
         try {
             statement = connection.prepareStatement("");
             for(BarcodeAndState barcodeState : barcodeAndState){
                 barcode = barcodeState.getBarcode();
                 goodsState = barcodeState.getState();
+
+                if( !this.isBarcodeInDB(barcode) ){
+                    DatabaseManager.releaseConnection(connection, statement, null);
+                    throw new ElementNotFoundException();
+                }
+
                 statement.executeUpdate("update `order` set `history` = concat(`history`, '" + msg + "'), " +
                         "`stateOfTransport` = '"+goodsState.toString()+"' where barcode = '"+barcode+"'");
             }
@@ -99,14 +112,21 @@ public class NoteInputData extends UnicastRemoteObject implements Remote, Serial
         DatabaseManager.releaseConnection(connection, statement, null);
     }
 
-    public void updateOrder(String newMesg, ArrayList<String> barcodes) {
+    public void updateOrder(String newMesg, ArrayList<String> barcodes) throws ElementNotFoundException {
         Connection connection = DatabaseManager.getConnection();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String currentTime = df.format(new Date());
         String msg = (currentTime+","+newMesg+";");
         PreparedStatement statement = null;
+
         try {
             for(String bar : barcodes){
+
+                if( !this.isBarcodeInDB(bar) ){
+                    DatabaseManager.releaseConnection(connection, statement, null);
+                    throw new ElementNotFoundException();
+                }
+
                 statement = connection.prepareStatement("");
                 statement.executeUpdate("update `order` set `history` = concat(`history`, '" + msg + "') " +
                         " where `barcode` = '"+bar+"'");
@@ -114,7 +134,21 @@ public class NoteInputData extends UnicastRemoteObject implements Remote, Serial
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         DatabaseManager.releaseConnection(connection, statement, null);
+    }
+
+    private boolean isBarcodeInDB(String barcode){
+        Connection connection = DatabaseManager.getConnection();
+        String sql = "select `stateOfTransport` from `order` where barcode = '"+barcode+"'";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet set = statement.executeQuery();
+            return set.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
 }

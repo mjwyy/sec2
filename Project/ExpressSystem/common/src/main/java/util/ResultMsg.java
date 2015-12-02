@@ -32,7 +32,7 @@ public class ResultMsg implements Serializable{
 	}
 
     public ResultMsg(){
-
+        this.pass = false;
     }
 
     public ResultMsg(boolean pass){

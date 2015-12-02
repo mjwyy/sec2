@@ -54,7 +54,7 @@ public class BarcodeUtil {
         return barcodeAndStates;
     }
 
-    public GoodsState getGoodsState(String barcode){
+    private GoodsState getGoodsState(String barcode){
         Connection connection = DatabaseManager.getConnection();
         String sql = "select `stateOfTransport` from `order` where `barcode` = '"+barcode+"'";
         PreparedStatement statement = null;

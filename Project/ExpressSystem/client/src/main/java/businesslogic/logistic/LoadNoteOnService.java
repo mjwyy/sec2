@@ -27,8 +27,7 @@ public class LoadNoteOnService implements LoadNoteOnServiceBLService {
 
     @Override
     public ResultMsg inputHallLoadDoc(LoadNoteOnServiceVO hallLoadDocVO) {
-        ResultMsg formatCheck = hallLoadDocVO.checkFormat();
-        return formatCheck;
+        return hallLoadDocVO.checkFormat();
     }
 
     @Override
@@ -37,14 +36,13 @@ public class LoadNoteOnService implements LoadNoteOnServiceBLService {
             this.po = hallLoadDocVO.toPO();
             this.po.setOrganization(hallLoadDocVO.getOrganization());
             this.po.setUserName(hallLoadDocVO.getUserName());
-            this.dataService.insert(this.po);
-            return new ResultMsg(true,"营业厅装车单已提交!");
+            return this.dataService.insert(this.po);
         } catch (RemoteException e) {
             e.printStackTrace();
-            return new ResultMsg(false,e.getMessage());
+            return new ResultMsg(false,"提交营业厅装车单失败!");
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
-            return new ResultMsg(false,e.getMessage());
+            return new ResultMsg(false,"输入的条形码对应订单不存在,请重新输入");
         }
     }
 }

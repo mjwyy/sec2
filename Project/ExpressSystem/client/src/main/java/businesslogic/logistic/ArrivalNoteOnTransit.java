@@ -27,8 +27,7 @@ public class ArrivalNoteOnTransit implements ArrivalNoteOnTransitBLService {
 
     @Override
     public ResultMsg inputCenterArrivalDoc(ArrivalNoteOnTransitVO centerArrivalDocVO) {
-        ResultMsg formatCheck = centerArrivalDocVO.checkFormat();
-        return formatCheck;
+        return centerArrivalDocVO.checkFormat();
     }
 
     @Override
@@ -37,13 +36,13 @@ public class ArrivalNoteOnTransit implements ArrivalNoteOnTransitBLService {
             this.po = centerArrivalDocVO.toPO();
             this.po.setUserName(centerArrivalDocVO.getUserName());
             this.po.setOrganization(centerArrivalDocVO.getOrganization());
-            this.dataService.insert(this.po);
+            return this.dataService.insert(this.po);
         } catch (RemoteException e) {
             e.printStackTrace();
-            return new ResultMsg(false,e.getMessage());
+            return new ResultMsg(false,"提交中转中心到达单失败!");
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
+            return new ResultMsg(false,"输入的条形码对应订单不存在,请重新输入");
         }
-        return new ResultMsg(true,"中转中心到达单已提交!");
     }
 }

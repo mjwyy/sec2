@@ -68,39 +68,43 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
             statement.setString(11, po.getSenderName());
             statement.setString(12, po.getName());
             statement.setString(13, po.getBarCode());
-            int result = statement.executeUpdate();
-            String deliveryMan = UserInfoHelper.getName("");
-            String orderInfo = "货物已被快递员 "+deliveryMan+" 签收;";
-            //记录系统日志
-            LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+deliveryMan+
-                    "新增寄件单,单据编号:" + po.getBarCode());
-            //等待总经理审批过程,反复查询
-            DocState docState = this.waitForCheck("note_delivery", "barCode", po.getBarCode());
-            //审批通过
-            if (docState == DocState.PASSED) {
-                //追加修改物流信息
-                orderDataService.insertOrderPO(po.getBarCode(),orderInfo);
-                //委托,获取价格与预计日期
-                ArrayList<String> cites = businessDataModificationDataService.getAllCities();
-                String city1 = cityManager.findCity(cites,po.getSenderAddress());
-                String city2 = cityManager.findCity(cites,po.getReceiverAddress());
-                double price = priceStrategy.getPrice(city1,city2,po.getWeight(),
-                        po.getVolume(),po.getCategory(),po.getPackPrice());
-                String presumedDate = timePresumeStrategy.getPresumedTime(city1,city2,po.getCategory());
-                sendDocMsg = new SendDocMsg(true,"寄件单已成功提交!",price,presumedDate);
-            } else {
-                //审批没有通过
-                String advice = this.getFailedAdvice("note_delivery",
-                        "barCode", po.getBarCode());
-                sendDocMsg = new SendDocMsg(false, advice, 0, null);
-            }
-            return sendDocMsg;
+            statement.executeUpdate();
+            return this.afterInsert(po);
         } catch (SQLException e) {
             e.printStackTrace();
+            sendDocMsg = new SendDocMsg(false, "寄件单提交失败!", 0, null);
         }
         //操作结束
         DatabaseManager.releaseConnection(connection, statement, null);
         return null;
+    }
+
+    private SendDocMsg afterInsert(DeliveryNotePO po) throws RemoteException, ElementNotFoundException, SQLException {
+        SendDocMsg sendDocMsg;
+        String deliveryMan = po.getUserName();
+        String orderInfo = "货物已被快递员 "+deliveryMan+" 签收;";
+        LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+deliveryMan+
+                "新增寄件单,单据编号:" + po.getBarCode());
+        DocState docState = this.waitForCheck("note_delivery", "barCode", po.getBarCode());
+        //审批通过
+        if (docState == DocState.PASSED) {
+            //追加修改物流信息
+            orderDataService.insertOrderPO(po.getBarCode(),orderInfo);
+            //委托,获取价格与预计日期
+            ArrayList<String> cites = businessDataModificationDataService.getAllCities();
+            String city1 = cityManager.findCity(cites,po.getSenderAddress());
+            String city2 = cityManager.findCity(cites,po.getReceiverAddress());
+            double price = priceStrategy.getPrice(city1,city2,po.getWeight(),
+                    po.getVolume(),po.getCategory(),po.getPackPrice());
+            String presumedDate = timePresumeStrategy.getPresumedTime(city1,city2,po.getCategory());
+            sendDocMsg = new SendDocMsg(true,"寄件单已成功提交!",price,presumedDate);
+        } else {
+            //审批没有通过
+            String advice = this.getFailedAdvice("note_delivery",
+                    "barCode", po.getBarCode());
+            sendDocMsg = new SendDocMsg(false, advice, 0, null);
+        }
+        return sendDocMsg;
     }
 
     @Override

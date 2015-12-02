@@ -32,8 +32,7 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
 
     @Override
     public ResultMsg inputSendDoc(DeliveryNoteVO sendDocVO) {
-        ResultMsg formatCheck = sendDocVO.checkFormat();
-        return formatCheck;
+        return sendDocVO.checkFormat();
     }
 
     @Override
@@ -42,16 +41,13 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
             this.notePO = sendDocVO.toPO();
             this.notePO.setOrganization(sendDocVO.getOrganization());
             this.notePO.setUserName(sendDocVO.getUserName());
-            SendDocMsg sendDocMsg = this.dataService.insert(this.notePO);
-            double price = sendDocMsg.getPrice();
-            String date = sendDocMsg.getPredectedDate();
-            return new SendDocMsg(true, "寄件单已成功提交!", price, date);
+            return this.dataService.insert(this.notePO);
         } catch (RemoteException e) {
             e.printStackTrace();
-            return new SendDocMsg(false, e.getMessage(), 0, null);
+            return new SendDocMsg(false, "提交寄件单失败!", 0, null);
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
-            return new SendDocMsg(false, e.getMessage(), 0, null);
+            return new SendDocMsg(false, "单据信息存在错误,提交寄件单失败!", 0, null);
         }
     }
 }

@@ -57,7 +57,7 @@ public class ArrivalNoteOnTransitData extends NoteInputData implements ArrivalNo
         return resultMsg;
     }
 
-    private ResultMsg afterInsert(ArrivalNoteOnTransitPO po){
+    private ResultMsg afterInsert(ArrivalNoteOnTransitPO po) throws ElementNotFoundException {
         //等待总经理审批过程,反复查询
         DocState result = this.waitForCheck("note_arrival_on_transit",
                 "transferNumber", po.getTransferNumber());
@@ -68,6 +68,7 @@ public class ArrivalNoteOnTransitData extends NoteInputData implements ArrivalNo
         if (result == DocState.PASSED) {
             this.updateOrder(po.getBarcodeAndStates(),"已到达"+po.getOrganization());
             resultMsg.setPass(true);
+            resultMsg.setMessage("中转中心到达单提交成功!");
         //审批否决,获取总经理意见
         } else {
             String advice = this.getFailedAdvice("note_arrival_on_transit",

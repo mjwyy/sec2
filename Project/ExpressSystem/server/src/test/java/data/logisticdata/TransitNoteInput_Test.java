@@ -43,10 +43,16 @@ public class TransitNoteInput_Test {
         service.insert(po1);
     }
 
-
-    @Test
+//    @Test
     public void testFind() throws SQLException, RemoteException {
         service.getTransitNotePO();
+    }
+
+    @Test
+    public void testBarcodes() throws SQLException, RemoteException {
+        TransitNoteInputData data = new TransitNoteInputData();
+        ArrayList<BarcodesAndLocation> andLocations = data.getBarcodesAndLocation("1234567890,1,2,3,4;1234567890,1,2,3,4;");
+        System.out.println(andLocations.get(0).getLine());
     }
 
 }

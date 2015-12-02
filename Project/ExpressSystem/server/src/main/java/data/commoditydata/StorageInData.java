@@ -104,7 +104,7 @@ public class StorageInData implements StorageInDataService {
     	for(CommodityGoodsPO good:list) {
     		try {
 				int result = stmt.executeUpdate("insert into InOutInfo (OrderID,WarehouseID,isIn,Date,areaCode,"
-						+ "rowNumber,frameNumber,placeNumber) values"
+						+ "rowNumber,frameNumber,placeNumber,Destination) values"
 						+ "('"+good.getBarcode()+"',"
 						+ "'"+org+"',"
 						+ ""+1+","
@@ -112,7 +112,8 @@ public class StorageInData implements StorageInDataService {
 						+ "'"+good.getAreacode()+"',"
 						+ "'"+good.getRownumber()+"',"
 						+ "'"+good.getFramenumber()+"',"
-						+ "'"+good.getPlacenumber()+"')");
+						+ "'"+good.getPlacenumber()+"',"
+						+ "'"+good.getDestination()+"')");
 				result = stmt.executeUpdate("update order set isInStorage=1,warehouseID='"+org+"' "
 						+ "where barcode='"+good.getBarcode()+"'");
 			} catch (SQLException e) {

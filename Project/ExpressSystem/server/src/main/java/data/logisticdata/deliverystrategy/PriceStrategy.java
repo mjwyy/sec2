@@ -22,11 +22,13 @@ public class PriceStrategy {
         double distance = businessDataModificationData.getDistance(city1, city2);
         double pricePerKG = distance / 1000 * 23;
         double weightPrice = pricePerKG * weight;
+        //体积大重量小的物体
         if (weight / volume< 0.01) {
             double volumeWeight = volume / 5000;
             double volumePrice = pricePerKG * volumeWeight;
             weightPrice = volumePrice > weightPrice ? volumePrice : weightPrice;
         }
+        //根据快递种类定价
         if (category == DeliverCategory.ECNOMIC)
             weightPrice = weightPrice * 18 / 23;
         else if (category == DeliverCategory.EXPRESS)

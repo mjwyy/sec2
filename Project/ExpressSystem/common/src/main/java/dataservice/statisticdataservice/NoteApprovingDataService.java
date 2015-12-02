@@ -3,12 +3,11 @@ package dataservice.statisticdataservice;
 import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import dataservice.exception.ElementNotFoundException;
 import po.*;
-import util.enums.DocType;
 
 /**
  * 单据审批DataService
@@ -23,7 +22,7 @@ public interface NoteApprovingDataService extends Remote, Serializable {
 	ArrayList<DeliverNoteOnServicePO> getDeliverNoteOnServicePO()
             throws RemoteException;
 
-	ArrayList<ArrivalNoteOnTransitPO> getArrivalNoteOnTransitPO()
+	Iterator<ArrivalNoteOnTransitPO> getArrivalNoteOnTransitPO()
             throws RemoteException;
 
 	ArrayList<DeliveryNotePO> getDeliveryNotePO()

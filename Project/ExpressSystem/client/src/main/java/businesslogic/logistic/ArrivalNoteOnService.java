@@ -30,46 +30,42 @@ public class ArrivalNoteOnService implements ArrivalNoteOnServiceBLService {
 
     @Override
     public ResultMsg inputHallArrivalDoc(ArrivalNoteOnServiceVO arrialDocVO) {
-        ResultMsg formatCheck = arrialDocVO.checkFormat();
-        return formatCheck;
+        return arrialDocVO.checkFormat();
     }
 
     @Override
     public ResultMsg submitHallArrivalDoc(ArrivalNoteOnServiceVO arrialDocVO) {
-        ResultMsg resultMsg;
         try {
             this.arrivalNoteOnServicePO = arrialDocVO.toPO();
             //从VO中获取营业员的名字与工作地点
             arrivalNoteOnServicePO.setOrganization(arrialDocVO.getOrganization());
             arrivalNoteOnServicePO.setUserName(arrialDocVO.getUserName());
-            resultMsg = this.dataService.insertArrivalNote(this.arrivalNoteOnServicePO);
+            return this.dataService.insertArrivalNote(this.arrivalNoteOnServicePO);
         } catch (RemoteException e) {
             e.printStackTrace();
-            return new ResultMsg(false,e.getMessage());
+            return new ResultMsg(false,"提交营业厅到达单失败!");
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
-            return new ResultMsg(false,"输入的到达单有误,请重新输入");
+            return new ResultMsg(false,"输入的条形码对应订单不存在,请重新输入");
         }
-        return resultMsg;
     }
 
     @Override
     public ResultMsg inputHallDeliverDoc(DeliverNoteOnServiceVO deliverDocVO) {
-        ResultMsg formatCheck = deliverDocVO.checkFormat();
-        return formatCheck;
+        return deliverDocVO.checkFormat();
     }
 
     @Override
     public ResultMsg submitHallDeliverDoc(DeliverNoteOnServiceVO deliverDocVO) {
         try {
             this.deliverNoteOnServicePO = deliverDocVO.toPO();
-            this.dataService.insertDeliverNote(this.deliverNoteOnServicePO);
+            return this.dataService.insertDeliverNote(this.deliverNoteOnServicePO);
         } catch (RemoteException e) {
             e.printStackTrace();
-            return new ResultMsg(false,e.getMessage());
+            return new ResultMsg(false,"提交营业厅装车单失败!");
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
+            return new ResultMsg(false,"输入的条形码对应订单不存在,请重新输入");
         }
-        return new ResultMsg(true,"营业厅装车单已提交!");
     }
 }

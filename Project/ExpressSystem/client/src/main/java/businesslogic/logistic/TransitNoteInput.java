@@ -27,8 +27,7 @@ public class TransitNoteInput implements TransitNoteInputBLService {
 
     @Override
     public ResultMsg inputCenterTransitDoc(TransitNoteOnTransitVO centerTransitDocVO) {
-        ResultMsg formatCheck = centerTransitDocVO.checkFormat();
-        return formatCheck;
+        return centerTransitDocVO.checkFormat();
     }
 
     @Override
@@ -37,14 +36,13 @@ public class TransitNoteInput implements TransitNoteInputBLService {
             this.po = (TransitNotePO) centerTransitDocVO.toPO();
             this.po.setUserName(centerTransitDocVO.getUserName());
             this.po.setOrganization(centerTransitDocVO.getOrganization());
-            this.dataService.insert(this.po);
-            return new ResultMsg(true,"中转单已提交!");
+            return this.dataService.insert(this.po);
         } catch (RemoteException e) {
             e.printStackTrace();
-            return new ResultMsg(false,e.getMessage());
+            return new ResultMsg(false,"提交中转单失败!");
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
-            return new ResultMsg(false,e.getMessage());
+            return new ResultMsg(false,"输入的条形码对应订单不存在,请重新输入");
         }
     }
 }

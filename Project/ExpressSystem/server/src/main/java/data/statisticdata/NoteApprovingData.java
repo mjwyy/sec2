@@ -4,12 +4,11 @@ import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import data.database.SqlHelper;
-import data.logisticdata.*;
 import dataservice.logisticdataservice.*;
 import po.*;
-import util.enums.DocType;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.statisticdataservice.NoteApprovingDataService;
 
@@ -80,7 +79,7 @@ public class NoteApprovingData implements NoteApprovingDataService {
     }
 
     @Override
-    public ArrayList<ArrivalNoteOnTransitPO> getArrivalNoteOnTransitPO() throws RemoteException {
+    public Iterator<ArrivalNoteOnTransitPO> getArrivalNoteOnTransitPO() throws RemoteException {
         return this.arrivalNoteOnTransitDataService.getArrivalNoteOnTransit();
     }
 

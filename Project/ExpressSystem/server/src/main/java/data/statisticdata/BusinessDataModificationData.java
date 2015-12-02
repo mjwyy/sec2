@@ -25,8 +25,11 @@ public class BusinessDataModificationData implements BusinessDataModificationDat
             InterruptWithExistedElementException {
         ArrayList<String> citys  = this.getAllCities();
         Connection connection = DatabaseManager.getConnection();
-        if(citys.contains(name))
+        if(citys.contains(name)){
+            LogInsHelper.insertLog("新增城市失败:与已有城市冲突!");
+            DatabaseManager.releaseConnection(connection, null, null);
             throw new InterruptWithExistedElementException();
+        }
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement("");
@@ -37,8 +40,11 @@ public class BusinessDataModificationData implements BusinessDataModificationDat
                 statement.setString(2,city);
                 statement.executeUpdate();
             }
+            LogInsHelper.insertLog("新增城市:"+name+"成功!");
         } catch (SQLException e) {
             e.printStackTrace();
+            LogInsHelper.insertLog("新增城市失败!");
+            return false;
         }
         DatabaseManager.releaseConnection(connection, statement, null);
 		return true;
@@ -77,8 +83,11 @@ public class BusinessDataModificationData implements BusinessDataModificationDat
                 + "' where `type`= '" + name.toString() + "'";
         try {
             SqlHelper.excUpdate(sql);
+            LogInsHelper.insertLog("修改"+name+"价格为:"+newValue);
         } catch (SQLException e) {
             e.printStackTrace();
+            LogInsHelper.insertLog("修改价格常量失败!");
+            return false;
         }
         return true;
     }
@@ -124,8 +133,12 @@ public class BusinessDataModificationData implements BusinessDataModificationDat
             String sqlSet = "update `Express`.`distance` set `distance` = "+distancePO.getDistance()
                     +"where `id` = "+id;
             SqlHelper.excUpdate(sqlSet);
+            LogInsHelper.insertLog("修改"+distancePO.getCity1()+"与"+distancePO.getCity2()+
+                    "间距离为:"+distancePO.getDistance());
         } catch (SQLException e) {
             e.printStackTrace();
+            LogInsHelper.insertLog("修改城市距离失败!");
+            return false;
         }
         return true;
     }

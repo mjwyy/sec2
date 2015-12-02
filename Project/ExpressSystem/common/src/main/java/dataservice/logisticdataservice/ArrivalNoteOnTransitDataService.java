@@ -8,8 +8,7 @@ package dataservice.logisticdataservice;
 import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.Iterator;
 
 import dataservice.exception.ElementNotFoundException;
 import po.ArrivalNoteOnTransitPO;
@@ -21,5 +20,5 @@ public interface ArrivalNoteOnTransitDataService extends Remote, Serializable {
 	 */
     ResultMsg insert(ArrivalNoteOnTransitPO po) throws RemoteException, ElementNotFoundException;
 
-    ArrayList<ArrivalNoteOnTransitPO> getArrivalNoteOnTransit() throws RemoteException;
+    Iterator<ArrivalNoteOnTransitPO> getArrivalNoteOnTransit() throws RemoteException;
 }

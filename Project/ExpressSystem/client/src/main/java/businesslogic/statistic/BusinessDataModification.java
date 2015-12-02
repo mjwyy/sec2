@@ -40,19 +40,19 @@ public class BusinessDataModification implements BusinessDataModificationBLServi
         return new ResultMsg(true);
     }
 
-    @Override
-    public ResultMsg submitPrice(PriceType type, double price) {
-        try {
-            dataService.setPrice(type,price);
-            return new ResultMsg(true,"价格常量修改成功!");
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return new ResultMsg(false,"无法修改价格常量!");
-        } catch (ElementNotFoundException e) {
-            e.printStackTrace();
-            return new ResultMsg(false,"无法修改价格常量!");
+        @Override
+        public ResultMsg submitPrice(PriceType type, double price) {
+            try {
+                dataService.setPrice(type,price);
+                return new ResultMsg(true,"价格常量修改成功!");
+            } catch (RemoteException e) {
+                e.printStackTrace();
+                return new ResultMsg(false,"无法修改价格常量!");
+            } catch (ElementNotFoundException e) {
+                e.printStackTrace();
+                return new ResultMsg(false,"无法修改价格常量!");
+            }
         }
-    }
 
     @Override
     public ResultMsg submitCityDistance(String city1, String city2, double distance) {

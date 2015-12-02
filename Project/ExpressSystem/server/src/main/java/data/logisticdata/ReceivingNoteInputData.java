@@ -37,41 +37,43 @@ public class ReceivingNoteInputData extends NoteInputData implements ReceivingNo
         Connection connection = DatabaseManager.getConnection();
         PreparedStatement statement = null;
         ResultMsg resultMsg = new ResultMsg(false);
+
         try {
             statement = connection.prepareStatement(sql);
             statement.setString(1,po.getBarcode());
             statement.setString(2,po.getTime());
             statement.setString(3,po.getReceiveCustomer());
             statement.executeUpdate();
-            statement.close();
-
-            //记录系统日志
-            LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+po.getUserName()+
-                    "新增收件单,单据编号:" + po.getBarcode());
-            System.out.println("Entered method insert");
-            //等待总经理审批过程,反复查询
-            DocState result = this.waitForCheck("note_receive_note",
-                    "barcode", po.getBarcode());
-            //审批通过
-            if (result == DocState.PASSED) {
-                //追加修改物流信息
-                ArrayList<String> bars = new ArrayList<>();
-                bars.add(po.getBarcode());
-                this.updateOrder("已被 "+po.getReceiveCustomer()+" 签收",bars);
-                resultMsg.setPass(true);
-                //审批没有通过
-            } else {
-                String advice = this.getFailedAdvice("note_receive_note",
-                        "barcode", po.getBarcode());
-                resultMsg.setMessage(advice);
-            }
+            return this.afterInsert(po);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        //操作结束
+
         DatabaseManager.releaseConnection(connection, statement, null);
         return resultMsg;
 
+    }
+
+    private ResultMsg afterInsert(ReceivingNotePO po) throws ElementNotFoundException {
+        ResultMsg resultMsg = new ResultMsg(false);
+        LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+po.getUserName()+
+                "新增收件单,单据编号:" + po.getBarcode());
+        DocState result = this.waitForCheck("note_receive_note",
+                "barcode", po.getBarcode());
+
+        if (result == DocState.PASSED) {
+            ArrayList<String> bars = new ArrayList<>();
+            bars.add(po.getBarcode());
+            this.updateOrder("已被 "+po.getReceiveCustomer()+" 签收",bars);
+            resultMsg.setPass(true);
+            resultMsg.setMessage("收件单提交成功!");
+
+        } else {
+            String advice = this.getFailedAdvice("note_receive_note",
+                    "barcode", po.getBarcode());
+            resultMsg.setMessage(advice);
+        }
+        return resultMsg;
     }
 
     @Override
@@ -80,10 +82,12 @@ public class ReceivingNoteInputData extends NoteInputData implements ReceivingNo
         Connection connection = DatabaseManager.getConnection();
         String sql = "select * from `note_receive_note` where isPassed = 0";
         PreparedStatement statement = null;
+
         try {
             statement = connection.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
             ReceivingNotePO receivingNotePO;
+
             while(resultSet.next()){
                 String barcode = resultSet.getString(1);
                 String receiver = resultSet.getString(2);
@@ -95,6 +99,7 @@ public class ReceivingNoteInputData extends NoteInputData implements ReceivingNo
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         DatabaseManager.releaseConnection(connection, statement, null);
         return result;
     }

@@ -33,14 +33,14 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
     }
 
     @Override
-    public ResultMsg insertArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException,  ElementNotFoundException {
+    public ResultMsg insertArrivalNote(ArrivalNoteOnServicePO po) throws RemoteException, ElementNotFoundException {
         Connection connection = DatabaseManager.getConnection();
         //新增到达单
         String sql = "insert into `note_arrival_on_service` ( " +
                 "`arrivalKind`, `from`, `barcodes`, `TransferNumber`, `date`)" +
                 " values ( ?, ?, ?, ?, ?)";
         PreparedStatement statement = null;
-        ResultMsg resultMsg = new ResultMsg(false);
+        ResultMsg resultMsg;
         try {
             statement = connection.prepareStatement(sql);
             //区分到达类型
@@ -52,33 +52,32 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
             statement.setString(5, po.getDate());
             //向数据库添加到达单
             statement.executeUpdate();
-
-            //记录系统日志
-            LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+po.getUserName()+
-                    "添加营业厅到达单,单据编号:" + po.getTransferNumber());
-
-            //等待总经理审批过程,反复查询
-            DocState result = this.waitForCheck("note_arrival_on_service",
-                    "TransferNumber", po.getTransferNumber());
-
-            //审批通过
-            if (result == DocState.PASSED) {
-                System.out.println("ArrivalNoteOnServicePO is passed!");
-                //追加修改物流信息
-                this.updateOrder(po.getBarcodeAndStates(), "已到达"+po.getOrganization());
-                resultMsg.setPass(true);
-                //审批没有通过
-            } else {
-                System.out.println("ArrivalNoteOnServicePO is failed!");
-                String advice = this.getFailedAdvice("note_arrival_on_service",
-                        "TransferNumber", po.getTransferNumber());
-                resultMsg.setMessage(advice);
-            }
+            resultMsg = this.afterInsertArrival(po);
         } catch (SQLException e) {
             e.printStackTrace();
             resultMsg = new ResultMsg(false,"添加营业厅到达单失败");
         }
         DatabaseManager.releaseConnection(connection, statement, null);
+        return resultMsg;
+    }
+
+    private ResultMsg afterInsertArrival(ArrivalNoteOnServicePO po) throws ElementNotFoundException {
+        ResultMsg resultMsg = new ResultMsg(false);
+        LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+po.getUserName()+
+                "添加营业厅到达单,单据编号:" + po.getTransferNumber());
+        DocState result = this.waitForCheck("note_arrival_on_service",
+                "TransferNumber", po.getTransferNumber());
+        //审批通过,追加修改物流信息
+        if (result == DocState.PASSED) {
+            this.updateOrder(po.getBarcodeAndStates(), "已到达"+po.getOrganization());
+            resultMsg.setPass(true);
+            resultMsg.setMessage("营业厅到达单提交成功!");
+            //审批否决,获取总经理意见
+        } else {
+            String advice = this.getFailedAdvice("note_arrival_on_service",
+                    "TransferNumber", po.getTransferNumber());
+            resultMsg.setMessage(advice);
+        }
         return resultMsg;
     }
 
@@ -92,6 +91,7 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
             statement = connection.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
             ArrivalNoteOnServicePO arrivalNoteOnServicePO;
+
             while(resultSet.next()){
                 String date = resultSet.getString(1);
                 String arrivalType = resultSet.getString(2);
@@ -103,6 +103,7 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
                 arrivalNoteOnServicePO = new ArrivalNoteOnServicePO(date,isTransit,transferNumber,from,barcodeAndStates);
                 result.add(arrivalNoteOnServicePO);
             }
+
             resultSet.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -117,38 +118,37 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
         String sql = "insert into `note_delivery_on_service` ( `deliveryMan`, `id`, `barcodes`, `date`)" +
                 " values ( ?, ?, ?, ?)";
         PreparedStatement statement = null;
-        ResultMsg resultMsg = new ResultMsg(false);
+        ResultMsg resultMsg;
         try {
             statement = connection.prepareStatement(sql);
-
             statement.setString(1, po.getDeliveryMan());
             statement.setString(2, po.getID());
             statement.setString(3, barcodeUtil.getDBbarsFromBarList(po.getBarCode()));
             statement.setString(4, po.getDate());
             //向数据库添加到达单
             statement.executeUpdate();
-
-            //等待总经理审批过程,反复查询
-            DocState result = this.waitForCheck("note_delivery_on_service", "id", po.getID());
-
-            //记录系统日志
-            LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+po.getUserName()+
-                    "添加派件单,派件员:"+po.getDeliveryMan());
-
-            //审批通过
-            if (result == DocState.PASSED) {
-                //追加修改物流信息
-                this.updateOrder("正由 "+po.getUserName()+" 快递员派送",po.getBarCode());
-                resultMsg.setPass(true);
-            } else {
-                String advice = this.getFailedAdvice("note_delivery_on_service", "id", po.getID());
-                resultMsg.setMessage(advice);
-            }
+            resultMsg = this.afterInsertDelivery(po);
         } catch (SQLException e) {
             e.printStackTrace();
             resultMsg = new ResultMsg(false,po.getUserName()+"添加派件单失败");
         }
         DatabaseManager.releaseConnection(connection, statement, null);
+        return resultMsg;
+    }
+
+    private ResultMsg afterInsertDelivery(DeliverNoteOnServicePO po) throws ElementNotFoundException {
+        ResultMsg resultMsg = new ResultMsg(false);
+        DocState result = this.waitForCheck("note_delivery_on_service", "id", po.getID());
+        LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+po.getUserName()+
+                "添加派件单,派件员:"+po.getDeliveryMan());
+        if (result == DocState.PASSED) {
+            this.updateOrder("正由 "+po.getUserName()+" 快递员派送",po.getBarCode());
+            resultMsg.setPass(true);
+            resultMsg.setMessage("派件单提交成功!");
+        } else {
+            String advice = this.getFailedAdvice("note_delivery_on_service", "id", po.getID());
+            resultMsg.setMessage(advice);
+        }
         return resultMsg;
     }
 

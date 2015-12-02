@@ -49,10 +49,9 @@ public class InventoryData implements InventoryDataService {
 		}
     	
 
-    	HashMap<String,InventoryPO> poMap = new HashMap<>();
-    	
-    	
-    	ArrayList<InventoryPO> result = new ArrayList<>();
+    	/*
+    	 * 需要填充的内容
+    	 */
 
     	
         return null;

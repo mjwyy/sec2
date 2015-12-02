@@ -113,6 +113,8 @@ public class StorageInData implements StorageInDataService {
 						+ "'"+good.getRownumber()+"',"
 						+ "'"+good.getFramenumber()+"',"
 						+ "'"+good.getPlacenumber()+"')");
+				result = stmt.executeUpdate("update order set isInStorage=1,warehouseID='"+org+"' "
+						+ "where barcode='"+good.getBarcode()+"'");
 			} catch (SQLException e) {
 				e.printStackTrace();
 		    	DatabaseManager.releaseConnection(connection, stmt, set);

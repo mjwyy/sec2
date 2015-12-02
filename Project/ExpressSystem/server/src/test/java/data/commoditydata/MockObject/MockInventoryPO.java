@@ -11,7 +11,7 @@ public class MockInventoryPO extends InventoryPO {
 
     public MockInventoryPO(String outNum, String inNum, String money,
                            ArrayList<CommodityGoodsPO> goodsInfo, String time) {
-        super(outNum, inNum, money, goodsInfo);
+        super(100,outNum, inNum, money, goodsInfo);
         this.time = time;
     }
 

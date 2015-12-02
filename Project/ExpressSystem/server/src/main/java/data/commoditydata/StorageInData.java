@@ -103,8 +103,18 @@ public class StorageInData implements StorageInDataService {
     	ArrayList<CommodityGoodsPO> list = po.getGoodsInStorageInfo();
     	for(CommodityGoodsPO good:list) {
     		try {
-				int result = stmt.executeUpdate("insert into InOutInfo (OrderID,WarehouseID,isIn,Date)"
-						+ " values('"+good.getBarcode()+"','"+org+"',"+1+",'"+po.getDate()+"')");
+				int result = stmt.executeUpdate("insert into InOutInfo (OrderID,WarehouseID,isIn,Date,areaCode,"
+						+ "rowNumber,frameNumber,placeNumber) values"
+						+ "('"+good.getBarcode()+"',"
+						+ "'"+org+"',"
+						+ ""+1+","
+						+ "'"+po.getDate()+"',"
+						+ "'"+good.getAreacode()+"',"
+						+ "'"+good.getRownumber()+"',"
+						+ "'"+good.getFramenumber()+"',"
+						+ "'"+good.getPlacenumber()+"')");
+				result = stmt.executeUpdate("update order set isInStorage=1,warehouseID='"+org+"' "
+						+ "where barcode='"+good.getBarcode()+"'");
 			} catch (SQLException e) {
 				e.printStackTrace();
 		    	DatabaseManager.releaseConnection(connection, stmt, set);

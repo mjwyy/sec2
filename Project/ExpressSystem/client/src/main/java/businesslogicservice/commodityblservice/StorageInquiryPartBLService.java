@@ -6,8 +6,6 @@
 
 package businesslogicservice.commodityblservice;
 
-import java.util.ArrayList;
-
 import util.ResultMsg;
 import vo.InventoryVO;
 
@@ -27,6 +25,6 @@ public interface StorageInquiryPartBLService {
    * @param time2
    * @return
    */
-  public ArrayList<InventoryVO> show(String time1,String time2);
+  public InventoryVO show(String time1,String time2);
   
 }

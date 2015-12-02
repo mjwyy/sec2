@@ -1,8 +1,8 @@
 package dataservice.statisticdataservice._Stub;
 
 import java.rmi.RemoteException;
-import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import po.*;
 import util.enums.DocType;
@@ -38,7 +38,7 @@ public class NoteApprovingDataService_Stub implements NoteApprovingDataService{
     }
 
     @Override
-    public ArrayList<ArrivalNoteOnTransitPO> getArrivalNoteOnTransitPO() throws RemoteException {
+    public Iterator<ArrivalNoteOnTransitPO> getArrivalNoteOnTransitPO() throws RemoteException {
         return null;
     }
 

@@ -7,8 +7,8 @@ import util.ResultMsg;
 import util.enums.GoodsState;
 
 import java.rmi.RemoteException;
-import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Created by kylin on 15/10/21.
@@ -37,7 +37,7 @@ public class ArrivalNoteOnTransitDataService_Stub implements ArrivalNoteOnTransi
     }
 
     @Override
-    public ArrayList<ArrivalNoteOnTransitPO> getArrivalNoteOnTransit() {
+    public Iterator<ArrivalNoteOnTransitPO> getArrivalNoteOnTransit() {
         return null;
     }
 

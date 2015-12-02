@@ -1,6 +1,7 @@
 package data.infodata;
 
 import data.database.DatabaseManager;
+import data.statisticdata.LogInsHelper;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.infodataservice.SystemUserManagementDataService;
@@ -32,6 +33,13 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
         Connection connection = DatabaseManager.getConnection();
         String sqlInsert = "INSERT into user (account,rights,password) values(?,?,MD5(?))";
         PreparedStatement statement = null;
+        try {
+            if(!this.inquireUser(user).isEmpty()){
+                LogInsHelper.insertLog("新增系统用户失败:信息已存在!");
+                DatabaseManager.releaseConnection(connection,null,null);
+                throw new InterruptWithExistedElementException();
+            }
+        } catch (ElementNotFoundException e) {}
         int result = 0;
         try {
             statement = connection.prepareStatement(sqlInsert);
@@ -39,7 +47,9 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
             statement.setInt(2,user.getAuthority().getIntAuthority());
             statement.setString(3,user.getPassword());
             result = statement.executeUpdate();
+            LogInsHelper.insertLog("新增系统用户:"+user.getAccount());
         } catch (SQLException e) {
+            LogInsHelper.insertLog("新增系统用户失败!");
             e.printStackTrace();
         }
         DatabaseManager.releaseConnection(connection,statement,null);
@@ -52,13 +62,23 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
         String account = user.getAccount();
         String delete = "DELETE from user where account = '"+account+"'";
         PreparedStatement statement = null;
+        try {
+            if(this.inquireUser(user).isEmpty()){
+                LogInsHelper.insertLog("删除系统用户失败:信息不存在!");
+                DatabaseManager.releaseConnection(connection,null,null);
+                throw new ElementNotFoundException();
+            }
+        } catch (ElementNotFoundException e) {}
         int result = 0;
         try {
             statement = connection.prepareStatement(delete);
             result = statement.executeUpdate();
+            LogInsHelper.insertLog("删除系统用户:"+user.getAccount());
             DatabaseManager.releaseConnection(connection,statement,null);
         } catch (SQLException e) {
             e.printStackTrace();
+            LogInsHelper.insertLog("删除系统用户失败!");
+            DatabaseManager.releaseConnection(connection,statement,null);
         }
         return result > 0;
     }

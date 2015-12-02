@@ -3,8 +3,6 @@ package data.logisticdata;
 import data.database.DatabaseManager;
 import data.logisticdata.barcode.BarcodeUtil;
 import data.statisticdata.LogInsHelper;
-import data.statisticdata.LogInsertData;
-import data.statisticdata.OrderInquiryData;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.logisticdataservice.ArrivalNoteOnTransitDataService;
 import po.ArrivalNoteOnTransitPO;
@@ -12,22 +10,23 @@ import util.BarcodeAndState;
 import util.ResultMsg;
 import util.enums.DocState;
 
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Created by kylin on 15/11/10.
  */
 public class ArrivalNoteOnTransitData extends NoteInputData implements ArrivalNoteOnTransitDataService {
 
-    private BarcodeUtil barcodeUtil = new BarcodeUtil();
+    private BarcodeUtil barcodeUtil;
 
     public ArrivalNoteOnTransitData() throws RemoteException {
+        barcodeUtil = new BarcodeUtil();
     }
 
     @Override
@@ -36,8 +35,8 @@ public class ArrivalNoteOnTransitData extends NoteInputData implements ArrivalNo
         String sql = "insert into `note_arrival_on_transit` " +
                 "( `date`, `barcodes`, `departurePlace`, `centerNumber`, `transferNumber`) " +
                 "values ( ?, ?, ?, ?, ?)";
-        PreparedStatement statement = null;
         ResultMsg resultMsg = new ResultMsg(false);
+        PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(sql);
             statement.setString(1, po.getDate());
@@ -46,38 +45,40 @@ public class ArrivalNoteOnTransitData extends NoteInputData implements ArrivalNo
             statement.setString(3, po.getDeparturePlace());
             statement.setString(4, po.getCenterNumber());
             statement.setString(5, po.getTransferNumber());
-            //向数据库添加到达单
             statement.executeUpdate();
-
-            //记录系统日志
-            LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+po.getUserName()+
-                    "新增中转中心到达单,单据编号:" + po.getTransferNumber());
-
-            //等待总经理审批过程,反复查询
-            DocState result = this.waitForCheck("note_arrival_on_transit",
-                    "transferNumber", po.getTransferNumber());
-
-            //审批通过
-            if (result == DocState.PASSED) {
-                //追加修改物流信息
-                this.updateOrder(barcodeAndState,"已到达"+po.getOrganization());
-                resultMsg.setPass(true);
-            } else {
-                String advice = this.getFailedAdvice("note_arrival_on_transit",
-                        "transferNumber", po.getTransferNumber());
-                resultMsg.setMessage(advice);
-            }
+            //向数据库插入单据后续的操作
+            resultMsg = this.afterInsert(po);
         } catch (SQLException e) {
             e.printStackTrace();
             resultMsg.setMessage("无法添加中转中心到达单");
-            LogInsHelper.insertLog(po.getUserName()+"添加中转中心到达单失败");
+            LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+po.getUserName()+" 添加中转中心到达单失败");
         }
         DatabaseManager.releaseConnection(connection, statement, null);
         return resultMsg;
     }
 
+    private ResultMsg afterInsert(ArrivalNoteOnTransitPO po){
+        //等待总经理审批过程,反复查询
+        DocState result = this.waitForCheck("note_arrival_on_transit",
+                "transferNumber", po.getTransferNumber());
+        LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+po.getUserName()+
+                " 新增中转中心到达单,单据编号:" + po.getTransferNumber());
+        ResultMsg resultMsg = new ResultMsg(false);
+        //审批通过,追加修改物流信息
+        if (result == DocState.PASSED) {
+            this.updateOrder(po.getBarcodeAndStates(),"已到达"+po.getOrganization());
+            resultMsg.setPass(true);
+        //审批否决,获取总经理意见
+        } else {
+            String advice = this.getFailedAdvice("note_arrival_on_transit",
+                    "transferNumber", po.getTransferNumber());
+            resultMsg.setMessage(advice);
+        }
+        return resultMsg;
+    }
+
     @Override
-    public ArrayList<ArrivalNoteOnTransitPO> getArrivalNoteOnTransit() throws RemoteException {
+    public Iterator<ArrivalNoteOnTransitPO> getArrivalNoteOnTransit() throws RemoteException {
         ArrayList<ArrivalNoteOnTransitPO> result = new ArrayList<>();
         Connection connection = DatabaseManager.getConnection();
         String sql = "select * from `note_arrival_on_transit` where isPassed = 0";
@@ -103,7 +104,7 @@ public class ArrivalNoteOnTransitData extends NoteInputData implements ArrivalNo
             e.printStackTrace();
         }
         DatabaseManager.releaseConnection(connection, statement, null);
-        return result;
+        return result.iterator();
     }
 
 }

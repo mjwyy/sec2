@@ -23,7 +23,7 @@ public class TimePresumeStrategy {
         // new Date()为获取当前系统时间
         Date startDay = new Date();
 
-        //业务核心逻辑
+        //预测时间业务逻辑
         double time = distance/300 * 60 * 60 * 1000;
         if (category == DeliverCategory.EXPRESS)
             time = time/2;

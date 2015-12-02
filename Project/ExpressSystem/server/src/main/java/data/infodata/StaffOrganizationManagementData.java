@@ -35,6 +35,13 @@ public class StaffOrganizationManagementData implements
         PreparedStatement statement = null;
         int result = 0;
         try {
+            if(!this.findStaff(staff).isEmpty()){
+                LogInsHelper.insertLog("新增人员失败:信息已存在!");
+                DatabaseManager.releaseConnection(connection,null,null);
+                throw new InterruptWithExistedElementException();
+            }
+        } catch (ElementNotFoundException e) {}
+        try {
             statement = connection.prepareStatement(sql);
             int gender = staff.getGender().equals("男") ? 0 : 1;
             statement.setInt(1, gender);
@@ -47,8 +54,12 @@ public class StaffOrganizationManagementData implements
             statement.setString(8, staff.getName());
             statement.setString(9, staff.getPhoneNumber());
             result = statement.executeUpdate();
+            LogInsHelper.insertLog("新增人员:"+staff.getName());
         } catch (SQLException e) {
             e.printStackTrace();
+            LogInsHelper.insertLog("新增人员失败!");
+            DatabaseManager.releaseConnection(connection,statement,null);
+            return false;
         }
         DatabaseManager.releaseConnection(connection,statement,null);
         return result > 0;
@@ -63,23 +74,34 @@ public class StaffOrganizationManagementData implements
         PreparedStatement statement = null;
         int result = 0;
         try {
+            if(!this.findOrganization(org).isEmpty()){
+                LogInsHelper.insertLog("新增机构失败:信息已存在!");
+                DatabaseManager.releaseConnection(connection,null,null);
+                throw new InterruptWithExistedElementException();
+            }
+        } catch (ElementNotFoundException e) {}
+        try {
             statement = connection.prepareStatement(sql);
             statement.setInt(1,org.getType().getType());
             statement.setString(2,org.getName());
             statement.setString(3,org.getCode());
             result = statement.executeUpdate();
+            LogInsHelper.insertLog("新增机构成功!");
             DatabaseManager.releaseConnection(connection,statement,null);
         } catch (SQLException e) {
             e.printStackTrace();
+            LogInsHelper.insertLog("新增机构失败!");
+            DatabaseManager.releaseConnection(connection,statement,null);
+            return false;
         }
-		return result>0;
+		return result > 0;
 	}
 
 	@Override
 	public boolean removeStaff(StaffPO staff) throws RemoteException,
             ElementNotFoundException{
         if(this.findStaff(staff).isEmpty()){
-            LogInsHelper.insertLog("人员信息已存在,添加失败");
+            LogInsHelper.insertLog("人员信息不存在,删除失败");
             throw new ElementNotFoundException();
         }
         String sql = "DELETE from `staff` where staff_id = " + staff.getStaffID();
@@ -87,10 +109,10 @@ public class StaffOrganizationManagementData implements
             SqlHelper.excUpdate(sql);
         } catch (SQLException e) {
             e.printStackTrace();
-            LogInsHelper.insertLog("新增人员信息失败");
+            LogInsHelper.insertLog("删除人员信息失败");
             return false;
         }
-        LogInsHelper.insertLog("新增人员:"+staff.getName());
+        LogInsHelper.insertLog("删除人员:"+staff.getName());
         return true;
     }
 
@@ -98,7 +120,7 @@ public class StaffOrganizationManagementData implements
 	public boolean removeOrganization(OrganizationPO org)
             throws RemoteException, ElementNotFoundException{
         if(this.findOrganization(org).isEmpty()){
-            LogInsHelper.insertLog("机构信息已存在,添加失败");
+            LogInsHelper.insertLog("机构信息不存在,删除失败");
             throw new ElementNotFoundException();
         }
         String sql = "DELETE from `organization` where organization_id = "+org.getCode();
@@ -106,10 +128,10 @@ public class StaffOrganizationManagementData implements
             SqlHelper.excUpdate(sql);
         } catch (SQLException e) {
             e.printStackTrace();
-            LogInsHelper.insertLog("新增机构信息失败");
+            LogInsHelper.insertLog("删除机构信息失败");
             return false;
         }
-        LogInsHelper.insertLog("新增机构:"+org.getName());
+        LogInsHelper.insertLog("删除机构:"+org.getName());
         return true;
     }
 
@@ -132,6 +154,7 @@ public class StaffOrganizationManagementData implements
             LogInsHelper.insertLog("修改人员信息失败");
             return false;
         }
+        LogInsHelper.insertLog("修改人员信息:"+staff.getName());
         return true;
     }
 
@@ -144,7 +167,9 @@ public class StaffOrganizationManagementData implements
             SqlHelper.excUpdate(sql);
         } catch (SQLException e) {
             e.printStackTrace();
+            LogInsHelper.insertLog("修改机构信息失败");
         }
+        LogInsHelper.insertLog("修改机构信息:"+org.getName());
         return true;
     }
 
@@ -152,7 +177,9 @@ public class StaffOrganizationManagementData implements
 	public ArrayList<StaffPO> findStaff(StaffPO info) throws RemoteException,
             ElementNotFoundException{
         String sql = "";
-        if (info.getName() != null)
+        if (info.getStaffID() != null)
+            sql = "SELECT * FROM staff WHERE WHERE staff_id = '" + info.getStaffID() + "'";
+        else if (info.getName() != null)
             sql = "SELECT * FROM staff WHERE name LIKE '%" + info.getName() + "%'";
         else if (info.getOrganization() != null)
             sql = "SELECT * FROM staff WHERE organization LIKE '%" + info.getOrganization() + "%'";
@@ -176,7 +203,9 @@ public class StaffOrganizationManagementData implements
 	public ArrayList<OrganizationPO> findOrganization(OrganizationPO info)
             throws RemoteException, ElementNotFoundException{
         String sql = "";
-        if (info.getName() != null)
+        if(info.getCode() != null)
+            sql = "SELECT * FROM organization WHERE organization_id = '" + info.getCode() + "'";
+        else if (info.getName() != null)
             sql = "SELECT * FROM organization WHERE name LIKE '%" + info.getName() + "%'";
         else if (info.getType() != null)
             sql = "SELECT * FROM organization WHERE type = +info.getType().getType()";
@@ -186,17 +215,27 @@ public class StaffOrganizationManagementData implements
 	@Override
     public ArrayList<StaffPO> getAllStaff() throws RemoteException{
         String sql = "SELECT * from `staff`";
-        return this.excFindStaffStatement(sql);
+        try {
+            return this.excFindStaffStatement(sql);
+        } catch (ElementNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 	@Override
 	public ArrayList<OrganizationPO> getAllOrganizations()
             throws RemoteException{
         String sql = "SELECT * from organization";
-        return this.excFindOrgStatement(sql);
+        try {
+            return this.excFindOrgStatement(sql);
+        } catch (ElementNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
-    private ArrayList<StaffPO> excFindStaffStatement(String str){
+    private ArrayList<StaffPO> excFindStaffStatement(String str) throws ElementNotFoundException {
         Connection connection = DatabaseManager.getConnection();
         PreparedStatement statement = null;
         ArrayList<StaffPO> result = new ArrayList<>();
@@ -223,10 +262,12 @@ public class StaffOrganizationManagementData implements
             e.printStackTrace();
         }
         DatabaseManager.releaseConnection(connection,statement,null);
+        if(result.isEmpty())
+            throw new ElementNotFoundException();
         return result;
     }
 
-    private ArrayList<OrganizationPO> excFindOrgStatement(String str){
+    private ArrayList<OrganizationPO> excFindOrgStatement(String str) throws ElementNotFoundException {
         Connection connection = DatabaseManager.getConnection();
         PreparedStatement statement = null;
         ArrayList<OrganizationPO> result = new ArrayList<>();
@@ -246,6 +287,8 @@ public class StaffOrganizationManagementData implements
             e.printStackTrace();
         }
         DatabaseManager.releaseConnection(connection,statement,null);
+        if(result.isEmpty())
+            throw new ElementNotFoundException();
         return result;
     }
 

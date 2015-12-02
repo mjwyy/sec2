@@ -100,7 +100,7 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
         }
         //操作结束
         DatabaseManager.releaseConnection(connection, statement, null);
-       return null;
+        return null;
     }
 
     @Override

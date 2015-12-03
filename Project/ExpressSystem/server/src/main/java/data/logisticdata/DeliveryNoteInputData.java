@@ -2,13 +2,10 @@ package data.logisticdata;
 
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import data.database.DatabaseManager;
-import data.infodata.UserInfoHelper;
 import data.logisticdata.deliverystrategy.CityManager;
 import data.logisticdata.deliverystrategy.PriceStrategy;
 import data.logisticdata.deliverystrategy.TimePresumeStrategy;
-import data.statisticdata.BusinessDataModificationData;
 import data.statisticdata.LogInsHelper;
-import data.statisticdata.OrderInquiryData;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
@@ -18,6 +15,7 @@ import po.DeliveryNotePO;
 import util.SendDocMsg;
 import util.enums.DeliverCategory;
 import util.enums.DocState;
+import util.enums.PackageType;
 
 import java.rmi.RemoteException;
 import java.sql.Connection;
@@ -26,23 +24,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- * Created by kylin on 15/11/10.
- */
 public class DeliveryNoteInputData extends NoteInputData implements DeliveryNoteInputDataService {
 
     private OrderInquiryDataService orderDataService;
     private BusinessDataModificationDataService businessDataModificationDataService;
 
-    private PriceStrategy priceStrategy = new PriceStrategy();
-    private TimePresumeStrategy timePresumeStrategy = new TimePresumeStrategy();
-    private CityManager cityManager = new CityManager();
+    private PriceStrategy priceStrategy;
+    private TimePresumeStrategy timePresumeStrategy;
+    private CityManager cityManager;
 
     public DeliveryNoteInputData(OrderInquiryDataService orderDataService,
                                  BusinessDataModificationDataService businessDataModificationDataService)
             throws RemoteException {
         this.orderDataService = orderDataService;
         this.businessDataModificationDataService = businessDataModificationDataService;
+        this.priceStrategy = new PriceStrategy();
+        this.timePresumeStrategy = new TimePresumeStrategy();
+        this.cityManager = new CityManager();
     }
 
     @Override
@@ -61,7 +59,7 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
             statement.setString(2, po.getCategory().getStrCategory());
             statement.setString(3, po.getSenderTeleNumber());
             statement.setString(4, po.getReceiverAddress());
-            statement.setDouble(5, po.getPackPrice());
+            statement.setString(5, po.getPackType().toString());
             statement.setDouble(6, po.getWeight());
             statement.setString(7, po.getReceiverName());
             statement.setInt(8, po.getGoodsNumber());
@@ -71,7 +69,7 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
             statement.setString(12, po.getName());
             statement.setString(13, po.getBarCode());
             statement.executeUpdate();
-            return this.afterInsert(po);
+            sendDocMsg =  this.afterInsert(po);
         } catch (MySQLIntegrityConstraintViolationException e){
             throw new InterruptWithExistedElementException();
         } catch (SQLException e) {
@@ -80,7 +78,7 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
         }
         //操作结束
         DatabaseManager.releaseConnection(connection, statement, null);
-        return null;
+        return sendDocMsg;
     }
 
     private SendDocMsg afterInsert(DeliveryNotePO po) throws RemoteException, ElementNotFoundException, SQLException {
@@ -99,7 +97,7 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
             String city1 = cityManager.findCity(cites,po.getSenderAddress());
             String city2 = cityManager.findCity(cites,po.getReceiverAddress());
             double price = priceStrategy.getPrice(city1,city2,po.getWeight(),
-                    po.getVolume(),po.getCategory(),po.getPackPrice());
+                    po.getVolume(),po.getCategory(),po.getPackType());
             String presumedDate = timePresumeStrategy.getPresumedTime(city1,city2,po.getCategory());
             sendDocMsg = new SendDocMsg(true,"寄件单已成功提交!",price,presumedDate);
         } else {
@@ -134,12 +132,13 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
                 int weight = resultSet.getInt(9);
                 int volume = resultSet.getInt(10);
                 String category = resultSet.getString(11);
-                double packprice = resultSet.getDouble(12);
+                String type = resultSet.getString(12);
+                PackageType packageType = PackageType.getPackageType(type);
                 String barcode = resultSet.getString(13);
 
                 arrivalNoteOnServicePO = new DeliveryNotePO(senderName,senderAdd,senderTel,recName,
                         recADD,recTel,name,goodsNumber,weight,volume,DeliverCategory.getDeliverCategory(category),
-                        packprice,barcode);
+                        packageType,barcode);
                 result.add(arrivalNoteOnServicePO);
             }
             resultSet.close();

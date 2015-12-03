@@ -20,6 +20,9 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
+import businesslogicservice.commodityblservice.StorageInquiryPartBLService;
+import businesslogicservice.commodityblservice._Stub.StorageInquiryPartBLService_Stub;
+
 import com.qt.datapicker.DatePicker;
 
 import presentation.util.ObservingTextField;
@@ -36,6 +39,7 @@ public class ChaKan extends JPanel {
 	private JLabel lblNewLabel;
 	private JLabel end ;
 	private ObservingTextField jtf8;
+	StorageInquiryPartBLService spb=new StorageInquiryPartBLService_Stub();
 	/**
 	 * Create the panel.
 	 */
@@ -60,33 +64,8 @@ public class ChaKan extends JPanel {
 	         * 初始化JTable里面各项的值 
 	         */  
 	        Object[][] obj = new Object[1][6];  
-	        for (int i = 0; i < 1; i++)  
-	        {  
-	            for (int j = 0; j < 6; j++)  
-	            {  
-	                switch (j)  
-	                {  
-	                case 0:  
-	                    obj[i][j] = "001";  
-	                    break;  
-	                case 1:  
-	                    obj[i][j] = "王翔翔";  
-	                    break;  
-	                case 2:  
-	                    obj[i][j] = "男";  
-	                    break;  
-	                case 3:  
-	                    obj[i][j] = "2011-11-11";  
-	                    break;  
-	                case 4:  
-	                    obj[i][j] = "32088888888";  
-	                    break;  
-	                case 5:  
-	                    obj[i][j] = "1388888";  
-	                    break;  
-	                }  
-	            }  
-	        }  
+	       
+	         
 	          
 	          
 	        /* 
@@ -147,28 +126,7 @@ public class ChaKan extends JPanel {
 		         * 初始化JTable里面各项的值 
 		         */  
 		        Object[][] obj1 = new Object[1][4];  
-		        for (int i = 0; i < 1; i++)  
-		        {  
-		            for (int j = 0; j < 4; j++)  
-		            {  
-		                switch (j)  
-		                {  
-		                case 0:  
-		                    obj1[i][j] = "0lala";  
-		                    break;  
-		                case 1:  
-		                    obj1[i][j] = "翔";  
-		                    break;  
-		                case 2:  
-		                    obj1[i][j] = "000";  
-		                    break;  
-		                case 3:  
-		                    obj1[i][j] = "2011-11-11";  
-		                    break;  
-		                
-		                }  
-		            }  
-		        }  
+		       
 		          
 		          
 		        /* 

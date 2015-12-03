@@ -97,23 +97,23 @@ public class ArrivalOrder extends JPanel {
 		DATA = new JTextField();
 		DATA.setEnabled(false);
 		DATA.setEditable(false);
-		DATA.setBounds(189, 37, 87, 28);
+		DATA.setBounds(189, 37, 130, 28);
 		add(DATA);
 		DATA.setColumns(10);
 
 		JLabel label_1 = new JLabel("出发地");
-		label_1.setBounds(348, 43, 71, 15);
+		label_1.setBounds(348, 43, 71, 18);
 		add(label_1);
 
 		FROM = new JTextField();
 		FROM.setEnabled(false);
 		FROM.setEditable(false);
-		FROM.setBounds(429, 37, 66, 28);
+		FROM.setBounds(429, 37, 147, 28);
 		add(FROM);
 		FROM.setColumns(10);
 
 		JLabel lblNewLabel = new JLabel("单据编号");
-		lblNewLabel.setBounds(97, 122, 82, 15);
+		lblNewLabel.setBounds(97, 122, 82, 18);
 		add(lblNewLabel);
 
 		CODE = new JTextField();
@@ -124,7 +124,7 @@ public class ArrivalOrder extends JPanel {
 		CODE.setColumns(10);
 
 		JLabel label_6 = new JLabel("货物编码");
-		label_6.setBounds(244, 163, 93, 15);
+		label_6.setBounds(244, 163, 93, 18);
 		add(label_6);
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -254,13 +254,13 @@ public class ArrivalOrder extends JPanel {
 		add(typeF);
 		
 		JLabel lblNewLabel_1 = new JLabel("编号类型");
-		lblNewLabel_1.setBounds(97, 81, 82, 15);
+		lblNewLabel_1.setBounds(97, 81, 82, 18);
 		add(lblNewLabel_1);
 		
 		TYPE = new JTextField();
 		TYPE.setEnabled(false);
 		TYPE.setEditable(false);
-		TYPE.setBounds(189, 81, 87, 28);
+		TYPE.setBounds(189, 81, 130, 28);
 		add(TYPE);
 		TYPE.setColumns(10);
 

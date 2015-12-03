@@ -86,11 +86,11 @@ public class SendOrder extends JPanel {
 
 		JButton btnNewButton = new JButton("提交");
 		btnNewButton.addActionListener(new submitListener() );
-		btnNewButton.setBounds(278, 304, 93, 23);
+		btnNewButton.setBounds(298, 343, 93, 23);
 		add(btnNewButton);
 
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(58, 188, 334, 99);
+		scrollPane_1.setBounds(58, 188, 210, 139);
 		add(scrollPane_1);
 
 		String[] columnNames =  
@@ -131,7 +131,6 @@ public class SendOrder extends JPanel {
 
 		scrollPane_1.setViewportView(table);
 
-		scrollPane_1.setViewportView(table);
 
 		JLabel label_7 = new JLabel("日期");
 		label_7.setBounds(783, 81, 54, 15);

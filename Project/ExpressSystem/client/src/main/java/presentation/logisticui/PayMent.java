@@ -107,7 +107,7 @@ public class PayMent extends JPanel {
 		add(submit);
 
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(122, 188, 225, 150);
+		scrollPane_1.setBounds(122, 188, 195, 150);
 		add(scrollPane_1);
 		
 

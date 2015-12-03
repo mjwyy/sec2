@@ -249,6 +249,8 @@ private JComboBox comboBox;
 	        
 	    }  
 	    public void initTabel(){
+	    	for(int i=0;i<model.getRowCount();i++)
+				model.removeRow(i);
 	    	ArrayList<VehicleVO> vvoo=dvm.findVehicle(null);//得到所有车辆信息
 	    	for(int i=0;i<vvoo.size();i++){
 	    		VehicleVO vo=vvoo.get(i);

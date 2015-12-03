@@ -20,12 +20,12 @@ public interface BankAccountBalanceAccess {
 	/**
 	 * 重设银行账户余额
 	 * @param accountNum
-	 * @param balance
+	 * @param variance 变化量：收款则为正，付款则为负
 	 * @throws ElementNotFoundException
 	 * @throws SQLException
 	 * @throws RemoteException
 	 */
-	public void setAccountBalance(String accountNum,String balance) 
+	public void setAccountBalance(String accountNum,String variance) 
 			throws ElementNotFoundException,SQLException, RemoteException;
 	
 }

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import po.CommodityGoodsPO;
 import po.StorageOutPO;
 import util.enums.DocState;
+import data.database.DatabaseFactoryMysqlImpl;
 import data.database.DatabaseManager;
 import data.infodata.UserInfoHelper;
 import data.statisticdata.LogInsHelper;
@@ -85,8 +86,10 @@ public class StorageOutData implements StorageOutDataService {
     	while(state==DocState.UNCHECKED) {
     		try {
 				set = stmt.executeQuery("select isPassed,advice from StorageOutNote where id='"+tempID+"'");
+				set.next();
 				state = DocState.getDocState(set.getInt("isPassed"));
 				advice = set.getString("advice");
+				DatabaseManager.releaseConnection(null, null, set);
 			} catch (SQLException e) {
 				e.printStackTrace();
 				DatabaseManager.releaseConnection(connection, stmt, set);

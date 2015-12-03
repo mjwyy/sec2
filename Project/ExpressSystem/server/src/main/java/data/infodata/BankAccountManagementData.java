@@ -161,10 +161,14 @@ public class BankAccountManagementData implements BankAccountManagementDataServi
 	}
 
 	@Override
-	public void setAccountBalance(String accountNum, String balance)
+	public synchronized  void setAccountBalance(String accountNum, String variance)
 			throws ElementNotFoundException, SQLException, RemoteException {
 		
-		assert Double.parseDouble(balance)>=0;
+		double left = getAccountBalance(accountNum);
+		
+		assert (left+Double.parseDouble(variance))>=0;
+
+		String balance = null;
 		
 		connection = DatabaseManager.getConnection();
     	LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();

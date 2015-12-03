@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -81,8 +82,10 @@ public class StorageInData implements StorageInDataService {
     	while(state==DocState.UNCHECKED) {
     		try {
 				set = stmt.executeQuery("select isPassed,advice from StorageInNote where id='"+tempID+"'");
+				set.next();
 				state = DocState.getDocState(set.getInt("isPassed"));
 				advice = set.getString("advice");
+				DatabaseManager.releaseConnection(null, null, set);
 			} catch (SQLException e) {
 				e.printStackTrace();
 				DatabaseManager.releaseConnection(connection, stmt, set);

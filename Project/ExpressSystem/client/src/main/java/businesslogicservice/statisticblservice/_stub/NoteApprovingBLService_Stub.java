@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import businesslogicservice.statisticblservice.NoteApprovingBLService;
 import util.enums.DocType;
-import vo.NoteVO;
+import vo.*;
 
 public class NoteApprovingBLService_Stub implements NoteApprovingBLService {
 
@@ -18,9 +18,49 @@ public class NoteApprovingBLService_Stub implements NoteApprovingBLService {
 		System.out.println("returning docs with:" + type);
 		return new ArrayList<NoteVO>();
 	};
-	
 
-	public void passAllDoc(){
+
+    @Override
+    public ArrayList<ArrivalNoteOnServiceVO> getArrivalNoteOnServiceVO() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<DeliverNoteOnServiceVO> getDeliverNoteOnServiceVO() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<ArrivalNoteOnTransitVO> getArrivalNoteOnTransitVO() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<DeliveryNoteVO> getDeliveryNoteVO() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<LoadNoteOnServiceVO> getLoadNoteOnServiceVO() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<LoadNoteOnTransitVO> getLoadNoteOnTransitVO() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<ReceivingNoteVO> getReceivingNoteVO() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<TransitNoteOnTransitVO> getTransitNoteVO() {
+        return null;
+    }
+
+    public void passAllDoc(){
 		System.out.println("passing docs");
 	};
 

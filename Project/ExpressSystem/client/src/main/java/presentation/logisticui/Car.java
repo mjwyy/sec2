@@ -146,11 +146,11 @@ private JComboBox comboBox;
 		        	}
 	        	}
 	        });
-	        btnNewButton.setBounds(685, 352, 70, 23);
+	        btnNewButton.setBounds(685, 352, 75, 35);
 	        add(btnNewButton);
 	        
 	        JButton btnNewButton_1 = new JButton("删除");
-	        btnNewButton_1.setBounds(792, 352, 70, 23);
+	        btnNewButton_1.setBounds(792, 352, 75, 35);
 	        btnNewButton_1.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent arg0) {
 	        		int seletedRow=table.getSelectedRow();
@@ -197,7 +197,7 @@ private JComboBox comboBox;
 	        	}
 	        	}
 	        });
-	        btnNewButton_2.setBounds(930, 352, 70, 23);
+	        btnNewButton_2.setBounds(930, 352, 75, 35);
 	        add(btnNewButton_2);
 	        
 	        JLabel label_2 = new JLabel("车辆代号");

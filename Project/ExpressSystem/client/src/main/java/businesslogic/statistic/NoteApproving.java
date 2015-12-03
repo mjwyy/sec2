@@ -6,7 +6,7 @@ import dataservice.exception.ElementNotFoundException;
 import dataservice.statisticdataservice.NoteApprovingDataService;
 import po.NotePO;
 import util.enums.DocType;
-import vo.NoteVO;
+import vo.*;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -26,37 +26,43 @@ public class NoteApproving implements NoteApprovingBLService {
     }
 
     @Override
-    public ArrayList<NoteVO> getAllDoc() {
-        ArrayList<NoteVO> noteVOArrayList = new ArrayList<>();
-        ArrayList<NotePO> notePOs;
-        try {
-            notePOs = dataService.getAllDoc();
-            for (NotePO po:notePOs){
-                NoteVO vo = po.toVO();
-                noteVOArrayList.add(vo);
-            }
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return null;
-        }
-        return noteVOArrayList;
+    public ArrayList<ArrivalNoteOnServiceVO> getArrivalNoteOnServiceVO() {
+        return null;
     }
 
     @Override
-    public ArrayList<NoteVO> getDocByType(DocType type) {
-        ArrayList<NoteVO> noteVOArrayList = new ArrayList<>();
-        ArrayList<NotePO> notePOs;
-        try {
-            notePOs = dataService.getDocByType(type);
-            for (NotePO po:notePOs){
-                NoteVO vo = po.toVO();
-                noteVOArrayList.add(vo);
-            }
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return null;
-        }
-        return noteVOArrayList;
+    public ArrayList<DeliverNoteOnServiceVO> getDeliverNoteOnServiceVO() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<ArrivalNoteOnTransitVO> getArrivalNoteOnTransitVO() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<DeliveryNoteVO> getDeliveryNoteVO() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<LoadNoteOnServiceVO> getLoadNoteOnServiceVO() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<LoadNoteOnTransitVO> getLoadNoteOnTransitVO() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<ReceivingNoteVO> getReceivingNoteVO() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<TransitNoteOnTransitVO> getTransitNoteVO() {
+        return null;
     }
 
     @Override
@@ -74,8 +80,6 @@ public class NoteApproving implements NoteApprovingBLService {
             e.printStackTrace();
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 
@@ -87,8 +91,11 @@ public class NoteApproving implements NoteApprovingBLService {
             e.printStackTrace();
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
+    }
+
+    @Override
+    public ArrayList<NoteVO> getAllDoc() {
+        return null;
     }
 }

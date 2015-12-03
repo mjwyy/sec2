@@ -26,6 +26,7 @@ public class DeliveryInfo {
                         DeliverCategory category, PackageType packageType) {
         this.city1 = city1;
         this.city2 = city2;
+        this.distance = distance;
         this.weight = weight;
         this.volume = volume;
         this.category = category;

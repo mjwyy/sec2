@@ -52,8 +52,8 @@ public class DeliveryNoteInput_Test {
     public void testCal() throws RemoteException, ElementNotFoundException, SQLException {
         TimePresumeStrategy timePresumeStrategy = new TimePresumeStrategy();
         PriceStrategy priceStrategy = new PriceStrategy(new BusinessDataModificationData());
-        DeliveryInfo deliveryInfo = new DeliveryInfo("nanjing","beijing",900,1,1,
-                DeliverCategory.NORMAL,PackageType.Bag);
+        DeliveryInfo deliveryInfo = new DeliveryInfo("nanjing","beijing",900,2,1,
+                DeliverCategory.NORMAL,PackageType.WoodenBox);
         System.out.println(priceStrategy.getPrice(deliveryInfo));
         System.out.println(timePresumeStrategy.getPresumedTime(deliveryInfo));
     }

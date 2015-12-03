@@ -1,6 +1,7 @@
 package businesslogicservice.logisticblservice._Driver;
 
 import util.SendDocMsg;
+import util.enums.PackageType;
 import vo.DeliveryNoteVO;
 import businesslogicservice.logisticblservice.DeliveryNoteInputBLService;
 import businesslogicservice.logisticblservice._Stub.DeliveryNoteInputBLService_Stub;
@@ -16,7 +17,7 @@ public class DeliveryNoteInputBLService_Driver {
 	public void driver(DeliveryNoteInputBLService a){
 		DeliveryNoteVO sendDocVO1=new DeliveryNoteVO("王二狗","江苏省南京市栖霞区南京大学仙林校区","150052120000",
                 "Tom Hanks","江苏省徐州市沛县第三中学语文组","19883490000","爆炸物",10,
-                10,2,DeliverCategory.EXPRESS,5,"0000000001");
+                10,2,DeliverCategory.EXPRESS, PackageType.Bag,"0000000001");
 		ResultMsg result=a.inputSendDoc(sendDocVO1);
 		if(result.isPass()==true)
 			System.out.println("输入的寄件单格式正确");

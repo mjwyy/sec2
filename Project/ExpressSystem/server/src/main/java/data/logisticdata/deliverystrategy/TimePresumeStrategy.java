@@ -27,7 +27,7 @@ public class TimePresumeStrategy {
         Date startDay = new Date();
 
         //预测时间业务逻辑
-        double time = distance/300 * 60 * 60 * 1000;
+        double time = distance/50 * 60 * 60 * 1000;
         if (category == DeliverCategory.EXPRESS)
             time = time/2;
         else if (category == DeliverCategory.ECNOMIC)
@@ -35,7 +35,7 @@ public class TimePresumeStrategy {
 
         long longTime = (long) time;
         Date arrivalDay = new Date((startDay.getTime()+longTime));
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH"+"时");
         return dateFormat.format(arrivalDay);
     }
 }

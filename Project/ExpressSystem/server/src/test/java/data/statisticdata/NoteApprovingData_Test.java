@@ -19,6 +19,7 @@ import po.*;
 import util.BarcodeAndState;
 import util.enums.DeliverCategory;
 import util.enums.GoodsState;
+import util.enums.PackageType;
 import util.enums.TransitType;
 import vo.LoadNoteOnServiceVO;
 
@@ -74,7 +75,7 @@ public class NoteApprovingData_Test {
     public void testDeliveryDoc() throws RemoteException, ElementNotFoundException, SQLException {
         DeliveryNotePO po1 = new DeliveryNotePO("王二狗", "江苏省南京市栖霞区南京大学仙林校区", "150052120000",
                 "Tom Hanks", "上海环球金融中心78层优则金融有限公司", "19883490000", "爆炸物", 10,
-                1, 2, DeliverCategory.EXPRESS, 5, "000000008");
+                1, 2, DeliverCategory.EXPRESS, PackageType.Bag, "000000008");
         service.failDoc(po1, "123");
 
 //        ArrivalNoteOnTransitPO po2 = new ArrivalNoteOnTransitPO(

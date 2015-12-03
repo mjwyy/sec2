@@ -50,7 +50,7 @@ public class SystemUserManagementDataService_Stub implements SystemUserManagemen
 	@Override
 	public LogInMsg logIn(String account, String password) {
 		
-		return new LogInMsg(true, Authority.ACCOUNTANT_HIGH, "登录成功！");
+		return new LogInMsg(true, Authority.MANAGER, "登录成功！");
 	}
 	
 

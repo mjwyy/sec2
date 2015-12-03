@@ -24,19 +24,19 @@ public class SystemUserManagementData_Test {
 
 //    @Test
 	public void testAddUser() throws Exception {
-		UserPO po = new UserPO("toDelete","sbsbsb",Authority.ACCOUNTANT_LOW);
+		UserPO po = new UserPO("toDelete","sbsbsb",Authority.DELIVERY_MAN);
 		assertEquals(true,service.addUser(po));
 	}
 
 //	@Test
 	public void testRemoveUser() throws Exception {
-        UserPO po = new UserPO("toDelete","sbsbsb", Authority.ACCOUNTANT_LOW);
+        UserPO po = new UserPO("toDelete","sbsbsb", Authority.DELIVERY_MAN);
         assertEquals(true,service.removeUser(po));
 	}
 
 //    @Test
     public void testInquireUser() throws Exception {
-        UserPO a=new UserPO("admin",null,Authority.ACCOUNTANT_HIGH);
+        UserPO a=new UserPO("admin",null,Authority.DELIVERY_MAN);
         ArrayList<UserPO> result = service.inquireUser(a);
         for (UserPO po2:result) {
             System.out.println(po2);

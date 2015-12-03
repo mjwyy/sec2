@@ -21,7 +21,7 @@ import dataservice.commoditydataservice.StorageOutDataService;
  * database:
  * 出库单表：StorageOutNote
 	Columns:id(varchar(32)),date(varchar(32)),warehouseID(varchar(20)),destination(varchar(64)),
-	code(varchar(32)),isTransfer(INT(11)),isPassed(INT(11))
+	code(varchar(32)),isTransfer(INT(11)),isPassed(INT(11)),advice(varchar)
  */
 
 public class StorageOutData implements StorageOutDataService {
@@ -81,10 +81,12 @@ public class StorageOutData implements StorageOutDataService {
     	
     	DocState state = DocState.UNCHECKED;
     	ResultSet set = null;
+    	String advice = null;
     	while(state==DocState.UNCHECKED) {
     		try {
-				set = stmt.executeQuery("select isPassed from StorageOutNote where id='"+tempID+"'");
+				set = stmt.executeQuery("select isPassed,advice from StorageOutNote where id='"+tempID+"'");
 				state = DocState.getDocState(set.getInt("isPassed"));
+				advice = set.getString("advice");
 			} catch (SQLException e) {
 				e.printStackTrace();
 				DatabaseManager.releaseConnection(connection, stmt, set);
@@ -100,7 +102,7 @@ public class StorageOutData implements StorageOutDataService {
     	if(state==DocState.FAILED) {
     		LogInsHelper.insertLog("仓库管理员："+staffID+"添加了出库单“"+tempID+"”，然而并没通过审核");
     		DatabaseManager.releaseConnection(connection, stmt, set);
-    		return false;
+    		throw new RemoteException("审批未通过，批示意见为："+advice);
     	}
     	//Passed!    	
     	// 审核通过后向InOutInfo中逐条添加

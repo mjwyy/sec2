@@ -14,11 +14,12 @@ public interface PaymentInputDataService extends Remote, Serializable {
 
 	/**
 	 * Data向数据库中添加记录
+	 * @param staffID TODO
 	 *
 	 * @return true for successful add operation
 	 * @throws RemoteException
 	 * @throws FailToPassApprovingException
 	 */
-	public boolean addPayment(PaymentPO payment)
+	public boolean addPayment(PaymentPO payment, String staffID)
 			throws RemoteException, FailToPassApprovingException;
 }

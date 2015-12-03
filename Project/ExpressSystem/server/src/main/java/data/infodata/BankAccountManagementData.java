@@ -3,6 +3,7 @@ package data.infodata;
 import data.database.DatabaseFactory;
 import data.database.DatabaseFactoryMysqlImpl;
 import data.database.DatabaseManager;
+import data.infodata.inte.BankAccountBalanceAccess;
 import data.statisticdata.inte.LogInsertDataService;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 /**
  * Created by kylin on 15/11/16.
  */
-public class BankAccountManagementData implements BankAccountManagementDataService{
+public class BankAccountManagementData implements BankAccountManagementDataService, BankAccountBalanceAccess{
 
     private Connection connection;
 
@@ -146,4 +147,41 @@ public class BankAccountManagementData implements BankAccountManagementDataServi
         DatabaseManager.releaseConnection(connection,stat,null);
         return result > 0;
     }
+
+	@Override
+	public double getAccountBalance(String accountNum)
+			throws ElementNotFoundException, SQLException, RemoteException {
+		ArrayList<BankAccountPO> list = findBankAccount(new BankAccountPO(null, accountNum, null));
+		
+		if(list.size()==0) {
+			throw new ElementNotFoundException();
+		}
+		
+		return Double.parseDouble(list.get(0).getBalance());
+	}
+
+	@Override
+	public void setAccountBalance(String accountNum, String balance)
+			throws ElementNotFoundException, SQLException, RemoteException {
+		
+		assert Double.parseDouble(balance)>=0;
+		
+		connection = DatabaseManager.getConnection();
+    	LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
+
+        BankAccountPO searched = new BankAccountPO(null, accountNum, null);
+        if(findBankAccount(searched).size()==0){
+            logIns.insertSystemLog("修改银行账户,但账户不存在");
+            DatabaseManager.releaseConnection(connection,null,null);
+            throw new ElementNotFoundException("未找到银行账户，修改操作取消");
+        }
+
+        String stmt = "update BankAccounts balance='"+balance+"' where number='"+accountNum+"'";
+        PreparedStatement stat = connection.prepareStatement(stmt);
+        int result = stat.executeUpdate();
+
+        logIns.insertSystemLog("修改银行账户,number='"+accountNum+"',name="+balance);
+        DatabaseManager.releaseConnection(connection,stat,null);
+		
+	}
 }

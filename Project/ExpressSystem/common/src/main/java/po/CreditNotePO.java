@@ -30,7 +30,7 @@ public class CreditNotePO implements Serializable {
 	String date = null;
 	
 	/**
-	 * 为保证精度，钱数用BigDecimal表示
+	 * 钱数
 	 */
 	String money = null;
 	

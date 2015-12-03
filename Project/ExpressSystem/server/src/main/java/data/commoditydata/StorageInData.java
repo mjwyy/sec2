@@ -21,7 +21,7 @@ import dataservice.exception.ElementNotFoundException;
  * @author River
  * database:
  * StorageInNote
- * id(varchar(32)),date(varchar(32)),warehouseID(varchar(20))，isPassed(int,enum Doc for java)
+ * id(varchar(32)),date(varchar(32)),warehouseID(varchar(20))，isPassed(int,enum Doc for java),advice(varchar)
  * 
  * InOutInfo
  * OrderID(VARCHAR(16)),WarehouseID(varchar(20)),isIn(int as boolean,DEFAULT 1),Date(varchar(32))
@@ -77,10 +77,12 @@ public class StorageInData implements StorageInDataService {
     	
     	DocState state = DocState.UNCHECKED;
     	ResultSet set = null;
+    	String advice = null;
     	while(state==DocState.UNCHECKED) {
     		try {
-				set = stmt.executeQuery("select isPassed from StorageInNote where id='"+tempID+"'");
+				set = stmt.executeQuery("select isPassed,advice from StorageInNote where id='"+tempID+"'");
 				state = DocState.getDocState(set.getInt("isPassed"));
+				advice = set.getString("advice");
 			} catch (SQLException e) {
 				e.printStackTrace();
 				DatabaseManager.releaseConnection(connection, stmt, set);
@@ -96,7 +98,7 @@ public class StorageInData implements StorageInDataService {
     	if(state==DocState.FAILED) {
     		LogInsHelper.insertLog("仓库管理员："+staffID+"添加了入库单“"+tempID+"”，然而并没通过审核");
     		DatabaseManager.releaseConnection(connection, stmt, set);
-    		return false;
+    		throw new RemoteException("审批未通过，批示意见为："+advice);
     	}
     	//Passed!    	
     	// 审核通过后向InOutInfo中逐条添加

@@ -13,11 +13,12 @@ import po.IncomeNotePO;
 public interface SettlementManagementDataService extends Remote, Serializable {
 	/**
 	 * Data层增加收款单记录，修改对应账户信息
+	 * @param staffID 
 	 *
 	 * @return
 	 * @throws RemoteException
 	 */
-	public boolean addIncomeNote(IncomeNotePO note) 
+	public boolean addIncomeNote(IncomeNotePO note, String staffID) 
 			throws RemoteException;
 	
 	/**

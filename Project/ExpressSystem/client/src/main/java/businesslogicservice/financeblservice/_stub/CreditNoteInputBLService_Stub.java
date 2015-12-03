@@ -1,5 +1,6 @@
 package businesslogicservice.financeblservice._stub;
 
+import dataservice.exception.ElementNotFoundException;
 import vo.CreditNoteVO;
 import businesslogicservice.financeblservice.CreditNoteInputBLService;
 import util.ResultMsg;
@@ -17,6 +18,12 @@ public class CreditNoteInputBLService_Stub implements
 
 	public ResultMsg submitReceipeDoc(CreditNoteVO vo) {
 		return null;
+	}
+
+	@Override
+	public double getOrderMoney(String barcode) throws ElementNotFoundException {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

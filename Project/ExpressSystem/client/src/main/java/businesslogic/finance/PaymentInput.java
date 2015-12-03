@@ -2,11 +2,14 @@ package businesslogic.finance;
 
 import java.rmi.RemoteException;
 
+import javax.management.RuntimeErrorException;
+
 import po.PaymentPO;
 import connection.RMIObjectProviderService;
 import connection.RemoteObjectGetter;
 import dataservice.exception.FailToPassApprovingException;
 import dataservice.financedataservice.PaymentInputDataService;
+import businesslogic.info.RuntimeUserInfo;
 import businesslogicservice.financeblservice.PaymentInputBLService;
 import util.ResultMsg;
 import vo.PaymentVO;
@@ -37,7 +40,7 @@ public class PaymentInput implements PaymentInputBLService {
     	PaymentPO po = (PaymentPO) vo.toPO();
     	
     	try {
-			boolean result = dataService.addPayment(po);
+			boolean result = dataService.addPayment(po, RuntimeUserInfo.getNum());
 			if(result==false) {
 				new ResultMsg(false,"付款单提交失败，请重试。");
 			}

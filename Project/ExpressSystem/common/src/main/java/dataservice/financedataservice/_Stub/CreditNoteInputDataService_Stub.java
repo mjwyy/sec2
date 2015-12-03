@@ -11,9 +11,15 @@ import po.CreditNotePO;
 
 public class CreditNoteInputDataService_Stub implements CreditNoteInputDataService {
 	
-	public boolean addCreditNote(CreditNotePO note) throws RemoteException,FailToPassApprovingException { 
+	public boolean addCreditNote(CreditNotePO note, String staffID) throws RemoteException,FailToPassApprovingException { 
 		System.out.println("add credit note success");
 		return true;
+	}
+
+	@Override
+	public double getOrderMoney(String barcodes) throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

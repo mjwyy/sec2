@@ -1,5 +1,6 @@
 package businesslogic.finance;
 
+import businesslogic.info.RuntimeUserInfo;
 import businesslogicservice.financeblservice.SettlementManagementBLService;
 import util.ResultMsg;
 import vo.IncomeNoteVO;
@@ -28,7 +29,20 @@ public class SettlementManagement implements SettlementManagementBLService {
     @Override
     public ResultMsg addReceiveRecord(IncomeNoteVO vo) {
     	ResultMsg msg = vo.checkFormat();
-    	return msg;
+    	if(!msg.isPass()){
+    		return msg;
+    	}
+    	
+    	try {
+    		boolean b = dataService.addIncomeNote((IncomeNotePO) vo.toPO(),RuntimeUserInfo.getNum());
+    		if(!b) {
+    			return new ResultMsg(false, "发生未知错误，操作未完成");
+    		}
+    	} catch (Exception e) {
+    		return new ResultMsg(false,e.getMessage());
+    	}
+    	
+    	return new ResultMsg(true);
     }
 
     @Override

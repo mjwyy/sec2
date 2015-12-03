@@ -21,8 +21,8 @@ public class CreditNoteInputDataService_Driver {
 	}
 	
 	public void drive(CreditNoteInputDataService creditNoteInputDataService) throws RemoteException, FailToPassApprovingException {
-		creditNoteInputDataService.addCreditNote(creditNotePO);
-		if(creditNoteInputDataService.addCreditNote(creditNotePO))
+		creditNoteInputDataService.addCreditNote(creditNotePO, null);
+		if(creditNoteInputDataService.addCreditNote(creditNotePO, null))
 		   System.out.println("success");
 		else
 			System.out.println("fail");

@@ -484,7 +484,7 @@ public class FormatCheck {
     }
 
     public static ResultMsg isAreaCode(String areacode) {
-        String trueExpression = "";
+        String trueExpression = "(航空区)|(铁路区)|(汽运区)";
         return Pattern.matches(trueExpression,areacode)? new ResultMsg(true) :
                 new ResultMsg(false,"地名格式错误,应为");
     }

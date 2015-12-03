@@ -33,7 +33,6 @@ public class TimePresumeStrategy {
         long longTime = (long) time;
         Date arrivalDay = new Date((startDay.getTime()+longTime));
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String strDay = dateFormat.format(arrivalDay);
-        return strDay;
+        return dateFormat.format(arrivalDay);
     }
 }

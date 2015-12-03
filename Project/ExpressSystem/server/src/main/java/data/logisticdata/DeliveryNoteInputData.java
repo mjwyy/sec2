@@ -38,7 +38,7 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
             throws RemoteException {
         this.orderDataService = orderDataService;
         this.businessDataModificationDataService = businessDataModificationDataService;
-        this.priceStrategy = new PriceStrategy();
+        this.priceStrategy = new PriceStrategy(this.businessDataModificationDataService);
         this.timePresumeStrategy = new TimePresumeStrategy();
         this.cityManager = new CityManager();
     }
@@ -88,17 +88,21 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
         LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+deliveryMan+
                 "新增寄件单,单据编号:" + po.getBarCode());
         DocState docState = this.waitForCheck("note_delivery", "barCode", po.getBarCode());
+
         //审批通过
         if (docState == DocState.PASSED) {
             //追加修改物流信息
             orderDataService.insertOrderPO(po.getBarCode(),orderInfo);
-            //委托,获取价格与预计日期
+            //获取地址中的有效城市名称
             ArrayList<String> cites = businessDataModificationDataService.getAllCities();
             String city1 = cityManager.findCity(cites,po.getSenderAddress());
             String city2 = cityManager.findCity(cites,po.getReceiverAddress());
+
+            //获取价格与预计日期
             double price = priceStrategy.getPrice(city1,city2,po.getWeight(),
                     po.getVolume(),po.getCategory(),po.getPackType());
             String presumedDate = timePresumeStrategy.getPresumedTime(city1,city2,po.getCategory());
+
             sendDocMsg = new SendDocMsg(true,"寄件单已成功提交!",price,presumedDate);
         } else {
             //审批没有通过
@@ -132,8 +136,8 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
                 int weight = resultSet.getInt(9);
                 int volume = resultSet.getInt(10);
                 String category = resultSet.getString(11);
-                String type = resultSet.getString(12);
-                PackageType packageType = PackageType.getPackageType(type);
+                String stringType = resultSet.getString(12);
+                PackageType packageType = PackageType.getPackageType(stringType);
                 String barcode = resultSet.getString(13);
 
                 arrivalNoteOnServicePO = new DeliveryNotePO(senderName,senderAdd,senderTel,recName,

@@ -23,13 +23,22 @@ public class PriceStrategy {
         this.businessDataModificationData = businessDataModificationData;
     }
 
-    public double getPrice(String city1, String city2, double weight, double volume,
-                           DeliverCategory category, PackageType packageType) throws ElementNotFoundException, RemoteException, SQLException {
-        double price;
-        double distance = businessDataModificationData.getDistance(city1, city2);
-        double pricePerKG = businessDataModificationData.getPrice(PriceType.PricePerKg);
-        double pricePerKGKM = distance / 1000 * pricePerKG;
+    public double getPrice(DeliveryInfo deliveryInfo) throws ElementNotFoundException, RemoteException, SQLException {
+        //获取需要的寄件单信息
+        DeliverCategory category = deliveryInfo.getCategory();
+        double distance = deliveryInfo.getDistance();
+        double weight = deliveryInfo.getWeight();
+        double volume = deliveryInfo.getVolume();
+        PackageType packageType = deliveryInfo.getPackageType();
 
+        double price;
+
+        //获取数据库中价格常量
+        double pricePerKG = businessDataModificationData.getPrice(PriceType.PricePerKg);
+        PriceType packagePricrType = PriceType.getPriceType(packageType.toString());
+        double packagePrice = businessDataModificationData.getPrice(packagePricrType);
+
+        double pricePerKGKM = distance / 1000 * pricePerKG;
         double weightPrice = pricePerKGKM * weight;
 
         //体积大重量小的物体
@@ -45,9 +54,6 @@ public class PriceStrategy {
         else if (category == DeliverCategory.EXPRESS)
             weightPrice = weightPrice * 25 / 23;
 
-        //获取包装费用
-        PriceType packagePricrType = PriceType.getPriceType(packageType.toString());
-        double packagePrice = businessDataModificationData.getPrice(packagePricrType);
         price = weightPrice + packagePrice;
         return price;
     }

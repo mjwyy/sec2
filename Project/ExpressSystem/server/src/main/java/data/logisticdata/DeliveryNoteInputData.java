@@ -2,7 +2,7 @@ package data.logisticdata;
 
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import data.database.DatabaseManager;
-import data.logisticdata.deliverystrategy.CityManager;
+import data.logisticdata.deliverystrategy.DeliveryInfo;
 import data.logisticdata.deliverystrategy.PriceStrategy;
 import data.logisticdata.deliverystrategy.TimePresumeStrategy;
 import data.statisticdata.LogInsHelper;
@@ -23,6 +23,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class DeliveryNoteInputData extends NoteInputData implements DeliveryNoteInputDataService {
 
@@ -31,7 +33,6 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
 
     private PriceStrategy priceStrategy;
     private TimePresumeStrategy timePresumeStrategy;
-    private CityManager cityManager;
 
     public DeliveryNoteInputData(OrderInquiryDataService orderDataService,
                                  BusinessDataModificationDataService businessDataModificationDataService)
@@ -40,7 +41,6 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
         this.businessDataModificationDataService = businessDataModificationDataService;
         this.priceStrategy = new PriceStrategy(this.businessDataModificationDataService);
         this.timePresumeStrategy = new TimePresumeStrategy();
-        this.cityManager = new CityManager();
     }
 
     @Override
@@ -81,6 +81,20 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
         return sendDocMsg;
     }
 
+    /**
+     * 向数据库加入寄件单之后的操作
+     * 等待审批,添加物流信息,获取计算价格以及预计到达日期
+     *
+     * @param po 输入的寄件单
+     * @return 总经理审批结果,价格以及预计到达日期
+     *
+     * @throws RemoteException
+     * @throws ElementNotFoundException
+     * @throws SQLException
+     *
+     * @see data.logisticdata.deliverystrategy
+     * @see data.statisticdata.LogInsHelper
+     */
     private SendDocMsg afterInsert(DeliveryNotePO po) throws RemoteException, ElementNotFoundException, SQLException {
         SendDocMsg sendDocMsg;
         String deliveryMan = po.getUserName();
@@ -93,15 +107,19 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
         if (docState == DocState.PASSED) {
             //追加修改物流信息
             orderDataService.insertOrderPO(po.getBarCode(),orderInfo);
-            //获取地址中的有效城市名称
+
+            //获取地址中的有效城市与距离
             ArrayList<String> cites = businessDataModificationDataService.getAllCities();
-            String city1 = cityManager.findCity(cites,po.getSenderAddress());
-            String city2 = cityManager.findCity(cites,po.getReceiverAddress());
+            String city1 = this.findCity(cites,po.getSenderAddress());
+            String city2 = this.findCity(cites,po.getReceiverAddress());
+            double distance = businessDataModificationDataService.getDistance(city1, city2);
+
+            DeliveryInfo deliveryInfo = new DeliveryInfo(city1,city2,distance,po.getWeight(),
+                    po.getVolume(),po.getCategory(),po.getPackType());
 
             //获取价格与预计日期
-            double price = priceStrategy.getPrice(city1,city2,po.getWeight(),
-                    po.getVolume(),po.getCategory(),po.getPackType());
-            String presumedDate = timePresumeStrategy.getPresumedTime(city1,city2,po.getCategory());
+            double price = priceStrategy.getPrice(deliveryInfo);
+            String presumedDate = timePresumeStrategy.getPresumedTime(deliveryInfo);
 
             sendDocMsg = new SendDocMsg(true,"寄件单已成功提交!",price,presumedDate);
         } else {
@@ -111,6 +129,23 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
             sendDocMsg = new SendDocMsg(false, advice, 0, null);
         }
         return sendDocMsg;
+    }
+
+    /**
+     * 从一个详细的现实业务地址中获取有效的城市名称
+     *
+     * @param citys 公司业务已覆盖的所有城市
+     * @param senderAddress 现实地址
+     * @return 从地址中找到的城市(如果存在)
+     */
+    public String findCity(ArrayList<String> citys, String senderAddress) {
+        for (String regex : citys) {
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(senderAddress);
+            if (matcher.find())
+                return regex;
+        }
+        return null;
     }
 
     @Override

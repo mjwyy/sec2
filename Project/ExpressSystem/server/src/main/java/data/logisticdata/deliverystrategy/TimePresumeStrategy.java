@@ -16,11 +16,14 @@ import java.util.Date;
  */
 public class TimePresumeStrategy {
 
-    private BusinessDataModificationDataService businessDataModificationData = new BusinessDataModificationData();
 
-    public String getPresumedTime(String city1,String city2, DeliverCategory category) throws ElementNotFoundException, RemoteException, SQLException {
-        double distance = businessDataModificationData.getDistance(city1,city2);
-        // new Date()为获取当前系统时间
+    public String getPresumedTime(DeliveryInfo deliveryInfo)
+            throws ElementNotFoundException, RemoteException, SQLException {
+        //获取需要的寄件单信息
+        double distance = deliveryInfo.getDistance();
+        DeliverCategory category = deliveryInfo.getCategory();
+
+        //获取当前系统时间
         Date startDay = new Date();
 
         //预测时间业务逻辑

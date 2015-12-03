@@ -2,7 +2,6 @@ package vo;
 
 import util.FormatCheck;
 
-import po.ChartPO;
 import util.ResultMsg;
 import util.enums.ChartType;
 
@@ -27,16 +26,16 @@ public class ChartVO {
 	/**
 	 * 报表起止时间
 	 */
-	String time1;
-	String time2;
+	String startTime;
+	String endTime;
 
     ArrayList<String> everyday;
 
     public ChartVO(ChartType type, String time1, String time2) {
         this.type = type;
-        this.time1 = time1;
-        this.time2 = time2;
-        this.everyday = this.calculateDays(this.time1,this.time2);
+        this.startTime = time1;
+        this.endTime = time2;
+        this.everyday = this.calculateDays(this.startTime,this.endTime);
     }
 
     private ArrayList<String> calculateDays(String startTime, String endTime) {
@@ -64,27 +63,27 @@ public class ChartVO {
         return type;
     }
 
-    public String getTime1() {
-        return time1;
+    public String getStartTime() {
+        return startTime;
     }
 
-    public String getTime2() {
-        return time2;
+    public String getEndTime() {
+        return endTime;
     }
 
     public ResultMsg checkFormat(){
         ResultMsg result = new ResultMsg(true);
         ResultMsg results[] = new ResultMsg[2];
-        results[0] = FormatCheck.isDate(this.time1);
-        results[1] = FormatCheck.isDate(this.time2);
+        results[0] = FormatCheck.isDate(this.startTime);
+        results[1] = FormatCheck.isDate(this.endTime);
         for(int i = 0; i<results.length; i++){
             if(!results[i].isPass())
                 return results[i];
         }
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            Date startDay = dateFormat.parse(this.time1);
-            Date endDay = dateFormat.parse(this.time2);
+            Date startDay = dateFormat.parse(this.startTime);
+            Date endDay = dateFormat.parse(this.endTime);
             if(startDay.before(endDay))
                 return new ResultMsg(false,"起点日期不能在终点日期之后!");
         } catch (ParseException e) {

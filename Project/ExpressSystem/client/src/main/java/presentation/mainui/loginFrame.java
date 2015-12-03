@@ -233,15 +233,15 @@ public class loginFrame extends JFrame {
 					if(lim.getAuthority().equals(authority.MANAGER)){//总经理登录
 						ManageFrame mf = new ManageFrame();
 						mf.setVisible(true);
-					}else if(lim.getAuthority().equals(authority.ACCOUNTANT_HIGH)){//中转中心业务员登录
-						TransitFrame tf = new TransitFrame();
-						tf.setClose();
-						tf.setVisible(true);
-						tf.setClose();;
-					}else if(lim.getAuthority().equals(authority.ACCOUNTANT_LOW)){//营业厅业务员登录
-						Service s = new Service();
-						s.setVisible(true);	
-						s.setClose();			
+//					}else if(lim.getAuthority().equals(authority.ACCOUNTANT_HIGH)){//中转中心业务员登录
+//						TransitFrame tf = new TransitFrame();
+//						tf.setClose();
+//						tf.setVisible(true);
+//						tf.setClose();;
+//					}else if(lim.getAuthority().equals(authority.ACCOUNTANT_LOW)){//营业厅业务员登录
+//						Service s = new Service();
+//						s.setVisible(true);
+//						s.setClose();
 					}else if(lim.getAuthority().equals(authority.WAREHOUSE_MANAGER)){//仓库管理人员登录
 						Commodity c = new Commodity();
 						c.setVisible(true);								
@@ -249,10 +249,10 @@ public class loginFrame extends JFrame {
 						CourierFrame cf = new CourierFrame();
 						cf.setClose();
 						cf.setVisible(true);									
-					}else if(lim.getAuthority().equals(authority.Financial_PERSONNEL)){
-						financeFrame ff = new financeFrame();
-						ff.setClose();
-						ff.setVisible(true);
+//					}else if(lim.getAuthority().equals(authority.Financial_PERSONNEL)){
+//						financeFrame ff = new financeFrame();
+//						ff.setClose();
+//						ff.setVisible(true);
 					}else{
 						;
 					}

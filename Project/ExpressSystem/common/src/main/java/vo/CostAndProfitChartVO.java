@@ -30,4 +30,8 @@ public class CostAndProfitChartVO extends ChartVO {
     public CostAndProfitChartVO(String starttime, String endtime){
         super(ChartType.PROFIT_CHART,starttime,endtime);
     }
+
+    public CostAndProfitChartVO toVO() {
+        return new CostAndProfitChartVO(this.getStartTime(),this.getEndTime());
+    }
 }

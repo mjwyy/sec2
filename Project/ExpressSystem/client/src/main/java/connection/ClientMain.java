@@ -1,8 +1,10 @@
 package connection;
 
+import businesslogic.statistic.ChartOutput;
 import dataservice.infodataservice.SystemUserManagementDataService;
 import po.UserPO;
 import util.enums.Authority;
+import vo.BusinessStateChartVO;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -15,17 +17,8 @@ public class ClientMain {
 
     public static void main(String[] args) throws RemoteException, NotBoundException {
         RMIHelper.tryConnect();
-        RemoteObjectGetter objectGetter = new RemoteObjectGetter();
-        SystemUserManagementDataService dataService =
-                (SystemUserManagementDataService) objectGetter.getObjectByName("ReceivingNoteInputDataService");
-        System.out.println("客户端得到SystemUserManagementDataService");
-//        try {
-//            ArrayList<UserPO> result = dataService.getAllUsers();
-//            for (UserPO po:result) {
-//                System.out.println(po);
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        ChartOutput chartOutput = new ChartOutput();
+        BusinessStateChartVO vo = new BusinessStateChartVO("2015-12-20","2015-12-30");
+        chartOutput.exportChart(vo,"/Users/kylin/Documents/");
     }
 }

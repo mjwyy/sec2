@@ -15,7 +15,7 @@ public class ChartOutputDataService_Driver {
 	private CostAndProfitChartPO po2;
 
 	public ChartOutputDataService_Driver() {
-		 po1 = new BusinessStateChartPO("2015-10-10","2015-11-11",null,null);
+		 po1 = new BusinessStateChartPO("2015-10-10","2015-11-11");
 		
 		 //po2 = new CostAndProfitChartPO("2015-10-10","2015-11-11",2000.0,3000.0);
 	}

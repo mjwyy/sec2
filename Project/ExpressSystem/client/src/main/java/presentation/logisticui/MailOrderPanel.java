@@ -204,10 +204,10 @@ public class MailOrderPanel extends JPanel {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				service = new DeliveryNoteInputBLService_Stub();						
-			            sendDocVO = new DeliveryNoteVO(senderName.getText(),senderAddress.getText(),
-						senderPho.getText(),receiveName.getText(),receiveAddress.getText(),receivePho.getText(),
-						name.getText(),Integer.parseInt(goodsnum.getText()),Double.parseDouble(weight.getText()),
-						Double.parseDouble(volum.getText()),deliverCategory,packprice,barcode.getText());
+//			            sendDocVO = new DeliveryNoteVO(senderName.getText(),senderAddress.getText(),
+//						senderPho.getText(),receiveName.getText(),receiveAddress.getText(),receivePho.getText(),
+//						name.getText(),Integer.parseInt(goodsnum.getText()),Double.parseDouble(weight.getText()),
+//						Double.parseDouble(volum.getText()),deliverCategory,packprice,barcode.getText());
 			            
 				res = service.inputSendDoc(sendDocVO);
 				if(res.isPass()){

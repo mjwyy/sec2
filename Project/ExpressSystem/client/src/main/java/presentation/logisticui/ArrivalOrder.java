@@ -10,8 +10,6 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -28,7 +26,6 @@ import util.BarcodeAndState;
 import util.ResultMsg;
 import util.enums.GoodsState;
 import vo.ArrivalNoteOnServiceVO;
-import vo.CreditNoteVO;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;

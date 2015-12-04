@@ -49,6 +49,7 @@ import dataservice.statisticdataservice.ChartOutputDataService;
 import util.chart.BusinessStateContent;
 import util.chart.IncomeContent;
 import util.chart.PaymentContent;
+import util.chart.CostAndProfitContent;
 
 public class ChartOutputData implements ChartOutputDataService{
 
@@ -115,10 +116,39 @@ public class ChartOutputData implements ChartOutputDataService{
 	@Override
 	public CostAndProfitChartPO getCostAndProfitChart(CostAndProfitChartPO po)
 			throws RemoteException {
+        Connection connection = DatabaseManager.getConnection();
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
 
+        ArrayList<String> everyDay = po.getEveryDay();
+        ArrayList<CostAndProfitContent> costAndProfitContents = new ArrayList<>();
 
+        for(String date : everyDay){
+            double income = 0;
+            double cost = 0;
+            //从数据库中读取收款单与付款单的金额信息
+            String sqlIncomeNote = "select money from IncomeNotes where date = '"+date+"'";
+            String sqlPaymentNote = "select money from PaymentNotes where date = '"+date+"'";
+            try {
+                statement = connection.prepareStatement(sqlIncomeNote);
+                resultSet = statement.executeQuery();
+                while (resultSet.next()){
+                    income += resultSet.getDouble("money");
+                }
+                statement = connection.prepareStatement(sqlPaymentNote);
+                resultSet = statement.executeQuery();
+                while (resultSet.next()){
+                    cost += resultSet.getDouble("money");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            costAndProfitContents.add(new CostAndProfitContent(date,income,cost));
+        }
 
-		return null;
+        po.setContents(costAndProfitContents);
+        DatabaseManager.releaseConnection(connection,statement,resultSet);
+		return po;
 	}
 
 	

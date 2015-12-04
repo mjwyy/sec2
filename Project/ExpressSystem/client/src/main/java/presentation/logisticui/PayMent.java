@@ -15,15 +15,8 @@ import javax.swing.*;
 
 import util.ResultMsg;
 import vo.CreditNoteVO;
-import vo.PaymentVO;
-import vo.ReceivingNoteVO;
-import businesslogic.finance.CreditNoteInput;
 import businesslogicservice.financeblservice.CreditNoteInputBLService;
-import businesslogicservice.financeblservice.PaymentInputBLService;
 import businesslogicservice.financeblservice._stub.CreditNoteInputBLService_Stub;
-import businesslogicservice.financeblservice._stub.PaymentInputBLService_Stub;
-import businesslogicservice.logisticblservice.ReceivingNoteInputBLService;
-import businesslogicservice.logisticblservice._Stub.ReceivingNoteInputBLService_Stub;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;

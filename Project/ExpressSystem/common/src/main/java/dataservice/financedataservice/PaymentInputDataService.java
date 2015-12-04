@@ -14,7 +14,7 @@ public interface PaymentInputDataService extends Remote, Serializable {
 
 	/**
 	 * Data向数据库中添加记录
-	 * @param staffID TODO
+	 * @param staffID
 	 *
 	 * @return true for successful add operation
 	 * @throws RemoteException

@@ -1,7 +1,5 @@
 package businesslogicservice.commodityblservice._Stub;
 
-import java.util.ArrayList;
-
 import businesslogicservice.commodityblservice.StorageInquiryAllBLService;
 import util.ResultMsg;
 import vo.InventoryVO;
@@ -15,7 +13,7 @@ public class StorageInquiryAllBLService_Stub implements StorageInquiryAllBLServi
 			return new ResultMsg(false,"failure");
 	}
 
-	public ArrayList<InventoryVO> request() {
+	public InventoryVO request() throws Exception {
 		return null;
 	}
 }

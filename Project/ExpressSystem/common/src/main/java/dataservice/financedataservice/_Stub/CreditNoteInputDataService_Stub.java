@@ -18,7 +18,6 @@ public class CreditNoteInputDataService_Stub implements CreditNoteInputDataServi
 
 	@Override
 	public double getOrderMoney(String barcodes) throws RemoteException {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

@@ -22,7 +22,6 @@ public class CreditNoteInputBLService_Stub implements
 
 	@Override
 	public double getOrderMoney(String barcode) throws ElementNotFoundException {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

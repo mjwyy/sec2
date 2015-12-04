@@ -26,10 +26,10 @@ public interface InventoryDataService extends Remote, Serializable {
 
 	/**
 	 * Set the latest commodity check date
-	 * @param date TODO
+	 * @param date
 	 * @param staffID
 	 * @return true for successful operation
-	 * @throws RemoteException TODO
+	 * @throws RemoteException
 	 */
 	public boolean setRecentTime(String date, String staffID) throws RemoteException;
 }

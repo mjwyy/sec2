@@ -33,7 +33,7 @@ public class InventoryVO {
 	
 	/**
 	 * 构造方法
-	 * @param num TODO
+	 * @param num
 	 * @param outNum
 	 * @param inNum
 	 * @param money

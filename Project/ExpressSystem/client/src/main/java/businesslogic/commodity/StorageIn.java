@@ -51,7 +51,7 @@ public class StorageIn implements StorageInBLService {
      */
     @Override
     public InventoryStatus alarm() {
-    	// TODO 先要修改数据层！
+    	// TODO 先要修改数据层！但添加仓库信息时并没有规定其容量，所以数据层暂时也没法实现。
         return null;
     }
 }

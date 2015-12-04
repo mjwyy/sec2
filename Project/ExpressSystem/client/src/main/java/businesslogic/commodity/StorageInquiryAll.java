@@ -1,19 +1,22 @@
 package businesslogic.commodity;
 
 import util.FormatCheck;
+import businesslogic.info.RuntimeUserInfo;
 import businesslogicservice.commodityblservice.StorageInquiryAllBLService;
 import util.ResultMsg;
 import vo.InventoryVO;
 
-import java.util.ArrayList;
+import java.rmi.RemoteException;
 
+import po.IncomeNotePO;
+import po.InventoryPO;
 import connection.RemoteObjectGetter;
 import dataservice.commoditydataservice.InventoryDataService;
 
 /**
  * Created by kylin on 15/11/17.
  * 
- * 问题：InventoryDataService没有提供输入第一次盘点时间的接口
+ * 
  */
 public class StorageInquiryAll implements StorageInquiryAllBLService {
 	
@@ -31,7 +34,6 @@ public class StorageInquiryAll implements StorageInquiryAllBLService {
 	
     @Override
     public ResultMsg inputFirst(String firstTime) {
-    	//TODO 要先修改数据层接口！
     	
         ResultMsg msg = FormatCheck.isDate(firstTime);
         
@@ -39,17 +41,35 @@ public class StorageInquiryAll implements StorageInquiryAllBLService {
         	return msg;
         }
         
-        lastTime = firstTime;
+        try {
+        	boolean b = dataService.setRecentTime(firstTime, RuntimeUserInfo.getNum());
+        	if(!b) {
+        		return new ResultMsg(false, "发生未知错误，操作失败，请重试。");
+        	}
+        } catch (RemoteException e) {
+        	return new ResultMsg(false,e.getMessage());
+        }
         
         return new ResultMsg(true);
         
     }
 
     @Override
-    public ArrayList<InventoryVO> request() {
+    public InventoryVO request() throws Exception {
     	
-    	//TODO 要修改数据层接口：增加一个传入用户账户信息的参数
+    	InventoryPO get = null;
     	
-        return null;
+    	try {
+    		get = dataService.findAll(RuntimeUserInfo.getNum());
+    		if(get==null) {
+    			throw new Exception("服务器出现异常，无法获得数据。");
+    		}
+    	} catch (RemoteException e) {
+    		throw e;
+    	}
+    	
+    	InventoryVO result = (InventoryVO) get.toVO();
+    	
+        return result;
     }
 }

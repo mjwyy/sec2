@@ -2,7 +2,6 @@ package data.financedata;
 
 import data.database.DatabaseManager;
 import data.statisticdata.LogInsHelper;
-import data.statisticdata.inte.LogInsertDataService;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.FailToPassApprovingException;
 import dataservice.financedataservice.CreditNoteInputDataService;

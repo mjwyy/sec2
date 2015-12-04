@@ -2,7 +2,6 @@ package data.financedata;
 
 import data.database.DatabaseFactoryMysqlImpl;
 import data.database.DatabaseManager;
-import data.infodata.BankAccountManagementData;
 import data.infodata.inte.BankAccountBalanceAccess;
 import data.statisticdata.LogInsHelper;
 import dataservice.exception.ElementNotFoundException;

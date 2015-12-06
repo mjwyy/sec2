@@ -32,21 +32,21 @@ public class ReceivingNoteInput implements ReceivingNoteInputBLService {
     }
 
     @Override
-    public ResultMsg submitSendDoc(ReceivingNoteVO receiveDocVO) {
+    public ResultMsg submitReceiveDoc(ReceivingNoteVO receivingNoteVO) {
         try {
-            this.po = receiveDocVO.toPO();
-            this.po.setOrganization(receiveDocVO.getOrganization());
-            this.po.setUserName(receiveDocVO.getUserName());
+            this.po = receivingNoteVO.toPO();
+            this.po.setOrganization(receivingNoteVO.getOrganization());
+            this.po.setUserName(receivingNoteVO.getUserName());
             return this.dataService.insert(this.po);
         } catch (RemoteException e) {
             e.printStackTrace();
-            return new ResultMsg(false,"提交收件单失败!");
+            return new ResultMsg(false,"提交收件单失败:网络异常!");
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
             return new ResultMsg(false,"输入的条形码对应订单不存在,请重新输入");
         } catch (InterruptWithExistedElementException e) {
             e.printStackTrace();
-            return new ResultMsg(false,"提交收件单失败!单据编号已存在!");
+            return new ResultMsg(false,"提交收件单失败:单据编号已存在!");
         }
     }
 }

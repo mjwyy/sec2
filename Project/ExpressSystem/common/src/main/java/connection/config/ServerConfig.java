@@ -1,4 +1,4 @@
-package config;
+package connection.config;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -22,16 +22,16 @@ public class ServerConfig {
         try {
             if (IS_DEBUG) {
                 SAXReader reader = new SAXReader();
-                Document document = reader.read("/Users/kylin/Desktop/sec2/Project/ExpressSystem/server/src/main/java/config/config.xml");
+                Document document = reader.read("common/src/main/java/connection/config/config.xml");
                 Element server = document.getRootElement();
                 DATABASE_CONFIG = new DatabaseConfig(server.element("database"));
                 CONNECTION_CONFIG = new ConnectionConfig(server.element("connection"));
             }else{
                 ObjectInputStream obj = new ObjectInputStream(
-                        new FileInputStream("config/databaseConfig.dat"));
+                        new FileInputStream("connection/config/databaseConfig.dat"));
                 DATABASE_CONFIG = (DatabaseConfig) obj.readObject();
                 obj = new ObjectInputStream(
-                        new FileInputStream("config/connectionConfig.dat"));
+                        new FileInputStream("connection/config/connectionConfig.dat"));
                 CONNECTION_CONFIG = (ConnectionConfig) obj.readObject();
             }
         } catch (FileNotFoundException e) {
@@ -54,9 +54,9 @@ public class ServerConfig {
     }
 
     public static void main(String[] args) throws Exception {
-		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("config/databaseConfig.dat"));
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("connection/config/databaseConfig.dat"));
 		oos.writeObject(DATABASE_CONFIG);
-		 oos = new ObjectOutputStream(new FileOutputStream("config/connectionConfig.dat"));
+		 oos = new ObjectOutputStream(new FileOutputStream("connection/config/connectionConfig.dat"));
 		oos.writeObject(CONNECTION_CONFIG);
 		oos.close();
 	}

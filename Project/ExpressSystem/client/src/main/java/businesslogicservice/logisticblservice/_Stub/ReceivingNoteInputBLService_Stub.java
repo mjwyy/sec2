@@ -17,7 +17,7 @@ public class ReceivingNoteInputBLService_Stub implements ReceivingNoteInputBLSer
 	}
 
 	//输入收件单界面得到对输入的收件单的反馈检查结果
-	public ResultMsg submitSendDoc(ReceivingNoteVO receiveDocVO) {
+	public ResultMsg submitReceiveDoc(ReceivingNoteVO receiveDocVO) {
 		if(receiveDocVO.getReceiveCustomer().equals("李明"))
 			return new ResultMsg(true,"提交成功");
 		else

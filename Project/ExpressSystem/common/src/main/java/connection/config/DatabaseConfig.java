@@ -1,4 +1,4 @@
-package config;
+package connection.config;
 
 import org.dom4j.Element;
 

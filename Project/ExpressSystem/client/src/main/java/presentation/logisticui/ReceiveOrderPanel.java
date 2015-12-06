@@ -1,7 +1,5 @@
 package presentation.logisticui;
-import java.awt.BasicStroke;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 
 import javax.swing.ImageIcon;
 /**
@@ -19,7 +17,6 @@ import util.ResultMsg;
 import vo.ReceivingNoteVO;
 import businesslogic.logistic.ReceivingNoteInput;
 import businesslogicservice.logisticblservice.ReceivingNoteInputBLService;
-import businesslogicservice.logisticblservice._Stub.ReceivingNoteInputBLService_Stub;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -97,7 +94,7 @@ public class ReceiveOrderPanel extends JPanel {
 						public void actionPerformed(ActionEvent e) {
 							vo.setUserName(lim.getUserName());
 							sd.setVisible(false);
-                            ResultMsg resultMsg = service.submitSendDoc(vo);
+                            ResultMsg resultMsg = service.submitReceiveDoc(vo);
                           //  String msg = resultMsg.getMessage();
                             checkstyleDialog checkstyle = new checkstyleDialog(resultMsg.getMessage());
                             checkstyle.setVisible(true);

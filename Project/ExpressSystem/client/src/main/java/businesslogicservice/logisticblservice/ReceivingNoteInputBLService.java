@@ -25,6 +25,6 @@ public interface ReceivingNoteInputBLService {
 	 * @param receiveDocVO 收件单VO
 	 * @return 
 	 */
-	public ResultMsg submitSendDoc(ReceivingNoteVO receiveDocVO);
+	public ResultMsg submitReceiveDoc(ReceivingNoteVO receiveDocVO);
 	
 }

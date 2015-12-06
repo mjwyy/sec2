@@ -1,6 +1,6 @@
 package data.database;
 
-import config.ServerConfig;
+import connection.config.ServerConfig;
 
 import java.sql.*;
 import java.util.*;

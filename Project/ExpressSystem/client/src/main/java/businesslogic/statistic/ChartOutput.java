@@ -103,7 +103,6 @@ public class ChartOutput implements ChartOutputBLService {
             ArrayList<BusinessStateContent> contents = businessStateChartVO.getContents();
             ArrayList<IncomeContent> incomeContents = new ArrayList<>();
             ArrayList<PaymentContent> paymentContents = new ArrayList<>();
-
             // 分别获取收款单与付款单内容
             for(BusinessStateContent stateContent : contents){
                 if(stateContent.getType() == 1)
@@ -111,15 +110,15 @@ public class ChartOutput implements ChartOutputBLService {
                 else
                     incomeContents.add((IncomeContent) stateContent);
             }
-            // 创建收款单与付款单
+            // 创建收款单与付款单sheet
             this.creatIncomeSheet(workbook, incomeContents);
             this.creatPaymentSheet(workbook, paymentContents);
 
         // 设置成本收益表内容
         }else{
             CostAndProfitChartVO costAndProfitChartVO = (CostAndProfitChartVO) chartVO;
-            ArrayList<CostAndProfitContent> costAndProfitContents =
-                    costAndProfitChartVO.getCostAndProfitContents();
+            ArrayList<CostAndProfitContent> costAndProfitContents = costAndProfitChartVO.getCostAndProfitContents();
+            // 创建成本收益sheet
             this.creatCostAndProfitSheet(workbook, costAndProfitContents);
         }
 
@@ -127,6 +126,7 @@ public class ChartOutput implements ChartOutputBLService {
         String formTime = chartVO.getStartTime() + "至" + chartVO.getEndTime();
         String fileName = formType + ":" + formTime + ".xls";
         String exportPath = path + fileName;
+        // 将表格导出至本地目录
         return this.exportWorkBook(workbook,exportPath);
     }
 

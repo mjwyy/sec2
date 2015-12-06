@@ -1,10 +1,8 @@
 package connection;
 
-import config.ConnectionConfig;
-import config.ServerConfig;
+import connection.config.ServerConfig;
 
 import java.net.MalformedURLException;
-import java.rmi.Naming;
 import java.rmi.RMISecurityManager;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -50,6 +48,7 @@ public class RMIPublisher {
 
     private void setHostIP() {
         hostIP =  ServerConfig.getConnectionConfig().getServerIP();
+//        hostIP = "localhost";
         regPort =  Integer.parseInt(ServerConfig.getConnectionConfig().getPort());
     }
 

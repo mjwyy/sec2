@@ -20,7 +20,7 @@ public class ReceivingNoteInputBLService_Driver {
 			System.out.println("输入的收件单格式正确");
 		else
 			System.out.println("输入的收件单格式不正确");
-		ResultMsg result1=a.submitSendDoc(receiveDocVO);
+		ResultMsg result1=a.submitReceiveDoc(receiveDocVO);
 		if(result1.isPass()==true)
 			System.out.println("提交成功");
 		else

@@ -34,15 +34,15 @@ public class OrderInquiryData extends UnicastRemoteObject implements OrderInquir
     @Override
     public boolean insertOrderPO(String barcode, String info) throws RemoteException {
         Connection connection = DatabaseManager.getConnection();
-        String sql = "insert into order( `barcode`, `stateOfTransport`, `history`) " +
+        String sql = "insert into `order` ( `history`, `stateOfTransport`, `barcode`) " +
                 "values (?,?,?)";
         PreparedStatement statement = null;
         int result = 0;
         try {
             statement = connection.prepareStatement(sql);
-            statement.setString(1, barcode);
+            statement.setString(1, info);
             statement.setString(2, GoodsState.COMPLETE.toString());
-            statement.setString(3, info);
+            statement.setString(3, barcode);
             result = statement.executeUpdate();
             DatabaseManager.releaseConnection(connection, statement, null);
         } catch (SQLException e) {

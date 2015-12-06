@@ -162,6 +162,7 @@ public class DeliveryNoteVO extends NoteVO {
         results[4] = FormatCheck.isCity(this.receiverAddress);
         results[5] = FormatCheck.isPhoneNumber(this.receiverTeleNumber);
         results[6] = new ResultMsg(true);
+        results[7] = FormatCheck.isChineseName(this.name);
         results[8] = new ResultMsg(goodsNumber>0);
         results[9] = new ResultMsg(weight>0);
         results[10] = new ResultMsg(volume>0);

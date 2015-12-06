@@ -12,7 +12,7 @@ import vo.InstitutionInfoVO;
 import java.rmi.RemoteException;
 
 /**
- * Created by kylin on 15/11/17.
+ *
  */
 public class BaseDataBuilding implements BaseDataBuildingBLService {
 

@@ -10,9 +10,13 @@ import dataservice.statisticdataservice.BaseDataBuildingDataService;
 
 public class BaseDataBuilding_Test {
 	
-	private BaseDataBuildingDataService service = new BaseDataBuildingData();
+	private BaseDataBuildingDataService service;
 
-	@Test
+    public BaseDataBuilding_Test() throws RemoteException {
+        service = new BaseDataBuildingData();
+    }
+
+    @Test
 	public void testStart() throws RemoteException {
 		//assertEquals(true,service.startBaseDataBuilding(true));
 		//assertEquals(true,service.startBaseDataBuilding(false));

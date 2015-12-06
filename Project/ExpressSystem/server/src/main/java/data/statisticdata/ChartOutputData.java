@@ -54,7 +54,7 @@ import util.chart.CostAndProfitContent;
 
 public class ChartOutputData extends UnicastRemoteObject implements ChartOutputDataService{
 
-    protected ChartOutputData() throws RemoteException {
+    public ChartOutputData() throws RemoteException {
     }
 
     @Override

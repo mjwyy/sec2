@@ -7,7 +7,7 @@ import dataservice.statisticdataservice.BaseDataBuildingDataService;
 
 public class BaseDataBuildingData extends UnicastRemoteObject implements BaseDataBuildingDataService{
 
-    protected BaseDataBuildingData() throws RemoteException {
+    public BaseDataBuildingData() throws RemoteException {
     }
 
     @Override

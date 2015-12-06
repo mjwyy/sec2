@@ -6,6 +6,7 @@ import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import data.database.DatabaseFactoryMysqlImpl;
 import dataservice.statisticdataservice.BusinessDataModificationDataService;
 import org.junit.Test;
 
@@ -17,10 +18,14 @@ import dataservice.exception.InterruptWithExistedElementException;
 
 public class BusinessDataModification_Test {
 	
-	private BusinessDataModificationDataService service = new BusinessDataModificationData();
+	private BusinessDataModificationDataService service;
+
+    public BusinessDataModification_Test() throws RemoteException {
+        service = DatabaseFactoryMysqlImpl.getInstance().getBusinessDataModificationDataService();
+    }
 
 
-//    @Test
+    //    @Test
     public void testAddCity() throws RemoteException, ElementNotFoundException, SQLException, InterruptWithExistedElementException {
         service.addCity("香港");
     }

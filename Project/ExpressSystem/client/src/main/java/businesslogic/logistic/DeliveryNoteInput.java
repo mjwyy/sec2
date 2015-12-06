@@ -28,7 +28,7 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
 
     public DeliveryNoteInput() {
         RemoteObjectGetter getter = new RemoteObjectGetter();
-        this.dataService = (DeliveryNoteInputDataService) getter.getObjectByName("DeliveryNoteInputData");
+        this.dataService = (DeliveryNoteInputDataService) getter.getObjectByName("DeliveryNoteInputDataService");
     }
 
     @Override

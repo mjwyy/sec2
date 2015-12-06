@@ -19,8 +19,13 @@ import dataservice.statisticdataservice.ChartOutputDataService;
 
 public class ChartOutput_Test {
     
-	private ChartOutputDataService service = new ChartOutputData();
-	@Test
+	private ChartOutputDataService service;
+
+    public ChartOutput_Test() throws RemoteException {
+        service = new ChartOutputData();
+    }
+
+    @Test
 	public void testGetBusinessStateChart() throws RemoteException {
         BusinessStateChartPO businessStateChartPO =
                 service.getBusinessStateChart(new BusinessStateChartPO("2015-12-20","2015-12-30"));

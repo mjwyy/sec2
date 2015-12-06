@@ -10,7 +10,11 @@ import dataservice.statisticdataservice.LogInquiryDataService;
 
 public class LogInquiry_Test {
 
-    private LogInquiryDataService service = new LogInquiryData();
+    private LogInquiryDataService service;
+
+    public LogInquiry_Test() throws RemoteException {
+        service = new LogInquiryData();
+    }
 
     @Test
 	public void testfind() throws RemoteException{

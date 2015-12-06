@@ -48,9 +48,9 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
         Connection connection = DatabaseManager.getConnection();
         String sql = "insert into `Express`.`note_delivery` " +
                 "( `volume`, `category`, `senderTeleNumber`, `receiverAddress`, " +
-                "`packPrice`, `weight`, `userName`, `receiverName`, `goodsNumber`," +
+                "`packPrice`, `weight`, `receiverName`, `goodsNumber`," +
                 " `receiverTeleNumber`, `senderAddress`, `senderName`, `name`, `barCode`) values " +
-                "( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement statement = null;
         SendDocMsg sendDocMsg;
         try {
@@ -112,8 +112,11 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
             ArrayList<String> cites = businessDataModificationDataService.getAllCities();
             String city1 = this.findCity(cites,po.getSenderAddress());
             String city2 = this.findCity(cites,po.getReceiverAddress());
-            double distance = businessDataModificationDataService.getDistance(city1, city2);
-
+            double distance;
+            if(city1.equals(city2))
+                distance = 30;
+            else
+                distance = businessDataModificationDataService.getDistance(city1, city2);
             DeliveryInfo deliveryInfo = new DeliveryInfo(city1,city2,distance,po.getWeight(),
                     po.getVolume(),po.getCategory(),po.getPackType());
 

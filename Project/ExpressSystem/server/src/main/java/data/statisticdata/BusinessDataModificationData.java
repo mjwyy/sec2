@@ -22,7 +22,7 @@ import dataservice.exception.InterruptWithExistedElementException;
 
 public class BusinessDataModificationData extends UnicastRemoteObject implements BusinessDataModificationDataService {
 
-    protected BusinessDataModificationData() throws RemoteException {
+    public BusinessDataModificationData() throws RemoteException {
     }
 
     @Override

@@ -83,6 +83,7 @@ public class MailOrderPanel extends JPanel {
 		}
 	
 	public MailOrderPanel(LogInMsg logInMsg) {
+        lim = logInMsg;
 		setSize(WIDTH,HEIGHT);
 		setLayout(null);
 		

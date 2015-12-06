@@ -46,8 +46,8 @@ public class OrderInquiry implements OrderInquiryBLService {
             e.printStackTrace();
             return null;
         }
-        this.resultVO = new OrderVO(this.resultPO.getBarcode(), resultPO.getGoodsState(),
-                resultPO.getHistory());
+        this.resultVO = new OrderVO(this.resultPO.getBarcode(), this.resultPO.getGoodsState(),
+                this.resultPO.getHistory());
         return this.resultVO;
     }
 }

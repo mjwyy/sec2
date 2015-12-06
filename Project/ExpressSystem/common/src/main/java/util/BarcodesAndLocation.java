@@ -1,9 +1,11 @@
 package util;
 
+import java.io.Serializable;
+
 /**
  * Created by kylin on 15/11/25.
  */
-public class BarcodesAndLocation {
+public class BarcodesAndLocation implements Serializable{
 
     /**
      * 条形码号

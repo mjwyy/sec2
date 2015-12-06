@@ -22,7 +22,7 @@ public class SystemUserManagementData_Test {
         service = DatabaseFactoryMysqlImpl.getInstance().getSystemUserManagementDataService();
     }
 
-    @Test
+//    @Test
 	public void testAddUser() throws Exception {
 		UserPO po = new UserPO("admin","admin",Authority.SYSTEM_MANAGER);
 		assertEquals(true,service.addUser(po));

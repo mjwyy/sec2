@@ -2,7 +2,9 @@ package util;
 
 import util.enums.GoodsState;
 
-public class BarcodeAndState {
+import java.io.Serializable;
+
+public class BarcodeAndState implements Serializable{
 
 	private String barcode;
 	

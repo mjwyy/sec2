@@ -182,7 +182,7 @@ public class FormatCheck {
     public static ResultMsg isCenterNumber(String str) {
         String trueExpression = "\\d{3}0\\d{2}";
         return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
-                new ResultMsg(false,"中转中心编号格式错误,3位城市编码+1代表营业厅+3位中转中心编码");
+                new ResultMsg(false,"中转中心编号格式错误,3位城市编码+0代表中转中心+3位中转中心编码");
     }
 
     /**
@@ -206,7 +206,7 @@ public class FormatCheck {
      * @return
      */
     public static ResultMsg isTransitNoteNumber(String str) {
-        String trueExpression = "\\d{3}0\\d{15}";
+        String trueExpression = "\\d{3}0\\d{17}";
         return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
                 new ResultMsg(false,"中转单编号格式错误,应为中转中心编号(6位)＋日期＋7位0～9的数字");
     }

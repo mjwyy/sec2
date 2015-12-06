@@ -70,7 +70,7 @@ public class ArrivalNoteOnServiceVO extends NoteVO{
         ResultMsg result = new ResultMsg(true);
         ResultMsg results[] = new ResultMsg[4];
         results[0] = FormatCheck.isDate(this.date);
-        if(isTransit)
+        if(!isTransit)
             results[1] = FormatCheck.isServiceHallLoadNumber(this.TransferNumber);
         else
             results[1] = FormatCheck.isTransitNoteNumber(this.TransferNumber);

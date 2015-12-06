@@ -1,5 +1,6 @@
 package businesslogicservice.logisticblservice._Driver;
 
+import businesslogic.logistic.ReceivingNoteInput;
 import businesslogicservice.logisticblservice.ReceivingNoteInputBLService;
 import businesslogicservice.logisticblservice._Stub.ReceivingNoteInputBLService_Stub;
 import util.ResultMsg;
@@ -7,12 +8,11 @@ import vo.ReceivingNoteVO;
 
 public class ReceivingNoteInputBLService_Driver {
 	public static void main(String[] args){
-		ReceivingNoteInputBLService a=new ReceivingNoteInputBLService_Stub();
+		ReceivingNoteInputBLService a=new ReceivingNoteInput();
 		ReceivingNoteInputBLService_Driver b=new ReceivingNoteInputBLService_Driver();
 		b.driver(a);
 	}
 	public void driver(	ReceivingNoteInputBLService a){
-
 
 		ReceivingNoteVO receiveDocVO=new ReceivingNoteVO("1234567890", "李明","2011-11-11");
 		ResultMsg result=a.inputReceiveDoc(receiveDocVO);

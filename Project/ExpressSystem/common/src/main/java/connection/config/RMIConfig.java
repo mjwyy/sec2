@@ -22,6 +22,8 @@ public class RMIConfig {
     private static final String serverIP;
     private static final String port;
 
+    public static boolean IS_DEBUG = false;
+
     static {
             SAXReader reader = new SAXReader();
         Document document = null;

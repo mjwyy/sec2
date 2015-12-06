@@ -37,10 +37,13 @@ public class OrderInquiryData extends UnicastRemoteObject implements OrderInquir
         String sql = "insert into `order` ( `history`, `stateOfTransport`, `barcode`) " +
                 "values (?,?,?)";
         PreparedStatement statement = null;
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String currentTime = df.format(new Date());
+        String msg = (currentTime+","+info+";");
         int result = 0;
         try {
             statement = connection.prepareStatement(sql);
-            statement.setString(1, info);
+            statement.setString(1, msg);
             statement.setString(2, GoodsState.COMPLETE.toString());
             statement.setString(3, barcode);
             result = statement.executeUpdate();

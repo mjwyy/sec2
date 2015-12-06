@@ -36,6 +36,7 @@ package data.statisticdata;
  *
  */
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -51,9 +52,12 @@ import util.chart.IncomeContent;
 import util.chart.PaymentContent;
 import util.chart.CostAndProfitContent;
 
-public class ChartOutputData implements ChartOutputDataService{
+public class ChartOutputData extends UnicastRemoteObject implements ChartOutputDataService{
 
-	@Override
+    protected ChartOutputData() throws RemoteException {
+    }
+
+    @Override
 	public BusinessStateChartPO getBusinessStateChart(BusinessStateChartPO po)
             throws RemoteException {
         Connection connection = DatabaseManager.getConnection();

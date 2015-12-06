@@ -1,6 +1,7 @@
 package data.infodata;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,7 +19,7 @@ import dataservice.infodataservice.StaffOrganizationManagementDataService;
 import util.enums.OrganizationType;
 import util.enums.StaffType;
 
-public class StaffOrganizationManagementData implements
+public class StaffOrganizationManagementData extends UnicastRemoteObject implements
 		StaffOrganizationManagementDataService {
 
     public StaffOrganizationManagementData() throws RemoteException {

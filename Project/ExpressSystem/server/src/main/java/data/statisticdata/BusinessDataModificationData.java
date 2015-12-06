@@ -4,6 +4,7 @@ package data.statisticdata;
  * @date 2015/11/14
  */
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,9 +20,12 @@ import util.enums.PriceType;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
 
-public class BusinessDataModificationData implements BusinessDataModificationDataService {
+public class BusinessDataModificationData extends UnicastRemoteObject implements BusinessDataModificationDataService {
 
-	@Override
+    protected BusinessDataModificationData() throws RemoteException {
+    }
+
+    @Override
 	public boolean addCity(String name) throws RemoteException,
             InterruptWithExistedElementException {
         ArrayList<String> citys  = this.getAllCities();

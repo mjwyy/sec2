@@ -11,6 +11,7 @@ import dataservice.infodataservice.BankAccountManagementDataService;
 import po.BankAccountPO;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 /**
  * Created by kylin on 15/11/16.
  */
-public class BankAccountManagementData implements BankAccountManagementDataService, BankAccountBalanceAccess{
+public class BankAccountManagementData extends UnicastRemoteObject implements BankAccountManagementDataService, BankAccountBalanceAccess{
 
     private Connection connection;
 

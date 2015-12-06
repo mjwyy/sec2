@@ -1,7 +1,7 @@
 package connection;
 
 
-import connection.config.ServerConfig;
+import connection.config.RMIConfig;
 
 import java.rmi.NotBoundException;
 import java.rmi.Remote;
@@ -36,7 +36,7 @@ public class RMIHelper {
     private void initiateIP() {}
 
     public static void tryConnect() throws RemoteException, NotBoundException {
-        serverIP = ServerConfig.getConnectionConfig().getServerIP();
+        serverIP = RMIConfig.getServerIP();
         if (System.getSecurityManager() == null) {
             System.setSecurityManager(new SecurityManager());
         }

@@ -1,12 +1,13 @@
 package data.statisticdata;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 
 import data.database.DatabaseFactoryMysqlImpl;
 import data.statisticdata.inte.LogInsertDataService;
 
-public class LogInsHelper {
+public class LogInsHelper{
 
 	private static LogInsertDataService dataService = null;
 	

@@ -1,6 +1,7 @@
 package data.statisticdata;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,7 +18,7 @@ import dataservice.statisticdataservice.NoteApprovingDataService;
  * @date 2015/11/14
  *
  */
-public class NoteApprovingData implements NoteApprovingDataService {
+public class NoteApprovingData extends UnicastRemoteObject implements NoteApprovingDataService {
 
     private ArrivalNoteOnServiceDataService arrivalNoteOnServiceDataService;
     private ArrivalNoteOnTransitDataService arrivalNoteOnTransitDataService;

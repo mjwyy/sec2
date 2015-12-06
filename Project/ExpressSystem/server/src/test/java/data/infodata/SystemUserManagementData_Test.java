@@ -19,12 +19,12 @@ public class SystemUserManagementData_Test {
     private SystemUserManagementDataService service;
 
     public SystemUserManagementData_Test() throws RemoteException {
-        service = new SystemUserManagementData();
+        service = DatabaseFactoryMysqlImpl.getInstance().getSystemUserManagementDataService();
     }
 
-//    @Test
+    @Test
 	public void testAddUser() throws Exception {
-		UserPO po = new UserPO("toDelete","sbsbsb",Authority.DELIVERY_MAN);
+		UserPO po = new UserPO("admin","admin",Authority.SYSTEM_MANAGER);
 		assertEquals(true,service.addUser(po));
 	}
 

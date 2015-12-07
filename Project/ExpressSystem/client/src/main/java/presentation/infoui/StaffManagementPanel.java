@@ -45,7 +45,8 @@ public class StaffManagementPanel extends JPanel {
 	private DefaultTableModel model;
 	private Vector name;
 	private Vector data;
-	private StaffOrganizationManagementBLService service = new StaffOrganizationManagement();
+	//private StaffOrganizationManagementBLService service = new StaffOrganizationManagementBLService_Stub();
+	private StaffOrganizationManagementBLService service ;
 	private StaffVO staffVO;
 	private JScrollPane scrollPane;
 	private JComboBox comboBox;
@@ -60,6 +61,7 @@ public class StaffManagementPanel extends JPanel {
 	 * Create the panel.
 	 */
 	public StaffManagementPanel() {
+		service =  new StaffOrganizationManagement();
 		setSize(1152,446);
 		setLayout(null);
 		
@@ -142,13 +144,17 @@ public class StaffManagementPanel extends JPanel {
 					staffVO = new StaffVO(null,null,null,null,null,keyword.getText(),-1,null,null);
 				}
 				else if(comboBox.getSelectedItem().equals("工龄")){
+					int isNum = 1;
 					for(int i = 0;i<keyword.getText().length();i++){
-						if(keyword.getText().charAt(i)>=10||keyword.getText().charAt(i)<=0){						
+						if(keyword.getText().charAt(i)>'9'||keyword.getText().charAt(i)<'0'){						
 							tishi.setVisible(true);
+							isNum = 0;
 							break;
 						}
 					}
+					if(isNum == 1){
 					staffVO = new StaffVO(null,null,null,null,null,null,Integer.parseInt(keyword.getText()),null,null);
+					}
 				}
 				else if(comboBox.getSelectedItem().equals("手机号码")){
 					staffVO = new StaffVO(null,null,null,null,null,null,-1,keyword.getText(),null);
@@ -165,6 +171,7 @@ public class StaffManagementPanel extends JPanel {
 						 row.add(staffVoList.get(j).getStaffID());
 						 row.add(staffVoList.get(j).getName());
 						 row.add(staffVoList.get(j).getSex());
+						 row.add(staffVoList.get(j).getOrganization());
 						 row.add(staffVoList.get(j).getPostion());
 						 row.add(staffVoList.get(j).getIDNum());
 						 row.add(staffVoList.get(j).getWorkingtime());
@@ -370,7 +377,11 @@ public class StaffManagementPanel extends JPanel {
 				if(seletedRow != -1)		    
 					staffVO = new StaffVO(staffID.getText(),staffname.getText(),staffsex.getText(),org.getText(),
 							staffType,IDCode.getText(),Integer.parseInt(worktime.getText()),phonum.getText(),wage.getText());
-					
+	
+				int result2 = JOptionPane.showConfirmDialog(null, "确认删除吗？","系统提示",
+						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+				if(result2 == JOptionPane.YES_OPTION){
+				
 					res = service.delStaff(staffVO);
 					if(res.isPass()){
 						model.removeRow(seletedRow);
@@ -384,9 +395,9 @@ public class StaffManagementPanel extends JPanel {
 					    wage.setText("");
 					}else{
 						int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
-								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+								JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
 					}
-				
+				}
 			}
 		});
 		btnDelete.setBounds(945, 329, 77, 49);
@@ -448,14 +459,19 @@ public class StaffManagementPanel extends JPanel {
 			 g.drawImage(img.getImage(), 0, 0, null);
 			}
 	   
+	   
 	   public void showall(){
-			ArrayList<StaffVO> staffList = new ArrayList<StaffVO>();
-			ArrayList<OrganizationInfoVO> organizationlist = new ArrayList<OrganizationInfoVO>();
-			 organizationlist  = service.showAll();
-			 if( !organizationlist.isEmpty()){
-				 for(int i = 0;i< organizationlist.size();i++ ){
-					 staffList = organizationlist.get(i).getStaffinfo();
-					 if(!staffList.isEmpty()){
+		   data.clear();//清空table内容
+		   staffVO = new StaffVO(null,null,null,null,null,null,-1,null,null);
+		   ArrayList<StaffVO>  staffList = new   ArrayList<StaffVO> ();
+		   staffList = service.findStaffInfo(staffVO);
+		   System.out.println( service.findStaffInfo(staffVO).get(0).getWorkingtime());
+		   if(staffList == null){
+			   int result1 = JOptionPane.showConfirmDialog(null, "显示出错","系统提示",
+						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+		   }else{
+			   if(!staffList.isEmpty()){
+				   if(!staffList.isEmpty()){
 						 for(int j = 0;j<staffList.size();j++){
 							 Vector row = new Vector();
 							 row.add(staffList.get(j).getStaffID());
@@ -478,14 +494,10 @@ public class StaffManagementPanel extends JPanel {
 						 model.setDataVector(data, name);
 				   			table.setModel(model); 
 					 }
+			   }
+		   }
+		   
+		   
 				 }
-			 }else{
-				 Vector row = new Vector();
-				 data.add(row.clone());
-				 row.add("无信息");
-				 model.setDataVector(data, name);
-		   			table.setModel(model); 
-			 }
-	   }
 
 }

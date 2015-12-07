@@ -5,6 +5,8 @@ import connection.RemoteObjectGetter;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.statisticdataservice.NoteApprovingDataService;
 import po.NotePO;
+import util.ApproveNote;
+import util.ResultMsg;
 import util.enums.DocType;
 import vo.*;
 
@@ -25,77 +27,17 @@ public class NoteApproving implements NoteApprovingBLService {
                 (NoteApprovingDataService)getter.getObjectByName("NoteApprovingDataService");
     }
 
-    @Override
-    public ArrayList<ArrivalNoteOnServiceVO> getArrivalNoteOnServiceVO() {
-        return null;
-    }
+	@Override
+	public ArrayList<ApproveNote> getNotes() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    public ArrayList<DeliverNoteOnServiceVO> getDeliverNoteOnServiceVO() {
-        return null;
-    }
+	@Override
+	public ResultMsg pushResults(ArrayList<ApproveNote> results) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    public ArrayList<ArrivalNoteOnTransitVO> getArrivalNoteOnTransitVO() {
-        return null;
-    }
-
-    @Override
-    public ArrayList<DeliveryNoteVO> getDeliveryNoteVO() {
-        return null;
-    }
-
-    @Override
-    public ArrayList<LoadNoteOnServiceVO> getLoadNoteOnServiceVO() {
-        return null;
-    }
-
-    @Override
-    public ArrayList<LoadNoteOnTransitVO> getLoadNoteOnTransitVO() {
-        return null;
-    }
-
-    @Override
-    public ArrayList<ReceivingNoteVO> getReceivingNoteVO() {
-        return null;
-    }
-
-    @Override
-    public ArrayList<TransitNoteOnTransitVO> getTransitNoteVO() {
-        return null;
-    }
-
-    @Override
-    public void passAllDoc() {
-        ArrayList<NoteVO> noteVOArrayList = this.getAllDoc();
-        for (NoteVO vo:noteVOArrayList)
-            this.passDoc(vo);
-    }
-
-    @Override
-    public void passDoc(NoteVO docVO) {
-        try {
-            dataService.passDoc(docVO.toPO());
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        } catch (ElementNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void inputAdvice(NoteVO docVO, String advice) {
-        try {
-            dataService.failDoc(docVO.toPO(),advice);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        } catch (ElementNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public ArrayList<NoteVO> getAllDoc() {
-        return null;
-    }
+   
 }

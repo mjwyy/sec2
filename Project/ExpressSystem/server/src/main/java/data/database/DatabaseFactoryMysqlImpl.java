@@ -73,10 +73,7 @@ public class DatabaseFactoryMysqlImpl implements DatabaseFactory{
         logInsertDataService = new LogInsertData();
         deliveryNoteInputDataService = new DeliveryNoteInputData(orderInquiryDataService,
                 businessDataModificationDataService);
-        noteApprovingDataService = new NoteApprovingData(arrivalNoteOnServiceDataService,
-                arrivalNoteOnTransitDataService,deliveryNoteInputDataService,
-                loadNoteOnServiceDataService,loadNoteOnTransitDataService,
-                receivingNoteInputDataService,transitNoteInputDataService);
+        noteApprovingDataService = new NoteApprovingData();
     }
 
     public static DatabaseFactoryMysqlImpl getInstance() throws RemoteException {

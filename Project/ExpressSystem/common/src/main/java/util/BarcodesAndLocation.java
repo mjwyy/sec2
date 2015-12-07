@@ -8,6 +8,11 @@ import java.io.Serializable;
 public class BarcodesAndLocation implements Serializable{
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2257394993443049595L;
+
+	/**
      * 条形码号
      */
     private String barcode;

@@ -8,6 +8,8 @@ import java.util.Iterator;
 
 import dataservice.exception.ElementNotFoundException;
 import po.*;
+import util.ApproveNote;
+import util.ResultMsg;
 
 /**
  * 单据审批DataService
@@ -16,45 +18,17 @@ import po.*;
  */
 public interface NoteApprovingDataService extends Remote, Serializable {
 	
-	ArrayList<ArrivalNoteOnServicePO> getArrivalNoteOnServicePO()
-            throws RemoteException;
-    
-	ArrayList<DeliverNoteOnServicePO> getDeliverNoteOnServicePO()
-            throws RemoteException;
-
-	Iterator<ArrivalNoteOnTransitPO> getArrivalNoteOnTransitPO()
-            throws RemoteException;
-
-	ArrayList<DeliveryNotePO> getDeliveryNotePO()
-            throws RemoteException;
-
-	ArrayList<LoadNoteOnServicePO> getLoadNoteOnServicePO()
-            throws RemoteException;
-
-	ArrayList<LoadNoteOnTransitPO> getLoadNoteOnTransitPO()
-            throws RemoteException;
-
-	ArrayList<ReceivingNotePO> getReceivingNotePO()
-            throws RemoteException;
-
-	ArrayList<TransitNotePO> getTransitNotePO()
-            throws RemoteException;
-	
 	/**
-	 * 搜索docPO并通过之
-	 *
-	 * @param docPO
-	 * @return true for successful pass operation
-	 */
-	boolean passDoc(NotePO docPO)
-            throws RemoteException, ElementNotFoundException;
-
+     * 获取所有待审批单据
+     * @return 待审批的所有单据信息
+     */
+    public ArrayList<ApproveNote> getNotes();
+    
     /**
-	 * 搜索docPO并且否决之
-	 *
-	 * @param docPO
-	 * @return true for successful decline operation
-	 */
-	boolean failDoc(NotePO docPO, String comment)
-            throws RemoteException, ElementNotFoundException;
+     * 搭配getNotes使用的接受审批结果的接口，将会登记审批结果
+     * @param results 应为之前getNotes获得的单据信息，各个单据应为“通过”或“不通过并填写了审批意见”
+     * @return 审批操作反馈，一般为true，若为false则出现了错误，需要用其message提醒操作者
+     * @throws RemoteException 将会在这里封装错误信息，注意处理
+     */
+    public ResultMsg pushResults(ArrayList<ApproveNote> results) throws RemoteException;
 }

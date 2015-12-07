@@ -20,7 +20,7 @@ public interface StorageInquiryAllBLService {
 	/**
 	 * 请求进行库存盘点
 	 * @return
-	 * @throws Exception TODO
+	 * @throws Exception
 	 */
 	public InventoryVO request() throws Exception;
 	

@@ -23,7 +23,9 @@ import java.util.ArrayList;
  */
 public class BankAccountManagementData extends UnicastRemoteObject implements BankAccountManagementDataService, BankAccountBalanceAccess{
 
-    private Connection connection;
+
+	private static final long serialVersionUID = -8080269551859558616L;
+	private Connection connection;
 
     public BankAccountManagementData() throws RemoteException {
         super();

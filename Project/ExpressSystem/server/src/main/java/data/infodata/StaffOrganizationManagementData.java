@@ -22,7 +22,9 @@ import util.enums.StaffType;
 public class StaffOrganizationManagementData extends UnicastRemoteObject implements
 		StaffOrganizationManagementDataService {
 
-    public StaffOrganizationManagementData() throws RemoteException {
+	private static final long serialVersionUID = 5173539351377111629L;
+
+	public StaffOrganizationManagementData() throws RemoteException {
         super();
     }
 

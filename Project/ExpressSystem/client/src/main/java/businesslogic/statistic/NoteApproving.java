@@ -49,16 +49,24 @@ public class NoteApproving implements NoteApprovingBLService {
 		assert results!=null;
 		
 		if(tempStorage==null) {
-			throw new Exception("尚未获取过待审批单据！");
+			return new ResultMsg(false, "尚未获取过待审批单据！");
 		}
 
 		for(ApproveNote note:results) {
 			if( !note.isPass() && note.getRejectionMessage()==null ) {
-				throw new Exception(note.getType()+":"+note.getInfo()+"未填写审批意见！");
+				return new ResultMsg(false, note.getType()+":"+note.getInfo()+"未填写审批意见！");
 			}
 		}
 		
-		return null;
+		ResultMsg msg = new ResultMsg(true);
+		
+		try {
+			msg = dataService.pushResults(results);
+		} catch (RemoteException e) {
+			throw e;
+		}
+		
+		return msg;
 	}
 
    

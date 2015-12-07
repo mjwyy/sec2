@@ -2,6 +2,7 @@ package data.statisticdata;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,19 +26,19 @@ public class NoteApprovingData extends UnicastRemoteObject implements NoteApprov
 
 	private static final long serialVersionUID = 110929119545388322L;
 
-
-    private HashMap<String, String> nameAndTableName;
-    private HashMap<String, String> nameAndTableID;
-
+	private Connection connection = null;
+	
     public NoteApprovingData() throws RemoteException {
-        
+        super();
     }
 
 	@Override
 	public ArrayList<ApproveNote> getNotes() {
+		
+		//TODO
+		
 		return null;
-		
-		
+
 	}
 
 	@Override

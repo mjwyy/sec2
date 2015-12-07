@@ -28,9 +28,7 @@ import dataservice.infodataservice.StaffOrganizationManagementDataService;
 
 public class DriverVehicleManagementData extends UnicastRemoteObject implements DriverVehicleManagementDataService{
 
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 7214249074956257035L;
     Connection connection;
     

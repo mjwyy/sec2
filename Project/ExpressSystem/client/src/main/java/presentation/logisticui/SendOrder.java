@@ -20,9 +20,11 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+import presentation.util.CurrentTime;
 import util.LogInMsg;
 import util.ResultMsg;
 import vo.DeliverNoteOnServiceVO;
+import businesslogic.logistic.ArrivalNoteOnService;
 import businesslogicservice.logisticblservice.ArrivalNoteOnServiceBLService;
 import businesslogicservice.logisticblservice._Stub.ArrivalNoteOnServiceBLService_Stub;
 
@@ -46,7 +48,8 @@ public class SendOrder extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	ArrivalNoteOnServiceBLService arr=new ArrivalNoteOnServiceBLService_Stub();
+//	ArrivalNoteOnServiceBLService arr=new ArrivalNoteOnServiceBLService_Stub();
+	ArrivalNoteOnServiceBLService arr=new ArrivalNoteOnService();
 	private JTextField sendcode;
 	private JTextField sendcodef;
 	private JTable table;
@@ -139,7 +142,7 @@ public class SendOrder extends JPanel {
 		label_7.setBounds(783, 81, 54, 15);
 		add(label_7);
 
-		dataf = new JTextField();
+		dataf = new JTextField(CurrentTime.getCurrentTimeDate());
 		dataf.setBounds(863, 81, 159, 28);
 		add(dataf);
 		dataf.setColumns(10);
@@ -243,10 +246,22 @@ public class SendOrder extends JPanel {
 			}
 			vo=new DeliverNoteOnServiceVO(sendcodef.getText(),dataf.getText(),BarCode,senderf.getText());
 			vo.setUserName(lim.getUserName());
+			vo.setOrganization(lim.getOrganization());
+			System.out.println(vo.getUserName());
+			System.out.println(vo.getOrganization());
 			int result = JOptionPane.showConfirmDialog(null, "确认提交审批？","系统提示",
 					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 			if(result == JOptionPane.YES_OPTION) {
-				arr.submitHallDeliverDoc(vo);
+				ResultMsg resultS=arr.submitHallDeliverDoc(vo);
+				if(resultS.isPass()){//提交成功正确
+					JOptionPane.showConfirmDialog(null, resultS.getMessage(),"系统提示",
+							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+				}
+				else{//提交失败
+					int result1 = JOptionPane.showConfirmDialog(null, resultS.getMessage(),"系统提示",
+							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+
+				}
 			}
 			else {
 				return;

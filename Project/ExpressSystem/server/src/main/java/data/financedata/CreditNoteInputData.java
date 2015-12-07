@@ -9,6 +9,7 @@ import po.CreditNotePO;
 import util.enums.DocState;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,13 +27,13 @@ import java.sql.Statement;
  *	isPassed(int),advice(varchar)
  * 
  */
-public class CreditNoteInputData implements CreditNoteInputDataService{
+public class CreditNoteInputData extends UnicastRemoteObject implements CreditNoteInputDataService{
 	
 	private static final long serialVersionUID = 203150499169106219L;
 	
 	private Connection connection;
 	
-	public CreditNoteInputData() {
+	public CreditNoteInputData() throws RemoteException {
 		super();
 	}
 	

@@ -39,6 +39,7 @@ public class OrderInquiryData extends UnicastRemoteObject implements OrderInquir
         PreparedStatement statement = null;
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String currentTime = df.format(new Date());
+        System.out.println(info);
         String msg = (currentTime+","+info+";");
         int result = 0;
         try {

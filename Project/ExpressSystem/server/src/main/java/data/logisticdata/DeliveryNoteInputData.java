@@ -98,7 +98,10 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
     private SendDocMsg afterInsert(DeliveryNotePO po) throws RemoteException, ElementNotFoundException, SQLException {
         SendDocMsg sendDocMsg;
         String deliveryMan = po.getUserName();
-        String orderInfo = "货物已被快递员 "+deliveryMan+" 签收;";
+        System.out.println("DeliveryNoteInputData");
+        System.out.println(po.getOrganization());
+        System.out.println(po.getUserName());
+        String orderInfo = "货物已被快递员 "+deliveryMan+" 签收";
         LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+deliveryMan+
                 "新增寄件单,单据编号:" + po.getBarCode());
         DocState docState = this.waitForCheck("note_delivery", "barCode", po.getBarCode());
@@ -141,7 +144,7 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
      * @param senderAddress 现实地址
      * @return 从地址中找到的城市(如果存在)
      */
-    public String findCity(ArrayList<String> citys, String senderAddress) {
+    private String findCity(ArrayList<String> citys, String senderAddress) {
         for (String regex : citys) {
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher = pattern.matcher(senderAddress);

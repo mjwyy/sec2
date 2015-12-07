@@ -46,7 +46,9 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 
 
+
 import presentation.logisticui.PayMent;
+import util.LogInMsg;
 
 import java.awt.Toolkit;
 import java.awt.event.ContainerAdapter;
@@ -75,12 +77,12 @@ public class Commodity extends JFrame {
 	 */
 	private static final int HEIGHTM = 446;
 	private JPanel contentPane;
-
+private LogInMsg lim;
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
+	/*	EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					Commodity.changeLook();
@@ -93,7 +95,7 @@ public class Commodity extends JFrame {
 					e.printStackTrace();
 				}
 			}
-		});
+		});*/
 	}
 	/**
 	 * 更改外观
@@ -161,8 +163,8 @@ public void setCaiDanLan(){
 	/**
 	 * Create the frame.
 	 */
-	public Commodity() {
-	
+	public Commodity( LogInMsg lim1) {
+	this.lim=lim1;
 		this.setResizable(false);//不可调整大小
 		setIconImage(Toolkit.getDefaultToolkit().getImage("image/0010.jpg"));
 		setTitle("快递物流系统");
@@ -223,7 +225,7 @@ public void setCaiDanLan(){
 		user.setBounds(10, 2, 54, 15);
 		QUANXIANW.add(user);
 		
-		JLabel username = new JLabel("王五");
+		JLabel username = new JLabel(lim.getUserName());
 		username.setBounds(56, 2, 54, 15);
 		QUANXIANW.add(username);
 		
@@ -231,7 +233,7 @@ public void setCaiDanLan(){
 		quanxian.setBounds(10, 25, 54, 15);
 		QUANXIANW.add(quanxian);
 		
-		JLabel label = new JLabel("库存管理员");
+		JLabel label = new JLabel(lim.getOrganization());
 		label.setBounds(56, 25, 129, 15);
 		QUANXIANW.add(label);
 		
@@ -279,7 +281,7 @@ public void setCaiDanLan(){
 		button_2.setBounds(10, 224, 120, 100);
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ChaKan a=new ChaKan();
+				ChaKan a=new ChaKan(lim);
 				a.setBounds(0, 0, 1152, 446);
 				a.setVisible(true);
 				middle.removeAll();
@@ -307,5 +309,18 @@ public void setCaiDanLan(){
 		panel_2.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 		panel_2.setBounds(341, 570, 939, 124);
 		contentPane.add(panel_2);
+		panel_2.setLayout(null);
+		
+		JLabel lblNewLabel_1 = new JLabel("我是萌萌的库存管理人员,我要管好仓库呀");
+		lblNewLabel_1.setBounds(26, 7, 470, 32);
+		panel_2.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("这是入库单");
+		lblNewLabel_2.setBounds(26, 30, 471, 32);
+		panel_2.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("这是出库单");
+		lblNewLabel_3.setBounds(25, 49, 471, 30);
+		panel_2.add(lblNewLabel_3);
 	}
 }

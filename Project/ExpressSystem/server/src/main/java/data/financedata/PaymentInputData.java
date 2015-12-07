@@ -12,6 +12,7 @@ import util.enums.DocState;
 
 import java.math.BigDecimal;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,13 +31,13 @@ import java.sql.Statement;
  * 
  * 
  */
-public class PaymentInputData implements PaymentInputDataService {
+public class PaymentInputData extends UnicastRemoteObject implements PaymentInputDataService {
 	
 	private static final long serialVersionUID = 5769958555512055666L;
 	
 	private Connection connection = null;
 	private BankAccountBalanceAccess bankAccess = null;
-	public PaymentInputData() {
+	public PaymentInputData() throws RemoteException {
 		super();
 	}
 	

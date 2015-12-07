@@ -36,9 +36,11 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+import presentation.util.CurrentTime;
+
 public class LoadCarOrder extends JPanel {
-//	LoadNoteOnServiceBLService load=new LoadNoteOnServiceBLService_Stub();
-	LoadNoteOnServiceBLService load=new LoadNoteOnService();
+	LoadNoteOnServiceBLService load=new LoadNoteOnServiceBLService_Stub();
+	//LoadNoteOnServiceBLService load=new LoadNoteOnService();
 	private JTextField data;
 	private JTextField service;
 	private JTextField to;
@@ -220,7 +222,7 @@ public class LoadCarOrder extends JPanel {
 		 label_7.setBounds(WIDTHL, 10, 54, 15);
 		 add(label_7);
 
-		 dataf = new JTextField();
+		 dataf = new JTextField(CurrentTime.getCurrentTimeDate());
 		 dataf.setBounds(880, 7, 101, 28);
 		 add(dataf);
 		 dataf.setColumns(10);

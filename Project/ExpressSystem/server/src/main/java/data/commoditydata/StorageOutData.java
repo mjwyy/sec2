@@ -1,6 +1,7 @@
 package data.commoditydata;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,10 +26,10 @@ import dataservice.commoditydataservice.StorageOutDataService;
 	code(varchar(32)),isTransfer(INT(11)),isPassed(INT(11)),advice(varchar)
  */
 
-public class StorageOutData implements StorageOutDataService {
+public class StorageOutData extends UnicastRemoteObject implements StorageOutDataService {
 	private Connection connection;
 	
-	public StorageOutData() {
+	public StorageOutData() throws RemoteException {
 		super();
 	}
 	

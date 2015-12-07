@@ -56,7 +56,7 @@ public class MailOrderPanel extends JPanel {
 	private JTextField volum;
 	private JTextField money;
 	private JTextField predate;
-	private DeliveryNoteInputBLService service = new DeliveryNoteInput();
+	private DeliveryNoteInputBLService service = new DeliveryNoteInputBLService_Stub();
 	private JTextField senderPho;
 	private JTextField barcode;
 	private ResultMsg res;
@@ -83,7 +83,6 @@ public class MailOrderPanel extends JPanel {
 		}
 	
 	public MailOrderPanel(LogInMsg logInMsg) {
-        lim = logInMsg;
 		setSize(WIDTH,HEIGHT);
 		setLayout(null);
 		

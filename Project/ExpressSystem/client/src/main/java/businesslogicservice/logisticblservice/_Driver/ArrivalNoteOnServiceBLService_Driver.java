@@ -36,9 +36,9 @@ public class ArrivalNoteOnServiceBLService_Driver {
         barcodes.add("0000000001");
         barcodes.add("0000000002");
         barcodes.add("0000000003");
-        DeliverNoteOnServiceVO mock1 = new DeliverNoteOnServiceVO("025000002", "" +
-                "2015-11-16", barcodes, "装车员");
-        mock1.setUserName("装车员");
+        DeliverNoteOnServiceVO mock1 = new DeliverNoteOnServiceVO("0000000002", "" +
+                "2015-12-07", barcodes, "派件员自己");
+        mock1.setUserName("派件员");
         mock1.setOrganization("南京栖霞营业厅");
         ResultMsg resultMsg = service.inputHallDeliverDoc(mock1);
         System.out.println(resultMsg.getMessage());
@@ -47,8 +47,6 @@ public class ArrivalNoteOnServiceBLService_Driver {
             System.out.println(resultMsg1.isPass());
             System.out.println(resultMsg1.getMessage());
         }
-
-
     }
 
     public static void main(String[] args) throws RemoteException, NotBoundException {

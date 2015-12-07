@@ -1,4 +1,4 @@
-//文件过滤器
+//带文件过滤器的文件选择其
 package presentation.util;
 
 import java.awt.Font;

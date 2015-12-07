@@ -228,7 +228,7 @@ public class loginFrame extends JFrame {
                         Service s = new Service(lim);
                         s.setVisible(true);
                     } else if (lim.getAuthority().equals(authority.WAREHOUSE_MANAGER)) {//仓库管理人员登录
-                        Commodity c = new Commodity();
+                        Commodity c = new Commodity(lim);
                         c.setVisible(true);
                     } else if (lim.getAuthority().equals(authority.DELIVERY_MAN)) {//快递员登录
                         CourierFrame cf = new CourierFrame(lim);

@@ -1,6 +1,7 @@
 package data.commoditydata;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,11 +29,11 @@ import dataservice.exception.ElementNotFoundException;
  * OrderID(VARCHAR(16)),WarehouseID(varchar(20)),isIn(int as boolean,DEFAULT 1),Date(varchar(32))
  */
 
-public class StorageInData implements StorageInDataService {
+public class StorageInData extends UnicastRemoteObject implements StorageInDataService {
 	
 	private Connection connection;
 	
-	public StorageInData() {
+	public StorageInData() throws RemoteException {
 		super();
 	}
 	

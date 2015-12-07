@@ -40,7 +40,25 @@ public class FormatCheck {
      * @return
      */
     public static ResultMsg isDate(String str) {
-        String trueExpression = "\\d{4}-\\d{1,2}-\\d{1,2}";
+        String trueExpression = "([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|" +
+                "[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})-(((0[13578]|1[02])-(0[1-9]|" +
+                "[12][0-9]|3[01]))|((0[469]|11)-(0[1-9]|[12][0-9]|30))|(02-(0[1-9]|" +
+                "[1][0-9]|2[0-8])))";
+        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
+                new ResultMsg(false,"日期格式错误,应为“xxxx－xx－xx”,x是数字");
+    }
+
+    /**
+     * 2检查输入是否是合法的日期,日期格式为“xxxx－xx－xx”,x是数字
+     *
+     * @param str
+     * @return
+     */
+    public static ResultMsg isNumberDate(String str) {
+        String trueExpression = "([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|" +
+                "[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})(((0[13578]|1[02])(0[1-9]|" +
+                "[12][0-9]|3[01]))|((0[469]|11)(0[1-9]|[12][0-9]|30))|(02(0[1-9]|" +
+                "[1][0-9]|2[0-8])))";
         return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
                 new ResultMsg(false,"日期格式错误,应为“xxxx－xx－xx”,x是数字");
     }
@@ -53,8 +71,9 @@ public class FormatCheck {
      * @return
      */
     public static ResultMsg isInventoryTime(String str) {
+        boolean date = FormatCheck.isDate(str.substring(0,10)).isPass();
         String trueExpression = "\\d{4}-\\d{1,2}-\\d{1,2}\\s\\d{2}:\\d{2}";
-        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
+        return Pattern.matches(trueExpression,str) && date? new ResultMsg(true) :
                 new ResultMsg(false,"日期格式错误,应为“xxxx－xx－xx xx：xx”,x是数字");
     }
 
@@ -96,7 +115,7 @@ public class FormatCheck {
     }
 
     /**
-     * 7检查输入是否是合法的营业厅编号
+     * 7检查输入是否是合法的营业厅编号 7位
      * 营业厅编号格式为“025城市编码+1营业厅+000鼓楼营业厅”
      *
      * @param str
@@ -109,7 +128,7 @@ public class FormatCheck {
     }
 
     /**
-     * 7检查输入是否是合法的中转中心
+     * 7检查输入是否是合法的中转中心 6位
      * 营业厅编号格式为“025城市编码+0营业厅+00鼓楼中转中心”。
      *
      * @param str
@@ -130,7 +149,10 @@ public class FormatCheck {
      */
     public static ResultMsg isServiceHallLoadNumber(String str) {
         String trueExpression = "\\d{3}1\\d{16}";
-        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
+        boolean serviceHall = FormatCheck.isServiceHallNumber(str.substring(0,7)).isPass();
+        boolean date = FormatCheck.isNumberDate(str.substring(7,15)).isPass();
+        return (Pattern.matches(trueExpression,str) && serviceHall && date) ?
+                new ResultMsg(true) :
                 new ResultMsg(false,"营业厅汽运编号格式错误,应为营业厅编号+8位日期+00000五位编码");
     }
     /**
@@ -145,6 +167,8 @@ public class FormatCheck {
         return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
                 new ResultMsg(false,"车辆代号格式错误,应为城市编号(电话号码区号)＋三位营业厅编号＋三位数字");
     }
+
+    //TODO 车辆代号与司机编号雷同
 
     /**
      * 10检查输入是否是合法的司机编号
@@ -182,7 +206,7 @@ public class FormatCheck {
     public static ResultMsg isCenterNumber(String str) {
         String trueExpression = "\\d{3}0\\d{2}";
         return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
-                new ResultMsg(false,"中转中心编号格式错误,3位城市编码+0代表中转中心+3位中转中心编码");
+                new ResultMsg(false,"中转中心编号格式错误,3位城市编码+0代表中转中心+2位中转中心编码");
     }
 
     /**
@@ -194,7 +218,8 @@ public class FormatCheck {
      */
     public static ResultMsg isCenterLoadNumber(String str) {
         String trueExpression = "\\d{3}0\\d{2}\\d{15}";
-        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
+        boolean date = FormatCheck.isNumberDate(str.substring(6,14)).isPass();
+        return Pattern.matches(trueExpression,str) && date? new ResultMsg(true) :
                 new ResultMsg(false,"中转中心汽运编号格式错误,应为中转中心编号(6位)＋日期＋7位0～9的数字");
     }
 
@@ -207,7 +232,8 @@ public class FormatCheck {
      */
     public static ResultMsg isTransitNoteNumber(String str) {
         String trueExpression = "\\d{3}0\\d{17}";
-        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
+        boolean date = FormatCheck.isNumberDate(str.substring(6,14)).isPass();
+        return Pattern.matches(trueExpression,str) && date? new ResultMsg(true) :
                 new ResultMsg(false,"中转单编号格式错误,应为中转中心编号(6位)＋日期＋7位0～9的数字");
     }
 
@@ -245,11 +271,7 @@ public class FormatCheck {
      * @return
      */
     public static ResultMsg isLogInquiryTime(String str) {
-        if(str == null)
-            return new ResultMsg(true);
-        String trueExpression = "\\d{4}-\\d{1,2}-\\d{1,2}";
-        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
-                new ResultMsg(false,"系统日志查询日期格式错误,应为应为“xxxx－xx－xx”,x是数字");
+        return FormatCheck.isDate(str);
     }
 
     /**
@@ -288,6 +310,7 @@ public class FormatCheck {
                 new ResultMsg(false,"银行账号格式错误，应为10位数字");
     }
 
+    //TODO 账号密码必须为6~10位数字?!
     /**
      * 检查账号密码格式，必须为6~10位数字
      *
@@ -355,7 +378,10 @@ public class FormatCheck {
      * @return
      */
     public static ResultMsg isLicenseExpirationData(String str) {
-        String trueExpression = "\\d{4}-\\d{2}-\\d{2}";
+        String trueExpression = "([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|" +
+                "[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})-(((0[13578]|1[02])-(0[1-9]|" +
+                "[12][0-9]|3[01]))|((0[469]|11)-(0[1-9]|[12][0-9]|30))|(02-(0[1-9]|" +
+                "[1][0-9]|2[0-8])))";
         return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
                 new ResultMsg(false,"驾驶证期限必须符合日期格式：xxxx-xx-xx（x为数字）");
     }
@@ -467,7 +493,8 @@ public class FormatCheck {
 
     public static ResultMsg isReceiveTime(String time) {
         String trueExpression = "\\d{4}-\\d{1,2}-\\d{1,2}\\s\\d{2}:\\d{2}";
-        return Pattern.matches(trueExpression,time)? new ResultMsg(true) :
+        boolean date = FormatCheck.isDate(time.substring(0,10)).isPass();
+        return Pattern.matches(trueExpression,time) && date? new ResultMsg(true) :
                 new ResultMsg(false,"收件时间格式错误,应为“xxxx－xx－xx xx：xx”,x是数字");
     }
 

@@ -78,7 +78,6 @@ public class NoteInputData extends UnicastRemoteObject implements Remote, Serial
                 e.printStackTrace();
             }
 
-            System.out.println("note is waiting for check...");
         }
         return result;
     }

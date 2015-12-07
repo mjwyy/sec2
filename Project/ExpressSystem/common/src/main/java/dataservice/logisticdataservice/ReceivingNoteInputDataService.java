@@ -1,8 +1,4 @@
-/**
- * 输入寄件单信息数据接口
- * @author wqy
- * @date 2015/10/17
- */
+
 package dataservice.logisticdataservice;
 
 import java.io.Serializable;
@@ -16,7 +12,14 @@ import dataservice.exception.InterruptWithExistedElementException;
 import po.ReceivingNotePO;
 import util.ResultMsg;
 
-public interface ReceivingNoteInputDataService extends Remote,Serializable {
+/**
+ * 输入寄件单信息的数据接口
+ * 职责是将格式无误的寄件单PO持久化存储
+ * 并获取已经存在的寄件单信息
+ *
+ * @author 王梦麟
+ */
+public interface ReceivingNoteInputDataService extends Remote, Serializable {
 
 
     /**

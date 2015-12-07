@@ -1,6 +1,7 @@
 package data.commoditydata;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -34,11 +35,11 @@ import dataservice.exception.ElementNotFoundException;
  *	Columns:OrderID(VARCHAR(16)),WarehouseID(varchar(20)),isIn(int as boolean,DEFAULT 1),Date(varchar(32)),Destination(varchar(64))
  *	aeraCode(VARCHAR(16)),rowNumber(VARCHAR(16)),frameNumber(VARCHAR(16)),placeNumber(VARCHAR(16))
  */
-public class InventoryData implements InventoryDataService {
+public class InventoryData extends UnicastRemoteObject implements InventoryDataService {
 
 	private Connection connection;
 	
-	public InventoryData() {
+	public InventoryData() throws RemoteException {
 		super();
 	}
 	

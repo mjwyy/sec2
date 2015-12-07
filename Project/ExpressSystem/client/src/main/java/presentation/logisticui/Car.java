@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -31,10 +32,12 @@ private JTextField name;
 private JTextField time;
 private JTable table;
 private DefaultTableModel model;
-// DriverVehicleManagementBLService  dvm=new DriverVehicleManagementBLService_Stub();
-DriverVehicleManagementBLService  dvm=new DriverVehicleManagement();
+ DriverVehicleManagementBLService  dvm=new DriverVehicleManagementBLService_Stub();
+//DriverVehicleManagementBLService  dvm=new DriverVehicleManagement();
  private JTextField textField_1;
 private JComboBox comboBox;
+private JLabel pict;
+private String fileName;
 	/**
 	 * Create the panel.
 	 */
@@ -78,7 +81,8 @@ private JComboBox comboBox;
 	        	Object oc=model.getValueAt(selectedRow, 2);
 	        	time.setText(oc.toString());
 	        	Object od=model.getValueAt(selectedRow, 3);
-	        	textField_1.setText(oc.toString());
+	        	fileName=od.toString();
+	        	pict.setIcon(new ImageIcon(fileName));
 	        	}
 	        });
 	        /* 
@@ -134,12 +138,12 @@ private JComboBox comboBox;
 	        JButton btnNewButton = new JButton("新增");
 	        btnNewButton.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent e) {
-	        		File file=new File(textField_1.getText());
+	        		File file=new File(fileName);
 		        	VehicleVO vo=new VehicleVO(code.getText(),name.getText(),time.getText(),file);
 		        	ResultMsg result=dvm.addVehicle(vo);
 		        	if(result.isPass()){
 	        		String[] rowValues={code.getText(),name.getText(),
-	        				time.getText(),textField_1.getText()};
+	        				time.getText(),fileName};
 	        	model.addRow(rowValues);
 		        	}
 		        	else{
@@ -157,7 +161,7 @@ private JComboBox comboBox;
 	        	public void actionPerformed(ActionEvent arg0) {
 	        		int seletedRow=table.getSelectedRow();
 	        		if(seletedRow!=-1){
-	        		File file=new File(textField_1.getText());
+	        		File file=new File(fileName);
 		        	VehicleVO vo=new VehicleVO(code.getText(),name.getText(),time.getText(),file);
 		        	ResultMsg result=dvm.deleteVehicle(vo);
 	        		
@@ -181,7 +185,7 @@ private JComboBox comboBox;
 	        	public void actionPerformed(ActionEvent e) {
 	        		int selectedRow =table.getSelectedRow();
 	        		if(selectedRow!=-1){
-	        		File file=new File(textField_1.getText());
+	        		File file=new File(fileName);
 		        	VehicleVO vo=new VehicleVO(code.getText(),name.getText(),time.getText(),file);
 		        	ResultMsg result=dvm.modifyVehicle(vo);
 	        		
@@ -191,6 +195,7 @@ private JComboBox comboBox;
 		        		model.setValueAt(code.getText(),selectedRow, 0);
 			        	model.setValueAt(name.getText(),selectedRow, 1);
 			        	model.setValueAt(time.getText(),selectedRow, 2);
+			        	model.setValueAt(fileName,selectedRow, 3);
 	        		}	
 	        		else{
 		        		int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
@@ -229,14 +234,40 @@ private JComboBox comboBox;
 	        time.setBounds(830, 210, 170, 28);
 	        add(time);
 	        
-	        JLabel picture = new JLabel("车辆照片(文件路径)");
-	        picture.setBounds(722, 272, 117, 27);
+	        JButton picture = new JButton("车辆照片");
+	        picture.addMouseListener(new MouseListener(){
+
+				public void mouseClicked(MouseEvent arg0) {
+					JFileChooser jfc=new JFileChooser(System.getProperty("file.separator"));
+					jfc.setDialogTitle("导入照片");
+					if (jfc.showOpenDialog(Car.this) == JFileChooser.APPROVE_OPTION) {
+						fileName = jfc.getSelectedFile().getAbsolutePath();
+						pict.setIcon(new ImageIcon(fileName));
+
+					}
+				}
+
+				public void mouseEntered(MouseEvent arg0) {
+					
+				}
+
+				public void mouseExited(MouseEvent arg0) {
+					
+				}
+
+				public void mousePressed(MouseEvent arg0) {
+					
+				}
+
+				public void mouseReleased(MouseEvent arg0) {
+					
+				}
+	        	
+	        });
+	        picture.setBounds(705, 272, 117, 27);
 	        add(picture);
 	        
-	        textField_1 = new JTextField();
-	        textField_1.setBounds(836, 271, 164, 28);
-	        add(textField_1);
-	        textField_1.setColumns(10);
+	      
 	        
 	        JButton button_1 = new JButton("显示全部");
 	        button_1.addActionListener(new ActionListener() {
@@ -246,6 +277,10 @@ private JComboBox comboBox;
 	        });
 	        button_1.setBounds(597, 7, 84, 23);
 	        add(button_1);
+	        
+	        pict = new JLabel("清选择160*85的皂片");
+	        pict.setBounds(840, 248, 160, 85);
+	        add(pict);
 	        
 	       
 	        

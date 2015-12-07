@@ -17,7 +17,6 @@ import javax.swing.table.DefaultTableModel;
 import businesslogic.statistic.ChartOutput;
 import businesslogicservice.statisticblservice.ChartOutputBLService;
 import businesslogicservice.statisticblservice._stub.ChartOutputBLService_Stub;
-import presentation.util.FileChoose;
 import util.ResultMsg;
 import util.enums.ChartType;
 import vo.BusinessStateChartVO;
@@ -164,7 +163,7 @@ public class ChartOutPutPanel extends JPanel {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//TODO 导出
-				new FileChoose();
+				//new FileChoose();
 				
 				
 			}

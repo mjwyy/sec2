@@ -11,6 +11,7 @@ import po.IncomeNotePO;
 import util.enums.DocState;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,7 +30,7 @@ import java.util.ArrayList;
  *	isPassed(int),advice(varchar)
  * 
  */
-public class SettlementManagementData implements SettlementManagementDataService {
+public class SettlementManagementData extends UnicastRemoteObject implements SettlementManagementDataService {
 	
 	private static final long serialVersionUID = -5692094959798049197L;
 	
@@ -37,7 +38,7 @@ public class SettlementManagementData implements SettlementManagementDataService
 	
 	private static RemoteException sqlEx = new RemoteException("系统数据异常，操作取消，请联系管理员。");
 	
-	public SettlementManagementData() {
+	public SettlementManagementData() throws RemoteException {
 		super();
 	}
 	

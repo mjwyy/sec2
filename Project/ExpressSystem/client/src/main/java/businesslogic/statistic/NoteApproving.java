@@ -21,6 +21,8 @@ public class NoteApproving implements NoteApprovingBLService {
 
     private NoteApprovingDataService dataService;
 
+    private ArrayList<ApproveNote> tempStorage = null;
+    
     public NoteApproving() {
         RemoteObjectGetter getter = new RemoteObjectGetter();
         this.dataService =
@@ -28,22 +30,34 @@ public class NoteApproving implements NoteApprovingBLService {
     }
 
 	@Override
-	public ArrayList<ApproveNote> getNotes() {
+	public ArrayList<ApproveNote> getNotes() throws Exception{
 		
 		ArrayList<ApproveNote> result = null;
 		
 		try {
 			result = dataService.getNotes();
+			tempStorage = result;
 		} catch (RemoteException e) {
-			
+			throw e;
 		}
 		
 		return result;
 	}
 
 	@Override
-	public ResultMsg pushResults(ArrayList<ApproveNote> results) {
-		// TODO Auto-generated method stub
+	public ResultMsg pushResults(ArrayList<ApproveNote> results) throws Exception {
+		assert results!=null;
+		
+		if(tempStorage==null) {
+			throw new Exception("尚未获取过待审批单据！");
+		}
+
+		for(ApproveNote note:results) {
+			if( !note.isPass() && note.getRejectionMessage()==null ) {
+				throw new Exception(note.getType()+":"+note.getInfo()+"未填写审批意见！");
+			}
+		}
+		
 		return null;
 	}
 

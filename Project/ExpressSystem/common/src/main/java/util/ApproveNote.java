@@ -54,10 +54,17 @@ public class ApproveNote implements Serializable{
 		return id;
 	}
 
+	/**
+	 * 返回待审批单据的种类（注意：NoteType有toString()方法）
+	 * @return 单据的种类
+	 */
 	public NoteType getType() {
 		return type;
 	}
 
+	/**
+	 * @return 界面需要显示的“较长字符串”，用于表征单据信息 =
+	 */
 	public String getInfo() {
 		return info;
 	}

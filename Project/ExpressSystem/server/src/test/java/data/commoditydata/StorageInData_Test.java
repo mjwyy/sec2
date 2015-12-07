@@ -8,9 +8,17 @@ import org.junit.Test;
 
 public class StorageInData_Test {
 	
-	static StorageInData sid = new StorageInData();
-	
-	static MockStorageInPO[] m ;
+	static StorageInData sid;
+
+    static {
+        try {
+            sid = new StorageInData();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    static MockStorageInPO[] m ;
 	
 	@Test
 	public void StorageInData_Test() throws RemoteException {

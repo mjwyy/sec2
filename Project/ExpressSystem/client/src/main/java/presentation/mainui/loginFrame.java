@@ -26,6 +26,7 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 import presentation.commodityui.Commodity;
 import presentation.financeui.financeFrame;
+import presentation.infoui.SystemUser;
 import presentation.logisticui.CourierFrame;
 import presentation.logisticui.Service;
 import presentation.logisticui.TransitFrame;
@@ -218,31 +219,36 @@ public class loginFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 lim = service.logIn(account.getText(), password.getText());
                 if (lim.isPass()) {
-                    if (lim.getAuthority().equals(authority.MANAGER)) {//总经理登录
+                    if (lim.getAuthority().equals(Authority.MANAGER)) {//总经理登录
                         ManageFrame mf = new ManageFrame();
                         mf.setVisible(true);
-                    } else if (lim.getAuthority().equals(authority.TRANSIT_CENTER_PERSONNEL)) {//中转中心业务员登录
+                    } else if (lim.getAuthority().equals(Authority.TRANSIT_CENTER_PERSONNEL)) {//中转中心业务员登录
                         TransitFrame tf = new TransitFrame(lim);
                         tf.setVisible(true);
-                    } else if (lim.getAuthority().equals(authority.SERVICE_HALL_PERSONNEL)) {//营业厅业务员登录
+                    } else if (lim.getAuthority().equals(Authority.SERVICE_HALL_PERSONNEL)) {//营业厅业务员登录
                         Service s = new Service(lim);
                         s.setVisible(true);
-                    } else if (lim.getAuthority().equals(authority.WAREHOUSE_MANAGER)) {//仓库管理人员登录
+                    } else if (lim.getAuthority().equals(Authority.WAREHOUSE_MANAGER)) {//仓库管理人员登录
                         Commodity c = new Commodity(lim);
                         c.setVisible(true);
-                    } else if (lim.getAuthority().equals(authority.DELIVERY_MAN)) {//快递员登录
+                    } else if (lim.getAuthority().equals(Authority.DELIVERY_MAN)) {//快递员登录
                         CourierFrame cf = new CourierFrame(lim);
                         //cf.setClose();
                         cf.setVisible(true);
-                    } else if (lim.getAuthority().equals(authority.ACCOUNTANT)) {
+                    } else if (lim.getAuthority().equals(Authority.ACCOUNTANT)) {//财务人员
                         financeFrame ff = new financeFrame();
                         //ff.setClose();
-                        ff.setVisible(true);
-                    } else {
-                        ;
+                        ff.setVisible(true);}
+                    else if (lim.getAuthority().equals(Authority.ACCOUNTANT_HIGH)) {//高级财务人员
+                            financeFrame ff = new financeFrame();
+                            //ff.setClose();
+                            ff.setVisible(true);
+                    } else if (lim.getAuthority().equals(Authority.SYSTEM_MANAGER)){//系统管理员
+                            SystemUser ff = new SystemUser(lim);
+                            //ff.setClose();
+                            ff.setVisible(true);
                     }
                     dispose();
-
 
                 } else {
                     red.setVisible(true);

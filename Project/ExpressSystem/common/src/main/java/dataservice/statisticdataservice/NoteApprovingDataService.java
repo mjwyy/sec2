@@ -21,8 +21,9 @@ public interface NoteApprovingDataService extends Remote, Serializable {
 	/**
      * 获取所有待审批单据
      * @return 待审批的所有单据信息
+     * @throws RemoteException 将会在这里封装错误信息，注意处理
      */
-    public ArrayList<ApproveNote> getNotes();
+    public ArrayList<ApproveNote> getNotes() throws RemoteException;
     
     /**
      * 搭配getNotes使用的接受审批结果的接口，将会登记审批结果

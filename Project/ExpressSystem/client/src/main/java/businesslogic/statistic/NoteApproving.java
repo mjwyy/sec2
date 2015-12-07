@@ -29,8 +29,16 @@ public class NoteApproving implements NoteApprovingBLService {
 
 	@Override
 	public ArrayList<ApproveNote> getNotes() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		ArrayList<ApproveNote> result = null;
+		
+		try {
+			result = dataService.getNotes();
+		} catch (RemoteException e) {
+			
+		}
+		
+		return result;
 	}
 
 	@Override

@@ -2,6 +2,8 @@ package util;
 
 import java.io.Serializable;
 
+import util.enums.NoteType;
+
 public class ApproveNote implements Serializable{
 
 	private static final long serialVersionUID = -2251198382973115232L;
@@ -24,6 +26,10 @@ public class ApproveNote implements Serializable{
 		return isPass;
 	}
 
+	/**
+	 * 设置单据审批结果
+	 * @param isPass 单据审批结果（通过或不通过）
+	 */
 	public void setPass(boolean isPass) {
 		this.isPass = isPass;
 	}
@@ -31,11 +37,19 @@ public class ApproveNote implements Serializable{
 	public String getRejectionMessage() {
 		return rejectionMessage;
 	}
-
+	
+	/**
+	 * 设置审批意见（仅当不通过时调用）
+	 * @param rejectionMessage 审批不通过的意见
+	 */
 	public void setRejectionMessage(String rejectionMessage) {
 		this.rejectionMessage = rejectionMessage;
 	}
 
+	/**
+	 * 此接口不建议界面使用，因为不具有业务价值
+	 * @return 单据唯一辨识ID
+	 */
 	public String getId() {
 		return id;
 	}

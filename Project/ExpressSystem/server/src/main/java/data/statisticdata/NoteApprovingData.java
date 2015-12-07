@@ -35,8 +35,9 @@ public class NoteApprovingData extends UnicastRemoteObject implements NoteApprov
 
 	@Override
 	public ArrayList<ApproveNote> getNotes() {
-		// TODO Auto-generated method stub
 		return null;
+		
+		
 	}
 
 	@Override

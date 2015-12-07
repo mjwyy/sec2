@@ -110,15 +110,15 @@ public class FormatCheck {
 
     /**
      * 7检查输入是否是合法的中转中心
-     * 营业厅编号格式为“025城市编码+0中转中心+000鼓楼营业厅”
+     * 营业厅编号格式为“025城市编码+0营业厅+00鼓楼中转中心”。
      *
      * @param str
      * @return
      */
     public static ResultMsg isTransitCenterNumber(String str) {
-        String trueExpression = "\\d{3}0\\d{3}";
+        String trueExpression = "\\d{3}0\\d{2}";
         return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
-                new ResultMsg(false,"中转中心编号格式错误,应为7位数字:3位城市编码+0代表中转中心+3位营业厅编码");
+                new ResultMsg(false,"中转中心编号格式错误,应为7位数字:3位城市编码+0代表中转中心+2位中转中心编码");
     }
     
     /**
@@ -472,9 +472,9 @@ public class FormatCheck {
     }
 
     public static ResultMsg isFlightNumber(String flightNumber) {
-        String trueExpression = "";
+        String trueExpression = "^[A-Z]+\\d+";
         return Pattern.matches(trueExpression,flightNumber)? new ResultMsg(true) :
-                new ResultMsg(false,"航班号格式错误,应为");
+                new ResultMsg(false,"航班号格式错误,应为大写字母加数字,如CA6300");
     }
 
     public static ResultMsg isUserAccount(String account) {
@@ -500,4 +500,11 @@ public class FormatCheck {
         return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
                 new ResultMsg(false,"机构编号格式错误,应为7位数字:3位城市编码+0或1+3位编码");
 	}
+
+    public static ResultMsg isTrainNumber(String transportationNumber) {
+        String trueExpression = "(^[A-Z]+)?\\d+";
+        return Pattern.matches(trueExpression,transportationNumber)? new ResultMsg(true) :
+                new ResultMsg(false,"火车车次格式错误,应为字母(可无)加数字,如G7291");
+    }
+
 }

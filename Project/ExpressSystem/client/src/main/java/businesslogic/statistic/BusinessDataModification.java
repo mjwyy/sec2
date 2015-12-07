@@ -16,6 +16,8 @@ import java.sql.SQLException;
  */
 public class BusinessDataModification implements BusinessDataModificationBLService {
 
+    //TODO 价格与距离没有查询接口
+
     private BusinessDataModificationDataService dataService;
 
     private DistancePO distancePO;

@@ -25,11 +25,14 @@ public class TimePresumeStrategy {
 
         //获取当前系统时间
         Date startDay = new Date();
-
         //预测时间业务逻辑
-        double time = distance/50 * 60 * 60 * 1000;
+        double time = distance/30 * 60 * 60 * 1000;
+        //同一城市内保证一天到达
+        if(deliveryInfo.getCity1().equals(deliveryInfo.getCity2())){
+            time = 24 * 60 * 60 * 1000;
+        }
         if (category == DeliverCategory.EXPRESS)
-            time = time/2;
+            time = time/1.5;
         else if (category == DeliverCategory.ECNOMIC)
             time = time*1.5;
 

@@ -25,7 +25,7 @@ public interface BusinessDataModificationDataService extends Remote, Serializabl
      * @throws RemoteException
      * @throws InterruptWithExistedElementException
      */
-    public boolean addCity(String name)
+    boolean addCity(String name)
             throws RemoteException, InterruptWithExistedElementException;
 
     /**
@@ -34,7 +34,7 @@ public interface BusinessDataModificationDataService extends Remote, Serializabl
      * @return
      * @throws RemoteException
      */
-    public ArrayList<String> getAllCities()
+    ArrayList<String> getAllCities()
             throws RemoteException;
 
     /**
@@ -46,7 +46,7 @@ public interface BusinessDataModificationDataService extends Remote, Serializabl
      * @throws RemoteException
      * @throws ElementNotFoundException
      */
-    public boolean setPrice(PriceType name, double price)
+    boolean setPrice(PriceType name, double price)
             throws RemoteException, ElementNotFoundException;
 
     /**
@@ -57,7 +57,7 @@ public interface BusinessDataModificationDataService extends Remote, Serializabl
      * @throws RemoteException
      * @throws ElementNotFoundException
      */
-    public double getPrice(PriceType name)
+    double getPrice(PriceType name)
             throws RemoteException, ElementNotFoundException;
 
 
@@ -69,7 +69,7 @@ public interface BusinessDataModificationDataService extends Remote, Serializabl
      * @throws RemoteException
      * @throws ElementNotFoundException
      */
-    public boolean setDistance(DistancePO distancePO)
+    boolean setDistance(DistancePO distancePO)
             throws RemoteException, ElementNotFoundException;
 
     /**
@@ -82,6 +82,6 @@ public interface BusinessDataModificationDataService extends Remote, Serializabl
      * @throws RemoteException
      * @throws ElementNotFoundException
      */
-    public double getDistance(String city1, String city2)
+    double getDistance(String city1, String city2)
             throws RemoteException, ElementNotFoundException;
 }

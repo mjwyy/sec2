@@ -166,8 +166,13 @@ public class TransitNoteOnTransitVO extends NoteVO {
         ResultMsg results[] = new ResultMsg[8];
         results[0] = FormatCheck.isDate(this.date);
         results[1] = FormatCheck.isTransitNoteNumber(this.transitDocNumber);
-        //TODO 航班号,或者火车车次号,或者汽运编号
-        results[2] = new ResultMsg(true);
+        if(this.transitType == TransitType.Aircraft){
+            results[2] = FormatCheck.isFlightNumber(this.transportationNumber);
+        }else if(this.transitType == TransitType.Car){
+            results[2] = FormatCheck.isTrainNumber(this.transportationNumber);
+        }else {
+            results[2] = FormatCheck.isCenterLoadNumber(this.transportationNumber);
+        }
         results[3] = new ResultMsg(true);
         results[4] = FormatCheck.isCity(this.desitination);
         results[5] = FormatCheck.isCity(this.departurePlace);

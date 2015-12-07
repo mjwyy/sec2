@@ -63,6 +63,8 @@ public class ArrivalNoteOnService implements ArrivalNoteOnServiceBLService {
     public ResultMsg submitHallDeliverDoc(DeliverNoteOnServiceVO deliverDocVO) {
         try {
             this.deliverNoteOnServicePO = deliverDocVO.toPO();
+            this.deliverNoteOnServicePO.setOrganization(deliverDocVO.getOrganization());
+            this.deliverNoteOnServicePO.setUserName(deliverDocVO.getUserName());
             return this.dataService.insertDeliverNote(this.deliverNoteOnServicePO);
         } catch (RemoteException e) {
             e.printStackTrace();

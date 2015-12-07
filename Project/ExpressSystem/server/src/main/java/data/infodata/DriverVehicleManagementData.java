@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PipedOutputStream;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,7 +26,7 @@ import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.infodataservice.DriverVehicleManagementDataService;
 import dataservice.infodataservice.StaffOrganizationManagementDataService;
 
-public class DriverVehicleManagementData implements DriverVehicleManagementDataService{
+public class DriverVehicleManagementData extends UnicastRemoteObject implements DriverVehicleManagementDataService{
 
     /**
      *

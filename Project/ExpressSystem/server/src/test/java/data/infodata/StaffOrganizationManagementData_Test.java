@@ -31,8 +31,6 @@ public class StaffOrganizationManagementData_Test {
             assertEquals(dataService.addOrganization(po),true);
         } catch (RemoteException e) {
             e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
         } catch (InterruptWithExistedElementException e) {
             e.printStackTrace();
         }

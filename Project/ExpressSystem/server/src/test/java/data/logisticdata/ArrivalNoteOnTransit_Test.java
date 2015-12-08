@@ -1,16 +1,14 @@
 package data.logisticdata;
 
-import static org.junit.Assert.*;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import org.junit.Test;
 
-import data.logisticdata.MockObject.MockArrivalNoteOnTransit;
-import dataservice.logisticdataservice.ArrivalNoteOnTransitDataService;
 import po.ArrivalNoteOnTransitPO;
 import util.BarcodeAndState;
 import util.enums.GoodsState;
@@ -26,8 +24,8 @@ public class ArrivalNoteOnTransit_Test {
         service = new ArrivalNoteOnTransitData();
     }
 
-    @Test
-    public void testInsert() throws RemoteException, SQLException, ElementNotFoundException {
+//    @Test
+    public void testInsert() throws RemoteException, SQLException, ElementNotFoundException, InterruptWithExistedElementException {
         BarcodeAndState bar=new BarcodeAndState("0123456789",GoodsState.COMPLETE);
     	BarcodeAndState bar2=new BarcodeAndState("0123456790",GoodsState.COMPLETE);
     	BarcodeAndState bar3=new BarcodeAndState("0123456790",GoodsState.COMPLETE);

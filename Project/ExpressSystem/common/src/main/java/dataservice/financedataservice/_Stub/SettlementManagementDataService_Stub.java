@@ -11,7 +11,7 @@ import po.IncomeNotePO;
 
 public class SettlementManagementDataService_Stub implements SettlementManagementDataService {
 
-	public boolean addIncomeNote(IncomeNotePO note) throws RemoteException {
+	public boolean addIncomeNote(IncomeNotePO note, String staffID) throws RemoteException {
 		System.out.println("add income note sucess");
 		return true;
 	}

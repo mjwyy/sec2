@@ -5,6 +5,8 @@ import connection.RemoteObjectGetter;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.statisticdataservice.NoteApprovingDataService;
 import po.NotePO;
+import util.ApproveNote;
+import util.ResultMsg;
 import util.enums.DocType;
 import vo.*;
 
@@ -19,83 +21,53 @@ public class NoteApproving implements NoteApprovingBLService {
 
     private NoteApprovingDataService dataService;
 
+    private ArrayList<ApproveNote> tempStorage = null;
+    
     public NoteApproving() {
         RemoteObjectGetter getter = new RemoteObjectGetter();
         this.dataService =
                 (NoteApprovingDataService)getter.getObjectByName("NoteApprovingDataService");
     }
 
-    @Override
-    public ArrayList<ArrivalNoteOnServiceVO> getArrivalNoteOnServiceVO() {
-        return null;
-    }
+	@Override
+	public ArrayList<ApproveNote> getNotes() throws Exception{
+		
+		ArrayList<ApproveNote> result = null;
+		
+		try {
+			result = dataService.getNotes();
+			tempStorage = result;
+		} catch (RemoteException e) {
+			throw e;
+		}
+		
+		return result;
+	}
 
-    @Override
-    public ArrayList<DeliverNoteOnServiceVO> getDeliverNoteOnServiceVO() {
-        return null;
-    }
+	@Override
+	public ResultMsg pushResults(ArrayList<ApproveNote> results) throws Exception {
+		assert results!=null;
+		
+		if(tempStorage==null) {
+			return new ResultMsg(false, "尚未获取过待审批单据！");
+		}
 
-    @Override
-    public ArrayList<ArrivalNoteOnTransitVO> getArrivalNoteOnTransitVO() {
-        return null;
-    }
+		for(ApproveNote note:results) {
+			if( !note.isPass() && note.getRejectionMessage()==null ) {
+				return new ResultMsg(false, note.getType()+":"+note.getInfo()+"未填写审批意见！");
+			}
+		}
+		
+		ResultMsg msg = new ResultMsg(true);
+		
+		try {
+			msg = dataService.pushResults(results);
+		} catch (RemoteException e) {
+			throw e;
+		}
+		
+		return msg;
+	}
 
-    @Override
-    public ArrayList<DeliveryNoteVO> getDeliveryNoteVO() {
-        return null;
-    }
-
-    @Override
-    public ArrayList<LoadNoteOnServiceVO> getLoadNoteOnServiceVO() {
-        return null;
-    }
-
-    @Override
-    public ArrayList<LoadNoteOnTransitVO> getLoadNoteOnTransitVO() {
-        return null;
-    }
-
-    @Override
-    public ArrayList<ReceivingNoteVO> getReceivingNoteVO() {
-        return null;
-    }
-
-    @Override
-    public ArrayList<TransitNoteOnTransitVO> getTransitNoteVO() {
-        return null;
-    }
-
-    @Override
-    public void passAllDoc() {
-        ArrayList<NoteVO> noteVOArrayList = this.getAllDoc();
-        for (NoteVO vo:noteVOArrayList)
-            this.passDoc(vo);
-    }
-
-    @Override
-    public void passDoc(NoteVO docVO) {
-        try {
-            dataService.passDoc(docVO.toPO());
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        } catch (ElementNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void inputAdvice(NoteVO docVO, String advice) {
-        try {
-            dataService.failDoc(docVO.toPO(),advice);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        } catch (ElementNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public ArrayList<NoteVO> getAllDoc() {
-        return null;
-    }
+   
 }

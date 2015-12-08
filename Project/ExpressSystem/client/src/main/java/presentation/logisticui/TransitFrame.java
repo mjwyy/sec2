@@ -39,6 +39,7 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 import presentation.mainui.loginFrame;
 import presentation.util.welcomPanel;
+import util.LogInMsg;
 import vo.ArrivalNoteOnTransitVO;
 import vo.LoadNoteOnTransitVO;
 import vo.TransitNoteOnTransitVO;
@@ -54,6 +55,8 @@ public class TransitFrame extends JFrame {
     private ArrivalNoteOnTransitVO arrivalNoteOnTransitVO;
     private LoadNoteOnTransitVO loadNoteOnTransitVO;
     private TransitNoteOnTransitVO transitNoteOnTransitVO;
+    private LogInMsg  lim;
+    private String userInfo;
     
 	/**
 	 * 窗口宽度
@@ -71,9 +74,9 @@ public class TransitFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TransitFrame.changeLook();
-					TransitFrame frame = new TransitFrame();
-					frame.setVisible(true);
+					//TransitFrame.changeLook();
+					//TransitFrame frame = new TransitFrame();
+					//frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -109,12 +112,14 @@ public class TransitFrame extends JFrame {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				super.windowClosing(e);
-				int result = JOptionPane.showConfirmDialog(TransitFrame.this, "确认退出？","系统提示",
+				int result = JOptionPane.showConfirmDialog( TransitFrame.this, "确认退出？","系统提示",
 						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 				if(result == JOptionPane.YES_OPTION) {
-					System.exit(0);
+					dispose();
+					loginFrame lf = new loginFrame();
+					lf.setVisible(true);
 				} else {
-					return;
+					setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 				}
 			}
 		});
@@ -123,11 +128,9 @@ public class TransitFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TransitFrame() {
+	public TransitFrame( LogInMsg logInMsg ) {
 		setResizable(false);
-		setBackground(new Color(153, 204, 255));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1280, 720);
+		lim = logInMsg;
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -142,7 +145,7 @@ public class TransitFrame extends JFrame {
 		int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
 		int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
 		this.setLocation((screenWidth-WIDTH)>>1, (screenHeight-HEIGHT)>>1);
-		
+		setClose();
 		bankpanel = new JPanel();
 		bankpanel.setBounds(138, 125, 1152, 446);
 		contentPane.add(bankpanel);
@@ -189,19 +192,21 @@ public class TransitFrame extends JFrame {
 		JMenu mnf = new JMenu("功能（F）");
 		menuBar.add(mnf);
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new EtchedBorder(EtchedBorder.RAISED, Color.LIGHT_GRAY, Color.GRAY));
+		userInfo = "姓名："+lim.getUserName()+"\n"+"机构"+lim.getOrganization()+"\n"+"权限"+lim.getAuthority();
+		JPanel panel_2 = new JPanel(){
+			public void paintComponent(Graphics g) {
+				 super.paintComponent(g);
+				 g.drawString(userInfo, 0, 50);
+				}
+				};
+	
 		panel_2.setBounds(0, 570, 350, 124);
+		panel_2.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 		contentPane.add(panel_2);
-		panel_2.setLayout(null);
 		
-		JLabel label = new JLabel("系统公告");
-		label.setBounds(16, 6, 52, 16);
-		panel_2.add(label);
+	
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(16, 106, 61, 16);
-		panel_2.add(lblNewLabel);
+		
 		
 		JPanel approve = new JPanel();
 		approve.setBounds(347, 570, 933, 124);
@@ -224,10 +229,11 @@ public class TransitFrame extends JFrame {
 		button_2.setVisible(false);
 		approve.add(button_2);
 		
+		
 		JButton btnNewButton = new JButton("录入到达单");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ArrivalNoteOnTransitPanel anot = new ArrivalNoteOnTransitPanel(){
+				ArrivalNoteOnTransitPanel anot = new ArrivalNoteOnTransitPanel(lim){
 					public void paintComponent(Graphics g) {
 						 super.paintComponent(g);
 						 ImageIcon img = new ImageIcon("image/0111.jpg");
@@ -236,7 +242,7 @@ public class TransitFrame extends JFrame {
 					      ((Graphics2D)g).setStroke(new BasicStroke(lineWidth));
 					      g.drawLine(768, 0, 768, 500);
 						}
-						}; 
+						}; 					
 				anot.setBounds(0, 0, 1152, 446);
 				bankpanel.removeAll();
 				bankpanel.add(anot);
@@ -247,10 +253,11 @@ public class TransitFrame extends JFrame {
 		btnNewButton.setBounds(0, 123, 140, 152);
 		contentPane.add(btnNewButton);
 		
+		
 		JButton btnNewButton_1 = new JButton("录入中转单");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			TransitNoteInputPanel tni = new TransitNoteInputPanel(){
+			TransitNoteInputPanel tni = new TransitNoteInputPanel( lim){
 				public void paintComponent(Graphics g) {
 					 super.paintComponent(g);
 					 ImageIcon img = new ImageIcon("image/0111.jpg");
@@ -273,7 +280,7 @@ public class TransitFrame extends JFrame {
 		JButton btnNewButton_2 = new JButton("录入装车单");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				LoadNoteOnTransitPanel lnot = new LoadNoteOnTransitPanel(){
+				LoadNoteOnTransitPanel lnot = new LoadNoteOnTransitPanel( lim){
 					public void paintComponent(Graphics g) {
 						 super.paintComponent(g);
 						 ImageIcon img = new ImageIcon("image/0111.jpg");

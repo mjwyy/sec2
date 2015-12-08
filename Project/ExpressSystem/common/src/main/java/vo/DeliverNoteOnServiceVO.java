@@ -77,6 +77,7 @@ public class DeliverNoteOnServiceVO extends NoteVO {
                 return results[i];
             }
         }
+        System.out.println(result.getMessage());
         return result;
     }
 

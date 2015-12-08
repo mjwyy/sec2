@@ -1,6 +1,7 @@
 package dataservice.logisticdataservice._Driver;
 
 import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.logisticdataservice.LoadNoteOnTransitDataService;
 import dataservice.logisticdataservice._Stub.LoadNoteOnTransitDataService_Stub;
 import po.LoadNoteOnTransitPO;
@@ -14,13 +15,13 @@ import java.util.ArrayList;
  */
 public class LoadNoteOnTransitDataService_Driver {
 
-    public static void main(String[] args) throws RemoteException, SQLException, ElementNotFoundException {
+    public static void main(String[] args) throws RemoteException, SQLException, ElementNotFoundException, InterruptWithExistedElementException {
         LoadNoteOnTransitDataService service = new LoadNoteOnTransitDataService_Stub();
         LoadNoteOnTransitDataService_Driver driver = new LoadNoteOnTransitDataService_Driver();
         driver.drive(service);
     }
 
-    public void drive(LoadNoteOnTransitDataService service) throws RemoteException, SQLException, ElementNotFoundException {
+    public void drive(LoadNoteOnTransitDataService service) throws RemoteException, SQLException, ElementNotFoundException, InterruptWithExistedElementException {
         ArrayList<String> codes = new ArrayList<String>();
         codes.add("0000000004");
         codes.add("0000000005");
@@ -37,10 +38,18 @@ public class LoadNoteOnTransitDataService_Driver {
         	System.out.println("insert succeed");
         else
         	System.out.println("insert failed");
-        if(service.insert(po2).isPass())
-        	System.out.println("insert succeed");
-        else
-        	System.out.println("insert failed");
+        try {
+            if(service.insert(po2).isPass())
+                System.out.println("insert succeed");
+            else
+                System.out.println("insert failed");
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        } catch (ElementNotFoundException e) {
+            e.printStackTrace();
+        } catch (InterruptWithExistedElementException e) {
+            e.printStackTrace();
+        }
 
     }
 

@@ -1,24 +1,29 @@
 package businesslogicservice.statisticblservice._driver;
 
+import businesslogic.statistic.ChartOutput;
 import businesslogicservice.statisticblservice.ChartOutputBLService;
+import connection.RMIHelper;
+import util.ResultMsg;
 import util.enums.ChartType;
+import vo.ChartVO;
+
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 
 public class ChartOutputBLService_Driver {
 
+    public static void main(String[] args) throws RemoteException, NotBoundException {
+        RMIHelper.tryConnect();
+        ChartOutputBLService_Driver driver = new ChartOutputBLService_Driver();
+        ChartOutputBLService service = new ChartOutput();
+        driver.drive(service);
+    }
+
 
 	public void drive(ChartOutputBLService service){
-		if(service.enquiryChart(ChartType.BUSINESS_STAT_CHART, "2015-10-22", "2015-11-1").isPass()){
-			System.out.println("Passed");
-		}else{
-			System.out.println("Failed");
-		}
-		
-		if(service.getChartVO(ChartType.BUSINESS_STAT_CHART, "2015-10-22", "2015-11-1")!=null){
-			System.out.println("Got chartVO");
-		}else{
-			System.out.println("Null return");
-		}
-
-		
-	}
+        ChartVO chartVO = service.getChartVO(
+                ChartType.BUSINESS_STAT_CHART,  "2015-12-20", "2015-12-30");
+       ResultMsg msg =  service.exportChart(chartVO,"/Users/kylin/Documents/");
+        System.out.println(msg.getMessage());
+    }
 }

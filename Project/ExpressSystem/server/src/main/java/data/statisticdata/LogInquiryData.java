@@ -4,6 +4,7 @@ package data.statisticdata;
  * @date 2015/11/14
  */
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,14 +16,14 @@ import data.database.DatabaseManager;
 import po.LogEntryPO;
 import dataservice.statisticdataservice.LogInquiryDataService;
 
-public class LogInquiryData implements LogInquiryDataService{
+public class LogInquiryData extends UnicastRemoteObject implements LogInquiryDataService{
 
-    public LogInquiryData() {
+    public LogInquiryData() throws RemoteException {
         super();
     }
     @Override
     public ArrayList<LogEntryPO> findLogEntries(String time, ArrayList<String> keyword)
-            throws RemoteException, SQLException {
+            throws RemoteException {
         Connection connection = DatabaseManager.getConnection();
         //Constructing sql statement
         StringBuilder sb = new StringBuilder();
@@ -41,15 +42,18 @@ public class LogInquiryData implements LogInquiryDataService{
         }
 
         String sqlInsert = sb.toString();
-        PreparedStatement statement = connection.prepareStatement(sqlInsert);
-
-        ResultSet resultSet = statement.executeQuery();
-
+        PreparedStatement statement = null;
         ArrayList<LogEntryPO> result = new ArrayList<>();
-        while (resultSet.next()) {
-            result.add(new LogEntryPO(resultSet.getString("time"), resultSet.getString("log")));
+        try {
+            statement = connection.prepareStatement(sqlInsert);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                result.add(new LogEntryPO(resultSet.getString("time"), resultSet.getString("log")));
+            }
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        statement.close();
         return result;
     }
 

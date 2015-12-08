@@ -31,4 +31,12 @@ public enum PriceType {
     public String toString() {
         return this.type;
     }
+
+    public static PriceType getPriceType(String type) {
+        for(PriceType packageType : values()){
+            if(packageType.toString().equals(type) )
+                return packageType;
+        }
+        return null;
+    }
 }

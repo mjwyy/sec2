@@ -25,8 +25,10 @@ import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 
+import util.LogInMsg;
 import util.ResultMsg;
 import vo.LoadNoteOnServiceVO;
+import businesslogic.logistic.LoadNoteOnService;
 import businesslogicservice.logisticblservice.LoadNoteOnServiceBLService;
 import businesslogicservice.logisticblservice._Stub.LoadNoteOnServiceBLService_Stub;
 
@@ -34,8 +36,10 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+import presentation.util.CurrentTime;
+
 public class LoadCarOrder extends JPanel {
-	LoadNoteOnServiceBLService load=new LoadNoteOnServiceBLService_Stub();
+    LoadNoteOnServiceBLService load;
 	private JTextField data;
 	private JTextField service;
 	private JTextField to;
@@ -51,6 +55,7 @@ public class LoadCarOrder extends JPanel {
 	private JTextField scarcodef;
 	private JTextField supermanf;
 	private JTextField sendmanf;
+	private LogInMsg lim;
 	private ArrayList<String> barcodes=new  ArrayList<String> ();
 	/**
 	 * 窗口宽度
@@ -74,7 +79,12 @@ public class LoadCarOrder extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public LoadCarOrder() {
+	public LoadCarOrder(LogInMsg lim) {
+        if(IsDebug.IsDebug){
+            load=new LoadNoteOnServiceBLService_Stub();
+        }else
+             load=new LoadNoteOnService();
+		this.lim=lim;
 		setSize(WIDTH,HEIGHT);
 		setBackground(Color.WHITE);
 		setLayout(null);
@@ -215,7 +225,7 @@ public class LoadCarOrder extends JPanel {
 		 label_7.setBounds(WIDTHL, 10, 54, 15);
 		 add(label_7);
 
-		 dataf = new JTextField();
+		 dataf = new JTextField(CurrentTime.getCurrentTimeDate());
 		 dataf.setBounds(880, 7, 101, 28);
 		 add(dataf);
 		 dataf.setColumns(10);
@@ -369,6 +379,7 @@ public class LoadCarOrder extends JPanel {
 				barcodes.add(cc);
 			}
 			vo=new LoadNoteOnServiceVO (data.getText(),service.getText(),car.getText(),to.getText(),scar.getText(),superman.getText(),senderman.getText(),barcodes);
+			vo.setUserName(lim.getUserName());
 			int result = JOptionPane.showConfirmDialog(null, "确认提交审批？","系统提示",
 					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 			if(result == JOptionPane.YES_OPTION) {

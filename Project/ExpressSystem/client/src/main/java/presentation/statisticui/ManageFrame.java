@@ -1,10 +1,9 @@
 package presentation.statisticui;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
+import java.awt.BasicStroke;
 import java.awt.EventQueue;
-import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -16,17 +15,18 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.JButton;
 import javax.swing.JMenuItem;
 
-import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
-
-import presentation.logisticui.TransitFrame;
+import presentation.financeui.ChartOutPutPanel;
+import presentation.financeui.SystemLogPanel;
+import presentation.infoui.StaffManagementPanel;
+import presentation.mainui.ManageorgPanel;
 import presentation.mainui.loginFrame;
 import presentation.util.welcomPanel;
+import util.LogInMsg;
 
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
@@ -37,6 +37,7 @@ public class ManageFrame extends JFrame {
 	private JPanel contentPane;
 	private JPanel bankpanel;
     private JPanel welcome;
+
 	/**
 	 * 窗口宽度
 	 */
@@ -49,41 +50,20 @@ public class ManageFrame extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					changeFont();
-					changeLook();
-					ManageFrame frame = new ManageFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	private static void changeFont() {
-		Font font = new Font("微软雅黑", Font.PLAIN, 15);   
-		@SuppressWarnings("rawtypes")
-		java.util.Enumeration keys = UIManager.getDefaults().keys();   
-		while (keys.hasMoreElements()) {
-			Object key = keys.nextElement();   
-		    Object value = UIManager.get(key);    
-		    if (value instanceof javax.swing.plaf.FontUIResource) {
-		    	UIManager.put(key, font);     
-		    } 
-		} 
-	}
-	private static void changeLook() {
-	    try {
-	    	BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.translucencySmallShadow;
-	        org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
-	        // 关闭右上角设置
-	       UIManager.put("RootPane.setupButtonVisible", false);
-	    } catch(Exception e) {
-	    }
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//                    LogInMsg lim;
+//                    ManageFrame frame = new ManageFrame(lim);
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
+	
 	private  void setClose() {
 		this.addWindowListener(new WindowAdapter() {
 			@Override
@@ -104,8 +84,9 @@ public class ManageFrame extends JFrame {
 
 	/**
 	 * Create the frame.
-	 */
-	public ManageFrame() {
+     * @param lim
+     */
+	public ManageFrame(LogInMsg lim) {
 	
 		setResizable(false);
 		contentPane = new JPanel();
@@ -168,15 +149,14 @@ public class ManageFrame extends JFrame {
 		
 		JButton btnNewButton = new JButton("审批单据");
 		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				OrderApprove a=new OrderApprove();
+				a.setVisible(true);
 				welcome.removeAll();
 				welcome.add(a);
-				a.setVisible(true);
-				
-				repaint();
+				welcome.repaint();
 			}
-		});
+			});
 		btnNewButton.setBounds(0, 123, 140, 80);
 		contentPane.add(btnNewButton);
 		
@@ -191,20 +171,105 @@ public class ManageFrame extends JFrame {
 		menuBar_1.add(mnNewMenu_1);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("管理机构");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ManageorgPanel anot = new  ManageorgPanel(){
+					public void paintComponent(Graphics g) {
+						 super.paintComponent(g);
+						 ImageIcon img = new ImageIcon("image/0111.jpg");
+						 g.drawImage(img.getImage(), 0, 0, null);
+						 float lineWidth = 3.0f;
+					      ((Graphics2D)g).setStroke(new BasicStroke(lineWidth));
+					      g.drawLine(768, 0, 768, 500);
+						}
+						}; 
+				anot.setBounds(0, 0, 1152, 446);
+				bankpanel.removeAll();
+				bankpanel.add(anot);
+				bankpanel.repaint();
+			}
+		});
 		mnNewMenu_1.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("管理人员");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 StaffManagementPanel anot = new  StaffManagementPanel(){
+					public void paintComponent(Graphics g) {
+						 super.paintComponent(g);
+						 ImageIcon img = new ImageIcon("image/0111.jpg");
+						 g.drawImage(img.getImage(), 0, 0, null);
+						 float lineWidth = 3.0f;
+					      ((Graphics2D)g).setStroke(new BasicStroke(lineWidth));
+					      g.drawLine(768, 0, 768, 500);
+						}
+						}; 
+				anot.setBounds(0, 0, 1152, 446);
+				bankpanel.removeAll();
+				bankpanel.add(anot);
+				bankpanel.repaint();	
+			}
+			
+		});
 		mnNewMenu_1.add(mntmNewMenuItem_1);
 		
 		JButton btnNewButton_1 = new JButton("修改业务数据");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ModifyBusinessDataPanel anot = new  ModifyBusinessDataPanel(){
+						public void paintComponent(Graphics g) {
+							 super.paintComponent(g);
+							 ImageIcon img = new ImageIcon("image/0111.jpg");
+							 g.drawImage(img.getImage(), 0, 0, null);
+							 float lineWidth = 3.0f;
+						      ((Graphics2D)g).setStroke(new BasicStroke(lineWidth));
+						      g.drawLine(0, 233,1152 , 233);
+							}
+							}; 
+					anot.setBounds(0, 0, 1152, 446);
+					bankpanel.removeAll();
+					bankpanel.add(anot);
+					bankpanel.repaint();
+			}
+		});
 		btnNewButton_1.setBounds(0, 302, 140, 80);
 		contentPane.add(btnNewButton_1);
 		
 		JButton button = new JButton("查询系统日志");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SystemLogPanel anot = new SystemLogPanel(){
+						public void paintComponent(Graphics g) {
+							 super.paintComponent(g);
+							 ImageIcon img = new ImageIcon("image/0111.jpg");
+							 g.drawImage(img.getImage(), 0, 0, null);
+							}
+							}; 
+					anot.setBounds(0, 0, 1152, 446);
+					bankpanel.removeAll();
+					bankpanel.add(anot);
+					bankpanel.repaint();
+			}
+		});
 		button.setBounds(0, 389, 140, 80);
 		contentPane.add(button);
 		
 		JButton btnNewButton_2 = new JButton("获取统计报表");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ChartOutPutPanel anot = new ChartOutPutPanel(){
+					public void paintComponent(Graphics g) {
+						 super.paintComponent(g);
+						 ImageIcon img = new ImageIcon("image/0111.jpg");
+						 g.drawImage(img.getImage(), 0, 0, null);
+						}
+						}; 
+				anot.setBounds(0, 0, 1152, 446);
+				bankpanel.removeAll();
+				bankpanel.add(anot);
+				bankpanel.repaint();
+			}
+		});
 		btnNewButton_2.setBounds(0, 478, 140, 80);
 		contentPane.add(btnNewButton_2);
 	}

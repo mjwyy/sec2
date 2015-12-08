@@ -11,7 +11,7 @@ import dataservice.exception.FailToPassApprovingException;
 
 public class PaymentInputDataService_Stub implements PaymentInputDataService {
 
-	public boolean addPayment(PaymentPO payment) throws RemoteException,
+	public boolean addPayment(PaymentPO payment, String staffID) throws RemoteException,
 			FailToPassApprovingException {
 		System.out.println("add payment success");
 		return true;

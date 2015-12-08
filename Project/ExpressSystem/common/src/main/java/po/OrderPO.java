@@ -25,6 +25,17 @@ public class OrderPO implements Serializable {
      */
     GoodsState goodsState = null;
 
+    /**
+     * 货运历史的表示:
+     * 每条信息格式:时间,详细信息;
+     * 例如:
+     * 2015-12-12 13:20,仙林营业厅已收件;
+     * 2015-12-13 14:00 由中转中心发往营业厅;
+     * 2015-12-14 14:00 王二已签收;
+     * 每一条信息就是一个String
+     * 界面需要把每一个String按照,隔开
+     *
+     */
     private ArrayList<String> history;
 
     public OrderPO(String barcode, GoodsState goodsState, ArrayList<String> history) {

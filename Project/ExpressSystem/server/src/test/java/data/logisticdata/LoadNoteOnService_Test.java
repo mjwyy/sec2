@@ -2,6 +2,7 @@ package data.logisticdata;
 
 import data.logisticdata.MockObject.MockLoadNoteOnService;
 import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.logisticdataservice.LoadNoteOnServiceDataService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -24,8 +25,8 @@ public class LoadNoteOnService_Test {
         service = new LoadNoteOnServiceData();
     }
 
-    @Test
-    public void testInsert() throws RemoteException, SQLException, ElementNotFoundException {
+//    @Test
+    public void testInsert() throws RemoteException, SQLException, ElementNotFoundException, InterruptWithExistedElementException {
         ArrayList<String> bar = new ArrayList<String>();
         bar.add("1234567890");
         bar.add("1234567891");
@@ -34,5 +35,6 @@ public class LoadNoteOnService_Test {
                 "02510002015092100004", "北京", "025000000", "李明", "张三", bar);
         service.insert(po1);
     }
+
 
 }

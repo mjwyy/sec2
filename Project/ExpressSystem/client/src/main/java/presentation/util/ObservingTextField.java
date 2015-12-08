@@ -12,6 +12,6 @@ public class ObservingTextField extends JTextField implements Observer {
         DatePicker dp = (DatePicker) o;
         dp.formatDate(calendar, "yyyy-MM-dd");
         
-        setText(dp.formatDate(calendar));
+        setText(dp.formatDate(calendar,"yyyy-MM-dd"));
     }
 }

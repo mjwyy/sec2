@@ -6,6 +6,7 @@ import util.ResultMsg;
 import util.enums.TransitType;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -43,7 +44,7 @@ public class TransitNoteInputDataService_Stub implements TransitNoteInputDataSer
 		return null;
     }
 
-     
+
     public boolean delete(TransitNotePO po) throws RemoteException {
         System.out.println("delete succeed!");
 		return true;

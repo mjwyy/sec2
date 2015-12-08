@@ -1,5 +1,6 @@
 package vo;
 
+import util.chart.BusinessStateContent;
 import util.enums.ChartType;
 
 import java.util.ArrayList;
@@ -9,26 +10,18 @@ import java.util.ArrayList;
  */
 public class BusinessStateChartVO extends ChartVO{
 
-    private ArrayList<Double> profix;
-    private ArrayList<Double> growthRate;
+    private ArrayList<BusinessStateContent> contents;
 
-    public BusinessStateChartVO(String starttime, String endtime, ArrayList<Double> profix,
-                                ArrayList<Double> growthRate) {
+    public BusinessStateChartVO(String starttime, String endtime,ArrayList<BusinessStateContent> contents) {
         super(ChartType.BUSINESS_STAT_CHART,starttime,endtime);
-        this.profix = profix;
-        this.growthRate = growthRate;
+        this.contents = contents;
     }
 
     public BusinessStateChartVO(String starttime, String endtime){
         super(ChartType.BUSINESS_STAT_CHART,starttime,endtime);
     }
 
-    public ArrayList<Double> getProfix() {
-        return profix;
+    public ArrayList<BusinessStateContent> getContents() {
+        return contents;
     }
-
-    public ArrayList<Double> getGrowthRate() {
-        return growthRate;
-    }
-
 }

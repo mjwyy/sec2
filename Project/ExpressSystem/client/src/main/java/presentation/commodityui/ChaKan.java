@@ -26,6 +26,7 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
+import businesslogic.commodity.StorageInquiryPart;
 import businesslogicservice.commodityblservice.StorageInquiryPartBLService;
 import businesslogicservice.commodityblservice._Stub.StorageInquiryPartBLService_Stub;
 
@@ -33,6 +34,7 @@ import com.qt.datapicker.DatePicker;
 
 import presentation.util.CurrentTime;
 import presentation.util.ObservingTextField;
+import util.LogInMsg;
 import util.ResultMsg;
 import vo.CommodityGoodsVO;
 import vo.InventoryVO;
@@ -54,19 +56,22 @@ public class ChaKan extends JPanel {
 	private ObservingTextField endT;
 	private DefaultTableModel model;
 	private DefaultTableModel model1;
-	private JScrollPane scroll1;//详细
+	private JScrollPane scroll1;//详细.放commodityGoodsVO
 	private JScrollPane scroll;
 	private JPanel heji;//合计
 	private InventoryVO vo;//
-	private ArrayList<InventoryVO> ivo;
-	StorageInquiryPartBLService spb=new StorageInquiryPartBLService_Stub();
+	private InventoryVO ivo;
+	//StorageInquiryPartBLService spb=new StorageInquiryPartBLService_Stub();
+	StorageInquiryPartBLService spb=new StorageInquiryPart();
 	private JTextField inn;
 	private JTextField outn;
 	private JTextField mon;
+	private LogInMsg lim;
 	/**
 	 * Create the panel.
 	 */
-	public ChaKan() {
+	public ChaKan(LogInMsg lim) {
+		this.lim=lim;
 		setSize(1152,446);
 		setLayout(null);
 		intiComponent();
@@ -114,35 +119,35 @@ public class ChaKan extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 
 				if(table.isCellSelected(table.getSelectedRow(), table.getSelectedColumn())){
-if(table.getSelectedColumn()==4){
-	
-	scroll1.setVisible(true);
-	heji.setVisible(true);
-	//详细信息显示
-	if(ivo.isEmpty()){//为空
-		JOptionPane.showConfirmDialog(null, "木有什么可以看哒","系统提示",
-				JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-	return;
-	}
-	InventoryVO vv=ivo.get(table.getSelectedRow());
-	ArrayList<CommodityGoodsVO> goodsInfo=vv.getGoodsInfo();
-	for(int i=0;i<goodsInfo.size();i++){
-		CommodityGoodsVO v=goodsInfo.get(i);
+					if(table.getSelectedColumn()==4){
 
-		Object[] aa={		v.getBarcode(),v.getAreacode(),v.getDestination(),v.getRownumber(),v.getFramenumber(),v.getPlacenumber()};
-	model1.addRow(aa);
-	}
-}
+						scroll1.setVisible(true);
+						heji.setVisible(true);
+						//详细信息显示
+						if(ivo==null){//为空
+							JOptionPane.showConfirmDialog(null, "木有什么可以看哒","系统提示",
+									JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+							return;
+						}
+						InventoryVO vv=ivo;
+						ArrayList<CommodityGoodsVO> goodsInfo=vv.getGoodsInfo();
+						for(int i=0;i<goodsInfo.size();i++){
+							CommodityGoodsVO v=goodsInfo.get(i);
+
+							Object[] aa={		v.getBarcode(),v.getAreacode(),v.getDestination(),v.getRownumber(),v.getFramenumber(),v.getPlacenumber()};
+							model1.addRow(aa);
+						}
+					}
 
 				}
 			}
 		});
-		
-		
-		
-		
+
+
+
+
 		TableColumn goodColumn = table.getColumn("货物信息"); 
-	DefaultTableCellRenderer fontColor = new DefaultTableCellRenderer() {   
+		DefaultTableCellRenderer fontColor = new DefaultTableCellRenderer() {   
 
 			public void setValue(Object value) { //重写setValue方法，从而可以动态设置列单元字体颜色   
 				setForeground(Color.blue ); 
@@ -280,7 +285,7 @@ if(table.getSelectedColumn()==4){
 		end.setBounds(573, 6, 42, 24);
 		add(end);
 
-		 heji = new JPanel();
+		heji = new JPanel();
 		heji.setBounds(20, 217, 792, 49);
 		add(heji);
 		heji.setLayout(null);
@@ -288,29 +293,29 @@ if(table.getSelectedColumn()==4){
 		JLabel label_3 = new JLabel("合计：");
 		label_3.setBounds(10, 10, 53, 20);
 		heji.add(label_3);
-		
+
 		JLabel label_4 = new JLabel("总入库数量");
 		label_4.setBounds(47, 10, 87, 20);
 		heji.add(label_4);
-		
+
 		inn = new JTextField();
 		inn.setBounds(134, 7, 66, 28);
 		heji.add(inn);
 		inn.setColumns(10);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("总出库数量");
 		lblNewLabel_1.setBounds(238, 10, 75, 20);
 		heji.add(lblNewLabel_1);
-		
+
 		outn = new JTextField();
 		outn.setColumns(10);
 		outn.setBounds(315, 10, 66, 28);
 		heji.add(outn);
-		
+
 		JLabel lblNewLabel_2 = new JLabel("总金额");
 		lblNewLabel_2.setBounds(419, 13, 54, 20);
 		heji.add(lblNewLabel_2);
-		
+
 		mon = new JTextField();
 		mon.setColumns(10);
 		mon.setBounds(483, 10, 66, 28);
@@ -319,17 +324,16 @@ if(table.getSelectedColumn()==4){
 	} 
 	public class findListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			ResultMsg result=	spb.inputTime("20"+startT.getText()+" "+CurrentTime.second(), "20"+endT.getText()+" "+CurrentTime.second());
+			ResultMsg result=	spb.inputTime(startT.getText()+" "+CurrentTime.second(), endT.getText()+" "+CurrentTime.second());
 			if(result.isPass()){
-				System.out.println("sss");
-				ivo=spb.show("20"+startT.getText()+" "+CurrentTime.second(), "20"+endT.getText()+" "+CurrentTime.second());
+								ivo=spb.show(startT.getText()+" "+CurrentTime.second(), endT.getText()+" "+CurrentTime.second());
 				//把上面的tabel显示一下
 				scroll.setVisible(true);
 				int chu=0;
 				int ru=0;
 				int money=0;
-				for(int i=0;i<ivo.size();i++){
-					 vo=ivo.get(i);
+				
+					vo=ivo;
 					Object [] aaa={model.getRowCount()+1,vo.getOutNum(),vo.getInNum(),vo.getMoney(),"点击查看"};
 					model.addRow(aaa);
 					//算一下合计
@@ -337,21 +341,21 @@ if(table.getSelectedColumn()==4){
 					chu=chu+Integer.parseInt(vo.getOutNum()	);
 					ru=ru+Integer.parseInt(vo.getInNum()	);
 					money=money+Integer.parseInt(vo.getMoney()	);
-					}
+				
 				inn.setText(ru+"");
 				outn.setText(chu+"");
 				mon.setText(money+"");
 			}
-					else{
-						int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
-								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-					}
+			else{
+				int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
+						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+			}
 
-				}
-			}
-			public void paintComponent(Graphics g) {
-				super.paintComponents(g);
-				ImageIcon img = new ImageIcon("image/0111.jpg");
-				g.drawImage(img.getImage(), 0, 0, null);
-			}
 		}
+	}
+	public void paintComponent(Graphics g) {
+		super.paintComponents(g);
+		ImageIcon img = new ImageIcon("image/0111.jpg");
+		g.drawImage(img.getImage(), 0, 0, null);
+	}
+}

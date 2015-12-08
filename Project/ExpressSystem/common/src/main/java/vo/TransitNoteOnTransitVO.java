@@ -154,7 +154,43 @@ public class TransitNoteOnTransitVO extends NoteVO {
         this.price = price;
     }
     public NotePO toPO() {
-        return new TransitNotePO(this.date, this.transitDocNumber, this.transportationNumber, this.transitType,
-                this.departurePlace, this.desitination, this.supercargoMan, this.barcodes);
+        return new TransitNotePO(this.date, this.transitDocNumber,
+                this.transportationNumber, this.transitType,
+                this.departurePlace, this.desitination,
+                this.supercargoMan, this.barcodes);
+    }
+
+    @Override
+    public ResultMsg checkFormat() {
+        ResultMsg result = new ResultMsg(true);
+        ResultMsg results[] = new ResultMsg[8];
+        results[0] = FormatCheck.isDate(this.date);
+        results[1] = FormatCheck.isTransitNoteNumber(this.transitDocNumber);
+        if(this.transitType == TransitType.Aircraft){
+            results[2] = FormatCheck.isFlightNumber(this.transportationNumber);
+        }else if(this.transitType == TransitType.Car){
+            results[2] = FormatCheck.isCenterLoadNumber(this.transportationNumber);
+        }else {
+            results[2] = FormatCheck.isTrainNumber(this.transportationNumber);
+        }
+        results[3] = new ResultMsg(true);
+        results[4] = FormatCheck.isCity(this.desitination);
+        results[5] = FormatCheck.isCity(this.departurePlace);
+        results[6] = FormatCheck.isChineseName(this.supercargoMan);
+        ResultMsg barcodes;
+        results[7] = new ResultMsg(true);
+        for(BarcodesAndLocation barcodeAndState:this.barcodes){
+            barcodes = FormatCheck.isBarcode(barcodeAndState.getBarcode());
+            if(!barcodes.isPass()){
+                results[7] = barcodes;
+                break;
+            }
+        }
+        for (ResultMsg result1 : results) {
+            if (!result1.isPass()) {
+                return result1;
+            }
+        }
+        return result;
     }
 }

@@ -1,6 +1,7 @@
 package dataservice.logisticdataservice._Driver;
 
 import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.logisticdataservice.LoadNoteOnServiceDataService;
 import dataservice.logisticdataservice._Stub.LoadNoteOnServiceDataService_Stub;
 import po.LoadNoteOnServicePO;
@@ -14,13 +15,13 @@ import java.util.ArrayList;
  */
 public class LoadNoteOnServiceDataService_Driver {
 
-    public static void main(String[] args) throws RemoteException, SQLException, ElementNotFoundException {
+    public static void main(String[] args) throws RemoteException, SQLException, ElementNotFoundException, InterruptWithExistedElementException {
         LoadNoteOnServiceDataService service = new LoadNoteOnServiceDataService_Stub();
         LoadNoteOnServiceDataService_Driver driver = new LoadNoteOnServiceDataService_Driver();
         driver.drive(service);
     }
 
-    public void drive(LoadNoteOnServiceDataService service) throws RemoteException, SQLException, ElementNotFoundException {
+    public void drive(LoadNoteOnServiceDataService service) throws RemoteException, SQLException, ElementNotFoundException, InterruptWithExistedElementException {
         ArrayList<String> codes = new ArrayList<String>();
         codes.add("0000000004");
         codes.add("0000000005");

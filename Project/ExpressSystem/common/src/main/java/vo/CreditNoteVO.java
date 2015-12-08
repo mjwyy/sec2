@@ -34,7 +34,16 @@ public class CreditNoteVO {
 	 *条形码
 	 */
 	private ArrayList<String> barcode;
+	private String userName;
 	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
 	/**
 	 * 构造方法
 	 * @param date

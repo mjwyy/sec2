@@ -1,7 +1,9 @@
 package data.logisticdata;
 
+import data.database.DatabaseFactoryMysqlImpl;
 import data.logisticdata.MockObject.MockTransitNote;
 import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.logisticdataservice.TransitNoteInputDataService;
 import org.junit.Test;
 import po.TransitNotePO;
@@ -24,11 +26,11 @@ public class TransitNoteInput_Test {
     private TransitNoteInputDataService service;
 
     public TransitNoteInput_Test() throws RemoteException {
-        service = new TransitNoteInputData();
+        service = DatabaseFactoryMysqlImpl.getInstance().getTransitNoteInputDataService();
     }
 
-    @Test
-    public void testInsert() throws RemoteException, SQLException, ElementNotFoundException {
+//    @Test
+    public void testInsert() throws RemoteException, SQLException, ElementNotFoundException, InterruptWithExistedElementException {
         ArrayList<String> bar = new ArrayList<String>();
         bar.add("1234567890");
         ArrayList<BarcodesAndLocation> list = new ArrayList<BarcodesAndLocation>();
@@ -40,6 +42,13 @@ public class TransitNoteInput_Test {
                 "MF8190", TransitType.Aircraft, "北京",
                 "南京", "Tom", list);
         service.insert(po1);
+    }
+
+    @Test
+    public void testBarcodes() throws SQLException, RemoteException {
+        TransitNoteInputData data = new TransitNoteInputData();
+        ArrayList<BarcodesAndLocation> andLocations = data.getBarcodesAndLocation("1234567890,1,2,3,4;1234567890,1,2,3,4;");
+        System.out.println(andLocations.get(0).getLine());
     }
 
 }

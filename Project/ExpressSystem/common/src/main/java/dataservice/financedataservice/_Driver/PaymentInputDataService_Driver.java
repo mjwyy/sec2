@@ -20,8 +20,8 @@ public class PaymentInputDataService_Driver {
 	}
 	
 	public void drive(PaymentInputDataService paymentInputDataService) throws RemoteException, FailToPassApprovingException {
-		paymentInputDataService.addPayment(paymentPO);
-		if(paymentInputDataService.addPayment(paymentPO))
+		paymentInputDataService.addPayment(paymentPO, null);
+		if(paymentInputDataService.addPayment(paymentPO, null))
 			System.out.println("success");
 		else
 			System.out.println("fail");

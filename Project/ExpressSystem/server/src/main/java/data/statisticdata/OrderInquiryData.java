@@ -1,15 +1,19 @@
 package data.statisticdata;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 import data.database.DatabaseManager;
 import po.OrderPO;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.statisticdataservice.OrderInquiryDataService;
-import util.PresumedMsg;
 import util.enums.GoodsState;
 
 /**
@@ -19,44 +23,67 @@ import util.enums.GoodsState;
  * @date 2015/11/14
  *
  */
-public class OrderInquiryData implements OrderInquiryDataService{
+public class OrderInquiryData extends UnicastRemoteObject implements OrderInquiryDataService{
 
-	@Override
-	public OrderPO findOrder(String barcode) throws RemoteException,
-			ElementNotFoundException {
-		return null;
-	}
+    private static final long serialVersionUID = 72164956288888L;
 
-    public PresumedMsg insertOrderPO(OrderPO po) throws RemoteException, SQLException {
+    public OrderInquiryData() throws RemoteException {
+    }
+
+    @Override
+    public boolean insertOrderPO(String barcode, String info, double price) throws RemoteException {
         Connection connection = DatabaseManager.getConnection();
-        String sql = "insert into order( `barcode`, `stateOfTransport`, `history`) " +
-                "values (?,?,?)";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString(1, po.getBarcode());
-        statement.setString(2, po.getGoodsState().toString());
-        StringBuilder stringBuilder = new StringBuilder();
-        for (String history : po.getHistory()) {
-            stringBuilder.append(history);
-            stringBuilder.append(';');
+        String sql = "insert into `order` ( `history`, `stateOfTransport`, `barcode`,`money`) " +
+                "values (?,?,?,?)";
+        PreparedStatement statement = null;
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String currentTime = df.format(new Date());
+        System.out.println(info);
+        String msg = (currentTime+","+info+";");
+        int result = 0;
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, msg);
+            statement.setString(2, GoodsState.COMPLETE.toString());
+            statement.setString(3, barcode);
+            statement.setDouble(4, price);
+            result = statement.executeUpdate();
+            DatabaseManager.releaseConnection(connection, statement, null);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        statement.setString(3, stringBuilder.toString());
-        int result = statement.executeUpdate();
-        if (result < 0)
-            throw new SQLException();
-        //获取运费与预计到达日期
+        return result > 0;
+    }
 
+    @Override
+	public OrderPO findOrder(String barcode) throws RemoteException,
+            ElementNotFoundException {
+        Connection connection = DatabaseManager.getConnection();
+        String sql = "select `stateOfTransport`,`history` from `order` where `barcode` = '"+barcode+"'";
+        PreparedStatement statement = null;
+        OrderPO po;
+        try {
+            statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+            ArrayList<String> listHistory = new ArrayList<>();
+            if (resultSet.next()){
+                String stateOfTransport = resultSet.getString(1);
+                String history = resultSet.getString(2);
+                String[] historys = history.split(";");
+                for(String str:historys){
+                    listHistory.add(str);
+                }
+                po = new OrderPO(barcode,GoodsState.getGoodsState(stateOfTransport),listHistory);
+            }else
+                throw new ElementNotFoundException();
+            resultSet.close();
+            return po;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         DatabaseManager.releaseConnection(connection, statement, null);
         return null;
-    }
+	}
 
-    public OrderPO updateOrder(String barcode, GoodsState goodsState, String newMesg) throws RemoteException,
-            ElementNotFoundException {
-        return null;
-    }
-
-    public OrderPO deleteOrder(String barcode) throws RemoteException,
-            ElementNotFoundException {
-        return null;
-    }
 
 }

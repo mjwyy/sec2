@@ -1,7 +1,6 @@
 package businesslogicservice.logisticblservice;
 
 import util.ResultMsg;
-import util.SendDocMsg;
 import vo.DeliveryNoteVO;
 
 /**
@@ -26,6 +25,6 @@ public interface DeliveryNoteInputBLService {
 	 * @param sendDocVO 寄件单VO
 	 * @return 寄件报价、预计到达日期信息
 	 */
-    public SendDocMsg submitSendDoc(DeliveryNoteVO sendDocVO);
+    public ResultMsg submitSendDoc(DeliveryNoteVO sendDocVO);
 
 }

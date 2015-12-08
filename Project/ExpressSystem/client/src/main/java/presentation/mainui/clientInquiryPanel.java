@@ -73,7 +73,7 @@ public class clientInquiryPanel extends JPanel {
 		}else{
 			
 		for(int i = 0;i<history.size();i++){
-			String[] s = history.get(i).split(" ");
+			String[] s = history.get(i).split(",");
 			GoodsState state = vo.getStateOfTransport();
 			String historystate = s[1];
 			row.add(s[0]);

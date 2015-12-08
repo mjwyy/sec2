@@ -25,8 +25,8 @@ public interface BusinessDataModificationDataService extends Remote, Serializabl
      * @throws RemoteException
      * @throws InterruptWithExistedElementException
      */
-    public boolean addCity(String name)
-            throws RemoteException,InterruptWithExistedElementException;
+    boolean addCity(String name)
+            throws RemoteException, InterruptWithExistedElementException;
 
     /**
      * Data返回所有城市名
@@ -34,7 +34,7 @@ public interface BusinessDataModificationDataService extends Remote, Serializabl
      * @return
      * @throws RemoteException
      */
-    public ArrayList<String> getAllCities()
+    ArrayList<String> getAllCities()
             throws RemoteException;
 
     /**
@@ -46,8 +46,8 @@ public interface BusinessDataModificationDataService extends Remote, Serializabl
      * @throws RemoteException
      * @throws ElementNotFoundException
      */
-    public boolean setPrice(PriceType name, double price)
-            throws RemoteException, ElementNotFoundException, SQLException;
+    boolean setPrice(PriceType name, double price)
+            throws RemoteException, ElementNotFoundException;
 
     /**
      * Data返回对应的价格数值
@@ -57,8 +57,8 @@ public interface BusinessDataModificationDataService extends Remote, Serializabl
      * @throws RemoteException
      * @throws ElementNotFoundException
      */
-    public double getPrice(PriceType name)
-            throws RemoteException, ElementNotFoundException, SQLException;
+    double getPrice(PriceType name)
+            throws RemoteException, ElementNotFoundException;
 
 
     /**
@@ -69,8 +69,8 @@ public interface BusinessDataModificationDataService extends Remote, Serializabl
      * @throws RemoteException
      * @throws ElementNotFoundException
      */
-    public boolean setDistance(DistancePO distancePO)
-            throws RemoteException, ElementNotFoundException, SQLException;
+    boolean setDistance(DistancePO distancePO)
+            throws RemoteException, ElementNotFoundException;
 
     /**
      * Data返回两个城市对应距离数值
@@ -82,6 +82,6 @@ public interface BusinessDataModificationDataService extends Remote, Serializabl
      * @throws RemoteException
      * @throws ElementNotFoundException
      */
-    public double getDistance(String city1, String city2)
-            throws RemoteException, ElementNotFoundException, SQLException;
+    double getDistance(String city1, String city2)
+            throws RemoteException, ElementNotFoundException;
 }

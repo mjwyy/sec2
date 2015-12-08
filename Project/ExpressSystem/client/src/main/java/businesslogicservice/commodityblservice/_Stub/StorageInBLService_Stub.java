@@ -22,13 +22,17 @@ public class StorageInBLService_Stub implements StorageInBLService{
 
 //新增入库单
 	public ResultMsg addPutInStorgaeDoc(StorageInVO putInStorageVo) {
-		 ResultMsg msg = putInStorageVo.checkFormat();
-     	return msg;
+		if(putInStorageVo.getDate().equals("2015-11-11"))
+			return new ResultMsg(true,"输入的入库单格式正确");
+		else
+			return new ResultMsg(false,"输入的入库单格式不正确");
 	}
 //提交入库单
 	public ResultMsg submitPutInStorageDoc(StorageInVO putInStorageVo) {
-		 ResultMsg msg = putInStorageVo.checkFormat();
-     	return msg;
+		if(putInStorageVo.getDate().equals("2015-11-11"))
+			return new ResultMsg(true,"提交成功");
+		else
+			return new ResultMsg(false,"提交失败");
 	}
 
 	public InventoryStatus alarm() {

@@ -1,9 +1,13 @@
 package data.logisticdata;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import data.database.DatabaseManager;
+import data.logisticdata.barcode.BarcodeUtil;
+import data.statisticdata.LogInsHelper;
 import data.statisticdata.LogInsertData;
 import data.statisticdata.OrderInquiryData;
 import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.logisticdataservice.TransitNoteInputDataService;
 import po.TransitNotePO;
 import util.BarcodesAndLocation;
@@ -24,89 +28,104 @@ import java.util.ArrayList;
  */
 public class TransitNoteInputData extends NoteInputData implements TransitNoteInputDataService {
 
-    private LogInsertData logInsertData;
-    private OrderInquiryData orderDataService;
+    private BarcodeUtil barcodeUtil;
 
     public TransitNoteInputData() throws RemoteException {
+        barcodeUtil = new BarcodeUtil();
     }
 
     @Override
-    public ResultMsg insert(TransitNotePO po) throws RemoteException, SQLException, ElementNotFoundException {
+    public ResultMsg insert(TransitNotePO po) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException {
         String sql = "insert into `Express`.`note_transit`" +
                 " ( `barcodes`, `transitDocNumber`, `supercargoMan`, `departurePlace`, " +
                 "`transitType`, `date`, `desitination`, `transportNumber`)" +
                 " values ( ?, ?, ?, ?, ?, ?, ?, ?)";
         Connection connection = DatabaseManager.getConnection();
-        PreparedStatement statement = connection.prepareStatement(sql);
-        StringBuilder stringBuilder = new StringBuilder();
-        ArrayList<BarcodesAndLocation> barcodesAndLocationArrayList = po.getBarcodes();
-        for (BarcodesAndLocation barcodesAndLocation : barcodesAndLocationArrayList) {
-            stringBuilder.append(barcodesAndLocation.getBarcode());
-            stringBuilder.append(';');
+        PreparedStatement statement = null;
+        ResultMsg resultMsg = new ResultMsg(false);
+
+        try {
+            statement = connection.prepareStatement(sql);
+            StringBuilder stringBuilder = new StringBuilder();
+            ArrayList<BarcodesAndLocation> barcodesAndLocationArrayList = po.getBarcodes();
+
+            //存储货物的条形码与位置,位置包括4位数字
+            //格式如下:1234567890,1,2,3,4;
+            for (BarcodesAndLocation barcodesAndLocation : barcodesAndLocationArrayList) {
+                stringBuilder.append(barcodesAndLocation.getBarcode());
+                stringBuilder.append(',');
+                stringBuilder.append(barcodesAndLocation.getSection());
+                stringBuilder.append(',');
+                stringBuilder.append(barcodesAndLocation.getLine());
+                stringBuilder.append(',');
+                stringBuilder.append(barcodesAndLocation.getRow());
+                stringBuilder.append(',');
+                stringBuilder.append(barcodesAndLocation.getNumber());
+                stringBuilder.append(';');
+            }
+
+            statement.setString(1, stringBuilder.toString());
+            statement.setString(2, po.getTransitDocNumber());
+            statement.setString(3, po.getSupercargoMan());
+            statement.setString(4, po.getDeparturePlace());
+            statement.setString(5, po.getTransitType().toString());
+            statement.setString(6, po.getDate());
+            statement.setString(7, po.getDesitination());
+            statement.setString(8, po.getTransportationNumber());
+
+            statement.executeUpdate();
+            return this.afterInsert(po);
+        } catch (MySQLIntegrityConstraintViolationException e){
+            throw new InterruptWithExistedElementException();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        statement.setString(1, stringBuilder.toString());
-        statement.setString(2,po.getTransitDocNumber());
-        statement.setString(3,po.getSupercargoMan());
-        statement.setString(4,po.getDeparturePlace());
-        statement.setString(5, po.getTransitType().toString());
-        statement.setString(6, po.getDate());
-        statement.setString(7, po.getDesitination());
-        statement.setString(8, po.getTransportationNumber());
-        statement.executeUpdate();
-        statement.close();
 
-        //记录系统日志
-        logInsertData = new LogInsertData();
-        logInsertData.insertSystemLog("中转中心业务员?新增中转单,单据编号:" + po.getTransitDocNumber());
+        DatabaseManager.releaseConnection(connection, statement, null);
+        return resultMsg;
+    }
 
-        //等待总经理审批过程,反复查询
+    private ResultMsg afterInsert(TransitNotePO po) throws ElementNotFoundException {
+        ResultMsg resultMsg = new ResultMsg(false);
+        LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+po.getUserName()+
+                "新增中转单,单据编号:" + po.getTransitDocNumber());
         DocState result = this.waitForCheck("note_transit",
                 "transitDocNumber", po.getTransitDocNumber());
-        ResultMsg resultMsg = new ResultMsg(false);
-        //审批通过
+        ArrayList<BarcodesAndLocation> barcodesAndLocationArrayList = po.getBarcodes();
+
         if (result == DocState.PASSED) {
             System.out.println("TransitNote is passed!");
-            //追加修改物流信息
-            orderDataService = new OrderInquiryData();
-            for (BarcodesAndLocation barcodesAndLocation : barcodesAndLocationArrayList) {
-                String barcode = barcodesAndLocation.getBarcode();
-                orderDataService.updateOrder(barcode, GoodsState.COMPLETE,
-                        "已从?中转中心发往"+po.getDesitination()+"中转中心");
-            }
+            ArrayList<String> bars = new ArrayList<>();
+            for (BarcodesAndLocation barcodesAndLocation : barcodesAndLocationArrayList)
+                bars.add(barcodesAndLocation.getBarcode());
+            this.updateOrder("已从 "+po.getOrganization()+" 发往 "+po.getDesitination()+" 中转中心",bars);
             resultMsg.setPass(true);
-            //审批没有通过
+            resultMsg.setMessage("中转单提交成功!");
+
         } else {
             System.out.println("TransitNote is failed!");
             String advice = this.getFailedAdvice("note_transit",
                     "transitDocNumber", po.getTransitDocNumber());
             resultMsg.setMessage(advice);
         }
-        //操作结束
-        DatabaseManager.releaseConnection(connection, statement, null);
+
         return resultMsg;
     }
 
-    public ArrayList<TransitNotePO> getTransitNotePO() throws SQLException {
-        ArrayList<TransitNotePO> result = new ArrayList<>();
-        Connection connection = DatabaseManager.getConnection();
-        String sql = "select * from `note_transit` where isPassed = 0";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        ResultSet resultSet = statement.executeQuery();
-        TransitNotePO receivingNotePO;
-        while(resultSet.next()){
-            String date = resultSet.getString(1);
-            String docNumber = resultSet.getString(2);
-            String transport = resultSet.getString(3);
-            String type = resultSet.getString(4);
-            String depar = resultSet.getString(5);
-            String des = resultSet.getString(6);
-            String supercargo = resultSet.getString(7);
-            String barcodes = resultSet.getString(8);
-            receivingNotePO = new TransitNotePO(date,docNumber,transport, TransitType.getTransitType(type),
-                    depar,des,supercargo,null);
-            result.add(receivingNotePO);
+    /**
+     * 从数据库中存储的条形码与货物位置获得BarcodesAndLocation
+     *
+     * @param barcodes
+     * @return
+     */
+    public ArrayList<BarcodesAndLocation> getBarcodesAndLocation(String barcodes){
+        ArrayList<BarcodesAndLocation> result = new ArrayList<>();
+        String[] split = barcodes.split(";");
+        for(String line : split){
+            String[] aline = line.split(",");
+            result.add(new BarcodesAndLocation(aline[0],Integer.parseInt(aline[1]),Integer.parseInt(aline[2]),
+                    Integer.parseInt(aline[3]),Integer.parseInt(aline[4])));
         }
-        DatabaseManager.releaseConnection(connection, statement, resultSet);
         return result;
     }
 

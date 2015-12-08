@@ -20,7 +20,8 @@ public interface OrderInquiryDataService extends Remote, Serializable {
 	 * @throws RemoteException
 	 * @throws ElementNotFoundException
 	 */
-	public OrderPO findOrder(String barcode)
-		throws RemoteException, ElementNotFoundException;
-	
+    OrderPO findOrder(String barcode)
+            throws RemoteException, ElementNotFoundException;
+
+    boolean insertOrderPO(String barCode, String orderInfo, double price) throws RemoteException;
 }

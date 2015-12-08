@@ -1,5 +1,6 @@
 package presentation.financeui;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -8,10 +9,23 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
+
+import util.ResultMsg;
+import vo.BankAccountVO;
+import businesslogic.info.BankAccountManagement;
+import businesslogicservice.infoblservice.BankAccountManagementBLService;
+import businesslogicservice.infoblservice._stub.BankAccountManagemntBLService_Stub;
+
+import javax.swing.JComboBox;
+
+import presentation.util.MJTextField;
 
 public class BankAccountManagePanel extends JPanel {
 
@@ -31,9 +45,16 @@ public class BankAccountManagePanel extends JPanel {
 	private Vector name;
 	private Vector data;
 	private JTable table;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private MJTextField account;
+	private MJTextField accountname;
+	private MJTextField balance;
+	private BankAccountManagementBLService service = new BankAccountManagement();
+	private ArrayList<BankAccountVO> bankAccountList;
+	private BankAccountVO vo;
+	private ResultMsg res;
+	private JTextField keywordText;
+	private int seletedRow;
+	private JComboBox keyword;
 	
 	public BankAccountManagePanel() {
        setSize(WIDTH,HEIGHT);
@@ -43,57 +64,226 @@ public class BankAccountManagePanel extends JPanel {
        label.setBounds(812, 95, 61, 16);
        add(label);
        
-       textField = new JTextField();
-       textField.setBounds(905, 89, 204, 28);
-       add(textField);
-       textField.setColumns(10);
+       account = new MJTextField();
+       account.setBounds(905, 89, 204, 28);
+       add(account);
+       account.setColumns(10);
        
        JLabel label_1 = new JLabel("账户名");
        label_1.setBounds(812, 189, 61, 16);
        add(label_1);
        
-       textField_1 = new JTextField();
-       textField_1.setBounds(905, 183, 204, 28);
-       add(textField_1);
-       textField_1.setColumns(10);
+       accountname = new MJTextField();
+       accountname.setBounds(905, 183, 204, 28);
+       add(accountname);
+       accountname.setColumns(10);
        
        JLabel label_2 = new JLabel("余额");
        label_2.setBounds(812, 288, 61, 16);
        add(label_2);
        
-       textField_2 = new JTextField();
-       textField_2.setBounds(905, 282, 204, 28);
-       add(textField_2);
-       textField_2.setColumns(10);
+       balance = new MJTextField();
+       balance.setBounds(905, 282, 204, 28);
+       add(balance);
+       balance.setColumns(10);
+       
+       name = new Vector();
+     		name.add("账号");
+     		name.add("账户名");
+     		name.add("余额");
+     		data = new Vector();
+     		bankAccountList = service.show();
+     		for(int i = 0;i<bankAccountList.size();i++){
+     			Vector row = new Vector();
+     			row.add(bankAccountList.get(i).getAccount());
+     			row.add(bankAccountList.get(i).getName());
+     			row.add(bankAccountList.get(i).getBalance());
+     			data.add(row.clone());
+     		}
+     		model = new DefaultTableModel();
+     		model.setDataVector(data,name);
+     		table = new JTable(model);
+     		table.setBounds(47, 61, 604, 359);
+     		
+            JScrollPane scrollPane = new JScrollPane(table);
+            scrollPane.setBounds(73, 109, 604, 274);
+            add(scrollPane);
+            
+            
+            table.addMouseListener(new MouseAdapter() {
+	        	public void mouseClicked(MouseEvent arg0) {
+	        		 seletedRow = table.getSelectedRow();
+	          		if(seletedRow != -1){
+	            		accountname.setText(model.getValueAt(seletedRow,1).toString());
+	            		account.setText(model.getValueAt(seletedRow, 0).toString());
+	            		balance.setText(model.getValueAt(seletedRow, 2).toString());
+	            		System.out.println("lalllla");
+	          		}
+	        	}
+	        });
+           
        
        JButton btnAdd = new JButton("Add");
-       btnAdd.setBounds(820, 363, 75, 35);
+       btnAdd.addActionListener(new ActionListener() {
+       	public void actionPerformed(ActionEvent e) {
+       		if(!(account.getText().isEmpty()||accountname.getText().isEmpty()||balance.getText().isEmpty())){
+       			vo = new BankAccountVO(accountname.getText(),account.getText(),balance.getText());
+       			res = service.add(vo);
+       			if(res.isPass()){
+       				Vector row = new Vector();
+       				row.add(account.getText());
+       				row.add(accountname.getText());
+       				row.add(balance.getText());
+       				data.add(row.clone());
+       				model.setDataVector(data, name);
+       				table.setModel(model);
+       			}
+       			else{
+       			  int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
+							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+       			}
+       			
+       			
+       		}else{
+		    	   int result1 = JOptionPane.showConfirmDialog(null, "请将信息填写完整","系统提示",
+							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+		       }
+       		
+       	}
+       });
+       btnAdd.setBounds(820, 363, 75, 49);
        add(btnAdd);
        
        JButton btnNewButton = new JButton("Modify");
-       btnNewButton.setBounds(933, 363, 73, 35);
+       btnNewButton.addActionListener(new ActionListener() {
+       	public void actionPerformed(ActionEvent e) {
+       		seletedRow = table.getSelectedRow();
+     
+       		
+       		if(seletedRow != -1){
+        			
+	        	vo = new BankAccountVO(accountname.getText(),account.getText(),balance.getText());
+	        	res = service.update(vo);
+	        	if(res.isPass()){
+	        		model.setValueAt(account.getText(),seletedRow, 0);
+		        	model.setValueAt(accountname.getText(),seletedRow, 1);
+		        	model.setValueAt(balance.getText(),seletedRow, 2);
+		        	
+	        	}else{
+	        		int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
+							JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
+	        	}
+	        	
+       		}
+       		
+       	}
+       });
+       btnNewButton.setBounds(933, 363, 73, 49);
        add(btnNewButton);
        
        JButton btnNewButton_1 = new JButton("Delete");
        btnNewButton_1.addActionListener(new ActionListener() {
        	public void actionPerformed(ActionEvent e) {
+       		seletedRow=table.getSelectedRow();
+    		if(seletedRow!=-1){
+    			int result2 = JOptionPane.showConfirmDialog(null, "确定要删除吗？","系统提示", 
+						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+    			if(result2 == JOptionPane.YES_OPTION){
+    			vo = new BankAccountVO(model.getValueAt(seletedRow, 1).toString(),
+    					model.getValueAt(seletedRow, 0).toString(),model.getValueAt(seletedRow, 2).toString());
+    			res = service.delete(vo);
+    			if(res.isPass()){
+    			model.removeRow(seletedRow);
+    			accountname.setText("");
+           		account.setText("");
+           		balance.setText("");
+    		}
+    			else{
+    				int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
+							JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
+    			}
+    			
+    			}
+			
+    		}
        	}
        });
-       btnNewButton_1.setBounds(1036, 363, 73, 35);
+       btnNewButton_1.setBounds(1036, 363, 73, 49);
        add(btnNewButton_1);
        
-       name = new Vector();
-		name.add("账号");
-		name.add("账户名");
-		name.add("余额");
-		data = new Vector();
-		model = new DefaultTableModel();
-		model.setDataVector(data,name);
-		table = new JTable(model);
-		table.setBounds(47, 61, 604, 359);
-       JScrollPane scrollPane = new JScrollPane(table);
-       scrollPane.setBounds(47, 61, 604, 359);
-       add(scrollPane);
+    
+       
+       JButton button = new JButton("显示所有");
+       button.addActionListener(new ActionListener() {
+       	public void actionPerformed(ActionEvent e) {
+       		bankAccountList = service.show();
+       		data.clear();
+       		if(!bankAccountList.isEmpty()){
+     		for(int i = 0;i<bankAccountList.size();i++){
+     			Vector row = new Vector();
+     			row.add(bankAccountList.get(i).getAccount());
+     			row.add(bankAccountList.get(i).getName());
+     			row.add(bankAccountList.get(i).getBalance());
+     			data.add(row.clone());
+     		}
+     		model.setDataVector(data, name);
+   			table.setModel(model);  		
+       	}else{
+       		Vector row = new Vector();
+       		row.add("无信息显示");
+       		model.setDataVector(data, name);
+   			table.setModel(model);
+       	}
+       	}
+       });
+       button.setBounds(602, 56, 75, 41);
+       add(button);
+       
+       JLabel label_3 = new JLabel("关键字");
+       label_3.setBounds(49, 66, 61, 16);
+       add(label_3);
+       
+       String[] keyType = {"账户名","账号","余额"}; 
+       keyword = new JComboBox(keyType);
+       keyword.setBounds(92, 62, 117, 28);
+       add(keyword);
+       
+       keywordText = new JTextField();
+       keywordText.setBounds(223, 61, 254, 28);
+       add(keywordText);
+       keywordText.setColumns(10);
+       
+       JButton button_1 = new JButton("查询");
+       button_1.addActionListener(new ActionListener() {
+       	public void actionPerformed(ActionEvent e) {
+       		data.clear();
+       		if(keyword.getSelectedItem().equals("账户名"))
+       			vo = new BankAccountVO(keywordText.getText(),null,null);
+       		else if(keyword.getSelectedItem().equals("账号"))
+       			vo = new BankAccountVO(null,keywordText.getText(),null);
+       		else
+       			vo = new BankAccountVO(null,null,keywordText.getText());
+       		
+       		bankAccountList = service.find(vo);
+       		if(!bankAccountList.isEmpty()){
+       		for(int i = 0;i<bankAccountList.size();i++){
+       			Vector row = new Vector();
+       			row.add(bankAccountList.get(i).getAccount());
+       			row.add(bankAccountList.get(i).getName());
+       			row.add(bankAccountList.get(i).getBalance());
+       			data.add(row.clone());
+       		}
+       		model.setDataVector(data, name);
+   			table.setModel(model);
+   			
+       		}else{
+       			int result1 = JOptionPane.showConfirmDialog(null, "为查询到相关账户","系统提示",
+						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+       		}
+       		
+       	}
+       });
+       button_1.setBounds(501, 56, 75, 41);
+       add(button_1);
 	}
-
 }

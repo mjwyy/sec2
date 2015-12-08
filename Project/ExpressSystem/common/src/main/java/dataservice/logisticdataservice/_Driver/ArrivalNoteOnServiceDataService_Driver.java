@@ -1,6 +1,7 @@
 package dataservice.logisticdataservice._Driver;
 
 import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.logisticdataservice.ArrivalNoteOnServiceDataService;
 import dataservice.logisticdataservice._Stub.ArrivalNoteOnServiceDataService_Stub;
 import po.ArrivalNoteOnServicePO;
@@ -31,14 +32,14 @@ public class ArrivalNoteOnServiceDataService_Driver {
     }
 
 
-    public void drive(ArrivalNoteOnServiceDataService arrivalNoteOnServiceDataService) throws RemoteException, SQLException, ElementNotFoundException {
+    public void drive(ArrivalNoteOnServiceDataService arrivalNoteOnServiceDataService) throws RemoteException, SQLException, ElementNotFoundException, InterruptWithExistedElementException {
         if (arrivalNoteOnServiceDataService.insertArrivalNote(arrivalNoteOnServicePO).isPass()) ;
         System.out.println("insert succeed");
         if (arrivalNoteOnServiceDataService.insertArrivalNote(arrivalNoteOnServicePO2).isPass()) ;
         System.out.println("insert succeed");
     }
 
-    public static void main(String[] args) throws RemoteException, SQLException, ElementNotFoundException {
+    public static void main(String[] args) throws RemoteException, SQLException, ElementNotFoundException, InterruptWithExistedElementException {
         ArrivalNoteOnServiceDataService stub = new ArrivalNoteOnServiceDataService_Stub();
         ArrivalNoteOnServiceDataService_Driver driver = new ArrivalNoteOnServiceDataService_Driver();
         driver.drive(stub);

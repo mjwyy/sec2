@@ -4,6 +4,7 @@ import util.FormatCheck;
 import po.DeliveryNotePO;
 import util.ResultMsg;
 import util.enums.DeliverCategory;
+import util.enums.PackageType;
 
 /**
  * 寄件单VO
@@ -71,17 +72,19 @@ public class DeliveryNoteVO extends NoteVO {
     /**
      * 包装费用
      */
-    private double packPrice;
+    private PackageType packageType;
 
     /**
-     * 货物条形码(唯一标示符)
+     * 货物条形码
      */
     private String barCode;
+
+    private double price;
 
     public DeliveryNoteVO(String senderName, String senderAddress, String senderTeleNumber,
                           String receiverName, String receiverAddress, String receiverTeleNumber,
                           String name, int goodsNumber, double weight, double volume,
-                          DeliverCategory category, double packPrice, String barCode) {
+                          DeliverCategory category, PackageType packageType, String barCode) {
         this.senderName = senderName;
         this.senderAddress = senderAddress;
         this.senderTeleNumber = senderTeleNumber;
@@ -93,7 +96,7 @@ public class DeliveryNoteVO extends NoteVO {
         this.weight = weight;
         this.volume = volume;
         this.category = category;
-        this.packPrice = packPrice;
+        this.packageType = packageType;
         this.barCode = barCode;
     }
 
@@ -121,10 +124,6 @@ public class DeliveryNoteVO extends NoteVO {
         return receiverTeleNumber;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public int getGoodsNumber() {
         return goodsNumber;
     }
@@ -141,8 +140,8 @@ public class DeliveryNoteVO extends NoteVO {
         return category;
     }
 
-    public double getPackPrice() {
-        return packPrice;
+    public PackageType getPackType() {
+        return packageType;
     }
 
     public String getBarCode() {
@@ -152,12 +151,12 @@ public class DeliveryNoteVO extends NoteVO {
     public DeliveryNotePO toPO(){
         return new DeliveryNotePO(this.senderName, this.senderAddress, this.senderTeleNumber, this.receiverName,
         this.receiverAddress, this.receiverTeleNumber, this.name, this.goodsNumber, this.weight,
-        this.volume, this.category, this.packPrice, this.barCode);
+        this.volume, this.category, this.packageType, this.barCode);
     }
 
     public ResultMsg checkFormat(){
         ResultMsg result = new ResultMsg(true);
-        ResultMsg results[] = new ResultMsg[13];
+        ResultMsg results[] = new ResultMsg[12];
         results[0] = FormatCheck.isChineseName(this.senderName);
         results[1] = FormatCheck.isCity(this.senderAddress);
         results[2] = FormatCheck.isPhoneNumber(this.senderTeleNumber);
@@ -165,15 +164,23 @@ public class DeliveryNoteVO extends NoteVO {
         results[4] = FormatCheck.isCity(this.receiverAddress);
         results[5] = FormatCheck.isPhoneNumber(this.receiverTeleNumber);
         results[6] = new ResultMsg(true);
+        results[7] = FormatCheck.isChineseName(this.name);
         results[8] = new ResultMsg(goodsNumber>0);
         results[9] = new ResultMsg(weight>0);
         results[10] = new ResultMsg(volume>0);
-        results[11] = new ResultMsg(packPrice>0);
-        results[12] = FormatCheck.isBarcode(this.barCode);
+        results[11] = FormatCheck.isBarcode(this.barCode);
         for(int i = 0; i<results.length; i++){
             if(!results[i].isPass())
                 return results[i];
         }
         return result;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

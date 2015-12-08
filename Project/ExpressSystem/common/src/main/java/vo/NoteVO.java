@@ -20,7 +20,6 @@ public abstract class NoteVO {
 	// 总经理是否已经通过该单据的审批
 	private boolean appproved;
 
-	private String id;//唯一ID
 	public String getUserName() {
 		return userName;
 	}

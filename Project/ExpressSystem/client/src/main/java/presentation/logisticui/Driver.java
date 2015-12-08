@@ -33,6 +33,7 @@ import javax.swing.DefaultComboBoxModel;
 import util.ResultMsg;
 import util.enums.StaffType;
 import vo.DriverVO;
+import businesslogic.info.DriverVehicleManagement;
 import businesslogicservice.infoblservice.DriverVehicleManagementBLService;
 import businesslogicservice.infoblservice._stub.DriverVehicleManagementBLService_Stub;
 
@@ -47,7 +48,8 @@ public class Driver extends JPanel {
 	private JTextField qixian;
 	private JTable table;
 	private DefaultTableModel model;
-	DriverVehicleManagementBLService  dvm=new DriverVehicleManagementBLService_Stub();
+//	DriverVehicleManagementBLService  dvm=new DriverVehicleManagementBLService_Stub();
+	DriverVehicleManagementBLService  dvm=new DriverVehicleManagement();
 	private JTextField orgi;
 	private JTextField workhour;
 	private JTextField sala;

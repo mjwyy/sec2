@@ -3,6 +3,7 @@ package businesslogic.logistic;
 import businesslogicservice.logisticblservice.ReceivingNoteInputBLService;
 import connection.RemoteObjectGetter;
 import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.logisticdataservice.ReceivingNoteInputDataService;
 import po.ReceivingNotePO;
 import util.ResultMsg;
@@ -27,25 +28,25 @@ public class ReceivingNoteInput implements ReceivingNoteInputBLService {
 
     @Override
     public ResultMsg inputReceiveDoc(ReceivingNoteVO receiveDocVO) {
-        ResultMsg formatCheck = receiveDocVO.checkFormat();
-        return formatCheck;
+        return receiveDocVO.checkFormat();
     }
 
     @Override
-    public ResultMsg submitSendDoc(ReceivingNoteVO receiveDocVO) {
+    public ResultMsg submitReceiveDoc(ReceivingNoteVO receivingNoteVO) {
         try {
-            this.po = receiveDocVO.toPO();
-            this.dataService.insert(this.po);
+            this.po = receivingNoteVO.toPO();
+            this.po.setOrganization(receivingNoteVO.getOrganization());
+            this.po.setUserName(receivingNoteVO.getUserName());
+            return this.dataService.insert(this.po);
         } catch (RemoteException e) {
             e.printStackTrace();
-            return new ResultMsg(false,e.getMessage());
+            return new ResultMsg(false,"提交收件单失败:网络异常!");
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
-            return new ResultMsg(false,e.getMessage());
-        } catch (SQLException e) {
+            return new ResultMsg(false,"输入的条形码对应订单不存在,请重新输入");
+        } catch (InterruptWithExistedElementException e) {
             e.printStackTrace();
-            return new ResultMsg(false,e.getMessage());
+            return new ResultMsg(false,"提交收件单失败:单据编号已存在!");
         }
-        return new ResultMsg(true,"收件单已提交!");
     }
 }

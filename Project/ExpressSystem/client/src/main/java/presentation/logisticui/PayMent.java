@@ -12,9 +12,14 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import javax.swing.*;
+import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+import presentation.util.CurrentTime;
+import presentation.util.LeftDownPanel;
+import presentation.util.UnEditablePanel;
+import util.LogInMsg;
 import util.ResultMsg;
 import vo.CreditNoteVO;
 import vo.PaymentVO;
@@ -34,8 +39,10 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class PayMent extends JPanel {
+	JPanel thisP=this;
 	//先用stub代替哦
-	private CreditNoteInputBLService payment=new CreditNoteInputBLService_Stub();
+//	private CreditNoteInputBLService payment=new CreditNoteInputBLService_Stub();
+	CreditNoteInputBLService payment=new CreditNoteInput();
 	private JTextField DATA;
 	private JTextField MONEY;
 	private JTextField dataF;
@@ -43,6 +50,8 @@ public class PayMent extends JPanel {
 	private JTextField senderF;
 	private JTextField SENDER;
 	private JTextField moneyF;
+	private LogInMsg lim;
+	private Service frame;//
 	private ArrayList<String> barcode=new ArrayList<String>();
 	/**
 	 * 窗口宽度
@@ -66,7 +75,9 @@ public class PayMent extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PayMent() {
+	public PayMent(LogInMsg lim,Service frame) {
+		this.frame=frame;
+		this.lim=lim;
 		setSize(WIDTH,HEIGHT);
 		setBackground(Color.WHITE);
 		setLayout(null);
@@ -152,8 +163,8 @@ public class PayMent extends JPanel {
 		JLabel label_7 = new JLabel("日期");
 		label_7.setBounds(WIDTHL, 43, 54, 15);
 		add(label_7);
-
-		dataF = new JTextField();
+//日期自动填充
+		dataF = new JTextField(CurrentTime.getCurrentTimeDate());
 		dataF.setBounds(WIDTHT, 37, 211, 28);
 		add(dataF);
 		dataF.setColumns(10);
@@ -280,11 +291,29 @@ public class PayMent extends JPanel {
 				barcode.add(cc);
 			}
 			vo=new CreditNoteVO(DATA.getText(), MONEY.getText(), SENDER.getText(), barcode);
+			vo.setUserName(lim.getUserName());
 			int result = JOptionPane.showConfirmDialog(null, "确认提交审批？","系统提示",
 					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 			if(result == JOptionPane.YES_OPTION) {
-				payment.submitReceipeDoc(vo);
-				
+				ResultMsg resultS=payment.submitReceipeDoc(vo);
+				//提交之后panel里都不可编辑
+				UnEditablePanel.UnEdit(thisP);
+				//提交之后右下面板换
+			/*	LeftDownPanel ldp=new LeftDownPanel();
+				ldp.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
+				ldp.setBounds(0,0,939, 124);
+			ldp.setVisible(true);
+				frame.leftdown.removeAll();
+				frame.leftdown.add(ldp);
+				frame.leftdown.repaint();*/
+				if(resultS.isPass()){//提交成功
+					
+				}
+				else{//有误
+					JOptionPane.showConfirmDialog(null, resultS.getMessage(),"系统提示",
+							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+
+				}
 			}
 			else {
 				return;

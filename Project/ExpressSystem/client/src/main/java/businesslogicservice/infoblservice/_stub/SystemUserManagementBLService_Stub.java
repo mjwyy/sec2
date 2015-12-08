@@ -17,25 +17,19 @@ public class SystemUserManagementBLService_Stub implements SystemUserManagementB
 
 	public ResultMsg add(UserVO vo){
 		System.out.println("added user!");
-ResultMsg msg = vo.checkFormat();
-    	
-    	return msg;
+		return new ResultMsg(true, "Success!");
 	};
 	
 
 	public ResultMsg delete(UserVO vo){
 		System.out.println("deleted user!");
-ResultMsg msg = vo.checkFormat();
-    	
-    	return msg;
+		return new ResultMsg(true, "Success!");
 	};	
 	
 
 	public ResultMsg modify(UserVO vo){
 		System.out.println("modified user!");
-ResultMsg msg = vo.checkFormat();
-    	
-    	return msg;
+		return new ResultMsg(true, "Success!");
 	};
 	
 
@@ -52,9 +46,7 @@ ResultMsg msg = vo.checkFormat();
 
 	@Override
 	public ResultMsg modify(UserVO origunal, UserVO modified) {
-ResultMsg msg = modified.checkFormat();
-    	
-    	return msg;
+		return null;
 	}
 
 

@@ -1,5 +1,6 @@
 package vo;
 
+import util.chart.CostAndProfitContent;
 import util.enums.ChartType;
 
 import java.util.ArrayList;
@@ -9,25 +10,20 @@ import java.util.ArrayList;
  */
 public class CostAndProfitChartVO extends ChartVO {
 
-    private ArrayList<Double> cost;
-    private ArrayList<Double> profit;
+    private ArrayList<CostAndProfitContent> costAndProfitContents;
 
-    public CostAndProfitChartVO(String starttime, String endtime, ArrayList<Double> cost,
-                                ArrayList<Double> profit) {
-        super(ChartType.PROFIT_CHART,starttime,endtime);
-        this.cost = cost;
-        this.profit = profit;
-    }
+    public CostAndProfitChartVO(ChartType type, String time1, String time2,
+                                ArrayList<CostAndProfitContent> costAndProfitContents) {
 
-    public ArrayList<Double> getCost() {
-        return cost;
-    }
-
-    public ArrayList<Double> getProfit() {
-        return profit;
+        super(type, time1, time2);
+        this.costAndProfitContents = costAndProfitContents;
     }
 
     public CostAndProfitChartVO(String starttime, String endtime){
         super(ChartType.PROFIT_CHART,starttime,endtime);
+    }
+
+    public ArrayList<CostAndProfitContent> getCostAndProfitContents() {
+        return costAndProfitContents;
     }
 }

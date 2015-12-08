@@ -1,12 +1,16 @@
 package data.statisticdata;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 
 import dataservice.statisticdataservice.BaseDataBuildingDataService;
 
-public class BaseDataBuildingData implements BaseDataBuildingDataService{
+public class BaseDataBuildingData extends UnicastRemoteObject implements BaseDataBuildingDataService{
 
-	@Override
+    public BaseDataBuildingData() throws RemoteException {
+    }
+
+    @Override
 	public boolean startBaseDataBuilding(boolean withBase)
 			throws RemoteException {
 		return true;

@@ -1,7 +1,13 @@
 package presentation.financeui;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Vector;
 
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
@@ -11,6 +17,26 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
+
+import presentation.commodityui.PanDian;
+import presentation.util.MyJFileChooser;
+import presentation.util.ObservingTextField;
+
+import com.qt.datapicker.DatePicker;
+
+import businesslogic.statistic.ChartOutput;
+import businesslogicservice.statisticblservice.ChartOutputBLService;
+import businesslogicservice.statisticblservice._stub.ChartOutputBLService_Stub;
+import util.ResultMsg;
+import util.enums.ChartType;
+import vo.BusinessStateChartVO;
+import vo.ChartVO;
+import vo.CostAndProfitChartVO;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ChartOutPutPanel extends JPanel {
 
@@ -30,8 +56,17 @@ public class ChartOutPutPanel extends JPanel {
 	private DefaultTableModel model;
 	private Vector name;
 	private Vector data;
-	private JTextField textField;
-	private JTextField textField_1;
+	private ChartVO vo;
+	private BusinessStateChartVO vob;
+	private CostAndProfitChartVO voc;
+	private ChartType charttype;
+	private JComboBox comboBox;
+	private ChartOutputBLService service = new ChartOutput();
+	private  ResultMsg  res;
+	private ObservingTextField startT;
+	private JLabel lblNewLabel;
+	private JLabel end;
+	private ObservingTextField endT;
 	public  ChartOutPutPanel() {
 		setSize(WIDTH,HEIGHT);
 		setLayout(null);
@@ -40,39 +75,73 @@ public class ChartOutPutPanel extends JPanel {
 		lblNewLabel_1.setBounds(69, 43, 61, 16);
 		add(lblNewLabel_1);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(142, 39, 107, 27);
+		String[] type = {"经营情况表","成本收益表"};
+		comboBox = new JComboBox(type);
+		comboBox.setBounds(142, 39, 149, 27);
 		add(comboBox);
 		
 		JLabel label = new JLabel("起始时间");
 		label.setBounds(303, 43, 61, 16);
 		add(label);
 		
-		textField = new JTextField();
-		textField.setBounds(361, 37, 134, 28);
-		add(textField);
-		textField.setColumns(10);
+		startT = new ObservingTextField();
+		startT.setBounds(361, 37, 134, 28);
+		add(startT);
+		startT.setColumns(10);
 		
+		lblNewLabel = new JLabel();
+		lblNewLabel.setIcon(new ImageIcon("image/cs.png"));
+		lblNewLabel.addMouseListener(new MouseAdapter() {
+
+			public void mouseEntered(MouseEvent arg0){
+				lblNewLabel.setIcon(new ImageIcon("image/csr.png"));
+			}
+			public void mouseExited(MouseEvent arg0){
+				lblNewLabel.setIcon(new ImageIcon("image/cs.png"));
+			}
+			public void mouseClicked(MouseEvent arg0) {
+				DatePicker dp = new DatePicker(startT, Locale.CHINA);
+				// previously selected date
+				Date selectedDate = dp.parseDate(startT.getText());
+				dp.formatDate(selectedDate,"yyyy-mm-dd");
+				dp.setSelectedDate(selectedDate);
+				dp.start(startT);	
+			}
+		});
+		lblNewLabel.setBounds(504, 38, 36, 26);
+		add(lblNewLabel);
+	
 		JLabel label_1 = new JLabel("结束时间");
-		label_1.setBounds(554, 43, 61, 16);
+		label_1.setBounds(564, 43, 61, 16);
 		add(label_1);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(619, 37, 134, 28);
-		add(textField_1);
-		textField_1.setColumns(10);
+		endT = new ObservingTextField();
+		endT.setBounds(637, 37, 134, 28);
+		add(endT);
+		endT.setColumns(10);
 		
-		JButton btnNewButton = new JButton("查询");
-		btnNewButton.setBounds(801, 38, 89, 30);
-		add(btnNewButton);
-		
-		JButton button = new JButton("导出");
-		button.setBounds(962, 37, 89, 30);
-		add(button);
+		end = new JLabel();
+		end.setIcon(new ImageIcon("image/cs.png"));
+		end.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent arg0){
+				end.setIcon(new ImageIcon("image/csr.png"));
+			}
+			public void mouseExited(MouseEvent arg0){
+				end.setIcon(new ImageIcon("image/cs.png"));
+			}
+			public void mouseClicked(MouseEvent e) {
+				DatePicker dp = new DatePicker(endT, Locale.CHINA);
+				// previously selected date
+				Date selectedDate = dp.parseDate(endT.getText());
+				dp.setSelectedDate(selectedDate);
+				dp.start(endT);	
+			}
+		});
+		end.setBounds(783, 38, 36, 26);
+		add(end);
 		
 		name = new Vector();
-		name.add("条形码");
-		name.add("货运状态");
+		name.add("查询内容");
 		data = new Vector();
 		model = new DefaultTableModel();
 		model.setDataVector(data,name);
@@ -81,6 +150,112 @@ public class ChartOutPutPanel extends JPanel {
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(69, 118, 982, 282);
 		add(scrollPane);
+		
+		JButton btnNewButton = new JButton("查询");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(comboBox.getSelectedItem().equals("经营情况表"))
+					charttype = charttype.BUSINESS_STAT_CHART;
+				else
+					charttype = charttype.BUSINESS_STAT_CHART;
+				if(!(startT.getText().isEmpty()||endT.getText().isEmpty())){
+				res = service.enquiryChart(charttype,startT.getText(),endT.getText());
+				if(res.isPass()){
+				
+			       if(comboBox.getSelectedItem().equals("经营情况表")){
+			    	   name.clear();
+			    	   vob = (BusinessStateChartVO) service.getChartVO(charttype,startT.getText(),endT.getText());
+			    	   name.add("日期");
+			    	   name.add("收益");
+			    	   name.add("同期增长率");
+			    	   ArrayList<String> everyday = new ArrayList<String>();
+			    	   ArrayList<Double> profix = new  ArrayList<Double>();
+			    	   ArrayList<Double> growrate = new  ArrayList<Double>();
+			    	   for(int i = 0;i<everyday.size();i++){
+			    		   Vector row = new Vector();
+			    		   row.add(everyday.get(i));
+			    		   row.add(profix.get(i));
+			    		   row.add(growrate.get(i));
+			    		   data.add(row.clone());
+			    		   model.setDataVector(data,name);
+			    		   table = new JTable(model); 
+			    	   }		    	   
+			    	   
+			       }else{
+			    	   voc = (CostAndProfitChartVO)service.getChartVO(charttype,startT.getText(),endT.getText());
+			    	   name.add("日期");
+			    	   name.add("成本");
+			    	   name.add("收益");
+			    	   ArrayList<String> everyday = new ArrayList<String>();
+			    	   ArrayList<Double> profix = new  ArrayList<Double>();
+			    	   ArrayList<Double> cost = new  ArrayList<Double>();
+			    	   for(int i = 0;i<everyday.size();i++){
+			    		   Vector row = new Vector();
+			    		   row.add(everyday.get(i));
+			    		   row.add(cost.get(i));
+			    		   row.add(profix.get(i));
+			    		   data.add(row.clone());
+			    		   model.setDataVector(data,name);
+			    		   table = new JTable(model);   
+			    	   }
+			    	   
+			       }
+					
+				}else{
+					int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
+							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+				}
+				}else{
+			    	   int result1 = JOptionPane.showConfirmDialog(null, "请将信息填写完整","系统提示",
+								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+			       }
+				
+			}
+		});
+		btnNewButton.setBounds(844, 37, 89, 30);
+		add(btnNewButton);
+		
+		JButton button = new JButton("导出");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//TODO 导出
+				MyJFileChooser mfc=new MyJFileChooser();
+	        	if(mfc.showSaveDialog(ChartOutPutPanel.this)== JFileChooser.APPROVE_OPTION){
+	        		String filename=mfc.getSelectedFile().getAbsolutePath();
+	        		System.out.println(filename);
+	        		
+	        		if(vob != null){
+	        			ResultMsg resultMsg = service.exportChart(vob, filename);
+	        			isResPass(resultMsg);
+	        		}else if(voc != null){
+	        			ResultMsg resultMsg = service.exportChart(vob, filename);
+	        			isResPass(resultMsg);
+	        		}else{
+	        			 int result1 = JOptionPane.showConfirmDialog(null, "没有文件可以导出","系统提示",
+									JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
+	        		}
+				
+	        	}	
+			}
+		});
+		button.setBounds(962, 37, 89, 30);
+		add(button);
+		
+	
+		
+		
+		
+		
 
+	}
+	
+	public void isResPass(ResultMsg resultMsg){
+		if(resultMsg.isPass()){
+			int result1 = JOptionPane.showConfirmDialog(null, "操作成功","系统提示",
+					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+		}else{
+			int result1 = JOptionPane.showConfirmDialog(null, resultMsg.getMessage(),"系统提示",
+					JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
+		}
 	}
 }

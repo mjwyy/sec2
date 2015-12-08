@@ -1,6 +1,7 @@
 package dataservice.logisticdataservice._Driver;
 
 import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.logisticdataservice.TransitNoteInputDataService;
 import dataservice.logisticdataservice._Stub.TransitNoteInputDataService_Stub;
 import po.TransitNotePO;
@@ -15,13 +16,13 @@ import java.util.ArrayList;
  */
 public class TransitNoteInputDataService_Driver {
 
-    public static void main(String[] args) throws RemoteException, SQLException, ElementNotFoundException {
+    public static void main(String[] args) throws RemoteException, SQLException, ElementNotFoundException, InterruptWithExistedElementException {
         TransitNoteInputDataService service = new TransitNoteInputDataService_Stub();
         TransitNoteInputDataService_Driver driver = new TransitNoteInputDataService_Driver();
         driver.drive(service);
     }
 
-    public void drive(TransitNoteInputDataService service) throws RemoteException, SQLException, ElementNotFoundException {
+    public void drive(TransitNoteInputDataService service) throws RemoteException, SQLException, ElementNotFoundException, InterruptWithExistedElementException {
         ArrayList<String> list = new ArrayList<String>();
         list.add("0000111110");
         list.add("0000111111");

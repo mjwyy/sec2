@@ -5,8 +5,8 @@
  */
 package po;
 
-import util.enums.CityManager;
 import util.enums.DeliverCategory;
+import util.enums.PackageType;
 import vo.DeliveryNoteVO;
 import vo.NoteVO;
 
@@ -76,14 +76,19 @@ public class DeliveryNotePO extends NotePO implements Serializable {
 	/**
 	 * 包装费用
 	 */
-	private double packPrice;
+	private PackageType packageType;
 
 	/**
 	 * 货物条形码
 	 */
 	private String barCode;
 
-    public DeliveryNotePO(String senderName, String senderAddress, String senderTeleNumber, String receiverName, String receiverAddress, String receiverTeleNumber, String name, int goodsNumber, double weight, double volume, DeliverCategory category, double packPrice, String barCode) {
+    private double price;
+
+    public DeliveryNotePO(String senderName, String senderAddress, String senderTeleNumber,
+                          String receiverName, String receiverAddress, String receiverTeleNumber,
+                          String name, int goodsNumber, double weight, double volume,
+                          DeliverCategory category, PackageType packageType, String barCode) {
         this.senderName = senderName;
         this.senderAddress = senderAddress;
         this.senderTeleNumber = senderTeleNumber;
@@ -95,7 +100,7 @@ public class DeliveryNotePO extends NotePO implements Serializable {
         this.weight = weight;
         this.volume = volume;
         this.category = category;
-        this.packPrice = packPrice;
+        this.packageType = packageType;
         this.barCode = barCode;
     }
 
@@ -143,8 +148,8 @@ public class DeliveryNotePO extends NotePO implements Serializable {
         return category;
     }
 
-    public double getPackPrice() {
-        return packPrice;
+    public PackageType getPackType() {
+        return packageType;
     }
 
     public String getBarCode() {
@@ -155,7 +160,7 @@ public class DeliveryNotePO extends NotePO implements Serializable {
     public NoteVO toVO() {
         return new DeliveryNoteVO(this.senderName, this.senderAddress, this.senderTeleNumber, this.receiverName,
                 this.receiverAddress, this.receiverTeleNumber, this.name, this.goodsNumber, this.weight,
-                this.volume, this.category, this.packPrice, this.barCode);
+                this.volume, this.category, this.packageType, this.barCode);
     }
 
     @Override
@@ -163,12 +168,11 @@ public class DeliveryNotePO extends NotePO implements Serializable {
         return this.barCode;
     }
 
-
-    public String getSenderCity() {
-        return CityManager.getCityName(this.senderAddress);
+    public double getPrice() {
+        return price;
     }
 
-    public String getReceiverCity() {
-        return CityManager.getCityName(this.receiverAddress);
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

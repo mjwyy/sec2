@@ -38,21 +38,6 @@ public class lastloginpanel extends JPanel {
 		label.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
 		label.setBounds(81, 392, 76, 22);
 		add(label);
-		
-		/*barcode = new JTextField();
-		barcode.setBounds(169, 381, 254, 46);
-		add(barcode);
-		barcode.setColumns(10);
-		
-		account = new JTextField();
-		account.setBounds(660, 342, 245, 46);
-		add(account);
-		account.setColumns(10);
-		
-		password = new JTextField();
-		password.setBounds(660, 416, 245, 46);
-		add(password);
-		password.setColumns(10);*/
 	
 		
 		JLabel lblNewLabel = new JLabel("帐号");

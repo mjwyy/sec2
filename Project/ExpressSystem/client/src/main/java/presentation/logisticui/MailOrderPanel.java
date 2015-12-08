@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -18,17 +19,23 @@ import java.awt.Color;
 
 import javax.swing.JButton;
 
+import presentation.util.MJTextField;
 import presentation.util.SubmitDialog;
+import presentation.util.UnEditablePanel;
 import presentation.util.checkstyleDialog;
+import util.LogInMsg;
 import util.ResultMsg;
 import util.SendDocMsg;
 import util.enums.DeliverCategory;
+import util.enums.PackageType;
 import vo.DeliveryNoteVO;
+import businesslogic.logistic.DeliveryNoteInput;
 import businesslogicservice.logisticblservice.DeliveryNoteInputBLService;
 import businesslogicservice.logisticblservice._Stub.DeliveryNoteInputBLService_Stub;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.text.DecimalFormat;
 
 public class MailOrderPanel extends JPanel {
 	
@@ -41,19 +48,20 @@ public class MailOrderPanel extends JPanel {
 	 * 窗口高度
 	 */
 	private static final int HEIGHT = 446;
-	private JTextField receiveName;
-	private JTextField receiveAddress;
-	private JTextField receivePho;
-	private JTextField senderAddress;
-	private JTextField name;
-	private JTextField weight;
-	private JTextField goodsnum;
-	private JTextField volum;
-	private JTextField money;
-	private JTextField predate;
-	private DeliveryNoteInputBLService service;
-	private JTextField senderPho;
-	private JTextField barcode;
+	private PackageType packagetype;
+	private MJTextField receiveName;
+	private MJTextField receiveAddress;
+	private MJTextField receivePho;
+	private MJTextField senderAddress;
+	private MJTextField name;
+	private MJTextField weight;
+	private MJTextField goodsnum;
+	private MJTextField volum;
+	private MJTextField money;
+	private MJTextField predate;
+	private DeliveryNoteInputBLService service ;
+	private MJTextField senderPho;
+	private MJTextField barcode;
 	private ResultMsg res;
 	private SendDocMsg sdm;
 	private DeliverCategory deliverCategory;
@@ -62,7 +70,9 @@ public class MailOrderPanel extends JPanel {
     private JComboBox pack;
     private SubmitDialog sd;
     private DeliveryNoteVO sendDocVO;
-    private JTextField senderName;
+    private MJTextField senderName;
+    private LogInMsg lim; 
+    private CourierFrame parent;
 	/**
 	 * Create the panel.
 	 */
@@ -76,15 +86,18 @@ public class MailOrderPanel extends JPanel {
 	      g.drawLine(768, 0, 768, 500);
 		}
 	
-	public MailOrderPanel() {
+	public MailOrderPanel(LogInMsg logInMsg,CourierFrame courierFrame) {
 		setSize(WIDTH,HEIGHT);
 		setLayout(null);
+		 service = new DeliveryNoteInput();//实例化bl接口
+		 parent = courierFrame;
+		 sendDocVO = parent.getDeliveryNoteVo();
 		
 		JLabel label = new JLabel("收件人姓名");
 		label.setBounds(70, 39, 84, 16);
 		add(label);
 		
-		receiveName = new JTextField();
+		receiveName = new MJTextField();
 		receiveName.setBounds(218, 33, 150, 28);
 		add(receiveName);
 		receiveName.setColumns(10);
@@ -93,7 +106,7 @@ public class MailOrderPanel extends JPanel {
 		label_1.setBounds(70, 88, 61, 16);
 		add(label_1);
 		
-		receiveAddress = new JTextField();
+		receiveAddress = new MJTextField();
 		receiveAddress.setBounds(218, 82, 150, 28);
 		add(receiveAddress);
 		receiveAddress.setColumns(10);
@@ -102,7 +115,7 @@ public class MailOrderPanel extends JPanel {
 		label_2.setBounds(70, 138, 71, 16);
 		add(label_2);
 		
-		receivePho = new JTextField();
+		receivePho = new MJTextField();
 		receivePho.setBounds(218, 132, 150, 28);
 		add(receivePho);
 		receivePho.setColumns(10);
@@ -115,7 +128,7 @@ public class MailOrderPanel extends JPanel {
 		label_4.setBounds(70, 364, 61, 16);
 		add(label_4);
 		
-		senderAddress = new JTextField();
+		senderAddress = new MJTextField();
 		senderAddress.setBounds(218, 223, 150, 28);
 		add(senderAddress);
 		senderAddress.setColumns(10);
@@ -124,7 +137,7 @@ public class MailOrderPanel extends JPanel {
 		label_5.setBounds(70, 319, 61, 16);
 		add(label_5);
 		
-		name = new JTextField();
+		name = new MJTextField();
 		name.setBounds(218, 313, 150, 28);
 		add(name);
 		name.setColumns(10);
@@ -133,7 +146,7 @@ public class MailOrderPanel extends JPanel {
 		label_6.setBounds(462, 138, 61, 16);
 		add(label_6);
 		
-		weight = new JTextField();
+		weight = new MJTextField();
 		weight.setBounds(561, 138, 150, 28);
 		add(weight);
 		weight.setColumns(10);
@@ -147,7 +160,7 @@ public class MailOrderPanel extends JPanel {
 		lblNewLabel.setBounds(462, 240, 61, 16);
 		add(lblNewLabel);
 		
-		goodsnum = new JTextField();
+		goodsnum = new MJTextField();
 		goodsnum.setText("1");
 		goodsnum.setBounds(218, 358, 150, 28);
 		add(goodsnum);
@@ -176,7 +189,7 @@ public class MailOrderPanel extends JPanel {
 		label_9.setBounds(462, 185, 61, 16);
 		add(label_9);
 		
-		volum = new JTextField();
+		volum = new MJTextField();
 		volum.setBounds(561, 185, 150, 28);
 		add(volum);
 		volum.setColumns(10);
@@ -186,62 +199,12 @@ public class MailOrderPanel extends JPanel {
 		label_10.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
 		add(label_10);
 		
-		if(category.getSelectedItem().equals("经济快递"))
-			deliverCategory = deliverCategory.ECNOMIC;
-		else if(category.getSelectedItem().equals("标准快递"))
-			deliverCategory = deliverCategory.NORMAL;
-		else 
-			deliverCategory = deliverCategory.EXPRESS;
-		
-		if(pack.getSelectedItem().equals("快递袋"))
-			packprice = 1;
-		else if(pack.getSelectedItem().equals("纸箱"))
-			packprice = 5;
-		else
-			packprice = 10;
-		
-		JButton btnNewButton = new JButton("提交");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				service = new DeliveryNoteInputBLService_Stub();						
-			            sendDocVO = new DeliveryNoteVO(senderName.getText(),senderAddress.getText(),
-						senderPho.getText(),receiveName.getText(),receiveAddress.getText(),receivePho.getText(),
-						name.getText(),Integer.parseInt(goodsnum.getText()),Double.parseDouble(weight.getText()),
-						Double.parseDouble(volum.getText()),deliverCategory,packprice,barcode.getText());
-			            
-				res = service.inputSendDoc(sendDocVO);
-				if(res.isPass()){
-					    sd = new SubmitDialog();
-					    sd.setVisible(true);
-						sd.getOK().addActionListener(new  ActionListener(){
-     
-							@Override
-							public void actionPerformed(ActionEvent e) {
-								sdm = service.submitSendDoc(sendDocVO);
-								String price = sdm.getPrice()+"";
-								money.setText(price);
-								predate.setText(sdm.getPredectedDate());
-								sd.setVisible(false);								
-							}
-							
-						});
-				}else{
-					checkstyleDialog checkstyle = new checkstyleDialog(res.getMessage());
-					checkstyle.setVisible(true);
-				}
-				
-				
-				
-			}
-		});
-		btnNewButton.setBounds(584, 355, 132, 59);
-		add(btnNewButton);
 		
 		JLabel label_11 = new JLabel("寄件价格：");
 		label_11.setBounds(896, 39, 82, 16);
 		add(label_11);
 		
-		money = new JTextField();
+		money = new MJTextField();
 		money.setBounds(977, 33, 134, 28);
 		add(money);
 		money.setBackground(Color.LIGHT_GRAY);
@@ -257,7 +220,7 @@ public class MailOrderPanel extends JPanel {
 		label_12.setBounds(896, 138, 82, 16);
 		add(label_12);
 		
-		predate = new JTextField();
+		predate = new MJTextField();
 		predate.setBounds(977, 132, 134, 28);
 		add(predate);
 		predate.setBackground(Color.LIGHT_GRAY);
@@ -277,20 +240,84 @@ public class MailOrderPanel extends JPanel {
 		label_16.setBounds(70, 271, 84, 16);
 		add(label_16);
 		
-		senderPho = new JTextField();
+		senderPho = new MJTextField();
 		senderPho.setBounds(218, 267, 150, 28);
 		add(senderPho);
 		senderPho.setColumns(10);
 		
-		barcode = new JTextField();
+		barcode = new MJTextField();
 		barcode.setBounds(561, 234, 150, 28);
 		add(barcode);
 		barcode.setColumns(10);
 		
-		senderName = new JTextField();
+		senderName = new MJTextField();
 		senderName.setBounds(218, 179, 150, 28);
 		add(senderName);
 		senderName.setColumns(10);
+		
+		if(category.getSelectedItem().equals("经济快递"))
+			deliverCategory = deliverCategory.ECNOMIC;
+		else if(category.getSelectedItem().equals("标准快递"))
+			deliverCategory = deliverCategory.NORMAL;
+		else 
+			deliverCategory = deliverCategory.EXPRESS;
+		
+		if(pack.getSelectedItem().equals("快递袋"))
+			packagetype = packagetype.Bag;
+		else if(pack.getSelectedItem().equals("纸箱"))
+			packagetype = packagetype.PaperBox;
+		else
+			packagetype = packagetype.WoodenBox;
+		
+		
+		
+		
+		JButton btnNewButton = new JButton("提交");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			            sendDocVO = new DeliveryNoteVO(senderName.getText(),senderAddress.getText(),
+						senderPho.getText(),receiveName.getText(),receiveAddress.getText(),receivePho.getText(),
+						name.getText(),Integer.parseInt(goodsnum.getText()),Double.parseDouble(weight.getText()),
+						Double.parseDouble(volum.getText()),deliverCategory,packagetype,barcode.getText());
+			            sendDocVO.setUserName(lim.getUserName());
+			            sendDocVO.setOrganization(lim.getOrganization());
+			            
+				res = service.inputSendDoc(sendDocVO);//对单据进行格式检查
+				if(res.isPass()){//格式检查通过
+					int result1 = JOptionPane.showConfirmDialog(null, "确认提交审批？","系统提示",
+							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);//询问是否确认提交
+					if(result1 == JOptionPane.YES_OPTION){
+						
+						UnEditablePanel.UnEdit(MailOrderPanel.this);
+						sdm = service.submitSendDoc(sendDocVO);					
+						DecimalFormat df=new DecimalFormat(".##");				
+						String price = df.format(sdm.getPrice());//显示价格，保留两位，四舍五入
+						money.setText(price);
+						predate.setText(sdm.getPredectedDate());//显示预计到达日期
+						parent.setDeliveryNoteVo(sendDocVO);//将单据信息存到vo里
+						if(sdm.isPass()){//提交成功
+						;//设置未不可编辑
+						}else{
+							//提交失败
+							int result2 = JOptionPane.showConfirmDialog(null,sdm.getMessage() ,"系统提示",
+									JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+						}
+					}
+				}else{
+	                //未通过格式检查
+					int result1 = JOptionPane.showConfirmDialog(null,res.getMessage() ,"系统提示",
+							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+				}
+				
+				
+				
+			}
+		});
+		btnNewButton.setBounds(584, 355, 132, 59);
+		add(btnNewButton);
+		
+	
 		
 		
 

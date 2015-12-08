@@ -1,5 +1,7 @@
 package data.statisticdata;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -9,11 +11,11 @@ import java.util.Date;
 import data.database.DatabaseManager;
 import data.statisticdata.inte.LogInsertDataService;
 
-public class LogInsertData implements LogInsertDataService {
-	
+public class LogInsertData extends UnicastRemoteObject implements LogInsertDataService {
+
 	private Connection connection;
 	
-	public LogInsertData() {
+	public LogInsertData() throws RemoteException {
 		super();
         this.connection = DatabaseManager.getConnection();
     }

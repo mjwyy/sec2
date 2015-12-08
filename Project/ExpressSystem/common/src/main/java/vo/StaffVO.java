@@ -91,6 +91,14 @@ public class StaffVO {
         return postion;
 	}
 
+	public String getOrganization() {
+		return organization;
+	}
+
+	public void setOrganization(String organization) {
+		this.organization = organization;
+	}
+
 	public String getIDNum() {
 		return IDNum;
 	}
@@ -108,13 +116,13 @@ public class StaffVO {
 	}
 	
 	public ResultMsg checkFormat() {
-		ResultMsg[] msgs = new ResultMsg[6];
+		ResultMsg[] msgs = new ResultMsg[7];
 		
 		msgs[0] = FormatCheck.isChineseName(name);
 		msgs[1] = FormatCheck.isGender(sex);
 		msgs[2] = FormatCheck.isPhoneNumber(phoneNum);
 		msgs[3] = FormatCheck.isIDNumber(IDNum);
-        msgs[4].setPass(true);
+        msgs[4] = new ResultMsg(true);
         msgs[5] = FormatCheck.isSalary(wage);
 		msgs[6] = workingtime>0?new ResultMsg(true):new ResultMsg(false,"工作时间应为正数");
 
@@ -124,10 +132,6 @@ public class StaffVO {
 		
 		return new ResultMsg(true);
 		
-	}
-
-	public String getOrganization() {
-		return organization;
 	}
 
 	public Object toPO() {

@@ -18,16 +18,16 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
 
 import javax.swing.border.EtchedBorder;
 
-import connection.RMIHelper;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 import presentation.mainui.loginFrame;
 import presentation.util.welcomPanel;
+import util.LogInMsg;
+import vo.DeliveryNoteVO;
+import vo.ReceivingNoteVO;
 
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -37,25 +37,27 @@ public class CourierFrame extends JFrame {
 	private JPanel contentPane;
 	private welcomPanel welcome;
     private JPanel bankpanel;
+    private LogInMsg lim; 
+    private ReceivingNoteVO receivingNoteVo;
+    private DeliveryNoteVO deliveryNoteVo;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) throws RemoteException, NotBoundException {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					LogInMsg limm = null;
 					CourierFrame.changeLook();
-					CourierFrame frame = new CourierFrame();
+					CourierFrame frame = new CourierFrame(limm);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
-
-        RMIHelper.tryConnect();
-	}
+	}*/
     
 	private static void changeLook() {
 	    try {
@@ -80,17 +82,19 @@ public class CourierFrame extends JFrame {
 		} 
 	}
 	
-	public  void setClose() {
+	private  void setClose() {
 		this.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				super.windowClosing(e);
-				int result = JOptionPane.showConfirmDialog(CourierFrame.this, "确认退出？","系统提示",
+				int result = JOptionPane.showConfirmDialog( CourierFrame.this, "确认退出？","系统提示",
 						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 				if(result == JOptionPane.YES_OPTION) {
-					System.exit(0);
+					dispose();
+					loginFrame lf = new loginFrame();
+					lf.setVisible(true);
 				} else {
-					return;
+					setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 				}
 			}
 		});
@@ -99,7 +103,7 @@ public class CourierFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CourierFrame() {
+	public CourierFrame(LogInMsg  logInMsg) {
 		setSize(1280,720);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1280, 720);
@@ -107,6 +111,8 @@ public class CourierFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		lim = logInMsg;
+		setClose();
 		
 		this.setResizable(false);//不可调整大小
 		setTitle("MinJW物流管理系统");
@@ -138,10 +144,10 @@ public class CourierFrame extends JFrame {
 		bankpanel.add(welcome);
 		welcome.setLayout(null);
 		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
-		panel_3.setBounds(347, 570, 933, 124);
-		contentPane.add(panel_3);
+		JPanel leftpanel = new JPanel();
+		leftpanel.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
+		leftpanel.setBounds(347, 570, 933, 124);
+		contentPane.add(leftpanel);
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
@@ -151,7 +157,7 @@ public class CourierFrame extends JFrame {
 		JButton btnNewButton = new JButton("登记寄件单");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MailOrderPanel mop = new MailOrderPanel(){
+				MailOrderPanel mop = new MailOrderPanel(lim,CourierFrame.this){
 					public void paintComponent(Graphics g) {
 						 super.paintComponent(g);
 						 ImageIcon img = new ImageIcon("image/0111.jpg");
@@ -174,7 +180,7 @@ public class CourierFrame extends JFrame {
 		JButton button = new JButton("录入收件单");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ReceiveOrderPanel rop = new ReceiveOrderPanel(){
+				ReceiveOrderPanel rop = new ReceiveOrderPanel(lim,CourierFrame.this){
 					public void paintComponent(Graphics g) {
 						 super.paintComponent(g);
 						 ImageIcon img = new ImageIcon("image/0111.jpg");
@@ -219,7 +225,25 @@ public class CourierFrame extends JFrame {
 		});
 		button_1.setBounds(0, 421, 140, 152);
 		contentPane.add(button_1);
-		
-		
+	
 	}
+
+	public ReceivingNoteVO getReceivingNoteVo() {
+		return receivingNoteVo;
+	}
+
+	public void setReceivingNoteVo(ReceivingNoteVO receivingNoteVo) {
+		this.receivingNoteVo = receivingNoteVo;
+	}
+
+	public DeliveryNoteVO getDeliveryNoteVo() {
+		return deliveryNoteVo;
+	}
+
+	public void setDeliveryNoteVo(DeliveryNoteVO deliveryNoteVo) {
+		this.deliveryNoteVo = deliveryNoteVo;
+	}
+	
+	
+
 }

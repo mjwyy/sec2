@@ -1,10 +1,22 @@
 package businesslogicservice.statisticblservice._driver;
 
+import businesslogic.statistic.LogInquiry;
 import businesslogicservice.statisticblservice.LogInquiryBLService;
+import connection.RMIHelper;
 import vo.SystemLogVO;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+
 public class LogInquiryBLService_Driver {
-	
+
+    public static void main(String[] args) throws RemoteException, NotBoundException, MalformedURLException {
+        RMIHelper.tryConnect();
+        LogInquiryBLService_Driver driver = new LogInquiryBLService_Driver();
+        LogInquiry logInquiry = new LogInquiry();
+        driver.drive(logInquiry);
+    }
 
 	public void drive(LogInquiryBLService service){
 		
@@ -14,11 +26,6 @@ public class LogInquiryBLService_Driver {
 			System.out.println("Failed");
 		}
 		
-		if(service.getLogInfo(new SystemLogVO("2015-02-12",null))!=null){
-			System.out.println("Got list");
-		}else{
-			System.out.println("Null return");
-		}
 	}
 	
 }

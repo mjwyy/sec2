@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 import po.UserPO;
 import connection.RemoteObjectGetter;
-import dataservice.exception.ElementNotFoundException;
 import dataservice.infodataservice.SystemUserManagementDataService;
 
 /**
@@ -95,7 +94,10 @@ public class SystemUserManagement implements SystemUserManagementBLService {
     	ArrayList<UserVO> result = new ArrayList<>();
     	ArrayList<UserPO> get = null;
     	try {
-			get = dataService.inquireUser((UserPO) vo.toPO());
+            if(vo == null){
+                get = dataService.getAllUsers();
+            }else
+			    get = dataService.inquireUser((UserPO) vo.toPO());
 		} catch (Exception e) {
 			System.err.println("查询用户时出现异常：");
 			System.err.println(e.getMessage());
@@ -110,17 +112,17 @@ public class SystemUserManagement implements SystemUserManagementBLService {
     }
 
     @Override
-    public LogInMsg logIn(String userNum, String initialPassword) {
-        UserVO vo = new UserVO(userNum,initialPassword,null);
-        ArrayList<UserVO> found = this.find(vo);
-        if(found.size()==0)
-            return new LogInMsg(false,null);
-        UserVO foundVO = found.get(0);
-        if(foundVO.getInitialPassword().equals(initialPassword)){
-        	RuntimeUserInfo.setUserNum(userNum);
-            return new LogInMsg(true,foundVO.getAuthority());
+    public LogInMsg logIn(String userNum, String initialPassword)  {
+    	try {
+			LogInMsg msg = dataService.logIn(userNum, initialPassword);
+			if(msg.isPass()) {
+				RuntimeUserInfo.setUserNum(userNum);
+			}
+            return msg;
+		} catch (RemoteException e) {
+            e.printStackTrace();
+            return new LogInMsg(false, null, "网络连接异常，目前无法登陆。");
         }
-        else
-            return new LogInMsg(false,null);
+    	
     }
 }

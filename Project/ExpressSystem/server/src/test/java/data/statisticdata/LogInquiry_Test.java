@@ -10,7 +10,11 @@ import dataservice.statisticdataservice.LogInquiryDataService;
 
 public class LogInquiry_Test {
 
-    private LogInquiryDataService service = new LogInquiryData();
+    private LogInquiryDataService service;
+
+    public LogInquiry_Test() throws RemoteException {
+        service = new LogInquiryData();
+    }
 
     @Test
 	public void testfind() throws RemoteException{
@@ -30,5 +34,7 @@ public class LogInquiry_Test {
 		//assertEquals(true,log2.equals(service.findLogEntries(null, keyword)));
 		//assertEquals(true,log1.equals(service.findLogEntries("2015-11-11", keyword)));
 	}
+
+
 
 }

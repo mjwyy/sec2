@@ -19,4 +19,10 @@ public class OrderInquiryDataService_Stub implements OrderInquiryDataService {
 		return null;
 	}
 
+    @Override
+    public boolean insertOrderPO(String barCode, String orderInfo, double price) {
+
+        return true;
+    }
+
 }

@@ -31,11 +31,6 @@ public class IncomeNotePO implements Serializable {
 	
 	
 	/**
-	 * 日期      收款单位     收款人即财务人员       交款营业厅      金额       银行账户
-	 */
-	
-	
-	/**
 	 * 收款单时间
 	 */
 	String time = null;

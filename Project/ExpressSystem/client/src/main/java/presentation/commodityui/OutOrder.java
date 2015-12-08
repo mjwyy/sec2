@@ -25,6 +25,7 @@ import javax.swing.JButton;
 import presentation.util.FitTabel;
 import util.ResultMsg;
 import vo.StorageOutVO;
+import businesslogic.commodity.StorageOut;
 import businesslogicservice.commodityblservice.StorageOutBLService;
 import businesslogicservice.commodityblservice._Stub.StorageOutBLService_Stub;
 
@@ -37,7 +38,8 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class OutOrder extends JPanel {
-	StorageOutBLService sob=new StorageOutBLService_Stub();
+//	StorageOutBLService sob=new StorageOutBLService_Stub();
+	StorageOutBLService sob=new StorageOut();
 	private JTextField codef;
 	private JTextField dataf;
 	private JTextField tof;
@@ -138,6 +140,12 @@ public class OutOrder extends JPanel {
 	    					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 	    			if(result1 == JOptionPane.YES_OPTION) {
 	        		ResultMsg result=sob.submitStorageOutDoc(vv);
+	        		if(result.isPass()) {
+	    			}
+	    				else{
+	    					JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
+	    							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+	    				}
 	    			}
 	    			else {
 	    				return;

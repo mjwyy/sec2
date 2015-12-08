@@ -21,8 +21,8 @@ public class SystemUserManagementDataService_Driver {
 	private ArrayList<UserPO> list = new ArrayList<UserPO>();
 
 	public SystemUserManagementDataService_Driver() {
-		userPO1 = new UserPO("test1","test1",Authority.ACCOUNTANT_HIGH);
-		userPO2 = new UserPO("test2","test2",Authority.ACCOUNTANT_LOW);
+		userPO1 = new UserPO("test1","test1",Authority.DELIVERY_MAN);
+		userPO2 = new UserPO("test2","test2",Authority.DELIVERY_MAN);
 		userPO3 = new UserPO("test3","test3",Authority.DELIVERY_MAN);
 		list.add(userPO1);
 		list.add(userPO2);

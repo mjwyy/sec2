@@ -13,17 +13,7 @@ import dataservice.statisticdataservice.NoteApprovingDataService;
 public class NoteApprovingDataService_Driver {
 
 	public void drive(NoteApprovingDataService data) throws RemoteException, ElementNotFoundException {
-		if(data.getAllDoc()!=null){
-			System.out.println("Got array list");
-		}else{
-			System.out.println("Failed to get list");
-		}
-		
-		if(data.getDocByType(DocType.Arrival_Note_On_Service)!=null){
-			System.out.println("Got array list");
-		}else{
-			System.out.println("Failed to get list");
-		}
+
 
 	}
 	

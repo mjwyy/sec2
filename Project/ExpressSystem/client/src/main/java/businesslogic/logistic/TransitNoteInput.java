@@ -3,6 +3,7 @@ package businesslogic.logistic;
 import businesslogicservice.logisticblservice.TransitNoteInputBLService;
 import connection.RemoteObjectGetter;
 import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.logisticdataservice.TransitNoteInputDataService;
 import po.TransitNotePO;
 import util.ResultMsg;
@@ -20,31 +21,32 @@ public class TransitNoteInput implements TransitNoteInputBLService {
 
     private TransitNotePO po;
 
-    public TransitNoteInput(TransitNoteInputDataService dataService) {
+    public TransitNoteInput() {
         RemoteObjectGetter getter = new RemoteObjectGetter();
         this.dataService = (TransitNoteInputDataService) getter.getObjectByName("TransitNoteInputDataService");
     }
 
     @Override
     public ResultMsg inputCenterTransitDoc(TransitNoteOnTransitVO centerTransitDocVO) {
-        ResultMsg formatCheck = centerTransitDocVO.checkFormat();
-        return formatCheck;
+        return centerTransitDocVO.checkFormat();
     }
 
     @Override
     public ResultMsg submitCenterTransitDoc(TransitNoteOnTransitVO centerTransitDocVO) {
-
         try {
             this.po = (TransitNotePO) centerTransitDocVO.toPO();
-            this.dataService.insert(this.po);
+            this.po.setUserName(centerTransitDocVO.getUserName());
+            this.po.setOrganization(centerTransitDocVO.getOrganization());
+            return this.dataService.insert(this.po);
         } catch (RemoteException e) {
             e.printStackTrace();
-            return new ResultMsg(false,e.getMessage());
+            return new ResultMsg(false,"提交中转单失败!");
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
-        } catch (SQLException e) {
+            return new ResultMsg(false,"输入的条形码对应订单不存在,请重新输入");
+        } catch (InterruptWithExistedElementException e) {
             e.printStackTrace();
+            return new ResultMsg(false,"提交中转单失败!单据编号已存在!");
         }
-        return new ResultMsg(true,"中转单已提交!");
     }
 }

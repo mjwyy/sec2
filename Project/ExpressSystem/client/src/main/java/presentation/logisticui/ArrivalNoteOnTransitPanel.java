@@ -15,11 +15,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -28,26 +31,30 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import presentation.financeui.PaymentInputPanel;
+import presentation.util.CurrentTime;
+import presentation.util.MJTextField;
 import presentation.util.checkstyleDialog;
 import util.BarcodeAndState;
+import util.LogInMsg;
 import util.ResultMsg;
 import util.enums.GoodsState;
 import vo.ArrivalNoteOnTransitVO;
 
 import javax.swing.JTextArea;
 
+import businesslogic.logistic.ArrivalNoteOnTransit;
 import businesslogicservice.logisticblservice.ArrivalNoteOnTransitBLService;
 import businesslogicservice.logisticblservice._Stub.ArrivalNoteOnTransitBLService_Stub;
 
 import java.awt.SystemColor;
 
 public class ArrivalNoteOnTransitPanel extends JPanel {
-	private JTextField centrenum1;
-	private JTextField date1;
-	private JTextField barcode;
-	private JTextField departure1;
-	private JTextField trannum1;
-	private ArrivalNoteOnTransitBLService service;
+	private MJTextField centrenum1;
+	private MJTextField date1;
+	private MJTextField barcode;
+	private MJTextField departure1;
+	private MJTextField trannum1;
+	private ArrivalNoteOnTransitBLService service = new ArrivalNoteOnTransit();
 	private BarcodeAndState brcodeAndState;
 	private ResultMsg res;
 	private JTextField date2;
@@ -60,30 +67,39 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 	private JTextField trannum2;
 	private ArrivalNoteOnTransitVO arrivalNoteOnTransitVO;
 	private ArrayList<BarcodeAndState> barcodeAndStates = new ArrayList<BarcodeAndState>();
+	private LogInMsg lim; 
+	private JButton button_1;
+	private JComboBox comboBox;
+	private int seletedRow;
 	/**
 	 * Create the panel.
 	 */
 	
 	 public static void main(String[] args){
-		JFrame f = new JFrame();
+		/*JFrame f = new JFrame();
 		ArrivalNoteOnTransitPanel p = new ArrivalNoteOnTransitPanel();
 		p.setVisible(true);
 		f.setSize(1150,444);
 	f.getContentPane().add(p);
 		f.setVisible(true);
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);*/
 	}
-	public ArrivalNoteOnTransitPanel() {
+	public ArrivalNoteOnTransitPanel( LogInMsg  logInMsg) {
+		service = new ArrivalNoteOnTransit();
+		barcodeAndStates = new ArrayList<BarcodeAndState>();
 		setBackground(SystemColor.window);
 		setSize(1152,446);									
 	    setLayout(null);
 	    JLabel lblNewLabel = new JLabel("到达日期");
 	    lblNewLabel.setBounds(852, 39, 78, 16);
 		add(lblNewLabel);
+		 lim =  logInMsg;
 												
-												
-		date1 = new JTextField();
+		CurrentTime currentTime = new CurrentTime();										
+		date1 = new MJTextField();
+		date1.setText(currentTime.getCurrentTimeSecond());
 		date1.setBounds(970, 32, 156, 30);
+		
 		add(date1);
 												
 		date1.setColumns(10);
@@ -93,7 +109,7 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 		add(lblNewLabel_1);
 												
 												
-		centrenum1= new JTextField();
+		centrenum1= new MJTextField();
 		centrenum1.setBounds(970, 81, 156, 30);
 		add(centrenum1);										
 	    centrenum1.setColumns(10);
@@ -106,9 +122,13 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 				ArrayList<BarcodeAndState> bas = new ArrayList<BarcodeAndState>();
 				BarcodeAndState mock = new BarcodeAndState("1234567890",GoodsState.COMPLETE);
 				bas.add(mock);
+		       if(trannum1.getText().isEmpty()||centrenum1.getText().isEmpty()||
+		    		   date1.getText().isEmpty()||departure1.getText().isEmpty()){
+		    		int result1 = JOptionPane.showConfirmDialog(null, "有咚咚漏天啦！","系统提示",
+							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+		       }else{
 				ArrivalNoteOnTransitVO vo = new ArrivalNoteOnTransitVO(trannum1.getText(),centrenum1.getText(),date1.getText(),
 						departure1.getText(),bas);
-				service = new ArrivalNoteOnTransitBLService_Stub();
 				//格式检查
 			    res = service.inputCenterArrivalDoc(vo);
 				//正确则信息填入那边
@@ -119,9 +139,10 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 					departure2.setText(departure1.getText());
 				}
 				else{
-					checkstyleDialog checkstyle = new checkstyleDialog(res.getMessage());
-					checkstyle.setVisible(true);
+					int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
+							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 			}
+		       }
 			}
 		});
 												
@@ -130,7 +151,7 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 		add(label);
 												
 		
-		barcode = new JTextField();
+		barcode = new MJTextField();
 		barcode.setBounds(970, 290, 156, 30);
 		add(barcode);
 		barcode.setColumns(10);
@@ -147,24 +168,24 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 		label_1.setBounds(852, 345, 78, 16);
 		add(label_1);
 		String[] state = {"完好","缺损","丢失"};
-		final JComboBox comboBox = new JComboBox(state);
+		  comboBox = new JComboBox(state);
 		comboBox.setBounds(970, 341, 156, 27);
 		comboBox.setBackground(SystemColor.textHighlight);
 		add(comboBox);
 																
-		departure1 = new JTextField();
+		departure1 = new MJTextField();
 		departure1.setBounds(970, 126, 156, 30);
 		add(departure1);
 	    departure1.setColumns(10);													
 																		
-	    trannum1 = new JTextField();
+	    trannum1 = new MJTextField();
 	    trannum1.setBounds(970, 171, 156, 30);
 		add(trannum1);
 		trannum1.setColumns(10);
 			
-			JButton button = new JButton("添加");
-			button.setBounds(1009, 390, 117, 30);
-			add(button);
+			JButton btnAdd = new JButton("ADD");
+			btnAdd.setBounds(1052, 390, 74, 30);
+			add(btnAdd);
 			
 			JLabel arrivaldateLabel = new JLabel("到达日期");
 			arrivaldateLabel.setBounds(44, 73, 61, 16);
@@ -198,30 +219,20 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 			scrollPane.setBounds(367, 72, 371, 272);
 			add(scrollPane);
 			
+			  table.addMouseListener(new MouseAdapter() {
+		        	public void mouseClicked(MouseEvent arg0) {
+		        		 seletedRow = table.getSelectedRow();
+		          		if(seletedRow != -1){
+		          			barcode.setText(model.getValueAt(seletedRow,0).toString());
+		          			comboBox.setSelectedItem(model.getValueAt(seletedRow, 1).toString());
+		          			
+		          		}
+		        	}
+		        });
+			
 			
 			JButton button_1 = new JButton("提交");
-			button_1.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					if(!barcodeAndStates.isEmpty()){
-					arrivalNoteOnTransitVO = new ArrivalNoteOnTransitVO(trannum2.getText(),centrenum2.getText(),date2.getText(),
-							departure2.getText(), barcodeAndStates);
-					res = service.submitCenterArrivalDoc(arrivalNoteOnTransitVO);
-					date1.enable(false);
-					centrenum1.enable(false);
-					trannum1.enable(false);
-					departure1.enable(false);
-					barcode.enable(false);
-					comboBox.enable(false);
-					
-					if(res.isPass()){
-					}	
-					}else{
-						checkstyleDialog checkstyle = new checkstyleDialog("请将到达单填写完整后点击提交");
-						checkstyle.setVisible(true);
-					}
-					
-				}
-			});
+			button_1.addActionListener(new submitListener());
 			button_1.setBounds(591, 391, 117, 29);
 			add(button_1);
 			
@@ -245,8 +256,18 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 			add(trannum2);
 			trannum2.setColumns(10);
 			
+			JButton btnNewButton_1 = new JButton("DELETE");
+			btnNewButton_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if(seletedRow != -1)
+					model.removeRow(seletedRow);
+				}
+			});
+			btnNewButton_1.setBounds(955, 390, 74, 30);
+			add(btnNewButton_1);
 			
-			button.addActionListener(new ActionListener() {
+			
+			btnAdd.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					ArrayList<BarcodeAndState> bas = new ArrayList<BarcodeAndState>();
 					
@@ -257,6 +278,7 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 					else
 						brcodeAndState = new BarcodeAndState(barcode.getText(),GoodsState.LOST);
 					bas.add(brcodeAndState);
+					
 					
 					ArrivalNoteOnTransitVO vo = new ArrivalNoteOnTransitVO(trannum2.getText(),centrenum2.getText(),date2.getText(),
 							departure2.getText(),bas);
@@ -274,14 +296,16 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 						departure1.setText("");
 						barcodeAndStates.add( brcodeAndState);		
 					}else{
-						checkstyleDialog checkstyle = new checkstyleDialog(res.getMessage());
-						checkstyle.setVisible(true);
+						int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
+								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 					}
 					
 				}
 			});	
 																	
 	}
+	
+	
 	public void paintComponent(Graphics g) {
 		 super.paintComponents(g);
 		 ImageIcon img = new ImageIcon("image/0011.jpg");
@@ -294,7 +318,48 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 	public ArrivalNoteOnTransitVO getVO(){
 		return arrivalNoteOnTransitVO;
 	}
+	
+	public JButton getButton_1() {
+		return button_1;
+	}
+
+	public  class submitListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if(!barcodeAndStates.isEmpty()){
+				arrivalNoteOnTransitVO = new ArrivalNoteOnTransitVO(trannum2.getText(),centrenum2.getText(),date2.getText(),
+						departure2.getText(), barcodeAndStates);
+				arrivalNoteOnTransitVO.setUserName(lim.getUserName());
+				arrivalNoteOnTransitVO.setOrganization(lim.getOrganization());
+				date1.setEditable(false);
+				centrenum1.setEditable(false);
+				trannum1.setEditable(false);
+				departure1.setEditable(false);
+				barcode.setEditable(false);
+				comboBox.setEditable(false);
+				res = service.submitCenterArrivalDoc(arrivalNoteOnTransitVO);
+				
+				if(res.isPass()){
+					;
+				
+				}else{
+					int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
+							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);	
+		        }
+		
+	   }else{
+		   int result1 = JOptionPane.showConfirmDialog(null, "有咚咚漏天啦！","系统提示",
+					JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
+	   }
+	
+     }
+   }
+	
+	
 }
+
+
 	
 	
 

@@ -5,9 +5,12 @@ package dataservice.infodataservice._Stub;
  *
  */
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import po.UserPO;
+import util.LogInMsg;
+import util.enums.Authority;
 import dataservice.infodataservice.SystemUserManagementDataService;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
@@ -42,6 +45,12 @@ public class SystemUserManagementDataService_Stub implements SystemUserManagemen
 			ElementNotFoundException {
 		System.out.println("inquireUser success");
 		return null;
+	}
+
+	@Override
+	public LogInMsg logIn(String account, String password) {
+		
+		return new LogInMsg(true, Authority.MANAGER, "登录成功！");
 	}
 	
 

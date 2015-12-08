@@ -49,7 +49,7 @@ public class OrganizationPO implements Serializable {
 	}
 
 	public Object toVO() {
-		//TODO PO是否应该包含所有员工信息
+		//PO是否应该包含所有员工信息？答案是不用，因为应该是员工找组织而不是组织找员工
 		OrganizationInfoVO vo = new OrganizationInfoVO(code, type, name, null);
 		
 		return vo;

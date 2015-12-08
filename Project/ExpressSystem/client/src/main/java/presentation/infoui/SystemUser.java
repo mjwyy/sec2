@@ -22,8 +22,10 @@ import javax.swing.table.TableColumn;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
+import businesslogic.info.SystemUserManagement;
 import businesslogicservice.infoblservice.SystemUserManagementBLService;
 import businesslogicservice.infoblservice._stub.SystemUserManagementBLService_Stub;
+import util.LogInMsg;
 import util.ResultMsg;
 import util.enums.Authority;
 import vo.UserVO;
@@ -48,6 +50,7 @@ public class SystemUser extends JFrame {
 	 */
 	private static final int HEIGHTM = 446;
 	SystemUserManagementBLService sum=new SystemUserManagementBLService_Stub();
+//	SystemUserManagementBLService sum=new SystemUserManagement();
 	private JPanel contentPane;
 	private JTextField code;
 	private JTextField pass;
@@ -61,6 +64,7 @@ public class SystemUser extends JFrame {
 	private UserVO uservo;//修改的originvo
 	private JTextField key;
 	private JComboBox findkey ;
+	private LogInMsg lim;
 	/**
 	 * Launch the application.
 	 */
@@ -70,7 +74,7 @@ public class SystemUser extends JFrame {
 				try {
 					SystemUser.changeLook();
 					SystemUser.changeFont();
-					SystemUser frame = new SystemUser();
+					SystemUser frame = new SystemUser(null);
 					frame.setCaiDanLan();
 					frame.setVisible(true);
 					frame.setClose();
@@ -146,7 +150,8 @@ public class SystemUser extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SystemUser() {
+	public SystemUser(LogInMsg lim) {
+		this.lim=lim;
 		JPanel pppp = (JPanel)this.getContentPane();
 		// 加载背景图片 
 		ImageIcon img = new ImageIcon("image/0111.jpg");
@@ -202,7 +207,8 @@ public class SystemUser extends JFrame {
 		user.setBounds(10, 2, 54, 15);
 		QUANXIANW.add(user);
 
-		JLabel username = new JLabel("王五");
+		//JLabel username = new JLabel(lim.getUserName());
+		JLabel username = new JLabel();
 		username.setBounds(56, 2, 54, 15);
 		QUANXIANW.add(username);
 
@@ -210,9 +216,10 @@ public class SystemUser extends JFrame {
 		quanxian.setBounds(10, 25, 54, 15);
 		QUANXIANW.add(quanxian);
 
-		JLabel label = new JLabel("库存管理员");
-		label.setBounds(56, 25, 129, 15);
-		QUANXIANW.add(label);
+	//	JLabel auth = new JLabel(lim.getOrganization());
+		JLabel auth = new JLabel();
+		auth.setBounds(56, 25, 129, 15);
+		QUANXIANW.add(auth);
 
 		JLabel label_1 = new JLabel("公告:");
 		label_1.setBounds(10, 53, 54, 15);
@@ -226,6 +233,11 @@ public class SystemUser extends JFrame {
 		panel_2.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 		panel_2.setBounds(341, 570, 939, 124);
 		contentPane.add(panel_2);
+		panel_2.setLayout(null);
+		
+		JLabel lblNewLabel_3 = new JLabel("我是萌萌的系统管理员,我要管好大家的帐号呀!");
+		lblNewLabel_3.setBounds(118, 7, 378, 47);
+		panel_2.add(lblNewLabel_3);
 
 		initComponent();
 	}
@@ -269,23 +281,26 @@ public class SystemUser extends JFrame {
 				if(oc.equals("总经理")){
 					comboBox.setSelectedIndex(0);
 				}
-				else if(oc.equals("高级财务人员")){
+				else if(oc.equals("财务人员")){
 					comboBox.setSelectedIndex(1);
 				}
-				else if(oc.equals("低级财务人员")){
+				else if(oc.equals("高级财务人员")){
 					comboBox.setSelectedIndex(2);
 				}
 				else if(oc.equals("库存管理人员")){
 					comboBox.setSelectedIndex(3);
 				}
-				else if(oc.equals("财务人员")){
+				else if(oc.equals("中转中心业务员")){
 					comboBox.setSelectedIndex(4);
 				}
-				else if(oc.equals("快递员")){
+				else if(oc.equals("营业厅业务员")){
 					comboBox.setSelectedIndex(5);
 				}
-				else if(oc.equals("系统管理员")){
+				else if(oc.equals("快递员")){
 					comboBox.setSelectedIndex(6);
+				}
+				else if(oc.equals("系统管理员")){
+					comboBox.setSelectedIndex(7);
 				}
 				//创originvo
 				uservo=new UserVO(code.getText(),pass.getText(),Authority.getAuthObject(comboBox.getSelectedIndex()+1));
@@ -317,14 +332,14 @@ public class SystemUser extends JFrame {
 		/*用JScrollPane装载JTable，这样超出范围的列就可以通过滚动条来查看*/  
 
 		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"总经理", "高级财务人员", "低级财务人员", "库存管理人员", "财务人员", "快递员", "系统管理员"}));
-		comboBox.setBounds(842, 173, 132, 21);
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"总经理", "财务人员", "高级财务人员", "库存管理人员", "中转中心业务员", "营业厅业务员","快递员", "系统管理员"}));
+		comboBox.setBounds(842, 173, 188, 21);
 		middle.add(comboBox);
 		
 		
 		chooseUp = new JComboBox();
-		chooseUp.setModel(new DefaultComboBoxModel(new String[] {"总经理", "高级财务人员", "低级财务人员", "库存管理人员", "财务人员", "快递员", "系统管理员"}));
-		chooseUp.setBounds(359, 5, 117, 28);
+		chooseUp.setModel(new DefaultComboBoxModel(new String[] {"总经理", "财务人员", "高级财务人员", "库存管理人员", "中转中心业务员", "营业厅业务员","快递员", "系统管理员"}));
+		chooseUp.setBounds(359, 5, 184, 28);
 		chooseUp.setVisible(false);
 		middle.add(chooseUp);
 
@@ -385,12 +400,12 @@ public class SystemUser extends JFrame {
 		middle.add(button_3);
 
 		code = new JTextField();
-		code.setBounds(841, 61, 133, 28);
+		code.setBounds(841, 61, 189, 28);
 		middle.add(code);
 		code.setColumns(10);
 
 		pass = new JTextField();
-		pass.setBounds(841, 110, 133, 28);
+		pass.setBounds(841, 110, 189, 28);
 		middle.add(pass);
 		pass.setColumns(10);
 
@@ -456,7 +471,7 @@ public class SystemUser extends JFrame {
 
 		JButton button = new JButton("查询");
 		button.addActionListener(new findListener());
-		button.setBounds(508, 6, 63, 23);
+		button.setBounds(553, 8, 63, 23);
 		middle.add(button);
 
 		JButton button_1 = new JButton("显示全部");
@@ -465,7 +480,7 @@ public class SystemUser extends JFrame {
 			initTabel(null);
 			}
 		});
-		button_1.setBounds(597, 5, 84, 23);
+		button_1.setBounds(626, 8, 84, 23);
 		middle.add(button_1);
 
 
@@ -494,20 +509,23 @@ public class SystemUser extends JFrame {
 			else if(authority==Authority.ACCOUNTANT_HIGH){
 				s="高级财务人员";
 			}
-			else if(authority==Authority.ACCOUNTANT_LOW){
-				s="低级财务人员";
+			else if(authority==Authority.ACCOUNTANT){
+				s="财务人员";
 			}
 			else if(authority==Authority.WAREHOUSE_MANAGER){
 				s="库存管理人员";
-			}
-			else if(authority==Authority.Financial_PERSONNEL){
-				s="财务人员";
 			}
 			else if(authority==Authority.DELIVERY_MAN){
 				s="快递员";
 			}
 			else if(authority==Authority.SYSTEM_MANAGER){
 				s="系统管理员";
+			}
+			else if(authority==Authority.TRANSIT_CENTER_PERSONNEL){
+				s="中转中心业务员";
+			}
+			else{
+				s="营业厅业务员";
 			}
 			Object[] oo={userNum,initialPassword,s};
 			model.addRow(oo);
@@ -529,7 +547,7 @@ UserVO vvvv=null;
 					aau=Authority.ACCOUNTANT_HIGH;
 				}
 				else if(ssss.equals("低级财务人员")){
-					aau=Authority.ACCOUNTANT_LOW;
+					aau=Authority.ACCOUNTANT;
 				}
 				else if(ssss.equals("库存管理人员")){
 					aau=Authority.WAREHOUSE_MANAGER;

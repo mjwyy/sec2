@@ -26,6 +26,7 @@ import presentation.util.CurrentTime;
 import util.ResultMsg;
 import vo.CommodityGoodsVO;
 import vo.StorageInVO;
+import businesslogic.commodity.StorageIn;
 import businesslogicservice.commodityblservice.StorageInBLService;
 import businesslogicservice.commodityblservice._Stub.StorageInBLService_Stub;
 
@@ -36,10 +37,12 @@ import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
 import javax.swing.DefaultComboBoxModel;
 
 public class Inorder extends JPanel {
-	StorageInBLService si=new StorageInBLService_Stub();
+//	StorageInBLService si=new StorageInBLService_Stub();
+	StorageInBLService si=new StorageIn();
 	private JTextField codef;
 	private JTextField tof;
 	private JTextField rowf;
@@ -154,7 +157,14 @@ public class Inorder extends JPanel {
 			int result1 = JOptionPane.showConfirmDialog(null, "确认提交审批？","系统提示",
 					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 			if(result1 == JOptionPane.YES_OPTION) {
+				
 				ResultMsg result=si.submitPutInStorageDoc(siv);
+				if(result.isPass()) {
+			}
+				else{
+					JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
+							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+				}
 			}
 			else {
 				return;

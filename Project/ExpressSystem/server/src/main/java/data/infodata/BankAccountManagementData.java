@@ -3,6 +3,7 @@ package data.infodata;
 import data.database.DatabaseFactory;
 import data.database.DatabaseFactoryMysqlImpl;
 import data.database.DatabaseManager;
+import data.infodata.inte.BankAccountBalanceAccess;
 import data.statisticdata.inte.LogInsertDataService;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
@@ -10,6 +11,7 @@ import dataservice.infodataservice.BankAccountManagementDataService;
 import po.BankAccountPO;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,9 +21,11 @@ import java.util.ArrayList;
 /**
  * Created by kylin on 15/11/16.
  */
-public class BankAccountManagementData implements BankAccountManagementDataService{
+public class BankAccountManagementData extends UnicastRemoteObject implements BankAccountManagementDataService, BankAccountBalanceAccess{
 
-    private Connection connection;
+
+	private static final long serialVersionUID = -8080269551859558616L;
+	private Connection connection;
 
     public BankAccountManagementData() throws RemoteException {
         super();
@@ -37,7 +41,7 @@ public class BankAccountManagementData implements BankAccountManagementDataServi
             if(findBankAccount(account).size()>0) {
                 logIns.insertSystemLog("试图新增银行账户:"+account.getName()+","+account.getNumber()+"，但银行账户已存在，取消操作");
                 DatabaseManager.releaseConnection(connection,null,null);
-                throw new InterruptWithExistedElementException();
+                throw new InterruptWithExistedElementException("银行账户："+account.getNumber()+"已存在。");
             }
         } catch (ElementNotFoundException e1) {
             // That's OK
@@ -146,4 +150,45 @@ public class BankAccountManagementData implements BankAccountManagementDataServi
         DatabaseManager.releaseConnection(connection,stat,null);
         return result > 0;
     }
+
+	@Override
+	public double getAccountBalance(String accountNum)
+			throws ElementNotFoundException, SQLException, RemoteException {
+		ArrayList<BankAccountPO> list = findBankAccount(new BankAccountPO(null, accountNum, null));
+		
+		if(list.size()==0) {
+			throw new ElementNotFoundException();
+		}
+		
+		return Double.parseDouble(list.get(0).getBalance());
+	}
+
+	@Override
+	public synchronized  void setAccountBalance(String accountNum, String variance)
+			throws ElementNotFoundException, SQLException, RemoteException {
+		
+		double left = getAccountBalance(accountNum);
+		
+		assert (left+Double.parseDouble(variance))>=0;
+
+		String balance = null;
+		
+		connection = DatabaseManager.getConnection();
+    	LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
+
+        BankAccountPO searched = new BankAccountPO(null, accountNum, null);
+        if(findBankAccount(searched).size()==0){
+            logIns.insertSystemLog("修改银行账户,但账户不存在");
+            DatabaseManager.releaseConnection(connection,null,null);
+            throw new ElementNotFoundException("未找到银行账户，修改操作取消");
+        }
+
+        String stmt = "update BankAccounts balance='"+balance+"' where number='"+accountNum+"'";
+        PreparedStatement stat = connection.prepareStatement(stmt);
+        int result = stat.executeUpdate();
+
+        logIns.insertSystemLog("修改银行账户,number='"+accountNum+"',name="+balance);
+        DatabaseManager.releaseConnection(connection,stat,null);
+		
+	}
 }

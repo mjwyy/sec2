@@ -1,11 +1,18 @@
 package util;
 
+import java.io.Serializable;
+
 /**
  * Created by kylin on 15/11/25.
  */
-public class BarcodesAndLocation {
+public class BarcodesAndLocation implements Serializable{
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2257394993443049595L;
+
+	/**
      * 条形码号
      */
     private String barcode;

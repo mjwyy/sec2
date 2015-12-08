@@ -5,6 +5,7 @@ import po.LoadNoteOnServicePO;
 import util.ResultMsg;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -36,7 +37,7 @@ public class LoadNoteOnServiceDataService_Stub implements LoadNoteOnServiceDataS
 		return null;
     }
 
-     
+
     public boolean delete(LoadNoteOnServicePO po) throws RemoteException {
         System.out.println("delete succeed!");
 		return true;

@@ -1,5 +1,11 @@
 package data.logisticdata;
 
+import data.database.DatabaseFactoryMysqlImpl;
+import data.logisticdata.deliverystrategy.DeliveryInfo;
+import data.logisticdata.deliverystrategy.PriceStrategy;
+import data.logisticdata.deliverystrategy.TimePresumeStrategy;
+import data.statisticdata.BusinessDataModificationData;
+import data.statisticdata.OrderInquiryData;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
 
@@ -8,9 +14,11 @@ import org.junit.Test;
 import po.DeliveryNotePO;
 import util.SendDocMsg;
 import util.enums.DeliverCategory;
+import util.enums.PackageType;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -19,27 +27,30 @@ import static junit.framework.TestCase.assertEquals;
  */
 public class DeliveryNoteInput_Test {
 
-    private DeliveryNoteInputDataService service;
+    DeliveryNoteInputDataService service;
 
     public DeliveryNoteInput_Test() throws RemoteException {
-        service = new DeliveryNoteInputData();
+        service = DatabaseFactoryMysqlImpl.getInstance().getDeliveryNoteInputDataService();
     }
 
-    //这个测试类之间的方法没有顺序,但是方法之间互相依赖十分严重
-    @Before
-    public void setUp() throws Exception {
-        service = new DeliveryNoteInputData();
-    }
-
-    @Test
+//    @Test
     public void testInsert() throws RemoteException, SQLException, ElementNotFoundException {
 
         DeliveryNotePO po1 = new DeliveryNotePO("王二狗", "南京市", "15005"
                 , "Tom Hanks", "北京市", "19883490000", "book", 1, 2, 3
-                , DeliverCategory.EXPRESS, 5, "123123123");
-        SendDocMsg msg2 = service.insert(po1);
-        System.out.println(msg2.getPrice());
+                , DeliverCategory.EXPRESS, PackageType.Bag, "123123123");
+//        SendDocMsg msg2 = service.insert(po1);
+//        System.out.println(msg2.getPrice());
     }
 
+    @Test
+    public void testCal() throws RemoteException, ElementNotFoundException, SQLException {
+        TimePresumeStrategy timePresumeStrategy = new TimePresumeStrategy();
+        PriceStrategy priceStrategy = new PriceStrategy(new BusinessDataModificationData());
+        DeliveryInfo deliveryInfo = new DeliveryInfo("nanjing","beijing",900,2,1,
+                DeliverCategory.NORMAL,PackageType.WoodenBox);
+        System.out.println(priceStrategy.getPrice(deliveryInfo));
+        System.out.println(timePresumeStrategy.getPresumedTime(deliveryInfo));
+    }
 
 }

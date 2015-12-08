@@ -9,9 +9,17 @@ import org.junit.Test;
 
 public class StorageOutData_Test {
 
-	static StorageOutData sod = new StorageOutData();
-	
-	static MockStorageOutPO[] m;
+	static StorageOutData sod;
+
+    static {
+        try {
+            sod = new StorageOutData();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    static MockStorageOutPO[] m;
 	
 	public StorageOutData_Test() throws RemoteException {
 		m = new MockStorageOutPO[4];

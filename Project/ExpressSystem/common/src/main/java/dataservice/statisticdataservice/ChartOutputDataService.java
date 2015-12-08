@@ -3,6 +3,7 @@ package dataservice.statisticdataservice;
 import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 import po.ChartPO;
 import po.chart.BusinessStateChartPO;
@@ -21,7 +22,7 @@ public interface ChartOutputDataService extends Remote, Serializable {
 	 * @throws RemoteException
 	 */
 	public BusinessStateChartPO getBusinessStateChart(BusinessStateChartPO po)
-			throws RemoteException;
+            throws RemoteException;
 	
 	public CostAndProfitChartPO getCostAndProfitChart(CostAndProfitChartPO po) 
 			throws RemoteException;

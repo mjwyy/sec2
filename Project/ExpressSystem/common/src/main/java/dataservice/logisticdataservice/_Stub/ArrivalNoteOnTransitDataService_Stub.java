@@ -8,6 +8,7 @@ import util.enums.GoodsState;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Created by kylin on 15/10/21.
@@ -35,7 +36,7 @@ public class ArrivalNoteOnTransitDataService_Stub implements ArrivalNoteOnTransi
         return new ResultMsg(true);
     }
 
-     
+
     public boolean delete(ArrivalNoteOnTransitPO po) throws RemoteException {
         System.out.println("delete succeed!");
 		return true;

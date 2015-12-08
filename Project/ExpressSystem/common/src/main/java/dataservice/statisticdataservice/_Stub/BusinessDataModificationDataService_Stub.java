@@ -36,7 +36,7 @@ public class BusinessDataModificationDataService_Stub implements BusinessDataMod
 	}
 
     @Override
-    public double getDistance(String city1, String city2) throws RemoteException, ElementNotFoundException, SQLException {
+    public double getDistance(String city1, String city2) throws RemoteException, ElementNotFoundException {
         return 0;
     }
 

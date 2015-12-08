@@ -23,7 +23,9 @@ import javax.swing.border.EtchedBorder;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 import presentation.logisticui.CourierFrame;
+import presentation.mainui.loginFrame;
 import presentation.util.welcomPanel;
+import util.LogInMsg;
 
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
@@ -36,6 +38,7 @@ public class financeFrame extends JFrame {
 	private JPanel contentPane;
 	private JPanel bankpanel;
 	private welcomPanel welcome;
+	private LogInMsg  lim;
 	/**
 	 * 窗口宽度
 	 */
@@ -50,8 +53,8 @@ public class financeFrame extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
+		//EventQueue.invokeLater(new Runnable() {
+			/*public void run() {
 				try {
 					 financeFrame.changeLook();
 					 financeFrame.changeFont();
@@ -62,8 +65,8 @@ public class financeFrame extends JFrame {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}
-		});
+			}*/
+		//});
 	}
 	
 	private static void changeLook() {
@@ -94,12 +97,14 @@ public class financeFrame extends JFrame {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				super.windowClosing(e);
-				int result = JOptionPane.showConfirmDialog(financeFrame.this, "确认退出？","系统提示",
+				int result = JOptionPane.showConfirmDialog( financeFrame.this, "确认退出？","系统提示",
 						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 				if(result == JOptionPane.YES_OPTION) {
-					System.exit(0);
+					dispose();
+					loginFrame lf = new loginFrame();
+					lf.setVisible(true);
 				} else {
-					return;
+					setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 				}
 			}
 		});
@@ -107,14 +112,15 @@ public class financeFrame extends JFrame {
 
 	/**
 	 * Create the frame.
-	 */
-	public financeFrame() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+     * @param lim
+     */
+	public financeFrame(LogInMsg lim) {
+	    this.lim = lim;
 		setSize(WIDTH,HEIGHT);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
+		//setClose();
 		this.setResizable(false);//不可调整大小
 		setTitle("MinJW物流管理系统");
 		contentPane.setLayout(null);

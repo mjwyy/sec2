@@ -18,7 +18,7 @@ import vo.StorageInVO;
  * 问题：StorageInDataService 没有提供库存报警相关接口
  */
 public class StorageIn implements StorageInBLService {
-	
+
 	StorageInDataService dataService = null;
 	
 	ResultMsg alarmingMsg = null;
@@ -39,6 +39,9 @@ public class StorageIn implements StorageInBLService {
     public ResultMsg submitPutInStorageDoc(StorageInVO putInStorageVo) {
     	try {
 			boolean msg = dataService.insert((StorageInPO) putInStorageVo.toPO(),RuntimeUserInfo.getNum());
+			if (!msg) {
+				return new ResultMsg(false,"系统数据出现未知异常，请联系系统管理员。");
+			}
 		} catch (RemoteException e) {
 			return new ResultMsg(false,e.getMessage());
 		}
@@ -51,7 +54,7 @@ public class StorageIn implements StorageInBLService {
      */
     @Override
     public InventoryStatus alarm() {
-    	// TODO 先要修改数据层！
+    	// TODO 先要修改数据层！但添加仓库信息时并没有规定其容量，所以数据层暂时也没法实现。
         return null;
     }
 }

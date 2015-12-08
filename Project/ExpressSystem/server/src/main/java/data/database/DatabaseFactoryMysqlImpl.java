@@ -57,7 +57,7 @@ public class DatabaseFactoryMysqlImpl implements DatabaseFactory{
 
         arrivalNoteOnServiceDataService = new ArrivalNoteOnServiceData();
         arrivalNoteOnTransitDataService = new ArrivalNoteOnTransitData();
-        deliveryNoteInputDataService = new DeliveryNoteInputData();
+
         loadNoteOnServiceDataService = new LoadNoteOnServiceData();
         loadNoteOnTransitDataService = new LoadNoteOnTransitData();
         receivingNoteInputDataService = new ReceivingNoteInputData();
@@ -67,10 +67,13 @@ public class DatabaseFactoryMysqlImpl implements DatabaseFactory{
         businessDataModificationDataService = new BusinessDataModificationData();
         chartOutputDataService = new ChartOutputData();
         logInquiryDataService = new LogInquiryData();
-        noteApprovingDataService = new NoteApprovingData();
+
         orderInquiryDataService = new OrderInquiryData();
 
         logInsertDataService = new LogInsertData();
+        deliveryNoteInputDataService = new DeliveryNoteInputData(orderInquiryDataService,
+                businessDataModificationDataService);
+        noteApprovingDataService = new NoteApprovingData();
     }
 
     public static DatabaseFactoryMysqlImpl getInstance() throws RemoteException {
@@ -237,7 +240,7 @@ public class DatabaseFactoryMysqlImpl implements DatabaseFactory{
 
     @Override
     public LogInsertDataService getLogInsertDataService() {
-        return null;
+        return logInsertDataService;
     }
 
 }

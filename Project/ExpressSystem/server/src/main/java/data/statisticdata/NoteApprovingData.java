@@ -7,19 +7,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 
 import data.database.DatabaseManager;
-import data.database.SqlHelper;
 import data.statisticdata.param.NoteApproveChartData;
-import dataservice.logisticdataservice.*;
-import po.*;
 import util.ApproveNote;
 import util.ResultMsg;
 import util.enums.DocState;
 import util.enums.NoteType;
-import dataservice.exception.ElementNotFoundException;
 import dataservice.statisticdataservice.NoteApprovingDataService;
 
 /**
@@ -60,9 +55,8 @@ public class NoteApprovingData extends UnicastRemoteObject implements NoteApprov
 				Iterator<String> columns = NoteApproveChartData.getColumns(chartName);
 				
 				while (set.next()) {
-					//set??
 					String id = set.getString("id");
-					String info = generateInfoString(columns, set);
+					String info = generateInfoString(chartName, columns, set);
 					NoteType type = NoteApproveChartData.getNoteType(chartName);
 					result.add(new ApproveNote(id, type, info));
 				}
@@ -92,13 +86,15 @@ public class NoteApprovingData extends UnicastRemoteObject implements NoteApprov
 	 * @param set
 	 * @return 详细信息（列名为中文的）
 	 */
-	private String generateInfoString (Iterator<String> columns,ResultSet set) {
+	private String generateInfoString (String chartName, Iterator<String> columns,ResultSet set) {
 
 		StringBuilder result = new StringBuilder();
 		String current = null;
 		String chineseName = null;
+		
 		while (columns.hasNext()) {
-			
+			current = columns.next();
+			chineseName = NoteApproveChartData.getChineseColumnName(chartName, current);
 			
 			
 		}

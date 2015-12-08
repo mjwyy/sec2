@@ -41,6 +41,9 @@ public class StorageIn implements StorageInBLService {
     public ResultMsg submitPutInStorageDoc(StorageInVO putInStorageVo) {
     	try {
 			boolean msg = dataService.insert((StorageInPO) putInStorageVo.toPO(),RuntimeUserInfo.getNum());
+			if (!msg) {
+				return new ResultMsg(false,"系统数据出现未知异常，请联系系统管理员。");
+			}
 		} catch (RemoteException e) {
 			return new ResultMsg(false,e.getMessage());
 		}

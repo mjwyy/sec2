@@ -175,18 +175,23 @@ public class BankAccountManagePanel extends JPanel {
        	public void actionPerformed(ActionEvent e) {
        		seletedRow=table.getSelectedRow();
     		if(seletedRow!=-1){
- 
+    			int result2 = JOptionPane.showConfirmDialog(null, "确定要删除吗？","系统提示", 
+						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+    			if(result2 == JOptionPane.YES_OPTION){
     			vo = new BankAccountVO(model.getValueAt(seletedRow, 1).toString(),
     					model.getValueAt(seletedRow, 0).toString(),model.getValueAt(seletedRow, 2).toString());
+    			res = service.delete(vo);
+    			if(res.isPass()){
+    			model.removeRow(seletedRow);
     			accountname.setText("");
            		account.setText("");
            		balance.setText("");
-    			res = service.delete(vo);
-    			if(res.isPass())
-    			model.removeRow(seletedRow);
+    		}
     			else{
     				int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
-							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+							JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
+    			}
+    			
     			}
 			
     		}

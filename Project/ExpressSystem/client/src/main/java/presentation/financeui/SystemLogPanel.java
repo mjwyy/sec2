@@ -1,8 +1,11 @@
 package presentation.financeui;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Vector;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -12,6 +15,10 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
+import presentation.util.ObservingTextField;
+
+import com.qt.datapicker.DatePicker;
+
 import businesslogic.statistic.LogInquiry;
 import businesslogicservice.statisticblservice.LogInquiryBLService;
 import util.ResultMsg;
@@ -19,6 +26,8 @@ import vo.SystemLogVO;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class SystemLogPanel extends JPanel {
 
@@ -34,7 +43,7 @@ public class SystemLogPanel extends JPanel {
 	 * 窗口高度
 	 */
 	private static final int HEIGHT = 446;
-	private JTextField date;
+	private ObservingTextField date;
 	private JTextField content;
 	private JTable table;
 	private DefaultTableModel model;
@@ -43,6 +52,7 @@ public class SystemLogPanel extends JPanel {
 	private SystemLogVO vo;
 	private ResultMsg res;
 	private LogInquiryBLService service = new LogInquiry();
+	private JLabel end;
 	public  SystemLogPanel() {
 		setSize(WIDTH,HEIGHT);
 		setLayout(null);
@@ -51,10 +61,30 @@ public class SystemLogPanel extends JPanel {
 		label.setBounds(81, 55, 61, 16);
 		add(label);
 		
-		date = new JTextField();
+		date = new ObservingTextField();
 		date.setBounds(159, 49, 134, 28);
 		add(date);
 		date.setColumns(10);
+		
+		end = new JLabel("");
+		end.setIcon(new ImageIcon("image/cs.png"));
+		end.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent arg0){
+				end.setIcon(new ImageIcon("image/csr.png"));
+			}
+			public void mouseExited(MouseEvent arg0){
+				end.setIcon(new ImageIcon("image/cs.png"));
+			}
+			public void mouseClicked(MouseEvent e) {
+				DatePicker dp = new DatePicker(date, Locale.CHINA);
+				// previously selected date
+				Date selectedDate = dp.parseDate(date.getText());
+				dp.setSelectedDate(selectedDate);
+				dp.start(date);	
+			}
+		});
+		end.setBounds(307, 49, 36, 26);
+		add(end);
 		
 		JLabel label_1 = new JLabel("内容关键字");
 		label_1.setBounds(374, 55, 88, 16);
@@ -111,6 +141,7 @@ public class SystemLogPanel extends JPanel {
 		btnNewButton.setBounds(899, 50, 125, 43);
 		add(btnNewButton);
 		
+	
 	
 
 	}

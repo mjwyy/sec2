@@ -76,7 +76,7 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
             statement.executeUpdate();
             return this.afterInsert(po);
         } catch (MySQLIntegrityConstraintViolationException e){
-            throw new InterruptWithExistedElementException();
+            throw new InterruptWithExistedElementException("");
         } catch (SQLException e) {
             e.printStackTrace();
         }

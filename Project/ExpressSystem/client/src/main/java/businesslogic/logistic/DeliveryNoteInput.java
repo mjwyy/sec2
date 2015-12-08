@@ -46,9 +46,9 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
 
     @Override
     public ResultMsg inputSendDoc(DeliveryNoteVO sendDocVO) {
-        SendDocMsg sendDocMsg = null;
         ResultMsg format =  sendDocVO.checkFormat();
         if(format.isPass()){
+            SendDocMsg sendDocMsg;
             //获取地址中的有效城市与距离
             ArrayList<String> cites = null;
             try {
@@ -58,12 +58,15 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
                 cites = businessDataModificationDataService.getAllCities();
                 String city1 = this.findCity(cites,sendDocVO.getSenderAddress());
                 String city2 = this.findCity(cites,sendDocVO.getReceiverAddress());
-                double distance = 30;
-
-                distance = businessDataModificationDataService.getDistance(city1, city2);
+                //防御式编程:如果城市在系统中不存在,返回错误信息
+                if(city1 == null)
+                    return new ResultMsg(false,"寄件人城市有误!");
+                if(city2 == null)
+                    return new ResultMsg(false,"收件人城市有误!");
+                double distance = city1.equals(city2) ? 30 :
+                        businessDataModificationDataService.getDistance(city1, city2);
                 DeliveryInfo deliveryInfo = new DeliveryInfo(city1,city2,distance,sendDocVO.getWeight(),
                         sendDocVO.getVolume(),sendDocVO.getCategory(),sendDocVO.getPackType());
-
                 //获取价格与预计日期
                 double price = priceStrategy.getPrice(deliveryInfo,pricePerKG,packagePrice);
                 sendDocVO.setPrice(price);
@@ -71,10 +74,13 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
                 sendDocMsg = new SendDocMsg(true, "寄件单已成功提交,等待审批", price, presumedDate);
             } catch (RemoteException e) {
                 e.printStackTrace();
+                return new ResultMsg(false,"网络异常,请重试!");
             } catch (ElementNotFoundException e) {
                 e.printStackTrace();
+                return new ResultMsg(false,"输入的信息不存在,请重试!");
             } catch (SQLException e) {
                 e.printStackTrace();
+                return new ResultMsg(false,"服务器数据库异常,请重试!");
             }
             return sendDocMsg;
         }else
@@ -87,6 +93,7 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
             this.notePO = sendDocVO.toPO();
             this.notePO.setOrganization(sendDocVO.getOrganization());
             this.notePO.setUserName(sendDocVO.getUserName());
+            this.notePO.setPrice(sendDocVO.getPrice());
             return this.dataService.insert(this.notePO);
         } catch (RemoteException e) {
             e.printStackTrace();

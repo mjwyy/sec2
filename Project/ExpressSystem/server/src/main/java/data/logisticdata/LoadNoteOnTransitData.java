@@ -64,7 +64,7 @@ public class LoadNoteOnTransitData extends NoteInputData implements LoadNoteOnTr
             resultMsg = this.afterInsert(po);
 
         } catch (MySQLIntegrityConstraintViolationException e){
-            throw new InterruptWithExistedElementException();
+            throw new InterruptWithExistedElementException("");
         } catch (SQLException e) {
             e.printStackTrace();
             resultMsg = new ResultMsg(false,"中转中心装车单提交失败!");

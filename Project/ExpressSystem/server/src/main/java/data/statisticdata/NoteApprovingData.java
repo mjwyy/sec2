@@ -45,7 +45,7 @@ public class NoteApprovingData extends UnicastRemoteObject implements NoteApprov
 		while (charts.hasNext()) {
 			
 			String chartName = charts.next();
-			sql = "select * from ? where isPassed="+DocState.UNCHECKED;
+			sql = "select * from ? where isPassed="+DocState.UNCHECKED.getIntState();
 			
 			try {
 				PreparedStatement stmt = connection.prepareStatement(sql);

@@ -32,13 +32,11 @@ public class DeliveryNoteInputBLService_Driver {
         ResultMsg result = service.inputSendDoc(sendDocVO1);
 		if(result.isPass()){
 			System.out.println("输入的寄件单格式正确");
-            SendDocMsg result2 = service.submitSendDoc(sendDocVO1);
+            ResultMsg result2 = service.submitSendDoc(sendDocVO1);
             if(result2.isPass())
                 System.out.println("提交成功");
             else
                 System.out.println("提交失败");
-            System.out.println(result2.getPrice());
-            System.out.println(result2.getPredectedDate());
         }
 		else{
 			System.out.println("输入的寄件单格式不正确");

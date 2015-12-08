@@ -1,9 +1,6 @@
 package data.logisticdata;
 
 import data.database.DatabaseFactoryMysqlImpl;
-import data.logisticdata.deliverystrategy.DeliveryInfo;
-import data.logisticdata.deliverystrategy.PriceStrategy;
-import data.logisticdata.deliverystrategy.TimePresumeStrategy;
 import data.statisticdata.BusinessDataModificationData;
 import data.statisticdata.OrderInquiryData;
 import dataservice.exception.ElementNotFoundException;
@@ -42,15 +39,15 @@ public class DeliveryNoteInput_Test {
 //        SendDocMsg msg2 = service.insert(po1);
 //        System.out.println(msg2.getPrice());
     }
-
-    @Test
-    public void testCal() throws RemoteException, ElementNotFoundException, SQLException {
-        TimePresumeStrategy timePresumeStrategy = new TimePresumeStrategy();
-        PriceStrategy priceStrategy = new PriceStrategy(new BusinessDataModificationData());
-        DeliveryInfo deliveryInfo = new DeliveryInfo("nanjing","beijing",900,2,1,
-                DeliverCategory.NORMAL,PackageType.WoodenBox);
-        System.out.println(priceStrategy.getPrice(deliveryInfo));
-        System.out.println(timePresumeStrategy.getPresumedTime(deliveryInfo));
-    }
+//
+//    @Test
+//    public void testCal() throws RemoteException, ElementNotFoundException, SQLException {
+//        TimePresumeStrategy timePresumeStrategy = new TimePresumeStrategy();
+//        PriceStrategy priceStrategy = new PriceStrategy(new BusinessDataModificationData());
+//        DeliveryInfo deliveryInfo = new DeliveryInfo("nanjing","beijing",900,2,1,
+//                DeliverCategory.NORMAL,PackageType.WoodenBox);
+//        System.out.println(priceStrategy.getPrice(deliveryInfo));
+//        System.out.println(timePresumeStrategy.getPresumedTime(deliveryInfo));
+//    }
 
 }

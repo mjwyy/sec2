@@ -219,8 +219,8 @@ public class loginFrame extends JFrame {
         red.setVisible(false);
         llp.add(red);
 
-        service = new SystemUserManagementBLService_Stub();
-        orderService = new OrderInquiryBLService_Stub();
+        service = new SystemUserManagement();
+        orderService = new OrderInquiry();
         JButton button = new JButton("登录");
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

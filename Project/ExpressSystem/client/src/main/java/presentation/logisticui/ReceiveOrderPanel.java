@@ -64,8 +64,8 @@ public class ReceiveOrderPanel extends JPanel {
         lim = logInMsg;
 		setSize(WIDTH,HEIGHT);
 		setLayout(null);
-		//service = new ReceivingNoteInput();
-		service = new ReceivingNoteInputBLService_Stub();
+		service = new ReceivingNoteInput();
+//		service = new ReceivingNoteInputBLService_Stub();
 		
 		JLabel label = new JLabel("收件日期");
 		label.setBounds(165, 62, 61, 16);

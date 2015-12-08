@@ -113,8 +113,11 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
     @Override
     public ArrayList<UserPO> inquireUser(UserPO info) throws ElementNotFoundException {
         Connection connection = DatabaseManager.getConnection();
-        String accountToFind = info.getAccount();
-        String sqlFindAll = "SELECT * from user where account = '"+accountToFind+"'";
+        String sqlFindAll = null;
+        if(info.getAuthority() != null){
+            sqlFindAll = "SELECT * from user where `rights` = "+info.getAuthority().getIntAuthority();
+        }else if(info.getAccount() != null)
+            sqlFindAll = "SELECT * from user where `account` like '%"+info.getAccount()+"%'";
         PreparedStatement statement = null;
         ArrayList<UserPO> result = new ArrayList<>();
         try {

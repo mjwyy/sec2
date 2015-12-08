@@ -108,8 +108,7 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
 
         //审批通过
         if (docState == DocState.PASSED) {
-            //追加修改物流信息
-            orderDataService.insertOrderPO(po.getBarCode(),orderInfo);
+
 
             //获取地址中的有效城市与距离
             ArrayList<String> cites = businessDataModificationDataService.getAllCities();
@@ -126,6 +125,9 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
             //获取价格与预计日期
             double price = priceStrategy.getPrice(deliveryInfo);
             String presumedDate = timePresumeStrategy.getPresumedTime(deliveryInfo);
+
+            //追加修改物流信息
+            orderDataService.insertOrderPO(po.getBarCode(),orderInfo,price);
 
             sendDocMsg = new SendDocMsg(true,"寄件单已成功提交!",price,presumedDate);
         } else {

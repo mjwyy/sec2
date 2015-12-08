@@ -21,7 +21,7 @@ public class SystemUserManagementBLService_Driver {
     }
 
 	public void drive(SystemUserManagementBLService service){
-        ArrayList<UserVO> result = service.find(null);
+        ArrayList<UserVO> result = service.find(new UserVO("1234567",null,null));
         for (UserVO po2:result) {
             System.out.println(po2.getAuthority());
         }

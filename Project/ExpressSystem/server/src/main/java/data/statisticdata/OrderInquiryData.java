@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import data.database.DatabaseManager;
-import data.database.SqlHelper;
 import po.OrderPO;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.statisticdataservice.OrderInquiryDataService;
@@ -32,9 +31,9 @@ public class OrderInquiryData extends UnicastRemoteObject implements OrderInquir
     }
 
     @Override
-    public boolean insertOrderPO(String barcode, String info) throws RemoteException {
+    public boolean insertOrderPO(String barcode, String info, double price) throws RemoteException {
         Connection connection = DatabaseManager.getConnection();
-        String sql = "insert into `order` ( `history`, `stateOfTransport`, `barcode`) " +
+        String sql = "insert into `order` ( `history`, `stateOfTransport`, `barcode`,`money`) " +
                 "values (?,?,?)";
         PreparedStatement statement = null;
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -47,6 +46,7 @@ public class OrderInquiryData extends UnicastRemoteObject implements OrderInquir
             statement.setString(1, msg);
             statement.setString(2, GoodsState.COMPLETE.toString());
             statement.setString(3, barcode);
+            statement.setDouble(4, price);
             result = statement.executeUpdate();
             DatabaseManager.releaseConnection(connection, statement, null);
         } catch (SQLException e) {

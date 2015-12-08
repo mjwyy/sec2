@@ -12,6 +12,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTable;
 
+import presentation.util.CurrentTime;
 import presentation.util.checkstyleDialog;
 import util.LogInMsg;
 import util.ResultMsg;
@@ -28,6 +29,8 @@ import java.util.ArrayList;
 import java.util.Vector;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class LoadNoteOnTransitPanel extends JPanel {
 	private JTextField date2;
@@ -51,7 +54,8 @@ public class LoadNoteOnTransitPanel extends JPanel {
 	private ResultMsg res;
 	private ArrayList<String> goodsbarcode = new ArrayList<String>();
 	private LoadNoteOnTransitVO loadNoteOnTransitVO;
-	  private  LogInMsg lim ;
+	private  LogInMsg lim ;
+	private int seletedRow;
 
 	/**
 	 * Create the panel.
@@ -142,21 +146,34 @@ public class LoadNoteOnTransitPanel extends JPanel {
 		scrollPane.setBounds(383, 120, 206, 234);
 		add(scrollPane);
 		
+		  table.addMouseListener(new MouseAdapter() {
+	        	public void mouseClicked(MouseEvent arg0) {
+	        		 seletedRow = table.getSelectedRow();
+	          		if(seletedRow != -1){
+	            		addbarcode.setText(model.getValueAt(seletedRow, 0).toString());
+	            		//System.out.println("lalllla");
+	          		}
+	        	}
+	        });
+		
+		
 		JButton button = new JButton("提交");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//判断单据是否填写完整
 				if(!goodsbarcode.isEmpty()){
 				 loadNoteOnTransitVO = new LoadNoteOnTransitVO(date2.getText(), trucknum2.getText(),destination2.getText(), 
 						                 carnum2.getText(),supervisor2.getText(), escort2.getText(), goodsbarcode);
 				 loadNoteOnTransitVO.setUserName(lim.getUserName());
+				 loadNoteOnTransitVO.setOrganization(lim.getOrganization());
 				service.submitCenterLoadDoc(loadNoteOnTransitVO);
-				date1.enable(false); 
-				trucknum1.enable(false);
-				destination1.enable(false);; 
-				carnum.enable(false);;
-				supervisor1.enable(false);;
-				escort1.enable(false);
-				addbarcode.enable(false);
+				date1.setEditable(false); 
+				trucknum1.setEditable(false);
+				destination1.setEditable(false);; 
+				carnum.setEditable(false);;
+				supervisor1.setEditable(false);;
+				escort1.setEditable(false);
+				addbarcode.setEditable(false);
 				
 			}else{
 				int result1 = JOptionPane.showConfirmDialog(null, "请将装车单填写完整","系统提示",
@@ -191,7 +208,9 @@ public class LoadNoteOnTransitPanel extends JPanel {
 		label_11.setBounds(842, 262, 61, 16);
 		add(label_11);
 		
+		CurrentTime currentTime = new CurrentTime();
 		date1 = new JTextField();
+		date1.setText(currentTime.getCurrentTimeSecond());
 		date1.setColumns(10);
 		date1.setBounds(930, 48, 134, 28);
 		add(date1);
@@ -224,12 +243,14 @@ public class LoadNoteOnTransitPanel extends JPanel {
 		JButton button_1 = new JButton("确认");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//下面伪造barcode
+				//下面伪造barcode，以便构造vo
 				ArrayList<String> s = new ArrayList<String>();
 				s.add("1234567890");
+				
 				LoadNoteOnTransitVO vo = new LoadNoteOnTransitVO(date1.getText(), trucknum1.getText(),destination1.getText(), 
 						carnum.getText(),supervisor1.getText(), escort1.getText(), s);
-				res = service.inputCenterLoadDoc(vo);
+				res = service.inputCenterLoadDoc(vo);//格式检查
+				//格式通过
 				if(res.isPass()){
 					date2.setText(date1.getText());
 					trucknum2.setText(trucknum1.getText());
@@ -237,7 +258,7 @@ public class LoadNoteOnTransitPanel extends JPanel {
 					carnum2.setText(carnum.getText());
 					supervisor2.setText(supervisor1.getText());
 					escort2.setText(escort1.getText());					
-				}else{
+				}else{//格式未通过，返回错误信息
 					int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
 							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 				}
@@ -257,14 +278,16 @@ public class LoadNoteOnTransitPanel extends JPanel {
 		add(addbarcode);
 		addbarcode.setColumns(10);
 		
-		JButton button_2 = new JButton("添加");
-		button_2.addActionListener(new ActionListener() {
+		
+		//添加条形码
+		JButton btnAdd = new JButton("ADD");
+		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ArrayList<String> barcode = new ArrayList<String>();
 				barcode.add(addbarcode.getText());
 				LoadNoteOnTransitVO vo = new LoadNoteOnTransitVO(date2.getText(), trucknum2.getText(),destination2.getText(), 
 						carnum2.getText(),supervisor2.getText(), escort2.getText(), barcode);
-				res = service.inputCenterLoadDoc(vo);
+				res = service.inputCenterLoadDoc(vo);//格式检查
 				if(res.isPass()){
 					Vector row = new Vector();
 					row.add(addbarcode.getText());
@@ -283,19 +306,52 @@ public class LoadNoteOnTransitPanel extends JPanel {
 				
 			}
 		});
-		button_2.setBounds(1009, 378, 117, 29);
-		add(button_2);
+		btnAdd.setBounds(1037, 378, 89, 29);
+		add(btnAdd);
+		
+		JButton btnNewButton = new JButton("DELETE");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(seletedRow != -1)
+				model.removeRow(seletedRow);
+			}
+		});
+		btnNewButton.setBounds(842, 378, 89, 28);
+		add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("MODIFY");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(seletedRow != -1){
+					model.removeRow(seletedRow);
+					ArrayList<String> barcode = new ArrayList<String>();
+					barcode.add(addbarcode.getText());
+					LoadNoteOnTransitVO vo = new LoadNoteOnTransitVO(date2.getText(), trucknum2.getText(),destination2.getText(), 
+							carnum2.getText(),supervisor2.getText(), escort2.getText(), barcode);
+					res = service.inputCenterLoadDoc(vo);//格式检查
+					if(res.isPass()){
+						Vector row = new Vector();
+						row.add(addbarcode.getText());
+						data.add(row.clone());
+						model.setDataVector(data, name);
+						table.setModel(model);
+						addbarcode.setText("");
+						goodsbarcode.add(addbarcode.getText());
+						
+					}
+					else{
+						int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
+								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+					}
+					
+				}
+			}
+		});
+		btnNewButton_1.setBounds(940, 378, 89, 29);
+		add(btnNewButton_1);
 
 	}
 	
-	public void paintComponent(Graphics g) {
-		 super.paintComponents(g);
-		 //ImageIcon img = new ImageIcon("C:\\Users\\Administrator\\Desktop\\0011.jpg");
-		// g.drawImage(img.getImage(), 0, 0, null);
-		 float lineWidth = 3.0f;
-	      ((Graphics2D)g).setStroke(new BasicStroke(lineWidth));
-	      g.drawLine(768, 0, 768, 500);
-		}
 	
 	public  LoadNoteOnTransitVO getVO(){
 		return  loadNoteOnTransitVO;

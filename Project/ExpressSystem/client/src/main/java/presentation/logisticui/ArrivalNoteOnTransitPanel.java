@@ -21,6 +21,8 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -29,6 +31,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import presentation.financeui.PaymentInputPanel;
+import presentation.util.CurrentTime;
 import presentation.util.checkstyleDialog;
 import util.BarcodeAndState;
 import util.LogInMsg;
@@ -64,6 +67,9 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 	private ArrivalNoteOnTransitVO arrivalNoteOnTransitVO;
 	private ArrayList<BarcodeAndState> barcodeAndStates = new ArrayList<BarcodeAndState>();
 	private LogInMsg lim; 
+	private JButton button_1;
+	private JComboBox comboBox;
+	private int seletedRow;
 	/**
 	 * Create the panel.
 	 */
@@ -77,7 +83,9 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 		f.setVisible(true);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);*/
 	}
-	public ArrivalNoteOnTransitPanel( LogInMsg  logInMsg ) {
+	public ArrivalNoteOnTransitPanel( LogInMsg  logInMsg) {
+		service = new ArrivalNoteOnTransit();
+		barcodeAndStates = new ArrayList<BarcodeAndState>();
 		setBackground(SystemColor.window);
 		setSize(1152,446);									
 	    setLayout(null);
@@ -86,9 +94,11 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 		add(lblNewLabel);
 		 lim =  logInMsg;
 												
-												
+		CurrentTime currentTime = new CurrentTime();										
 		date1 = new JTextField();
+		date1.setText(currentTime.getCurrentTimeSecond());
 		date1.setBounds(970, 32, 156, 30);
+		
 		add(date1);
 												
 		date1.setColumns(10);
@@ -151,7 +161,7 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 		label_1.setBounds(852, 345, 78, 16);
 		add(label_1);
 		String[] state = {"完好","缺损","丢失"};
-		final JComboBox comboBox = new JComboBox(state);
+		  comboBox = new JComboBox(state);
 		comboBox.setBounds(970, 341, 156, 27);
 		comboBox.setBackground(SystemColor.textHighlight);
 		add(comboBox);
@@ -166,9 +176,9 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 		add(trannum1);
 		trannum1.setColumns(10);
 			
-			JButton button = new JButton("添加");
-			button.setBounds(1009, 390, 117, 30);
-			add(button);
+			JButton btnAdd = new JButton("ADD");
+			btnAdd.setBounds(1052, 390, 74, 30);
+			add(btnAdd);
 			
 			JLabel arrivaldateLabel = new JLabel("到达日期");
 			arrivaldateLabel.setBounds(44, 73, 61, 16);
@@ -202,31 +212,20 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 			scrollPane.setBounds(367, 72, 371, 272);
 			add(scrollPane);
 			
+			  table.addMouseListener(new MouseAdapter() {
+		        	public void mouseClicked(MouseEvent arg0) {
+		        		 seletedRow = table.getSelectedRow();
+		          		if(seletedRow != -1){
+		          			barcode.setText(model.getValueAt(seletedRow,0).toString());
+		          			comboBox.setSelectedItem(model.getValueAt(seletedRow, 1).toString());
+		          			
+		          		}
+		        	}
+		        });
+			
 			
 			JButton button_1 = new JButton("提交");
-			button_1.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					if(!barcodeAndStates.isEmpty()){
-					arrivalNoteOnTransitVO = new ArrivalNoteOnTransitVO(trannum2.getText(),centrenum2.getText(),date2.getText(),
-							departure2.getText(), barcodeAndStates);
-					arrivalNoteOnTransitVO.setUserName(lim.getUserName());
-					date1.enable(false);
-					centrenum1.enable(false);
-					trannum1.enable(false);
-					departure1.enable(false);
-					barcode.enable(false);
-					comboBox.enable(false);
-					res = service.submitCenterArrivalDoc(arrivalNoteOnTransitVO);
-					
-					if(res.isPass()){
-					}	
-					}else{
-						int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
-								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-					}
-					
-				}
-			});
+			button_1.addActionListener(new submitListener());
 			button_1.setBounds(591, 391, 117, 29);
 			add(button_1);
 			
@@ -250,8 +249,18 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 			add(trannum2);
 			trannum2.setColumns(10);
 			
+			JButton btnNewButton_1 = new JButton("DELETE");
+			btnNewButton_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if(seletedRow != -1)
+					model.removeRow(seletedRow);
+				}
+			});
+			btnNewButton_1.setBounds(955, 390, 74, 30);
+			add(btnNewButton_1);
 			
-			button.addActionListener(new ActionListener() {
+			
+			btnAdd.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					ArrayList<BarcodeAndState> bas = new ArrayList<BarcodeAndState>();
 					
@@ -287,6 +296,8 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 			});	
 																	
 	}
+	
+	
 	public void paintComponent(Graphics g) {
 		 super.paintComponents(g);
 		 ImageIcon img = new ImageIcon("image/0011.jpg");
@@ -299,7 +310,44 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 	public ArrivalNoteOnTransitVO getVO(){
 		return arrivalNoteOnTransitVO;
 	}
+	
+	public JButton getButton_1() {
+		return button_1;
+	}
+
+	public  class submitListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if(!barcodeAndStates.isEmpty()){
+				arrivalNoteOnTransitVO = new ArrivalNoteOnTransitVO(trannum2.getText(),centrenum2.getText(),date2.getText(),
+						departure2.getText(), barcodeAndStates);
+				arrivalNoteOnTransitVO.setUserName(lim.getUserName());
+				date1.setEditable(false);
+				centrenum1.setEditable(false);
+				trannum1.setEditable(false);
+				departure1.setEditable(false);
+				barcode.setEditable(false);
+				comboBox.setEditable(false);
+				res = service.submitCenterArrivalDoc(arrivalNoteOnTransitVO);
+				
+				if(res.isPass()){
+					;
+				
+				}else{
+					int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
+							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);	
+		        }
+		
+	   }
+	
+     }
+   }
+	
+	
 }
+
+
 	
 	
 

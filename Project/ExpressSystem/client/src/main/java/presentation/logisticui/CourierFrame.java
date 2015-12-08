@@ -26,6 +26,8 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import presentation.mainui.loginFrame;
 import presentation.util.welcomPanel;
 import util.LogInMsg;
+import vo.DeliveryNoteVO;
+import vo.ReceivingNoteVO;
 
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -36,23 +38,26 @@ public class CourierFrame extends JFrame {
 	private welcomPanel welcome;
     private JPanel bankpanel;
     private LogInMsg lim; 
+    private ReceivingNoteVO receivingNoteVo;
+    private DeliveryNoteVO deliveryNoteVo;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					LogInMsg limm = null;
 					CourierFrame.changeLook();
-					CourierFrame frame = new CourierFrame(null);
+					CourierFrame frame = new CourierFrame(limm);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
-	}
+	}*/
     
 	private static void changeLook() {
 	    try {
@@ -77,7 +82,7 @@ public class CourierFrame extends JFrame {
 		} 
 	}
 	
-	public  void setClose() {
+	private  void setClose() {
 		this.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -139,10 +144,10 @@ public class CourierFrame extends JFrame {
 		bankpanel.add(welcome);
 		welcome.setLayout(null);
 		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
-		panel_3.setBounds(347, 570, 933, 124);
-		contentPane.add(panel_3);
+		JPanel leftpanel = new JPanel();
+		leftpanel.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
+		leftpanel.setBounds(347, 570, 933, 124);
+		contentPane.add(leftpanel);
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
@@ -152,7 +157,7 @@ public class CourierFrame extends JFrame {
 		JButton btnNewButton = new JButton("登记寄件单");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MailOrderPanel mop = new MailOrderPanel(lim){
+				MailOrderPanel mop = new MailOrderPanel(lim,CourierFrame.this){
 					public void paintComponent(Graphics g) {
 						 super.paintComponent(g);
 						 ImageIcon img = new ImageIcon("image/0111.jpg");
@@ -175,7 +180,7 @@ public class CourierFrame extends JFrame {
 		JButton button = new JButton("录入收件单");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ReceiveOrderPanel rop = new ReceiveOrderPanel(lim){
+				ReceiveOrderPanel rop = new ReceiveOrderPanel(lim,CourierFrame.this){
 					public void paintComponent(Graphics g) {
 						 super.paintComponent(g);
 						 ImageIcon img = new ImageIcon("image/0111.jpg");
@@ -220,7 +225,25 @@ public class CourierFrame extends JFrame {
 		});
 		button_1.setBounds(0, 421, 140, 152);
 		contentPane.add(button_1);
-		
-		
+	
 	}
+
+	public ReceivingNoteVO getReceivingNoteVo() {
+		return receivingNoteVo;
+	}
+
+	public void setReceivingNoteVo(ReceivingNoteVO receivingNoteVo) {
+		this.receivingNoteVo = receivingNoteVo;
+	}
+
+	public DeliveryNoteVO getDeliveryNoteVo() {
+		return deliveryNoteVo;
+	}
+
+	public void setDeliveryNoteVo(DeliveryNoteVO deliveryNoteVo) {
+		this.deliveryNoteVo = deliveryNoteVo;
+	}
+	
+	
+
 }

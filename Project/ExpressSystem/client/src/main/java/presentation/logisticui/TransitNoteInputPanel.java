@@ -12,6 +12,8 @@ import javax.swing.JTable;
 import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableModel;
 
+import presentation.util.CurrentTime;
+import presentation.util.UnEditablePanel;
 import presentation.util.checkstyleDialog;
 import util.BarcodesAndLocation;
 import util.LogInMsg;
@@ -31,6 +33,8 @@ import java.util.ArrayList;
 import java.util.Vector;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JComboBox;
 
@@ -62,6 +66,7 @@ public class TransitNoteInputPanel extends JPanel {
     private ArrayList<BarcodesAndLocation> barcodesandLocation = new ArrayList<BarcodesAndLocation>();
     private TransitNoteOnTransitVO transitNoteOnTransitVO;
     private  LogInMsg lim ;
+    private int seletedRow;
 	/**
 	 * 窗口宽度
 	 */
@@ -159,17 +164,7 @@ public class TransitNoteInputPanel extends JPanel {
 							flightNumber2.getText(),transitNoteType,setout2.getText(),arrival2.getText(),loader2.getText(),barcodesandLocation);
 					transitNoteOnTransitVO.setUserName(lim.getUserName());
 				res = service.submitCenterTransitDoc(transitNoteOnTransitVO);	
-				date1.enable(false);
-				transitnum1.enable(false);
-				flightNumber1.enable(false);
-				setout1.enable(false);
-				arrival1.enable(false);
-				loader1.enable(false);
-				barcode.enable(false);
-				number.enable(false);
-				jiahao.enable(false);
-				section.enable(false);
-				line.enable(false);
+				UnEditablePanel.UnEdit(TransitNoteInputPanel.this);
 			}else{
 				int result1 = JOptionPane.showConfirmDialog(null, "请将中转单填写完整","系统提示",
 						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
@@ -183,7 +178,9 @@ public class TransitNoteInputPanel extends JPanel {
 		label_5.setBounds(818, 44, 61, 16);
 		add(label_5);
 		
+		CurrentTime currentTime = new CurrentTime();
 		date1 = new JTextField();
+		date1.setText(currentTime.getCurrentTimeSecond());
 		date1.setColumns(10);
 		date1.setBounds(891, 38, 209, 28);
 		add(date1);
@@ -283,10 +280,23 @@ public class TransitNoteInputPanel extends JPanel {
 		scrollPane.setBounds(298, 100, 446, 273);
 		add(scrollPane);
 		
+	    table.addMouseListener(new MouseAdapter() {
+        	public void mouseClicked(MouseEvent arg0) {
+        		 seletedRow = table.getSelectedRow();
+          		if(seletedRow != -1){
+          			barcode.setText(model.getValueAt(seletedRow,0).toString());
+          			section.setText(model.getValueAt(seletedRow, 1).toString());
+          			line.setText(model.getValueAt(seletedRow, 2).toString());
+          			jiahao.setText(model.getValueAt(seletedRow, 3).toString());
+          			number.setText(model.getValueAt(seletedRow, 3).toString());
+          		}
+        	}
+        });
+		
 	
 		
-		JButton button_2 = new JButton("添加");
-		button_2.addActionListener(new ActionListener() {
+		JButton btnAdd = new JButton("ADD");
+		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ArrayList<BarcodesAndLocation> add = new ArrayList<BarcodesAndLocation>();
 				BarcodesAndLocation bal = new BarcodesAndLocation(barcode.getText(),Integer.parseInt(section.getText())
@@ -307,9 +317,9 @@ public class TransitNoteInputPanel extends JPanel {
 					table.setModel(model);
 					barcode.setText("");
 					section.setText(section.getText());
-					line.setText(line.getText());
-					jiahao.setText(jiahao.getText());
-					number.setText(Integer.parseInt(number.getText())+1+"");
+					line.setText("");
+					jiahao.setText("");
+					number.setText("");
 					barcodesandLocation.add(bal);	
 				}else{
 					int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
@@ -318,8 +328,8 @@ public class TransitNoteInputPanel extends JPanel {
 			
 			}
 		});
-		button_2.setBounds(1006, 394, 86, 28);
-		add(button_2);
+		btnAdd.setBounds(1006, 394, 86, 28);
+		add(btnAdd);
 		
 		
 		
@@ -390,6 +400,56 @@ public class TransitNoteInputPanel extends JPanel {
 		JLabel lblNewLabel_2 = new JLabel("运输类型");
 		lblNewLabel_2.setBounds(69, 341, 61, 16);
 		add(lblNewLabel_2);
+		
+		JButton btnNewButton = new JButton("delete");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(seletedRow != -1)
+				model.removeRow(seletedRow);
+			}
+		});
+		btnNewButton.setBounds(818, 394, 86, 28);
+		add(btnNewButton);
+		
+		JButton btnModify = new JButton("MODIFY");
+		btnModify.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(seletedRow != -1){
+					model.removeRow(seletedRow);
+					
+					ArrayList<BarcodesAndLocation> add = new ArrayList<BarcodesAndLocation>();
+					BarcodesAndLocation bal = new BarcodesAndLocation(barcode.getText(),Integer.parseInt(section.getText())
+							,Integer.parseInt(line.getText()),Integer.parseInt(jiahao.getText()),Integer.parseInt(number.getText()));
+					add.add(bal);
+					TransitNoteOnTransitVO vo = new TransitNoteOnTransitVO(date2.getText(),transitnum2.getText(),
+							flightNumber2.getText(),transitNoteType,setout2.getText(),arrival2.getText(),loader2.getText(),add);
+					res = service.inputCenterTransitDoc(vo);
+					if(res.isPass()){
+						Vector row  = new Vector();
+						row.add(barcode.getText());
+						row.add(section.getText());
+						row.add(line.getText());
+						row.add(jiahao.getText());
+						row.add(number.getText());
+						data.add(row.clone());
+						model.setDataVector(data, name);
+						table.setModel(model);
+						barcode.setText("");
+						section.setText(section.getText());
+						line.setText("");
+						jiahao.setText("");
+						number.setText("");
+						barcodesandLocation.add(bal);	
+					}else{
+						int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
+								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+					}
+					
+				}
+			}
+		});
+		btnModify.setBounds(905, 394, 86, 28);
+		add(btnModify);
 		
 		
 

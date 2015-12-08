@@ -56,6 +56,7 @@ public class TransitFrame extends JFrame {
     private LoadNoteOnTransitVO loadNoteOnTransitVO;
     private TransitNoteOnTransitVO transitNoteOnTransitVO;
     private LogInMsg  lim;
+    private String userInfo;
     
 	/**
 	 * 窗口宽度
@@ -191,19 +192,21 @@ public class TransitFrame extends JFrame {
 		JMenu mnf = new JMenu("功能（F）");
 		menuBar.add(mnf);
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new EtchedBorder(EtchedBorder.RAISED, Color.LIGHT_GRAY, Color.GRAY));
+		userInfo = "姓名："+lim.getUserName()+"\n"+"机构"+lim.getOrganization()+"\n"+"权限"+lim.getAuthority();
+		JPanel panel_2 = new JPanel(){
+			public void paintComponent(Graphics g) {
+				 super.paintComponent(g);
+				 g.drawString(userInfo, 0, 50);
+				}
+				};
+	
 		panel_2.setBounds(0, 570, 350, 124);
+		panel_2.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 		contentPane.add(panel_2);
-		panel_2.setLayout(null);
 		
-		JLabel label = new JLabel("系统公告");
-		label.setBounds(16, 6, 52, 16);
-		panel_2.add(label);
+	
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(16, 106, 61, 16);
-		panel_2.add(lblNewLabel);
+		
 		
 		JPanel approve = new JPanel();
 		approve.setBounds(347, 570, 933, 124);
@@ -226,6 +229,7 @@ public class TransitFrame extends JFrame {
 		button_2.setVisible(false);
 		approve.add(button_2);
 		
+		
 		JButton btnNewButton = new JButton("录入到达单");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -238,7 +242,7 @@ public class TransitFrame extends JFrame {
 					      ((Graphics2D)g).setStroke(new BasicStroke(lineWidth));
 					      g.drawLine(768, 0, 768, 500);
 						}
-						}; 
+						}; 					
 				anot.setBounds(0, 0, 1152, 446);
 				bankpanel.removeAll();
 				bankpanel.add(anot);
@@ -248,6 +252,7 @@ public class TransitFrame extends JFrame {
 		});
 		btnNewButton.setBounds(0, 123, 140, 152);
 		contentPane.add(btnNewButton);
+		
 		
 		JButton btnNewButton_1 = new JButton("录入中转单");
 		btnNewButton_1.addActionListener(new ActionListener() {

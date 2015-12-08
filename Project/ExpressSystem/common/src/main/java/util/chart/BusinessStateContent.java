@@ -1,9 +1,11 @@
 package util.chart;
 
+import java.io.Serializable;
+
 /**
  * Created by kylin on 15/12/3.
  */
-public class BusinessStateContent {
+public class BusinessStateContent implements Serializable{
 
     /**
      * 收款日期

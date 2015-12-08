@@ -14,6 +14,7 @@ public class CostAndProfitChartVO extends ChartVO {
 
     public CostAndProfitChartVO(ChartType type, String time1, String time2,
                                 ArrayList<CostAndProfitContent> costAndProfitContents) {
+
         super(type, time1, time2);
         this.costAndProfitContents = costAndProfitContents;
     }

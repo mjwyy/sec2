@@ -123,7 +123,7 @@ public class ChartOutputData extends UnicastRemoteObject implements ChartOutputD
         Connection connection = DatabaseManager.getConnection();
         PreparedStatement statement = null;
         ResultSet resultSet = null;
-
+        System.out.println("data setvice"+po.getType());
         ArrayList<String> everyDay = po.getEveryDay();
         ArrayList<CostAndProfitContent> costAndProfitContents = new ArrayList<>();
 

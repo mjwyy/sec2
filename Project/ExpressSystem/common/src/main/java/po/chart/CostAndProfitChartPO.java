@@ -28,7 +28,7 @@ public class CostAndProfitChartPO extends ChartPO {
 
 
     public CostAndProfitChartVO toVO() {
-        return new CostAndProfitChartVO(ChartType.BUSINESS_STAT_CHART,this.getStartTime(),this.getEndTime(),this.contents);
+        return new CostAndProfitChartVO(ChartType.PROFIT_CHART,this.getStartTime(),this.getEndTime(),this.contents);
     }
 
     public void setContents(ArrayList<CostAndProfitContent> contents) {

@@ -1,9 +1,11 @@
 package util.chart;
 
+import java.io.Serializable;
+
 /**
  * Created by kylin on 15/12/4.
  */
-public class CostAndProfitContent {
+public class CostAndProfitContent implements Serializable {
 
     private String date;
 

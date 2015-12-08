@@ -34,11 +34,6 @@ public class ReceivingNoteInputDataService_Stub implements ReceivingNoteInputDat
         return null;
     }
 
-    @Override
-    public ArrayList<ReceivingNotePO> getReceivingNote() {
-        return null;
-    }
-
 
     public boolean delete(ReceivingNotePO po) throws RemoteException {
         System.out.println("delete succeed!");

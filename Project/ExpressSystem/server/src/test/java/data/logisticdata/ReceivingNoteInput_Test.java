@@ -30,9 +30,4 @@ public class ReceivingNoteInput_Test {
         service.insert(po1);
     }
 
-
-    @Test
-    public void testFind() throws SQLException, RemoteException {
-        service.getReceivingNote();
-    }
 }

@@ -80,32 +80,5 @@ public class ReceivingNoteInputData extends NoteInputData implements ReceivingNo
         return resultMsg;
     }
 
-    @Override
-    public ArrayList<ReceivingNotePO> getReceivingNote() throws RemoteException {
-        ArrayList<ReceivingNotePO> result = new ArrayList<>();
-        Connection connection = DatabaseManager.getConnection();
-        String sql = "select * from `note_receive_note` where isPassed = 0";
-        PreparedStatement statement = null;
-
-        try {
-            statement = connection.prepareStatement(sql);
-            ResultSet resultSet = statement.executeQuery();
-            ReceivingNotePO receivingNotePO;
-
-            while(resultSet.next()){
-                String barcode = resultSet.getString(1);
-                String receiver = resultSet.getString(2);
-                String time = resultSet.getString(3);
-                receivingNotePO = new ReceivingNotePO(barcode,receiver,time);
-                result.add(receivingNotePO);
-            }
-            resultSet.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        DatabaseManager.releaseConnection(connection, statement, null);
-        return result;
-    }
 
 }

@@ -36,4 +36,8 @@ public enum PackageType {
         }
         return null;
     }
+
+    public static PriceType toPriceType(String type){
+        return PriceType.getPriceType(type);
+    }
 }

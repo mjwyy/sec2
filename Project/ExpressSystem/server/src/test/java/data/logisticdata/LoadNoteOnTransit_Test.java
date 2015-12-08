@@ -33,9 +33,5 @@ public class LoadNoteOnTransit_Test {
         this.service.insert(po1);
     }
 
-    @Test
-    public void testFind() throws SQLException, RemoteException {
-        service.getLoadNoteOnTransit();
-    }
 
 }

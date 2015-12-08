@@ -34,11 +34,4 @@ public interface ReceivingNoteInputDataService extends Remote, Serializable {
     ResultMsg insert(ReceivingNotePO po)
             throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException;
 
-    /**
-     * 查询返回数据库中所有的收件单
-     *
-     * @return 所有的收件单PO
-     * @throws RemoteException 网络异常
-     */
-    ArrayList<ReceivingNotePO> getReceivingNote() throws RemoteException;
 }

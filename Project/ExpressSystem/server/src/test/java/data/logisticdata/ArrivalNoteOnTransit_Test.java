@@ -38,9 +38,4 @@ public class ArrivalNoteOnTransit_Test {
         service.insert(mock);
     }
 
-    @Test
-    public void testFind() throws SQLException, RemoteException {
-        service.getArrivalNoteOnTransit();
-    }
-
 }

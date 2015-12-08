@@ -36,9 +36,5 @@ public class LoadNoteOnService_Test {
         service.insert(po1);
     }
 
-    @Test
-    public void testFind() throws SQLException, RemoteException {
-        service.getLoadNoteOnService();
-    }
 
 }

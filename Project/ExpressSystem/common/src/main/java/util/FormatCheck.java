@@ -71,6 +71,8 @@ public class FormatCheck {
      * @return
      */
     public static ResultMsg isInventoryTime(String str) {
+        if(str.length() < 16)
+            return new ResultMsg(false,"库存查看时间点长度过短");
         boolean date = FormatCheck.isDate(str.substring(0,10)).isPass();
         String trueExpression = "\\d{4}-\\d{1,2}-\\d{1,2}\\s\\d{2}:\\d{2}";
         return Pattern.matches(trueExpression,str) && date? new ResultMsg(true) :

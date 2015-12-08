@@ -44,11 +44,6 @@ public class TransitNoteInputDataService_Stub implements TransitNoteInputDataSer
 		return null;
     }
 
-    @Override
-    public ArrayList<TransitNotePO> getTransitNotePO() {
-        return null;
-    }
-
 
     public boolean delete(TransitNotePO po) throws RemoteException {
         System.out.println("delete succeed!");

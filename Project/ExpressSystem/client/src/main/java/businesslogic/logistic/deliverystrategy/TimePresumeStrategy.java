@@ -1,13 +1,10 @@
-package data.logisticdata.deliverystrategy;
+package businesslogic.logistic.deliverystrategy;
 
-import data.statisticdata.BusinessDataModificationData;
 import dataservice.exception.ElementNotFoundException;
-import dataservice.statisticdataservice.BusinessDataModificationDataService;
 import util.enums.DeliverCategory;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -16,9 +13,13 @@ import java.util.Date;
  */
 public class TimePresumeStrategy {
 
-
-    public String getPresumedTime(DeliveryInfo deliveryInfo)
-            throws ElementNotFoundException, RemoteException, SQLException {
+    /**
+     * 根据寄件单信息预测预计到达日期
+     *
+     * @param deliveryInfo 寄件单信息
+     * @return 预计到达日期
+     */
+    public String getPresumedTime(DeliveryInfo deliveryInfo) {
         //获取需要的寄件单信息
         double distance = deliveryInfo.getDistance();
         DeliverCategory category = deliveryInfo.getCategory();

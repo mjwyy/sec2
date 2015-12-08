@@ -42,11 +42,6 @@ public class LoadNoteOnTransitDataService_Stub implements LoadNoteOnTransitDataS
 		return null;
     }
 
-    @Override
-    public ArrayList<LoadNoteOnTransitPO> getLoadNoteOnTransit() {
-        return null;
-    }
-
 
     public boolean delete(LoadNoteOnTransitPO po) throws RemoteException {
         System.out.println("delete succeed!");

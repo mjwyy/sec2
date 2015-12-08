@@ -82,34 +82,5 @@ public class ArrivalNoteOnTransitData extends NoteInputData implements ArrivalNo
         return resultMsg;
     }
 
-    @Override
-    public Iterator<ArrivalNoteOnTransitPO> getArrivalNoteOnTransit() throws RemoteException {
-        ArrayList<ArrivalNoteOnTransitPO> result = new ArrayList<>();
-        Connection connection = DatabaseManager.getConnection();
-        String sql = "select * from `note_arrival_on_transit` where isPassed = 0";
-        PreparedStatement statement = null;
-        try {
-            statement = connection.prepareStatement(sql);
-            ResultSet resultSet = statement.executeQuery();
-            ArrivalNoteOnTransitPO arrivalNoteOnServicePO;
-            ArrayList<BarcodeAndState> barcodeAndStates;
-            while(resultSet.next()){
-                String transferNumber = resultSet.getString(1);
-                String centerNumber = resultSet.getString(2);
-                String date = resultSet.getString(3);
-                String departure = resultSet.getString(4);
-                String barcodes = resultSet.getString(5);
-                barcodeAndStates = barcodeUtil.getBarcodeAndStateFromDBbars(barcodes);
-                arrivalNoteOnServicePO = new ArrivalNoteOnTransitPO
-                        (transferNumber,centerNumber,date,departure,barcodeAndStates);
-                result.add(arrivalNoteOnServicePO);
-            }
-            resultSet.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        DatabaseManager.releaseConnection(connection, statement, null);
-        return result.iterator();
-    }
 
 }

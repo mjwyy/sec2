@@ -42,7 +42,7 @@ public class DeliveryNoteInputBLService_Stub implements DeliveryNoteInputBLServi
 			return new ResultMsg(true,"输入寄件单格式正确");
 	}
 	//提交界面得到对提交的寄件单的反馈结果
-    public SendDocMsg submitSendDoc(DeliveryNoteVO sendDocVO) {
+    public ResultMsg submitSendDoc(DeliveryNoteVO sendDocVO) {
         return new SendDocMsg(true, "提交成功", 10, "3days");
     }
 

@@ -40,10 +40,6 @@ public class ArrivalNoteOnServiceDataService_Stub implements ArrivalNoteOnServic
         return new ResultMsg(true);
     }
 
-    @Override
-    public ArrayList<ArrivalNoteOnServicePO> getArrivalNoteOnService() {
-        return null;
-    }
 
     @Override
     public ResultMsg insertDeliverNote(DeliverNoteOnServicePO po) throws RemoteException {
@@ -51,9 +47,5 @@ public class ArrivalNoteOnServiceDataService_Stub implements ArrivalNoteOnServic
         return null;
     }
 
-    @Override
-    public ArrayList<DeliverNoteOnServicePO> getDeliverNoteOnService() {
-        return null;
-    }
 
 }

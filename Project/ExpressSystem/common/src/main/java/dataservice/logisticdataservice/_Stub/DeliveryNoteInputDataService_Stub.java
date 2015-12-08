@@ -38,12 +38,6 @@ public class DeliveryNoteInputDataService_Stub implements DeliveryNoteInputDataS
         return new SendDocMsg(true, "pass", 100, "2015-12-12");
     }
 
-    @Override
-    public ArrayList<DeliveryNotePO> getDeliveryNote() {
-        return null;
-    }
-
-
     public boolean delete(DeliveryNotePO po) throws RemoteException {
         System.out.println("delete succeed!");
 		return true;

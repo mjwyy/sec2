@@ -79,6 +79,8 @@ public class DeliveryNoteVO extends NoteVO {
      */
     private String barCode;
 
+    private double price;
+
     public DeliveryNoteVO(String senderName, String senderAddress, String senderTeleNumber,
                           String receiverName, String receiverAddress, String receiverTeleNumber,
                           String name, int goodsNumber, double weight, double volume,
@@ -138,7 +140,7 @@ public class DeliveryNoteVO extends NoteVO {
         return category;
     }
 
-    public PackageType getPackPrice() {
+    public PackageType getPackType() {
         return packageType;
     }
 
@@ -172,5 +174,13 @@ public class DeliveryNoteVO extends NoteVO {
                 return results[i];
         }
         return result;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

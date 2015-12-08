@@ -112,40 +112,6 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
         return resultMsg;
     }
 
-    @Override
-    public ArrayList<TransitNotePO> getTransitNotePO() throws RemoteException {
-        ArrayList<TransitNotePO> result = new ArrayList<>();
-        Connection connection = DatabaseManager.getConnection();
-        String sql = "select * from `note_transit` where isPassed = 0";
-        PreparedStatement statement = null;
-
-        try {
-            statement = connection.prepareStatement(sql);
-            ResultSet resultSet = statement.executeQuery();
-            TransitNotePO receivingNotePO;
-
-            while(resultSet.next()){
-                String date = resultSet.getString(1);
-                String docNumber = resultSet.getString(2);
-                String transport = resultSet.getString(3);
-                String type = resultSet.getString(4);
-                String depar = resultSet.getString(5);
-                String des = resultSet.getString(6);
-                String supercargo = resultSet.getString(7);
-                String barcodes = resultSet.getString(8);
-                receivingNotePO = new TransitNotePO(date,docNumber,transport, TransitType.getTransitType(type),
-                        depar,des,supercargo,this.getBarcodesAndLocation(barcodes));
-                result.add(receivingNotePO);
-            }
-            resultSet.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        DatabaseManager.releaseConnection(connection, statement, null);
-        return result;
-    }
-
     /**
      * 从数据库中存储的条形码与货物位置获得BarcodesAndLocation
      *

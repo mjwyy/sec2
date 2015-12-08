@@ -95,38 +95,4 @@ public class LoadNoteOnServiceData extends NoteInputData implements LoadNoteOnSe
         return resultMsg;
     }
 
-    @Override
-    public ArrayList<LoadNoteOnServicePO> getLoadNoteOnService() throws RemoteException {
-        ArrayList<LoadNoteOnServicePO> result = new ArrayList<>();
-        Connection connection = DatabaseManager.getConnection();
-        String sql = "select * from `note_load_on_service` where isPassed = 0";
-        PreparedStatement statement = null;
-
-        try {
-            statement = connection.prepareStatement(sql);
-            ResultSet resultSet = statement.executeQuery();
-            LoadNoteOnServicePO arrivalNoteOnServicePO;
-
-            while(resultSet.next()){
-                String date = resultSet.getString(1);
-                String hallNumber = resultSet.getString(2);
-                String transNumber = resultSet.getString(3);
-                String des = resultSet.getString(4);
-                String car = resultSet.getString(5);
-                String guard = resultSet.getString(6);
-                String supercargo = resultSet.getString(7);
-                String barcodes = resultSet.getString(8);
-                arrivalNoteOnServicePO = new LoadNoteOnServicePO(date,hallNumber,transNumber,des,car,
-                        guard,supercargo,barcodeUtil.getBarcodesFromDBbars(barcodes));
-                result.add(arrivalNoteOnServicePO);
-            }
-            resultSet.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        DatabaseManager.releaseConnection(connection, statement, null);
-        return result;
-    }
-
 }

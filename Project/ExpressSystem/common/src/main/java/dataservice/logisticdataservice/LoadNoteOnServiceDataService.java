@@ -23,5 +23,4 @@ public interface LoadNoteOnServiceDataService extends Remote, Serializable {
     ResultMsg insert(LoadNoteOnServicePO po)
             throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException;
 
-    ArrayList<LoadNoteOnServicePO> getLoadNoteOnService() throws RemoteException;
 }

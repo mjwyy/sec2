@@ -22,5 +22,4 @@ public interface ArrivalNoteOnTransitDataService extends Remote, Serializable {
     ResultMsg insert(ArrivalNoteOnTransitPO po)
             throws RemoteException, ElementNotFoundException,InterruptWithExistedElementException;
 
-    Iterator<ArrivalNoteOnTransitPO> getArrivalNoteOnTransit() throws RemoteException;
 }

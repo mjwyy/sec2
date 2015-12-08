@@ -95,40 +95,4 @@ public class LoadNoteOnTransitData extends NoteInputData implements LoadNoteOnTr
         return resultMsg;
     }
 
-    @Override
-    public ArrayList<LoadNoteOnTransitPO> getLoadNoteOnTransit() throws RemoteException {
-        ArrayList<LoadNoteOnTransitPO> result = new ArrayList<>();
-        Connection connection = DatabaseManager.getConnection();
-        String sql = "select * from `note_load_on_transit` where isPassed = 0";
-        PreparedStatement statement = null;
-
-        try {
-            statement = connection.prepareStatement(sql);
-            ResultSet resultSet = statement.executeQuery();
-            LoadNoteOnTransitPO loadNoteOnTransitPO;
-
-            while(resultSet.next()){
-                String date = resultSet.getString(1);
-                String hallNumber = resultSet.getString(2);
-                String transNumber = resultSet.getString(3);
-                String des = resultSet.getString(4);
-                String car = resultSet.getString(5);
-                String guard = resultSet.getString(6);
-                String supercargo = resultSet.getString(7);
-                String barcodes = resultSet.getString(8);
-
-                loadNoteOnTransitPO = new LoadNoteOnTransitPO(date,hallNumber,transNumber,des,car,
-                        guard,supercargo,barcodeUtil.getBarcodesFromDBbars(barcodes));
-                result.add(loadNoteOnTransitPO);
-            }
-
-            resultSet.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        DatabaseManager.releaseConnection(connection, statement, null);
-        return result;
-    }
-
 }

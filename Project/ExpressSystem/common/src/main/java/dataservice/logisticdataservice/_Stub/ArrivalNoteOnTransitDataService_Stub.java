@@ -36,11 +36,6 @@ public class ArrivalNoteOnTransitDataService_Stub implements ArrivalNoteOnTransi
         return new ResultMsg(true);
     }
 
-    @Override
-    public Iterator<ArrivalNoteOnTransitPO> getArrivalNoteOnTransit() {
-        return null;
-    }
-
 
     public boolean delete(ArrivalNoteOnTransitPO po) throws RemoteException {
         System.out.println("delete succeed!");

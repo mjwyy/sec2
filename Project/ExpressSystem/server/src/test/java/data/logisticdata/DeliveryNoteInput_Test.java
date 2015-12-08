@@ -43,11 +43,6 @@ public class DeliveryNoteInput_Test {
 //        System.out.println(msg2.getPrice());
     }
 
-//    @Test
-    public void testFind() throws SQLException, RemoteException {
-        ArrayList<DeliveryNotePO> found = service.getDeliveryNote();
-    }
-
     @Test
     public void testCal() throws RemoteException, ElementNotFoundException, SQLException {
         TimePresumeStrategy timePresumeStrategy = new TimePresumeStrategy();

@@ -44,11 +44,6 @@ public class TransitNoteInput_Test {
         service.insert(po1);
     }
 
-//    @Test
-    public void testFind() throws SQLException, RemoteException {
-        service.getTransitNotePO();
-    }
-
     @Test
     public void testBarcodes() throws SQLException, RemoteException {
         TransitNoteInputData data = new TransitNoteInputData();

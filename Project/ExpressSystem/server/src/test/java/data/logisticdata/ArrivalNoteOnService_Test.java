@@ -53,7 +53,6 @@ public class ArrivalNoteOnService_Test {
     public void testFindArrival() throws RemoteException, SQLException {
         ArrivalNoteOnServiceDataService data = DatabaseFactoryMysqlImpl.getInstance().getArrivalNoteOnServiceDataService();
 
-        ArrayList<ArrivalNoteOnServicePO> pos = data.getArrivalNoteOnService();
     }
 
 }

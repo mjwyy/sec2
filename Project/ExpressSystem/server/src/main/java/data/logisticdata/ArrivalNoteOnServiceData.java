@@ -87,37 +87,6 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
     }
 
     @Override
-    public ArrayList<ArrivalNoteOnServicePO> getArrivalNoteOnService() throws RemoteException{
-        ArrayList<ArrivalNoteOnServicePO> result = new ArrayList<>();
-        Connection connection = DatabaseManager.getConnection();
-        String sql = "select * from `note_arrival_on_service` where isPassed = 0";
-        PreparedStatement statement = null;
-        try {
-            statement = connection.prepareStatement(sql);
-            ResultSet resultSet = statement.executeQuery();
-            ArrivalNoteOnServicePO arrivalNoteOnServicePO;
-
-            while(resultSet.next()){
-                String date = resultSet.getString(1);
-                String arrivalType = resultSet.getString(2);
-                boolean isTransit = arrivalType.equals("中转到达");
-                String transferNumber =  resultSet.getString(3);
-                String from =  resultSet.getString(4);
-                String barcodes =  resultSet.getString(5);
-                ArrayList<BarcodeAndState> barcodeAndStates = barcodeUtil.getBarcodeAndStateFromDBbars(barcodes);
-                arrivalNoteOnServicePO = new ArrivalNoteOnServicePO(date,isTransit,transferNumber,from,barcodeAndStates);
-                result.add(arrivalNoteOnServicePO);
-            }
-
-            resultSet.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        DatabaseManager.releaseConnection(connection, statement, null);
-        return result;
-    }
-
-    @Override
     public ResultMsg insertDeliverNote(DeliverNoteOnServicePO po) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException {
         Connection connection = DatabaseManager.getConnection();
         String sql = "insert into `note_delivery_on_service` ( `deliveryMan`, `id`, `barcodes`, `date`)" +
@@ -157,33 +126,6 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
             resultMsg.setMessage(advice);
         }
         return resultMsg;
-    }
-
-    @Override
-    public ArrayList<DeliverNoteOnServicePO> getDeliverNoteOnService() throws RemoteException {
-        ArrayList<DeliverNoteOnServicePO> result = new ArrayList<>();
-        Connection connection = DatabaseManager.getConnection();
-        String sql = "select * from `note_delivery_on_service` where isPassed = 0";
-        PreparedStatement statement = null;
-        try {
-            statement = connection.prepareStatement(sql);
-            ResultSet resultSet = statement.executeQuery();
-            DeliverNoteOnServicePO deliverNoteOnServicePO;
-            while(resultSet.next()){
-                String id = resultSet.getString("id");
-                String date = resultSet.getString("date");
-                String man = resultSet.getString("deliveryMan");
-                String barcodes =  resultSet.getString("barcodes");
-                ArrayList<String> allBarcodes = barcodeUtil.getBarcodesFromDBbars(barcodes);
-                deliverNoteOnServicePO = new DeliverNoteOnServicePO(id,date,allBarcodes,man);
-                result.add(deliverNoteOnServicePO);
-            }
-            resultSet.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        DatabaseManager.releaseConnection(connection, statement, null);
-        return result;
     }
 
 }

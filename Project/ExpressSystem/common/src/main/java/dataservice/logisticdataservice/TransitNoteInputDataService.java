@@ -24,5 +24,4 @@ public interface TransitNoteInputDataService extends Remote, Serializable {
     ResultMsg insert(TransitNotePO po)
             throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException;
 
-    ArrayList<TransitNotePO> getTransitNotePO() throws RemoteException;
 }

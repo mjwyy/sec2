@@ -1,4 +1,4 @@
-package data.logisticdata.deliverystrategy;
+package businesslogic.logistic.deliverystrategy;
 
 import util.enums.DeliverCategory;
 import util.enums.PackageType;

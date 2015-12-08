@@ -37,11 +37,6 @@ public class LoadNoteOnServiceDataService_Stub implements LoadNoteOnServiceDataS
 		return null;
     }
 
-    @Override
-    public ArrayList<LoadNoteOnServicePO> getLoadNoteOnService() {
-        return null;
-    }
-
 
     public boolean delete(LoadNoteOnServicePO po) throws RemoteException {
         System.out.println("delete succeed!");

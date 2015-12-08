@@ -63,7 +63,7 @@ public class LoadNoteOnServiceData extends NoteInputData implements LoadNoteOnSe
             statement.executeUpdate();
             resultMsg = this.afterInsert(po);
         } catch (MySQLIntegrityConstraintViolationException e){
-            throw new InterruptWithExistedElementException();
+            throw new InterruptWithExistedElementException("");
         } catch (SQLException e) {
             e.printStackTrace();
             resultMsg = new ResultMsg(false,"提交营业厅装车单失败!");

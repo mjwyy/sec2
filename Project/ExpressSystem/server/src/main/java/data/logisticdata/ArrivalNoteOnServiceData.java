@@ -57,7 +57,7 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
             statement.executeUpdate();
             resultMsg = this.afterInsertArrival(po);
         } catch (MySQLIntegrityConstraintViolationException e){
-            throw new InterruptWithExistedElementException();
+            throw new InterruptWithExistedElementException("");
         } catch (SQLException e) {
             e.printStackTrace();
             resultMsg = new ResultMsg(false,"添加营业厅到达单失败");
@@ -103,7 +103,7 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
             statement.executeUpdate();
             resultMsg = this.afterInsertDelivery(po);
         } catch (MySQLIntegrityConstraintViolationException e){
-            throw new InterruptWithExistedElementException();
+            throw new InterruptWithExistedElementException("");
         } catch (SQLException e) {
             e.printStackTrace();
             resultMsg = new ResultMsg(false,po.getUserName()+"添加派件单失败");

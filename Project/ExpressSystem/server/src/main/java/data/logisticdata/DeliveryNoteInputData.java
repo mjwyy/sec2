@@ -10,30 +10,20 @@ import dataservice.statisticdataservice.BusinessDataModificationDataService;
 import dataservice.statisticdataservice.OrderInquiryDataService;
 import po.DeliveryNotePO;
 import util.SendDocMsg;
-import util.enums.DeliverCategory;
 import util.enums.DocState;
-import util.enums.PackageType;
 
 import java.rmi.RemoteException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class DeliveryNoteInputData extends NoteInputData implements DeliveryNoteInputDataService {
 
-    //TODO 审批之前显示价格等信息
     private OrderInquiryDataService orderDataService;
-    private BusinessDataModificationDataService businessDataModificationDataService;
 
-    public DeliveryNoteInputData(OrderInquiryDataService orderDataService,
-                                 BusinessDataModificationDataService businessDataModificationDataService)
+    public DeliveryNoteInputData(OrderInquiryDataService orderDataService)
             throws RemoteException {
         this.orderDataService = orderDataService;
-        this.businessDataModificationDataService = businessDataModificationDataService;
     }
 
     @Override
@@ -62,9 +52,9 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
             statement.setString(12, po.getName());
             statement.setString(13, po.getBarCode());
             statement.executeUpdate();
-            sendDocMsg =  this.afterInsert(po);
+            sendDocMsg = this.afterInsert(po);
         } catch (MySQLIntegrityConstraintViolationException e){
-            throw new InterruptWithExistedElementException();
+            throw new InterruptWithExistedElementException("");
         } catch (SQLException e) {
             e.printStackTrace();
             sendDocMsg = new SendDocMsg(false, "寄件单提交失败!", 0, null);
@@ -90,14 +80,10 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
     private SendDocMsg afterInsert(DeliveryNotePO po) throws RemoteException, ElementNotFoundException, SQLException {
         SendDocMsg sendDocMsg = null;
         String deliveryMan = po.getUserName();
-        System.out.println("DeliveryNoteInputData");
-        System.out.println(po.getOrganization());
-        System.out.println(po.getUserName());
         String orderInfo = "货物已被快递员 "+deliveryMan+" 签收";
         LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+deliveryMan+
                 "新增寄件单,单据编号:" + po.getBarCode());
         DocState docState = this.waitForCheck("note_delivery", "barCode", po.getBarCode());
-
         //审批通过
         if (docState == DocState.PASSED) {
             //追加修改物流信息

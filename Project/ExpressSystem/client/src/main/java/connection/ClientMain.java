@@ -1,5 +1,7 @@
 package connection;
 
+import presentation.mainui.loginFrame;
+
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
@@ -10,7 +12,7 @@ public class ClientMain {
 
     public static void main(String[] args) throws RemoteException, NotBoundException {
         RMIHelper.tryConnect();
-//        loginFrame frame = new loginFrame();
+        loginFrame frame = new loginFrame();
 //        StorageInBLService ser = new StorageIn();
         
 

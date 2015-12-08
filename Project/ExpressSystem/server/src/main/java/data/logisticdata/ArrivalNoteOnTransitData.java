@@ -51,7 +51,7 @@ public class ArrivalNoteOnTransitData extends NoteInputData implements ArrivalNo
             //向数据库插入单据后续的操作
             resultMsg = this.afterInsert(po);
         } catch (MySQLIntegrityConstraintViolationException e){
-            throw new InterruptWithExistedElementException();
+            throw new InterruptWithExistedElementException("");
         } catch (SQLException e) {
             e.printStackTrace();
             resultMsg.setMessage("无法添加中转中心到达单");

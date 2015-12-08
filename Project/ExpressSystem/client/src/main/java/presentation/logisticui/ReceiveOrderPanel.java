@@ -16,6 +16,7 @@ import javax.swing.border.EtchedBorder;
 
 import presentation.util.CurrentTime;
 import presentation.util.LeftDownPanel;
+import presentation.util.MJTextField;
 import presentation.util.SubmitDialog;
 import presentation.util.UnEditablePanel;
 import presentation.util.checkstyleDialog;
@@ -43,9 +44,9 @@ public class ReceiveOrderPanel extends JPanel {
 	private static final int HEIGHT = 446;
 	private ReceivingNoteInputBLService service;
 	private ResultMsg res;
-	private JTextField date;
-	private JTextField barcode;
-	private JTextField receiver;
+	private MJTextField date;
+	private MJTextField barcode;
+	private MJTextField receiver;
 	private ReceivingNoteVO vo;
 	private SubmitDialog sd;
     private LogInMsg lim = null;
@@ -65,14 +66,14 @@ public class ReceiveOrderPanel extends JPanel {
 		setSize(WIDTH,HEIGHT);
 		setLayout(null);
 		service = new ReceivingNoteInput();
-//		service = new ReceivingNoteInputBLService_Stub();
+		//service = new ReceivingNoteInputBLService_Stub();
 		
 		JLabel label = new JLabel("收件日期");
 		label.setBounds(165, 62, 61, 16);
 		add(label);
 		
 		CurrentTime currentTime = new CurrentTime();
-		date = new JTextField();
+		date = new MJTextField();
 		date.setBounds(264, 56, 201, 28);
 		date.setText(currentTime.getCurrentTimeSecond());//精确到秒
 		add(date);
@@ -82,7 +83,7 @@ public class ReceiveOrderPanel extends JPanel {
 		label_1.setBounds(165, 122, 61, 16);
 		add(label_1);
 		
-		barcode = new JTextField();
+		barcode = new MJTextField();
 		barcode.setBounds(264, 116, 201, 28);
 		add(barcode);
 		barcode.setColumns(10);
@@ -91,7 +92,7 @@ public class ReceiveOrderPanel extends JPanel {
 		lblNewLabel.setBounds(165, 186, 87, 16);
 		add(lblNewLabel);
 		
-		receiver = new JTextField();
+		receiver = new MJTextField();
 		receiver.setBounds(264, 180, 201, 28);
 		add(receiver);
 		receiver.setColumns(10);

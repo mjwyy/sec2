@@ -13,6 +13,7 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
@@ -26,9 +27,8 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 import presentation.commodityui.Commodity;
 import presentation.financeui.financeFrame;
-import presentation.infoui.SystemUser;
 import presentation.logisticui.CourierFrame;
-import presentation.logisticui.Service;
+import presentation.logisticui.ServiceFrame;
 import presentation.logisticui.TransitFrame;
 import presentation.statisticui.ManageFrame;
 import businesslogic.info.SystemUserManagement;
@@ -54,7 +54,7 @@ public class loginFrame extends JFrame {
     //查询的监听
     private JPanel contentPane;
     private JTextField account;
-    private JTextField password;
+    private JPasswordField password;
     private JTextField barcode;
     private JTextField textField_2;
     private JLabel label;
@@ -80,7 +80,7 @@ public class loginFrame extends JFrame {
      * Launch the application.
      */
     public static void main(String[] args) {
-
+    
     }
 
     private static void changeLook() {
@@ -160,7 +160,14 @@ public class loginFrame extends JFrame {
         llp.add(account);
         account.setColumns(10);
 
-        password = new JTextField();
+       /* password = new JTextField();
+        password.setBounds(660, 416, 245, 46);
+        llp.add(password);
+        password.setColumns(10);*/
+        
+        password = new JPasswordField();
+        password.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
+        ((JPasswordField) password).setEchoChar('*');
         password.setBounds(660, 416, 245, 46);
         llp.add(password);
         password.setColumns(10);
@@ -212,43 +219,38 @@ public class loginFrame extends JFrame {
         red.setVisible(false);
         llp.add(red);
 
-        service = new SystemUserManagement();
-        orderService = new OrderInquiry();
+        service = new SystemUserManagementBLService_Stub();
+        orderService = new OrderInquiryBLService_Stub();
         JButton button = new JButton("登录");
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 lim = service.logIn(account.getText(), password.getText());
                 if (lim.isPass()) {
-                    if (lim.getAuthority().equals(Authority.MANAGER)) {//总经理登录
-                        ManageFrame mf = new ManageFrame();
+                    if (lim.getAuthority().equals(authority.MANAGER)) {//总经理登录
+                        ManageFrame mf = new ManageFrame(lim);
                         mf.setVisible(true);
-                    } else if (lim.getAuthority().equals(Authority.TRANSIT_CENTER_PERSONNEL)) {//中转中心业务员登录
+                    } else if (lim.getAuthority().equals(authority.TRANSIT_CENTER_PERSONNEL)) {//中转中心业务员登录
                         TransitFrame tf = new TransitFrame(lim);
                         tf.setVisible(true);
-                    } else if (lim.getAuthority().equals(Authority.SERVICE_HALL_PERSONNEL)) {//营业厅业务员登录
-                        Service s = new Service(lim);
+                    } else if (lim.getAuthority().equals(authority.SERVICE_HALL_PERSONNEL)) {//营业厅业务员登录
+                        ServiceFrame s = new ServiceFrame(lim);
                         s.setVisible(true);
-                    } else if (lim.getAuthority().equals(Authority.WAREHOUSE_MANAGER)) {//仓库管理人员登录
-                        Commodity c = new Commodity(lim);
+                    } else if (lim.getAuthority().equals(authority.WAREHOUSE_MANAGER)) {//仓库管理人员登录
+                        Commodity c = new Commodity();
                         c.setVisible(true);
-                    } else if (lim.getAuthority().equals(Authority.DELIVERY_MAN)) {//快递员登录
+                    } else if (lim.getAuthority().equals(authority.DELIVERY_MAN)) {//快递员登录
                         CourierFrame cf = new CourierFrame(lim);
                         //cf.setClose();
                         cf.setVisible(true);
-                    } else if (lim.getAuthority().equals(Authority.ACCOUNTANT)) {//财务人员
-                        financeFrame ff = new financeFrame();
+                    } else if (lim.getAuthority().equals(authority.ACCOUNTANT)) {
+                        financeFrame ff = new financeFrame(lim);
                         //ff.setClose();
-                        ff.setVisible(true);}
-                    else if (lim.getAuthority().equals(Authority.ACCOUNTANT_HIGH)) {//高级财务人员
-                            financeFrame ff = new financeFrame();
-                            //ff.setClose();
-                            ff.setVisible(true);
-                    } else if (lim.getAuthority().equals(Authority.SYSTEM_MANAGER)){//系统管理员
-                            SystemUser ff = new SystemUser(lim);
-                            //ff.setClose();
-                            ff.setVisible(true);
+                        ff.setVisible(true);
+                    } else {
+                        ;
                     }
                     dispose();
+
 
                 } else {
                     red.setVisible(true);

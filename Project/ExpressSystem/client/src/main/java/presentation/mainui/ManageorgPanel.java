@@ -40,7 +40,7 @@ public class ManageorgPanel extends JPanel {
 	private JComboBox keywordType;
 	private JComboBox orgtype;
 	private OrganizationInfoVO vo;
-	private StaffOrganizationManagementBLService service = new StaffOrganizationManagement();
+	private StaffOrganizationManagementBLService service = new StaffOrganizationManagementBLService_Stub();
 	private OrganizationType organizationType;
 	private ArrayList<StaffVO> staffinfo = new  ArrayList<StaffVO>();
 	private int seletedRow;

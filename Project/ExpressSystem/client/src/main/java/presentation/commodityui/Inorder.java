@@ -41,8 +41,8 @@ import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 
 public class Inorder extends JPanel {
-	StorageInBLService si=new StorageInBLService_Stub();
-	//StorageInBLService si=new StorageIn();
+//	StorageInBLService si=new StorageInBLService_Stub();
+	StorageInBLService si=new StorageIn();
 	private JTextField codef;
 	private JTextField tof;
 	private JTextField rowf;

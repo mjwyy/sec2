@@ -23,19 +23,7 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+import businesslogic.commodity.StorageInquiryAll;
 import businesslogicservice.commodityblservice.StorageInquiryAllBLService;
 import businesslogicservice.commodityblservice._Stub.StorageInquiryAllBLService_Stub;
 import presentation.util.MyJFileChooser;
@@ -49,7 +37,8 @@ import java.util.ArrayList;
 
 import presentation.util.CurrentTime;
 public class PanDian extends JPanel {
-	StorageInquiryAllBLService sab=new StorageInquiryAllBLService_Stub();
+//	StorageInquiryAllBLService sab=new StorageInquiryAllBLService_Stub();
+	StorageInquiryAllBLService sab=new StorageInquiryAll();
 private JFrame frame;
 private DefaultTableModel model;
 private JTable table;

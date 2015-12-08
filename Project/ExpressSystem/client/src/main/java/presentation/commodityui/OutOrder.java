@@ -38,8 +38,8 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class OutOrder extends JPanel {
-	StorageOutBLService sob=new StorageOutBLService_Stub();
-	//StorageOutBLService sob=new StorageOut();
+//	StorageOutBLService sob=new StorageOutBLService_Stub();
+	StorageOutBLService sob=new StorageOut();
 	private JTextField codef;
 	private JTextField dataf;
 	private JTextField tof;

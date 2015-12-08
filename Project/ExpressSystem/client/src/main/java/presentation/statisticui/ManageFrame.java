@@ -1,8 +1,6 @@
 package presentation.statisticui;
 
 import java.awt.BasicStroke;
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -25,11 +23,10 @@ import javax.swing.JMenuItem;
 import presentation.financeui.ChartOutPutPanel;
 import presentation.financeui.SystemLogPanel;
 import presentation.infoui.StaffManagementPanel;
-import presentation.logisticui.ArrivalNoteOnTransitPanel;
-import presentation.logisticui.TransitFrame;
 import presentation.mainui.ManageorgPanel;
 import presentation.mainui.loginFrame;
 import presentation.util.welcomPanel;
+import util.LogInMsg;
 
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
@@ -40,6 +37,7 @@ public class ManageFrame extends JFrame {
 	private JPanel contentPane;
 	private JPanel bankpanel;
     private JPanel welcome;
+
 	/**
 	 * 窗口宽度
 	 */
@@ -52,18 +50,19 @@ public class ManageFrame extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ManageFrame frame = new ManageFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//                    LogInMsg lim;
+//                    ManageFrame frame = new ManageFrame(lim);
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 	
 	private  void setClose() {
 		this.addWindowListener(new WindowAdapter() {
@@ -85,8 +84,9 @@ public class ManageFrame extends JFrame {
 
 	/**
 	 * Create the frame.
-	 */
-	public ManageFrame() {
+     * @param lim
+     */
+	public ManageFrame(LogInMsg lim) {
 	
 		setResizable(false);
 		contentPane = new JPanel();

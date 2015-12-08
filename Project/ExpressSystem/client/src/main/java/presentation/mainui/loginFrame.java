@@ -28,7 +28,7 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import presentation.commodityui.Commodity;
 import presentation.financeui.financeFrame;
 import presentation.logisticui.CourierFrame;
-import presentation.logisticui.ServiceFrame;
+import presentation.logisticui.Service;
 import presentation.logisticui.TransitFrame;
 import presentation.statisticui.ManageFrame;
 import businesslogic.info.SystemUserManagement;
@@ -233,10 +233,10 @@ public class loginFrame extends JFrame {
                         TransitFrame tf = new TransitFrame(lim);
                         tf.setVisible(true);
                     } else if (lim.getAuthority().equals(authority.SERVICE_HALL_PERSONNEL)) {//营业厅业务员登录
-                        ServiceFrame s = new ServiceFrame(lim);
+                        Service s = new Service(lim);
                         s.setVisible(true);
                     } else if (lim.getAuthority().equals(authority.WAREHOUSE_MANAGER)) {//仓库管理人员登录
-                        Commodity c = new Commodity();
+                        Commodity c = new Commodity(lim);
                         c.setVisible(true);
                     } else if (lim.getAuthority().equals(authority.DELIVERY_MAN)) {//快递员登录
                         CourierFrame cf = new CourierFrame(lim);

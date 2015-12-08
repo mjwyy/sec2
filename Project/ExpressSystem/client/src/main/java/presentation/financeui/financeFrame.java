@@ -38,7 +38,7 @@ public class financeFrame extends JFrame {
 	private JPanel contentPane;
 	private JPanel bankpanel;
 	private welcomPanel welcome;
-	//private LogInMsg  lim;
+	private LogInMsg  lim;
 	/**
 	 * 窗口宽度
 	 */
@@ -112,9 +112,10 @@ public class financeFrame extends JFrame {
 
 	/**
 	 * Create the frame.
-	 */
-	public financeFrame() {
-	    //lim = logInMsg;
+     * @param lim
+     */
+	public financeFrame(LogInMsg lim) {
+	    this.lim = lim;
 		setSize(WIDTH,HEIGHT);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

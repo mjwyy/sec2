@@ -3,7 +3,7 @@
 <common>
 
     <connection>
-        <param key = "serverIP" value = "172.25.132.74"/>
+        <param key = "serverIP" value = "114.212.42.84"/>
         <param key = "port" value = "1099"/>
     </connection>
 

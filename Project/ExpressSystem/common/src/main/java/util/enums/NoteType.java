@@ -26,7 +26,8 @@ public enum NoteType implements Serializable{
 	RECEIVING_NOTE(""),
 	TRANSIT_NOTE(""),
 	STORAGE_IN("仓库入库单"),
-	STORAGE_OUT("仓库出库单");
+	STORAGE_OUT("仓库出库单"),
+	CREDIT_NOTE("营业厅收款单");
 	
 	private String name = null;
 	

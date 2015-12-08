@@ -41,7 +41,7 @@ public class StaffOrganizationManagementData extends UnicastRemoteObject impleme
             if(!this.findStaff(staff).isEmpty()){
                 LogInsHelper.insertLog("新增人员失败:信息已存在!");
                 DatabaseManager.releaseConnection(connection,null,null);
-                throw new InterruptWithExistedElementException();
+                throw new InterruptWithExistedElementException("新增人员失败，信息已存在!");
             }
         } catch (ElementNotFoundException e) {}
         try {
@@ -80,7 +80,7 @@ public class StaffOrganizationManagementData extends UnicastRemoteObject impleme
             if(!this.findOrganization(org).isEmpty()){
                 LogInsHelper.insertLog("新增机构失败:信息已存在!");
                 DatabaseManager.releaseConnection(connection,null,null);
-                throw new InterruptWithExistedElementException();
+                throw new InterruptWithExistedElementException("新增机构失败:信息已存在!");
             }
         } catch (ElementNotFoundException e) {}
         try {

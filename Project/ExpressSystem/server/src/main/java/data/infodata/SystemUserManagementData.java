@@ -37,7 +37,7 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
             if(!this.inquireUser(user).isEmpty()){
                 LogInsHelper.insertLog("新增系统用户失败:信息已存在!");
                 DatabaseManager.releaseConnection(connection,null,null);
-                throw new InterruptWithExistedElementException();
+                throw new InterruptWithExistedElementException("新增系统用户失败:信息已存在!");
             }
         } catch (ElementNotFoundException e) {}
         int result = 0;

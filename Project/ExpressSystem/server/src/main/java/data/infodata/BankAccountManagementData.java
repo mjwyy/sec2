@@ -41,7 +41,7 @@ public class BankAccountManagementData extends UnicastRemoteObject implements Ba
             if(findBankAccount(account).size()>0) {
                 logIns.insertSystemLog("试图新增银行账户:"+account.getName()+","+account.getNumber()+"，但银行账户已存在，取消操作");
                 DatabaseManager.releaseConnection(connection,null,null);
-                throw new InterruptWithExistedElementException();
+                throw new InterruptWithExistedElementException("银行账户："+account.getNumber()+"已存在。");
             }
         } catch (ElementNotFoundException e1) {
             // That's OK

@@ -27,11 +27,32 @@ public class NoteApproveChartData {
 		Map<String,String> temp = new TreeMap<>();
 		
 		//实例：入库单
+		
 		temp.put("date", "入库日期");
 		temp.put("warehouseID", "仓库号");
 		
 		chartData.put("StorageInNote", temp);
 		type.put("StorageInNote", NoteType.STORAGE_IN);
+		
+		//实例：出库单
+		
+		temp = new TreeMap<>();
+		
+		temp.put("date", "日期");
+		temp.put("warehouseID", "仓库号");
+		temp.put("destination", "目的地");
+		
+		chartData.put("StorageOutNote", temp);
+		type.put("StorageOutNote", NoteType.STORAGE_OUT);
+		
+		//实例：营业厅收款单
+		
+		temp = new TreeMap<>();
+		
+		
+		
+		chartData.put("CreditNotes", temp);
+		type.put("CreditNotes", NoteType.CREDIT_NOTE);
 		
 		//新的一种单据
 		//记得要先新建Map

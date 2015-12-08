@@ -33,7 +33,7 @@ public class BusinessDataModificationData extends UnicastRemoteObject implements
         if(citys.contains(name)){
             LogInsHelper.insertLog("新增城市失败:与已有城市冲突!");
             DatabaseManager.releaseConnection(connection, null, null);
-            throw new InterruptWithExistedElementException();
+            throw new InterruptWithExistedElementException("新增城市失败:与已有城市冲突!");
         }
         PreparedStatement statement = null;
         try {
@@ -47,7 +47,7 @@ public class BusinessDataModificationData extends UnicastRemoteObject implements
             }
             LogInsHelper.insertLog("新增城市:"+name+"成功!");
         } catch (MySQLIntegrityConstraintViolationException e){
-            throw new InterruptWithExistedElementException();
+            throw new InterruptWithExistedElementException("新增城市失败:与已有城市冲突!");
         }  catch (SQLException e) {
             e.printStackTrace();
             LogInsHelper.insertLog("新增城市失败!");

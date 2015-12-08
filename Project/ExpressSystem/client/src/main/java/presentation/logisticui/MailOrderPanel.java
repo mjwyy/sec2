@@ -63,7 +63,7 @@ public class MailOrderPanel extends JPanel {
 	private MJTextField senderPho;
 	private MJTextField barcode;
 	private ResultMsg res;
-	private SendDocMsg sdm;
+	private ResultMsg sdm;
 	private DeliverCategory deliverCategory;
     private  JComboBox category;
     private double packprice;
@@ -87,6 +87,7 @@ public class MailOrderPanel extends JPanel {
 		}
 	
 	public MailOrderPanel(LogInMsg logInMsg,CourierFrame courierFrame) {
+        lim = logInMsg;
 		setSize(WIDTH,HEIGHT);
 		setLayout(null);
 		 service = new DeliveryNoteInput();//实例化bl接口
@@ -285,18 +286,23 @@ public class MailOrderPanel extends JPanel {
 			            
 				res = service.inputSendDoc(sendDocVO);//对单据进行格式检查
 				if(res.isPass()){//格式检查通过
+                    SendDocMsg sendDocMsg = (SendDocMsg) res;
+
+                    DecimalFormat df=new DecimalFormat(".##");
+                    String price = df.format(sendDocMsg.getPrice());//显示价格，保留两位，四舍五入
+                    money.setText(price);
+                    predate.setText(sendDocMsg.getPredectedDate());//显示预计到达日期
+                    parent.setDeliveryNoteVo(sendDocVO);//将单据信息存到vo里
 					int result1 = JOptionPane.showConfirmDialog(null, "确认提交审批？","系统提示",
 							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);//询问是否确认提交
-					if(result1 == JOptionPane.YES_OPTION){
+
+                    if(result1 == JOptionPane.YES_OPTION){
 						
 						UnEditablePanel.UnEdit(MailOrderPanel.this);
-						sdm = service.submitSendDoc(sendDocVO);					
-						DecimalFormat df=new DecimalFormat(".##");				
-						String price = df.format(sdm.getPrice());//显示价格，保留两位，四舍五入
-						money.setText(price);
-						predate.setText(sdm.getPredectedDate());//显示预计到达日期
-						parent.setDeliveryNoteVo(sendDocVO);//将单据信息存到vo里
-						if(sdm.isPass()){//提交成功
+
+
+                        sdm = service.submitSendDoc(sendDocVO);
+                        if(sdm.isPass()){//提交成功
 						;//设置未不可编辑
 						}else{
 							//提交失败

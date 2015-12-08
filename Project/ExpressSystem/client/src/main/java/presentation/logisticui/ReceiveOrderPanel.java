@@ -65,8 +65,8 @@ public class ReceiveOrderPanel extends JPanel {
         lim = logInMsg;
 		setSize(WIDTH,HEIGHT);
 		setLayout(null);
-		service = new ReceivingNoteInput();
-		//service = new ReceivingNoteInputBLService_Stub();
+		//service = new ReceivingNoteInput();
+		service = new ReceivingNoteInputBLService_Stub();
 		
 		JLabel label = new JLabel("收件日期");
 		label.setBounds(165, 62, 61, 16);
@@ -96,57 +96,29 @@ public class ReceiveOrderPanel extends JPanel {
 		receiver.setBounds(264, 180, 201, 28);
 		add(receiver);
 		receiver.setColumns(10);
-		
-		JLabel approvelabel = new JLabel("上一收件单审批已经通过");
-		approvelabel.setBounds(570, 42, 183, 57);
-		add(approvelabel);
-		approvelabel.setVisible(false);
-		
-		JLabel notApprovelabel = new JLabel("本收件单审批未通过");
-		notApprovelabel.setForeground(Color.RED);
-		notApprovelabel.setBounds(570, 42, 183, 57);
-		add(notApprovelabel);
-		notApprovelabel.setVisible(false);
 			
 		//如果从frame里得到的vo不是null，而且是审批未通过,panel可以编辑
-		if(vo != null&&vo.isAppproved() == false){
+		if(vo != null){
 			barcode.setText(vo.getBarcode());
 	        receiver.setText(vo.getReceiveCustomer());
-	        date.setText(vo.getTime());
-	        notApprovelabel.setVisible(true);
-		}else if(vo != null&&vo.isAppproved() == true){
-			barcode.setText("");
-	        receiver.setText("");
-	        date.setText("");
-	        approvelabel.setVisible(true);
-		}else if(vo!=null){//如果从frame里得到的vo不是null ，而且等待审批,panel不可编辑
-			barcode.setText(vo.getBarcode());
-	        receiver.setText(vo.getReceiveCustomer());
-	        date.setText(vo.getTime());
-	        UnEditablePanel.UnEdit(thisP);
+	        date.setText(vo.getTime());       
 		}
 		
 		JButton btnNewButton = new JButton("确认");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				 vo = new ReceivingNoteVO(barcode.getText(),receiver.getText(),date.getText());
-				 vo.setUserName(lim.getUserName());
-				 vo.setOrganization(lim.getOrganization());
+				 //vo.setUserName(lim.getUserName());
+				// vo.setOrganization(lim.getOrganization());
 				res = service.inputReceiveDoc(vo);
 				if(res.isPass()){						
 						int result1 = JOptionPane.showConfirmDialog(null, "确认提交审批？","系统提示",
 								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-						if(result1 == JOptionPane.YES_OPTION) {
-						ResultMsg resultMsg = service.submitReceiveDoc(vo);	
-						UnEditablePanel.UnEdit(thisP);//提交之后panel里都不可编辑
+						if(result1 == JOptionPane.YES_OPTION) {	
+						UnEditablePanel.UnEdit(thisP);
 						parent.setReceivingNoteVo(vo);//将vo存到Frame里
-						
-						if(res.isPass()){
-							//frame的右下角panel发生变化
-						}else{//提交失败
-							int result2 = JOptionPane.showConfirmDialog(null,resultMsg.getMessage() ,"系统提示",
-									JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-						}
+						parent.setshouJianB(true);
+						new Submitter().run();
 						
 						}
 					
@@ -158,10 +130,22 @@ public class ReceiveOrderPanel extends JPanel {
 			}
 		});
 		btnNewButton.setBounds(348, 314, 117, 48);
-		add(btnNewButton);
+		add(btnNewButton);	
+	}
+	
+public void setResult(ResultMsg s) {
 		
-		
-		
+	parent.initshoujian(s.isPass());
+	parent.leftpanel.repaint();
 		
 	}
+	
+	class Submitter extends Thread {
+		@Override
+		public void run() {
+			super.run();
+			setResult(service.submitReceiveDoc(vo));
+		}
+	}
+	
 }

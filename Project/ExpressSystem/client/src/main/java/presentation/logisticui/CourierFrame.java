@@ -2,6 +2,7 @@ package presentation.logisticui;
 
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -26,6 +27,7 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import presentation.mainui.loginFrame;
 import presentation.util.welcomPanel;
 import util.LogInMsg;
+import util.ResultMsg;
 import vo.DeliveryNoteVO;
 import vo.ReceivingNoteVO;
 
@@ -40,6 +42,12 @@ public class CourierFrame extends JFrame {
     private LogInMsg lim; 
     private ReceivingNoteVO receivingNoteVo;
     private DeliveryNoteVO deliveryNoteVo;
+    private  JLabel jijian;
+	private  JLabel shoujian;
+	private  JLabel shoujianA;
+	private  JLabel shoujianB;
+	private  JLabel jijianA;
+	public JPanel leftpanel;
 
 	/**
 	 * Launch the application.
@@ -144,15 +152,15 @@ public class CourierFrame extends JFrame {
 		bankpanel.add(welcome);
 		welcome.setLayout(null);
 		
-		JPanel leftpanel = new JPanel();
+		leftpanel = new JPanel();
 		leftpanel.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 		leftpanel.setBounds(347, 570, 933, 124);
 		contentPane.add(leftpanel);
 		
-		JPanel panel_4 = new JPanel();
-		panel_4.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
-		panel_4.setBounds(0, 570, 350, 124);
-		contentPane.add(panel_4);
+		JPanel right = new JPanel();
+		right.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
+		right.setBounds(0, 570, 350, 124);
+		contentPane.add(right);
 		
 		JButton btnNewButton = new JButton("登记寄件单");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -225,7 +233,35 @@ public class CourierFrame extends JFrame {
 		});
 		button_1.setBounds(0, 421, 140, 152);
 		contentPane.add(button_1);
+		
+		jijian = new JLabel("您提交的寄件单已通过审批,现在可以填下一份了哟");
+		jijian.setBounds(21, 10, 487, 24);
+		jijian.setVisible(false);
+		leftpanel.add(jijian);
+		jijianA = new JLabel("您提交的寄件单未通过审批");
+		jijianA.setBounds(21, 10, 487, 24);
+		jijianA.setForeground(Color.red);
+		leftpanel.add(jijianA);
+		jijianA.setVisible(false);
+		
+		shoujian = new JLabel("您提交的收件单已通过审批,现在可以填下一份了哟");
+		shoujian.setBounds(21, 60, 487, 24);
+		shoujian.setVisible(false);
+		leftpanel.add(shoujian);
+      
+		
+		shoujianA = new JLabel("您提交的收件单未通过审批");
+		shoujianA.setBounds(21, 60, 487, 24);
+		shoujianA.setForeground(Color.red);
+		shoujianA.setVisible(false);
+		leftpanel.add(shoujianA);
 	
+	    
+		shoujianB = new JLabel("您提交的收件单正在等待审批，请耐心等待哦～");
+		shoujianB.setBounds(21, 60, 487, 24);
+		shoujianB.setForeground(Color.red);
+		shoujianB.setVisible(false);
+		leftpanel.add(shoujianB);
 	}
 
 	public ReceivingNoteVO getReceivingNoteVo() {
@@ -244,6 +280,20 @@ public class CourierFrame extends JFrame {
 		this.deliveryNoteVo = deliveryNoteVo;
 	}
 	
-	
+	public  void initjijian(boolean torf){	
+		jijian.setVisible(torf);
+		jijianA.setVisible(!torf);// torf == true show this;	
+	}
 
+	public  void initshoujian(boolean torf){	
+		shoujian.setVisible(torf);
+		shoujianA.setVisible(!torf);// torf == true show this;	
+	}
+	
+	public void setshouJianB(boolean torf){
+		shoujianB.setVisible(torf);
+	}
+
+	
+	
 }

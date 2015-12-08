@@ -1,11 +1,16 @@
 package data.statisticdata.param;
 
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
 
+import util.enums.NoteType;
+
+/**
+ * @author River
+ * 单据审批业务逻辑所使用的SQL表格参数
+ */
 public class NoteApproveChartData {
 
 	/*
@@ -14,9 +19,10 @@ public class NoteApproveChartData {
 	 * 其中内层Map的key为列的名称，value为应该翻译成的中文列名。
 	 */
 	private static Map<String,Map<String,String>> chartData = null;
-	
+	private static Map<String,NoteType> type = null;
 	static {
 		chartData = new HashMap<String, Map<String,String>>();
+		type = new HashMap<>();
 		
 		Map<String,String> temp = new TreeMap<>();
 		
@@ -25,6 +31,7 @@ public class NoteApproveChartData {
 		temp.put("warehouseID", "仓库号");
 		
 		chartData.put("StorageInNote", temp);
+		type.put("StorageInNote", NoteType.STORAGE_IN);
 		
 		//新的一种单据
 		//记得要先新建Map
@@ -36,7 +43,7 @@ public class NoteApproveChartData {
 	 * 获取单据的数据表名称
 	 * @return 能访问所有的数据表名称的迭代器
 	 */
-	public Iterator<String> getCharts() {
+	public static Iterator<String> getCharts() {
 		return chartData.keySet().iterator();
 	}
 	
@@ -45,7 +52,7 @@ public class NoteApproveChartData {
 	 * @param chartName 数据表名称
 	 * @return 能访问所有（需要输出的）列名称的迭代器
 	 */
-	public Iterator<String> getColumns(String chartName) {
+	public static Iterator<String> getColumns(String chartName) {
 		return chartData.get(chartName).keySet().iterator();
 	}
 	
@@ -55,7 +62,11 @@ public class NoteApproveChartData {
 	 * @param columnName 表内列名称
 	 * @return 此列的中文翻译
 	 */
-	public String getChineseColumnName(String chartName,String columnName) {
+	public static String getChineseColumnName(String chartName,String columnName) {
 		return chartData.get(chartName).get(columnName);
+	}
+	
+	public static NoteType getNoteType (String chartName) {
+		return type.get(chartData);
 	}
 }

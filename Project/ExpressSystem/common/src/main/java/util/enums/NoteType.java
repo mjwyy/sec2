@@ -24,7 +24,9 @@ public enum NoteType implements Serializable{
 	LOAD_NOTE_ON_SERVICE(""),
 	LOAD_NOTE_ON_TRANSIT(""),
 	RECEIVING_NOTE(""),
-	TRANSIT_NOTE("");
+	TRANSIT_NOTE(""),
+	STORAGE_IN("仓库入库单"),
+	STORAGE_OUT("仓库出库单");
 	
 	private String name = null;
 	

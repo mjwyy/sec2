@@ -25,6 +25,8 @@ import businesslogicservice.infoblservice._stub.BankAccountManagemntBLService_St
 
 import javax.swing.JComboBox;
 
+import presentation.util.MJTextField;
+
 public class BankAccountManagePanel extends JPanel {
 
 	/**
@@ -43,9 +45,9 @@ public class BankAccountManagePanel extends JPanel {
 	private Vector name;
 	private Vector data;
 	private JTable table;
-	private JTextField account;
-	private JTextField accountname;
-	private JTextField balance;
+	private MJTextField account;
+	private MJTextField accountname;
+	private MJTextField balance;
 	private BankAccountManagementBLService service = new BankAccountManagement();
 	private ArrayList<BankAccountVO> bankAccountList;
 	private BankAccountVO vo;
@@ -62,7 +64,7 @@ public class BankAccountManagePanel extends JPanel {
        label.setBounds(812, 95, 61, 16);
        add(label);
        
-       account = new JTextField();
+       account = new MJTextField();
        account.setBounds(905, 89, 204, 28);
        add(account);
        account.setColumns(10);
@@ -71,7 +73,7 @@ public class BankAccountManagePanel extends JPanel {
        label_1.setBounds(812, 189, 61, 16);
        add(label_1);
        
-       accountname = new JTextField();
+       accountname = new MJTextField();
        accountname.setBounds(905, 183, 204, 28);
        add(accountname);
        accountname.setColumns(10);
@@ -80,7 +82,7 @@ public class BankAccountManagePanel extends JPanel {
        label_2.setBounds(812, 288, 61, 16);
        add(label_2);
        
-       balance = new JTextField();
+       balance = new MJTextField();
        balance.setBounds(905, 282, 204, 28);
        add(balance);
        balance.setColumns(10);
@@ -159,9 +161,18 @@ public class BankAccountManagePanel extends JPanel {
      
        		
        		if(seletedRow != -1){
-        		model.setValueAt(account.getText(),seletedRow, 0);
-	        	model.setValueAt(accountname.getText(),seletedRow, 1);
-	        	model.setValueAt(balance.getText(),seletedRow, 2);	
+        			
+	        	vo = new BankAccountVO(accountname.getText(),account.getText(),balance.getText());
+	        	res = service.update(vo);
+	        	if(res.isPass()){
+	        		model.setValueAt(account.getText(),seletedRow, 0);
+		        	model.setValueAt(accountname.getText(),seletedRow, 1);
+		        	model.setValueAt(balance.getText(),seletedRow, 2);
+		        	
+	        	}else{
+	        		int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
+							JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
+	        	}
 	        	
        		}
        		
@@ -207,6 +218,7 @@ public class BankAccountManagePanel extends JPanel {
        	public void actionPerformed(ActionEvent e) {
        		bankAccountList = service.show();
        		data.clear();
+       		if(!bankAccountList.isEmpty()){
      		for(int i = 0;i<bankAccountList.size();i++){
      			Vector row = new Vector();
      			row.add(bankAccountList.get(i).getAccount());
@@ -216,6 +228,12 @@ public class BankAccountManagePanel extends JPanel {
      		}
      		model.setDataVector(data, name);
    			table.setModel(model);  		
+       	}else{
+       		Vector row = new Vector();
+       		row.add("无信息显示");
+       		model.setDataVector(data, name);
+   			table.setModel(model);
+       	}
        	}
        });
        button.setBounds(602, 56, 75, 41);

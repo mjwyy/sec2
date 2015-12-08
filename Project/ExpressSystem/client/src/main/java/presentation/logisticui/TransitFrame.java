@@ -57,10 +57,7 @@ public class TransitFrame extends JFrame {
     private TransitNoteOnTransitVO transitNoteOnTransitVO;
     private LogInMsg  lim;
     private String userInfo;
-
-    //TODO 单据set机构名称
-    //TODO 提交单据审批之后提示成功
-
+    
 	/**
 	 * 窗口宽度
 	 */

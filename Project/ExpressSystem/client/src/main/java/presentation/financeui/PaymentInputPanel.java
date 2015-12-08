@@ -16,6 +16,7 @@ import java.awt.List;
 
 import javax.swing.DefaultComboBoxModel;
 
+import presentation.util.MJTextField;
 import presentation.util.SubmitDialog;
 import util.LogInMsg;
 import util.ResultMsg;
@@ -25,9 +26,9 @@ import businesslogicservice.financeblservice.PaymentInputBLService;
 import businesslogicservice.financeblservice._stub.PaymentInputBLService_Stub;
 
 public class PaymentInputPanel extends JPanel {
-	private JTextField date;
-	private JTextField payer;
-	private JTextField account;
+	private MJTextField date;
+	private MJTextField payer;
+	private MJTextField account;
 	private JComboBox way;
 	private PaymentInputBLService service = new PaymentInput();
 	private ResultMsg res;
@@ -57,7 +58,7 @@ public class PaymentInputPanel extends JPanel {
 		label.setBounds(305, 79, 61, 16);
 		add(label);
 		
-		date = new JTextField();
+		date = new MJTextField();
 		date.setBounds(426, 73, 168, 28);
 		add(date);
 		date.setColumns(10);
@@ -66,7 +67,7 @@ public class PaymentInputPanel extends JPanel {
 		lblNewLabel.setBounds(305, 129, 61, 16);
 		add(lblNewLabel);
 		
-		payer = new JTextField();
+		payer = new MJTextField();
 		payer.setBounds(426, 123, 168, 28);
 		add(payer);
 		payer.setColumns(10);
@@ -75,7 +76,7 @@ public class PaymentInputPanel extends JPanel {
 		label_1.setBounds(305, 179, 61, 16);
 		add(label_1);
 		
-		account = new JTextField();
+		account = new MJTextField();
 		account.setBounds(426, 173, 168, 28);
 		add(account);
 		account.setColumns(10);

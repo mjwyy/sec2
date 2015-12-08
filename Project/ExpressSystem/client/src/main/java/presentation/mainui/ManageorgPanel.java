@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 
 import presentation.statisticui.ManageStaffPanel;
 import presentation.statisticui.StaffInfoPanel;
+import presentation.util.MJTextField;
 import util.ResultMsg;
 import util.enums.OrganizationType;
 import vo.OrganizationInfoVO;
@@ -30,9 +31,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class ManageorgPanel extends JPanel {
-	private JTextField keyword;
-	private JTextField orgnum;
-	private JTextField orgname;
+	private MJTextField keyword;
+	private MJTextField orgnum;
+	private MJTextField orgname;
 	private JTable table;
 	private DefaultTableModel model;
 	private Vector name;
@@ -40,7 +41,7 @@ public class ManageorgPanel extends JPanel {
 	private JComboBox keywordType;
 	private JComboBox orgtype;
 	private OrganizationInfoVO vo;
-	private StaffOrganizationManagementBLService service = new StaffOrganizationManagement();
+	private StaffOrganizationManagementBLService service = new StaffOrganizationManagementBLService_Stub();
 	private OrganizationType organizationType;
 	private ArrayList<StaffVO> staffinfo = new  ArrayList<StaffVO>();
 	private int seletedRow;
@@ -115,7 +116,7 @@ public class ManageorgPanel extends JPanel {
 		keywordType.setBounds(117, 37, 142, 20);
 		add(keywordType);
 		
-		keyword = new JTextField();
+		keyword = new MJTextField();
 		keyword.setBounds(260, 35, 216, 28);
 		add(keyword);
 		keyword.setColumns(10);
@@ -173,7 +174,7 @@ public class ManageorgPanel extends JPanel {
 		lblNewLabel.setBounds(772, 54, 61, 16);
 		add(lblNewLabel);
 		
-		orgnum = new JTextField();
+		orgnum = new MJTextField();
 		orgnum.setBounds(840, 48, 287, 28);
 		add(orgnum);
 		orgnum.setColumns(10);
@@ -191,7 +192,7 @@ public class ManageorgPanel extends JPanel {
 		label_1.setBounds(772, 171, 61, 16);
 		add(label_1);
 		
-		orgname = new JTextField();
+		orgname = new MJTextField();
 		orgname.setBounds(840, 165, 287, 28);
 		add(orgname);
 		orgname.setColumns(10);

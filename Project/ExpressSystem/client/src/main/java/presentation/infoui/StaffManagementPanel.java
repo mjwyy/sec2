@@ -16,6 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
 import po.StaffPO;
+import presentation.util.MJTextField;
 import util.ResultMsg;
 import util.enums.StaffType;
 import vo.InstitutionInfoVO;
@@ -32,15 +33,15 @@ import java.awt.event.MouseEvent;
 import java.awt.Color;
 
 public class StaffManagementPanel extends JPanel {
-	private JTextField keyword;
-	private JTextField staffID;
-	private JTextField staffname;
-	private JTextField staffsex;
-	private JTextField org;
-	private JTextField IDCode;
-	private JTextField worktime;
-	private JTextField phonum;
-	private JTextField wage;
+	private MJTextField keyword;
+	private MJTextField staffID;
+	private MJTextField staffname;
+	private MJTextField staffsex;
+	private MJTextField org;
+	private MJTextField IDCode;
+	private MJTextField worktime;
+	private MJTextField phonum;
+	private MJTextField wage;
 	private JTable table;
 	private DefaultTableModel model;
 	private Vector name;
@@ -69,7 +70,7 @@ public class StaffManagementPanel extends JPanel {
 		label.setBounds(54, 47, 80, 16);
 		add(label);
 		
-		keyword = new JTextField();
+		keyword = new MJTextField();
 		keyword.setBounds(296, 38, 198, 28);
 		add(keyword);
 		keyword.setColumns(10);
@@ -257,7 +258,7 @@ public class StaffManagementPanel extends JPanel {
 		add(tishi);
 		tishi.setVisible(false);
 		
-		staffID = new JTextField();
+		staffID = new MJTextField();
 		staffID.setBounds(837, 41, 192, 28);
 		add(staffID);
 		staffID.setColumns(10);
@@ -266,7 +267,7 @@ public class StaffManagementPanel extends JPanel {
 		label_2.setBounds(782, 75, 61, 16);
 		add(label_2);
 		
-		staffname = new JTextField();
+		staffname = new MJTextField();
 		staffname.setBounds(837, 69, 192, 28);
 		add(staffname);
 		staffname.setColumns(10);
@@ -275,7 +276,7 @@ public class StaffManagementPanel extends JPanel {
 		label_3.setBounds(782, 103, 61, 16);
 		add(label_3);
 		
-		staffsex = new JTextField();
+		staffsex = new MJTextField();
 		staffsex.setBounds(837, 97, 192, 28);
 		add(staffsex);
 		staffsex.setColumns(10);
@@ -284,7 +285,7 @@ public class StaffManagementPanel extends JPanel {
 		label_4.setBounds(782, 131, 61, 16);
 		add(label_4);
 		
-		org = new JTextField();
+		org = new MJTextField();
 		org.setBounds(837, 125, 192, 28);
 		add(org);
 		org.setColumns(10);
@@ -297,7 +298,7 @@ public class StaffManagementPanel extends JPanel {
 		label_6.setBounds(782, 187, 61, 16);
 		add(label_6);
 		
-		IDCode = new JTextField();
+		IDCode = new MJTextField();
 		IDCode.setBounds(837, 181, 192, 28);
 		add(IDCode);
 		IDCode.setColumns(10);
@@ -306,7 +307,7 @@ public class StaffManagementPanel extends JPanel {
 		label_7.setBounds(782, 221, 61, 16);
 		add(label_7);
 		
-		worktime = new JTextField();
+		worktime = new MJTextField();
 		worktime.setBounds(837, 215, 192, 28);
 		add(worktime);
 		worktime.setColumns(10);
@@ -315,7 +316,7 @@ public class StaffManagementPanel extends JPanel {
 		label_8.setBounds(782, 249, 61, 16);
 		add(label_8);
 		
-		phonum = new JTextField();
+		phonum = new MJTextField();
 		phonum.setBounds(837, 243, 192, 28);
 		add(phonum);
 		phonum.setColumns(10);
@@ -324,7 +325,7 @@ public class StaffManagementPanel extends JPanel {
 		label_9.setBounds(782, 277, 61, 16);
 		add(label_9);
 		
-		wage = new JTextField();
+		wage = new MJTextField();
 		wage.setBounds(837, 271, 192, 28);
 		add(wage);
 		wage.setColumns(10);

@@ -32,6 +32,7 @@ import javax.swing.JTable;
 
 import presentation.financeui.PaymentInputPanel;
 import presentation.util.CurrentTime;
+import presentation.util.MJTextField;
 import presentation.util.checkstyleDialog;
 import util.BarcodeAndState;
 import util.LogInMsg;
@@ -48,11 +49,11 @@ import businesslogicservice.logisticblservice._Stub.ArrivalNoteOnTransitBLServic
 import java.awt.SystemColor;
 
 public class ArrivalNoteOnTransitPanel extends JPanel {
-	private JTextField centrenum1;
-	private JTextField date1;
-	private JTextField barcode;
-	private JTextField departure1;
-	private JTextField trannum1;
+	private MJTextField centrenum1;
+	private MJTextField date1;
+	private MJTextField barcode;
+	private MJTextField departure1;
+	private MJTextField trannum1;
 	private ArrivalNoteOnTransitBLService service = new ArrivalNoteOnTransit();
 	private BarcodeAndState brcodeAndState;
 	private ResultMsg res;
@@ -95,7 +96,7 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 		 lim =  logInMsg;
 												
 		CurrentTime currentTime = new CurrentTime();										
-		date1 = new JTextField();
+		date1 = new MJTextField();
 		date1.setText(currentTime.getCurrentTimeSecond());
 		date1.setBounds(970, 32, 156, 30);
 		
@@ -108,7 +109,7 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 		add(lblNewLabel_1);
 												
 												
-		centrenum1= new JTextField();
+		centrenum1= new MJTextField();
 		centrenum1.setBounds(970, 81, 156, 30);
 		add(centrenum1);										
 	    centrenum1.setColumns(10);
@@ -121,6 +122,11 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 				ArrayList<BarcodeAndState> bas = new ArrayList<BarcodeAndState>();
 				BarcodeAndState mock = new BarcodeAndState("1234567890",GoodsState.COMPLETE);
 				bas.add(mock);
+		       if(trannum1.getText().isEmpty()||centrenum1.getText().isEmpty()||
+		    		   date1.getText().isEmpty()||departure1.getText().isEmpty()){
+		    		int result1 = JOptionPane.showConfirmDialog(null, "有咚咚漏天啦！","系统提示",
+							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+		       }else{
 				ArrivalNoteOnTransitVO vo = new ArrivalNoteOnTransitVO(trannum1.getText(),centrenum1.getText(),date1.getText(),
 						departure1.getText(),bas);
 				//格式检查
@@ -136,6 +142,7 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 					int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
 							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 			}
+		       }
 			}
 		});
 												
@@ -144,7 +151,7 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 		add(label);
 												
 		
-		barcode = new JTextField();
+		barcode = new MJTextField();
 		barcode.setBounds(970, 290, 156, 30);
 		add(barcode);
 		barcode.setColumns(10);
@@ -166,12 +173,12 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 		comboBox.setBackground(SystemColor.textHighlight);
 		add(comboBox);
 																
-		departure1 = new JTextField();
+		departure1 = new MJTextField();
 		departure1.setBounds(970, 126, 156, 30);
 		add(departure1);
 	    departure1.setColumns(10);													
 																		
-	    trannum1 = new JTextField();
+	    trannum1 = new MJTextField();
 	    trannum1.setBounds(970, 171, 156, 30);
 		add(trannum1);
 		trannum1.setColumns(10);
@@ -272,6 +279,7 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 						brcodeAndState = new BarcodeAndState(barcode.getText(),GoodsState.LOST);
 					bas.add(brcodeAndState);
 					
+					
 					ArrivalNoteOnTransitVO vo = new ArrivalNoteOnTransitVO(trannum2.getText(),centrenum2.getText(),date2.getText(),
 							departure2.getText(),bas);
 					
@@ -323,6 +331,7 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 				arrivalNoteOnTransitVO = new ArrivalNoteOnTransitVO(trannum2.getText(),centrenum2.getText(),date2.getText(),
 						departure2.getText(), barcodeAndStates);
 				arrivalNoteOnTransitVO.setUserName(lim.getUserName());
+				arrivalNoteOnTransitVO.setOrganization(lim.getOrganization());
 				date1.setEditable(false);
 				centrenum1.setEditable(false);
 				trannum1.setEditable(false);
@@ -339,6 +348,9 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);	
 		        }
 		
+	   }else{
+		   int result1 = JOptionPane.showConfirmDialog(null, "有咚咚漏天啦！","系统提示",
+					JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
 	   }
 	
      }

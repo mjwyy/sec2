@@ -13,6 +13,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableModel;
 
 import presentation.util.CurrentTime;
+import presentation.util.MJTextField;
 import presentation.util.UnEditablePanel;
 import presentation.util.checkstyleDialog;
 import util.BarcodesAndLocation;
@@ -39,17 +40,17 @@ import java.awt.event.MouseEvent;
 import javax.swing.JComboBox;
 
 public class TransitNoteInputPanel extends JPanel {
-	private JTextField date2;
-	private JTextField transitnum2;
-	private JTextField loader2;
-	private JTextField setout2;
-	private JTextField arrival2;
-	private JTextField date1;
-	private JTextField transitnum1;
-	private JTextField loader1;
-	private JTextField setout1;
-	private JTextField arrival1;
-	private JTextField barcode;
+	private MJTextField date2;
+	private MJTextField transitnum2;
+	private MJTextField loader2;
+	private MJTextField setout2;
+	private MJTextField arrival2;
+	private MJTextField date1;
+	private MJTextField transitnum1;
+	private MJTextField loader1;
+	private MJTextField setout1;
+	private MJTextField arrival1;
+	private MJTextField barcode;
 	private DefaultTableModel model;
 	private Vector name;
 	private Vector data;
@@ -57,12 +58,12 @@ public class TransitNoteInputPanel extends JPanel {
     private TransitType transitNoteType;
     private TransitNoteInputBLService service = new TransitNoteInput();
     private ResultMsg res;
-    private JTextField section;
-    private JTextField line;
-    private JTextField jiahao;
-    private JTextField number;
-    private JTextField flightNumber2;
-    private JTextField flightNumber1;
+    private MJTextField section;
+    private MJTextField line;
+    private MJTextField jiahao;
+    private MJTextField number;
+    private MJTextField flightNumber2;
+    private MJTextField flightNumber1;
     private ArrayList<BarcodesAndLocation> barcodesandLocation = new ArrayList<BarcodesAndLocation>();
     private TransitNoteOnTransitVO transitNoteOnTransitVO;
     private  LogInMsg lim ;
@@ -99,7 +100,7 @@ public class TransitNoteInputPanel extends JPanel {
 		label.setBounds(84, 44, 61, 16);
 		add(label);
 		
-		date2 = new JTextField();
+		date2 = new MJTextField();
 		date2.setEditable(false);
 		date2.setBounds(142, 38, 134, 28);
 		add(date2);
@@ -109,7 +110,7 @@ public class TransitNoteInputPanel extends JPanel {
 		label_1.setBounds(348, 44, 74, 16);
 		add(label_1);
 		
-		transitnum2 = new JTextField();
+		transitnum2 = new MJTextField();
 		transitnum2.setEditable(false);
 		transitnum2.setBounds(434, 38, 310, 28);
 		add(transitnum2);
@@ -119,7 +120,7 @@ public class TransitNoteInputPanel extends JPanel {
 		label_2.setBounds(84, 115, 61, 16);
 		add(label_2);
 		
-		loader2 = new JTextField();
+		loader2 = new MJTextField();
 		loader2.setEditable(false);
 		loader2.setBounds(142, 109, 134, 28);
 		add(loader2);
@@ -129,7 +130,7 @@ public class TransitNoteInputPanel extends JPanel {
 		label_3.setBounds(84, 176, 61, 16);
 		add(label_3);
 		
-		setout2 = new JTextField();
+		setout2 = new MJTextField();
 		setout2.setEditable(false);
 		setout2.setBounds(142, 170, 134, 28);
 		add(setout2);
@@ -139,7 +140,7 @@ public class TransitNoteInputPanel extends JPanel {
 		label_4.setBounds(84, 243, 61, 16);
 		add(label_4);
 		
-		arrival2 = new JTextField();
+		arrival2 = new MJTextField();
 		arrival2.setEditable(false);
 		arrival2.setBounds(142, 237, 134, 28);
 		add(arrival2);
@@ -149,7 +150,7 @@ public class TransitNoteInputPanel extends JPanel {
 		final JComboBox transitType1 = new JComboBox(transitType);
 		transitType1.setBounds(891, 176, 78, 27);
 		add(transitType1);
-		flightNumber1 = new JTextField();
+		flightNumber1 = new MJTextField();
 		flightNumber1.setBounds(965, 176, 134, 28);
 		add(flightNumber1);
 		flightNumber1.setColumns(10);
@@ -163,6 +164,7 @@ public class TransitNoteInputPanel extends JPanel {
 					transitNoteOnTransitVO = new TransitNoteOnTransitVO(date2.getText(),transitnum2.getText(),
 							flightNumber2.getText(),transitNoteType,setout2.getText(),arrival2.getText(),loader2.getText(),barcodesandLocation);
 					transitNoteOnTransitVO.setUserName(lim.getUserName());
+					transitNoteOnTransitVO.setOrganization(lim.getOrganization());
 				res = service.submitCenterTransitDoc(transitNoteOnTransitVO);	
 				UnEditablePanel.UnEdit(TransitNoteInputPanel.this);
 			}else{
@@ -179,7 +181,7 @@ public class TransitNoteInputPanel extends JPanel {
 		add(label_5);
 		
 		CurrentTime currentTime = new CurrentTime();
-		date1 = new JTextField();
+		date1 = new MJTextField();
 		date1.setText(currentTime.getCurrentTimeSecond());
 		date1.setColumns(10);
 		date1.setBounds(891, 38, 209, 28);
@@ -193,7 +195,7 @@ public class TransitNoteInputPanel extends JPanel {
 		label_6.setBounds(818, 72, 99, 16);
 		add(label_6);
 		
-		transitnum1 = new JTextField();
+		transitnum1 = new MJTextField();
 		transitnum1.setColumns(10);
 		transitnum1.setBounds(891, 66, 209, 28);
 		add(transitnum1);
@@ -202,7 +204,7 @@ public class TransitNoteInputPanel extends JPanel {
 		label_7.setBounds(818, 100, 61, 16);
 		add(label_7);
 		
-		loader1 = new JTextField();
+		loader1 = new MJTextField();
 		loader1.setColumns(10);
 		loader1.setBounds(891, 94, 209, 28);
 		add(loader1);
@@ -215,12 +217,12 @@ public class TransitNoteInputPanel extends JPanel {
 		label_9.setBounds(818, 156, 61, 16);
 		add(label_9);
 		
-		setout1 = new JTextField();
+		setout1 = new MJTextField();
 		setout1.setColumns(10);
 		setout1.setBounds(891, 122, 209, 28);
 		add(setout1);
 		
-		arrival1 = new JTextField();
+		arrival1 = new MJTextField();
 		arrival1.setColumns(10);
 		arrival1.setBounds(891, 150, 209, 28);
 		add(arrival1);
@@ -260,7 +262,7 @@ public class TransitNoteInputPanel extends JPanel {
 		button_1.setBounds(996, 217, 86, 28);
 		add(button_1);
 		
-		barcode = new JTextField();
+		barcode = new MJTextField();
 		barcode.setColumns(10);
 		barcode.setBounds(891, 289, 209, 28);
 		add(barcode);
@@ -340,7 +342,7 @@ public class TransitNoteInputPanel extends JPanel {
 		label_10.setBounds(856, 335, 61, 16);
 		add(label_10);
 		
-		section = new JTextField();
+		section = new MJTextField();
 		section.setBounds(905, 329, 39, 28);
 		add(section);
 		section.setColumns(10);
@@ -349,7 +351,7 @@ public class TransitNoteInputPanel extends JPanel {
 		label_11.setBounds(996, 333, 61, 16);
 		add(label_11);
 		
-		line = new JTextField();
+		line = new MJTextField();
 		line.setBounds(1053, 327, 39, 28);
 		add(line);
 		line.setColumns(10);
@@ -358,7 +360,7 @@ public class TransitNoteInputPanel extends JPanel {
 		label_12.setBounds(856, 370, 61, 16);
 		add(label_12);
 		
-		jiahao = new JTextField();
+		jiahao = new MJTextField();
 		jiahao.setBounds(904, 364, 40, 28);
 		add(jiahao);
 		jiahao.setColumns(10);
@@ -367,7 +369,7 @@ public class TransitNoteInputPanel extends JPanel {
 		lblNewLabel_1.setBounds(996, 370, 45, 16);
 		add(lblNewLabel_1);
 		
-		number = new JTextField();
+		number = new MJTextField();
 		number.setBounds(1053, 364, 39, 28);
 		add(number);
 		number.setColumns(10);
@@ -376,7 +378,7 @@ public class TransitNoteInputPanel extends JPanel {
 		label_13.setBounds(84, 289, 117, 28);
 		add(label_13);
 		
-		flightNumber2 = new JTextField();
+		flightNumber2 = new MJTextField();
 		flightNumber2.setEditable(false);
 		flightNumber2.setEnabled(false);
 		flightNumber2.setBounds(142, 289, 134, 28);
@@ -390,7 +392,7 @@ public class TransitNoteInputPanel extends JPanel {
 		
 		
 		
-		transitType2 = new JTextField();
+		transitType2 = new MJTextField();
 		transitType2.setEditable(false);
 		transitType2.setEnabled(false);
 		transitType2.setBounds(142, 335, 134, 28);

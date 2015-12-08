@@ -13,6 +13,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JTable;
 
 import presentation.util.CurrentTime;
+import presentation.util.MJTextField;
+import presentation.util.UnEditablePanel;
 import presentation.util.checkstyleDialog;
 import util.LogInMsg;
 import util.ResultMsg;
@@ -39,13 +41,13 @@ public class LoadNoteOnTransitPanel extends JPanel {
 	private JTextField supervisor2;
 	private JTextField escort2;
 	private JTextField destination2;
-	private JTextField date1;
-	private JTextField destination1;
-	private JTextField trucknum1;
-	private JTextField carnum;
-	private JTextField supervisor1;
-	private JTextField escort1;
-	private JTextField addbarcode;
+	private MJTextField date1;
+	private MJTextField destination1;
+	private MJTextField trucknum1;
+	private MJTextField carnum;
+	private MJTextField supervisor1;
+	private MJTextField escort1;
+	private MJTextField addbarcode;
 	private JTable table;
 	private DefaultTableModel model;
 	private Vector name;
@@ -167,16 +169,10 @@ public class LoadNoteOnTransitPanel extends JPanel {
 				 loadNoteOnTransitVO.setUserName(lim.getUserName());
 				 loadNoteOnTransitVO.setOrganization(lim.getOrganization());
 				service.submitCenterLoadDoc(loadNoteOnTransitVO);
-				date1.setEditable(false); 
-				trucknum1.setEditable(false);
-				destination1.setEditable(false);; 
-				carnum.setEditable(false);;
-				supervisor1.setEditable(false);;
-				escort1.setEditable(false);
-				addbarcode.setEditable(false);
+				UnEditablePanel.UnEdit(LoadNoteOnTransitPanel.this);
 				
 			}else{
-				int result1 = JOptionPane.showConfirmDialog(null, "请将装车单填写完整","系统提示",
+				int result1 = JOptionPane.showConfirmDialog(null, "有咚咚木有填","系统提示",
 						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 			}
 		  }
@@ -209,33 +205,33 @@ public class LoadNoteOnTransitPanel extends JPanel {
 		add(label_11);
 		
 		CurrentTime currentTime = new CurrentTime();
-		date1 = new JTextField();
+		date1 = new MJTextField();
 		date1.setText(currentTime.getCurrentTimeSecond());
 		date1.setColumns(10);
 		date1.setBounds(930, 48, 134, 28);
 		add(date1);
 		
-		destination1 = new JTextField();
+		destination1 = new MJTextField();
 		destination1.setColumns(10);
 		destination1.setBounds(930, 88, 134, 28);
 		add(destination1);
 		
-		trucknum1 = new JTextField();
+		trucknum1 = new MJTextField();
 		trucknum1.setColumns(10);
 		trucknum1.setBounds(930, 133, 134, 28);
 		add(trucknum1);
 		
-		carnum = new JTextField();
+		carnum = new MJTextField();
 		carnum.setColumns(10);
 		carnum.setBounds(930, 176, 134, 28);
 		add(carnum);
 		
-		supervisor1 = new JTextField();
+		supervisor1 = new MJTextField();
 		supervisor1.setColumns(10);
 		supervisor1.setBounds(930, 217, 134, 28);
 		add(supervisor1);
 		
-		escort1 = new JTextField();
+		escort1 = new MJTextField();
 		escort1.setColumns(10);
 		escort1.setBounds(930, 256, 134, 28);
 		add(escort1);
@@ -246,7 +242,12 @@ public class LoadNoteOnTransitPanel extends JPanel {
 				//下面伪造barcode，以便构造vo
 				ArrayList<String> s = new ArrayList<String>();
 				s.add("1234567890");
-				
+				if(date1.getText().isEmpty()||escort1.getText().isEmpty()||supervisor1.getText().isEmpty()||trucknum1.getText().isEmpty()||
+						destination1.getText().isEmpty()||carnum.getText().isEmpty()){
+					int result1 = JOptionPane.showConfirmDialog(null, "有咚咚木有填","系统提示",
+							JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
+					
+				}else{
 				LoadNoteOnTransitVO vo = new LoadNoteOnTransitVO(date1.getText(), trucknum1.getText(),destination1.getText(), 
 						carnum.getText(),supervisor1.getText(), escort1.getText(), s);
 				res = service.inputCenterLoadDoc(vo);//格式检查
@@ -263,7 +264,7 @@ public class LoadNoteOnTransitPanel extends JPanel {
 							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 				}
 				
-				
+				}
 			}
 		});
 		button_1.setBounds(1009, 299, 117, 29);
@@ -273,7 +274,7 @@ public class LoadNoteOnTransitPanel extends JPanel {
 		label_12.setBounds(842, 338, 61, 16);
 		add(label_12);
 		
-		addbarcode = new JTextField();
+		addbarcode = new MJTextField();
 		addbarcode.setBounds(930, 340, 134, 28);
 		add(addbarcode);
 		addbarcode.setColumns(10);

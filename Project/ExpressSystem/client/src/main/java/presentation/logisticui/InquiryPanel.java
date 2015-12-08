@@ -13,7 +13,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
-import businesslogic.statistic.OrderInquiry;
 import util.ResultMsg;
 import vo.OrderVO;
 import businesslogicservice.statisticblservice.OrderInquiryBLService;
@@ -83,7 +82,7 @@ public class InquiryPanel extends JPanel {
 	JButton btnNewButton = new JButton("查询");
 	btnNewButton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			service = new OrderInquiry();
+			service = new OrderInquiryBLService_Stub();
 			res = service.inputBarcode(barcode.getText());
 			if(res.isPass()){
 				OrderVO vo = service.submitBarcode(barcode.getText());

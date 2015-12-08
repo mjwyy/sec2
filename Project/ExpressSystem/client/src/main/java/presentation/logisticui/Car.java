@@ -27,17 +27,17 @@ import businesslogicservice.infoblservice._stub.DriverVehicleManagementBLService
 
 public class Car extends JPanel {
 	private JTextField key;
-private JTextField code;
-private JTextField name;
-private JTextField time;
-private JTable table;
-private DefaultTableModel model;
- DriverVehicleManagementBLService  dvm=new DriverVehicleManagementBLService_Stub();
-//DriverVehicleManagementBLService  dvm=new DriverVehicleManagement();
- private JTextField textField_1;
-private JComboBox comboBox;
-private JLabel pict;
-private String fileName;
+    private JTextField code;
+    private JTextField name;
+    private JTextField time;
+    private JTable table;
+    private DefaultTableModel model;
+    // DriverVehicleManagementBLService  dvm=new DriverVehicleManagementBLService_Stub();
+    DriverVehicleManagementBLService  dvm=new DriverVehicleManagement();
+     private JTextField textField_1;
+    private JComboBox comboBox;
+    private JLabel pict;
+    private String fileName;
 	/**
 	 * Create the panel.
 	 */

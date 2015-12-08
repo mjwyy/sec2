@@ -181,7 +181,7 @@ public class StaffOrganizationManagementData extends UnicastRemoteObject impleme
             ElementNotFoundException{
         String sql = "";
         if (info.getStaffID() != null)
-            sql = "SELECT * FROM staff WHERE WHERE staff_id = '" + info.getStaffID() + "'";
+            sql = "SELECT * FROM staff WHERE staff_id = '" + info.getStaffID() + "'";
         else if (info.getName() != null)
             sql = "SELECT * FROM staff WHERE name LIKE '%" + info.getName() + "%'";
         else if (info.getOrganization() != null)

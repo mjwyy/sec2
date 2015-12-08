@@ -230,9 +230,12 @@ public class FormatCheck {
      * @param str
      * @return
      */
+
+    // TODO 检查位数不够
     public static ResultMsg isTransitNoteNumber(String str) {
         String trueExpression = "\\d{3}0\\d{17}";
         boolean date = FormatCheck.isNumberDate(str.substring(6,14)).isPass();
+        System.out.println(str.substring(6,14));
         return Pattern.matches(trueExpression,str) && date? new ResultMsg(true) :
                 new ResultMsg(false,"中转单编号格式错误,应为中转中心编号(6位)＋日期＋7位0～9的数字");
     }

@@ -18,7 +18,9 @@ import vo.StorageInVO;
  * 问题：StorageInDataService 没有提供库存报警相关接口
  */
 public class StorageIn implements StorageInBLService {
-	
+
+    //TODO 有bug
+
 	StorageInDataService dataService = null;
 	
 	ResultMsg alarmingMsg = null;

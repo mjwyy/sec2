@@ -288,8 +288,8 @@ private Service frame;//
 			BarcodeAndState bas=new BarcodeAndState("0123456789",state1);
 			wei.add(bas);
 			if(typeF.getSelectedIndex()==0)
-				isT=false;
-			else isT=true;
+				isT=true;
+			else isT=false;
 			vo=new ArrivalNoteOnServiceVO (dataF.getText(),isT, barcodeF.getText(),fromF.getText(),wei);
 			ResultMsg result=arrive.inputHallArrivalDoc(vo);
 			if(result.isPass()){//格式检查正确
@@ -323,6 +323,7 @@ private Service frame;//
 			//伪造的vo
 			ArrayList<BarcodeAndState> wei =new ArrayList<BarcodeAndState>();
 			wei.add(bas);
+            //TODO 修改025000201510120000003
 			ArrivalNoteOnServiceVO  aa=new ArrivalNoteOnServiceVO("2015-10-22",false,"025000201510120000003","南京",wei);
 			ResultMsg result=arrive.inputHallArrivalDoc(aa);
 			if(result.isPass()){//格式检查正确
@@ -355,8 +356,8 @@ private Service frame;//
 			return ;
 			}
 			if(TYPE.getText().equals("中转单编号"))
-				isT=false;
-			else isT=true;
+				isT=true;
+			else isT=false;
 			//获取table里的数据BarcodeAndStates加到
 			int count=model.getRowCount();
 			for(int i=0;i<count;i++){

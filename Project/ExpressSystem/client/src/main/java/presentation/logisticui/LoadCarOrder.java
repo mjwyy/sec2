@@ -39,8 +39,7 @@ import javax.swing.table.TableColumn;
 import presentation.util.CurrentTime;
 
 public class LoadCarOrder extends JPanel {
-	LoadNoteOnServiceBLService load=new LoadNoteOnServiceBLService_Stub();
-	//LoadNoteOnServiceBLService load=new LoadNoteOnService();
+    LoadNoteOnServiceBLService load;
 	private JTextField data;
 	private JTextField service;
 	private JTextField to;
@@ -81,6 +80,10 @@ public class LoadCarOrder extends JPanel {
 	 * Create the panel.
 	 */
 	public LoadCarOrder(LogInMsg lim) {
+        if(IsDebug.IsDebug){
+            load=new LoadNoteOnServiceBLService_Stub();
+        }else
+             load=new LoadNoteOnService();
 		this.lim=lim;
 		setSize(WIDTH,HEIGHT);
 		setBackground(Color.WHITE);

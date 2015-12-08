@@ -48,8 +48,8 @@ public class Driver extends JPanel {
 	private JTextField qixian;
 	private JTable table;
 	private DefaultTableModel model;
-	DriverVehicleManagementBLService  dvm=new DriverVehicleManagementBLService_Stub();
-	//DriverVehicleManagementBLService  dvm=new DriverVehicleManagement();
+//	DriverVehicleManagementBLService  dvm=new DriverVehicleManagementBLService_Stub();
+	DriverVehicleManagementBLService  dvm=new DriverVehicleManagement();
 	private JTextField orgi;
 	private JTextField workhour;
 	private JTextField sala;

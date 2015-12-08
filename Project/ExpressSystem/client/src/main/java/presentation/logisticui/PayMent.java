@@ -41,8 +41,8 @@ import java.util.ArrayList;
 public class PayMent extends JPanel {
 	JPanel thisP=this;
 	//先用stub代替哦
-	private CreditNoteInputBLService payment=new CreditNoteInputBLService_Stub();
-//	CreditNoteInputBLService payment=new CreditNoteInput();
+//	private CreditNoteInputBLService payment=new CreditNoteInputBLService_Stub();
+	CreditNoteInputBLService payment=new CreditNoteInput();
 	private JTextField DATA;
 	private JTextField MONEY;
 	private JTextField dataF;
@@ -291,7 +291,7 @@ public class PayMent extends JPanel {
 				barcode.add(cc);
 			}
 			vo=new CreditNoteVO(DATA.getText(), MONEY.getText(), SENDER.getText(), barcode);
-			//vo.setUserName(lim.getUserName());
+			vo.setUserName(lim.getUserName());
 			int result = JOptionPane.showConfirmDialog(null, "确认提交审批？","系统提示",
 					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 			if(result == JOptionPane.YES_OPTION) {

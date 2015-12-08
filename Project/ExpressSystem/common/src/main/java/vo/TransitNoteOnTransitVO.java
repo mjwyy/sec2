@@ -169,9 +169,9 @@ public class TransitNoteOnTransitVO extends NoteVO {
         if(this.transitType == TransitType.Aircraft){
             results[2] = FormatCheck.isFlightNumber(this.transportationNumber);
         }else if(this.transitType == TransitType.Car){
-            results[2] = FormatCheck.isTrainNumber(this.transportationNumber);
-        }else {
             results[2] = FormatCheck.isCenterLoadNumber(this.transportationNumber);
+        }else {
+            results[2] = FormatCheck.isTrainNumber(this.transportationNumber);
         }
         results[3] = new ResultMsg(true);
         results[4] = FormatCheck.isCity(this.desitination);

@@ -28,6 +28,8 @@ import java.util.regex.Pattern;
 
 public class DeliveryNoteInputData extends NoteInputData implements DeliveryNoteInputDataService {
 
+    //TODO 审批之前显示价格等信息
+
     private OrderInquiryDataService orderDataService;
     private BusinessDataModificationDataService businessDataModificationDataService;
 

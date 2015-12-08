@@ -34,7 +34,7 @@ public class OrderInquiryData extends UnicastRemoteObject implements OrderInquir
     public boolean insertOrderPO(String barcode, String info, double price) throws RemoteException {
         Connection connection = DatabaseManager.getConnection();
         String sql = "insert into `order` ( `history`, `stateOfTransport`, `barcode`,`money`) " +
-                "values (?,?,?)";
+                "values (?,?,?,?)";
         PreparedStatement statement = null;
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String currentTime = df.format(new Date());

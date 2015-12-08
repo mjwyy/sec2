@@ -34,6 +34,7 @@ import businesslogicservice.logisticblservice._Stub.DeliveryNoteInputBLService_S
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.text.DecimalFormat;
 
 public class MailOrderPanel extends JPanel {
 	
@@ -85,6 +86,7 @@ public class MailOrderPanel extends JPanel {
 		}
 	
 	public MailOrderPanel(LogInMsg logInMsg,CourierFrame courierFrame) {
+        lim = logInMsg;
 		setSize(WIDTH,HEIGHT);
 		setLayout(null);
 		 service = new DeliveryNoteInput();//实例化bl接口
@@ -210,9 +212,9 @@ public class MailOrderPanel extends JPanel {
 		money.setEnabled(false);
 		money.setColumns(10);
 		
-		JLabel label_13 = new JLabel("请输入完整的单据信息");
-		label_13.setBounds(987, 67, 134, 16);
-		add(label_13);
+//		JLabel label_13 = new JLabel("请输入完整的单据信息");
+//		label_13.setBounds(987, 67, 134, 16);
+//		add(label_13);
 		
 		JLabel label_12 = new JLabel("预计到达时间");
 		label_12.setBounds(896, 138, 82, 16);
@@ -226,9 +228,9 @@ public class MailOrderPanel extends JPanel {
 		predate.setEditable(false);
 		predate.setColumns(10);
 		
-		JLabel label_14 = new JLabel("请输入完整的单据信息");
-		label_14.setBounds(987, 164, 134, 16);
-		add(label_14);
+//		JLabel label_14 = new JLabel("请输入完整的单据信息");
+//		label_14.setBounds(987, 164, 134, 16);
+//		add(label_14);
 		
 		JLabel label_15 = new JLabel("寄件人地址");
 		label_15.setBounds(70, 229, 84, 16);
@@ -289,7 +291,9 @@ public class MailOrderPanel extends JPanel {
 						
 						UnEditablePanel.UnEdit(MailOrderPanel.this);
 						sdm = service.submitSendDoc(sendDocVO);
-						String price = sdm.getPrice()+"";//显示价格
+                        double doublePrice = sdm.getPrice();
+                        DecimalFormat df = new DecimalFormat("#.##");
+                        String price = df.format(doublePrice);//显示价格
 						money.setText(price);
 						predate.setText(sdm.getPredectedDate());//显示预计到达日期
 						parent.setDeliveryNoteVo(sendDocVO);//将单据信息存到vo里

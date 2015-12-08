@@ -19,8 +19,6 @@ import vo.StorageInVO;
  */
 public class StorageIn implements StorageInBLService {
 
-    //TODO 有bug
-
 	StorageInDataService dataService = null;
 	
 	ResultMsg alarmingMsg = null;

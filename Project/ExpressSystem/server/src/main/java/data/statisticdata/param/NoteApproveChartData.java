@@ -66,7 +66,21 @@ public class NoteApproveChartData {
 		return chartData.get(chartName).get(columnName);
 	}
 	
+	
 	public static NoteType getNoteType (String chartName) {
 		return type.get(chartData);
+	}
+	
+	public static String getChartName (NoteType noteType) {
+		String result = null;
+		Iterator<String> it = type.keySet().iterator();
+		while (it.hasNext()) {
+			String key = it.next();
+			if(type.get(key).equals(noteType)) {
+				result = key;
+				break;
+			}
+		}
+		return result;
 	}
 }

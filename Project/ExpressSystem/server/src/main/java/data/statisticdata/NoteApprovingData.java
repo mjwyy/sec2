@@ -60,7 +60,7 @@ public class NoteApprovingData extends UnicastRemoteObject implements NoteApprov
 					NoteType type = NoteApproveChartData.getNoteType(chartName);
 					result.add(new ApproveNote(id, type, info));
 				}
-				
+				DatabaseManager.releaseConnection(null,stmt,set);
 			} catch (SQLException e) {
 				LogInsHelper.insertLog("系统数据库连接出现异常:"+e.getMessage());
 				e.printStackTrace();
@@ -69,15 +69,48 @@ public class NoteApprovingData extends UnicastRemoteObject implements NoteApprov
 			
 		}
 		
+		DatabaseManager.releaseConnection(connection, null, null);
 		
-		return null;
+		return result;
 
 	}
 
 	@Override
-	public ResultMsg pushResults(ArrayList<ApproveNote> results) {
-		// TODO Auto-generated method stub
-		return null;
+	public ResultMsg pushResults(ArrayList<ApproveNote> results) throws RemoteException {
+
+		connection = DatabaseManager.getConnection();
+		
+		for(ApproveNote note:results) {
+			
+			String chartName = NoteApproveChartData.getChartName(note.getType());
+			String id = note.getId();
+			PreparedStatement stmt = null;
+			String sql = null;
+			
+			try {
+				if (note.isPass()) {
+					sql = "update "+chartName+" set isPassed="+DocState.PASSED.getIntState()+" where id='"+id+"'";
+					
+				} else {
+					String advice = note.getRejectionMessage();
+					sql = "update "+chartName+" set isPassed="+DocState.FAILED.getIntState()+","
+							+ "advice='"+advice+"' where id='"+id+"'";
+				}
+				
+				stmt = connection.prepareStatement(sql);
+				stmt.execute();
+			} catch (Exception e) {
+				LogInsHelper.insertLog("数据库异常："+e.getMessage());
+				e.printStackTrace();
+				return new ResultMsg(false,"系统数据出现异常，请联系管理员。");
+			}
+			
+			DatabaseManager.releaseConnection(null, stmt, null);
+		}
+		
+		DatabaseManager.releaseConnection(connection, null, null);
+		
+		return new ResultMsg(true);
 	}
 
 	/**
@@ -85,20 +118,24 @@ public class NoteApprovingData extends UnicastRemoteObject implements NoteApprov
 	 * @param columns 需要提取的列名
 	 * @param set
 	 * @return 详细信息（列名为中文的）
+	 * @throws SQLException 
 	 */
-	private String generateInfoString (String chartName, Iterator<String> columns,ResultSet set) {
+	private String generateInfoString (String chartName, Iterator<String> columns,ResultSet set) throws SQLException {
 
 		StringBuilder result = new StringBuilder();
 		String current = null;
 		String chineseName = null;
+		String content = null;
 		
 		while (columns.hasNext()) {
 			current = columns.next();
 			chineseName = NoteApproveChartData.getChineseColumnName(chartName, current);
-			
-			
+			content = ""+set.getObject(current);
+			result.append(chineseName+'：'+content);
+			if(columns.hasNext()) {
+				result.append('；');
+			}
 		}
-		
 		
 		return result.toString();
 	}

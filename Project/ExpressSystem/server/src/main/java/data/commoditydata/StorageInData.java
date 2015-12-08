@@ -125,7 +125,7 @@ public class StorageInData extends UnicastRemoteObject implements StorageInDataS
 			} catch (SQLException e) {
 				e.printStackTrace();
 		    	DatabaseManager.releaseConnection(connection, stmt, set);
-				return false;
+				throw new RemoteException(e.getLocalizedMessage());
 			}
     	}
     	

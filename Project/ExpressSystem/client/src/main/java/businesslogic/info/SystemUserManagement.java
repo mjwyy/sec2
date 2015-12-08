@@ -94,7 +94,10 @@ public class SystemUserManagement implements SystemUserManagementBLService {
     	ArrayList<UserVO> result = new ArrayList<>();
     	ArrayList<UserPO> get = null;
     	try {
-			get = dataService.inquireUser((UserPO) vo.toPO());
+            if(vo == null){
+                get = dataService.getAllUsers();
+            }else
+			    get = dataService.inquireUser((UserPO) vo.toPO());
 		} catch (Exception e) {
 			System.err.println("查询用户时出现异常：");
 			System.err.println(e.getMessage());

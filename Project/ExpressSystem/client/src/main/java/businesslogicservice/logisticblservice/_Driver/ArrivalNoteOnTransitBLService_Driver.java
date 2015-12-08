@@ -1,5 +1,6 @@
 package businesslogicservice.logisticblservice._Driver;
 
+import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import util.enums.GoodsState;
 import vo.ArrivalNoteOnTransitVO;
 
 public class ArrivalNoteOnTransitBLService_Driver {
-	public static void main(String[] args) throws RemoteException, NotBoundException {
+	public static void main(String[] args) throws RemoteException, NotBoundException, MalformedURLException {
         RMIHelper.tryConnect();
 		ArrivalNoteOnTransitBLService a=new ArrivalNoteOnTransit();
 		ArrivalNoteOnTransitBLService_Driver driver=new ArrivalNoteOnTransitBLService_Driver();

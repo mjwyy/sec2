@@ -205,17 +205,29 @@ public class TransitFrame extends JFrame {
 		JMenu mnf = new JMenu("功能（F）");
 		menuBar.add(mnf);
 		
-		userInfo = "姓名："+lim.getUserName()+"\n"+"机构"+lim.getOrganization()+"\n"+"权限"+lim.getAuthority();
-		JPanel panel_2 = new JPanel(){
-			public void paintComponent(Graphics g) {
-				 super.paintComponent(g);
-				 g.drawString(userInfo, 0, 50);
-				}
-				};
+		
+		JPanel panel_2 = new JPanel();
 	
 		panel_2.setBounds(0, 570, 350, 124);
 		panel_2.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 		contentPane.add(panel_2);
+		panel_2.setLayout(null);
+		
+		JLabel label = new JLabel("姓名：");
+		label.setBounds(16, 16, 61, 16);
+		panel_2.add(label);
+		
+		JLabel label_1 = new JLabel("机构：");
+		label_1.setBounds(16, 62, 61, 16);
+		panel_2.add(label_1);
+		
+		JLabel lblNewLabel = new JLabel(lim.getUserName());
+		lblNewLabel.setBounds(72, 16, 166, 16);
+		panel_2.add(lblNewLabel);
+		
+		JLabel lblNewLabel_2 = new JLabel(lim.getOrganization());
+		lblNewLabel_2.setBounds(71, 62, 187, 16);
+		panel_2.add(lblNewLabel_2);
 		
 	
 		

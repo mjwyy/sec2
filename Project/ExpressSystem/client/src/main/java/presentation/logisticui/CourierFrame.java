@@ -52,11 +52,15 @@ public class CourierFrame extends JFrame {
 	public ReceiveOrderPanel rop0;
 	private MailOrderPanel mailOrderPanel;
 	private ReceiveOrderPanel receiveOrderpanel;
+	private JLabel label;
+	private JLabel label_1;
+	private JLabel limname;
+	private JLabel limorg;
 
 	/**
 	 * Launch the application.
 	 */
-	/*public static void main(String[] args) {
+	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -69,7 +73,7 @@ public class CourierFrame extends JFrame {
 				}
 			}
 		});
-	}*/
+	}
     
 	private static void changeLook() {
 	    try {
@@ -165,6 +169,23 @@ public class CourierFrame extends JFrame {
 		right.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 		right.setBounds(0, 570, 350, 124);
 		contentPane.add(right);
+		right.setLayout(null);
+		
+		label = new JLabel("姓名：");
+		label.setBounds(6, 18, 61, 16);
+		right.add(label);
+		
+		label_1 = new JLabel("机构：");
+		label_1.setBounds(6, 46, 61, 16);
+		right.add(label_1);
+		
+		limname = new JLabel(lim.getUserName());
+		limname.setBounds(65, 18, 182, 16);
+		right.add(limname);
+		
+		limorg = new JLabel(lim.getOrganization());
+		limorg.setBounds(61, 46, 172, 16);
+		right.add(limorg);
 		
 		JButton btnNewButton = new JButton("登记寄件单");
 		btnNewButton.addActionListener(new ActionListener() {

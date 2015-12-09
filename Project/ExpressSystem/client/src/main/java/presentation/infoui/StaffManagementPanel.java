@@ -463,7 +463,7 @@ public class StaffManagementPanel extends JPanel {
 	   
 	   public void showall(){
 		   data.clear();//清空table内容
-		   staffVO = new StaffVO(null,null,null,null,null,null,-1,null,null);
+		   staffVO = null;
 		   ArrayList<StaffVO>  staffList = new   ArrayList<StaffVO> ();
 		   staffList = service.findStaffInfo(staffVO);
 		   System.out.println( service.findStaffInfo(staffVO).get(0).getWorkingtime());

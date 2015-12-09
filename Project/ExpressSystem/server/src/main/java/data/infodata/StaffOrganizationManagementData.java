@@ -179,6 +179,10 @@ public class StaffOrganizationManagementData extends UnicastRemoteObject impleme
 	@Override
 	public ArrayList<StaffPO> findStaff(StaffPO info) throws RemoteException,
             ElementNotFoundException{
+        if(info == null){
+            String sql2 = "SELECT * FROM staff";
+            return this.excFindStaffStatement(sql2);
+        }
         String sql = "";
         if (info.getStaffID() != null)
             sql = "SELECT * FROM staff WHERE staff_id = '" + info.getStaffID() + "'";

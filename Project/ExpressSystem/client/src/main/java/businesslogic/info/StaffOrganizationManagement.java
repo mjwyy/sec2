@@ -78,9 +78,13 @@ public class StaffOrganizationManagement implements StaffOrganizationManagementB
     	ArrayList<StaffVO> result = new ArrayList<>();
     	
     	ArrayList<StaffPO> get = null;
-    	
+
+
     	try {
-    		get = dataService.findStaff((StaffPO) vo.toPO());
+            if(vo == null)
+                get = dataService.findStaff(null);
+            else
+    		    get = dataService.findStaff((StaffPO) vo.toPO());
     	} catch (Exception e) {
     		System.err.println("获取所有员工信息时出现异常：");
     		System.err.println(e.getMessage());

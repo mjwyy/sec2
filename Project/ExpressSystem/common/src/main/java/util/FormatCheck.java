@@ -150,6 +150,8 @@ public class FormatCheck {
      * @return
      */
     public static ResultMsg isServiceHallLoadNumber(String str) {
+        if(str.length() < 20)
+            return new ResultMsg(false,"营业厅汽运编号长度过短");
         String trueExpression = "\\d{3}1\\d{16}";
         boolean serviceHall = FormatCheck.isServiceHallNumber(str.substring(0,7)).isPass();
         boolean date = FormatCheck.isNumberDate(str.substring(7,15)).isPass();
@@ -219,6 +221,8 @@ public class FormatCheck {
      * @return
      */
     public static ResultMsg isCenterLoadNumber(String str) {
+        if(str.length() < 21)
+            return new ResultMsg(false,"中转中心汽运编号长度过短");
         String trueExpression = "\\d{3}0\\d{2}\\d{15}";
         boolean date = FormatCheck.isNumberDate(str.substring(6,14)).isPass();
         return Pattern.matches(trueExpression,str) && date? new ResultMsg(true) :
@@ -232,12 +236,11 @@ public class FormatCheck {
      * @param str
      * @return
      */
-
-    // TODO 检查位数不够
     public static ResultMsg isTransitNoteNumber(String str) {
+        if(str.length() < 21)
+            return new ResultMsg(false,"中转单编号长度过短");
         String trueExpression = "\\d{3}0\\d{17}";
         boolean date = FormatCheck.isNumberDate(str.substring(6,14)).isPass();
-        System.out.println(str.substring(6,14));
         return Pattern.matches(trueExpression,str) && date? new ResultMsg(true) :
                 new ResultMsg(false,"中转单编号格式错误,应为中转中心编号(6位)＋日期＋7位0～9的数字");
     }
@@ -497,6 +500,8 @@ public class FormatCheck {
 
 
     public static ResultMsg isReceiveTime(String time) {
+        if(time.length() < 16)
+            return new ResultMsg(false,"库存查看时间点长度过短");
         String trueExpression = "\\d{4}-\\d{1,2}-\\d{1,2}\\s\\d{2}:\\d{2}";
         boolean date = FormatCheck.isDate(time.substring(0,10)).isPass();
         return Pattern.matches(trueExpression,time) && date? new ResultMsg(true) :

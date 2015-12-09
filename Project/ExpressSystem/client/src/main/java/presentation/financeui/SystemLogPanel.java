@@ -111,7 +111,7 @@ public class SystemLogPanel extends JPanel {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//查询时间 和 内容 是否可以为空
-				
+				data.clear();
 				if(date.getText().isEmpty()||content.getText().isEmpty()){
 					int result1 = JOptionPane.showConfirmDialog(null, "请填写完整查询关键字","系统提示",
 							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);

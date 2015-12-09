@@ -27,6 +27,7 @@ public interface NoteApprovingDataService extends Remote, Serializable {
     
     /**
      * 搭配getNotes使用的接受审批结果的接口，将会登记审批结果
+     * 前置条件:未通过审批的单据都有审批意见(在逻辑层检查)
      * @param results 应为之前getNotes获得的单据信息，各个单据应为“通过”或“不通过并填写了审批意见”
      * @return 审批操作反馈，一般为true，若为false则出现了错误，需要用其message提醒操作者
      * @throws RemoteException 将会在这里封装错误信息，注意处理

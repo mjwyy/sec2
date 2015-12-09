@@ -17,7 +17,7 @@ import util.ResultMsg;
  * 职责是将格式无误的寄件单PO持久化存储
  * 并获取已经存在的寄件单信息
  *
- * @author 王梦麟
+ * @author Kylin
  */
 public interface ReceivingNoteInputDataService extends Remote, Serializable {
 

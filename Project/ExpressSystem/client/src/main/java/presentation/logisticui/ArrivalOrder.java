@@ -44,6 +44,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+import presentation.logisticui.ReceiveOrderPanel.Submitter;
 import presentation.util.CurrentTime;
 import presentation.util.LeftDownPanel;
 import presentation.util.UnEditablePanel;
@@ -85,7 +86,7 @@ private Service frame;//
 	private JComboBox typeF;
 	private JTable table;
 	private DefaultTableModel model;
-	
+	private ArrivalNoteOnServiceVO  vo;//提交的vo
 	public ArrivalOrder(LogInMsg lim,Service frame) {
 
 
@@ -341,7 +342,7 @@ private Service frame;//
 
 	}
 	public class submitListener implements ActionListener{
-		ArrivalNoteOnServiceVO  vo=null;
+		
 		Boolean isT;
 
 		public void actionPerformed(ActionEvent e) {
@@ -378,21 +379,19 @@ private Service frame;//
 			int result1 = JOptionPane.showConfirmDialog(null, "确认提交审批？","系统提示",
 					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 			if(result1 == JOptionPane.YES_OPTION) {
-				ResultMsg resultS=arrive.submitHallArrivalDoc(vo);
+			//将提交放到新的线程中
+				//	ResultMsg resultS=arrive.submitHallArrivalDoc(vo);
 				
 			//提交之后panel里都不可编辑
 			UnEditablePanel.UnEdit(thisP);
 			//提交之后右下面板换
 			frame.initDaoda(false);
-		/*	LeftDownPanel ldp=new LeftDownPanel();
-			ldp.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
-			ldp.setBounds(0,0,939, 124);
-		ldp.setVisible(true);
-			frame.leftdown.removeAll();
-			frame.leftdown.add(ldp);
-			frame.leftdown.repaint();*/
+			parent.setReceivingNoteVo(vo);//将vo存到Frame里
+			parent.setshouJianB(true);
+			new Submitter().start();
 			if(resultS.isPass()){//提交成功
 //判断审批是否通过
+				
 			}
 			else{//有误
 				JOptionPane.showConfirmDialog(null, resultS.getMessage(),"系统提示",
@@ -405,6 +404,24 @@ private Service frame;//
 
 			}
 
+		}
+	}
+	public void setResult(ResultMsg s) {//审批之后才调这个方法
+		//
+		frame.initDaoda(false,s.isPass(),!s.isPass());
+		frame.leftdown.repaint();
+		if(s.isPass()){//审批通过之后，清空textfiled
+			parent.setReceivingNoteVo(null);
+		}
+		else{//审批未通过
+			JOptionPane.showConfirmDialog(null, s.getMessage());
+		}	
+		}
+	class Submitter extends Thread {
+		
+		public void run() {
+			super.run();
+			setResult(arrive.submitHallArrivalDoc(vo));
 		}
 	}
 	public void paintComponent(Graphics g) {

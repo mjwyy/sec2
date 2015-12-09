@@ -62,13 +62,16 @@ public class Service extends JFrame {
 	private  JLabel daodaA;
 	private  JLabel zhuangcheA;
 	private  JLabel paisongA;
+	private  JLabel daodaF;
+	private  JLabel zhuangcheF;
+	private  JLabel paisongF;
 	Service frame=this;
 	private ArrivalOrder a;
 	/**
 	 * 窗口宽度
 	 */
 	private static final int WIDTH = 1280;
-	
+
 	/**
 	 * 窗口高度
 	 */
@@ -77,7 +80,7 @@ public class Service extends JFrame {
 	 * MIDDLE宽度
 	 */
 	private static final int WIDTHM = 1152;
-	
+
 	/**
 	 * MIDDLE高度
 	 */
@@ -85,7 +88,7 @@ public class Service extends JFrame {
 	public JPanel contentPane;
 	private JPanel middle;
 	private LogInMsg lim;
-public  JPanel leftdown ;
+	public  JPanel leftdown ;
 	/**
 	 * Launch the application.
 	 */
@@ -109,13 +112,13 @@ public  JPanel leftdown ;
 	 * 更改外观
 	 */
 	public static void changeLook() {
-	    try {
-	    	BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.translucencySmallShadow;
-	        org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
-	        // 关闭右上角设置
-	       UIManager.put("RootPane.setupButtonVisible", false);
-	    } catch(Exception e) {
-	    }
+		try {
+			BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.translucencySmallShadow;
+			org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
+			// 关闭右上角设置
+			UIManager.put("RootPane.setupButtonVisible", false);
+		} catch(Exception e) {
+		}
 	}
 	/**
 	 * 更改默认字体
@@ -126,13 +129,13 @@ public  JPanel leftdown ;
 		java.util.Enumeration keys = UIManager.getDefaults().keys();   
 		while (keys.hasMoreElements()) {
 			Object key = keys.nextElement();   
-		    Object value = UIManager.get(key);    
-		    if (value instanceof javax.swing.plaf.FontUIResource) {
-		    	UIManager.put(key, font);     
-		    } 
+			Object value = UIManager.get(key);    
+			if (value instanceof javax.swing.plaf.FontUIResource) {
+				UIManager.put(key, font);     
+			} 
 		} 
 	}
-	
+
 	/**
 	 * 设置关闭按钮
 	 */
@@ -152,28 +155,28 @@ public  JPanel leftdown ;
 		});
 	}
 	//设置菜单栏
-public void setCaiDanLan(){
-	
-	
-	JMenuBar menuBar = new JMenuBar();
-	menuBar.setBounds(0, 80, WIDTH, 34);
-	getContentPane().add(menuBar);
-	
-	JMenu mns = new JMenu("系统(S)");
-	menuBar.add(mns);
-	
-	JMenu mns_1 = new JMenu("功能(F)");
-	menuBar.add(mns_1);
-	
-	
-	
-}
+	public void setCaiDanLan(){
+
+
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(0, 80, WIDTH, 34);
+		getContentPane().add(menuBar);
+
+		JMenu mns = new JMenu("系统(S)");
+		menuBar.add(mns);
+
+		JMenu mns_1 = new JMenu("功能(F)");
+		menuBar.add(mns_1);
+
+
+
+	}
 	/**
 	 * Create the frame.
 	 */
 	public Service(LogInMsg lim1) {
-	setCaiDanLan();
-	
+		setCaiDanLan();
+
 		this.lim=lim1;
 		this.setResizable(false);//不可调整大小
 		setIconImage(Toolkit.getDefaultToolkit().getImage("image/0010.jpg"));
@@ -184,100 +187,100 @@ public void setCaiDanLan(){
 		int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
 		this.setLocation((screenWidth-WIDTH)>>1, (screenHeight-HEIGHT)>>1);
 		//this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		
-		
-		
-		
+
+
+
+
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBounds(5, 0, WIDTH, 78);
 		panel.setBackground(Color.LIGHT_GRAY);
 		contentPane.add(panel);
 		panel.setLayout(null);
-		
-		
+
+
 		leftdown = new JPanel();
 		leftdown.setLayout(null);
 		leftdown.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 		leftdown.setBounds(341, 570, 939, 124);
 		contentPane.add(leftdown);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("New label");
 		leftdown.add(lblNewLabel_1);
-		
 
-		
+
+
 		JLabel lblNewLabel = new JLabel("MinJW快递物流系统");
 		lblNewLabel.requestFocus();
 		lblNewLabel.setBounds(0, 0, 1280, 100);
 		panel.add(lblNewLabel);
 		lblNewLabel.setIcon(new ImageIcon("image/0000.jpg"));
-		
-		  middle = new JPanel(){
+
+		middle = new JPanel(){
 			public void paintComponent(Graphics g) {
-				 super.paintComponent(g);
-				 ImageIcon img = new ImageIcon("image/0111.jpg");
-				 g.drawImage(img.getImage(), 0, 0, null);
-				}
-				}; 
+				super.paintComponent(g);
+				ImageIcon img = new ImageIcon("image/0111.jpg");
+				g.drawImage(img.getImage(), 0, 0, null);
+			}
+		}; 
 		middle.setBounds(138, 125, WIDTHM, HEIGHTM);
 		middle.setBackground(Color.YELLOW);
 		contentPane.add(middle);
 		middle.setLayout(null);
-		
-		
-		
-		
+
+
+
+
 		JPanel QUANXIANW = new JPanel();
 		QUANXIANW.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 		QUANXIANW.setBounds(0, 570, 350, 124);
-		
-	
-		
+
+
+
 		contentPane.add(QUANXIANW);
 		QUANXIANW.setLayout(null);
-		
+
 		JLabel user = new JLabel("用户：");
 		user.setBounds(10, 2, 54, 15);
 		QUANXIANW.add(user);
-		
+
 		JLabel username = new JLabel(lim.getUserName());
-	//	JLabel username = new JLabel();
+		//	JLabel username = new JLabel();
 		username.setBounds(56, 2, 129, 15);
 		QUANXIANW.add(username);
-		
+
 		JLabel quanxian = new JLabel("权限：");
 		quanxian.setBounds(10, 25, 54, 15);
 		QUANXIANW.add(quanxian);
-		
+
 		JLabel label = new JLabel(lim.getOrganization());
 		//JLabel label = new JLabel();
 		label.setBounds(56, 25, 129, 15);
 		QUANXIANW.add(label);
-		
+
 		JLabel label_1 = new JLabel("公告:");
 		label_1.setBounds(10, 53, 54, 15);
 		QUANXIANW.add(label_1);
-		
+
 		JLabel label_2 = new JLabel("快递系统上线试运行，请反馈使用体验");
 		label_2.setBounds(56, 53, 284, 15);
 		QUANXIANW.add(label_2);
-		
+
 		JPanel right = new JPanel();
 		right.setBounds(5, 115, 140, 456);
 		contentPane.add(right);
 		right.setLayout(null);
-		
+
 		JButton PayMentRegis = new JButton("登记收款");
 		PayMentRegis.setBounds(10, 280, 120, 120);
 		right.add(PayMentRegis);
 		PayMentRegis.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			
+
 				//PayMent a=new PayMent(lim);
 				PayMent a=new PayMent(lim,frame);
 				a.setBounds(0, 0, WIDTHM, HEIGHTM);
@@ -287,32 +290,32 @@ public void setCaiDanLan(){
 				middle.repaint();
 			}
 		});
-		
+
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(0, 158, 130, 80);
 		right.add(panel_1);
-		
+
 		JMenuBar menuBar = new JMenuBar();
 		panel_1.add(menuBar);
-		
+
 		JMenu menu = new JMenu("管理营业厅信息");
 		menuBar.add(menu);
-		
+
 		JMenuItem menuItem = new JMenuItem("车辆信息");
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+
 				Car a=new Car();
 				a.setBounds(0, 0, WIDTHM, HEIGHTM);
 				a.setVisible(true);
 				middle.removeAll();
 				middle.add(a);
 				middle.repaint();	
-				
+
 			}
 		});
 		menu.add(menuItem);
-		
+
 		JMenuItem menuItem_1 = new JMenuItem("司机信息");
 		menuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -325,34 +328,34 @@ public void setCaiDanLan(){
 			}
 		});
 		menu.add(menuItem_1);
-		
+
 		JPanel panel_3 = new JPanel();
 		panel_3.setBounds(0, 35, 130, 80);
 		right.add(panel_3);
-		
+
 		JMenuBar processOrder = new JMenuBar();
 		panel_3.add(processOrder);
-		
+
 		JMenu mnNewMenu = new JMenu("处理运单");
 		processOrder.add(mnNewMenu);
 		mnNewMenu.setForeground(Color.BLACK);
 		mnNewMenu.setBackground(Color.WHITE);
-		
+
 		JMenuItem mntmNewMenuItem = new JMenuItem("到达单");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				 a=new ArrivalOrder(lim,frame);
+				a=new ArrivalOrder(lim,frame);
 				a.setBounds(0, 0, WIDTHM, HEIGHTM);//以middle为原点
 				a.setVisible(true);
 				middle.removeAll();
 				middle.add(a);
 				middle.repaint();
-				
+
 			}
 		});
-		
+
 		mnNewMenu.add(mntmNewMenuItem);
-		
+
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("装车单");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -365,7 +368,7 @@ public void setCaiDanLan(){
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_1);
-		
+
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("派送单");
 		mntmNewMenuItem_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -378,50 +381,66 @@ public void setCaiDanLan(){
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_2);
-	
+
 		daoda = new JLabel("您提交的到达单已通过审批,现在可以填下一份了哟");
 		daoda.setBounds(21, 10, 487, 24);
-		daoda.setForeground(Color.red);
 		leftdown.add(daoda);
-		daodaA = new JLabel("您提交的单据正在等待审批哦，请耐心等待哦~");
+		daodaA = new JLabel("您提交的正在等待审批哦，请耐心等待哦~");
 		daodaA.setBounds(21, 10, 487, 24);
 		leftdown.add(daodaA);
-		
+		daodaF = new JLabel("您提交的到达单未通过审批>_<");
+		daodaF.setBounds(21, 10, 487, 24);
+		daodaF.setForeground(Color.red);
+		leftdown.add(daodaF);
+
 		paisong = new JLabel("您提交的派送单已通过审批,现在可以填下一份了哟");
 		paisong.setBounds(21, 60, 487, 24);
-		paisong.setForeground(Color.red);
 		leftdown.add(paisong);
-		
-		paisongA = new JLabel("您提交的单据正在等待审批哦，请耐心等待哦~");
+		paisongA = new JLabel("您提交的派送单正在等待审批哦，请耐心等待哦~");
 		paisongA.setBounds(21, 60, 487, 24);
 		leftdown.add(paisongA);
-initPaisong(true);
-		
-		initZhuangche(true);
-		
-		initDaoda(true);
-	}
-	public  void initPaisong(boolean torf){
-	
-		paisongA.setVisible(false);
-		
-	}
-	public  void initZhuangche(boolean torf){
+		paisongF = new JLabel("您提交的派送单未通过审批>_<");
+		paisongF.setBounds(21, 10, 487, 24);
+		paisongF.setForeground(Color.red);
+		leftdown.add(paisongF);
+
 		zhuangche = new JLabel("您提交的装车单已通过审批,现在可以填下一份了哟");
 		zhuangche.setBounds(21, 35, 487, 24);
-		zhuangche.setForeground(Color.red);
 		leftdown.add(zhuangche);
-		
-		zhuangcheA = new JLabel("您提交的单据正在等待审批哦，请耐心等待哦~");
+		zhuangcheA = new JLabel("您提交的装车单正在等待审批哦，请耐心等待哦~");
 		zhuangcheA.setBounds(21, 35, 487, 24);
-		zhuangcheA.setVisible(false);
 		leftdown.add(zhuangcheA);
+		zhuangcheF = new JLabel("您提交的装车单未通过审批>_<");
+		zhuangcheF.setBounds(21, 10, 487, 24);
+		zhuangcheF.setForeground(Color.red);
+		leftdown.add(zhuangcheF);
+
+		initPaisong(true,false,false);
+
+		initZhuangche(true,false,false);
+
+		initDaoda(true,false,false);
 	}
-	public  void initDaoda(boolean torf){
-		
-		daoda.setVisible(torf);
-		daodaA.setVisible(!torf);
-		
+	//等待审批，已通过审批，未通过审批
+	public  void initPaisong(boolean a,boolean b,boolean f){
+		paisongA.setVisible(a);
+		paisong.setVisible(b);
+		paisongF.setVisible(f);
+
 	}
-	
+	public  void initZhuangche(boolean a,boolean b,boolean f){
+
+		zhuangche.setVisible(b);
+		zhuangcheA.setVisible(a);	
+		zhuangcheF.setVisible(f);	
+
+	}
+	public  void initDaoda(boolean a,boolean b,boolean f){
+
+		daoda.setVisible(b);
+		daodaA.setVisible(a);
+		daodaF.setVisible(f);
+	}
+
+
 }

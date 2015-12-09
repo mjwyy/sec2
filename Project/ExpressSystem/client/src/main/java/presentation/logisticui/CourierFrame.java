@@ -43,11 +43,15 @@ public class CourierFrame extends JFrame {
     private ReceivingNoteVO receivingNoteVo;
     private DeliveryNoteVO deliveryNoteVo;
     private  JLabel jijian;
+    private  JLabel jijianB;
 	private  JLabel shoujian;
 	private  JLabel shoujianA;
 	private  JLabel shoujianB;
 	private  JLabel jijianA;
 	public JPanel leftpanel;
+	public ReceiveOrderPanel rop0;
+	private MailOrderPanel mailOrderPanel;
+	private ReceiveOrderPanel receiveOrderpanel;
 
 	/**
 	 * Launch the application.
@@ -165,6 +169,7 @@ public class CourierFrame extends JFrame {
 		JButton btnNewButton = new JButton("登记寄件单");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(mailOrderPanel == null){
 				MailOrderPanel mop = new MailOrderPanel(lim,CourierFrame.this){
 					public void paintComponent(Graphics g) {
 						 super.paintComponent(g);
@@ -174,13 +179,19 @@ public class CourierFrame extends JFrame {
 					      ((Graphics2D)g).setStroke(new BasicStroke(lineWidth));
 					      g.drawLine(768, 0, 768, 500);
 						}
-						}; 
+						};			
 				mop.setBounds(0, 0, 1152, 446);
 				bankpanel.removeAll();
 				bankpanel.add(mop);
 				bankpanel.repaint();
-				
+				}else{
+					mailOrderPanel.setBounds(0, 0, 1152, 446);
+					bankpanel.removeAll();
+					bankpanel.add(mailOrderPanel);
+					bankpanel.repaint();
+				}
 			}
+		
 		});
 		btnNewButton.setBounds(0, 123, 140, 152);
 		contentPane.add(btnNewButton);
@@ -188,6 +199,7 @@ public class CourierFrame extends JFrame {
 		JButton button = new JButton("录入收件单");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(receiveOrderpanel == null){
 				ReceiveOrderPanel rop = new ReceiveOrderPanel(lim,CourierFrame.this){
 					public void paintComponent(Graphics g) {
 						 super.paintComponent(g);
@@ -199,6 +211,13 @@ public class CourierFrame extends JFrame {
 				bankpanel.removeAll();
 				bankpanel.add(rop);
 				bankpanel.repaint();
+				}
+				else{
+					receiveOrderpanel.setBounds(0, 0, 1152, 446);
+					bankpanel.removeAll();
+					bankpanel.add(receiveOrderpanel);
+					bankpanel.repaint();
+				}
 			}
 		});
 		button.setBounds(0, 272, 140, 152);
@@ -243,6 +262,12 @@ public class CourierFrame extends JFrame {
 		jijianA.setForeground(Color.red);
 		leftpanel.add(jijianA);
 		jijianA.setVisible(false);
+		jijianB = new JLabel("您提交的寄件正在等待审批，请耐心等待哦～");
+		jijianB.setBounds(21, 10, 487, 24);
+		jijianB.setForeground(Color.red);
+		leftpanel.add(jijianA);
+		jijianB.setVisible(false);
+		
 		
 		shoujian = new JLabel("您提交的收件单已通过审批,现在可以填下一份了哟");
 		shoujian.setBounds(21, 60, 487, 24);
@@ -262,6 +287,18 @@ public class CourierFrame extends JFrame {
 		shoujianB.setForeground(Color.red);
 		shoujianB.setVisible(false);
 		leftpanel.add(shoujianB);
+	}
+
+	public MailOrderPanel getMailOrderPanel() {
+		return mailOrderPanel;
+	}
+
+	public void setMailOrderPanel(MailOrderPanel mailOrderPanel) {
+		this.mailOrderPanel = mailOrderPanel;
+	}
+
+	public void setReceiveOrderpanel(ReceiveOrderPanel receiveOrderpanel) {
+		this.receiveOrderpanel = receiveOrderpanel;
 	}
 
 	public ReceivingNoteVO getReceivingNoteVo() {
@@ -294,6 +331,11 @@ public class CourierFrame extends JFrame {
 		shoujianB.setVisible(torf);
 	}
 
+	public void setjijianB(boolean torf){
+		jijianB.setVisible(torf);
+	}
 	
+
 	
+
 }

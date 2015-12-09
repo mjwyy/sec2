@@ -141,6 +141,8 @@ public class Car extends JPanel {
 	        		File file=new File(fileName);
 		        	VehicleVO vo=new VehicleVO(code.getText(),name.getText(),time.getText(),file);
 		        	ResultMsg result=dvm.addVehicle(vo);
+		        	
+		        	
 		        	if(result.isPass()){
 	        		String[] rowValues={code.getText(),name.getText(),
 	        				time.getText(),fileName};
@@ -156,7 +158,7 @@ public class Car extends JPanel {
 	        add(btnNewButton);
 	        
 	        JButton btnNewButton_1 = new JButton("删除");
-	        btnNewButton_1.setBounds(792, 352, 75, 35);
+	        btnNewButton_1.setBounds(816, 352, 75, 35);
 	        btnNewButton_1.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent arg0) {
 	        		int seletedRow=table.getSelectedRow();

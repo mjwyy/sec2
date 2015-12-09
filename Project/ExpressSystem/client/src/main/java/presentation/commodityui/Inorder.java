@@ -157,7 +157,14 @@ public class Inorder extends JPanel {
 			int result1 = JOptionPane.showConfirmDialog(null, "确认提交审批？","系统提示",
 					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 			if(result1 == JOptionPane.YES_OPTION) {
+				
 				ResultMsg result=si.submitPutInStorageDoc(siv);
+				if(result.isPass()) {
+			}
+				else{
+					JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
+							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+				}
 			}
 			else {
 				return;

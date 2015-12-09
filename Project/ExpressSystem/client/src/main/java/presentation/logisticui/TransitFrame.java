@@ -57,7 +57,19 @@ public class TransitFrame extends JFrame {
     private TransitNoteOnTransitVO transitNoteOnTransitVO;
     private LogInMsg  lim;
     private String userInfo;
-    
+    public JPanel leftdown;
+	private  JLabel daoda;
+	private  JLabel daodB;
+	private  JLabel zhuangche;
+	private  JLabel zhongzhuan;
+	private  JLabel daodaA;
+	private  JLabel zhuangcheA;
+	private  JLabel zhuangcheB;
+	private  JLabel zhongzhuanA;
+	private  JLabel zhongzhuanB;
+	private ArrivalNoteOnTransitPanel arrivalNoteOnTransitpanel;
+	private LoadNoteOnTransitPanel loadNoteOnTransitpanel;
+	private TransitNoteInputPanel transitNoteInputpanel;
 	/**
 	 * 窗口宽度
 	 */
@@ -67,6 +79,7 @@ public class TransitFrame extends JFrame {
 	 * 窗口高度
 	 */
 	private static final int HEIGHT = 720;
+	protected static final String transitNoteInputPanel = null;
 	/**
 	 * Launch the application.
 	 */
@@ -208,32 +221,33 @@ public class TransitFrame extends JFrame {
 		
 		
 		
-		JPanel approve = new JPanel();
-		approve.setBounds(347, 570, 933, 124);
-		contentPane.add(approve);
-		approve.setBorder(new EtchedBorder(EtchedBorder.RAISED, Color.LIGHT_GRAY, Color.GRAY));
-		approve.setLayout(null);
+		leftdown = new JPanel();
+		leftdown.setBounds(347, 570, 933, 124);
+		contentPane.add(leftdown);
+		leftdown.setBorder(new EtchedBorder(EtchedBorder.RAISED, Color.LIGHT_GRAY, Color.GRAY));
+		leftdown.setLayout(null);
 		
 		JButton button = new JButton("查看中转单");
 		button.setBounds(560, 89, 117, 29);
 		button.setVisible(false);
-		approve.add(button);
+		leftdown.add(button);
 		
 		JButton button_1 = new JButton("查看到达单");
 		button_1.setBounds(435, 89, 117, 29);
 		button_1.setVisible(false);
-		approve.add(button_1);
+		leftdown.add(button_1);
 		
 		JButton button_2 = new JButton("查看装车单");
 		button_2.setBounds(689, 89, 117, 29);
 		button_2.setVisible(false);
-		approve.add(button_2);
+		leftdown.add(button_2);
 		
 		
 		JButton btnNewButton = new JButton("录入到达单");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ArrivalNoteOnTransitPanel anot = new ArrivalNoteOnTransitPanel(lim){
+				if(arrivalNoteOnTransitpanel == null){
+				ArrivalNoteOnTransitPanel anot = new ArrivalNoteOnTransitPanel(lim,TransitFrame.this){
 					public void paintComponent(Graphics g) {
 						 super.paintComponent(g);
 						 ImageIcon img = new ImageIcon("image/0111.jpg");
@@ -247,6 +261,12 @@ public class TransitFrame extends JFrame {
 				bankpanel.removeAll();
 				bankpanel.add(anot);
 				bankpanel.repaint();
+				}else{
+					arrivalNoteOnTransitpanel.setBounds(0, 0, 1152, 446);
+					bankpanel.removeAll();
+					bankpanel.add(arrivalNoteOnTransitpanel);
+					bankpanel.repaint();
+				}
 				
 			}
 		});
@@ -257,7 +277,8 @@ public class TransitFrame extends JFrame {
 		JButton btnNewButton_1 = new JButton("录入中转单");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			TransitNoteInputPanel tni = new TransitNoteInputPanel( lim){
+				if(transitNoteInputpanel == null ){
+			TransitNoteInputPanel tni = new TransitNoteInputPanel( lim,TransitFrame.this){
 				public void paintComponent(Graphics g) {
 					 super.paintComponent(g);
 					 ImageIcon img = new ImageIcon("image/0111.jpg");
@@ -271,6 +292,12 @@ public class TransitFrame extends JFrame {
 			bankpanel.removeAll();
 			bankpanel.add(tni);
 			bankpanel.repaint();
+		    }else{
+					transitNoteInputpanel.setBounds(0, 0, 1152, 446);
+					bankpanel.removeAll();
+					bankpanel.add(transitNoteInputpanel);
+					bankpanel.repaint();
+				}
 			
 			}
 		});
@@ -280,7 +307,8 @@ public class TransitFrame extends JFrame {
 		JButton btnNewButton_2 = new JButton("录入装车单");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				LoadNoteOnTransitPanel lnot = new LoadNoteOnTransitPanel( lim){
+				if(loadNoteOnTransitpanel == null){
+				LoadNoteOnTransitPanel lnot = new LoadNoteOnTransitPanel( lim,TransitFrame.this){
 					public void paintComponent(Graphics g) {
 						 super.paintComponent(g);
 						 ImageIcon img = new ImageIcon("image/0111.jpg");
@@ -294,14 +322,136 @@ public class TransitFrame extends JFrame {
 				bankpanel.removeAll();
 				bankpanel.add(lnot);
 				bankpanel.repaint();
+			}else{
+				loadNoteOnTransitpanel.setBounds(0, 0, 1152, 446);
+				bankpanel.removeAll();
+				bankpanel.add(loadNoteOnTransitpanel);
+				bankpanel.repaint();
+			}
 			}
 		});
 		btnNewButton_2.setBounds(0, 420, 140, 152);
 		contentPane.add(btnNewButton_2);
 		
+		daoda = new JLabel("您提交的到达单已通过审批,现在可以填下一份了哟");
+		daoda.setBounds(21, 10, 487, 24);
+		leftdown.add(daoda);
+		daoda.setVisible(false);
+		daodaA = new JLabel("您提交的到达单未通过审批,请前去修改哦～");
+		daodaA.setForeground(Color.red);
+		daodaA.setBounds(21, 10, 487, 24);
+		daodaA.setVisible(false);
+		leftdown.add(daodaA);
+		daodB = new JLabel("您提交的到达单正在等待审批哦，请耐心等待哦~");
+		daodB.setBounds(21, 10, 487, 24);
+		daodB.setVisible(false);
+		leftdown.add(daodB);
 		
+		zhongzhuan = new JLabel("您提交的中转单单已通过审批,现在可以填下一份了哟");
+		zhongzhuan.setBounds(21, 60, 487, 24);
+		zhongzhuan.setForeground(Color.red);
+		zhongzhuan.setVisible(false);
+		leftdown.add(zhongzhuan);
 		
+		zhongzhuanA = new JLabel("您提交的中转单审批未通过,请前去修改哦～");
+		zhongzhuanA.setForeground(Color.red);
+		zhongzhuanA.setBounds(21, 60, 487, 24);
+		zhongzhuanA.setVisible(false);
+		leftdown.add(zhongzhuanA);
 		
+		zhongzhuanB = new JLabel("您提交的中转单正在等待审批哦，请耐心等待哦~");
+		zhongzhuanB.setBounds(21, 60, 487, 24);
+		zhongzhuanB.setForeground(Color.red);
+		zhongzhuanB.setVisible(false);
+		leftdown.add(zhongzhuanB);
+		
+		zhuangche = new JLabel("您提交的装车单已通过审批,现在可以填下一份了哟");
+		zhuangche.setBounds(21, 35, 487, 24);
+		zhuangche.setVisible(false);
+		leftdown.add(zhuangche);
+		
+		zhuangcheA = new JLabel("您提交的装车单审批未通过,请前去修改哦～");
+		zhuangcheA.setForeground(Color.red);
+		zhuangcheA.setBounds(21, 35, 487, 24);
+		zhuangcheA.setVisible(false);
+		leftdown.add(zhuangcheA);
+		
+		zhuangcheB = new JLabel("您提交的装车单已通过审批,现在可以填下一份了哟");
+		zhuangcheB.setBounds(21, 35, 487, 24);
+		zhuangcheB.setVisible(false);
+		leftdown.add(zhuangcheB);
+        
+	}	
+	public  void initzhongzhuan(boolean torf){	
+		zhongzhuanA.setVisible(torf);//提交显示，未审批～true
+		zhongzhuan.setVisible(!torf);
 		
 	}
+	public  void initZhuangche(boolean torf){	
+		zhuangche.setVisible(!torf);	
+		zhuangcheA.setVisible(torf);
+	}
+	public  void initDaoda(boolean torf){	
+		daoda.setVisible(!torf);
+		daodaA.setVisible(torf);	
+	}
+	
+	public void setdaodaB(boolean torf){
+	daodB.setVisible(torf);
+	}
+	
+	public void setzhuangcheB(boolean torf){
+		zhuangcheB.setVisible(torf);
+	}
+	
+	public void setzhongzhuanB(boolean torf){
+		zhongzhuanB.setVisible(torf);
+	}
+
+	public ArrivalNoteOnTransitVO getArrivalNoteOnTransitVO() {
+		return arrivalNoteOnTransitVO;
+	}
+
+	public void setArrivalNoteOnTransitVO(
+			ArrivalNoteOnTransitVO arrivalNoteOnTransitVO) {
+		this.arrivalNoteOnTransitVO = arrivalNoteOnTransitVO;
+	}
+
+	public LoadNoteOnTransitVO getLoadNoteOnTransitVO() {
+		return loadNoteOnTransitVO;
+	}
+
+	public void setLoadNoteOnTransitVO(LoadNoteOnTransitVO loadNoteOnTransitVO) {
+		this.loadNoteOnTransitVO = loadNoteOnTransitVO;
+	}
+
+	public TransitNoteOnTransitVO getTransitNoteOnTransitVO() {
+		return transitNoteOnTransitVO;
+	}
+
+	public void setTransitNoteOnTransitVO(
+			TransitNoteOnTransitVO transitNoteOnTransitVO) {
+		this.transitNoteOnTransitVO = transitNoteOnTransitVO;
+	}
+
+	
+
+	public void setArrivalNoteOnTransitpanel(
+			ArrivalNoteOnTransitPanel arrivalNoteOnTransitpanel) {
+		this.arrivalNoteOnTransitpanel = arrivalNoteOnTransitpanel;
+	}
+
+	
+
+	public void setLoadNoteOnTransitpanel(
+			LoadNoteOnTransitPanel loadNoteOnTransitpanel) {
+		this.loadNoteOnTransitpanel = loadNoteOnTransitpanel;
+	}
+
+	
+
+	public void setTransitNoteInputOanel(TransitNoteInputPanel transitNoteInputpanel) {
+		this.transitNoteInputpanel = transitNoteInputpanel;
+	}
+	
 }

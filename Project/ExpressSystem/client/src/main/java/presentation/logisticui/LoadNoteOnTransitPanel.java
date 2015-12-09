@@ -12,7 +12,9 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTable;
 
+import presentation.logisticui.ReceiveOrderPanel.Submitter;
 import presentation.util.CurrentTime;
+import presentation.util.EditableTrue;
 import presentation.util.MJTextField;
 import presentation.util.UnEditablePanel;
 import presentation.util.checkstyleDialog;
@@ -35,6 +37,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class LoadNoteOnTransitPanel extends JPanel {
+	LoadNoteOnTransitPanel thisP = this;
 	private JTextField date2;
 	private JTextField trucknum2;
 	private JTextField carnum2;
@@ -58,6 +61,7 @@ public class LoadNoteOnTransitPanel extends JPanel {
 	private LoadNoteOnTransitVO loadNoteOnTransitVO;
 	private  LogInMsg lim ;
 	private int seletedRow;
+	private TransitFrame parent;
 
 	/**
 	 * Create the panel.
@@ -73,7 +77,8 @@ public class LoadNoteOnTransitPanel extends JPanel {
 		f.setVisible(true);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);*/
 	}
-	public LoadNoteOnTransitPanel( LogInMsg  logInMsg) {
+	public LoadNoteOnTransitPanel( LogInMsg  logInMsg,TransitFrame frame) {
+		parent = frame;
 		setSize(1152,446);
 		setLayout(null);
 		lim = logInMsg;
@@ -168,8 +173,11 @@ public class LoadNoteOnTransitPanel extends JPanel {
 						                 carnum2.getText(),supervisor2.getText(), escort2.getText(), goodsbarcode);
 				 loadNoteOnTransitVO.setUserName(lim.getUserName());
 				 loadNoteOnTransitVO.setOrganization(lim.getOrganization());
-				service.submitCenterLoadDoc(loadNoteOnTransitVO);
-				UnEditablePanel.UnEdit(LoadNoteOnTransitPanel.this);
+				 UnEditablePanel.UnEdit(LoadNoteOnTransitPanel.this);
+				 parent.setzhuangcheB(true);
+				 parent.setLoadNoteOnTransitpanel(thisP);
+				 new Submitter().start();
+				
 				
 			}else{
 				int result1 = JOptionPane.showConfirmDialog(null, "有咚咚木有填","系统提示",
@@ -356,5 +364,34 @@ public class LoadNoteOnTransitPanel extends JPanel {
 	
 	public  LoadNoteOnTransitVO getVO(){
 		return  loadNoteOnTransitVO;
+	}
+	
+	public void setResult(ResultMsg s) {
+		parent.setzhuangcheB(false);	
+		parent.initZhuangche(s.isPass());
+		parent.leftdown.repaint();
+		if(s.isPass()){
+			parent.setLoadNoteOnTransitpanel(null);
+		}else{
+			int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
+					JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
+			EditableTrue.Edit(thisP);
+			date2.setEditable(false);
+			trucknum2.setEditable(false);
+			destination2.setEditable(false);
+			carnum2.setEditable(false);
+			supervisor2.setEditable(false);
+			escort2.setEditable(false);
+			
+		}
+		
+		}
+	
+	class Submitter extends Thread {
+		@Override
+		public void run() {
+			super.run();
+			setResult(service.submitCenterLoadDoc(loadNoteOnTransitVO));
+		}
 	}
 }

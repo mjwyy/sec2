@@ -19,9 +19,11 @@ import java.awt.Color;
 
 import javax.swing.JButton;
 
+import presentation.logisticui.ReceiveOrderPanel.Submitter;
 import presentation.util.MJTextField;
 import presentation.util.SubmitDialog;
 import presentation.util.UnEditablePanel;
+import presentation.util.EditableTrue;
 import presentation.util.checkstyleDialog;
 import util.LogInMsg;
 import util.ResultMsg;
@@ -90,7 +92,8 @@ public class MailOrderPanel extends JPanel {
         lim = logInMsg;
 		setSize(WIDTH,HEIGHT);
 		setLayout(null);
-		 service = new DeliveryNoteInput();//实例化bl接口
+		service = new DeliveryNoteInput();//实例化bl接口
+		// service = new DeliveryNoteInputBLService_Stub();
 		 parent = courierFrame;
 		 sendDocVO = parent.getDeliveryNoteVo();
 		
@@ -206,31 +209,31 @@ public class MailOrderPanel extends JPanel {
 		add(label_11);
 		
 		money = new MJTextField();
-		money.setBounds(977, 33, 134, 28);
+		money.setBounds(896, 72, 238, 64);
 		add(money);
-		money.setBackground(Color.LIGHT_GRAY);
+		money.setBackground(Color.WHITE);
 		money.setEditable(false);
 		money.setEnabled(false);
 		money.setColumns(10);
 		
-		JLabel label_13 = new JLabel("请输入完整的单据信息");
-		label_13.setBounds(987, 67, 134, 16);
+		JLabel label_13 = new JLabel("输入完整的单据信息提交后自动显示");
+		label_13.setBounds(906, 138, 228, 16);
 		add(label_13);
 		
 		JLabel label_12 = new JLabel("预计到达时间");
-		label_12.setBounds(896, 138, 82, 16);
+		label_12.setBounds(875, 191, 82, 16);
 		add(label_12);
 		
 		predate = new MJTextField();
-		predate.setBounds(977, 132, 134, 28);
+		predate.setBounds(896, 223, 238, 64);
 		add(predate);
-		predate.setBackground(Color.LIGHT_GRAY);
+		predate.setBackground(Color.WHITE);
 		predate.setEnabled(false);
 		predate.setEditable(false);
 		predate.setColumns(10);
 		
-		JLabel label_14 = new JLabel("请输入完整的单据信息");
-		label_14.setBounds(987, 164, 134, 16);
+		JLabel label_14 = new JLabel("输入完整的单据信息提交后自动显示");
+		label_14.setBounds(906, 291, 228, 16);
 		add(label_14);
 		
 		JLabel label_15 = new JLabel("寄件人地址");
@@ -270,6 +273,12 @@ public class MailOrderPanel extends JPanel {
 		else
 			packagetype = packagetype.WoodenBox;
 		
+
+		
+	
+			
+	
+		
 		
 		
 		
@@ -281,8 +290,8 @@ public class MailOrderPanel extends JPanel {
 						senderPho.getText(),receiveName.getText(),receiveAddress.getText(),receivePho.getText(),
 						name.getText(),Integer.parseInt(goodsnum.getText()),Double.parseDouble(weight.getText()),
 						Double.parseDouble(volum.getText()),deliverCategory,packagetype,barcode.getText());
-			            sendDocVO.setUserName(lim.getUserName());
-			            sendDocVO.setOrganization(lim.getOrganization());
+			          //  sendDocVO.setUserName(lim.getUserName());
+			          //  sendDocVO.setOrganization(lim.getOrganization());
 			            
 				res = service.inputSendDoc(sendDocVO);//对单据进行格式检查
 				if(res.isPass()){//格式检查通过
@@ -299,16 +308,10 @@ public class MailOrderPanel extends JPanel {
                     if(result1 == JOptionPane.YES_OPTION){
 						
 						UnEditablePanel.UnEdit(MailOrderPanel.this);
-
-
-                        sdm = service.submitSendDoc(sendDocVO);
-                        if(sdm.isPass()){//提交成功
-						;//设置未不可编辑
-						}else{
-							//提交失败
-							int result2 = JOptionPane.showConfirmDialog(null,sdm.getMessage() ,"系统提示",
-									JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-						}
+						parent.setMailOrderPanel(MailOrderPanel.this);
+						parent.setjijianB(true);
+						new Submitter().start();
+                      
 					}
 				}else{
 	                //未通过格式检查
@@ -322,10 +325,27 @@ public class MailOrderPanel extends JPanel {
 		});
 		btnNewButton.setBounds(584, 355, 132, 59);
 		add(btnNewButton);
-		
+	}
 	
-		
-		
-
+	
+	public void setResult(ResultMsg s) {
+		parent.setjijianB(false);	
+		parent.initjijian(s.isPass());
+		parent.leftpanel.repaint();
+		if(s.isPass()){
+			parent.setMailOrderPanel(null);
+		}else{
+			EditableTrue.Edit(MailOrderPanel.this);
+			int result1 = JOptionPane.showConfirmDialog(null,s.getMessage() ,"系统提示",
+					JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
+		}
+			
+		}
+	class Submitter extends Thread {
+		@Override
+		public void run() {
+			super.run();
+			setResult(service.submitSendDoc(sendDocVO));
+		}
 	}
 }

@@ -12,7 +12,9 @@ import javax.swing.JTable;
 import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableModel;
 
+import presentation.logisticui.ReceiveOrderPanel.Submitter;
 import presentation.util.CurrentTime;
+import presentation.util.EditableTrue;
 import presentation.util.MJTextField;
 import presentation.util.UnEditablePanel;
 import presentation.util.checkstyleDialog;
@@ -40,6 +42,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JComboBox;
 
 public class TransitNoteInputPanel extends JPanel {
+	TransitNoteInputPanel thisP = this;
 	private MJTextField date2;
 	private MJTextField transitnum2;
 	private MJTextField loader2;
@@ -68,6 +71,7 @@ public class TransitNoteInputPanel extends JPanel {
     private TransitNoteOnTransitVO transitNoteOnTransitVO;
     private  LogInMsg lim ;
     private int seletedRow;
+    private TransitFrame parent;
 	/**
 	 * 窗口宽度
 	 */
@@ -92,7 +96,7 @@ public class TransitNoteInputPanel extends JPanel {
 		f.setVisible(true);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);*/
 	}
-	public TransitNoteInputPanel(LogInMsg logInMsg) {
+	public TransitNoteInputPanel(LogInMsg logInMsg,TransitFrame tf) {
 		setSize(1152,446);
 		setLayout(null);
 		lim = logInMsg;
@@ -165,8 +169,11 @@ public class TransitNoteInputPanel extends JPanel {
 							flightNumber2.getText(),transitNoteType,setout2.getText(),arrival2.getText(),loader2.getText(),barcodesandLocation);
 					transitNoteOnTransitVO.setUserName(lim.getUserName());
 					transitNoteOnTransitVO.setOrganization(lim.getOrganization());
-				res = service.submitCenterTransitDoc(transitNoteOnTransitVO);	
-				UnEditablePanel.UnEdit(TransitNoteInputPanel.this);
+					UnEditablePanel.UnEdit(TransitNoteInputPanel.this);//设置为不可编辑
+					parent.initzhongzhuan(true);//显示等待审批字样
+					parent.setTransitNoteInputOanel(thisP);
+					new Submitter().start();	
+				
 			}else{
 				int result1 = JOptionPane.showConfirmDialog(null, "请将中转单填写完整","系统提示",
 						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
@@ -182,7 +189,7 @@ public class TransitNoteInputPanel extends JPanel {
 		
 		CurrentTime currentTime = new CurrentTime();
 		date1 = new MJTextField();
-		date1.setText(currentTime.getCurrentTimeSecond());
+		date1.setText(currentTime.getCurrentTimeDate());
 		date1.setColumns(10);
 		date1.setBounds(891, 38, 209, 28);
 		add(date1);
@@ -469,4 +476,34 @@ public class TransitNoteInputPanel extends JPanel {
 	public TransitNoteOnTransitVO getVO(){
 		return transitNoteOnTransitVO;
 	}
+	
+	public void setResult(ResultMsg s) {
+		parent.setzhongzhuanB(false);	//隐藏等待审批字样
+		parent.initzhongzhuan(s.isPass());//显示审批结果
+		parent.leftdown.repaint();
+		if(s.isPass()){
+			parent.setTransitNoteInputOanel(null);
+		}else{
+			int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
+					JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);//提示错误信息
+			EditableTrue.Edit(thisP);
+			
+			date2.setEditable(false);;
+			transitnum2.setEditable(false);;
+			flightNumber2.setEditable(false);;
+			setout2.setEditable(false);;
+			arrival2.setEditable(false);;
+			loader2.setEditable(false);;
+		}
+		
+		}
+	
+	class Submitter extends Thread {
+		@Override
+		public void run() {
+			super.run();
+			setResult(service.submitCenterTransitDoc(transitNoteOnTransitVO));
+		}
+	}
 }
+

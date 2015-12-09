@@ -31,8 +31,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import presentation.financeui.PaymentInputPanel;
+import presentation.logisticui.ReceiveOrderPanel.Submitter;
 import presentation.util.CurrentTime;
 import presentation.util.MJTextField;
+import presentation.util.UnEditablePanel;
 import presentation.util.checkstyleDialog;
 import util.BarcodeAndState;
 import util.LogInMsg;
@@ -49,6 +51,7 @@ import businesslogicservice.logisticblservice._Stub.ArrivalNoteOnTransitBLServic
 import java.awt.SystemColor;
 
 public class ArrivalNoteOnTransitPanel extends JPanel {
+	 ArrivalNoteOnTransitPanel thisP  = this;
 	private MJTextField centrenum1;
 	private MJTextField date1;
 	private MJTextField barcode;
@@ -71,6 +74,8 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 	private JButton button_1;
 	private JComboBox comboBox;
 	private int seletedRow;
+	private TransitFrame parent;
+	
 	/**
 	 * Create the panel.
 	 */
@@ -84,7 +89,8 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 		f.setVisible(true);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);*/
 	}
-	public ArrivalNoteOnTransitPanel( LogInMsg  logInMsg) {
+	public ArrivalNoteOnTransitPanel( LogInMsg  logInMsg,TransitFrame ft) {
+		parent = ft;
 		service = new ArrivalNoteOnTransit();
 		barcodeAndStates = new ArrayList<BarcodeAndState>();
 		setBackground(SystemColor.window);
@@ -332,21 +338,10 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 						departure2.getText(), barcodeAndStates);
 				arrivalNoteOnTransitVO.setUserName(lim.getUserName());
 				arrivalNoteOnTransitVO.setOrganization(lim.getOrganization());
-				date1.setEditable(false);
-				centrenum1.setEditable(false);
-				trannum1.setEditable(false);
-				departure1.setEditable(false);
-				barcode.setEditable(false);
-				comboBox.setEditable(false);
-				res = service.submitCenterArrivalDoc(arrivalNoteOnTransitVO);
-				
-				if(res.isPass()){
-					;
-				
-				}else{
-					int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
-							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);	
-		        }
+				UnEditablePanel.UnEdit(ArrivalNoteOnTransitPanel.this);//设置为不可编辑
+				parent.initDaoda(true);//显示等待审批字样	
+				parent.setArrivalNoteOnTransitpanel(thisP);
+				new Submitter().start();
 		
 	   }else{
 		   int result1 = JOptionPane.showConfirmDialog(null, "有咚咚漏天啦！","系统提示",
@@ -356,7 +351,37 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
      }
    }
 	
+	public void setResult(ResultMsg s) {
+		parent.setdaodaB(false);	
+		parent.initDaoda(s.isPass());
+		parent.leftdown.repaint();
+		if(s.isPass()){
+			//parent.setArrivalNoteOnTransitVO(null);;
+			parent.setArrivalNoteOnTransitpanel(null);
+		}else{
+			int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
+					JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
+			trannum1.setEditable(true);
+			trannum1.setEnabled(true);
+			centrenum1.setEditable(true);
+			centrenum1.setEnabled(true);
+			departure1.setEditable(true);
+			departure1.setEnabled(true);
+			barcode.setEditable(true);
+			barcode.setEnabled(true);
+			comboBox.setEditable(true);
+			comboBox.setEnabled(true);
+		}
+		
+		}
 	
+	class Submitter extends Thread {
+		@Override
+		public void run() {
+			super.run();
+			setResult(service.submitCenterArrivalDoc(arrivalNoteOnTransitVO));
+		}
+	}
 }
 
 

@@ -11,6 +11,7 @@ import java.awt.Graphics;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
@@ -21,7 +22,6 @@ import javax.swing.table.TableColumn;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
-
 
 import businesslogic.commodity.StorageInquiryAll;
 import businesslogicservice.commodityblservice.StorageInquiryAllBLService;
@@ -121,6 +121,9 @@ private JTable table;
 							model.addRow(aa);
 						}
 					} catch (Exception e) {
+						//第一次库存盘点的时间
+						String firstTime=JOptionPane.showInputDialog("请输入初次盘点时间");
+					sab.inputFirst(firstTime);
 						e.printStackTrace();
 					}
 	        	

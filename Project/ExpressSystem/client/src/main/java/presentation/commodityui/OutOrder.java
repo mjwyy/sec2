@@ -140,6 +140,12 @@ public class OutOrder extends JPanel {
 	    					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 	    			if(result1 == JOptionPane.YES_OPTION) {
 	        		ResultMsg result=sob.submitStorageOutDoc(vv);
+	        		if(result.isPass()) {
+	    			}
+	    				else{
+	    					JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
+	    							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+	    				}
 	    			}
 	    			else {
 	    				return;

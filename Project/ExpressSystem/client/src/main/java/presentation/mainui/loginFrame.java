@@ -27,6 +27,7 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 import presentation.commodityui.Commodity;
 import presentation.financeui.financeFrame;
+import presentation.infoui.SystemUser;
 import presentation.logisticui.CourierFrame;
 import presentation.logisticui.Service;
 import presentation.logisticui.TransitFrame;
@@ -247,7 +248,8 @@ public class loginFrame extends JFrame {
                         //ff.setClose();
                         ff.setVisible(true);
                     } else {
-                        ;
+                        SystemUser systemUser = new SystemUser(lim);
+                        systemUser.setVisible(true);
                     }
                     dispose();
 

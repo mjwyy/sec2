@@ -5,6 +5,8 @@ import businesslogic.info.SystemUserManagement;
 import businesslogicservice.infoblservice.SystemUserManagementBLService;
 import connection.RMIHelper;
 import po.UserPO;
+import util.ResultMsg;
+import util.enums.Authority;
 import vo.UserVO;
 
 import java.rmi.NotBoundException;
@@ -21,11 +23,29 @@ public class SystemUserManagementBLService_Driver {
     }
 
 	public void drive(SystemUserManagementBLService service){
-        ArrayList<UserVO> result = service.find(new UserVO("1234567",null,null));
-        for (UserVO po2:result) {
-            System.out.println(po2.getAuthority());
-        }
-
+//        add(service);
+        del(service);
+//        find(service);
 	}
-	
+
+    private void del(SystemUserManagementBLService service) {
+        ResultMsg resultMsg =service.delete(new UserVO
+                ("12121212","12121212", Authority.DELIVERY_MAN));
+        System.out.println(resultMsg.getMessage());
+    }
+
+    public void find(SystemUserManagementBLService service){
+        ArrayList<UserVO> result = service.find(new UserVO(
+                "admin",null,null));
+        System.out.println("result is empty?"+result.isEmpty());
+        for (UserVO po2:result) {
+            System.out.println(po2.getAuthority()+po2.getUserNum());
+        }
+    }
+
+    public void add(SystemUserManagementBLService service){
+        ResultMsg resultMsg = service.add(new UserVO
+                ("12121212","12121212", Authority.DELIVERY_MAN));
+        System.out.println(resultMsg.getMessage());
+    }
 }

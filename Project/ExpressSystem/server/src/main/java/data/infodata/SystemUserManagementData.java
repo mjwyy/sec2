@@ -1,5 +1,6 @@
 package data.infodata;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import data.database.DatabaseManager;
 import data.statisticdata.LogInsHelper;
 import dataservice.exception.ElementNotFoundException;
@@ -33,13 +34,6 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
         Connection connection = DatabaseManager.getConnection();
         String sqlInsert = "INSERT into user (account,rights,password) values(?,?,MD5(?))";
         PreparedStatement statement = null;
-        try {
-            if(!this.inquireUser(user).isEmpty()){
-                LogInsHelper.insertLog("新增系统用户失败:信息已存在!");
-                DatabaseManager.releaseConnection(connection,null,null);
-                throw new InterruptWithExistedElementException("新增系统用户失败:信息已存在!");
-            }
-        } catch (ElementNotFoundException e) {}
         int result = 0;
         try {
             statement = connection.prepareStatement(sqlInsert);
@@ -48,6 +42,10 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
             statement.setString(3,user.getPassword());
             result = statement.executeUpdate();
             LogInsHelper.insertLog("新增系统用户:"+user.getAccount());
+        } catch (MySQLIntegrityConstraintViolationException e){
+            LogInsHelper.insertLog("新增系统用户:信息已存在!");
+            DatabaseManager.releaseConnection(connection,null,null);
+            throw new InterruptWithExistedElementException("新增人员失败，信息已存在!");
         } catch (SQLException e) {
             LogInsHelper.insertLog("新增系统用户失败!");
             e.printStackTrace();
@@ -62,13 +60,6 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
         String account = user.getAccount();
         String delete = "DELETE from user where account = '"+account+"'";
         PreparedStatement statement = null;
-        try {
-            if(this.inquireUser(user).isEmpty()){
-                LogInsHelper.insertLog("删除系统用户失败:信息不存在!");
-                DatabaseManager.releaseConnection(connection,null,null);
-                throw new ElementNotFoundException();
-            }
-        } catch (ElementNotFoundException e) {}
         int result = 0;
         try {
             statement = connection.prepareStatement(delete);
@@ -114,7 +105,10 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
     public ArrayList<UserPO> inquireUser(UserPO info) throws ElementNotFoundException {
         Connection connection = DatabaseManager.getConnection();
         String sqlFindAll = null;
-        if(info.getAuthority() != null){
+        if(info.getAccount() != null && info.getAuthority() != null){
+            sqlFindAll = "SELECT * from user where `rights` = "+info.getAuthority().getIntAuthority()
+            +" and `account` = '"+info.getAccount()+"'";
+        }else if(info.getAuthority() != null){
             sqlFindAll = "SELECT * from user where `rights` = "+info.getAuthority().getIntAuthority();
         }else if(info.getAccount() != null)
             sqlFindAll = "SELECT * from user where `account` like '%"+info.getAccount()+"%'";
@@ -124,6 +118,8 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
             statement = connection.prepareStatement(sqlFindAll);
             ResultSet resultSet = statement.executeQuery();
             UserPO userPO;
+            if(!resultSet.next())
+                throw new ElementNotFoundException();
             while(resultSet.next()){
                 String account = resultSet.getString(1);
                 String password = resultSet.getString(2);

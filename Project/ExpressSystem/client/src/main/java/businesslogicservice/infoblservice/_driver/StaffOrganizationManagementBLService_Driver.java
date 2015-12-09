@@ -25,9 +25,9 @@ public class StaffOrganizationManagementBLService_Driver {
      */
 	public void drive(StaffOrganizationManagementBLService service){
 //        testaddStaff(service);
-        addOrg(service);
+//        addOrg(service);
 //        findStaff(service);
-//        findOrg(service);
+        findOrg(service);
 	}
 
     public static void main(String[] args) throws RemoteException, NotBoundException {
@@ -62,10 +62,10 @@ public class StaffOrganizationManagementBLService_Driver {
 
     public void findOrg(StaffOrganizationManagementBLService service){
         OrganizationInfoVO organizationInfoVO = new OrganizationInfoVO(
-                null,null,"南京",null);
+                "010001",null,null,null);
 //        OrganizationInfoVO organizationInfoVO = null;
         ArrayList<OrganizationInfoVO> voArrayList = service.findOrgInfo(organizationInfoVO);
-        System.out.println(voArrayList.isEmpty());
+        System.out.println("voArrayList.isEmpty()"+voArrayList.isEmpty());
         for(OrganizationInfoVO result : voArrayList){
             System.out.println(result.getName()+" "+result.getOrganizationNum());
         }

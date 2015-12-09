@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import data.database.DatabaseManager;
 import data.database.SqlHelper;
 import data.statisticdata.LogInsHelper;
@@ -39,9 +40,7 @@ public class StaffOrganizationManagementData extends UnicastRemoteObject impleme
         int result = 0;
         try {
             if(!this.findStaff(staff).isEmpty()){
-                LogInsHelper.insertLog("新增人员失败:信息已存在!");
-                DatabaseManager.releaseConnection(connection,null,null);
-                throw new InterruptWithExistedElementException("新增人员失败，信息已存在!");
+
             }
         } catch (ElementNotFoundException e) {}
         try {
@@ -58,6 +57,10 @@ public class StaffOrganizationManagementData extends UnicastRemoteObject impleme
             statement.setString(9, staff.getPhoneNumber());
             result = statement.executeUpdate();
             LogInsHelper.insertLog("新增人员:"+staff.getName());
+        } catch (MySQLIntegrityConstraintViolationException e){
+            LogInsHelper.insertLog("新增人员失败:信息已存在!");
+            DatabaseManager.releaseConnection(connection,null,null);
+            throw new InterruptWithExistedElementException("新增人员失败，信息已存在!");
         } catch (SQLException e) {
             e.printStackTrace();
             LogInsHelper.insertLog("新增人员失败!");

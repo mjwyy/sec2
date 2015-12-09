@@ -1,12 +1,13 @@
 package businesslogic.info;
 
 import businesslogicservice.infoblservice.SystemUserManagementBLService;
+import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import util.ResultMsg;
 import util.LogInMsg;
 import vo.UserVO;
 
 import java.rmi.RemoteException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import po.UserPO;
@@ -34,15 +35,16 @@ public class SystemUserManagement implements SystemUserManagementBLService {
     	
         try {
 			boolean result = dataService.addUser((UserPO) vo.toPO());
-			if(!result) {
-				return new ResultMsg(false,"人员添加失败");
-			}
-		} catch (Exception e) {
-			return new ResultMsg(false,e.getMessage());
-		}
-        
-        return new ResultMsg(true,"人员添加成功");
-        
+            if(result)
+                return new ResultMsg(true,"人员添加成功");
+		} catch (RemoteException e) {
+            e.printStackTrace();
+            return new ResultMsg(false,"网络异常:人员添加失败!");
+        } catch (InterruptWithExistedElementException e) {
+            e.printStackTrace();
+            return new ResultMsg(false,e.getMessage());
+        }
+        return new ResultMsg(true,"人员添加失败!");
     }
 
     @Override
@@ -53,14 +55,17 @@ public class SystemUserManagement implements SystemUserManagementBLService {
     	
     	try {
 			boolean result = dataService.removeUser((UserPO) vo.toPO());
-			if(!result) {
-				return new ResultMsg(false,"人员删除失败");
-			}
-		} catch (Exception e) {
-			return new ResultMsg(false,e.getMessage());
-		}
-        
-        return new ResultMsg(true,"人员删除成功");
+			if(result)
+				return new ResultMsg(true,"人员删除成功");
+		} catch (RemoteException e) {
+            e.printStackTrace();
+            return new ResultMsg(false,"网络异常:人员添加失败!");
+        } catch (ElementNotFoundException e) {
+            e.printStackTrace();
+            return new ResultMsg(false,"人员信息不存在,删除失败!");
+        }
+
+        return new ResultMsg(false,"人员删除失败");
     	
     	
     }
@@ -83,7 +88,7 @@ public class SystemUserManagement implements SystemUserManagementBLService {
 		} catch (Exception e) {
 			return new ResultMsg(false,e.getMessage());
 		}
-        
+
         return new ResultMsg(true,"人员修改成功");
     	
     }

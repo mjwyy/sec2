@@ -7,6 +7,8 @@ import dataservice.statisticdataservice.BusinessDataModificationDataService;
 import po.DistancePO;
 import util.ResultMsg;
 import util.enums.PriceType;
+import vo.DistanceVO;
+import vo.PriceVO;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -26,6 +28,11 @@ public class BusinessDataModification implements BusinessDataModificationBLServi
         RemoteObjectGetter getter = new RemoteObjectGetter();
         this.dataService =
                 (BusinessDataModificationDataService)getter.getObjectByName("BusinessDataModificationDataService");
+    }
+
+    @Override
+    public PriceVO getAllPrices() {
+        return null;
     }
 
     @Override
@@ -54,6 +61,11 @@ public class BusinessDataModification implements BusinessDataModificationBLServi
             e.printStackTrace();
             return new ResultMsg(false,"无法修改价格常量!");
         }
+    }
+
+    @Override
+    public DistanceVO getAllDistanceInfo() {
+        return null;
     }
 
     @Override

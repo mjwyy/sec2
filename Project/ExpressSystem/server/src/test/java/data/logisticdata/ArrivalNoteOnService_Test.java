@@ -39,7 +39,7 @@ public class ArrivalNoteOnService_Test {
         System.out.println(resultMsg.getMessage());
     }
 
-//    @Test
+    @Test
     public void testInsertDeliverNote() throws RemoteException, SQLException, ElementNotFoundException {
         ArrayList<String> barcodes = new ArrayList<>();
         barcodes.add("1234567890");
@@ -49,7 +49,7 @@ public class ArrivalNoteOnService_Test {
 //        service.insertDeliverNote(po1);
     }
 
-//    @Test
+    @Test
     public void testFindArrival() throws RemoteException, SQLException {
         ArrivalNoteOnServiceDataService data = DatabaseFactoryMysqlImpl.getInstance().getArrivalNoteOnServiceDataService();
 

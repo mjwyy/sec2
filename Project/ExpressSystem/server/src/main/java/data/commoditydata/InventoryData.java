@@ -110,7 +110,7 @@ public class InventoryData extends UnicastRemoteObject implements InventoryDataS
     	 */
     	
     	//先查出库记录，重点在于计数，所以条目是随便选的
-    	sql = "select aeraCode from InOutInfo where (isIn=0 AND WarehouseID='"+org+"' AND "
+    	sql = "select areaCode from InOutInfo where (isIn=0 AND WarehouseID='"+org+"' AND "
     			+ "Date<='"+eTime+"' AND Date>='"+sTime+"')";
     	PreparedStatement stmt1 = null;
 		try {

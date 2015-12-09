@@ -43,7 +43,7 @@ public class RMIConfig {
 //            }
 //            serverIP = params.get("serverIP");
 //            port =  params.get("port");
-        serverIP = "192.168.1.104";
+        serverIP = "172.26.219.46";
         port = "1099";
     }
 

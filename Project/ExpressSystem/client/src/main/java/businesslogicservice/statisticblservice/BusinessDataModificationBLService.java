@@ -1,7 +1,10 @@
 package businesslogicservice.statisticblservice;
 
+import businesslogic.logistic.deliverystrategy.PriceInfo;
 import util.ResultMsg;
 import util.enums.PriceType;
+import vo.DistanceVO;
+import vo.PriceVO;
 
 /**
  * 总经理调整业务数据的逻辑接口
@@ -10,30 +13,51 @@ import util.enums.PriceType;
  *
  */
 public interface BusinessDataModificationBLService {
-	
-	/**
-	 * 总经理要求价格常量
-	 *
-	 * @param price
-	 * @return
-	 */
-	public ResultMsg inputPrice(PriceType type,double price);
-	
-	/**
-	 * 总经理修改城市之间距离
-	 *
-	 * @param city1
-	 * @param city2
-	 * @param distance
-	 * @return
-	 */
-	public ResultMsg inputCityDistance(String city1,String city2,double distance);
-	
-	/**
-	 * 总经理核对新的业务数据，要求提交
-	 *
-	 */
-    public ResultMsg submitPrice(PriceType type, double price);
 
-    public ResultMsg submitCityDistance(String city1, String city2, double distance);
+    /**
+     * 获取数据库中所有的价格信息
+     * @return 价格的类型与数量
+     */
+    PriceVO getAllPrices();
+
+    /**
+     * 总经理要求价格常量
+     *
+     * @param price
+     * @return
+     */
+    ResultMsg inputPrice(PriceType type,double price);
+
+    /**
+     * 总经理核对新的业务数据，要求提交
+     *
+     */
+    ResultMsg submitPrice(PriceType type, double price);
+
+    /**
+     * 查询所有的城市间距离信息
+     *
+     * @return 城市1城市2与距离
+     */
+    DistanceVO getAllDistanceInfo();
+
+    /**
+     * 总经理输入欲修改的城市之间距离信息
+     *
+     * @param city1 城市1
+     * @param city2 城市2
+     * @param distance 城市间距离
+     * @return 格式检查结果
+     */
+    ResultMsg inputCityDistance(String city1,String city2,double distance);
+
+    /**
+     * 总经理提交修改的城市之间距离信息
+     *
+     * @param city1 城市1
+     * @param city2 城市2
+     * @param distance 城市间距离
+     * @return 距离信息修改结果
+     */
+    ResultMsg submitCityDistance(String city1, String city2, double distance);
 }

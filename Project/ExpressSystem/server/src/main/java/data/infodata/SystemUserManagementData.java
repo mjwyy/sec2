@@ -105,10 +105,7 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
     public ArrayList<UserPO> inquireUser(UserPO info) throws ElementNotFoundException {
         Connection connection = DatabaseManager.getConnection();
         String sqlFindAll = null;
-        if(info.getAccount() != null && info.getAuthority() != null){
-            sqlFindAll = "SELECT * from user where `rights` = "+info.getAuthority().getIntAuthority()
-            +" and `account` = '"+info.getAccount()+"'";
-        }else if(info.getAuthority() != null){
+        if(info.getAuthority() != null){
             sqlFindAll = "SELECT * from user where `rights` = "+info.getAuthority().getIntAuthority();
         }else if(info.getAccount() != null)
             sqlFindAll = "SELECT * from user where `account` like '%"+info.getAccount()+"%'";
@@ -118,8 +115,6 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
             statement = connection.prepareStatement(sqlFindAll);
             ResultSet resultSet = statement.executeQuery();
             UserPO userPO;
-            if(!resultSet.next())
-                throw new ElementNotFoundException();
             while(resultSet.next()){
                 String account = resultSet.getString(1);
                 String password = resultSet.getString(2);
@@ -172,7 +167,8 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
 			//由于未明确异常的行为，所以有一点代码重复，不过还好
 			return new LogInMsg(false, null, "账户名为"+account+"的用户不存在，请检查输入。");
 		}
-		if(list.size()==0) return new LogInMsg(false, null, "账户名为"+account+"的用户不存在，请检查输入。");
+		if(list.size()==0)
+            return new LogInMsg(false, null, "账户名为"+account+"的用户不存在，请检查输入。");
 		
 		//Second, find if there exists an account that has the same password.
 		String sql = "SELECT * from user where account='"+account+"' AND password=MD5('"+password+"')";
@@ -206,5 +202,12 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
         }
         return logInMsg;
 	}
+
+    public static void main(String[] args) throws RemoteException, ElementNotFoundException {
+        SystemUserManagementData data = new SystemUserManagementData();
+//        data.logIn("manager","manager");
+       ArrayList<UserPO> userPOs =  data.inquireUser(new UserPO("manager","manager",null));
+        System.out.println("userPOs is empty?"+userPOs.isEmpty());
+    }
 
 }

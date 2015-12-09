@@ -50,6 +50,7 @@ public class ManageorgPanel extends JPanel {
 	private ArrayList<OrganizationInfoVO> orgvo = new ArrayList<OrganizationInfoVO>();
 	private ResultMsg res;
 	private JButton btnNewButton_5;
+	private JComboBox jigouleixing;
 
 
 	/**
@@ -95,7 +96,7 @@ public class ManageorgPanel extends JPanel {
         				sip.setStaffList(staffinfo);
         				sip.showall();
         				sip.setVisible(true);
-        				f.add(sip);
+        				f.getContentPane().add(sip);
         				f.setVisible(false);
         				
         			}
@@ -111,10 +112,24 @@ public class ManageorgPanel extends JPanel {
 		label.setBounds(38, 41, 91, 16);
 		add(label);
 		
-		String[] keywordlist = {"机构编码","机构类型","机构名"};
+		final String[] keywordlist = {"机构编码","机构类型","机构名"};
 		keywordType = new JComboBox(keywordlist);
+		keywordType.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(keywordType.getSelectedItem().toString().equals(keywordlist[1])){
+					keyword.setVisible(false);
+					jigouleixing.setVisible(true);			
+				}
+			}
+		});
 		keywordType.setBounds(117, 37, 142, 20);
 		add(keywordType);
+		
+		String[] jigoulist = {"中转中心","营业厅","仓库","总部"};
+		jigouleixing = new JComboBox(jigoulist);
+		jigouleixing.setBounds(260, 35, 216, 28);
+		add(jigouleixing);
+		jigouleixing.setVisible(false);
 		
 		keyword = new MJTextField();
 		keyword.setBounds(260, 35, 216, 28);
@@ -130,7 +145,7 @@ public class ManageorgPanel extends JPanel {
 					//System.out.println(keywordType.getSelectedItem().toString());
 				}
 				else if(keywordType.getSelectedItem().toString().equals("机构类型")){	
-					vo = new OrganizationInfoVO(null,whichType(keywordType.getSelectedItem().toString()),null,null);
+					vo = new OrganizationInfoVO(null,whichType(jigouleixing.getSelectedItem().toString()),null,null);
 				}
 				else{
 					vo = new OrganizationInfoVO(null,null,keyword.getText().toString(),null);

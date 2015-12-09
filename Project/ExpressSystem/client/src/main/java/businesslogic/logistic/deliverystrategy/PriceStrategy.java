@@ -14,7 +14,7 @@ import java.sql.SQLException;
  */
 public class PriceStrategy {
 
-    public double getPrice(DeliveryInfo deliveryInfo, double pricePerKG, double packagePrice) throws ElementNotFoundException, RemoteException, SQLException {
+    public double getPrice(DeliveryInfo deliveryInfo,PriceInfo priceInfo) throws ElementNotFoundException, RemoteException, SQLException {
         //获取需要的寄件单信息
         DeliverCategory category = deliveryInfo.getCategory();
         double distance = deliveryInfo.getDistance();
@@ -23,6 +23,8 @@ public class PriceStrategy {
         double price;
 
         //计算总价
+        double pricePerKG = priceInfo.pricePerKG;
+        double packagePrice = priceInfo.packagePrice;
         double pricePerKGKM = distance / 1000 * pricePerKG;
         double weightPrice = pricePerKGKM * weight;
 

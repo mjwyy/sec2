@@ -19,18 +19,22 @@ public class NoteApproveChartData {
 	 * 其中内层Map的key为列的名称，value为应该翻译成的中文列名。
 	 */
 	private static Map<String,Map<String,String>> chartData = null;
-	private static Map<String,NoteType> type = null;
+
+    /*
+     * 此Map的key为存储各单据的数据表名称
+     * value是单据的类型
+     */
+    private static Map<String,NoteType> type = null;
+
 	static {
 		chartData = new HashMap<String, Map<String,String>>();
 		type = new HashMap<>();
 		
 		Map<String,String> temp = new TreeMap<>();
 		
-		//实例：入库单
-		
+		//入库单
 		temp.put("date", "入库日期");
 		temp.put("warehouseID", "仓库号");
-		
 		chartData.put("StorageInNote", temp);
 		type.put("StorageInNote", NoteType.STORAGE_IN);
 		

@@ -1,6 +1,7 @@
 package businesslogic.logistic;
 
 import businesslogic.logistic.deliverystrategy.DeliveryInfo;
+import businesslogic.logistic.deliverystrategy.PriceInfo;
 import businesslogic.logistic.deliverystrategy.PriceStrategy;
 import businesslogic.logistic.deliverystrategy.TimePresumeStrategy;
 import businesslogicservice.logisticblservice.DeliveryNoteInputBLService;
@@ -65,10 +66,12 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
                     return new ResultMsg(false,"收件人城市有误!");
                 double distance = city1.equals(city2) ? 30 :
                         businessDataModificationDataService.getDistance(city1, city2);
+                //接口参数封装类
                 DeliveryInfo deliveryInfo = new DeliveryInfo(city1,city2,distance,sendDocVO.getWeight(),
                         sendDocVO.getVolume(),sendDocVO.getCategory(),sendDocVO.getPackType());
-                //获取价格与预计日期
-                double price = priceStrategy.getPrice(deliveryInfo,pricePerKG,packagePrice);
+                PriceInfo priceInfo = new PriceInfo(pricePerKG,packagePrice);
+                //委托:获取价格与预计日期
+                double price = priceStrategy.getPrice(deliveryInfo,priceInfo);
                 sendDocVO.setPrice(price);
                 String presumedDate = timePresumeStrategy.getPresumedTime(deliveryInfo);
                 sendDocMsg = new SendDocMsg(true, "寄件单已成功提交,等待审批", price, presumedDate);

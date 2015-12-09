@@ -71,8 +71,7 @@ public class DatabaseFactoryMysqlImpl implements DatabaseFactory{
         orderInquiryDataService = new OrderInquiryData();
 
         logInsertDataService = new LogInsertData();
-        deliveryNoteInputDataService = new DeliveryNoteInputData(orderInquiryDataService,
-                businessDataModificationDataService);
+        deliveryNoteInputDataService = new DeliveryNoteInputData(orderInquiryDataService);
         noteApprovingDataService = new NoteApprovingData();
     }
 

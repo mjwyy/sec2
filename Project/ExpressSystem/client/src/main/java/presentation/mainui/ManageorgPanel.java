@@ -126,18 +126,20 @@ public class ManageorgPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				//zhe li bu dui 
 				if(keywordType.getSelectedItem().toString().equals("机构编码")){	
-					vo = new OrganizationInfoVO(keywordType.getSelectedItem().toString(),null,null,null);
+					vo = new OrganizationInfoVO(keyword.getText(),null,null,null);
+					//System.out.println(keywordType.getSelectedItem().toString());
 				}
 				else if(keywordType.getSelectedItem().toString().equals("机构类型")){	
 					vo = new OrganizationInfoVO(null,whichType(keywordType.getSelectedItem().toString()),null,null);
 				}
 				else{
-					vo = new OrganizationInfoVO(null,null,keywordType.getSelectedItem().toString(),null);
+					vo = new OrganizationInfoVO(null,null,keyword.getText().toString(),null);
 				}
-				ArrayList<OrganizationInfoVO> orglist = new ArrayList<OrganizationInfoVO>();
 				
-				orglist = service.findOrgInfo(vo);
+				ArrayList<OrganizationInfoVO> orglist = new ArrayList<OrganizationInfoVO>();
+     			orglist = service.findOrgInfo(vo);
 				data.clear();
+				
 				if(!orglist.isEmpty()){
 					for(int i = 0;i<orglist.size();i++){
 						Vector row = new Vector();
@@ -148,14 +150,14 @@ public class ManageorgPanel extends JPanel {
 					}
 					 model.setDataVector(data, name);
 				   	 table.setModel(model);
-				}
-				else{
+				}else{
 					Vector row = new Vector();
-					row.add("为查询到相关机构信息，请检查关键字输入是否正确");
+					row.add("未查询到相关机构信息，请检查关键字输入是否正确");
 					data.add(row.clone());
 					model.setDataVector(data, name);
 				   	table.setModel(model);
 				}
+				
 				
 			}
 		});

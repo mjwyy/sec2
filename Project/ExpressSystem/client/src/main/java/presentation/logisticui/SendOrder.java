@@ -20,7 +20,10 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+import presentation.logisticui.ArrivalOrder.Submitter;
+import presentation.util.CleanTextField;
 import presentation.util.CurrentTime;
+import presentation.util.UnEditablePanel;
 import util.LogInMsg;
 import util.ResultMsg;
 import vo.DeliverNoteOnServiceVO;
@@ -29,13 +32,30 @@ import businesslogicservice.logisticblservice.ArrivalNoteOnServiceBLService;
 import businesslogicservice.logisticblservice._Stub.ArrivalNoteOnServiceBLService_Stub;
 
 public class SendOrder extends JPanel {
+	//
+//	ArrivalNoteOnServiceBLService arr=new ArrivalNoteOnServiceBLService_Stub();
+	ArrivalNoteOnServiceBLService arr=new ArrivalNoteOnService();
+	private JPanel thisP=this;
+	private 	DeliverNoteOnServiceVO vo;
+	//不可编辑框
+	private JTextField sendcode;
 	private JTextField data;
 	private JTextField sender;
+	//可编辑框
 	private JTextField dataf;
 	private JTextField codef;
 	private JTextField senderf;
+	private JTextField sendcodef;
+	//条形码表格
+	private JTable table;
+	private DefaultTableModel model;
 	private ArrayList<String> BarCode=new ArrayList<String>();
+	//frame传来的东东
 	private LogInMsg lim;
+	private Service frame;//
+	//button
+	private JButton tianjia;
+	private JButton queren ;
 	/**
 	 * 窗口宽度
 	 */
@@ -48,14 +68,10 @@ public class SendOrder extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-//	ArrivalNoteOnServiceBLService arr=new ArrivalNoteOnServiceBLService_Stub();
-	ArrivalNoteOnServiceBLService arr=new ArrivalNoteOnService();
-	private JTextField sendcode;
-	private JTextField sendcodef;
-	private JTable table;
-	private DefaultTableModel model;
-	public SendOrder(LogInMsg lim) {
+	
+	public SendOrder(LogInMsg lim,Service frame) {
 		this.lim=lim;
+		this.frame=frame;
 		setSize(WIDTH,HEIGHT);
 		setBackground(Color.WHITE);
 		setLayout(null);
@@ -151,10 +167,10 @@ public class SendOrder extends JPanel {
 		label_13.setBounds(783, 135, 82, 15);
 		add(label_13);
 
-		JButton btnNewButton_1 = new JButton("确认");
-		btnNewButton_1.addActionListener(new confirmListener());
-		btnNewButton_1.setBounds(953, 174, 93, 23);
-		add(btnNewButton_1);
+		queren = new JButton("确认");
+		queren.addActionListener(new confirmListener());
+		queren.setBounds(953, 174, 93, 23);
+		add(queren);
 
 		JLabel label_14 = new JLabel("货物编码");
 		label_14.setBounds(783, 250, 66, 15);
@@ -165,10 +181,10 @@ public class SendOrder extends JPanel {
 		add(codef);
 		codef.setColumns(10);
 
-		JButton button = new JButton("添加");
-		button.addActionListener(new addListener() );
-		button.setBounds(964, 304, 93, 23);
-		add(button);
+		tianjia = new JButton("添加");
+		tianjia.addActionListener(new addListener() );
+		tianjia.setBounds(964, 304, 93, 23);
+		add(tianjia);
 
 
 
@@ -227,7 +243,7 @@ public class SendOrder extends JPanel {
 	}
 	public class submitListener implements ActionListener{
 
-		DeliverNoteOnServiceVO vo=null;
+
 		public void actionPerformed(ActionEvent e) {
 			if(data.getText().isEmpty()){
 				JOptionPane.showConfirmDialog(null, "有咚咚漏填啦","系统提示",
@@ -252,16 +268,15 @@ public class SendOrder extends JPanel {
 			int result = JOptionPane.showConfirmDialog(null, "确认提交审批？","系统提示",
 					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 			if(result == JOptionPane.YES_OPTION) {
-				ResultMsg resultS=arr.submitHallDeliverDoc(vo);
-				if(resultS.isPass()){//提交成功正确
-					JOptionPane.showConfirmDialog(null, resultS.getMessage(),"系统提示",
-							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-				}
-				else{//提交失败
-					int result1 = JOptionPane.showConfirmDialog(null, resultS.getMessage(),"系统提示",
-							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+				//ResultMsg resultS=arr.submitHallDeliverDoc(vo);
+				//将提交放到新的线程中
 
-				}
+				//提交之后panel里都不可编辑
+				lock(false);
+				//提交之后右下面板换
+				frame.initPaisong(true,false,false);
+				//提交审批
+				new Submitter().start();
 			}
 			else {
 				return;
@@ -269,6 +284,50 @@ public class SendOrder extends JPanel {
 			}
 		}
 
+	}
+	public void setResult(ResultMsg s) {//审批之后才调这个方法
+		//审批通没通过在这里体现
+		frame.initPaisong(false,s.isPass(),!s.isPass());
+		frame.leftdown.repaint();
+		//解锁那些可以编辑的框框
+		lock(true);
+		if(s.isPass()){//审批通过之后，清空textfiled
+			//清空textfiled
+			CleanTextField.clean(thisP);
+		}
+		else{//审批未通过
+			JOptionPane.showConfirmDialog(null,s.getMessage() ,"系统提示",
+					JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
+
+		}
+
+	}
+	public void lock(boolean notlock){//解锁那些可以编辑的框框
+		//notlock==true 不锁
+		//textfield
+		dataf.setEditable(notlock);
+		dataf.setEnabled(notlock);
+		
+		codef.setEditable(notlock);
+		codef.setEnabled(notlock);
+		
+		sendcodef.setEditable(notlock);
+		sendcodef.setEnabled(notlock);
+		
+		senderf.setEditable(notlock);
+		senderf.setEnabled(notlock);
+		//button
+		queren.setEnabled(notlock);
+		tianjia.setEnabled(notlock);
+	}
+	class Submitter extends Thread {
+
+		public void run() {
+			super.run();
+			//ResultMsg result=arr.submitHallDeliverDoc(vo);
+			//setResult(result);
+			setResult(arr.submitHallDeliverDoc(vo));
+		}
 	}
 	public class confirmListener implements ActionListener{
 		DeliverNoteOnServiceVO vo=null;
@@ -284,7 +343,7 @@ public class SendOrder extends JPanel {
 			}
 			else{//格式有误
 				int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
-						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+						JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
 
 			}
 		}

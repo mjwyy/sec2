@@ -36,17 +36,29 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+import presentation.logisticui.ArrivalOrder.Submitter;
+import presentation.util.CleanTextField;
 import presentation.util.CurrentTime;
+import presentation.util.UnEditablePanel;
 
 public class LoadCarOrder extends JPanel {
-    LoadNoteOnServiceBLService load;
-	private JTextField data;
+   //要用的借口
+	private LoadNoteOnServiceBLService load= new LoadNoteOnService();
+	private LoadNoteOnServiceVO  vo;
+	private JPanel thisP=this;
+	//不可编辑框
+    private JTextField data;
 	private JTextField service;
 	private JTextField to;
 	private JTextField scar;
 	private JTextField car;
 	private JTextField superman;
 	private JTextField senderman;
+	//条形码table
+    private JTable table;
+	private DefaultTableModel model;
+	private ArrayList<String> barcodes=new  ArrayList<String> ();
+	//可编辑textfield
 	private JTextField dataf;
 	private JTextField servicecodef;
 	private JTextField carcodef;
@@ -55,8 +67,14 @@ public class LoadCarOrder extends JPanel {
 	private JTextField scarcodef;
 	private JTextField supermanf;
 	private JTextField sendmanf;
+	//button
+	private JButton tianjia;//添加
+	private JButton queren ;//确认
+	//frame传来的东东
 	private LogInMsg lim;
-	private ArrayList<String> barcodes=new  ArrayList<String> ();
+	private Service frame;//
+	
+	
 	/**
 	 * 窗口宽度
 	 */
@@ -74,17 +92,15 @@ public class LoadCarOrder extends JPanel {
 	 * 右边field
 	 */
 	private static final int WIDTHT = WIDTHL+76;
-	private JTable table;
-	private DefaultTableModel model;
+	
 	/**
 	 * Create the panel.
 	 */
-	public LoadCarOrder(LogInMsg lim) {
-        if(IsDebug.IsDebug){
-            load=new LoadNoteOnServiceBLService_Stub();
-        }else
-             load=new LoadNoteOnService();
+	public LoadCarOrder(LogInMsg lim,Service frame) {
+        
+            
 		this.lim=lim;
+		this.frame=frame;
 		setSize(WIDTH,HEIGHT);
 		setBackground(Color.WHITE);
 		setLayout(null);
@@ -264,10 +280,10 @@ public class LoadCarOrder extends JPanel {
 		 label_13.setBounds(787, 226, 78, 15);
 		 add(label_13);
 
-		 JButton btnNewButton_1 = new JButton("确认");
-		 btnNewButton_1.addActionListener(new confirmListener());
-		 btnNewButton_1.setBounds(995, 247, 93, 23);
-		 add(btnNewButton_1);
+		 queren = new JButton("确认");
+		 queren.addActionListener(new confirmListener());
+		 queren.setBounds(995, 247, 93, 23);
+		 add(queren);
 
 		 JLabel label_14 = new JLabel("货物编码");
 		 label_14.setBounds(WIDTHL, 281, 78, 15);
@@ -278,10 +294,10 @@ public class LoadCarOrder extends JPanel {
 		 add(codef);
 		 codef.setColumns(10);
 
-		 JButton button = new JButton("添加");
-		 button.addActionListener(new addListener());
-		 button.setBounds(970, 315, 93, 23);
-		 add(button);
+		 tianjia = new JButton("添加");
+		 tianjia.addActionListener(new addListener());
+		 tianjia.setBounds(970, 315, 93, 23);
+		 add(tianjia);
 
 		 tof = new JTextField();
 		 tof.setBounds(880, 116, 239, 28);
@@ -359,7 +375,7 @@ public class LoadCarOrder extends JPanel {
 
 	}
 	public class submitListener implements ActionListener{
-		LoadNoteOnServiceVO  vo=null;
+		
 
 
 		public void actionPerformed(ActionEvent e) {
@@ -380,16 +396,71 @@ public class LoadCarOrder extends JPanel {
 			}
 			vo=new LoadNoteOnServiceVO (data.getText(),service.getText(),car.getText(),to.getText(),scar.getText(),superman.getText(),senderman.getText(),barcodes);
 			vo.setUserName(lim.getUserName());
+			vo.setOrganization(lim.getOrganization());
 			int result = JOptionPane.showConfirmDialog(null, "确认提交审批？","系统提示",
 					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 			if(result == JOptionPane.YES_OPTION) {
-load.submitHallLoadDoc(vo);
+				//将提交放到新的线程中
+				
+				//提交之后panel里都不可编辑
+				lock(false);
+				//提交之后右下面板换
+				frame.initPaisong(true,false,false);
+				//提交审批
+				new Submitter().start();
 			}
 			else {
 				return;
 
 			}
 
+		}
+	}
+	public void lock(boolean notlock){//解锁那些可以编辑的框框
+		//notlock==true 不锁
+		//textfield
+		dataf.setEditable(notlock);
+		dataf.setEnabled(notlock);
+		servicecodef.setEditable(notlock);
+		servicecodef.setEnabled(notlock);
+		carcodef.setEditable(notlock);
+		carcodef.setEnabled(notlock);
+		codef.setEditable(notlock);
+		codef.setEnabled(notlock);
+		tof.setEditable(notlock);
+		tof.setEnabled(notlock);
+		scarcodef.setEditable(notlock);
+		scarcodef.setEnabled(notlock);
+		supermanf.setEditable(notlock);
+		supermanf.setEnabled(notlock);
+		sendmanf.setEditable(notlock);
+		sendmanf.setEnabled(notlock);
+		//button
+		queren.setEnabled(notlock);
+		tianjia.setEnabled(notlock);
+	}
+	public void setResult(ResultMsg s) {//审批之后才调这个方法
+		//审批通没通过在这里体现
+		frame.initPaisong(false,s.isPass(),!s.isPass());
+		frame.leftdown.repaint();
+		lock(true);
+		if(s.isPass()){//审批通过之后，清空textfiled
+			//解锁那些可以编辑的框框
+			//清空textfiled
+			CleanTextField.clean(thisP);
+		}
+		else{//审批未通过
+			JOptionPane.showConfirmDialog(null, s.getMessage());
+			//解锁那些可以编辑的框框
+		}
+		
+		}
+	class Submitter extends Thread {
+		
+		public void run() {
+			super.run();
+			ResultMsg result=load.submitHallLoadDoc(vo);
+			setResult(result);
 		}
 	}
 	public void paintComponent(Graphics g) {

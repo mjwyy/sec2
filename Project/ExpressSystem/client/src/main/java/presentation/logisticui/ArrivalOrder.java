@@ -45,6 +45,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 import presentation.logisticui.ReceiveOrderPanel.Submitter;
+import presentation.util.CleanTextField;
 import presentation.util.CurrentTime;
 import presentation.util.LeftDownPanel;
 import presentation.util.UnEditablePanel;
@@ -53,17 +54,30 @@ public class ArrivalOrder extends JPanel {
 	JPanel thisP=this;
 	//ArrivalNoteOnServiceBLService arrive=new ArrivalNoteOnServiceBLService_Stub();
 	ArrivalNoteOnServiceBLService arrive=new ArrivalNoteOnService();
+	private ArrivalNoteOnServiceVO  vo;//提交的vo
+	//不可编辑，起确认作用框
 	private JTextField DATA;
 	private JTextField FROM;
 	private JTextField CODE;
+	private ArrayList<BarcodeAndState> BarcodeAndStates =new ArrayList<BarcodeAndState>();
+	private JTextField TYPE;
+	//条形码列表
+	private JTable table;
+	private DefaultTableModel model;
+	//可编辑框
 	private JTextField dataF;
 	private JTextField barcodeF;
 	private JTextField fromF;
-	private ArrayList<BarcodeAndState> BarcodeAndStates =new ArrayList<BarcodeAndState>();
+	private JTextField codeF;
+	private JComboBox typeF;
 	private JComboBox state;
-private LogInMsg lim;
-private Service frame;//
-	
+	//按钮
+	private JButton tianjia;//添加
+	private JButton queren;//确认
+	//	从frame获得的信息
+	private LogInMsg lim;
+	private Service frame;//
+
 	/**
 	 * 窗口宽度
 	 */
@@ -81,12 +95,11 @@ private Service frame;//
 	 * 右边field
 	 */
 	private static final int WIDTHT = WIDTHL+76;
-	private JTextField codeF;
-	private JTextField TYPE;
-	private JComboBox typeF;
-	private JTable table;
-	private DefaultTableModel model;
-	private ArrivalNoteOnServiceVO  vo;//提交的vo
+
+
+
+
+
 	public ArrivalOrder(LogInMsg lim,Service frame) {
 
 
@@ -145,51 +158,51 @@ private Service frame;//
 		btnNewButton.addActionListener(new submitListener());
 		add(btnNewButton);
 
-	
-		
-		
-		 String[] columnNames =  
-		        { "货物编码", "货物状态"};  
-		  
-		        Object[][] obj = new Object[1][2];  
-		      
-		          
-		          
-		        /* 
-		         * JTable的其中一种构造方法 
-		         */  
-		        model=new DefaultTableModel(obj,columnNames);
-		        table = new JTable(model);
-		        model.removeRow(0);
-		        table.addMouseListener(new MouseAdapter() {
-		        	public void mouseClicked(MouseEvent arg0) {
-		        	int selectedRow= table.getSelectedRow();
-		        	Object oa=model.getValueAt(selectedRow, 0);
-		        	codeF.setText(oa.toString());
-		        	Object ob=model.getValueAt(selectedRow, 1);
-		        	state.setSelectedItem(ob.toString());;
-		        	
-		        	}
-		        });
-		        /* 
-		         * 设置JTable的列默认的宽度和高度 
-		         */  
-		        TableColumn column = null;  
-		        int colunms = table.getColumnCount();  
-		        for(int i = 0; i < colunms; i++)  
-		        {  
-		            column = table.getColumnModel().getColumn(i);  
-		            /*将每一列的默认宽度设置为100*/  
-		            column.setPreferredWidth(200);  
-		        }  
-		        /* 
-		         * 设置JTable自动调整列表的状态，此处设置为关闭 
-		         */  
-		        table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);  
-		          
-		        /*用JScrollPane装载JTable，这样超出范围的列就可以通过滚动条来查看*/  
-		        JScrollPane scroll = new JScrollPane(table); 
-		    	scroll.setBounds(120, 188, 353, 138);
+
+
+
+		String[] columnNames =  
+			{ "货物编码", "货物状态"};  
+
+		Object[][] obj = new Object[1][2];  
+
+
+
+		/* 
+		 * JTable的其中一种构造方法 
+		 */  
+		model=new DefaultTableModel(obj,columnNames);
+		table = new JTable(model);
+		model.removeRow(0);
+		table.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent arg0) {
+				int selectedRow= table.getSelectedRow();
+				Object oa=model.getValueAt(selectedRow, 0);
+				codeF.setText(oa.toString());
+				Object ob=model.getValueAt(selectedRow, 1);
+				state.setSelectedItem(ob.toString());;
+
+			}
+		});
+		/* 
+		 * 设置JTable的列默认的宽度和高度 
+		 */  
+		TableColumn column = null;  
+		int colunms = table.getColumnCount();  
+		for(int i = 0; i < colunms; i++)  
+		{  
+			column = table.getColumnModel().getColumn(i);  
+			/*将每一列的默认宽度设置为100*/  
+			column.setPreferredWidth(200);  
+		}  
+		/* 
+		 * 设置JTable自动调整列表的状态，此处设置为关闭 
+		 */  
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);  
+
+		/*用JScrollPane装载JTable，这样超出范围的列就可以通过滚动条来查看*/  
+		JScrollPane scroll = new JScrollPane(table);
+		scroll.setBounds(120, 188, 353, 138);
 		scroll.setViewportView(table);
 		add(scroll);
 
@@ -206,10 +219,10 @@ private Service frame;//
 		label_11.setBounds(WIDTHL, 81, 54, 15);
 		add(label_11);
 
-		JButton btnNewButton_1 = new JButton("确认");
-		btnNewButton_1.setBounds(1025, 223, 93, 23);
-		btnNewButton_1.addActionListener(new confirmListener());
-		add(btnNewButton_1);
+		queren = new JButton("确认");
+		queren.setBounds(1025, 223, 93, 23);
+		queren.addActionListener(new confirmListener());
+		add(queren);
 
 		JLabel label_14 = new JLabel("货物编码");
 		label_14.setBounds(787, 265, 66, 15);
@@ -220,10 +233,10 @@ private Service frame;//
 		add(barcodeF);
 		barcodeF.setColumns(10);
 
-		JButton button = new JButton("添加");
-		button.addActionListener(new addListener());
-		button.setBounds(1025, 330, 93, 23);
-		add(button);
+		tianjia = new JButton("添加");
+		tianjia.addActionListener(new addListener());
+		tianjia.setBounds(1025, 330, 93, 23);
+		add(tianjia);
 
 		fromF = new JTextField();
 		fromF.setBounds(863, 78, 140, 28);
@@ -252,20 +265,20 @@ private Service frame;//
 		state.setModel(new DefaultComboBoxModel(new String[] {"完整", "损坏", "丢失"}));
 		state.setBounds(873, 305, 130, 21);
 		add(state);
-		
+
 		JLabel label_4 = new JLabel("编号类型");
 		label_4.setBounds(787, 125, 66, 15);
 		add(label_4);
-		
-		 typeF = new JComboBox();
+
+		typeF = new JComboBox();
 		typeF.setModel(new DefaultComboBoxModel(new String[] {"中转单编号", "汽运编号"}));
 		typeF.setBounds(863, 119, 140, 21);
 		add(typeF);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("编号类型");
 		lblNewLabel_1.setBounds(97, 81, 82, 18);
 		add(lblNewLabel_1);
-		
+
 		TYPE = new JTextField();
 		TYPE.setEnabled(false);
 		TYPE.setEditable(false);
@@ -282,7 +295,7 @@ private Service frame;//
 		//初始化顺序问题
 		Boolean isT;
 		//伪造的vo
-		
+
 		public void actionPerformed(ActionEvent arg0) {
 			ArrayList<BarcodeAndState> wei =new ArrayList<BarcodeAndState>();
 			GoodsState state1=GoodsState.COMPLETE;
@@ -294,19 +307,19 @@ private Service frame;//
 			vo=new ArrivalNoteOnServiceVO (dataF.getText(),isT, barcodeF.getText(),fromF.getText(),wei);
 			ResultMsg result=arrive.inputHallArrivalDoc(vo);
 			if(result.isPass()){//格式检查正确
-			DATA.setText(dataF.getText());
-			CODE.setText(barcodeF.getText());
-			FROM.setText(fromF.getText());
-			TYPE.setText(typeF.getSelectedItem().toString());
-			
+				DATA.setText(dataF.getText());
+				CODE.setText(barcodeF.getText());
+				FROM.setText(fromF.getText());
+				TYPE.setText(typeF.getSelectedItem().toString());
+
 			}
 			else{//格式有误
 				int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
-					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 
-				}
-		
-			
+			}
+
+
 		}
 	}
 	public class addListener implements ActionListener{
@@ -324,7 +337,7 @@ private Service frame;//
 			//伪造的vo
 			ArrayList<BarcodeAndState> wei =new ArrayList<BarcodeAndState>();
 			wei.add(bas);
-            // 修改025000201510120000003
+			// 修改025000201510120000003
 			ArrivalNoteOnServiceVO  aa=new ArrivalNoteOnServiceVO("2015-10-22",true,"025000201510120000003","南京",wei);
 			ResultMsg result=arrive.inputHallArrivalDoc(aa);
 			if(result.isPass()){//格式检查正确
@@ -334,27 +347,27 @@ private Service frame;//
 			}
 			else{//格式有误
 				int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
-					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 
-				}
+			}
 		}
 
 
 	}
 	public class submitListener implements ActionListener{
-		
+
 		Boolean isT;
 
 		public void actionPerformed(ActionEvent e) {
 			if(TYPE.getText().isEmpty()){
 				JOptionPane.showConfirmDialog(null, "有咚咚漏填啦","系统提示",
 						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-			return ;
+				return ;
 			}
 			if(model.getRowCount()==0){
 				JOptionPane.showConfirmDialog(null, "有咚咚漏填啦","系统提示",
 						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-			return ;
+				return ;
 			}
 			if(TYPE.getText().equals("中转单编号"))
 				isT=true;
@@ -376,20 +389,20 @@ private Service frame;//
 			}
 			vo=new ArrivalNoteOnServiceVO (DATA.getText(),isT, CODE.getText(),FROM.getText(),BarcodeAndStates);
 			vo.setUserName(lim.getUserName());
+			vo.setOrganization(lim.getOrganization());
 			int result1 = JOptionPane.showConfirmDialog(null, "确认提交审批？","系统提示",
 					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 			if(result1 == JOptionPane.YES_OPTION) {
-			//将提交放到新的线程中
-				//	ResultMsg resultS=arrive.submitHallArrivalDoc(vo);
-				
-			//提交之后panel里都不可编辑
-			UnEditablePanel.UnEdit(thisP);
-			//提交之后右下面板换
-			frame.initDaoda(true,false,false);
-		//	frame.setReceivingNoteVo(vo);//将vo存到Frame里
-		//提交审批
-			new Submitter().start();
-			
+				//将提交放到新的线程中
+
+				//提交之后panel里都不可编辑
+				lock(false);
+				//提交之后右下面板换
+				frame.initDaoda(true,false,false);
+				//	frame.setReceivingNoteVo(vo);//将vo存到Frame里
+				//提交审批
+				new Submitter().start();
+
 			}
 			else {
 				return;
@@ -402,17 +415,41 @@ private Service frame;//
 		//审批通没通过在这里体现
 		frame.initDaoda(false,s.isPass(),!s.isPass());
 		frame.leftdown.repaint();
+		lock(true);
 		if(s.isPass()){//审批通过之后，清空textfiled
-			//parent.setReceivingNoteVo(null);
+			//解锁那些可以编辑的框框
+			
+			//清空textfiled
+			CleanTextField.clean(thisP);
 		}
 		else{//审批未通过
-			JOptionPane.showConfirmDialog(null, s.getMessage());
-		
+			JOptionPane.showConfirmDialog(null,s.getMessage() ,"系统提示",
+					JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
+			//解锁那些可以编辑的框框
 		}
-		
-		}
+
+	}
+	public void lock(boolean notlock){//解锁那些可以编辑的框框
+		//notlock==true 不锁
+		//textfield
+		dataF.setEditable(notlock);
+		dataF.setEnabled(notlock);
+		barcodeF.setEditable(notlock);
+		barcodeF.setEnabled(notlock);
+		fromF.setEditable(notlock);
+		fromF.setEnabled(notlock);
+		codeF.setEditable(notlock);
+		codeF.setEnabled(notlock);
+		typeF.setEditable(notlock);
+		typeF.setEnabled(notlock);
+		state.setEditable(notlock);
+		state.setEnabled(notlock);
+		//button
+		queren.setEnabled(notlock);
+		tianjia.setEnabled(notlock);
+	}
 	class Submitter extends Thread {
-		
+
 		public void run() {
 			super.run();
 			ResultMsg result=arrive.submitHallArrivalDoc(vo);

@@ -72,7 +72,7 @@ public class Driver extends JPanel {
 		 * 设置JTable的列名 
 		 */  
 		String[] columnNames =  
-			{ "司机编号", "姓名", "性别", "所属机构","职位", "身份证号","工作时长（按月）","手机" ,"工资","行驶证期限"};  
+			{ "司机编号", "姓名", "性别", "所属机构","职位", "身份证号","工作时长","手机" ,"工资","驾照过期日期"};  
 
 		/* 
 		 * 初始化JTable里面各项的值 
@@ -259,7 +259,7 @@ public class Driver extends JPanel {
 		label_7.setBounds(722, 295, 54, 15);
 		add(label_7);
 
-		JLabel label_8 = new JLabel("行驶证期限");
+		JLabel label_8 = new JLabel("驾照过期日期");
 		label_8.setBounds(708, 363, 93, 15);
 		add(label_8);
 
@@ -325,7 +325,7 @@ public class Driver extends JPanel {
 		sala.setBounds(824, 322, 170, 28);
 		add(sala);
 		
-		JButton aaall = new JButton("显示全部");
+		JButton aaall = new JButton("刷新");
 		aaall.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			initTabel();

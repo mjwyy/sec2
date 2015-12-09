@@ -91,7 +91,6 @@ public class ChaKan extends JPanel {
 		 * 初始化JTable里面各项的值 
 		 */  
 		Object[][] obj = new Object[1][5];  
-		Object []a={1,1,1,2,"点击察看"};
 
 
 
@@ -101,7 +100,6 @@ public class ChaKan extends JPanel {
 		model=new DefaultTableModel(obj,columnNames);
 		table = new JTable(model);
 		model.removeRow(0);
-		model.addRow(a); 
 		TableColumn column = null;  
 		int colunms = table.getColumnCount();  
 		for(int i = 0; i < colunms; i++)  
@@ -326,13 +324,19 @@ public class ChaKan extends JPanel {
 		public void actionPerformed(ActionEvent arg0) {
 			ResultMsg result=	spb.inputTime(startT.getText()+" "+CurrentTime.second(), endT.getText()+" "+CurrentTime.second());
 			if(result.isPass()){
-								ivo=spb.show(startT.getText()+" "+CurrentTime.second(), endT.getText()+" "+CurrentTime.second());
+				try{			
+				ivo=spb.show(startT.getText()+" "+CurrentTime.second(), endT.getText()+" "+CurrentTime.second());
+				}
+				catch(Exception e){
+					JOptionPane.showConfirmDialog(null, e.getMessage());
+				}
 				//把上面的tabel显示一下
 				scroll.setVisible(true);
 				int chu=0;
 				int ru=0;
 				int money=0;
-				
+				//如果为null，不显示
+				if(model.getRowCount()!=0){
 					vo=ivo;
 					Object [] aaa={model.getRowCount()+1,vo.getOutNum(),vo.getInNum(),vo.getMoney(),"点击查看"};
 					model.addRow(aaa);
@@ -345,6 +349,10 @@ public class ChaKan extends JPanel {
 				inn.setText(ru+"");
 				outn.setText(chu+"");
 				mon.setText(money+"");
+				}
+				else{
+					JOptionPane.showConfirmDialog(null, "这段时间内木有库存哦~");
+				}
 			}
 			else{
 				int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",

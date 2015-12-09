@@ -47,6 +47,8 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 
 
+
+import presentation.mainui.loginFrame;
 import util.LogInMsg;
 
 import java.awt.Toolkit;
@@ -65,6 +67,9 @@ public class Service extends JFrame {
 	private  JLabel daodaF;
 	private  JLabel zhuangcheF;
 	private  JLabel paisongF;
+	private JLabel fukuan ;
+	private JLabel fukuanS ;
+	private JLabel fukuanF ;
 	Service frame=this;
 	private ArrivalOrder a;
 	/**
@@ -92,7 +97,7 @@ public class Service extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -107,7 +112,7 @@ public class Service extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 	/**
 	 * 更改外观
 	 */
@@ -139,7 +144,7 @@ public class Service extends JFrame {
 	/**
 	 * 设置关闭按钮
 	 */
-	public  void setClose() {
+	private  void setClose() {
 		this.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -148,12 +153,16 @@ public class Service extends JFrame {
 						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 				if(result == JOptionPane.YES_OPTION) {
 					dispose();
+					loginFrame lf = new loginFrame();
+					lf.setVisible(true);
 				} else {
 					setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 				}
 			}
 		});
 	}
+
+	
 	//设置菜单栏
 	public void setCaiDanLan(){
 
@@ -175,7 +184,7 @@ public class Service extends JFrame {
 	 * Create the frame.
 	 */
 	public Service(LogInMsg lim1) {
-		setCaiDanLan();
+		
 
 		this.lim=lim1;
 		this.setResizable(false);//不可调整大小
@@ -359,7 +368,7 @@ public class Service extends JFrame {
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("装车单");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				LoadCarOrder a=new LoadCarOrder(lim);
+				LoadCarOrder a=new LoadCarOrder(lim,frame);
 				a.setBounds(0, 0, WIDTHM, HEIGHTM);
 				a.setVisible(true);
 				middle.removeAll();
@@ -372,7 +381,7 @@ public class Service extends JFrame {
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("派送单");
 		mntmNewMenuItem_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SendOrder a=new SendOrder(lim);
+				SendOrder a=new SendOrder(lim,frame);
 				a.setBounds(0, 0, WIDTHM, HEIGHTM);
 				a.setVisible(true);
 				middle.removeAll();
@@ -382,44 +391,67 @@ public class Service extends JFrame {
 		});
 		mnNewMenu.add(mntmNewMenuItem_2);
 
-		daoda = new JLabel("您提交的到达单已通过审批,现在可以填下一份了哟");
-		daoda.setBounds(21, 10, 487, 24);
+		daoda = new JLabel("您提交的到达单已通过审批,现在可以填下一份了哟~");
+		daoda.setBounds(21, 3, 487, 24);
 		leftdown.add(daoda);
-		daodaA = new JLabel("您提交的正在等待审批哦，请耐心等待哦~");
-		daodaA.setBounds(21, 10, 487, 24);
+		daodaA = new JLabel("您提交的到达单正在等待审批哦，请耐心等待哦~");
+		daodaA.setBounds(21, 3, 487, 24);
 		leftdown.add(daodaA);
 		daodaF = new JLabel("您提交的到达单未通过审批>_<");
-		daodaF.setBounds(21, 10, 487, 24);
+		daodaF.setBounds(21, 3, 487, 24);
 		daodaF.setForeground(Color.red);
 		leftdown.add(daodaF);
 
-		paisong = new JLabel("您提交的派送单已通过审批,现在可以填下一份了哟");
-		paisong.setBounds(21, 60, 487, 24);
+		paisong = new JLabel("您提交的派送单已通过审批,现在可以填下一份了哟~");
+		paisong.setBounds(21, 31, 487, 24);
 		leftdown.add(paisong);
 		paisongA = new JLabel("您提交的派送单正在等待审批哦，请耐心等待哦~");
-		paisongA.setBounds(21, 60, 487, 24);
+		paisongA.setBounds(21, 31, 487, 24);
 		leftdown.add(paisongA);
 		paisongF = new JLabel("您提交的派送单未通过审批>_<");
-		paisongF.setBounds(21, 10, 487, 24);
+		paisongF.setBounds(21, 31, 487, 24);
 		paisongF.setForeground(Color.red);
 		leftdown.add(paisongF);
 
-		zhuangche = new JLabel("您提交的装车单已通过审批,现在可以填下一份了哟");
-		zhuangche.setBounds(21, 35, 487, 24);
+		zhuangche = new JLabel("您提交的装车单已通过审批,现在可以填下一份了哟~");
+		zhuangche.setBounds(21, 61, 487, 24);
 		leftdown.add(zhuangche);
 		zhuangcheA = new JLabel("您提交的装车单正在等待审批哦，请耐心等待哦~");
-		zhuangcheA.setBounds(21, 35, 487, 24);
+		zhuangcheA.setBounds(21, 61, 487, 24);
 		leftdown.add(zhuangcheA);
 		zhuangcheF = new JLabel("您提交的装车单未通过审批>_<");
-		zhuangcheF.setBounds(21, 10, 487, 24);
+		zhuangcheF.setBounds(21, 61, 487, 24);
 		zhuangcheF.setForeground(Color.red);
 		leftdown.add(zhuangcheF);
+		
+		fukuan = new JLabel("您提交的付款单正在等待审批哦，请耐心等待哦~");
+		fukuan.setBounds(21, 90, 487, 24);
+		leftdown.add(fukuan);
+		
+		fukuanS = new JLabel("您提交的付款单已通过审批,现在可以填下一份了哟~");
+		fukuanS.setBounds(21, 90, 487, 24);
+		leftdown.add(fukuanS);
+		
+		fukuanF = new JLabel("您提交的付款单未通过审批>_<");
+		fukuanF.setBounds(21, 90, 487, 24);
+		leftdown.add(fukuanF);
 
-		initPaisong(true,false,false);
+		initPaisong(false,true,false);
 
-		initZhuangche(true,false,false);
+		initZhuangche(false,true,false);
 
-		initDaoda(true,false,false);
+		initDaoda(false,true,false);
+		
+		initFukuan(false,true,false);
+		
+		setCaiDanLan();
+	}
+	public  void initFukuan(boolean a,boolean s,boolean f){
+
+		fukuanS.setVisible(s);
+		fukuanF.setVisible(f);	
+		fukuan.setVisible(a);	
+
 	}
 	//等待审批，已通过审批，未通过审批
 	public  void initPaisong(boolean a,boolean b,boolean f){
@@ -441,6 +473,4 @@ public class Service extends JFrame {
 		daodaA.setVisible(a);
 		daodaF.setVisible(f);
 	}
-
-
 }

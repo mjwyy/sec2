@@ -16,6 +16,8 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+import presentation.logisticui.ArrivalOrder.Submitter;
+import presentation.util.CleanTextField;
 import presentation.util.CurrentTime;
 import presentation.util.LeftDownPanel;
 import presentation.util.UnEditablePanel;
@@ -43,16 +45,28 @@ public class PayMent extends JPanel {
 	//先用stub代替哦
 //	private CreditNoteInputBLService payment=new CreditNoteInputBLService_Stub();
 	CreditNoteInputBLService payment=new CreditNoteInput();
+	private CreditNoteVO vo;
+	//不可编及的框
 	private JTextField DATA;
 	private JTextField MONEY;
+	private JTextField SENDER;
+	//可编辑的框
 	private JTextField dataF;
 	private JTextField codeF;
 	private JTextField senderF;
-	private JTextField SENDER;
 	private JTextField moneyF;
+	//frame传来的
 	private LogInMsg lim;
 	private Service frame;//
+	
+	//条形码table
+	private JTable table;
+	private DefaultTableModel model;
 	private ArrayList<String> barcode=new ArrayList<String>();
+	
+	//button
+	private JButton add;
+	private JButton confirm ;
 	/**
 	 * 窗口宽度
 	 */
@@ -70,8 +84,7 @@ public class PayMent extends JPanel {
 	 * 右边field
 	 */
 	private static final int WIDTHT = WIDTHL+76;
-	private JTable table;
-	private DefaultTableModel model;
+
 	/**
 	 * Create the panel.
 	 */
@@ -173,7 +186,7 @@ public class PayMent extends JPanel {
 		label_13.setBounds(787, 147, 82, 15);
 		add(label_13);
 
-		JButton confirm = new JButton("确认");
+		confirm = new JButton("确认");
 		confirm.addActionListener(new confirmListener());
 
 		confirm.setBounds(978, 188, 93, 23);
@@ -188,7 +201,7 @@ public class PayMent extends JPanel {
 		add(codeF);
 		codeF.setColumns(10);
 
-		JButton add = new JButton("添加");
+		add = new JButton("添加");
 		add.setIcon(null);
 		add.addActionListener(new addListener());
 		add.setBounds(940, 286, 66, 23);
@@ -248,6 +261,21 @@ public class PayMent extends JPanel {
 			}
 		}
 	}
+	public void lock(boolean notlock){//解锁那些可以编辑的框框
+		//notlock==true 不锁
+		//textfield
+		dataF.setEditable(notlock);
+		dataF.setEnabled(notlock);
+		codeF.setEditable(notlock);
+		codeF.setEnabled(notlock);
+		senderF.setEditable(notlock);
+		senderF.setEnabled(notlock);
+		moneyF.setEditable(notlock);
+		moneyF.setEnabled(notlock);
+		//button
+		add.setEnabled(notlock);
+		confirm.setEnabled(notlock);
+	}
 	public class addListener implements ActionListener{
 		CreditNoteVO vo=null;
 		public void actionPerformed(ActionEvent e) {
@@ -271,7 +299,7 @@ public class PayMent extends JPanel {
 
 	}
 	public class submitListener implements ActionListener{
-		CreditNoteVO vo=null;
+		
 		 
 		
 		public void actionPerformed(ActionEvent e) {
@@ -292,28 +320,18 @@ public class PayMent extends JPanel {
 			}
 			vo=new CreditNoteVO(DATA.getText(), MONEY.getText(), SENDER.getText(), barcode);
 			vo.setUserName(lim.getUserName());
+			
 			int result = JOptionPane.showConfirmDialog(null, "确认提交审批？","系统提示",
 					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 			if(result == JOptionPane.YES_OPTION) {
 				ResultMsg resultS=payment.submitReceipeDoc(vo);
 				//提交之后panel里都不可编辑
-				UnEditablePanel.UnEdit(thisP);
+				lock(false);
 				//提交之后右下面板换
-			/*	LeftDownPanel ldp=new LeftDownPanel();
-				ldp.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
-				ldp.setBounds(0,0,939, 124);
-			ldp.setVisible(true);
-				frame.leftdown.removeAll();
-				frame.leftdown.add(ldp);
-				frame.leftdown.repaint();*/
-				if(resultS.isPass()){//提交成功
-					
-				}
-				else{//有误
-					JOptionPane.showConfirmDialog(null, resultS.getMessage(),"系统提示",
-							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-
-				}
+				frame.initFukuan(true,false,false);
+				//提交审批
+				new Submitter().start();
+				
 			}
 			else {
 				return;
@@ -322,6 +340,29 @@ public class PayMent extends JPanel {
 
 		}
 		}
+	public void setResult(ResultMsg s) {//审批之后才调这个方法
+		//审批通没通过在这里体现
+		frame.initFukuan(false,s.isPass(),!s.isPass());
+		frame.leftdown.repaint();
+		lock(true);
+		if(s.isPass()){//审批通过之后，清空textfiled
+			CleanTextField.clean(thisP);
+		}
+		else{//审批未通过
+			JOptionPane.showConfirmDialog(null, s.getMessage());
+			
+		}
+		
+		}
+	class Submitter extends Thread {
+		
+		public void run() {
+			super.run();
+			//ResultMsg result=payment.submitReceipeDoc(vo);
+			//setResult(result);
+			setResult(payment.submitReceipeDoc(vo));
+		}
+	}
 		public void paintComponent(Graphics g) {
 			super.paintComponents(g);
 			ImageIcon img = new ImageIcon("image/0111.jpg");

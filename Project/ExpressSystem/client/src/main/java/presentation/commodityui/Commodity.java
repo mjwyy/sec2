@@ -47,7 +47,10 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 
 
+
+import presentation.logisticui.CourierFrame;
 import presentation.logisticui.PayMent;
+import presentation.mainui.loginFrame;
 import util.LogInMsg;
 
 import java.awt.Toolkit;
@@ -81,8 +84,8 @@ private LogInMsg lim;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-	/*	EventQueue.invokeLater(new Runnable() {
+/*public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					Commodity.changeLook();
@@ -95,8 +98,8 @@ private LogInMsg lim;
 					e.printStackTrace();
 				}
 			}
-		});*/
-	}
+		});
+	}*/
 	/**
 	 * 更改外观
 	 */
@@ -133,16 +136,19 @@ private LogInMsg lim;
 			@Override
 			public void windowClosing(WindowEvent e) {
 				super.windowClosing(e);
-				int result = JOptionPane.showConfirmDialog(Commodity.this, "确认退出？","系统提示",
+				int result = JOptionPane.showConfirmDialog( Commodity.this, "确认退出？","系统提示",
 						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 				if(result == JOptionPane.YES_OPTION) {
-					System.exit(0);
+					dispose();
+					loginFrame lf = new loginFrame();
+					lf.setVisible(true);
 				} else {
-					return;
+					setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 				}
 			}
 		});
 	}
+
 	//设置菜单栏
 public void setCaiDanLan(){
 	
@@ -222,27 +228,27 @@ public void setCaiDanLan(){
 		QUANXIANW.setLayout(null);
 		
 		JLabel user = new JLabel("用户：");
-		user.setBounds(10, 2, 54, 15);
+		user.setBounds(10, 2, 54, 18);
 		QUANXIANW.add(user);
 		
 		JLabel username = new JLabel(lim.getUserName());
-		username.setBounds(56, 2, 54, 15);
+		username.setBounds(56, 2, 77, 18);
 		QUANXIANW.add(username);
 		
 		JLabel quanxian = new JLabel("权限：");
-		quanxian.setBounds(10, 25, 54, 15);
+		quanxian.setBounds(10, 25, 54, 18);
 		QUANXIANW.add(quanxian);
 		
 		JLabel label = new JLabel(lim.getOrganization());
-		label.setBounds(56, 25, 129, 15);
+		label.setBounds(56, 25, 129, 18);
 		QUANXIANW.add(label);
 		
 		JLabel label_1 = new JLabel("公告:");
-		label_1.setBounds(10, 53, 54, 15);
+		label_1.setBounds(10, 53, 54, 18);
 		QUANXIANW.add(label_1);
 		
 		JLabel label_2 = new JLabel("快递系统上线试运行，请反馈使用体验");
-		label_2.setBounds(56, 53, 284, 15);
+		label_2.setBounds(56, 53, 284, 18);
 		QUANXIANW.add(label_2);
 		
 		JPanel right = new JPanel();
@@ -322,5 +328,7 @@ public void setCaiDanLan(){
 		JLabel lblNewLabel_3 = new JLabel("这是出库单");
 		lblNewLabel_3.setBounds(25, 49, 471, 30);
 		panel_2.add(lblNewLabel_3);
+		
+		setCaiDanLan();
 	}
 }

@@ -6,6 +6,8 @@ import util.enums.PriceType;
 import vo.DistanceVO;
 import vo.PriceVO;
 
+import java.util.ArrayList;
+
 /**
  * 总经理调整业务数据的逻辑接口
  * 
@@ -18,7 +20,7 @@ public interface BusinessDataModificationBLService {
      * 获取数据库中所有的价格信息
      * @return 价格的类型与数量
      */
-    PriceVO getAllPrices();
+    ArrayList<PriceVO> getAllPrices();
 
     /**
      * 总经理要求价格常量
@@ -39,7 +41,7 @@ public interface BusinessDataModificationBLService {
      *
      * @return 城市1城市2与距离
      */
-    DistanceVO getAllDistanceInfo();
+    ArrayList<DistanceVO> getAllDistanceInfo();
 
     /**
      * 总经理输入欲修改的城市之间距离信息

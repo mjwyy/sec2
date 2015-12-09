@@ -12,13 +12,12 @@ import vo.PriceVO;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * Created by kylin on 15/11/17.
  */
 public class BusinessDataModification implements BusinessDataModificationBLService {
-
-    //TODO 价格与距离没有查询接口
 
     private BusinessDataModificationDataService dataService;
 
@@ -31,8 +30,20 @@ public class BusinessDataModification implements BusinessDataModificationBLServi
     }
 
     @Override
-    public PriceVO getAllPrices() {
-        return null;
+    public ArrayList<PriceVO> getAllPrices() {
+        ArrayList<PriceVO> priceVOs = new ArrayList<>();
+        try {
+            for(PriceType priceType : PriceType.values()){
+                double price = this.dataService.getPrice(priceType);
+                PriceVO priceVO = new PriceVO(priceType,price);
+                priceVOs.add(priceVO);
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        } catch (ElementNotFoundException e) {
+            e.printStackTrace();
+        }
+        return priceVOs;
     }
 
     @Override
@@ -64,8 +75,33 @@ public class BusinessDataModification implements BusinessDataModificationBLServi
     }
 
     @Override
-    public DistanceVO getAllDistanceInfo() {
-        return null;
+    public ArrayList<DistanceVO> getAllDistanceInfo() {
+        ArrayList<DistanceVO> results = new ArrayList<>();
+        try {
+            ArrayList<String> cities = this.dataService.getAllCities();
+            String city1,city2;
+            int size = cities.size();
+            if(size < 1)
+                return results;
+            String[] cityArray = new String[size];
+            for(int i = 0; i < size; i++){
+                cityArray[i] = cities.get(i);
+            }
+            for(int i = 0; i < size; i++){
+                city1 = cityArray[i];
+                for(int j = i+1; j < size; j++){
+                    city2 = cityArray[j];
+                    double distance = this.dataService.getDistance(city1,city2);
+                    DistanceVO distanceVO = new DistanceVO(city1,city2,distance);
+                    results.add(distanceVO);
+                }
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        } catch (ElementNotFoundException e) {
+            e.printStackTrace();
+        }
+        return results;
     }
 
     @Override

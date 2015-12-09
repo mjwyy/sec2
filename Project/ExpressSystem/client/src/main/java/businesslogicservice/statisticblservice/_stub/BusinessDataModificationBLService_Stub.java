@@ -6,6 +6,8 @@ import util.enums.PriceType;
 import vo.DistanceVO;
 import vo.PriceVO;
 
+import java.util.ArrayList;
+
 
 public class BusinessDataModificationBLService_Stub implements BusinessDataModificationBLService {
 
@@ -20,7 +22,7 @@ public class BusinessDataModificationBLService_Stub implements BusinessDataModif
     }
 
     @Override
-    public DistanceVO getAllDistanceInfo() {
+    public ArrayList<DistanceVO> getAllDistanceInfo() {
         return null;
     }
 
@@ -30,7 +32,7 @@ public class BusinessDataModificationBLService_Stub implements BusinessDataModif
     }
 
     @Override
-    public PriceVO getAllPrices() {
+    public ArrayList<PriceVO> getAllPrices() {
         return null;
     }
 

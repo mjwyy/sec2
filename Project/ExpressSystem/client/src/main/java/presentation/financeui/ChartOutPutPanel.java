@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 import presentation.commodityui.PanDian;
 import presentation.util.MyJFileChooser;
@@ -28,6 +29,8 @@ import businesslogic.statistic.ChartOutput;
 import businesslogicservice.statisticblservice.ChartOutputBLService;
 import businesslogicservice.statisticblservice._stub.ChartOutputBLService_Stub;
 import util.ResultMsg;
+import util.chart.BusinessStateContent;
+import util.chart.CostAndProfitContent;
 import util.enums.ChartType;
 import vo.BusinessStateChartVO;
 import vo.ChartVO;
@@ -67,6 +70,8 @@ public class ChartOutPutPanel extends JPanel {
 	private JLabel lblNewLabel;
 	private JLabel end;
 	private ObservingTextField endT;
+	private ArrayList<BusinessStateContent> bcontents = new ArrayList<BusinessStateContent>();
+	private  ArrayList<CostAndProfitContent> costAndProfitContents =new ArrayList<CostAndProfitContent>();
 	public  ChartOutPutPanel() {
 		setSize(WIDTH,HEIGHT);
 		setLayout(null);
@@ -146,59 +151,83 @@ public class ChartOutPutPanel extends JPanel {
 		model = new DefaultTableModel();
 		model.setDataVector(data,name);
 		table = new JTable(model);
-		table.setBounds(69, 118, 982, 282);
+		table.setBounds(69, 118, 800, 282);
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(69, 118, 982, 282);
+		scrollPane.setBounds(69, 118, 800, 282);
 		add(scrollPane);
 		
 		JButton btnNewButton = new JButton("查询");
 		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {								
+				 TableColumn column = null;
+			   		int colunms = table.getColumnCount();  
+			   		for(int i = 0; i < colunms; i++)  
+			   		{  
+			   			column = table.getColumnModel().getColumn(i);  
+			   			/*将每一列的默认宽度设置为100*/  
+			   			column.setPreferredWidth(200);  
+			   		} 
+			   		
 				if(comboBox.getSelectedItem().equals("经营情况表"))
 					charttype = charttype.BUSINESS_STAT_CHART;
 				else
 					charttype = charttype.BUSINESS_STAT_CHART;
 				if(!(startT.getText().isEmpty()||endT.getText().isEmpty())){
-				res = service.enquiryChart(charttype,startT.getText(),endT.getText());
+				res = service.enquiryChart(charttype,startT.getText(),endT.getText());//查询格式检查
 				if(res.isPass()){
 				
 			       if(comboBox.getSelectedItem().equals("经营情况表")){
 			    	   name.clear();
+			    	   data.clear();
 			    	   vob = (BusinessStateChartVO) service.getChartVO(charttype,startT.getText(),endT.getText());
-			    	   name.add("日期");
-			    	   name.add("收益");
-			    	   name.add("同期增长率");
-			    	   ArrayList<String> everyday = new ArrayList<String>();
-			    	   ArrayList<Double> profix = new  ArrayList<Double>();
-			    	   ArrayList<Double> growrate = new  ArrayList<Double>();
-			    	   for(int i = 0;i<everyday.size();i++){
+			    	   name.add("收款日期");
+			    	   name.add("收益流水");
+			    	   name.add("收款金额");
+			    	   name.add("收款账户");
+			    	   name.add("付款人");
+			    	if(vob!=null){
+			    	   bcontents = vob.getContents();
+      		    	  
+      		    		   for(int i = 0;i <bcontents.size();i++){
 			    		   Vector row = new Vector();
-			    		   row.add(everyday.get(i));
-			    		   row.add(profix.get(i));
-			    		   row.add(growrate.get(i));
+			    		   row.add(bcontents.get(i).getDate());
+			    		   row.add(bcontents.get(i).getId());
+			    		   row.add(bcontents.get(i).getMoney());
+			    		   row.add(bcontents.get(i).getAccount());
+			    		   row.add(bcontents.get(i).getPayer());
 			    		   data.add(row.clone());
-			    		   model.setDataVector(data,name);
-			    		   table = new JTable(model); 
-			    	   }		    	   
+			    		  
+      		    		   }   	
+      		    		 model.setDataVector(data,name);
+			    		   table = new JTable(model);
+			    	} else{
+			    		noFind();
+			    	}
 			    	   
 			       }else{
+			    	   name.clear();
+			    	   data.clear();
 			    	   voc = (CostAndProfitChartVO)service.getChartVO(charttype,startT.getText(),endT.getText());
 			    	   name.add("日期");
+			    	   name.add("收入");
 			    	   name.add("成本");
-			    	   name.add("收益");
-			    	   ArrayList<String> everyday = new ArrayList<String>();
-			    	   ArrayList<Double> profix = new  ArrayList<Double>();
-			    	   ArrayList<Double> cost = new  ArrayList<Double>();
-			    	   for(int i = 0;i<everyday.size();i++){
+			    	   name.add("利润");
+			    	   if(voc != null){	   
+			    	   costAndProfitContents = voc.getCostAndProfitContents();			    	
+			    	   for(int i = 0;i<costAndProfitContents.size();i++){
 			    		   Vector row = new Vector();
-			    		   row.add(everyday.get(i));
-			    		   row.add(cost.get(i));
-			    		   row.add(profix.get(i));
+			    		   row.add(costAndProfitContents.get(i).getDate());
+			    		   row.add(costAndProfitContents.get(i).getIncome());
+			    		   row.add(costAndProfitContents.get(i).getCost());
+			    		   row.add(costAndProfitContents.get(i).getProfit());
 			    		   data.add(row.clone());
 			    		   model.setDataVector(data,name);
 			    		   table = new JTable(model);   
 			    	   }
-			    	   
+			    	   }else{
+			    		  noFind();
+			    		   
+			    	   }
 			       }
 					
 				}else{
@@ -257,5 +286,14 @@ public class ChartOutPutPanel extends JPanel {
 			int result1 = JOptionPane.showConfirmDialog(null, resultMsg.getMessage(),"系统提示",
 					JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
 		}
+	}
+	
+	public void noFind(){
+		 name.clear();
+		   name.add("查询内容");
+		   data.clear();
+		   Vector row = new Vector();
+		   row.add("未查询到相关报表");
+		   data.add(row.clone());
 	}
 }

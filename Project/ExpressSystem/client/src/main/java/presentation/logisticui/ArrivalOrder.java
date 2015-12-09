@@ -324,8 +324,8 @@ private Service frame;//
 			//伪造的vo
 			ArrayList<BarcodeAndState> wei =new ArrayList<BarcodeAndState>();
 			wei.add(bas);
-            //TODO 修改025000201510120000003
-			ArrivalNoteOnServiceVO  aa=new ArrivalNoteOnServiceVO("2015-10-22",false,"025000201510120000003","南京",wei);
+            // 修改025000201510120000003
+			ArrivalNoteOnServiceVO  aa=new ArrivalNoteOnServiceVO("2015-10-22",true,"025000201510120000003","南京",wei);
 			ResultMsg result=arrive.inputHallArrivalDoc(aa);
 			if(result.isPass()){//格式检查正确
 				String[] row={codeF.getText(),state.getSelectedItem().toString()};
@@ -385,19 +385,11 @@ private Service frame;//
 			//提交之后panel里都不可编辑
 			UnEditablePanel.UnEdit(thisP);
 			//提交之后右下面板换
-			frame.initDaoda(false);
-			parent.setReceivingNoteVo(vo);//将vo存到Frame里
-			parent.setshouJianB(true);
+			frame.initDaoda(true,false,false);
+		//	frame.setReceivingNoteVo(vo);//将vo存到Frame里
+		//提交审批
 			new Submitter().start();
-			if(resultS.isPass()){//提交成功
-//判断审批是否通过
-				
-			}
-			else{//有误
-				JOptionPane.showConfirmDialog(null, resultS.getMessage(),"系统提示",
-						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-
-			}
+			
 			}
 			else {
 				return;
@@ -407,21 +399,24 @@ private Service frame;//
 		}
 	}
 	public void setResult(ResultMsg s) {//审批之后才调这个方法
-		//
+		//审批通没通过在这里体现
 		frame.initDaoda(false,s.isPass(),!s.isPass());
 		frame.leftdown.repaint();
 		if(s.isPass()){//审批通过之后，清空textfiled
-			parent.setReceivingNoteVo(null);
+			//parent.setReceivingNoteVo(null);
 		}
 		else{//审批未通过
 			JOptionPane.showConfirmDialog(null, s.getMessage());
-		}	
+		
+		}
+		
 		}
 	class Submitter extends Thread {
 		
 		public void run() {
 			super.run();
-			setResult(arrive.submitHallArrivalDoc(vo));
+			ResultMsg result=arrive.submitHallArrivalDoc(vo);
+			setResult(result);
 		}
 	}
 	public void paintComponent(Graphics g) {

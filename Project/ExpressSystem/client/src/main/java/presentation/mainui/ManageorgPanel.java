@@ -41,7 +41,7 @@ public class ManageorgPanel extends JPanel {
 	private JComboBox keywordType;
 	private JComboBox orgtype;
 	private OrganizationInfoVO vo;
-	private StaffOrganizationManagementBLService service = new StaffOrganizationManagementBLService_Stub();
+	private StaffOrganizationManagementBLService service = new StaffOrganizationManagement();
 	private OrganizationType organizationType;
 	private ArrayList<StaffVO> staffinfo = new  ArrayList<StaffVO>();
 	private int seletedRow;
@@ -137,6 +137,7 @@ public class ManageorgPanel extends JPanel {
 				ArrayList<OrganizationInfoVO> orglist = new ArrayList<OrganizationInfoVO>();
 				
 				orglist = service.findOrgInfo(vo);
+				data.clear();
 				if(!orglist.isEmpty()){
 					for(int i = 0;i<orglist.size();i++){
 						Vector row = new Vector();
@@ -291,6 +292,7 @@ public class ManageorgPanel extends JPanel {
 	}
 	
 	public void showall(){
+		data.clear();
 		ArrayList<OrganizationInfoVO> volist = new ArrayList<OrganizationInfoVO>();
 		volist = service.showAll();
 		if(!volist.isEmpty()){

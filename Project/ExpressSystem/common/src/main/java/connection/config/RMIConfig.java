@@ -1,17 +1,5 @@
 package connection.config;
 
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.Element;
-import org.dom4j.io.SAXReader;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.util.HashMap;
-import java.util.List;
-
 /**
  * Created by kylin on 15/11/28.
  */
@@ -43,7 +31,7 @@ public class RMIConfig {
 //            }
 //            serverIP = params.get("serverIP");
 //            port =  params.get("port");
-        serverIP = "172.26.219.46";
+        serverIP = "localhost";
         port = "1099";
     }
 

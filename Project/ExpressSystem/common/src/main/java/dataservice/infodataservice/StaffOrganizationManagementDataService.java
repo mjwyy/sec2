@@ -46,7 +46,7 @@ public interface StaffOrganizationManagementDataService extends Remote, Serializ
 	 * @throws ElementNotFoundException
 	 */
 	public boolean removeStaff(StaffPO staff)
-            throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException;
+            throws RemoteException, ElementNotFoundException;
 
 	/**
 	 * Data删除对应OrganizationPO记录
@@ -57,7 +57,7 @@ public interface StaffOrganizationManagementDataService extends Remote, Serializ
 	 * @throws ElementNotFoundException
 	 */
 	public boolean removeOrganization(OrganizationPO org)
-            throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException;
+            throws RemoteException, ElementNotFoundException;
 
 	/**
 	 * Data将originalStaffPO替换为modifiedStaffPO
@@ -69,7 +69,7 @@ public interface StaffOrganizationManagementDataService extends Remote, Serializ
 	 * @throws InterruptWithExistedElementException
 	 */
 	public boolean modifyStaff(StaffPO staff)
-            throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException;
+            throws RemoteException;
 	/**
 	 * Data将originalOrganizationPO数据替换为modifiedOrganizationPO
      *
@@ -80,7 +80,7 @@ public interface StaffOrganizationManagementDataService extends Remote, Serializ
 	 * @throws InterruptWithExistedElementException
 	 */
 	public boolean modifyOrganization(OrganizationPO org)
-            throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException;
+            throws RemoteException;
 
 	/**
      * Data返回符合关键字的员工数据

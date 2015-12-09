@@ -7,11 +7,14 @@ import businesslogicservice.infoblservice._stub.StaffOrganizationManagementBLSer
 import connection.RMIHelper;
 import util.ResultMsg;
 import util.enums.OrganizationType;
+import util.enums.StaffType;
 import vo.OrganizationInfoVO;
 import vo.StaffVO;
 
+import java.lang.reflect.Array;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 public class StaffOrganizationManagementBLService_Driver {
 
@@ -21,8 +24,10 @@ public class StaffOrganizationManagementBLService_Driver {
      * 仓库同中转中心
      */
 	public void drive(StaffOrganizationManagementBLService service){
-
-
+//        testaddStaff(service);
+        addOrg(service);
+//        findStaff(service);
+//        findOrg(service);
 	}
 
     public static void main(String[] args) throws RemoteException, NotBoundException {
@@ -30,5 +35,40 @@ public class StaffOrganizationManagementBLService_Driver {
         StaffOrganizationManagementBLService_Driver driver2 =
                 new StaffOrganizationManagementBLService_Driver();
         driver2.drive(new StaffOrganizationManagement());
+    }
+
+    public void testaddStaff(StaffOrganizationManagementBLService service){
+        ResultMsg r = service.addStaff(new StaffVO("111","测试","男","南京总部", StaffType.MANAGER,
+                "320322199606120014",300,"12345678901","8888"));
+        System.out.println(r.getMessage());
+        System.out.println(r.isPass());
+    }
+
+    public void findStaff(StaffOrganizationManagementBLService service){
+//        StaffVO vo  = new StaffVO(null,"经理",null,null,null,null,0,null,null);
+        StaffVO vo  = new StaffVO(null,null,"女",null,null,null,-1,null,null);
+        ArrayList<StaffVO> staffVOs = service.findStaffInfo(vo);
+        for(StaffVO staffVO: staffVOs){
+            System.out.println(staffVO.getSex()+" "+
+                    staffVO.getName()+" "+staffVO.getOrganization());
+        }
+    }
+
+    public void addOrg(StaffOrganizationManagementBLService service){
+        ResultMsg r = service.addOrganization(new OrganizationInfoVO("010002",OrganizationType.TRANSIT_CENTER,
+                "北京第一仓库",null));
+        System.out.println(r.getMessage());
+    }
+
+    public void findOrg(StaffOrganizationManagementBLService service){
+        OrganizationInfoVO organizationInfoVO = new OrganizationInfoVO(
+                null,null,"南京",null);
+//        OrganizationInfoVO organizationInfoVO = null;
+        ArrayList<OrganizationInfoVO> voArrayList = service.findOrgInfo(organizationInfoVO);
+        System.out.println(voArrayList.isEmpty());
+        for(OrganizationInfoVO result : voArrayList){
+            System.out.println(result.getName()+" "+result.getOrganizationNum());
+        }
+
     }
 }

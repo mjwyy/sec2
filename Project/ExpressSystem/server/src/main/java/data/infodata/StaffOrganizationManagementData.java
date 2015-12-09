@@ -107,7 +107,7 @@ public class StaffOrganizationManagementData extends UnicastRemoteObject impleme
             LogInsHelper.insertLog("人员信息不存在,删除失败");
             throw new ElementNotFoundException();
         }
-        String sql = "DELETE from `staff` where staff_id = " + staff.getStaffID();
+        String sql = "DELETE from `staff` where staff_id = '" + staff.getStaffID()+"'";
         try {
             SqlHelper.excUpdate(sql);
         } catch (SQLException e) {
@@ -139,7 +139,7 @@ public class StaffOrganizationManagementData extends UnicastRemoteObject impleme
     }
 
     @Override
-    public boolean modifyStaff(StaffPO staff) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException{
+    public boolean modifyStaff(StaffPO staff) throws RemoteException{
         int gender = staff.getGender().equals("男") ? 0 : 1;
         String sql = "UPDATE staff SET name = '" + staff.getName() + "'," +
                 " organization = '" + staff.getOrganization() + "'," +
@@ -162,7 +162,7 @@ public class StaffOrganizationManagementData extends UnicastRemoteObject impleme
     }
 
     @Override
-    public boolean modifyOrganization(OrganizationPO org) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException{
+    public boolean modifyOrganization(OrganizationPO org) throws RemoteException{
         String sql = "UPDATE organization SET type = '" + org.getType().getType() + "'," +
                 " name = '" + org.getName() + "'" +
                 " WHERE organization_id = '" + org.getCode() + "'";
@@ -195,13 +195,13 @@ public class StaffOrganizationManagementData extends UnicastRemoteObject impleme
             sql = "SELECT * FROM staff WHERE gender =" + gender;
         } else if (info.getIDCardNumber() != null)
             sql = "SELECT * FROM staff WHERE idCardNumber LIKE '%" + info.getIDCardNumber() + "%'";
-        else if (info.getSalary() != 0.0)
+        else if (info.getSalary() != -1)
             sql = "SELECT * FROM staff WHERE salary LIKE '%" + info.getSalary() + "%'";
         else if (info.getPhoneNumber() != null)
             sql = "SELECT * FROM staff WHERE phoneNumber LIKE '%" + info.getPhoneNumber() + "%'";
         else if (info.getPosition() != null)
             sql = "SELECT * FROM staff WHERE position LIKE '%" + info.getPosition().getIntStaffType() + "%'";
-        else if (info.getWorkHour() != 0)
+        else if (info.getWorkHour() != -1)
             sql = "SELECT * FROM staff WHERE workHour LIKE '%" + info.getWorkHour() + "%'";
         return this.excFindStaffStatement(sql);
     }
@@ -215,7 +215,7 @@ public class StaffOrganizationManagementData extends UnicastRemoteObject impleme
         else if (info.getName() != null)
             sql = "SELECT * FROM organization WHERE name LIKE '%" + info.getName() + "%'";
         else if (info.getType() != null)
-            sql = "SELECT * FROM organization WHERE type = +info.getType().getType()";
+            sql = "SELECT * FROM organization WHERE type = "+info.getType().getType();
         return this.excFindOrgStatement(sql);
     }
 
@@ -226,8 +226,8 @@ public class StaffOrganizationManagementData extends UnicastRemoteObject impleme
             return this.excFindStaffStatement(sql);
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
+            return null;
         }
-        return null;
     }
 
 	@Override

@@ -64,16 +64,14 @@ public class StaffOrganizationManagementDataService_Stub implements StaffOrganiz
 	}
 
 	@Override
-	public boolean modifyStaff(StaffPO staff) throws RemoteException,
-			ElementNotFoundException, InterruptWithExistedElementException {
+	public boolean modifyStaff(StaffPO staff) throws RemoteException{
 		System.out.println("Modify success!");
 		return true;
 	}
 
 	@Override
 	public boolean modifyOrganization(OrganizationPO org)
-			throws RemoteException, ElementNotFoundException,
-			InterruptWithExistedElementException {
+			throws RemoteException{
 		System.out.println("Modify success!");
 		return true;
 	}

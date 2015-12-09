@@ -1,10 +1,13 @@
 package businesslogic.info;
 
 import businesslogicservice.infoblservice.StaffOrganizationManagementBLService;
+import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import util.ResultMsg;
 import vo.OrganizationInfoVO;
 import vo.StaffVO;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.OrganizationPO;
@@ -28,32 +31,34 @@ public class StaffOrganizationManagement implements StaffOrganizationManagementB
     @Override
     public ResultMsg addStaff(StaffVO vo) {
         ResultMsg msg = vo.checkFormat();
-        
         if(!msg.isPass()) return msg;
-        
         try {
         	boolean b = dataService.addStaff((StaffPO) vo.toPO());
         	if(!b) return new ResultMsg(false,"添加失败，请重试");
-        } catch (Exception e) {
-        	return new ResultMsg(false, e.getMessage());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return new ResultMsg(false,"网络异常,请重试!");
+        } catch (InterruptWithExistedElementException e) {
+            e.printStackTrace();
+            return new ResultMsg(false,"人员信息已存在!");
         }
-        
         return new ResultMsg(true);
     }
 
     @Override
     public ResultMsg delStaff(StaffVO vo) {
     	ResultMsg msg = vo.checkFormat();
-        
         if(!msg.isPass()) return msg;
-        
         try {
         	boolean b = dataService.removeStaff((StaffPO) vo.toPO());
         	if(!b) return new ResultMsg(false,"删除失败，请重试");
-        } catch (Exception e) {
-        	return new ResultMsg(false, e.getMessage());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return new ResultMsg(false,"网络异常,请重试!");
+        } catch (ElementNotFoundException e) {
+            e.printStackTrace();
+            return new ResultMsg(false,"删除的信息不存在!");
         }
-        
         return new ResultMsg(true);
     }
 
@@ -61,40 +66,35 @@ public class StaffOrganizationManagement implements StaffOrganizationManagementB
     public ResultMsg ModifyStaff(StaffVO staff) {
     	ResultMsg msg = staff.checkFormat();
         if(!msg.isPass()) return msg;
-        
-        
+
         try {
         	boolean b = dataService.modifyStaff((StaffPO) staff.toPO());
         	if(!b) return new ResultMsg(false,"修改失败，请重试");
-        } catch (Exception e) {
-        	return new ResultMsg(false, e.getMessage());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return new ResultMsg(false,"网络异常,请重试!");
         }
-        
         return new ResultMsg(true);
     }
 
     @Override
     public ArrayList<StaffVO> findStaffInfo(StaffVO vo) {
     	ArrayList<StaffVO> result = new ArrayList<>();
-    	
     	ArrayList<StaffPO> get = null;
-
-
     	try {
             if(vo == null)
-                get = dataService.findStaff(null);
+                get = dataService.getAllStaff();
             else
     		    get = dataService.findStaff((StaffPO) vo.toPO());
-    	} catch (Exception e) {
-    		System.err.println("获取所有员工信息时出现异常：");
-    		System.err.println(e.getMessage());
-    		return result;
-    	}
-    	
-    	for(StaffPO po:get) {
-    		result.add((StaffVO) po.toVO());
-    	}
-    	
+            for(StaffPO po:get) {
+                result.add((StaffVO) po.toVO());
+            }
+            return result;
+    	} catch (RemoteException e) {
+            e.printStackTrace();
+        } catch (ElementNotFoundException e) {
+            e.printStackTrace();
+        }
         return result;
     }
 
@@ -107,10 +107,13 @@ public class StaffOrganizationManagement implements StaffOrganizationManagementB
     	try {
     		boolean b = dataService.addOrganization((OrganizationPO) vo.toPO());
     		if(!b) return new ResultMsg(false,"添加机构失败，请重试");
-    	} catch (Exception e) {
-    		return new ResultMsg(false, e.getMessage());
-    	}
-    	
+    	} catch (RemoteException e) {
+            e.printStackTrace();
+            return new ResultMsg(false,"网络异常,请重试!");
+        } catch (InterruptWithExistedElementException e) {
+            e.printStackTrace();
+            return new ResultMsg(false,"机构信息已存在!");
+        }
         return new ResultMsg(true);
     }
 
@@ -123,10 +126,13 @@ public class StaffOrganizationManagement implements StaffOrganizationManagementB
     	try {
     		boolean b = dataService.removeOrganization((OrganizationPO) vo.toPO());
     		if(!b) return new ResultMsg(false,"删除机构失败，请重试");
-    	} catch (Exception e) {
-    		return new ResultMsg(false, e.getMessage());
-    	}
-    	
+    	} catch (RemoteException e) {
+            e.printStackTrace();
+            return new ResultMsg(false,"网络异常,请重试!");
+        } catch (ElementNotFoundException e) {
+            e.printStackTrace();
+            return new ResultMsg(false,"机构信息不存在!");
+        }
         return new ResultMsg(true);
         
     }
@@ -140,10 +146,10 @@ public class StaffOrganizationManagement implements StaffOrganizationManagementB
     	try {
     		boolean b = dataService.modifyOrganization((OrganizationPO) vo.toPO());
     		if(!b) return new ResultMsg(false,"删除机构失败，请重试");
-    	} catch (Exception e) {
-    		return new ResultMsg(false, e.getMessage());
-    	}
-    	
+    	} catch (RemoteException e) {
+            e.printStackTrace();
+            return new ResultMsg(false,"网络异常,请重试!");
+        }
         return new ResultMsg(true);
         
     }
@@ -160,16 +166,16 @@ public class StaffOrganizationManagement implements StaffOrganizationManagementB
     		} else {
     			get = dataService.findOrganization((OrganizationPO) vo.toPO());
     		}
-    	} catch (Exception e) {
-    		System.err.println("获取机构信息失败：");
-    		System.err.println(e.getMessage());
-    		return result;
-    	}
-    	
-    	for(OrganizationPO po:get){
-    		result.add((OrganizationInfoVO) po.toVO());
-    	}
-    	
+
+            for(OrganizationPO po:get){
+                result.add((OrganizationInfoVO) po.toVO());
+            }
+            return result;
+    	} catch (RemoteException e) {
+            e.printStackTrace();
+        } catch (ElementNotFoundException e) {
+            e.printStackTrace();
+        }
         return result;
     }
 

@@ -57,7 +57,7 @@ public class ChartOutput implements ChartOutputBLService {
         try {
             Date startDay = dateFormat.parse(time1);
             Date endDay = dateFormat.parse(time2);
-            if(startDay.before(endDay))
+            if(!startDay.before(endDay))
                 return new ResultMsg(false,"起点日期不能在终点日期之后!");
         } catch (ParseException e) {
             e.printStackTrace();

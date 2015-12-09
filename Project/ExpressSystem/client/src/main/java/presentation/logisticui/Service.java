@@ -58,6 +58,7 @@ import java.awt.event.ContainerEvent;
 import javax.swing.border.EtchedBorder;
 
 public class Service extends JFrame {
+	//右下角各种审批结果的提示
 	private  JLabel daoda;
 	private  JLabel zhuangche;
 	private  JLabel paisong;
@@ -70,8 +71,16 @@ public class Service extends JFrame {
 	private JLabel fukuan ;
 	private JLabel fukuanS ;
 	private JLabel fukuanF ;
-	Service frame=this;
-	private ArrivalOrder a;
+	//↑↑↑↑
+	private Service frame=this;
+	//界面跳转的各种vo
+	private ArrivalOrder ao;
+	private PayMent pm;
+	private Car c;
+	private Driver d;
+	private LoadCarOrder lc;
+	private SendOrder so;
+	//↑↑↑↑↑
 	/**
 	 * 窗口宽度
 	 */
@@ -90,10 +99,12 @@ public class Service extends JFrame {
 	 * MIDDLE高度
 	 */
 	private static final int HEIGHTM = 446;
+	//界面自带各种panel
 	public JPanel contentPane;
 	private JPanel middle;
 	private LogInMsg lim;
 	public  JPanel leftdown ;
+	//↑↑↑↑
 	/**
 	 * Launch the application.
 	 */
@@ -289,13 +300,14 @@ public class Service extends JFrame {
 		right.add(PayMentRegis);
 		PayMentRegis.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
-				//PayMent a=new PayMent(lim);
-				PayMent a=new PayMent(lim,frame);
-				a.setBounds(0, 0, WIDTHM, HEIGHTM);
-				a.setVisible(true);
+//如果vo不为空，说明之前输入过，用原来的，否则new
+				if(pm==null){
+				pm=new PayMent(lim,frame);
+				}
+				pm.setBounds(0, 0, WIDTHM, HEIGHTM);
+				pm.setVisible(true);
 				middle.removeAll();
-				middle.add(a);
+				middle.add(pm);
 				middle.repaint();
 			}
 		});
@@ -313,12 +325,14 @@ public class Service extends JFrame {
 		JMenuItem menuItem = new JMenuItem("车辆信息");
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
-				Car a=new Car();
-				a.setBounds(0, 0, WIDTHM, HEIGHTM);
-				a.setVisible(true);
+				//如果vo不为空，说明之前输入过，用原来的，否则new
+				if(c==null){
+				c=new Car();
+				}
+				c.setBounds(0, 0, WIDTHM, HEIGHTM);
+				c.setVisible(true);
 				middle.removeAll();
-				middle.add(a);
+				middle.add(c);
 				middle.repaint();	
 
 			}
@@ -328,11 +342,14 @@ public class Service extends JFrame {
 		JMenuItem menuItem_1 = new JMenuItem("司机信息");
 		menuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Driver a=new Driver();
-				a.setBounds(0, 0, WIDTHM, HEIGHTM);
-				a.setVisible(true);
+				//如果vo不为空，说明之前输入过，用原来的，否则new
+				if(d==null){
+				d=new Driver();
+				}
+				d.setBounds(0, 0, WIDTHM, HEIGHTM);
+				d.setVisible(true);
 				middle.removeAll();
-				middle.add(a);
+				middle.add(d);
 				middle.repaint();
 			}
 		});
@@ -353,11 +370,14 @@ public class Service extends JFrame {
 		JMenuItem mntmNewMenuItem = new JMenuItem("到达单");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				a=new ArrivalOrder(lim,frame);
-				a.setBounds(0, 0, WIDTHM, HEIGHTM);//以middle为原点
-				a.setVisible(true);
+				//如果vo不为空，说明之前输入过，用原来的，否则new
+				if(ao==null){
+				ao=new ArrivalOrder(lim,frame);
+				}
+				ao.setBounds(0, 0, WIDTHM, HEIGHTM);//以middle为原点
+				ao.setVisible(true);
 				middle.removeAll();
-				middle.add(a);
+				middle.add(ao);
 				middle.repaint();
 
 			}
@@ -368,11 +388,11 @@ public class Service extends JFrame {
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("装车单");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				LoadCarOrder a=new LoadCarOrder(lim,frame);
-				a.setBounds(0, 0, WIDTHM, HEIGHTM);
-				a.setVisible(true);
+				lc=new LoadCarOrder(lim,frame);
+				lc.setBounds(0, 0, WIDTHM, HEIGHTM);
+				lc.setVisible(true);
 				middle.removeAll();
-				middle.add(a);
+				middle.add(lc);
 				middle.repaint();
 			}
 		});
@@ -381,16 +401,31 @@ public class Service extends JFrame {
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("派送单");
 		mntmNewMenuItem_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SendOrder a=new SendOrder(lim,frame);
-				a.setBounds(0, 0, WIDTHM, HEIGHTM);
-				a.setVisible(true);
+				so=new SendOrder(lim,frame);
+				so.setBounds(0, 0, WIDTHM, HEIGHTM);
+				so.setVisible(true);
 				middle.removeAll();
-				middle.add(a);
+				middle.add(so);
 				middle.repaint();
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_2);
 
+		initDownLabel();
+
+		initPaisong(false,true,false);
+
+		initZhuangche(false,true,false);
+
+		initDaoda(false,true,false);
+		
+		initFukuan(false,true,false);
+		
+		setCaiDanLan();
+		setClose();
+	}
+	
+	public void initDownLabel(){
 		daoda = new JLabel("您提交的到达单已通过审批,现在可以填下一份了哟~");
 		daoda.setBounds(21, 3, 487, 24);
 		leftdown.add(daoda);
@@ -435,17 +470,8 @@ public class Service extends JFrame {
 		fukuanF = new JLabel("您提交的付款单未通过审批>_<");
 		fukuanF.setBounds(21, 90, 487, 24);
 		leftdown.add(fukuanF);
-
-		initPaisong(false,true,false);
-
-		initZhuangche(false,true,false);
-
-		initDaoda(false,true,false);
-		
-		initFukuan(false,true,false);
-		
-		setCaiDanLan();
 	}
+	
 	public  void initFukuan(boolean a,boolean s,boolean f){
 
 		fukuanS.setVisible(s);
@@ -460,6 +486,7 @@ public class Service extends JFrame {
 		paisongF.setVisible(f);
 
 	}
+	
 	public  void initZhuangche(boolean a,boolean b,boolean f){
 
 		zhuangche.setVisible(b);
@@ -467,6 +494,7 @@ public class Service extends JFrame {
 		zhuangcheF.setVisible(f);	
 
 	}
+	
 	public  void initDaoda(boolean a,boolean b,boolean f){
 
 		daoda.setVisible(b);

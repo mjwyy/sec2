@@ -16,6 +16,7 @@ import java.awt.List;
 
 import javax.swing.DefaultComboBoxModel;
 
+
 import presentation.util.MJTextField;
 import presentation.util.SubmitDialog;
 import util.LogInMsg;
@@ -35,7 +36,8 @@ public class PaymentInputPanel extends JPanel {
 	private JButton btnNewButton;
 	private SubmitDialog sd;
 	private PaymentVO vo;
-	//private LogInMsg  lim;
+	private LogInMsg  lim;
+	private financeFrame parent;
 	/**
 	 * 窗口宽度
 	 */
@@ -50,10 +52,11 @@ public class PaymentInputPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PaymentInputPanel() {
+	public PaymentInputPanel(LogInMsg logInMsg,financeFrame ff) {
+		parent = ff;
 		setSize(WIDTH,HEIGHT);
 		setLayout(null);
-		//lim = logInMsg;
+		lim = logInMsg;
 		JLabel label = new JLabel("付款日期");
 		label.setBounds(305, 79, 61, 16);
 		add(label);
@@ -115,14 +118,16 @@ public class PaymentInputPanel extends JPanel {
 						@Override
 						public void actionPerformed(ActionEvent e) {
 							
-							date.enable(false);
-							money.enable(false);
-							payer.enable(false);
-							account.enable(false);
-							way.enable(false);
-							btnNewButton.enable(false);
+							date.setEditable(false);
+							money.setEditable(false);
+							payer.setEditable(false);
+							account.setEditable(false);
+							way.setEditable(false);
+							btnNewButton.setFocusable(false);
 							sd.dispose();
-							service.submitPaymentRecord(vo);		
+							parent.setPip(PaymentInputPanel.this);
+							btnNewButton.setFocusable(false);
+							new Submitter().start();		
 						}
 						
 					});
@@ -141,5 +146,33 @@ public class PaymentInputPanel extends JPanel {
 		btnNewButton.setBounds(565, 322, 94, 47);
 		add(btnNewButton);
 		
+	}
+	
+	
+	
+	public void setResult(ResultMsg s) {
+		
+		if(s.isPass()){
+			parent.setPip(null);;
+		}else{
+			int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
+					JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);	
+			date.setEditable(true);
+			money.setEditable(true);
+			payer.setEditable(true);
+			account.setEditable(true);
+			way.setEditable(true);
+			btnNewButton.setFocusable(true);
+			btnNewButton.setFocusable(true);
+		}
+		
+		}
+	
+	class Submitter extends Thread {
+		@Override
+		public void run() {
+			super.run();
+			setResult(service.submitPaymentRecord(vo));
+		}
 	}
 }

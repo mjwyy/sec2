@@ -6,6 +6,7 @@ import connection.RMIHelper;
 import util.ResultMsg;
 import util.enums.ChartType;
 import vo.ChartVO;
+import vo.CostAndProfitChartVO;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -22,8 +23,7 @@ public class ChartOutputBLService_Driver {
 
 	public void drive(ChartOutputBLService service){
         ChartVO chartVO = service.getChartVO(
-                ChartType.BUSINESS_STAT_CHART,  "2015-12-20", "2015-12-30");
-       ResultMsg msg =  service.exportChart(chartVO,"/Users/kylin/Documents/");
-        System.out.println(msg.getMessage());
+                ChartType.PROFIT_CHART,  "2015-12-20", "2015-12-30");
+        CostAndProfitChartVO costAndProfitChartVO = (CostAndProfitChartVO) chartVO;
     }
 }

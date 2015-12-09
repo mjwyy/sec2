@@ -171,7 +171,7 @@ public class ChartOutPutPanel extends JPanel {
 				if(comboBox.getSelectedItem().equals("经营情况表"))
 					charttype = charttype.BUSINESS_STAT_CHART;
 				else
-					charttype = charttype.BUSINESS_STAT_CHART;
+					charttype = charttype.PROFIT_CHART;
 				if(!(startT.getText().isEmpty()||endT.getText().isEmpty())){
 				res = service.enquiryChart(charttype,startT.getText(),endT.getText());//查询格式检查
 				if(res.isPass()){

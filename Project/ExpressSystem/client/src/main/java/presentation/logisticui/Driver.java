@@ -14,7 +14,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import javax.swing.JSplitPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -30,6 +29,7 @@ import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
 
+import presentation.util.MJTextField;
 import util.ResultMsg;
 import util.enums.StaffType;
 import vo.DriverVO;
@@ -38,21 +38,21 @@ import businesslogicservice.infoblservice.DriverVehicleManagementBLService;
 import businesslogicservice.infoblservice._stub.DriverVehicleManagementBLService_Stub;
 
 public class Driver extends JPanel {
-	private JTextField key;
-	private JTextField code;
-	private JTextField name;
-	private JTextField sex;
-	private JTextField posi;
-	private JTextField id;
-	private JTextField phone;
-	private JTextField qixian;
+	private MJTextField key;
+	private MJTextField code;
+	private MJTextField name;
+	private MJTextField sex;
+	private MJTextField posi;
+	private MJTextField id;
+	private MJTextField phone;
+	private MJTextField qixian;
 	private JTable table;
 	private DefaultTableModel model;
 //	DriverVehicleManagementBLService  dvm=new DriverVehicleManagementBLService_Stub();
 	DriverVehicleManagementBLService  dvm=new DriverVehicleManagement();
-	private JTextField orgi;
-	private JTextField workhour;
-	private JTextField sala;
+	private MJTextField orgi;
+	private MJTextField workhour;
+	private MJTextField sala;
 	private JComboBox comboBox;
 	/**
 	 * Create the panel.
@@ -146,7 +146,7 @@ public class Driver extends JPanel {
 		comboBox.setBounds(262, 7, 123, 21);
 		add(comboBox);
 
-		key = new JTextField();
+		key = new MJTextField();
 		key.setText("请输入关键字");
 		key.setBounds(410, 2, 117, 28);
 		add(key);
@@ -263,37 +263,37 @@ public class Driver extends JPanel {
 		label_8.setBounds(708, 363, 93, 15);
 		add(label_8);
 
-		code = new JTextField();
+		code = new MJTextField();
 		code.setBounds(824, 11, 170, 28);
 		add(code);
 		code.setColumns(10);
 
-		name = new JTextField();
+		name = new MJTextField();
 		name.setColumns(10);
 		name.setBounds(824, 48, 170, 28);
 		add(name);
 
-		sex = new JTextField();
+		sex = new MJTextField();
 		sex.setColumns(10);
 		sex.setBounds(824, 92, 170, 28);
 		add(sex);
 
-		posi = new JTextField();
+		posi = new MJTextField();
 		posi.setColumns(10);
 		posi.setBounds(824, 170, 170, 28);
 		add(posi);
 
-		id = new JTextField();
+		id = new MJTextField();
 		id.setColumns(10);
 		id.setBounds(824, 208, 170, 28);
 		add(id);
 
-		phone = new JTextField();
+		phone = new MJTextField();
 		phone.setColumns(10);
 		phone.setBounds(824, 284, 170, 28);
 		add(phone);
 
-		qixian = new JTextField();
+		qixian = new MJTextField();
 		qixian.setColumns(10);
 		qixian.setBounds(824, 357, 170, 28);
 		add(qixian);
@@ -302,7 +302,7 @@ public class Driver extends JPanel {
 		label_9.setBounds(722, 136, 103, 15);
 		add(label_9);
 
-		orgi = new JTextField();
+		orgi = new MJTextField();
 		orgi.setColumns(10);
 		orgi.setBounds(824, 132, 170, 28);
 		add(orgi);
@@ -311,7 +311,7 @@ public class Driver extends JPanel {
 		label_10.setBounds(708, 251, 135, 23);
 		add(label_10);
 
-		workhour = new JTextField();
+		workhour = new MJTextField();
 		workhour.setColumns(10);
 		workhour.setBounds(824, 246, 170, 28);
 		add(workhour);
@@ -320,7 +320,7 @@ public class Driver extends JPanel {
 		lblNewLabel.setBounds(722, 325, 54, 15);
 		add(lblNewLabel);
 
-		sala = new JTextField();
+		sala = new MJTextField();
 		sala.setColumns(10);
 		sala.setBounds(824, 322, 170, 28);
 		add(sala);

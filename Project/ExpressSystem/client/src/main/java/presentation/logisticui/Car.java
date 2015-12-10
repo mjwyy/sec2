@@ -19,6 +19,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+import presentation.util.MJTextField;
 import util.ResultMsg;
 import vo.VehicleVO;
 import businesslogic.info.DriverVehicleManagement;
@@ -26,15 +27,15 @@ import businesslogicservice.infoblservice.DriverVehicleManagementBLService;
 import businesslogicservice.infoblservice._stub.DriverVehicleManagementBLService_Stub;
 
 public class Car extends JPanel {
-	private JTextField key;
-    private JTextField code;
-    private JTextField name;
-    private JTextField time;
+	private MJTextField key;
+    private MJTextField code;
+    private MJTextField name;
+    private MJTextField time;
     private JTable table;
     private DefaultTableModel model;
     // DriverVehicleManagementBLService  dvm=new DriverVehicleManagementBLService_Stub();
     DriverVehicleManagementBLService  dvm=new DriverVehicleManagement();
-     private JTextField textField_1;
+     private MJTextField textField_1;
     private JComboBox comboBox;
     private JLabel pict;
     private String fileName;
@@ -124,7 +125,7 @@ public class Car extends JPanel {
 	        comboBox.setBounds(217, 7, 159, 21);
 	        add(comboBox);
 	        
-	        key = new JTextField();
+	        key = new MJTextField();
 	        key.setText("请输入关键字");
 	        key.setBounds(398, 4, 117, 28);
 	        add(key);
@@ -221,17 +222,17 @@ public class Car extends JPanel {
 	        label_4.setBounds(722, 216, 98, 15);
 	        add(label_4);
 	        
-	        code = new JTextField();
+	        code = new MJTextField();
 	        code.setBounds(830, 68, 170, 28);
 	        add(code);
 	        code.setColumns(10);
 	        
-	        name = new JTextField();
+	        name = new MJTextField();
 	        name.setColumns(10);
 	        name.setBounds(830, 134, 170, 28);
 	        add(name);
 	        
-	        time = new JTextField();
+	        time = new MJTextField();
 	        time.setColumns(10);
 	        time.setBounds(830, 210, 170, 28);
 	        add(time);

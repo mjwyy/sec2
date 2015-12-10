@@ -388,7 +388,10 @@ public class Service extends JFrame {
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("装车单");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//如果vo不为空，说明之前输入过，用原来的，否则new
+				if(lc==null){
 				lc=new LoadCarOrder(lim,frame);
+				}
 				lc.setBounds(0, 0, WIDTHM, HEIGHTM);
 				lc.setVisible(true);
 				middle.removeAll();
@@ -401,7 +404,10 @@ public class Service extends JFrame {
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("派送单");
 		mntmNewMenuItem_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//如果vo不为空，说明之前输入过，用原来的，否则new
+				if(so==null){
 				so=new SendOrder(lim,frame);
+				}
 				so.setBounds(0, 0, WIDTHM, HEIGHTM);
 				so.setVisible(true);
 				middle.removeAll();

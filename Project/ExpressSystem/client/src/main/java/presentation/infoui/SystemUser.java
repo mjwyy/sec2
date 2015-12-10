@@ -24,6 +24,7 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 import presentation.logisticui.CourierFrame;
 import presentation.mainui.loginFrame;
+import presentation.util.MJTextField;
 import businesslogic.info.SystemUserManagement;
 import businesslogicservice.infoblservice.SystemUserManagementBLService;
 import businesslogicservice.infoblservice._stub.SystemUserManagementBLService_Stub;
@@ -54,17 +55,17 @@ public class SystemUser extends JFrame {
 	//SystemUserManagementBLService sum=new SystemUserManagementBLService_Stub();
 	SystemUserManagementBLService sum=new SystemUserManagement();
 	private JPanel contentPane;
-	private JTextField code;
-	private JTextField pass;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
+	private MJTextField code;
+	private MJTextField pass;
+	private MJTextField textField_5;
+	private MJTextField textField_6;
+	private MJTextField textField_7;
 	private JTable table;
 	private DefaultTableModel model;
 	private  JComboBox comboBox;
 	private JComboBox chooseUp;
 	private UserVO uservo;//修改的originvo
-	private JTextField key;
+	private MJTextField key;
 	private JComboBox findkey ;
 	private LogInMsg lim;
 	/**
@@ -404,12 +405,12 @@ public class SystemUser extends JFrame {
 		button_3.setBounds(875, 260, 99, 30);
 		middle.add(button_3);
 
-		code = new JTextField();
+		code = new MJTextField();
 		code.setBounds(841, 61, 189, 28);
 		middle.add(code);
 		code.setColumns(10);
 
-		pass = new JTextField();
+		pass = new MJTextField();
 		pass.setBounds(841, 110, 189, 28);
 		middle.add(pass);
 		pass.setColumns(10);
@@ -468,7 +469,7 @@ public class SystemUser extends JFrame {
 		findkey.setBounds(235, 10, 99, 21);
 		middle.add(findkey);
 
-		key = new JTextField();
+		key = new MJTextField();
 		key.setText("请输入关键字");
 		key.setColumns(10);
 		key.setBounds(359, 5, 117, 28);

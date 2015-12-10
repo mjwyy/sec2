@@ -20,6 +20,7 @@ import presentation.logisticui.ArrivalOrder.Submitter;
 import presentation.util.CleanTextField;
 import presentation.util.CurrentTime;
 import presentation.util.LeftDownPanel;
+import presentation.util.MJTextField;
 import presentation.util.UnEditablePanel;
 import util.LogInMsg;
 import util.ResultMsg;
@@ -47,14 +48,14 @@ public class PayMent extends JPanel {
 	CreditNoteInputBLService payment=new CreditNoteInput();
 	private CreditNoteVO vo;
 	//不可编及的框
-	private JTextField DATA;
-	private JTextField MONEY;
-	private JTextField SENDER;
+	private MJTextField DATA;
+	private MJTextField MONEY;
+	private MJTextField SENDER;
 	//可编辑的框
 	private JTextField dataF;
-	private JTextField codeF;
-	private JTextField senderF;
-	private JTextField moneyF;
+	private MJTextField codeF;
+	private MJTextField senderF;
+	private MJTextField moneyF;
 	//frame传来的
 	private LogInMsg lim;
 	private Service frame;//
@@ -67,6 +68,7 @@ public class PayMent extends JPanel {
 	//button
 	private JButton add;
 	private JButton confirm ;
+	private JButton submit ;
 	/**
 	 * 窗口宽度
 	 */
@@ -99,7 +101,7 @@ public class PayMent extends JPanel {
 		label.setBounds(58, 41, 54, 18);
 		add(label);
 
-		DATA = new JTextField();
+		DATA = new MJTextField();
 		DATA.setEnabled(false);
 		DATA.setEditable(false);
 		DATA.setBounds(122, 35, 185, 31);
@@ -110,7 +112,7 @@ public class PayMent extends JPanel {
 		label_4.setBounds(58, 91, 93, 15);
 		add(label_4);
 
-		MONEY = new JTextField();
+		MONEY = new MJTextField();
 		MONEY.setEnabled(false);
 		MONEY.setEditable(false);
 		MONEY.setBounds(122, 85, 185, 28);
@@ -125,7 +127,7 @@ public class PayMent extends JPanel {
 		scrollPane.setBounds(226, 188, 147, -51);
 		add(scrollPane);
 
-		JButton submit = new JButton("提交");
+		submit = new JButton("提交");
 		submit.addActionListener(new submitListener());
 		submit.setBounds(438, 340, 93, 23);
 		add(submit);
@@ -196,7 +198,7 @@ public class PayMent extends JPanel {
 		label_14.setBounds(787, 233, 66, 15);
 		add(label_14);
 
-		codeF = new JTextField();
+		codeF = new MJTextField();
 		codeF.setBounds(863, 225, 211, 31);
 		add(codeF);
 		codeF.setColumns(10);
@@ -213,7 +215,7 @@ public class PayMent extends JPanel {
 		label_2.setBounds(10, 16, 102, 15);
 		add(label_2);
 
-		senderF = new JTextField();
+		senderF = new MJTextField();
 		senderF.setBounds(863, 141, 211, 28);
 		add(senderF);
 		senderF.setColumns(10);
@@ -222,7 +224,7 @@ public class PayMent extends JPanel {
 		label_1.setBounds(329, 43, 54, 15);
 		add(label_1);
 
-		SENDER = new JTextField();
+		SENDER = new MJTextField();
 		SENDER.setEnabled(false);
 		SENDER.setEditable(false);
 		SENDER.setBounds(410, 35, 180, 31);
@@ -233,7 +235,7 @@ public class PayMent extends JPanel {
 		label_3.setBounds(WIDTHL, 91, 77, 15);
 		add(label_3);
 
-		moneyF = new JTextField();
+		moneyF = new MJTextField();
 		moneyF.setBounds(WIDTHT, 85, 211, 28);
 		add(moneyF);
 		moneyF.setColumns(10);
@@ -275,6 +277,7 @@ public class PayMent extends JPanel {
 		//button
 		add.setEnabled(notlock);
 		confirm.setEnabled(notlock);
+		submit.setEnabled(notlock);
 	}
 	public class addListener implements ActionListener{
 		CreditNoteVO vo=null;

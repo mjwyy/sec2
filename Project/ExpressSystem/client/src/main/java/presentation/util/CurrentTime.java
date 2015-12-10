@@ -1,4 +1,10 @@
-//获取当前时间
+
+/**
+ * 获取当前时间
+ * 
+ * @author wqy
+ *
+ */
 package presentation.util;
 
 import java.text.SimpleDateFormat;

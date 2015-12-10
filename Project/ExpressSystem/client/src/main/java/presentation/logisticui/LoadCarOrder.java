@@ -21,9 +21,9 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
+import javax.swing.JTextField;
 
 import util.LogInMsg;
 import util.ResultMsg;
@@ -39,6 +39,7 @@ import javax.swing.table.TableColumn;
 import presentation.logisticui.ArrivalOrder.Submitter;
 import presentation.util.CleanTextField;
 import presentation.util.CurrentTime;
+import presentation.util.MJTextField;
 import presentation.util.UnEditablePanel;
 
 public class LoadCarOrder extends JPanel {
@@ -47,29 +48,31 @@ public class LoadCarOrder extends JPanel {
 	private LoadNoteOnServiceVO  vo;
 	private JPanel thisP=this;
 	//不可编辑框
-    private JTextField data;
-	private JTextField service;
-	private JTextField to;
-	private JTextField scar;
-	private JTextField car;
-	private JTextField superman;
-	private JTextField senderman;
+    private MJTextField data;
+	private MJTextField service;
+	private MJTextField to;
+	private MJTextField scar;
+	private MJTextField car;
+	private MJTextField superman;
+	private MJTextField senderman;
 	//条形码table
     private JTable table;
 	private DefaultTableModel model;
 	private ArrayList<String> barcodes=new  ArrayList<String> ();
 	//可编辑textfield
 	private JTextField dataf;
-	private JTextField servicecodef;
-	private JTextField carcodef;
-	private JTextField codef;
-	private JTextField tof;
-	private JTextField scarcodef;
-	private JTextField supermanf;
-	private JTextField sendmanf;
+	private MJTextField servicecodef;
+	private MJTextField carcodef;
+	private MJTextField codef;
+	private MJTextField tof;
+	private MJTextField scarcodef;
+	private MJTextField supermanf;
+	private MJTextField sendmanf;
 	//button
 	private JButton tianjia;//添加
 	private JButton queren ;//确认
+	private JButton confirm ;
+	
 	//frame传来的东东
 	private LogInMsg lim;
 	private Service frame;//
@@ -109,7 +112,7 @@ public class LoadCarOrder extends JPanel {
 		label.setBounds(58, 41, 54, 18);
 		add(label);
 
-		data = new JTextField();
+		data = new MJTextField();
 		data.setEnabled(false);
 		data.setEditable(false);
 		data.setBounds(146, 40, 124, 28);
@@ -120,7 +123,7 @@ public class LoadCarOrder extends JPanel {
 		label_1.setBounds(324, 43, 84, 15);
 		add(label_1);
 
-		service = new JTextField();
+		service = new MJTextField();
 		service.setEnabled(false);
 		service.setEditable(false);
 		service.setBounds(418, 40, 124, 28);
@@ -131,7 +134,7 @@ public class LoadCarOrder extends JPanel {
 		label_2.setBounds(58, 96, 54, 15);
 		add(label_2);
 
-		to = new JTextField();
+		to = new MJTextField();
 		to.setEnabled(false);
 		to.setEditable(false);
 		to.setBounds(146, 94, 286, 28);
@@ -142,7 +145,7 @@ public class LoadCarOrder extends JPanel {
 		label_3.setBounds(58, 150, 78, 15);
 		add(label_3);
 
-		scar = new JTextField();
+		scar = new MJTextField();
 		scar.setEnabled(false);
 		scar.setEditable(false);
 		scar.setBounds(146, 147, 207, 28);
@@ -153,7 +156,7 @@ public class LoadCarOrder extends JPanel {
 		label_4.setBounds(58, 206, 66, 15);
 		add(label_4);
 
-		car = new JTextField();
+		car = new MJTextField();
 		car.setEnabled(false);
 		car.setEditable(false);
 		car.setBounds(146, 203, 207, 28);
@@ -164,7 +167,7 @@ public class LoadCarOrder extends JPanel {
 		label_5.setBounds(58, 251, 66, 15);
 		add(label_5);
 
-		superman = new JTextField();
+		superman = new MJTextField();
 		superman.setEnabled(false);
 		superman.setEditable(false);
 		superman.setBounds(146, 248, 84, 28);
@@ -175,7 +178,7 @@ public class LoadCarOrder extends JPanel {
 		lblNewLabel.setBounds(58, 304, 54, 15);
 		add(lblNewLabel);
 
-		senderman = new JTextField();
+		senderman = new MJTextField();
 		senderman.setEnabled(false);
 		senderman.setEditable(false);
 		senderman.setBounds(146, 301, 84, 28);
@@ -190,10 +193,10 @@ public class LoadCarOrder extends JPanel {
 		scrollPane.setBounds(226, 188, 147, -51);
 		add(scrollPane);
 
-		JButton btnNewButton = new JButton("提交");
-		btnNewButton.addActionListener(new submitListener() );
-		btnNewButton.setBounds(418, 370, 93, 23);
-		add(btnNewButton);
+		confirm = new JButton("提交");
+		confirm.addActionListener(new submitListener() );
+		confirm.setBounds(418, 370, 93, 23);
+		add(confirm);
 
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(376, 188, 224, 172);
@@ -250,7 +253,7 @@ public class LoadCarOrder extends JPanel {
 		 label_8.setBounds(787, 43, 93, 15);
 		 add(label_8);
 
-		 servicecodef = new JTextField();
+		 servicecodef = new MJTextField();
 		 servicecodef.setBounds(880, 40, 239, 28);
 		 add(servicecodef);
 		 servicecodef.setColumns(10);
@@ -259,7 +262,7 @@ public class LoadCarOrder extends JPanel {
 		 label_9.setBounds(787, 81, 93, 15);
 		 add(label_9);
 
-		 carcodef = new JTextField();
+		 carcodef = new MJTextField();
 		 carcodef.setBounds(880, 78, 239, 28);
 		 add(carcodef);
 		 carcodef.setColumns(10);
@@ -289,7 +292,7 @@ public class LoadCarOrder extends JPanel {
 		 label_14.setBounds(WIDTHL, 281, 78, 15);
 		 add(label_14);
 
-		 codef = new JTextField();
+		 codef = new MJTextField();
 		 codef.setBounds(880, 280, 239, 28);
 		 add(codef);
 		 codef.setColumns(10);
@@ -299,22 +302,22 @@ public class LoadCarOrder extends JPanel {
 		 tianjia.setBounds(970, 315, 93, 23);
 		 add(tianjia);
 
-		 tof = new JTextField();
+		 tof = new MJTextField();
 		 tof.setBounds(880, 116, 239, 28);
 		 add(tof);
 		 tof.setColumns(10);
 
-		 scarcodef = new JTextField();
+		 scarcodef = new MJTextField();
 		 scarcodef.setBounds(880, 150, 239, 28);
 		 add(scarcodef);
 		 scarcodef.setColumns(10);
 
-		 supermanf = new JTextField();
+		 supermanf = new MJTextField();
 		 supermanf.setBounds(880, 185, 101, 28);
 		 add(supermanf);
 		 supermanf.setColumns(10);
 
-		 sendmanf = new JTextField();
+		 sendmanf = new MJTextField();
 		 sendmanf.setBounds(880, 223, 101, 28);
 		 add(sendmanf);
 		 sendmanf.setColumns(10);
@@ -438,6 +441,7 @@ public class LoadCarOrder extends JPanel {
 		//button
 		queren.setEnabled(notlock);
 		tianjia.setEnabled(notlock);
+		confirm.setEnabled(notlock);
 	}
 	public void setResult(ResultMsg s) {//审批之后才调这个方法
 		//审批通没通过在这里体现
@@ -459,8 +463,9 @@ public class LoadCarOrder extends JPanel {
 		
 		public void run() {
 			super.run();
-			ResultMsg result=load.submitHallLoadDoc(vo);
-			setResult(result);
+//			ResultMsg result=load.submitHallLoadDoc(vo);
+//			setResult(result);
+			setResult(load.submitHallLoadDoc(vo));
 		}
 	}
 	public void paintComponent(Graphics g) {

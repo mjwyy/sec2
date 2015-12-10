@@ -21,8 +21,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.swing.JTextField;
 
 import businesslogic.logistic.ArrivalNoteOnService;
 import businesslogicservice.logisticblservice.ArrivalNoteOnServiceBLService;
@@ -48,6 +48,7 @@ import presentation.logisticui.ReceiveOrderPanel.Submitter;
 import presentation.util.CleanTextField;
 import presentation.util.CurrentTime;
 import presentation.util.LeftDownPanel;
+import presentation.util.MJTextField;
 import presentation.util.UnEditablePanel;
 
 public class ArrivalOrder extends JPanel {
@@ -56,24 +57,25 @@ public class ArrivalOrder extends JPanel {
 	ArrivalNoteOnServiceBLService arrive=new ArrivalNoteOnService();
 	private ArrivalNoteOnServiceVO  vo;//提交的vo
 	//不可编辑，起确认作用框
-	private JTextField DATA;
-	private JTextField FROM;
-	private JTextField CODE;
+	private MJTextField DATA;
+	private MJTextField FROM;
+	private MJTextField CODE;
 	private ArrayList<BarcodeAndState> BarcodeAndStates =new ArrayList<BarcodeAndState>();
-	private JTextField TYPE;
+	private MJTextField TYPE;
 	//条形码列表
 	private JTable table;
 	private DefaultTableModel model;
 	//可编辑框
 	private JTextField dataF;
-	private JTextField barcodeF;
-	private JTextField fromF;
-	private JTextField codeF;
+	private MJTextField barcodeF;
+	private MJTextField fromF;
+	private MJTextField codeF;
 	private JComboBox typeF;
 	private JComboBox state;
 	//按钮
 	private JButton tianjia;//添加
 	private JButton queren;//确认
+	private JButton confirm ;
 	//	从frame获得的信息
 	private LogInMsg lim;
 	private Service frame;//
@@ -116,7 +118,7 @@ public class ArrivalOrder extends JPanel {
 		label.setBounds(97, 41, 82, 18);
 		add(label);
 
-		DATA = new JTextField();
+		DATA = new MJTextField();
 		DATA.setEnabled(false);
 		DATA.setEditable(false);
 		DATA.setBounds(189, 37, 130, 28);
@@ -127,7 +129,7 @@ public class ArrivalOrder extends JPanel {
 		label_1.setBounds(348, 43, 71, 18);
 		add(label_1);
 
-		FROM = new JTextField();
+		FROM = new MJTextField();
 		FROM.setEnabled(false);
 		FROM.setEditable(false);
 		FROM.setBounds(429, 37, 147, 28);
@@ -138,7 +140,7 @@ public class ArrivalOrder extends JPanel {
 		lblNewLabel.setBounds(97, 122, 82, 18);
 		add(lblNewLabel);
 
-		CODE = new JTextField();
+		CODE = new MJTextField();
 		CODE.setEditable(false);
 		CODE.setEnabled(false);
 		CODE.setBounds(189, 116, 242, 28);
@@ -153,10 +155,10 @@ public class ArrivalOrder extends JPanel {
 		scrollPane.setBounds(226, 188, 147, -51);
 		add(scrollPane);
 
-		JButton btnNewButton = new JButton("提交");
-		btnNewButton.setBounds(310, 356, 93, 23);
-		btnNewButton.addActionListener(new submitListener());
-		add(btnNewButton);
+		confirm = new JButton("提交");
+		confirm.setBounds(310, 356, 93, 23);
+		confirm.addActionListener(new submitListener());
+		add(confirm);
 
 
 
@@ -228,7 +230,7 @@ public class ArrivalOrder extends JPanel {
 		label_14.setBounds(787, 265, 66, 15);
 		add(label_14);
 
-		barcodeF = new JTextField();
+		barcodeF = new MJTextField();
 		barcodeF.setBounds(863, 157, 255, 28);
 		add(barcodeF);
 		barcodeF.setColumns(10);
@@ -238,7 +240,7 @@ public class ArrivalOrder extends JPanel {
 		tianjia.setBounds(1025, 330, 93, 23);
 		add(tianjia);
 
-		fromF = new JTextField();
+		fromF = new MJTextField();
 		fromF.setBounds(863, 78, 140, 28);
 		add(fromF);
 		fromF.setColumns(10);
@@ -252,7 +254,7 @@ public class ArrivalOrder extends JPanel {
 		label_3.setBounds(787, 163, 66, 15);
 		add(label_3);
 
-		codeF = new JTextField();
+		codeF = new MJTextField();
 		codeF.setBounds(863, 259, 140, 28);
 		add(codeF);
 		codeF.setColumns(10);
@@ -279,7 +281,7 @@ public class ArrivalOrder extends JPanel {
 		lblNewLabel_1.setBounds(97, 81, 82, 18);
 		add(lblNewLabel_1);
 
-		TYPE = new JTextField();
+		TYPE = new MJTextField();
 		TYPE.setEnabled(false);
 		TYPE.setEditable(false);
 		TYPE.setBounds(189, 81, 130, 28);
@@ -447,13 +449,15 @@ public class ArrivalOrder extends JPanel {
 		//button
 		queren.setEnabled(notlock);
 		tianjia.setEnabled(notlock);
+		confirm.setEnabled(notlock);
 	}
 	class Submitter extends Thread {
 
 		public void run() {
 			super.run();
-			ResultMsg result=arrive.submitHallArrivalDoc(vo);
-			setResult(result);
+		//	ResultMsg result=arrive.submitHallArrivalDoc(vo);
+		//	setResult(result);
+			setResult(arrive.submitHallArrivalDoc(vo));
 		}
 	}
 	public void paintComponent(Graphics g) {

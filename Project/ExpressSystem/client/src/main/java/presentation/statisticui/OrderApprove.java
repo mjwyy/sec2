@@ -30,12 +30,12 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 import businesslogic.statistic.NoteApproving;
 import businesslogicservice.statisticblservice.NoteApprovingBLService;
 import businesslogicservice.statisticblservice._stub.NoteApprovingBLService_Stub;
 import presentation.util.CheckBoxTable;
+import presentation.util.MJTextField;
 import util.ApproveNote;
 import vo.ArrivalNoteOnServiceVO;
 import vo.ArrivalNoteOnTransitVO;
@@ -55,7 +55,7 @@ public class OrderApprove extends JPanel {
 	NoteApprovingBLService nab=new NoteApproving();
 	private JTable table;
 	private DefaultTableModel model;
-	private JTextField textField;
+	private MJTextField textField;
 	ArrayList<ApproveNote> approvenote=null;
 
 
@@ -192,7 +192,7 @@ JOptionPane.showConfirmDialog(null,e.getMessage());
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"所有", "中转单", "到达单", "装车单", "派送单"}));
 		comboBox.setBounds(250, 88, 83, 21);
 		add(comboBox);
-		textField = new JTextField();
+		textField = new MJTextField();
 		textField.setBounds(379, 85, 66, 21);
 		add(textField);
 		textField.setColumns(10);

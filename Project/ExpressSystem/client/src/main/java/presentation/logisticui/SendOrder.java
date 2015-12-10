@@ -23,6 +23,7 @@ import javax.swing.table.TableColumn;
 import presentation.logisticui.ArrivalOrder.Submitter;
 import presentation.util.CleanTextField;
 import presentation.util.CurrentTime;
+import presentation.util.MJTextField;
 import presentation.util.UnEditablePanel;
 import util.LogInMsg;
 import util.ResultMsg;
@@ -38,14 +39,14 @@ public class SendOrder extends JPanel {
 	private JPanel thisP=this;
 	private 	DeliverNoteOnServiceVO vo;
 	//不可编辑框
-	private JTextField sendcode;
-	private JTextField data;
-	private JTextField sender;
+	private MJTextField sendcode;
+	private MJTextField data;
+	private MJTextField sender;
 	//可编辑框
 	private JTextField dataf;
-	private JTextField codef;
-	private JTextField senderf;
-	private JTextField sendcodef;
+	private MJTextField codef;
+	private MJTextField senderf;
+	private MJTextField sendcodef;
 	//条形码表格
 	private JTable table;
 	private DefaultTableModel model;
@@ -56,6 +57,7 @@ public class SendOrder extends JPanel {
 	//button
 	private JButton tianjia;
 	private JButton queren ;
+	private JButton confirm;
 	/**
 	 * 窗口宽度
 	 */
@@ -80,7 +82,7 @@ public class SendOrder extends JPanel {
 		label.setBounds(76, 41, 75, 18);
 		add(label);
 
-		data = new JTextField();
+		data = new MJTextField();
 		data.setEnabled(false);
 		data.setEditable(false);
 		data.setBounds(161, 37, 123, 28);
@@ -91,7 +93,7 @@ public class SendOrder extends JPanel {
 		label_4.setBounds(76, 81, 93, 15);
 		add(label_4);
 
-		sender = new JTextField();
+		sender = new MJTextField();
 		sender.setEnabled(false);
 		sender.setEditable(false);
 		sender.setBounds(161, 75, 123, 28);
@@ -106,10 +108,10 @@ public class SendOrder extends JPanel {
 		scrollPane.setBounds(226, 188, 147, -51);
 		add(scrollPane);
 
-		JButton btnNewButton = new JButton("提交");
-		btnNewButton.addActionListener(new submitListener() );
-		btnNewButton.setBounds(298, 343, 93, 23);
-		add(btnNewButton);
+		confirm = new JButton("提交");
+		confirm.addActionListener(new submitListener() );
+		confirm.setBounds(298, 343, 93, 23);
+		add(confirm);
 
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(58, 188, 210, 139);
@@ -176,7 +178,7 @@ public class SendOrder extends JPanel {
 		label_14.setBounds(783, 250, 66, 15);
 		add(label_14);
 
-		codef = new JTextField();
+		codef = new MJTextField();
 		codef.setBounds(863, 244, 194, 28);
 		add(codef);
 		codef.setColumns(10);
@@ -192,7 +194,7 @@ public class SendOrder extends JPanel {
 		label_2.setBounds(10, 0, 102, 15);
 		add(label_2);
 
-		senderf = new JTextField();
+		senderf = new MJTextField();
 		senderf.setBounds(863, 129, 159, 28);
 		add(senderf);
 		senderf.setColumns(10);
@@ -201,7 +203,7 @@ public class SendOrder extends JPanel {
 		label_1.setBounds(331, 43, 93, 15);
 		add(label_1);
 
-		sendcode = new JTextField();
+		sendcode = new MJTextField();
 		sendcode.setEnabled(false);
 		sendcode.setEditable(false);
 		sendcode.setBounds(419, 37, 123, 28);
@@ -212,7 +214,7 @@ public class SendOrder extends JPanel {
 		label_3.setBounds(783, 43, 94, 15);
 		add(label_3);
 
-		sendcodef = new JTextField();
+		sendcodef = new MJTextField();
 		sendcodef.setBounds(863, 37, 159, 28);
 		add(sendcodef);
 		sendcodef.setColumns(10);
@@ -319,6 +321,7 @@ public class SendOrder extends JPanel {
 		//button
 		queren.setEnabled(notlock);
 		tianjia.setEnabled(notlock);
+		confirm.setEnabled(notlock);
 	}
 	class Submitter extends Thread {
 

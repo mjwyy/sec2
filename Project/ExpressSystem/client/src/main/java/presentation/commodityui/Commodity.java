@@ -61,7 +61,7 @@ import javax.swing.border.EtchedBorder;
 
 public class Commodity extends JFrame {
 
-	private JFrame frame=this;
+	private Commodity frame=this;
 
 	//界面跳转的各种vo
 	private Inorder ino;
@@ -75,6 +75,12 @@ public class Commodity extends JFrame {
 	private JLabel chukuS;
 	private JLabel chukuF;
 	//↑↑↑↑
+	//界面自带的各种panel
+	private JPanel contentPane;
+	public JPanel leftdown;//左下
+	
+	//frame里传来的
+	private LogInMsg lim;
 	/**
 	 * 窗口宽度
 	 */
@@ -93,9 +99,7 @@ public class Commodity extends JFrame {
 	 * MIDDLE高度
 	 */
 	private static final int HEIGHTM = 446;
-	private JPanel contentPane;
-	private LogInMsg lim;
-	private JPanel panel_2;//左下
+
 
 	/**
 	 * Launch the application.
@@ -277,7 +281,7 @@ public class Commodity extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				//如果vo不为空，说明之前输入过，用原来的，否则new
 				if(ino==null){
-					ino=new Inorder();
+					ino=new Inorder(lim,frame);
 				}
 				ino.setBounds(0, 0, 1152, 446);
 				ino.setVisible(true);
@@ -295,7 +299,7 @@ public class Commodity extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				//如果vo不为空，说明之前输入过，用原来的，否则new
 				if(outo==null){
-					outo=new OutOrder();
+					outo=new OutOrder(lim,frame);
 				}				outo.setBounds(0, 0, 1152, 446);
 				outo.setVisible(true);
 				middle.removeAll();
@@ -333,15 +337,15 @@ public class Commodity extends JFrame {
 		});
 		right.add(button_3);
 
-		panel_2 = new JPanel();
-		panel_2.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
-		panel_2.setBounds(341, 570, 939, 124);
-		contentPane.add(panel_2);
-		panel_2.setLayout(null);
+		leftdown = new JPanel();
+		leftdown.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
+		leftdown.setBounds(341, 570, 939, 124);
+		contentPane.add(leftdown);
+		leftdown.setLayout(null);
 
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setBounds(26, 7, 470, 32);
-		panel_2.add(lblNewLabel_1);
+		leftdown.add(lblNewLabel_1);
 
 		initDownLabel();
 		initRuku(false,true,false);
@@ -363,24 +367,24 @@ public class Commodity extends JFrame {
 	public void initDownLabel(){
 		ruku = new JLabel("您提交的入库单正在等待审批哦，请耐心等待哦~");
 		ruku.setBounds(26, 30, 471, 32);
-		panel_2.add(ruku);
+		leftdown.add(ruku);
 		
 		rukuS = new JLabel("您提交的入库单已通过审批,现在可以填下一份了哟~");
 		rukuS.setBounds(26, 30, 471, 32);
-		panel_2.add(rukuS);
+		leftdown.add(rukuS);
 		
 		rukuF = new JLabel("您提交的入库单未通过审批>_<");
 		rukuF.setBounds(26, 30, 471, 32);
-		panel_2.add(rukuF);
+		leftdown.add(rukuF);
 
 		chuku = new JLabel("您提交的出库单正在等待审批哦，请耐心等待哦~");
 		chuku.setBounds(25, 49, 471, 30);
-		panel_2.add(chuku);
+		leftdown.add(chuku);
 		chukuS = new JLabel("您提交的出库单已通过审批,现在可以填下一份了哟");
 		chukuS.setBounds(25, 49, 471, 30);
-		panel_2.add(chukuS);
+		leftdown.add(chukuS);
 		chukuF = new JLabel("您提交的出库单未通过审批>_<");
 		chukuF.setBounds(25, 49, 471, 30);
-		panel_2.add(chukuF);
+		leftdown.add(chukuF);
 	}
 }

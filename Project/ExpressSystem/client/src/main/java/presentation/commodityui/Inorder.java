@@ -14,15 +14,18 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import javax.swing.JSplitPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
+import presentation.util.CleanTextField;
 import presentation.util.CurrentTime;
+import presentation.util.MJTextField;
+import util.LogInMsg;
 import util.ResultMsg;
 import vo.CommodityGoodsVO;
 import vo.StorageInVO;
@@ -41,22 +44,40 @@ import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 
 public class Inorder extends JPanel {
-//	StorageInBLService si=new StorageInBLService_Stub();
-	StorageInBLService si=new StorageIn();
-	private JTextField codef;
-	private JTextField tof;
-	private JTextField rowf;
-	private JTextField jiahaof;
-	private JTextField weihaof;
-	private JTable table;
-	private DefaultTableModel model;
-	private JButton button_2;
+
+	//	StorageInBLService si=new StorageInBLService_Stub();
+	private StorageInBLService si=new StorageIn();
+	private StorageInVO siv;//提交用的vo
+	private JPanel thisP=this;
+	
+	//可编辑的框
+	private MJTextField codef;
+	private MJTextField tof;
+	private MJTextField rowf;
+	private MJTextField jiahaof;
+	private MJTextField weihaof;
 	private JTextField dataf;
 	private JComboBox comboBox;
+	
+	//入库单table
+	private JTable table;
+	private DefaultTableModel model;
+
+	//button
+	private JButton submit;
+	private JButton add;
+	private JButton delete ;
+	private JButton btnModify;
+
+	//frame传来的
+	private LogInMsg lim;
+	private Commodity frame;
 	/**
 	 * Create the panel.
 	 */
-	public Inorder() {
+	public Inorder(LogInMsg lim,Commodity frame) {
+		this.lim = lim;
+		this.frame = frame;
 		setSize(1152,446);
 		setLayout(null);
 		intiComponent();
@@ -136,46 +157,56 @@ public class Inorder extends JPanel {
 		label.setBounds(26, 10, 103, 15);
 		add(label);
 
-		JButton button_1 = new JButton("提交");
-		button_1.addActionListener(new ActionListener() {
+		submit = new JButton("提交");
+		submit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			if(model.getRowCount()<1){
-				JOptionPane.showConfirmDialog(null, "不能提交空表格哦~","系统提示",
-						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-			return ;
-			}
-			int count=model.getRowCount();
-			ArrayList<CommodityGoodsVO> GoodsInStorageInfo=new ArrayList<CommodityGoodsVO> ();
-			for(int i=0;i<count;i++){
-				CommodityGoodsVO  cgv=new CommodityGoodsVO(model.getValueAt(i, 0).toString(),model.getValueAt(i, 3).toString(),model.getValueAt(i, 2).toString(),model.getValueAt(i, 4).toString(),
-						model.getValueAt(i, 5).toString(),model.getValueAt(i, 6).toString());
-				GoodsInStorageInfo.add(cgv);
-			}
-			//当前时间
-			
-			StorageInVO siv=new StorageInVO(CurrentTime.getCurrentTimeDate(),GoodsInStorageInfo);
-			int result1 = JOptionPane.showConfirmDialog(null, "确认提交审批？","系统提示",
-					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-			if(result1 == JOptionPane.YES_OPTION) {
-				
-				ResultMsg result=si.submitPutInStorageDoc(siv);
-				if(result.isPass()) {
-			}
-				else{
-					JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
+				if(model.getRowCount()<1){
+					JOptionPane.showConfirmDialog(null, "不能提交空表格哦~","系统提示",
 							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+					return ;
 				}
-			}
-			else {
-				return;
+				int count=model.getRowCount();
+				ArrayList<CommodityGoodsVO> GoodsInStorageInfo=new ArrayList<CommodityGoodsVO> ();
+				for(int i=0;i<count;i++){
+					CommodityGoodsVO  cgv=new CommodityGoodsVO(model.getValueAt(i, 0).toString(),model.getValueAt(i, 3).toString(),model.getValueAt(i, 2).toString(),model.getValueAt(i, 4).toString(),
+							model.getValueAt(i, 5).toString(),model.getValueAt(i, 6).toString());
+					GoodsInStorageInfo.add(cgv);
+				}
+				//当前时间
+
+				siv=new StorageInVO(CurrentTime.getCurrentTimeDate(),GoodsInStorageInfo);
+				
+				int result1 = JOptionPane.showConfirmDialog(null, "确认提交审批？","系统提示",
+						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+				if(result1 == JOptionPane.YES_OPTION) {
+					//将提交放到新的线程中
+
+					//提交之后panel里都不可编辑
+					lock(false);
+					//提交之后右下面板换
+					frame.initRuku(true,false,false);
+					//	frame.setReceivingNoteVo(vo);//将vo存到Frame里
+					//提交审批
+					new Submitter().start();
+
+					//					ResultMsg result=si.submitPutInStorageDoc(siv);
+					//					if(result.isPass()) {
+					//					}
+					//					else{
+					//						JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
+					//								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+					//					}
+				}
+				else {
+					return;
+
+				}
+
 
 			}
-			
-			
-			}
 		});
-		button_1.setBounds(685, 359, 93, 23);
-		add(button_1);
+		submit.setBounds(685, 359, 93, 23);
+		add(submit);
 
 		JLabel label_2 = new JLabel("货物信息");
 		label_2.setBounds(950, 10, 103, 15);
@@ -205,8 +236,8 @@ public class Inorder extends JPanel {
 		label_9.setBounds(878, 316, 87, 15);
 		add(label_9);
 
-		button_2 = new JButton("加入");
-		button_2.addActionListener(new ActionListener() {
+		add = new JButton("加入");
+		add.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ArrayList<CommodityGoodsVO> GoodsInStorageInfo=new ArrayList<CommodityGoodsVO> ();
 				CommodityGoodsVO  cgv=new CommodityGoodsVO(codef.getText(),getArea(comboBox.getSelectedIndex()),tof.getText(),rowf.getText(),
@@ -218,44 +249,44 @@ public class Inorder extends JPanel {
 					String[] rowValues={codef.getText(),dataf.getText(),
 							tof.getText(),getArea(comboBox.getSelectedIndex()),tof.getText(),rowf.getText(),
 							jiahaof.getText(),weihaof.getText()};
-						model.addRow(rowValues);
-					}
-					else{
-						int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
-								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-					}
+					model.addRow(rowValues);
 				}
+				else{
+					int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
+							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+				}
+			}
 
 		});
-		button_2.setBounds(1063, 380, 66, 23);
-		add(button_2);
+		add.setBounds(1063, 380, 66, 23);
+		add(add);
 
-		codef = new JTextField();
+		codef = new MJTextField();
 		codef.setBounds(987, 54, 133, 28);
 		add(codef);
 		codef.setColumns(10);
 
-		tof = new JTextField();
+		tof = new MJTextField();
 		tof.setBounds(987, 144, 133, 28);
 		add(tof);
 		tof.setColumns(10);
 
-		rowf = new JTextField();
+		rowf = new MJTextField();
 		rowf.setBounds(987, 231, 133, 28);
 		add(rowf);
 		rowf.setColumns(10);
 
-		jiahaof = new JTextField();
+		jiahaof = new MJTextField();
 		jiahaof.setBounds(987, 277, 133, 28);
 		add(jiahaof);
 		jiahaof.setColumns(10);
 
-		weihaof = new JTextField();
+		weihaof = new MJTextField();
 		weihaof.setBounds(987, 313, 133, 28);
 		add(weihaof);
 		weihaof.setColumns(10);
 
-		JButton btnModify = new JButton("MODIFY");
+		btnModify = new JButton("MODIFY");
 		btnModify.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int selectedRow =table.getSelectedRow();
@@ -267,18 +298,18 @@ public class Inorder extends JPanel {
 					StorageInVO siv=new StorageInVO(dataf.getText(),GoodsInStorageInfo);
 					ResultMsg result=si.addPutInStorgaeDoc(siv);//格式检查
 					if(result.isPass()){
-					model.setValueAt(codef.getText(),selectedRow, 0);
-					model.setValueAt(dataf.getText(),selectedRow, 1);
-					model.setValueAt(tof.getText(),selectedRow, 2);
-					model.setValueAt(getArea(comboBox.getSelectedIndex()),selectedRow, 3);
-					model.setValueAt(rowf.getText(),selectedRow, 4);
-					model.setValueAt(jiahaof.getText(),selectedRow, 5);
-					model.setValueAt(weihaof.getText(),selectedRow, 6);
+						model.setValueAt(codef.getText(),selectedRow, 0);
+						model.setValueAt(dataf.getText(),selectedRow, 1);
+						model.setValueAt(tof.getText(),selectedRow, 2);
+						model.setValueAt(getArea(comboBox.getSelectedIndex()),selectedRow, 3);
+						model.setValueAt(rowf.getText(),selectedRow, 4);
+						model.setValueAt(jiahaof.getText(),selectedRow, 5);
+						model.setValueAt(weihaof.getText(),selectedRow, 6);
 					}
 					else{
-		        		int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
+						int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
 								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-		        	}
+					}
 				}
 
 			}
@@ -286,30 +317,30 @@ public class Inorder extends JPanel {
 		btnModify.setBounds(966, 380, 87, 23);
 		add(btnModify);
 
-		JButton btnNewButton = new JButton("delete");
-		btnNewButton.addActionListener(new ActionListener() {
+		delete = new JButton("delete");
+		delete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int seletedRow=table.getSelectedRow();
 				if(seletedRow!=-1){
 					//直接删
-						model.removeRow(seletedRow);
-						
-					
+					model.removeRow(seletedRow);
+
+
 				}
 			}
 		});
-		btnNewButton.setBounds(851, 380, 93, 23);
-		add(btnNewButton);
+		delete.setBounds(851, 380, 93, 23);
+		add(delete);
 
 		JLabel label_1 = new JLabel("入库日期");
 		label_1.setBounds(878, 107, 99, 15);
 		add(label_1);
-
-		dataf = new JTextField();
+		//自动填充日期
+		dataf = new JTextField(CurrentTime.getCurrentTimeDate());
 		dataf.setColumns(10);
 		dataf.setBounds(987, 104, 133, 28);
 		add(dataf);
-		
+
 		comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"航空区", "铁路区", "公路区"}));
 		comboBox.setBounds(987, 186, 133, 28);
@@ -317,6 +348,56 @@ public class Inorder extends JPanel {
 		this.setVisible(true);  
 
 	}  
+	public void setResult(ResultMsg s) {//审批之后才调这个方法
+		//审批通没通过在这里体现
+		frame.initRuku(false,s.isPass(),!s.isPass());
+		frame.leftdown.repaint();
+		lock(true);
+		if(s.isPass()){//审批通过之后，清空textfiled
+			//解锁那些可以编辑的框框
+
+			//清空textfiled
+			CleanTextField.clean(thisP);
+		}
+		else{//审批未通过
+			JOptionPane.showConfirmDialog(null,s.getMessage() ,"系统提示",
+					JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
+			//解锁那些可以编辑的框框
+		}
+
+	}
+	public void lock(boolean notlock){//解锁那些可以编辑的框框
+		//notlock==true 不锁
+		//textfield
+		dataf.setEditable(notlock);
+		dataf.setEnabled(notlock);
+		tof.setEditable(notlock);
+		tof.setEnabled(notlock);
+		rowf.setEditable(notlock);
+		rowf.setEnabled(notlock);
+		codef.setEditable(notlock);
+		codef.setEnabled(notlock);
+		jiahaof.setEditable(notlock);
+		jiahaof.setEnabled(notlock);
+		weihaof.setEditable(notlock);
+		weihaof.setEnabled(notlock);
+		comboBox.setEditable(notlock);
+		comboBox.setEnabled(notlock);
+		//button
+		submit.setEnabled(notlock);
+		add.setEnabled(notlock);
+		delete.setEnabled(notlock);
+		btnModify.setEnabled(notlock);
+	}
+	class Submitter extends Thread {
+
+		public void run() {
+			super.run();
+			//ResultMsg result=si.submitPutInStorageDoc(siv);
+			//setResult(result);
+			setResult(si.submitPutInStorageDoc(siv));
+		}
+	}
 	public int getAreaCode(String s){
 		int i=0;
 		if(s.equals("航空区")){

@@ -60,13 +60,16 @@ public class NoteApprovingData extends UnicastRemoteObject implements NoteApprov
 			
 			String chartName = charts.next();
 
-            //SQL语句:查询未审批的单据,获取所有列
-			sql = "select * from ? where isPassed="+DocState.UNCHECKED.getIntState();
-			
+
 			try {
+
+                //SQL语句:查询未审批的单据,获取所有列
+                sql = "select * from "+chartName+" where isPassed = "+
+                        DocState.UNCHECKED.getIntState();
+
                 //执行语句,获取Set
 				PreparedStatement stmt = connection.prepareStatement(sql);
-				stmt.setString(1,chartName);
+
 				ResultSet set = stmt.executeQuery();
 
                 //本数据表应使用的列名(只包含有业务价值的列)

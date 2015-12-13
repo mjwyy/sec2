@@ -274,7 +274,7 @@ public class financeFrame extends JFrame {
 		JMenuItem menuItem = new JMenuItem("录入付款单");
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PaymentInputPanel pip = new PaymentInputPanel(){
+				PaymentInputPanel pip = new PaymentInputPanel(null,null){
 					public void paintComponent(Graphics g) {
 						 super.paintComponent(g);
 						 ImageIcon img = new ImageIcon("image/0111.jpg");
@@ -453,4 +453,8 @@ public class financeFrame extends JFrame {
 		
 		
 	}
+
+    public void setPip(Object pip) {
+//        this.pip = pip;
+    }
 }

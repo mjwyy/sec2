@@ -47,9 +47,12 @@ public class ArrivalNoteOnTransitData extends NoteInputData implements ArrivalNo
             statement.setString(3, po.getDeparturePlace());
             statement.setString(4, po.getCenterNumber());
             statement.setString(5, po.getTransferNumber());
-            statement.executeUpdate();
-            //向数据库插入单据后续的操作
-            resultMsg = this.afterInsert(po);
+            if(this.isBarcodeInDB(po.getBarcodeAndStates(),true)){
+                statement.executeUpdate();
+                //向数据库插入单据后续的操作
+                resultMsg = this.afterInsert(po);
+            }else
+                throw new ElementNotFoundException();
         } catch (MySQLIntegrityConstraintViolationException e){
             throw new InterruptWithExistedElementException("");
         } catch (SQLException e) {

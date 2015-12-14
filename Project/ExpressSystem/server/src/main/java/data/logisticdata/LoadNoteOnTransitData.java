@@ -60,8 +60,11 @@ public class LoadNoteOnTransitData extends NoteInputData implements LoadNoteOnTr
             statement.setString(7,po.getHallNumber());
             statement.setString(8,po.getTranspotationNumber());
 
-            statement.executeUpdate();
-            resultMsg = this.afterInsert(po);
+            if(this.isBarcodeInDB(po.getBarcodes())){
+                statement.executeUpdate();
+                resultMsg = this.afterInsert(po);
+            }else
+                throw new ElementNotFoundException();
 
         } catch (MySQLIntegrityConstraintViolationException e){
             throw new InterruptWithExistedElementException("");

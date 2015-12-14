@@ -3,8 +3,6 @@ package data.logisticdata;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import data.database.DatabaseManager;
 import data.statisticdata.LogInsHelper;
-import data.statisticdata.LogInsertData;
-import data.statisticdata.OrderInquiryData;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.logisticdataservice.ReceivingNoteInputDataService;
@@ -26,7 +24,6 @@ import java.util.ArrayList;
  */
 public class ReceivingNoteInputData extends NoteInputData implements ReceivingNoteInputDataService {
 
-    //TODO 查询单据存在与否
     private static final long serialVersionUID = 7218888874956257035L;
 
     public ReceivingNoteInputData() throws RemoteException {
@@ -46,8 +43,11 @@ public class ReceivingNoteInputData extends NoteInputData implements ReceivingNo
             statement.setString(1,po.getBarcode());
             statement.setString(2,po.getTime());
             statement.setString(3,po.getReceiveCustomer());
-            statement.executeUpdate();
-            return this.afterInsert(po);
+            if(this.isBarcodeInDB(po.getBarcode())){
+                statement.executeUpdate();
+                return this.afterInsert(po);
+            }else
+                throw new ElementNotFoundException();
         } catch (MySQLIntegrityConstraintViolationException e){
             throw new InterruptWithExistedElementException("");
         } catch (SQLException e) {
@@ -63,7 +63,6 @@ public class ReceivingNoteInputData extends NoteInputData implements ReceivingNo
         ResultMsg resultMsg = new ResultMsg(false);
         LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+po.getUserName()+
                 "新增收件单,单据编号:" + po.getBarcode());
-        //TODO 删除所有的等待查询
         DocState result = this.waitForCheck("note_receive_note",
                 "barcode", po.getBarcode());
 

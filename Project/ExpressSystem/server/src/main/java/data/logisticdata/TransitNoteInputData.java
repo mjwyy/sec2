@@ -48,10 +48,11 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
             statement = connection.prepareStatement(sql);
             StringBuilder stringBuilder = new StringBuilder();
             ArrayList<BarcodesAndLocation> barcodesAndLocationArrayList = po.getBarcodes();
-
+            ArrayList<String> barcodes = new ArrayList<>();
             //存储货物的条形码与位置,位置包括4位数字
             //格式如下:1234567890,1,2,3,4;
             for (BarcodesAndLocation barcodesAndLocation : barcodesAndLocationArrayList) {
+                barcodes.add(barcodesAndLocation.getBarcode());
                 stringBuilder.append(barcodesAndLocation.getBarcode());
                 stringBuilder.append(',');
                 stringBuilder.append(barcodesAndLocation.getSection());
@@ -63,7 +64,6 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
                 stringBuilder.append(barcodesAndLocation.getNumber());
                 stringBuilder.append(';');
             }
-
             statement.setString(1, stringBuilder.toString());
             statement.setString(2, po.getTransitDocNumber());
             statement.setString(3, po.getSupercargoMan());
@@ -73,12 +73,17 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
             statement.setString(7, po.getDesitination());
             statement.setString(8, po.getTransportationNumber());
 
-            statement.executeUpdate();
-            return this.afterInsert(po);
+            if(this.isBarcodeInDB(barcodes)){
+                statement.executeUpdate();
+                resultMsg = this.afterInsert(po);
+            }else
+                throw new ElementNotFoundException();
+
         } catch (MySQLIntegrityConstraintViolationException e){
             throw new InterruptWithExistedElementException("");
         } catch (SQLException e) {
             e.printStackTrace();
+            return new ResultMsg(false,"数据库异常:新增中转单失败!");
         }
 
         DatabaseManager.releaseConnection(connection, statement, null);

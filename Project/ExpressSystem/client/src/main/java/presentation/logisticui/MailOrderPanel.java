@@ -39,6 +39,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.text.DecimalFormat;
 
+//TODO 界面存在问题,1,审批过后无提示 2,界面下方提示区域有问题
 public class MailOrderPanel extends JPanel {
 	
 	/**
@@ -290,7 +291,8 @@ public class MailOrderPanel extends JPanel {
 						senderPho.getText(),receiveName.getText(),receiveAddress.getText(),receivePho.getText(),
 						name.getText(),Integer.parseInt(goodsnum.getText()),Double.parseDouble(weight.getText()),
 						Double.parseDouble(volum.getText()),deliverCategory,packagetype,barcode.getText());
-			          //  sendDocVO.setUserName(lim.getUserName());
+                      //TODO 为何注释掉?
+                      //  sendDocVO.setUserName(lim.getUserName());
 			          //  sendDocVO.setOrganization(lim.getOrganization());
 			            
 				res = service.inputSendDoc(sendDocVO);//对单据进行格式检查

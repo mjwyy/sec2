@@ -1,14 +1,13 @@
 package businesslogic.commodity;
 
 import util.FormatCheck;
-import businesslogic.info.RuntimeUserInfo;
+import util.RuntimeUserInfo;
 import businesslogicservice.commodityblservice.StorageInquiryAllBLService;
 import util.ResultMsg;
 import vo.InventoryVO;
 
 import java.rmi.RemoteException;
 
-import po.IncomeNotePO;
 import po.InventoryPO;
 import connection.RemoteObjectGetter;
 import dataservice.commoditydataservice.InventoryDataService;

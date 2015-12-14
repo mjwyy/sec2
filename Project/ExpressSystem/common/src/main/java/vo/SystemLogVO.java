@@ -48,4 +48,16 @@ public class SystemLogVO {
         return result;
     }
 
+    //TODO 界面问题:下面的测试可以通过,而界面无法只查询一个关键字
+//    public static void main(String[] args) {
+//        SystemLogVO testVO = new SystemLogVO("2015-01-07","营业厅 派件单");
+//        System.out.println(testVO.checkFormat().isPass());
+//
+//        testVO = new SystemLogVO(null,"营业厅 派件单");
+//        System.out.println(testVO.checkFormat().isPass());
+//
+//        testVO = new SystemLogVO("2015-01-07",null);
+//        System.out.println(testVO.checkFormat().isPass());
+//    }
+
 }

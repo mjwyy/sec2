@@ -10,6 +10,17 @@ import java.util.regex.Pattern;
 public class FormatCheck {
 
     /**
+     * 检查输入是否是正数
+     *
+     * @param num
+     * @return
+     */
+    public static ResultMsg isPositiveDouble(double num) {
+        return num > 0 ? new ResultMsg(true) :
+                new ResultMsg(false,"数量必须为正数!");
+    }
+
+    /**
      * 检查输入是否是合法的城市名称
      *
      * @param str
@@ -49,7 +60,7 @@ public class FormatCheck {
     }
 
     /**
-     * 2检查输入是否是合法的日期,日期格式为“xxxx－xx－xx”,x是数字
+     * 2检查输入是否是合法的日期,日期格式为“xxxxxxxx”,x是数字
      *
      * @param str
      * @return
@@ -60,7 +71,7 @@ public class FormatCheck {
                 "[12][0-9]|3[01]))|((0[469]|11)(0[1-9]|[12][0-9]|30))|(02(0[1-9]|" +
                 "[1][0-9]|2[0-8])))";
         return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
-                new ResultMsg(false,"日期格式错误,应为“xxxx－xx－xx”,x是数字");
+                new ResultMsg(false,"日期格式错误,应为8位的数字");
     }
 
     /**
@@ -76,7 +87,7 @@ public class FormatCheck {
         boolean date = FormatCheck.isDate(str.substring(0,10)).isPass();
         String trueExpression = "\\d{4}-\\d{1,2}-\\d{1,2}\\s\\d{2}:\\d{2}";
         return Pattern.matches(trueExpression,str) && date? new ResultMsg(true) :
-                new ResultMsg(false,"日期格式错误,应为“xxxx－xx－xx xx：xx”,x是数字");
+                new ResultMsg(false,"库存查看日期格式错误,应为“xxxx－xx－xx xx：xx”,x是数字");
     }
 
     /**
@@ -279,6 +290,9 @@ public class FormatCheck {
      * @return
      */
     public static ResultMsg isLogInquiryTime(String str) {
+        if(str  == null){
+            return new ResultMsg(true);
+        }
         return FormatCheck.isDate(str);
     }
 
@@ -493,15 +507,20 @@ public class FormatCheck {
     public static ResultMsg isLogKeyWord(String str) {
         if(str == null)
             return new ResultMsg(true);
+        String split[] = str.split(" ");
         String trueExpression = "[\\u4e00-\\u9fa5]*";
-        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
-                new ResultMsg(false,"查询关键字格式有误，必须为汉字");
+        for(String word : split){
+            if(!Pattern.matches(trueExpression,word) ){
+                return new ResultMsg(false,"查询关键字格式有误，必须为汉字");
+            }
+        }
+        return new ResultMsg(true);
     }
 
 
     public static ResultMsg isReceiveTime(String time) {
         if(time.length() < 16)
-            return new ResultMsg(false,"库存查看时间点长度过短");
+            return new ResultMsg(false,"收件时间点长度过短");
         String trueExpression = "\\d{4}-\\d{1,2}-\\d{1,2}\\s\\d{2}:\\d{2}";
         boolean date = FormatCheck.isDate(time.substring(0,10)).isPass();
         return Pattern.matches(trueExpression,time) && date? new ResultMsg(true) :

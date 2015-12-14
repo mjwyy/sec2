@@ -61,9 +61,7 @@ public class ChartOutput implements ChartOutputBLService {
                 return new ResultMsg(false,"起点日期不能在终点日期之后!");
         } catch (ParseException e) {
             e.printStackTrace();
-        }
-        if(result.isPass()){
-            this.getChartVO(chartType,time1,time2);
+            return new ResultMsg(false,"日期格式错误!");
         }
         return result;
     }
@@ -85,7 +83,7 @@ public class ChartOutput implements ChartOutputBLService {
             }
         } catch (RemoteException e) {
             e.printStackTrace();
-            return null;
+            return new ChartVO(chartType,time1,time2);
         }
     }
 

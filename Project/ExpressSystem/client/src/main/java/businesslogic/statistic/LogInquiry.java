@@ -26,8 +26,7 @@ public class LogInquiry implements LogInquiryBLService {
 
     @Override
     public ResultMsg inputKeywords(SystemLogVO log) {
-        ResultMsg formatCheck = log.checkFormat();
-        return formatCheck;
+        return log.checkFormat();
     }
 
     @Override
@@ -48,7 +47,7 @@ public class LogInquiry implements LogInquiryBLService {
             }
         } catch (RemoteException e) {
             e.printStackTrace();
-            return null;
+            return new ArrayList<SystemLogVO>();
         }
         return results;
     }

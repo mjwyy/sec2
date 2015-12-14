@@ -36,15 +36,15 @@ public class OrderInquiry implements OrderInquiryBLService {
     }
 
     @Override
-    public OrderVO submitBarcode(String inputBarcode) {
+    public OrderVO submitBarcode(String inputBarcode) throws ElementNotFoundException, RemoteException {
         try {
             this.resultPO = dataService.findOrder(inputBarcode);
         } catch (RemoteException e) {
             e.printStackTrace();
-            return null;
+            throw new RemoteException("网络异常:查询订单失败!");
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
-            return null;
+            throw new ElementNotFoundException("输入的订单信息不存在!");
         }
         this.resultVO = new OrderVO(this.resultPO.getBarcode(), this.resultPO.getGoodsState(),
                 this.resultPO.getHistory());

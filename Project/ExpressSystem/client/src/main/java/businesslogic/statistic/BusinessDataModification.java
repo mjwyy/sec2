@@ -40,8 +40,10 @@ public class BusinessDataModification implements BusinessDataModificationBLServi
             }
         } catch (RemoteException e) {
             e.printStackTrace();
+            return priceVOs;
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
+            return priceVOs;
         }
         return priceVOs;
     }
@@ -67,10 +69,10 @@ public class BusinessDataModification implements BusinessDataModificationBLServi
             return new ResultMsg(true,"价格常量修改成功!");
         } catch (RemoteException e) {
             e.printStackTrace();
-            return new ResultMsg(false,"无法修改价格常量!");
+            return new ResultMsg(false,"网络异常:无法修改价格常量!");
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
-            return new ResultMsg(false,"无法修改价格常量!");
+            return new ResultMsg(false,"价格种类不存在:无法修改价格常量!");
         }
     }
 
@@ -98,8 +100,10 @@ public class BusinessDataModification implements BusinessDataModificationBLServi
             }
         } catch (RemoteException e) {
             e.printStackTrace();
+            return results;
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
+            return results;
         }
         return results;
     }
@@ -112,10 +116,10 @@ public class BusinessDataModification implements BusinessDataModificationBLServi
             return new ResultMsg(true,"城市距离修改成功!");
         } catch (RemoteException e) {
             e.printStackTrace();
-            return new ResultMsg(false,"无法修改价格常量!");
+            return new ResultMsg(false,"网络异常:无法修改价格常量!");
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
-            return new ResultMsg(false,e.getMessage());
+            return new ResultMsg(false,"城市信息不存在:无法修改价格常量!");
         }
     }
 

@@ -3,7 +3,7 @@ package businesslogic.commodity;
 import po.StorageOutPO;
 import connection.RemoteObjectGetter;
 import dataservice.commoditydataservice.StorageOutDataService;
-import businesslogic.info.RuntimeUserInfo;
+import util.RuntimeUserInfo;
 import businesslogicservice.commodityblservice.StorageOutBLService;
 import util.ResultMsg;
 import vo.StorageOutVO;

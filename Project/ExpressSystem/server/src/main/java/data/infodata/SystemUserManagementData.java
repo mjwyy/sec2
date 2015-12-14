@@ -8,6 +8,7 @@ import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.infodataservice.SystemUserManagementDataService;
 import po.UserPO;
 import util.LogInMsg;
+import util.RuntimeUserInfo;
 import util.enums.Authority;
 
 import java.rmi.RemoteException;
@@ -188,6 +189,7 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
                     userName = set.getString("name");
                     organization =  set.getString("organization");
                 }
+                RuntimeUserInfo.setUserNum(userName);
                 logInMsg = new LogInMsg(true,a,"",userName,organization);
             } else { // No such user.
                 logInMsg = new LogInMsg(false, null, "密码错误，请检查输入");
@@ -202,12 +204,5 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
         }
         return logInMsg;
 	}
-
-    public static void main(String[] args) throws RemoteException, ElementNotFoundException {
-        SystemUserManagementData data = new SystemUserManagementData();
-//        data.logIn("manager","manager");
-       ArrayList<UserPO> userPOs =  data.inquireUser(new UserPO("manager","manager",null));
-        System.out.println("userPOs is empty?"+userPOs.isEmpty());
-    }
 
 }

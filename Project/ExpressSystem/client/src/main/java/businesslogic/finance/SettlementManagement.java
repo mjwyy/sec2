@@ -1,6 +1,6 @@
 package businesslogic.finance;
 
-import businesslogic.info.RuntimeUserInfo;
+import util.RuntimeUserInfo;
 import businesslogicservice.financeblservice.SettlementManagementBLService;
 import util.ResultMsg;
 import vo.IncomeNoteVO;
@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 import po.IncomeNotePO;
 import connection.RemoteObjectGetter;
-import dataservice.commoditydataservice.InventoryDataService;
 import dataservice.financedataservice.SettlementManagementDataService;
 
 /**

@@ -4,7 +4,7 @@ import po.CreditNotePO;
 import connection.RemoteObjectGetter;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.financedataservice.CreditNoteInputDataService;
-import businesslogic.info.RuntimeUserInfo;
+import util.RuntimeUserInfo;
 import businesslogicservice.financeblservice.CreditNoteInputBLService;
 import util.ResultMsg;
 import vo.CreditNoteVO;

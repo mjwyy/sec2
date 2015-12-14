@@ -137,17 +137,43 @@ public class NoteInputData extends UnicastRemoteObject implements Remote, Serial
         DatabaseManager.releaseConnection(connection, statement, null);
     }
 
-    private boolean isBarcodeInDB(String barcode){
+    public boolean isBarcodeInDB(String barcode){
         Connection connection = DatabaseManager.getConnection();
         String sql = "select `stateOfTransport` from `order` where barcode = '"+barcode+"'";
+        PreparedStatement statement;
+        ResultSet set;
+        boolean result = false;
         try {
-            PreparedStatement statement = connection.prepareStatement(sql);
-            ResultSet set = statement.executeQuery();
-            return set.next();
+            statement = connection.prepareStatement(sql);
+            set = statement.executeQuery();
+            result = set.next();
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
-        return false;
+        DatabaseManager.releaseConnection(connection, statement, set);
+        return result;
+    }
+
+    public boolean isBarcodeInDB(ArrayList<String> barcodes){
+        boolean result = true;
+        for(String barcode : barcodes){
+            if( !this.isBarcodeInDB(barcode) ){
+                return false;
+            }
+        }
+        return result;
+    }
+
+    public boolean isBarcodeInDB(ArrayList<BarcodeAndState> barcodeAndState,boolean noUse){
+        boolean result = true;
+        for(BarcodeAndState barcodeState : barcodeAndState){
+            String barcode = barcodeState.getBarcode();
+            if( !this.isBarcodeInDB(barcode) ){
+                return false;
+            }
+        }
+        return result;
     }
 
 }

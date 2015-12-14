@@ -5,7 +5,7 @@ import java.rmi.RemoteException;
 import po.StorageInPO;
 import connection.RemoteObjectGetter;
 import dataservice.commoditydataservice.StorageInDataService;
-import businesslogic.info.RuntimeUserInfo;
+import util.RuntimeUserInfo;
 import businesslogicservice.commodityblservice.StorageInBLService;
 import util.ResultMsg;
 import util.enums.InventoryStatus;

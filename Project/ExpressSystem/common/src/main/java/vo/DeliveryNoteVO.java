@@ -149,9 +149,10 @@ public class DeliveryNoteVO extends NoteVO {
     }
 
     public DeliveryNotePO toPO(){
-        return new DeliveryNotePO(this.senderName, this.senderAddress, this.senderTeleNumber, this.receiverName,
-        this.receiverAddress, this.receiverTeleNumber, this.name, this.goodsNumber, this.weight,
-        this.volume, this.category, this.packageType, this.barCode);
+        return new DeliveryNotePO(this.senderName, this.senderAddress, this.senderTeleNumber,
+                this.receiverName, this.receiverAddress, this.receiverTeleNumber,
+                this.name, this.goodsNumber, this.weight, this.volume,
+                this.category, this.packageType, this.barCode);
     }
 
     public ResultMsg checkFormat(){
@@ -165,9 +166,9 @@ public class DeliveryNoteVO extends NoteVO {
         results[5] = FormatCheck.isPhoneNumber(this.receiverTeleNumber);
         results[6] = new ResultMsg(true);
         results[7] = FormatCheck.isChineseName(this.name);
-        results[8] = new ResultMsg(goodsNumber>0);
-        results[9] = new ResultMsg(weight>0);
-        results[10] = new ResultMsg(volume>0);
+        results[8] = FormatCheck.isPositiveDouble(goodsNumber);
+        results[9] = FormatCheck.isPositiveDouble(weight);
+        results[10] = FormatCheck.isPositiveDouble(volume);
         results[11] = FormatCheck.isBarcode(this.barCode);
         for(int i = 0; i<results.length; i++){
             if(!results[i].isPass())

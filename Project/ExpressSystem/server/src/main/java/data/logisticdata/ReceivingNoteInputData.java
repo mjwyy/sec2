@@ -26,6 +26,7 @@ import java.util.ArrayList;
  */
 public class ReceivingNoteInputData extends NoteInputData implements ReceivingNoteInputDataService {
 
+    //TODO 查询单据存在与否
     private static final long serialVersionUID = 7218888874956257035L;
 
     public ReceivingNoteInputData() throws RemoteException {
@@ -62,6 +63,7 @@ public class ReceivingNoteInputData extends NoteInputData implements ReceivingNo
         ResultMsg resultMsg = new ResultMsg(false);
         LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+po.getUserName()+
                 "新增收件单,单据编号:" + po.getBarcode());
+        //TODO 删除所有的等待查询
         DocState result = this.waitForCheck("note_receive_note",
                 "barcode", po.getBarcode());
 

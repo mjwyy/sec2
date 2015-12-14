@@ -19,6 +19,8 @@ import java.sql.SQLException;
  */
 public class ArrivalNoteOnService implements ArrivalNoteOnServiceBLService {
 
+    //TODO 界面输入的条形码无法删除
+
     private ArrivalNoteOnServiceDataService dataService;
 
     private ArrivalNoteOnServicePO arrivalNoteOnServicePO;

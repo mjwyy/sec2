@@ -54,8 +54,11 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
             statement.setString(4, po.getTransferNumber());
             statement.setString(5, po.getDate());
             //向数据库添加到达单
-            statement.executeUpdate();
-            resultMsg = this.afterInsertArrival(po);
+            if(this.isBarcodeInDB(po.getBarcodeAndStates(),true)){
+                statement.executeUpdate();
+                resultMsg = this.afterInsertArrival(po);
+            }else
+                throw new ElementNotFoundException();
         } catch (MySQLIntegrityConstraintViolationException e){
             throw new InterruptWithExistedElementException("");
         } catch (SQLException e) {
@@ -99,9 +102,12 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
             statement.setString(2, po.getID());
             statement.setString(3, barcodeUtil.getDBbarsFromBarList(po.getBarCode()));
             statement.setString(4, po.getDate());
-            //向数据库添加到达单
-            statement.executeUpdate();
-            resultMsg = this.afterInsertDelivery(po);
+            //向数据库添加到达单,首先检查订单信息是否存在
+            if(this.isBarcodeInDB(po.getBarCode())){
+                statement.executeUpdate();
+                resultMsg = this.afterInsertDelivery(po);
+            }else
+                throw new ElementNotFoundException();
         } catch (MySQLIntegrityConstraintViolationException e){
             throw new InterruptWithExistedElementException("");
         } catch (SQLException e) {

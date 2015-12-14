@@ -13,8 +13,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import data.database.DatabaseManager;
+import data.infodata.UserInfoHelper;
 import po.LogEntryPO;
 import dataservice.statisticdataservice.LogInquiryDataService;
+import util.RuntimeUserInfo;
 
 public class LogInquiryData extends UnicastRemoteObject implements LogInquiryDataService{
 
@@ -51,6 +53,7 @@ public class LogInquiryData extends UnicastRemoteObject implements LogInquiryDat
                 result.add(new LogEntryPO(resultSet.getString("time"), resultSet.getString("log")));
             }
             statement.close();
+            LogInsHelper.insertLog("用户:"+ RuntimeUserInfo.getNum()+"查询系统日志");
         } catch (SQLException e) {
             e.printStackTrace();
         }

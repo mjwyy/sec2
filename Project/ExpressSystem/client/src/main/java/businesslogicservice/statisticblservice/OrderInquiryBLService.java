@@ -1,7 +1,10 @@
 package businesslogicservice.statisticblservice;
 
+import dataservice.exception.ElementNotFoundException;
 import util.ResultMsg;
 import vo.OrderVO;
+
+import java.rmi.RemoteException;
 
 /**
  * 单据查询的逻辑接口
@@ -25,6 +28,6 @@ public interface OrderInquiryBLService {
 	 * @param inputBarcode
 	 * @return
 	 */
-	public OrderVO submitBarcode(String inputBarcode);
+	public OrderVO submitBarcode(String inputBarcode) throws ElementNotFoundException, RemoteException;
 	
 }

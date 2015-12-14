@@ -1,6 +1,6 @@
 package businesslogic.commodity;
 
-import businesslogic.info.RuntimeUserInfo;
+import util.RuntimeUserInfo;
 import util.FormatCheck;
 import businesslogicservice.commodityblservice.StorageInquiryPartBLService;
 import util.ResultMsg;
@@ -8,7 +8,6 @@ import vo.InventoryVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import po.InventoryPO;
 import connection.RemoteObjectGetter;

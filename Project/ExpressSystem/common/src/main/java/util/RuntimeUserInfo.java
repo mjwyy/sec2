@@ -1,4 +1,4 @@
-package businesslogic.info;
+package util;
 
 public class RuntimeUserInfo {
 	private static String userNum = null;

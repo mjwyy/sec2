@@ -1,12 +1,15 @@
 package businesslogicservice.statisticblservice._driver;
 
 import businesslogicservice.statisticblservice.OrderInquiryBLService;
+import dataservice.exception.ElementNotFoundException;
 import util.ResultMsg;
 import vo.OrderVO;
 
+import java.rmi.RemoteException;
+
 public class OrderInquiryBLService_Driver {
 
-	public void drive(OrderInquiryBLService service){
+	public void drive(OrderInquiryBLService service) throws ElementNotFoundException, RemoteException {
 		ResultMsg result = service.inputBarcode("0123456789");
 		if(result.isPass())
 			System.out.println("barcode is correct!");

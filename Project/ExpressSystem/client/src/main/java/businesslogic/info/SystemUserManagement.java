@@ -5,6 +5,7 @@ import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
 import util.ResultMsg;
 import util.LogInMsg;
+import util.RuntimeUserInfo;
 import vo.UserVO;
 
 import java.rmi.RemoteException;

@@ -23,18 +23,18 @@ public class CurrentTime {
 		return df.format(new Date());
 	}
 	//精确到时
-		public static String getCurrentTimeHour(){
-			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH");
-			return df.format(new Date());
-		}
-		//精确到日
-				public static String getCurrentTimeDate(){
-					SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-					return df.format(new Date());
-				}
-				
-				public static String second(){
-					SimpleDateFormat df = new SimpleDateFormat("HH:mm");
-					return df.format(new Date());
-				}			
+    public static String getCurrentTimeHour(){
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH");
+        return df.format(new Date());
+    }
+    //精确到日
+    public static String getCurrentTimeDate(){
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        return df.format(new Date());
+    }
+
+    public static String second(){
+        SimpleDateFormat df = new SimpleDateFormat("HH:mm");
+        return df.format(new Date());
+    }
 }

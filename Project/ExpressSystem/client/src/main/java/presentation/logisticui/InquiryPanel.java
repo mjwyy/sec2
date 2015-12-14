@@ -1,6 +1,7 @@
 package presentation.logisticui;
 //快递员查询界面
 import java.awt.Graphics;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -14,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
 import businesslogic.statistic.OrderInquiry;
+import dataservice.exception.ElementNotFoundException;
 import util.ResultMsg;
 import vo.OrderVO;
 import businesslogicservice.statisticblservice.OrderInquiryBLService;
@@ -86,8 +88,19 @@ public class InquiryPanel extends JPanel {
 			service = new OrderInquiry();
 			res = service.inputBarcode(barcode.getText());
 			if(res.isPass()){
-				OrderVO vo = service.submitBarcode(barcode.getText());
-				ArrayList<String> history = new ArrayList<String>();
+                OrderVO vo = null;
+                try {
+                    vo = service.submitBarcode(barcode.getText());
+                    //TODO 界面显示提示框,打印Info里面的内容
+                } catch (ElementNotFoundException e1) {
+                    e1.printStackTrace();
+                    String info = e1.getMessage();
+
+                } catch (RemoteException e1) {
+                    e1.printStackTrace();
+                    String info = e1.getMessage();
+                }
+                ArrayList<String> history = new ArrayList<String>();
 				Vector row = new Vector();
 				history = vo.getHistory();
 				if(history.isEmpty()){

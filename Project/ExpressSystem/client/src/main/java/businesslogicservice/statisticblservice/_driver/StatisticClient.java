@@ -1,11 +1,14 @@
 package businesslogicservice.statisticblservice._driver;
 
 import businesslogicservice.statisticblservice._stub.*;
+import dataservice.exception.ElementNotFoundException;
+
+import java.rmi.RemoteException;
 
 
 public class StatisticClient {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ElementNotFoundException, RemoteException {
 		
 		BaseDataBuildingBLService_Driver driver1 = new BaseDataBuildingBLService_Driver();
 		driver1.drive(new BaseDataBuildingBLService_Stub());

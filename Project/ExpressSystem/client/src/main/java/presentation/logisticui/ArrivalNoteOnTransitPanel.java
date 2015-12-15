@@ -72,9 +72,14 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 	private ArrayList<BarcodeAndState> barcodeAndStates = new ArrayList<BarcodeAndState>();
 	private LogInMsg lim; 
 	private JButton button_1;
-	private JComboBox comboBox;
-	private int seletedRow;
+	private JComboBox statechoose;
+	private int seletedRow = -1;
 	private TransitFrame parent;
+	private JButton delete ;
+	private JButton ADD;
+	private JButton confirm;
+	private JButton submit;
+	private JButton modify;
 	
 	/**
 	 * Create the panel.
@@ -103,7 +108,7 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 												
 		CurrentTime currentTime = new CurrentTime();										
 		date1 = new MJTextField();
-		date1.setText(currentTime.getCurrentTimeSecond());
+		date1.setText(currentTime.getCurrentTimeDate());
 		date1.setBounds(970, 32, 156, 30);
 		
 		add(date1);
@@ -120,17 +125,17 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 		add(centrenum1);										
 	    centrenum1.setColumns(10);
 												
-	    JButton btnNewButton = new JButton("确认");
-	    btnNewButton.setBounds(1009, 222, 117, 30);
-		add(btnNewButton);	
-		btnNewButton.addActionListener(new ActionListener() {
+	    confirm = new JButton("确认");
+	    confirm.setBounds(1009, 222, 117, 30);
+		add(confirm);	
+		confirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ArrayList<BarcodeAndState> bas = new ArrayList<BarcodeAndState>();
 				BarcodeAndState mock = new BarcodeAndState("1234567890",GoodsState.COMPLETE);
 				bas.add(mock);
 		       if(trannum1.getText().isEmpty()||centrenum1.getText().isEmpty()||
 		    		   date1.getText().isEmpty()||departure1.getText().isEmpty()){
-		    		int result1 = JOptionPane.showConfirmDialog(null, "有咚咚漏天啦！","系统提示",
+		    		 JOptionPane.showConfirmDialog(null, "有咚咚漏天啦！","系统提示",
 							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 		       }else{
 				ArrivalNoteOnTransitVO vo = new ArrivalNoteOnTransitVO(trannum1.getText(),centrenum1.getText(),date1.getText(),
@@ -174,10 +179,10 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 		label_1.setBounds(852, 345, 78, 16);
 		add(label_1);
 		String[] state = {"完好","缺损","丢失"};
-		  comboBox = new JComboBox(state);
-		comboBox.setBounds(970, 341, 156, 27);
-		comboBox.setBackground(SystemColor.textHighlight);
-		add(comboBox);
+		  statechoose = new JComboBox(state);
+		statechoose.setBounds(970, 341, 156, 27);
+		statechoose.setBackground(SystemColor.textHighlight);
+		add(statechoose);
 																
 		departure1 = new MJTextField();
 		departure1.setBounds(970, 126, 156, 30);
@@ -189,9 +194,9 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 		add(trannum1);
 		trannum1.setColumns(10);
 			
-			JButton btnAdd = new JButton("ADD");
-			btnAdd.setBounds(1052, 390, 74, 30);
-			add(btnAdd);
+			 ADD = new JButton("ADD");
+			ADD.setBounds(1037, 390, 94, 30);
+			add(ADD);
 			
 			JLabel arrivaldateLabel = new JLabel("到达日期");
 			arrivaldateLabel.setBounds(44, 73, 61, 16);
@@ -230,17 +235,17 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 		        		 seletedRow = table.getSelectedRow();
 		          		if(seletedRow != -1){
 		          			barcode.setText(model.getValueAt(seletedRow,0).toString());
-		          			comboBox.setSelectedItem(model.getValueAt(seletedRow, 1).toString());
+		          			statechoose.setSelectedItem(model.getValueAt(seletedRow, 1).toString());
 		          			
 		          		}
 		        	}
 		        });
 			
 			
-			JButton button_1 = new JButton("提交");
-			button_1.addActionListener(new submitListener());
-			button_1.setBounds(591, 391, 117, 29);
-			add(button_1);
+			submit = new JButton("提交");
+			submit.addActionListener(new submitListener());
+			submit.setBounds(591, 391, 117, 29);
+			add(submit);
 			
 			JLabel label_3 = new JLabel("出发地");
 			label_3.setBounds(44, 228, 61, 16);
@@ -262,50 +267,85 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 			add(trannum2);
 			trannum2.setColumns(10);
 			
-			JButton btnNewButton_1 = new JButton("DELETE");
-			btnNewButton_1.addActionListener(new ActionListener() {
+			delete = new JButton("DELETE");
+			delete.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					if(seletedRow != -1)
+					if(seletedRow >= 0){
 					model.removeRow(seletedRow);
-				}
-			});
-			btnNewButton_1.setBounds(955, 390, 74, 30);
-			add(btnNewButton_1);
-			
-			
-			btnAdd.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					ArrayList<BarcodeAndState> bas = new ArrayList<BarcodeAndState>();
-					
-					if(comboBox.getSelectedItem().equals("完整"))
-					    brcodeAndState = new BarcodeAndState(barcode.getText(),GoodsState.COMPLETE);
-					else if(comboBox.getSelectedItem().equals("缺损"))
-						brcodeAndState = new BarcodeAndState(barcode.getText(),GoodsState.DAMAGED);
-					else
-						brcodeAndState = new BarcodeAndState(barcode.getText(),GoodsState.LOST);
-					bas.add(brcodeAndState);
-					
-					
-					ArrivalNoteOnTransitVO vo = new ArrivalNoteOnTransitVO(trannum2.getText(),centrenum2.getText(),date2.getText(),
-							departure2.getText(),bas);
-					
-					res = service.inputCenterArrivalDoc(vo);
-					if(res.isPass()){
-						Vector row = new Vector();
-						row.add(barcode.getText());
-						row.add(comboBox.getSelectedItem());
-						data.add(row.clone());
-						model.setDataVector(data, name);
-						table.setModel(model);	
-						barcode.setText("");
-						trannum1.setText("");
-						departure1.setText("");
-						barcodeAndStates.add( brcodeAndState);		
+					barcodeAndStates.remove(seletedRow);
+					seletedRow = -1;
+					System.out.println(seletedRow);
+					for(int i = 0;i<barcodeAndStates.size();i++){
+						System.out.println(barcodeAndStates.get(i).getBarcode()+" "+barcodeAndStates.get(i).getState().toString());
+					}
 					}else{
-						int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
+						JOptionPane.showConfirmDialog(null, "尼木有选择要删除的行哦！","系统提示",
 								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 					}
-					
+				}
+			});
+			delete.setBounds(848, 390, 89, 30);
+			add(delete);
+			
+			modify = new JButton("MODIFY");
+			modify.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if(seletedRow >= 0){
+						barcodeAndStates.remove(seletedRow);
+						model.removeRow(seletedRow);
+						addBarcode();
+						seletedRow = -1;
+						System.out.println(seletedRow);
+						for(int i = 0;i<barcodeAndStates.size();i++){
+							System.out.println(barcodeAndStates.get(i).getBarcode()+" "+barcodeAndStates.get(i).getState().toString());
+						}
+					}else{
+						JOptionPane.showConfirmDialog(null, "尼木有选择要修改的行哦！","系统提示",
+								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+					}
+				}
+			});
+			modify.setBounds(938, 390, 102, 30);
+			add(modify);
+			
+			
+			ADD.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+//					ArrayList<BarcodeAndState> bas = new ArrayList<BarcodeAndState>();
+//					if(!barcode.getText().isEmpty()){
+//					if(statechoose.getSelectedItem().equals("完整"))
+//					    brcodeAndState = new BarcodeAndState(barcode.getText(),GoodsState.COMPLETE);
+//					else if(statechoose.getSelectedItem().equals("缺损"))
+//						brcodeAndState = new BarcodeAndState(barcode.getText(),GoodsState.DAMAGED);
+//					else
+//						brcodeAndState = new BarcodeAndState(barcode.getText(),GoodsState.LOST);
+//					bas.add(brcodeAndState);
+//					
+//					
+//					ArrivalNoteOnTransitVO vo = new ArrivalNoteOnTransitVO("025000201510100000001","025000",date1.getText(),
+//							"北京",bas);
+//					
+//					res = service.inputCenterArrivalDoc(vo);
+//					if(res.isPass()){
+//						Vector row = new Vector();
+//						row.add(barcode.getText());
+//						row.add(statechoose.getSelectedItem());
+//						data.add(row.clone());
+//						model.setDataVector(data, name);
+//						table.setModel(model);	
+//						barcode.setText("");
+////						trannum1.setText("");
+////						departure1.setText("");
+//						barcodeAndStates.add( brcodeAndState);		
+//					}else{
+//						int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
+//								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+//					}
+//					}else{
+//						JOptionPane.showConfirmDialog(null, "有咚咚木有填","系统提示",
+//								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+//					}
+					addBarcode();
 				}
 			});	
 																	
@@ -333,13 +373,19 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if(!barcodeAndStates.isEmpty()){
+			boolean isempty = date2.getText().isEmpty();
+			if((!barcodeAndStates.isEmpty())&&!isempty){
 				arrivalNoteOnTransitVO = new ArrivalNoteOnTransitVO(trannum2.getText(),centrenum2.getText(),date2.getText(),
 						departure2.getText(), barcodeAndStates);
 				arrivalNoteOnTransitVO.setUserName(lim.getUserName());
 				arrivalNoteOnTransitVO.setOrganization(lim.getOrganization());
 				UnEditablePanel.UnEdit(ArrivalNoteOnTransitPanel.this);//设置为不可编辑
-				parent.initDaoda(true);//显示等待审批字样	
+				delete.setEnabled(false);
+				ADD.setEnabled(false);
+				confirm.setEnabled(false);
+				modify.setEnabled(false);
+				submit.setEnabled(false);
+				parent.setdaodaB(true);;//显示等待审批字样	
 				parent.setArrivalNoteOnTransitpanel(thisP);
 				new Submitter().start();
 		
@@ -361,6 +407,8 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 		}else{
 			int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
 					JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
+			date1.setEditable(true);
+			date1.setEnabled(true);
 			trannum1.setEditable(true);
 			trannum1.setEnabled(true);
 			centrenum1.setEditable(true);
@@ -369,8 +417,13 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 			departure1.setEnabled(true);
 			barcode.setEditable(true);
 			barcode.setEnabled(true);
-			comboBox.setEditable(true);
-			comboBox.setEnabled(true);
+			statechoose.setEditable(true);
+			statechoose.setEnabled(true);
+			delete.setEnabled(true);
+			ADD.setEnabled(true);
+			modify.setEnabled(true);
+			confirm.setEnabled(true);
+			submit.setEnabled(true);
 		}
 		
 		}
@@ -380,6 +433,42 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 		public void run() {
 			super.run();
 			setResult(service.submitCenterArrivalDoc(arrivalNoteOnTransitVO));
+		}
+	}
+	
+	
+	public void addBarcode() {
+		ArrayList<BarcodeAndState> bas = new ArrayList<BarcodeAndState>();
+		if(!barcode.getText().isEmpty()){
+		if(statechoose.getSelectedItem().equals("完好"))
+		    brcodeAndState = new BarcodeAndState(barcode.getText(),GoodsState.COMPLETE);
+		else if(statechoose.getSelectedItem().equals("缺损"))
+			brcodeAndState = new BarcodeAndState(barcode.getText(),GoodsState.DAMAGED);
+		else
+			brcodeAndState = new BarcodeAndState(barcode.getText(),GoodsState.LOST);
+		bas.add(brcodeAndState);
+		
+		
+		ArrivalNoteOnTransitVO vo = new ArrivalNoteOnTransitVO("025000201510100000001","025000",date1.getText(),
+				"北京",bas);
+		
+		res = service.inputCenterArrivalDoc(vo);
+		if(res.isPass()){
+			Vector row = new Vector();
+			row.add(barcode.getText());
+			row.add(statechoose.getSelectedItem());
+			data.add(row.clone());
+			model.setDataVector(data, name);
+			table.setModel(model);	
+			barcode.setText("");
+			barcodeAndStates.add( brcodeAndState);		
+		}else{
+			int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
+					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+		}
+		}else{
+			JOptionPane.showConfirmDialog(null, "有咚咚木有填","系统提示",
+					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 		}
 	}
 }

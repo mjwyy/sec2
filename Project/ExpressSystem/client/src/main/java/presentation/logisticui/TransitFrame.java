@@ -404,8 +404,8 @@ public class TransitFrame extends JFrame {
 		zhuangcheA.setVisible(torf);
 	}
 	public  void initDaoda(boolean torf){	
-		daoda.setVisible(!torf);
-		daodaA.setVisible(torf);	
+		daoda.setVisible(torf);
+		daodaA.setVisible(!torf);	
 	}
 	
 	public void setdaodaB(boolean torf){

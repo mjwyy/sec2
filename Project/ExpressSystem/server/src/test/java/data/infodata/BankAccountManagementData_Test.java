@@ -31,9 +31,9 @@ public class BankAccountManagementData_Test {
 		bmd.addBankAccount(bam1);
 	}
 	@Test
-	public void testAddBankAccount() throws RemoteException, InterruptWithExistedElementException {
-		MockBankAccountManagement bam1=new MockBankAccountManagement("lizy");
-		//assertEquals(true,bmd.addBankAccount(bam1));
+	public void testAddBankAccount() throws RemoteException, InterruptWithExistedElementException, SQLException {
+		BankAccountPO bam1=new BankAccountPO("lizy","0251001888","6000");
+		assertEquals(true,bmd.addBankAccount(bam1));
 	}
 
 	@Test

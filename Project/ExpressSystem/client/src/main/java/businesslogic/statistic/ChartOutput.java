@@ -55,10 +55,13 @@ public class ChartOutput implements ChartOutputBLService {
         }
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
+            Date today = new Date();
             Date startDay = dateFormat.parse(time1);
             Date endDay = dateFormat.parse(time2);
             if(!startDay.before(endDay))
                 return new ResultMsg(false,"起点日期不能在终点日期之后!");
+            if(endDay.before(today))
+                return new ResultMsg(false,"终点日期不能在未来,请输入过去某一时间");
         } catch (ParseException e) {
             e.printStackTrace();
             return new ResultMsg(false,"日期格式错误!");

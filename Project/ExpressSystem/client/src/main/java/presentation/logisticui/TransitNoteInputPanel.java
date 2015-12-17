@@ -61,13 +61,9 @@ public class TransitNoteInputPanel extends JPanel {
     private TransitType transitNoteType;
     private TransitNoteInputBLService service = new TransitNoteInput();
     private ResultMsg res;
-    private MJTextField section;
-    private MJTextField line;
-    private MJTextField jiahao;
-    private MJTextField number;
     private MJTextField flightNumber2;
     private MJTextField flightNumber1;
-    private ArrayList<BarcodesAndLocation> barcodesandLocation = new ArrayList<BarcodesAndLocation>();
+    private ArrayList<String> barcodesandLocation = new ArrayList<String>();
     private TransitNoteOnTransitVO transitNoteOnTransitVO;
     private  LogInMsg lim ;
     private int seletedRow = -1;
@@ -158,10 +154,10 @@ public class TransitNoteInputPanel extends JPanel {
 		
 		String[] transitType = {"汽车","火车","飞机"};
 		final JComboBox transitType1 = new JComboBox(transitType);
-		transitType1.setBounds(891, 200, 78, 27);
+		transitType1.setBounds(891, 255, 78, 27);
 		add(transitType1);
 		flightNumber1 = new MJTextField();
-		flightNumber1.setBounds(966, 198, 134, 28);
+		flightNumber1.setBounds(968, 253, 134, 28);
 		add(flightNumber1);
 		flightNumber1.setColumns(10);
 		
@@ -206,51 +202,50 @@ public class TransitNoteInputPanel extends JPanel {
 		add(date1);
 		
 		JLabel lblNewLabel = new JLabel("条形码");
-		lblNewLabel.setBounds(818, 295, 61, 16);
+		lblNewLabel.setBounds(818, 341, 61, 16);
 		add(lblNewLabel);
 		
 		JLabel label_6 = new JLabel("中转单编号");
-		label_6.setBounds(818, 78, 99, 16);
+		label_6.setBounds(818, 88, 99, 16);
 		add(label_6);
 		
 		transitnum1 = new MJTextField();
 		transitnum1.setColumns(10);
-		transitnum1.setBounds(891, 72, 209, 28);
+		transitnum1.setBounds(893, 82, 209, 28);
 		add(transitnum1);
 		
 		JLabel label_7 = new JLabel("监装员");
-		label_7.setBounds(818, 109, 61, 16);
+		label_7.setBounds(818, 137, 61, 16);
 		add(label_7);
 		
 		loader1 = new MJTextField();
 		loader1.setColumns(10);
-		loader1.setBounds(891, 103, 209, 28);
+		loader1.setBounds(891, 131, 209, 28);
 		add(loader1);
 		
 		JLabel label_8 = new JLabel("出发地");
-		label_8.setBounds(818, 142, 61, 16);
+		label_8.setBounds(818, 176, 61, 16);
 		add(label_8);
 		
 		JLabel label_9 = new JLabel("到达地");
-		label_9.setBounds(818, 170, 61, 16);
+		label_9.setBounds(818, 213, 61, 16);
 		add(label_9);
 		
 		setout1 = new MJTextField();
 		setout1.setColumns(10);
-		setout1.setBounds(891, 134, 209, 28);
+		setout1.setBounds(891, 170, 209, 28);
 		add(setout1);
 		
 		arrival1 = new MJTextField();
 		arrival1.setColumns(10);
-		arrival1.setBounds(891, 164, 209, 28);
+		arrival1.setBounds(893, 207, 209, 28);
 		add(arrival1);
 		
 		confirm = new JButton("确认");
 		confirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ArrayList<BarcodesAndLocation> mock = new ArrayList<BarcodesAndLocation>();
-				 BarcodesAndLocation bal = new  BarcodesAndLocation("1234567890",12,12,12,12);
-				 mock.add(bal);
+				ArrayList<String> mock = new ArrayList<String>();
+				 mock.add("1234567890");
 				 
 				 if(transitType1.getSelectedItem().equals("汽车"))
 					 transitNoteType = transitNoteType.Car;
@@ -284,20 +279,16 @@ public class TransitNoteInputPanel extends JPanel {
 				 }
 			}
 		});
-		confirm.setBounds(1006, 238, 86, 28);
+		confirm.setBounds(1014, 290, 86, 28);
 		add(confirm);
 		
 		barcode = new MJTextField();
 		barcode.setColumns(10);
-		barcode.setBounds(891, 289, 209, 28);
+		barcode.setBounds(891, 335, 209, 28);
 		add(barcode);
 		
 		name = new Vector();
 		name.add("条形码");
-		name.add("区号");
-		name.add("排号");
-		name.add("架号");
-		name.add("位号");
 		data = new Vector();
 		model = new DefaultTableModel();
 		model.setDataVector(data, name);
@@ -312,10 +303,7 @@ public class TransitNoteInputPanel extends JPanel {
         		 seletedRow = table.getSelectedRow();
           		if(seletedRow != -1){
           			barcode.setText(model.getValueAt(seletedRow,0).toString());
-          			section.setText(model.getValueAt(seletedRow, 1).toString());
-          			line.setText(model.getValueAt(seletedRow, 2).toString());
-          			jiahao.setText(model.getValueAt(seletedRow, 3).toString());
-          			number.setText(model.getValueAt(seletedRow, 3).toString());
+ 
           		}
         	}
         });
@@ -337,42 +325,6 @@ public class TransitNoteInputPanel extends JPanel {
 		
 		scrollPane.setViewportView(table);
 		
-		JLabel label_10 = new JLabel("区号");
-		label_10.setBounds(856, 335, 61, 16);
-		add(label_10);
-		
-		section = new MJTextField();
-		section.setBounds(905, 329, 39, 28);
-		add(section);
-		section.setColumns(10);
-		
-		JLabel label_11 = new JLabel("排号");
-		label_11.setBounds(996, 333, 61, 16);
-		add(label_11);
-		
-		line = new MJTextField();
-		line.setBounds(1053, 327, 39, 28);
-		add(line);
-		line.setColumns(10);
-		
-		JLabel label_12 = new JLabel("架号");
-		label_12.setBounds(856, 370, 61, 16);
-		add(label_12);
-		
-		jiahao = new MJTextField();
-		jiahao.setBounds(904, 364, 40, 28);
-		add(jiahao);
-		jiahao.setColumns(10);
-		
-		JLabel lblNewLabel_1 = new JLabel("位号");
-		lblNewLabel_1.setBounds(996, 370, 45, 16);
-		add(lblNewLabel_1);
-		
-		number = new MJTextField();
-		number.setBounds(1053, 364, 39, 28);
-		add(number);
-		number.setColumns(10);
-		
 		JLabel label_13 = new JLabel("运输号");
 		label_13.setBounds(84, 289, 117, 28);
 		add(label_13);
@@ -384,7 +336,7 @@ public class TransitNoteInputPanel extends JPanel {
 		flightNumber2.setColumns(10);
 		
 		JLabel label_14 = new JLabel("运输号");
-		label_14.setBounds(818, 204, 88, 16);
+		label_14.setBounds(818, 259, 88, 16);
 		add(label_14);
 		
 		
@@ -486,34 +438,26 @@ public class TransitNoteInputPanel extends JPanel {
 	}
 	
 	public void addBarcodeAndLocation() {
-		if(barcode.getText().isEmpty()||section.getText().isEmpty()||line.getText().isEmpty()||
-				jiahao.getText().isEmpty()||number.getText().isEmpty()){
-		int result1 = JOptionPane.showConfirmDialog(null, "条形码与位置信息要填完整哦！","系统提示",
+		if(barcode.getText().isEmpty()){
+		int result1 = JOptionPane.showConfirmDialog(null, "条形码信息要填完整哦！","系统提示",
 				JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 		}else{
-		ArrayList<BarcodesAndLocation> add = new ArrayList<BarcodesAndLocation>();
-		BarcodesAndLocation bal = new BarcodesAndLocation(barcode.getText(),Integer.parseInt(section.getText())
-				,Integer.parseInt(line.getText()),Integer.parseInt(jiahao.getText()),Integer.parseInt(number.getText()));
-		add.add(bal);
+		ArrayList<String> add = new ArrayList<String>();
+		
+		add.add(barcode.getText());
 		TransitNoteOnTransitVO vo = new TransitNoteOnTransitVO("2015-12-12","025000201510120000002",
 				"MF8190",transitNoteType.Aircraft,"南京","北京","王小二",add);
 		res = service.inputCenterTransitDoc(vo);
 		if(res.isPass()){
 			Vector row  = new Vector();
 			row.add(barcode.getText());
-			row.add(section.getText());
-			row.add(line.getText());
-			row.add(jiahao.getText());
-			row.add(number.getText());
+		
 			data.add(row.clone());
 			model.setDataVector(data, name);
 			table.setModel(model);
 			barcode.setText("");
-			section.setText(section.getText());
-			line.setText("");
-			jiahao.setText("");
-			number.setText("");
-			barcodesandLocation.add(bal);	
+		
+			barcodesandLocation.add(barcode.getText());	
 		}else{
 			int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
 					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);

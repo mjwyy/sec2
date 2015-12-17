@@ -238,7 +238,7 @@ public class Service extends JFrame {
 		lblNewLabel.requestFocus();
 		lblNewLabel.setBounds(0, 0, 1280, 100);
 		panel.add(lblNewLabel);
-		lblNewLabel.setIcon(new ImageIcon("image/0000.jpg"));
+		lblNewLabel.setIcon(new ImageIcon("image/henfu.png"));
 
 		middle = new JPanel(){
 			public void paintComponent(Graphics g) {

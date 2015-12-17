@@ -221,7 +221,7 @@ public class Commodity extends JFrame {
 		lblNewLabel.requestFocus();
 		lblNewLabel.setBounds(0, 0, 1280, 100);
 		panel.add(lblNewLabel);
-		lblNewLabel.setIcon(new ImageIcon("image/0000.jpg"));
+		lblNewLabel.setIcon(new ImageIcon("image/henfu.png"));
 
 		final JPanel middle = new JPanel(){
 			public void paintComponent(Graphics g) {
@@ -252,7 +252,7 @@ public class Commodity extends JFrame {
 		QUANXIANW.add(user);
 
 		JLabel username = new JLabel(lim.getUserName());
-		username.setBounds(56, 2, 77, 18);
+		username.setBounds(56, 2, 170, 18);
 		QUANXIANW.add(username);
 
 		JLabel quanxian = new JLabel("权限：");
@@ -260,7 +260,7 @@ public class Commodity extends JFrame {
 		QUANXIANW.add(quanxian);
 
 		JLabel label = new JLabel(lim.getOrganization());
-		label.setBounds(56, 25, 129, 18);
+		label.setBounds(56, 25, 150, 18);
 		QUANXIANW.add(label);
 
 		JLabel label_1 = new JLabel("公告:");

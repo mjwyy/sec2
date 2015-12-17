@@ -173,7 +173,7 @@ public class SystemUser extends JFrame {
 
 
 		this.setResizable(false);//不可调整大小
-		setIconImage(Toolkit.getDefaultToolkit().getImage("image/logo.jpg"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("image/henfu.png"));
 		setTitle("快递物流系统");
 		this.setSize(WIDTH, HEIGHT);
 		((JComponent) this.getContentPane()).setOpaque(true);//不透明
@@ -213,8 +213,8 @@ public class SystemUser extends JFrame {
 		user.setBounds(10, 2, 54, 15);
 		QUANXIANW.add(user);
 
-		//JLabel username = new JLabel(lim.getUserName());
-		JLabel username = new JLabel();
+		JLabel username = new JLabel(lim.getUserName());
+		//JLabel username = new JLabel();
 		username.setBounds(56, 2, 54, 15);
 		QUANXIANW.add(username);
 
@@ -222,8 +222,8 @@ public class SystemUser extends JFrame {
 		quanxian.setBounds(10, 25, 54, 15);
 		QUANXIANW.add(quanxian);
 
-	//	JLabel auth = new JLabel(lim.getOrganization());
-		JLabel auth = new JLabel();
+		JLabel auth = new JLabel(lim.getOrganization());
+		//JLabel auth = new JLabel();
 		auth.setBounds(56, 25, 129, 15);
 		QUANXIANW.add(auth);
 
@@ -491,8 +491,8 @@ public class SystemUser extends JFrame {
 
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Administrator\\Desktop\\SAD\\sec2\\Project\\ExpressSystem\\client\\image\\logo.png"));
-		lblNewLabel.setBounds(0, 0, 862, 73);
+		lblNewLabel.setIcon(new ImageIcon("image/henfu.png"));
+		lblNewLabel.setBounds(0, -25, 1291, 105);
 		contentPane.add(lblNewLabel);
 
 

@@ -39,7 +39,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.text.DecimalFormat;
 
-//TODO 界面存在问题,1,审批过后无提示 2,界面下方提示区域有问题
 public class MailOrderPanel extends JPanel {
 	
 	/**
@@ -76,6 +75,7 @@ public class MailOrderPanel extends JPanel {
     private MJTextField senderName;
     private LogInMsg lim; 
     private CourierFrame parent;
+    private boolean hasEmpty;
 	/**
 	 * Create the panel.
 	 */
@@ -206,11 +206,11 @@ public class MailOrderPanel extends JPanel {
 		
 		
 		JLabel label_11 = new JLabel("寄件价格：");
-		label_11.setBounds(896, 39, 82, 16);
+		label_11.setBounds(860, 39, 82, 16);
 		add(label_11);
 		
 		money = new MJTextField();
-		money.setBounds(896, 72, 238, 64);
+		money.setBounds(860, 64, 213, 64);
 		add(money);
 		money.setBackground(Color.WHITE);
 		money.setEditable(false);
@@ -218,15 +218,15 @@ public class MailOrderPanel extends JPanel {
 		money.setColumns(10);
 		
 		JLabel label_13 = new JLabel("输入完整的单据信息提交后自动显示");
-		label_13.setBounds(906, 138, 228, 16);
+		label_13.setBounds(860, 138, 228, 16);
 		add(label_13);
 		
 		JLabel label_12 = new JLabel("预计到达时间");
-		label_12.setBounds(875, 191, 82, 16);
+		label_12.setBounds(860, 185, 173, 16);
 		add(label_12);
 		
 		predate = new MJTextField();
-		predate.setBounds(896, 223, 238, 64);
+		predate.setBounds(860, 216, 213, 64);
 		add(predate);
 		predate.setBackground(Color.WHITE);
 		predate.setEnabled(false);
@@ -234,7 +234,7 @@ public class MailOrderPanel extends JPanel {
 		predate.setColumns(10);
 		
 		JLabel label_14 = new JLabel("输入完整的单据信息提交后自动显示");
-		label_14.setBounds(906, 291, 228, 16);
+		label_14.setBounds(860, 291, 228, 16);
 		add(label_14);
 		
 		JLabel label_15 = new JLabel("寄件人地址");
@@ -274,26 +274,25 @@ public class MailOrderPanel extends JPanel {
 		else
 			packagetype = packagetype.WoodenBox;
 		
-
-		
-	
-			
-	
-		
-		
 		
 		
 		JButton btnNewButton = new JButton("提交");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				        
+				hasEmpty =senderName.getText().isEmpty()||senderAddress.getText().isEmpty()||
+			    		senderPho.getText().isEmpty()||receiveName.getText().isEmpty()||receiveAddress.getText().isEmpty()||
+			    		receivePho.getText().isEmpty()||
+			    		name.getText().isEmpty()||goodsnum.getText().isEmpty()||weight.getText().isEmpty()||
+			    		volum.getText().isEmpty()||barcode.getText().isEmpty();
+				if(!hasEmpty){
+				         if(isNum()) {
 			            sendDocVO = new DeliveryNoteVO(senderName.getText(),senderAddress.getText(),
 						senderPho.getText(),receiveName.getText(),receiveAddress.getText(),receivePho.getText(),
 						name.getText(),Integer.parseInt(goodsnum.getText()),Double.parseDouble(weight.getText()),
 						Double.parseDouble(volum.getText()),deliverCategory,packagetype,barcode.getText());
-                      //TODO 为何注释掉?
-                      //  sendDocVO.setUserName(lim.getUserName());
-			          //  sendDocVO.setOrganization(lim.getOrganization());
+			            sendDocVO.setUserName(lim.getUserName());
+			           sendDocVO.setOrganization(lim.getOrganization());
 			            
 				res = service.inputSendDoc(sendDocVO);//对单据进行格式检查
 				if(res.isPass()){//格式检查通过
@@ -304,7 +303,7 @@ public class MailOrderPanel extends JPanel {
                     money.setText(price);
                     predate.setText(sendDocMsg.getPredectedDate());//显示预计到达日期
                     parent.setDeliveryNoteVo(sendDocVO);//将单据信息存到vo里
-					int result1 = JOptionPane.showConfirmDialog(null, "确认提交审批？","系统提示",
+					int result1 = JOptionPane.showConfirmDialog(null, "确认提交审批？（≧∇≦）","系统提示",
 							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);//询问是否确认提交
 
                     if(result1 == JOptionPane.YES_OPTION){
@@ -320,9 +319,11 @@ public class MailOrderPanel extends JPanel {
 					int result1 = JOptionPane.showConfirmDialog(null,res.getMessage() ,"系统提示",
 							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 				}
-				
-				
-				
+			 }
+			}else {
+				JOptionPane.showConfirmDialog(null,"要将寄件单填写完整才可以提交哦！么么哒Y(^_^)Y" ,"系统提示",
+						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+			}
 			}
 		});
 		btnNewButton.setBounds(584, 355, 132, 59);
@@ -350,4 +351,65 @@ public class MailOrderPanel extends JPanel {
 			setResult(service.submitSendDoc(sendDocVO));
 		}
 	}
+	
+	public boolean isNum() {
+		boolean isgoodsnum = false;
+        boolean isweight = false;
+        boolean isvolum = false;
+		try {
+			int b = Integer.parseInt(goodsnum.getText());
+			isgoodsnum = true;
+			if(b == 0){
+				isgoodsnum = false;
+			}
+		}catch(NumberFormatException e) {
+		isgoodsnum = false;		
+		}
+		
+		try {
+			Double.parseDouble(weight.getText());
+			isweight = true;
+		}catch(NumberFormatException e) {
+			isweight = false;
+		}
+		
+		try {
+			Double.parseDouble(volum.getText());
+			isvolum = true;
+		}catch(NumberFormatException e) {
+			isvolum = false;
+			
+		}
+		
+		if(!(isgoodsnum&&isweight&&isvolum)){
+			JOptionPane.showConfirmDialog(null,showGoods(isgoodsnum)+"\n"+showWeights(isweight)+"\n"+showVolum(isvolum) ,"系统提示",
+					JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
+		}
+		return isgoodsnum&&isweight&&isvolum;
+	}
+	
+	public String showGoods(boolean goods) {
+		if(!goods){
+			return "-_-b 寄件数量要填正整数哦！";
+		}else {
+			return "";
+		}	
+	}
+	
+	public String showWeights(boolean isweight) {
+		if(!isweight){
+			return "-_-b 重量要填数字哦！！";
+		}else {
+			return "";
+		}	
+	}
+	
+	public String showVolum(boolean isvolum) {
+		if(!isvolum){
+			return "-_-b 体积要填数字哦！！";
+		}else {
+			return "";
+		}	
+	}
+	
 }

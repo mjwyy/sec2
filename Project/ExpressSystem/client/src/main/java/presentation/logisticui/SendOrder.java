@@ -185,7 +185,7 @@ public class SendOrder extends JPanel {
 
 		tianjia = new JButton("添加");
 		tianjia.addActionListener(new addListener() );
-		tianjia.setBounds(964, 304, 93, 23);
+		tianjia.setBounds(783, 304, 93, 23);
 		add(tianjia);
 
 
@@ -218,6 +218,55 @@ public class SendOrder extends JPanel {
 		sendcodef.setBounds(863, 37, 159, 28);
 		add(sendcodef);
 		sendcodef.setColumns(10);
+		
+		JButton button = new JButton("修改");
+		button.addActionListener(new ActionListener() {
+			DeliverNoteOnServiceVO vo=null;
+			public void actionPerformed(ActionEvent e) {
+		 		int selectedRow =table.getSelectedRow();
+				if(selectedRow!=-1){
+				ArrayList<String> ba=new ArrayList<String>();
+				ba.add(codef.getText());
+				//id具体是啥？
+				vo=new DeliverNoteOnServiceVO("1234567890","2010-11-11",ba,"厘米");
+				ResultMsg result=arr.inputHallDeliverDoc(vo);
+				if(result.isPass()){//格式检查正确
+					model.setValueAt(codef.getText(), selectedRow,0);
+					
+					codef.setText("");
+				}
+				else{//格式有误
+					int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
+							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+
+				}
+				}
+				else{
+					//未选中提示要选中才能编辑哦；
+
+					JOptionPane.showMessageDialog(null, "要选中表格中的一行才可以删除哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+				}
+			}
+		});
+		button.setBounds(892, 304, 93, 23);
+		add(button);
+		
+		JButton button_1 = new JButton("删除");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedRow =table.getSelectedRow();
+				if(selectedRow!=-1){
+					model.removeRow(selectedRow);
+				}
+				else{
+					//未选中提示要选中才能编辑哦；
+
+					JOptionPane.showMessageDialog(null, "要选中表格中的一行才可以删除哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+				}
+			}
+		});
+		button_1.setBounds(995, 304, 93, 23);
+		add(button_1);
 
 
 	}

@@ -237,7 +237,7 @@ public class ArrivalOrder extends JPanel {
 
 		tianjia = new JButton("添加");
 		tianjia.addActionListener(new addListener());
-		tianjia.setBounds(1025, 330, 93, 23);
+		tianjia.setBounds(787, 345, 93, 23);
 		add(tianjia);
 
 		fromF = new MJTextField();
@@ -287,6 +287,65 @@ public class ArrivalOrder extends JPanel {
 		TYPE.setBounds(189, 81, 130, 28);
 		add(TYPE);
 		TYPE.setColumns(10);
+		
+		JButton button = new JButton("修改");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+					int selectedRow =table.getSelectedRow();
+					if(selectedRow!=-1){
+						String s="";
+						GoodsState state1;
+						BarcodeAndState bas;
+						if(state.getSelectedItem().toString().equals("完整"))
+							state1=GoodsState.COMPLETE;
+						else if(state.getSelectedItem().toString().equals("损坏"))
+							state1=GoodsState.DAMAGED;
+						else
+							state1=GoodsState.LOST;
+						bas=new BarcodeAndState(codeF.getText(),state1);
+						//伪造的vo
+						ArrayList<BarcodeAndState> wei =new ArrayList<BarcodeAndState>();
+						wei.add(bas);
+						// 修改025000201510120000003
+						ArrivalNoteOnServiceVO  aa=new ArrivalNoteOnServiceVO("2015-10-22",true,"025000201510120000003","南京",wei);
+						ResultMsg result=arrive.inputHallArrivalDoc(aa);
+						if(result.isPass()){//格式检查正确
+							//修改选中行
+							model.setValueAt(codeF.getText(), selectedRow,0);
+							model.setValueAt(state.getSelectedItem().toString(), selectedRow,1);
+							codeF.setText("");
+						}
+						else{
+							int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
+									JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+						}
+					}
+					else{
+						//未选中提示要选中才能编辑哦；
+
+						JOptionPane.showMessageDialog(null, "要选中表格中的一行才可以修改哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+					}
+			}
+		});
+		button.setBounds(894, 345, 93, 23);
+		add(button);
+		
+		JButton button_1 = new JButton("删除");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedRow =table.getSelectedRow();
+				if(selectedRow!=-1){
+					model.removeRow(selectedRow);
+				}
+				else{
+					//未选中提示要选中才能编辑哦；
+
+					JOptionPane.showMessageDialog(null, "要选中表格中的一行才可以删除哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+				}
+			}
+		});
+		button_1.setBounds(1008, 345, 93, 23);
+		add(button_1);
 
 
 

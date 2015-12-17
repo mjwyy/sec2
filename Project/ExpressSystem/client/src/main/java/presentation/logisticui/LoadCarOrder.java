@@ -299,7 +299,7 @@ public class LoadCarOrder extends JPanel {
 
 		 tianjia = new JButton("添加");
 		 tianjia.addActionListener(new addListener());
-		 tianjia.setBounds(970, 315, 93, 23);
+		 tianjia.setBounds(787, 337, 93, 23);
 		 add(tianjia);
 
 		 tof = new MJTextField();
@@ -325,6 +325,56 @@ public class LoadCarOrder extends JPanel {
 		 JLabel label_15 = new JLabel("新增装车单");
 		 label_15.setBounds(28, 10, 84, 15);
 		 add(label_15);
+		 
+		 JButton button = new JButton("修改");
+		 button.addActionListener(new ActionListener() {
+		 	public void actionPerformed(ActionEvent e) {
+		 		int selectedRow =table.getSelectedRow();
+				if(selectedRow!=-1){
+					LoadNoteOnServiceVO  vo=null;
+					
+						ArrayList<String> ba=new ArrayList<String>();
+						ba.add(codef.getText());
+						vo=new LoadNoteOnServiceVO ("2011-11-11","0251000","02510002015092100000","北京","025000000","厘米","厘米",ba);
+						ResultMsg result=load.inputHallLoadDoc(vo);
+						if(result.isPass()){//格式检查正确
+							model.setValueAt(codef.getText(), selectedRow,0);
+							codef.setText("");
+					
+					
+						}
+						else{//格式有误
+							int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
+									JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+
+						}
+				}
+				else{
+					//未选中提示要选中才能编辑哦；
+
+					JOptionPane.showMessageDialog(null, "要选中表格中的一行才可以修改哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+				}
+		 	}
+		 });
+		 button.setBounds(905, 337, 93, 23);
+		 add(button);
+		 
+		 JButton button_1 = new JButton("删除");
+		 button_1.addActionListener(new ActionListener() {
+		 	public void actionPerformed(ActionEvent e) {
+		 		int selectedRow =table.getSelectedRow();
+				if(selectedRow!=-1){
+					model.removeRow(selectedRow);
+				}
+				else{
+					//未选中提示要选中才能编辑哦；
+
+					JOptionPane.showMessageDialog(null, "要选中表格中的一行才可以删除哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+				}
+		 	}
+		 });
+		 button_1.setBounds(1008, 337, 93, 23);
+		 add(button_1);
 
 	}
 	public class confirmListener implements ActionListener{

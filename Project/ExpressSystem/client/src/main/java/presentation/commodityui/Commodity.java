@@ -381,9 +381,11 @@ public class Commodity extends JFrame {
 		chuku = new JLabel("您提交的出库单正在等待审批哦，请耐心等待哦~");
 		chuku.setBounds(25, 49, 471, 30);
 		leftdown.add(chuku);
+		
 		chukuS = new JLabel("您提交的出库单已通过审批,现在可以填下一份了哟");
 		chukuS.setBounds(25, 49, 471, 30);
 		leftdown.add(chukuS);
+		
 		chukuF = new JLabel("您提交的出库单未通过审批>_<");
 		chukuF.setBounds(25, 49, 471, 30);
 		chukuF.setForeground(Color.red);

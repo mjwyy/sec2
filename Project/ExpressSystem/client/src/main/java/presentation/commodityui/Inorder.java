@@ -247,7 +247,7 @@ public class Inorder extends JPanel {
 				ResultMsg result=si.addPutInStorgaeDoc(siv);
 				if(result.isPass()){
 					String[] rowValues={codef.getText(),dataf.getText(),
-							tof.getText(),getArea(comboBox.getSelectedIndex()),tof.getText(),rowf.getText(),
+							tof.getText(),getArea(comboBox.getSelectedIndex()),rowf.getText(),
 							jiahaof.getText(),weihaof.getText()};
 					model.addRow(rowValues);
 				}

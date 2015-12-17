@@ -39,6 +39,7 @@ import businesslogicservice.infoblservice._stub.SystemUserManagementBLService_St
 import businesslogicservice.statisticblservice.OrderInquiryBLService;
 import businesslogicservice.statisticblservice._stub.OrderInquiryBLService_Stub;
 import connection.RMIHelper;
+import dataservice.exception.ElementNotFoundException;
 import util.LogInMsg;
 import util.ResultMsg;
 import util.enums.Authority;
@@ -47,8 +48,11 @@ import vo.UserVO;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 public class loginFrame extends JFrame {
@@ -80,19 +84,19 @@ public class loginFrame extends JFrame {
     /**
      * Launch the application.
      */
-    public static void main(String[] args) {
-    
-    }
-
-    private static void changeLook() {
-        try {
-            BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.translucencySmallShadow;
-            org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
-            // 关闭右上角设置
-            UIManager.put("RootPane.setupButtonVisible", false);
-        } catch (Exception e) {
-        }
-    }
+//    public static void main(String[] args) {
+//    
+//    }
+//
+//    private static void changeLook() {
+//        try {
+//            BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.translucencySmallShadow;
+//            org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
+//            // 关闭右上角设置
+//            UIManager.put("RootPane.setupButtonVisible", false);
+//        } catch (Exception e) {
+//        }
+//    }
 
     private static void changeFont() {
         Font font = new Font("微软雅黑", Font.PLAIN, 15);
@@ -128,6 +132,18 @@ public class loginFrame extends JFrame {
      * Create the frame.
      */
     public loginFrame() {
+    	// 置顶
+    	setAlwaysOnTop(true);
+    	  // 双击置顶/取消置顶
+//     addMouseListener(new MouseAdapter() {
+//          public void mouseClicked(MouseEvent e) {
+//              if (e.getClickCount() == 2) {
+//            	  System.out.println("shuangji"+isAlwaysOnTop());
+//                  setAlwaysOnTop(!isAlwaysOnTop());
+//              }
+//          }
+//      });
+//  
         setSize(WIDTH, HEIGHT);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 1280, 720);
@@ -185,7 +201,13 @@ public class loginFrame extends JFrame {
                 res = orderService.inputBarcode(barcode.getText());
                 
                 if (res.isPass()) {
-                    OrderVO vo = orderService.submitBarcode(barcode.getText());
+                    OrderVO vo=null;
+					try {
+						vo = orderService.submitBarcode(barcode.getText());
+					} catch (RemoteException | ElementNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
                     if(vo!=null){
                     clientInquiryPanel cip = new clientInquiryPanel(vo);
                     cip.setBounds(0, 0, WIDTH, HEIGHT);
@@ -271,8 +293,8 @@ public class loginFrame extends JFrame {
 
 
         try {
-            loginFrame.changeLook();
-            loginFrame.changeFont();
+        //    changeLook();
+            changeFont();
             this.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();

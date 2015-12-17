@@ -37,6 +37,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 import presentation.logisticui.ArrivalOrder.Submitter;
+import presentation.util.Chachong;
 import presentation.util.CleanTextField;
 import presentation.util.CurrentTime;
 import presentation.util.MJTextField;
@@ -59,6 +60,8 @@ public class LoadCarOrder extends JPanel {
     private JTable table;
 	private DefaultTableModel model;
 	private ArrayList<String> barcodes=new  ArrayList<String> ();
+	//给查重用的arrayList
+	private ArrayList<String> chachong=new  ArrayList<String> ();
 	//可编辑textfield
 	private JTextField dataf;
 	private MJTextField servicecodef;
@@ -331,9 +334,18 @@ public class LoadCarOrder extends JPanel {
 		 	public void actionPerformed(ActionEvent e) {
 		 		int selectedRow =table.getSelectedRow();
 				if(selectedRow!=-1){
+					String temp=model.getValueAt(selectedRow, 0).toString();
 					LoadNoteOnServiceVO  vo=null;
 					
 						ArrayList<String> ba=new ArrayList<String>();
+						if(Chachong.isRepeat(chachong,codef.getText())){
+							//如果已经重复，则不能添加
+							JOptionPane.showMessageDialog(null, "不能重复添加相同的条形码哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+							return;
+						}
+						//不重复，则加入
+					chachong.remove(temp);
+						chachong.add(codef.getText());
 						ba.add(codef.getText());
 						vo=new LoadNoteOnServiceVO ("2011-11-11","0251000","02510002015092100000","北京","025000000","厘米","厘米",ba);
 						ResultMsg result=load.inputHallLoadDoc(vo);
@@ -364,6 +376,7 @@ public class LoadCarOrder extends JPanel {
 		 	public void actionPerformed(ActionEvent e) {
 		 		int selectedRow =table.getSelectedRow();
 				if(selectedRow!=-1){
+					chachong.remove(model.getValueAt(selectedRow, 0));
 					model.removeRow(selectedRow);
 				}
 				else{
@@ -405,10 +418,18 @@ public class LoadCarOrder extends JPanel {
 
 		}
 	}
+	
 	public class addListener implements ActionListener{
 		LoadNoteOnServiceVO  vo=null;
 		public void actionPerformed(ActionEvent e) {
 			ArrayList<String> ba=new ArrayList<String>();
+			
+			if(Chachong.isRepeat(chachong,codef.getText())){
+				//如果已经重复，则不能添加
+				JOptionPane.showMessageDialog(null, "不能重复添加相同的条形码哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+				return;
+			}
+			chachong.add(codef.getText());
 			ba.add(codef.getText());
 			vo=new LoadNoteOnServiceVO ("2011-11-11","0251000","02510002015092100000","北京","025000000","厘米","厘米",ba);
 			ResultMsg result=load.inputHallLoadDoc(vo);

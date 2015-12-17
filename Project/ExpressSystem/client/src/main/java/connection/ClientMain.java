@@ -4,6 +4,8 @@ import presentation.mainui.loginFrame;
 
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
@@ -21,7 +23,17 @@ public class ClientMain {
         changeFont();
         changeLook();
         
-        loginFrame frame = new loginFrame();
+         loginFrame frame = new loginFrame();
+       // frame.setAlwaysOnTop(true);          // 置顶
+     // 双击置顶/取消置顶
+//        frame.addMouseListener(new MouseAdapter() {
+//            public void mouseClicked(MouseEvent e) {
+//                if (e.getClickCount() == 2) {
+//                    frame.setAlwaysOnTop(!frame.isAlwaysOnTop());
+//                }
+//            }
+//        });
+//    
         frame.setIconImage(Toolkit.getDefaultToolkit().getImage("image/0010.jpg"));
 //        StorageInBLService ser = new StorageIn();
         

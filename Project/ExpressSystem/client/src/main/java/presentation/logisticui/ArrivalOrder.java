@@ -45,6 +45,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 import presentation.logisticui.ReceiveOrderPanel.Submitter;
+import presentation.util.Chachong;
 import presentation.util.CleanTextField;
 import presentation.util.CurrentTime;
 import presentation.util.LeftDownPanel;
@@ -62,6 +63,9 @@ public class ArrivalOrder extends JPanel {
 	private MJTextField CODE;
 	private ArrayList<BarcodeAndState> BarcodeAndStates =new ArrayList<BarcodeAndState>();
 	private MJTextField TYPE;
+
+	//给查重用的arrayList
+	private ArrayList<String> chachong=new  ArrayList<String> ();
 	//条形码列表
 	private JTable table;
 	private DefaultTableModel model;
@@ -287,54 +291,65 @@ public class ArrivalOrder extends JPanel {
 		TYPE.setBounds(189, 81, 130, 28);
 		add(TYPE);
 		TYPE.setColumns(10);
-		
+
 		JButton button = new JButton("修改");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-					int selectedRow =table.getSelectedRow();
-					if(selectedRow!=-1){
-						String s="";
-						GoodsState state1;
-						BarcodeAndState bas;
-						if(state.getSelectedItem().toString().equals("完整"))
-							state1=GoodsState.COMPLETE;
-						else if(state.getSelectedItem().toString().equals("损坏"))
-							state1=GoodsState.DAMAGED;
-						else
-							state1=GoodsState.LOST;
-						bas=new BarcodeAndState(codeF.getText(),state1);
-						//伪造的vo
-						ArrayList<BarcodeAndState> wei =new ArrayList<BarcodeAndState>();
-						wei.add(bas);
-						// 修改025000201510120000003
-						ArrivalNoteOnServiceVO  aa=new ArrivalNoteOnServiceVO("2015-10-22",true,"025000201510120000003","南京",wei);
-						ResultMsg result=arrive.inputHallArrivalDoc(aa);
-						if(result.isPass()){//格式检查正确
-							//修改选中行
-							model.setValueAt(codeF.getText(), selectedRow,0);
-							model.setValueAt(state.getSelectedItem().toString(), selectedRow,1);
-							codeF.setText("");
-						}
-						else{
-							int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
-									JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-						}
+				int selectedRow =table.getSelectedRow();
+				if(selectedRow!=-1){
+					String temp=model.getValueAt(selectedRow, 0).toString();
+					String s="";
+					GoodsState state1;
+					BarcodeAndState bas;
+					if(state.getSelectedItem().toString().equals("完整"))
+						state1=GoodsState.COMPLETE;
+					else if(state.getSelectedItem().toString().equals("损坏"))
+						state1=GoodsState.DAMAGED;
+					else
+						state1=GoodsState.LOST;
+					bas=new BarcodeAndState(codeF.getText(),state1);
+					//伪造的vo
+					ArrayList<BarcodeAndState> wei =new ArrayList<BarcodeAndState>();
+					if(Chachong.isRepeat(chachong,codeF.getText())){
+						//如果已经重复，则不能添加
+						JOptionPane.showMessageDialog(null, "不能重复添加相同的条形码哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+						return;
+					}
+					//不重复，则加入
+					chachong.remove(temp);
+					chachong.add(codeF.getText());
+					wei.add(bas);
+					// 修改025000201510120000003
+					ArrivalNoteOnServiceVO  aa=new ArrivalNoteOnServiceVO("2015-10-22",true,"025000201510120000003","南京",wei);
+					ResultMsg result=arrive.inputHallArrivalDoc(aa);
+					if(result.isPass()){//格式检查正确
+						//修改选中行
+						model.setValueAt(codeF.getText(), selectedRow,0);
+						model.setValueAt(state.getSelectedItem().toString(), selectedRow,1);
+						codeF.setText("");
 					}
 					else{
-						//未选中提示要选中才能编辑哦；
-
-						JOptionPane.showMessageDialog(null, "要选中表格中的一行才可以修改哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+						int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
+								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 					}
+				}
+				else{
+					//未选中提示要选中才能编辑哦；
+
+					JOptionPane.showMessageDialog(null, "要选中表格中的一行才可以修改哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+				}
 			}
 		});
 		button.setBounds(894, 345, 93, 23);
 		add(button);
-		
+
 		JButton button_1 = new JButton("删除");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int selectedRow =table.getSelectedRow();
 				if(selectedRow!=-1){
+					//检查重复的array删
+					chachong.remove(model.getValueAt(selectedRow, 0));
 					model.removeRow(selectedRow);
 				}
 				else{
@@ -397,6 +412,12 @@ public class ArrivalOrder extends JPanel {
 			bas=new BarcodeAndState(codeF.getText(),state1);
 			//伪造的vo
 			ArrayList<BarcodeAndState> wei =new ArrayList<BarcodeAndState>();
+			if(Chachong.isRepeat(chachong,codeF.getText())){
+				//如果已经重复，则不能添加
+				JOptionPane.showMessageDialog(null, "不能重复添加相同的条形码哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+				return;
+			}
+			chachong.add(codeF.getText());
 			wei.add(bas);
 			// 修改025000201510120000003
 			ArrivalNoteOnServiceVO  aa=new ArrivalNoteOnServiceVO("2015-10-22",true,"025000201510120000003","南京",wei);
@@ -479,7 +500,7 @@ public class ArrivalOrder extends JPanel {
 		lock(true);
 		if(s.isPass()){//审批通过之后，清空textfiled
 			//解锁那些可以编辑的框框
-			
+
 			//清空textfiled
 			CleanTextField.clean(thisP);
 			//然而日期还是要填上的
@@ -518,10 +539,10 @@ public class ArrivalOrder extends JPanel {
 
 		public void run() {
 			super.run();
-		//	ResultMsg result=arrive.submitHallArrivalDoc(vo);
-		//	setResult(result);
+			//	ResultMsg result=arrive.submitHallArrivalDoc(vo);
+			//	setResult(result);
 			setResult(arrive.submitHallArrivalDoc(vo));
-            //TODO 要不要让人家sleep一下下
+			//TODO 要不要让人家sleep一下下
 		}
 	}
 	public void paintComponent(Graphics g) {

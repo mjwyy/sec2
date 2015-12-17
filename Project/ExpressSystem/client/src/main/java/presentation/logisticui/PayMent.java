@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 import presentation.logisticui.ArrivalOrder.Submitter;
+import presentation.util.Chachong;
 import presentation.util.CleanTextField;
 import presentation.util.CurrentTime;
 import presentation.util.LeftDownPanel;
@@ -44,7 +45,7 @@ import java.util.ArrayList;
 public class PayMent extends JPanel {
 	JPanel thisP=this;
 	//先用stub代替哦
-//	private CreditNoteInputBLService payment=new CreditNoteInputBLService_Stub();
+	//	private CreditNoteInputBLService payment=new CreditNoteInputBLService_Stub();
 	CreditNoteInputBLService payment=new CreditNoteInput();
 	private CreditNoteVO vo;
 	//不可编及的框
@@ -59,12 +60,15 @@ public class PayMent extends JPanel {
 	//frame传来的
 	private LogInMsg lim;
 	private Service frame;//
-	
+
 	//条形码table
 	private JTable table;
 	private DefaultTableModel model;
 	private ArrayList<String> barcode=new ArrayList<String>();
-	
+
+	//给查重用的arrayList
+	private ArrayList<String> chachong=new  ArrayList<String> ();
+
 	//button
 	private JButton add;
 	private JButton confirm ;
@@ -73,7 +77,7 @@ public class PayMent extends JPanel {
 	 * 窗口宽度
 	 */
 	private static final int WIDTH = 1152;
-	
+
 	/**
 	 * 窗口高度
 	 */
@@ -135,158 +139,171 @@ public class PayMent extends JPanel {
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(122, 188, 195, 150);
 		add(scrollPane_1);
-		
 
-		 String[] columnNames =  
-		        { "货物编码"};  
-		  
-		        Object[][] obj = new Object[1][1];  
-		      
-		          
-		          
-		        /* 
-		         * JTable的其中一种构造方法 
-		         */  
-		        model=new DefaultTableModel(obj,columnNames);
-		        table = new JTable(model);
-		        model.removeRow(0);
-		        table.addMouseListener(new MouseAdapter() {
-		        	public void mouseClicked(MouseEvent arg0) {
-		        	int selectedRow= table.getSelectedRow();
-		        	Object oa=model.getValueAt(selectedRow, 0);
-		        	codeF.setText(oa.toString());
-		        	}
-		        });
-		        /* 
-		         * 设置JTable的列默认的宽度和高度 
-		         */  
-		        TableColumn column = null;  
-		        int colunms = table.getColumnCount();  
-		        for(int i = 0; i < colunms; i++)  
-		        {  
-		            column = table.getColumnModel().getColumn(i);  
-		            /*将每一列的默认宽度设置为100*/  
-		            column.setPreferredWidth(200);  
-		        }  
-		        /* 
-		         * 设置JTable自动调整列表的状态，此处设置为关闭 
-		         */  
-		        table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);  
-		          
-		scrollPane_1.setViewportView(table);
 
-		JLabel label_7 = new JLabel("日期");
-		label_7.setBounds(WIDTHL, 43, 54, 15);
-		add(label_7);
-//日期自动填充
-		dataF = new JTextField(CurrentTime.getCurrentTimeDate());
-		dataF.setBounds(WIDTHT, 37, 211, 28);
-		add(dataF);
-		dataF.setColumns(10);
+		String[] columnNames =  
+			{ "货物编码"};  
 
-		JLabel label_13 = new JLabel("派件员");
-		label_13.setBounds(787, 147, 82, 15);
-		add(label_13);
-
-		confirm = new JButton("确认");
-		confirm.addActionListener(new confirmListener());
-
-		confirm.setBounds(978, 188, 93, 23);
-		add(confirm);
-
-		JLabel label_14 = new JLabel("货物编码");
-		label_14.setBounds(787, 233, 66, 15);
-		add(label_14);
-
-		codeF = new MJTextField();
-		codeF.setBounds(863, 225, 211, 31);
-		add(codeF);
-		codeF.setColumns(10);
-
-		add = new JButton("添加");
-		add.setIcon(null);
-		add.addActionListener(new addListener());
-		add.setBounds(812, 286, 77, 23);
-		add(add);
+		Object[][] obj = new Object[1][1];  
 
 
 
-		JLabel label_2 = new JLabel("新增收款单");
-		label_2.setBounds(10, 16, 102, 15);
-		add(label_2);
-
-		senderF = new MJTextField();
-		senderF.setBounds(863, 141, 211, 28);
-		add(senderF);
-		senderF.setColumns(10);
-
-		JLabel label_1 = new JLabel("快递员");
-		label_1.setBounds(329, 43, 54, 15);
-		add(label_1);
-
-		SENDER = new MJTextField();
-		SENDER.setEnabled(false);
-		SENDER.setEditable(false);
-		SENDER.setBounds(410, 35, 180, 31);
-		add(SENDER);
-		SENDER.setColumns(10);
-
-		JLabel label_3 = new JLabel("收款金额");
-		label_3.setBounds(WIDTHL, 91, 77, 15);
-		add(label_3);
-
-		moneyF = new MJTextField();
-		moneyF.setBounds(WIDTHT, 85, 211, 28);
-		add(moneyF);
-		moneyF.setColumns(10);
-		
-		JButton button = new JButton("修改");
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int selectedRow =table.getSelectedRow();
-				if(selectedRow!=-1){
-				CreditNoteVO vo=null;
-					ArrayList<String> ba=new ArrayList<String>();
-					ba.add(codeF.getText());
-					vo=new CreditNoteVO("2011-01-01","10","厘米", ba);
-					ResultMsg result=payment.addReceipeDoc(vo);
-					if(result.isPass()){//格式检查正确
-						model.setValueAt(codeF.getText(), selectedRow,0);
-						
-						codeF.setText("");
-					}
-					else{//格式有误
-						int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
-								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-
-					}
-				}
-				else{
-					//未选中提示要选中才能编辑哦；
-
-					JOptionPane.showMessageDialog(null, "要选中表格中的一行才可以修改哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
-				}
+		/* 
+		 * JTable的其中一种构造方法 
+		 */  
+		model=new DefaultTableModel(obj,columnNames);
+		table = new JTable(model);
+		model.removeRow(0);
+		table.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent arg0) {
+				int selectedRow= table.getSelectedRow();
+				Object oa=model.getValueAt(selectedRow, 0);
+				codeF.setText(oa.toString());
 			}
 		});
-		button.setBounds(915, 286, 77, 23);
-		add(button);
-		
-		JButton button_1 = new JButton("删除");
-		button_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int selectedRow =table.getSelectedRow();
-				if(selectedRow!=-1){
-					model.removeRow(selectedRow);
-				}
-				else{
-					//未选中提示要选中才能编辑哦；
+		/* 
+		 * 设置JTable的列默认的宽度和高度 
+		 */  
+		 TableColumn column = null;  
+		 int colunms = table.getColumnCount();  
+		 for(int i = 0; i < colunms; i++)  
+		 {  
+			 column = table.getColumnModel().getColumn(i);  
+			 /*将每一列的默认宽度设置为100*/  
+			 column.setPreferredWidth(200);  
+		 }  
+		 /* 
+		  * 设置JTable自动调整列表的状态，此处设置为关闭 
+		  */  
+		 table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);  
 
-					JOptionPane.showMessageDialog(null, "要选中表格中的一行才可以删除哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
-				}
-			}
-		});
-		button_1.setBounds(1016, 286, 77, 23);
-		add(button_1);
+		 scrollPane_1.setViewportView(table);
+
+		 JLabel label_7 = new JLabel("日期");
+		 label_7.setBounds(WIDTHL, 43, 54, 15);
+		 add(label_7);
+		 //日期自动填充
+		 dataF = new JTextField(CurrentTime.getCurrentTimeDate());
+		 dataF.setBounds(WIDTHT, 37, 211, 28);
+		 add(dataF);
+		 dataF.setColumns(10);
+
+		 JLabel label_13 = new JLabel("派件员");
+		 label_13.setBounds(787, 147, 82, 15);
+		 add(label_13);
+
+		 confirm = new JButton("确认");
+		 confirm.addActionListener(new confirmListener());
+
+		 confirm.setBounds(978, 188, 93, 23);
+		 add(confirm);
+
+		 JLabel label_14 = new JLabel("货物编码");
+		 label_14.setBounds(787, 233, 66, 15);
+		 add(label_14);
+
+		 codeF = new MJTextField();
+		 codeF.setBounds(863, 225, 211, 31);
+		 add(codeF);
+		 codeF.setColumns(10);
+
+		 add = new JButton("添加");
+		 add.setIcon(null);
+		 add.addActionListener(new addListener());
+		 add.setBounds(812, 286, 77, 23);
+		 add(add);
+
+
+
+		 JLabel label_2 = new JLabel("新增收款单");
+		 label_2.setBounds(10, 16, 102, 15);
+		 add(label_2);
+
+		 senderF = new MJTextField();
+		 senderF.setBounds(863, 141, 211, 28);
+		 add(senderF);
+		 senderF.setColumns(10);
+
+		 JLabel label_1 = new JLabel("快递员");
+		 label_1.setBounds(329, 43, 54, 15);
+		 add(label_1);
+
+		 SENDER = new MJTextField();
+		 SENDER.setEnabled(false);
+		 SENDER.setEditable(false);
+		 SENDER.setBounds(410, 35, 180, 31);
+		 add(SENDER);
+		 SENDER.setColumns(10);
+
+		 JLabel label_3 = new JLabel("收款金额");
+		 label_3.setBounds(WIDTHL, 91, 77, 15);
+		 add(label_3);
+
+		 moneyF = new MJTextField();
+		 moneyF.setBounds(WIDTHT, 85, 211, 28);
+		 add(moneyF);
+		 moneyF.setColumns(10);
+
+		 JButton button = new JButton("修改");
+		 button.addActionListener(new ActionListener() {
+			 public void actionPerformed(ActionEvent e) {
+
+				 int selectedRow =table.getSelectedRow();
+
+				 if(selectedRow!=-1){
+					 String temp=model.getValueAt(selectedRow, 0).toString();
+					 CreditNoteVO vo=null;
+					 ArrayList<String> ba=new ArrayList<String>();
+					 if(Chachong.isRepeat(chachong,codeF.getText())){
+						 //如果已经重复，则不能添加
+						 JOptionPane.showMessageDialog(null, "不能重复添加相同的条形码哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+						 return;
+					 }
+					 //不重复，则加入
+					 chachong.remove(temp);
+					 chachong.add(codeF.getText());
+					 ba.add(codeF.getText());
+					 vo=new CreditNoteVO("2011-01-01","10","厘米", ba);
+					 ResultMsg result=payment.addReceipeDoc(vo);
+					 if(result.isPass()){//格式检查正确
+						 model.setValueAt(codeF.getText(), selectedRow,0);
+
+						 codeF.setText("");
+					 }
+					 else{//格式有误
+						 int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
+								 JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+
+					 }
+				 }
+				 else{
+					 //未选中提示要选中才能编辑哦；
+
+					 JOptionPane.showMessageDialog(null, "要选中表格中的一行才可以修改哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+				 }
+			 }
+		 });
+		 button.setBounds(915, 286, 77, 23);
+		 add(button);
+
+		 JButton button_1 = new JButton("删除");
+		 button_1.addActionListener(new ActionListener() {
+			 public void actionPerformed(ActionEvent e) {
+				 int selectedRow =table.getSelectedRow();
+				 if(selectedRow!=-1){
+					 //检查重复的array删
+					 chachong.remove(model.getValueAt(selectedRow, 0));
+					 model.removeRow(selectedRow);
+				 }
+				 else{
+					 //未选中提示要选中才能编辑哦；
+
+					 JOptionPane.showMessageDialog(null, "要选中表格中的一行才可以删除哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+				 }
+			 }
+		 });
+		 button_1.setBounds(1016, 286, 77, 23);
+		 add(button_1);
 	}
 
 	public class confirmListener implements ActionListener{
@@ -333,6 +350,12 @@ public class PayMent extends JPanel {
 		CreditNoteVO vo=null;
 		public void actionPerformed(ActionEvent e) {
 			ArrayList<String> ba=new ArrayList<String>();
+			if(Chachong.isRepeat(chachong,codeF.getText())){
+				//如果已经重复，则不能添加
+				JOptionPane.showMessageDialog(null, "不能重复添加相同的条形码哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+				return;
+			}
+			chachong.add(codeF.getText());
 			ba.add(codeF.getText());
 			vo=new CreditNoteVO("2011-01-01","10","厘米", ba);
 			ResultMsg result=payment.addReceipeDoc(vo);
@@ -346,25 +369,25 @@ public class PayMent extends JPanel {
 						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 
 			}
-			
+
 		}
 
 
 	}
 	public class submitListener implements ActionListener{
-		
-		 
-		
+
+
+
 		public void actionPerformed(ActionEvent e) {
 			if(DATA.getText().isEmpty()){
 				JOptionPane.showConfirmDialog(null, "有咚咚漏填啦","系统提示",
 						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-			return ;
+				return ;
 			}
 			if(model.getRowCount()==0){
 				JOptionPane.showConfirmDialog(null, "有咚咚漏填啦","系统提示",
 						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-			return ;
+				return ;
 			}
 			int count=model.getRowCount();
 			for(int i=0;i<count;i++){
@@ -373,18 +396,18 @@ public class PayMent extends JPanel {
 			}
 			vo=new CreditNoteVO(DATA.getText(), MONEY.getText(), SENDER.getText(), barcode);
 			vo.setUserName(lim.getUserName());
-			
+
 			int result = JOptionPane.showConfirmDialog(null, "确认提交审批？","系统提示",
 					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 			if(result == JOptionPane.YES_OPTION) {
-			//	ResultMsg resultS=payment.submitReceipeDoc(vo);
+				//	ResultMsg resultS=payment.submitReceipeDoc(vo);
 				//提交之后panel里都不可编辑
 				lock(false);
 				//提交之后右下面板换
 				frame.initFukuan(true,false,false);
 				//提交审批
 				new Submitter().start();
-				
+
 			}
 			else {
 				return;
@@ -392,7 +415,7 @@ public class PayMent extends JPanel {
 			}
 
 		}
-		}
+	}
 	public void setResult(ResultMsg s) {//审批之后才调这个方法
 		//审批通没通过在这里体现
 		frame.initFukuan(false,s.isPass(),!s.isPass());
@@ -409,10 +432,10 @@ public class PayMent extends JPanel {
 			JOptionPane.showConfirmDialog(null, s.getMessage(),"系统提示",
 					JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
 		}
-		
-		}
+
+	}
 	class Submitter extends Thread {
-		
+
 		public void run() {
 			super.run();
 			//ResultMsg result=payment.submitReceipeDoc(vo);
@@ -420,12 +443,12 @@ public class PayMent extends JPanel {
 			setResult(payment.submitReceipeDoc(vo));
 		}
 	}
-		public void paintComponent(Graphics g) {
-			super.paintComponents(g);
-			ImageIcon img = new ImageIcon("image/0111.jpg");
-			g.drawImage(img.getImage(), 0, 0, null);
-			float lineWidth = 3.0f;
-			((Graphics2D)g).setStroke(new BasicStroke(lineWidth));
-			g.drawLine(WIDTH/3*2, 0, WIDTH/3*2, HEIGHT);
-		}
+	public void paintComponent(Graphics g) {
+		super.paintComponents(g);
+		ImageIcon img = new ImageIcon("image/0111.jpg");
+		g.drawImage(img.getImage(), 0, 0, null);
+		float lineWidth = 3.0f;
+		((Graphics2D)g).setStroke(new BasicStroke(lineWidth));
+		g.drawLine(WIDTH/3*2, 0, WIDTH/3*2, HEIGHT);
 	}
+}

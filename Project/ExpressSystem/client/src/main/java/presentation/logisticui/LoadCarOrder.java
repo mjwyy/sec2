@@ -44,12 +44,12 @@ import presentation.util.MJTextField;
 import presentation.util.UnEditablePanel;
 
 public class LoadCarOrder extends JPanel {
-   //要用的借口
+	//要用的借口
 	private LoadNoteOnServiceBLService load= new LoadNoteOnService();
 	private LoadNoteOnServiceVO  vo;
 	private JPanel thisP=this;
 	//不可编辑框
-    private MJTextField data;
+	private MJTextField data;
 	private MJTextField service;
 	private MJTextField to;
 	private MJTextField scar;
@@ -57,7 +57,7 @@ public class LoadCarOrder extends JPanel {
 	private MJTextField superman;
 	private MJTextField senderman;
 	//条形码table
-    private JTable table;
+	private JTable table;
 	private DefaultTableModel model;
 	private ArrayList<String> barcodes=new  ArrayList<String> ();
 	//给查重用的arrayList
@@ -75,12 +75,12 @@ public class LoadCarOrder extends JPanel {
 	private JButton tianjia;//添加
 	private JButton queren ;//确认
 	private JButton confirm ;
-	
+
 	//frame传来的东东
 	private LogInMsg lim;
 	private Service frame;//
-	
-	
+
+
 	/**
 	 * 窗口宽度
 	 */
@@ -98,13 +98,13 @@ public class LoadCarOrder extends JPanel {
 	 * 右边field
 	 */
 	private static final int WIDTHT = WIDTHL+76;
-	
+
 	/**
 	 * Create the panel.
 	 */
 	public LoadCarOrder(LogInMsg lim,Service frame) {
-        
-            
+
+
 		this.lim=lim;
 		this.frame=frame;
 		setSize(WIDTH,HEIGHT);
@@ -228,154 +228,155 @@ public class LoadCarOrder extends JPanel {
 		/* 
 		 * 设置JTable的列默认的宽度和高度 
 		 */  
-		 TableColumn column = null;  
-		 int colunms = table.getColumnCount();  
-		 for(int i = 0; i < colunms; i++)  
-		 {  
-			 column = table.getColumnModel().getColumn(i);  
-			 /*将每一列的默认宽度设置为100*/  
-			 column.setPreferredWidth(200);  
-		 }  
-		 /* 
-		  * 设置JTable自动调整列表的状态，此处设置为关闭 
-		  */  
-		 table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);  
+		TableColumn column = null;  
+		int colunms = table.getColumnCount();  
+		for(int i = 0; i < colunms; i++)  
+		{  
+			column = table.getColumnModel().getColumn(i);  
+			/*将每一列的默认宽度设置为100*/  
+			column.setPreferredWidth(200);  
+		}  
+		/* 
+		 * 设置JTable自动调整列表的状态，此处设置为关闭 
+		 */  
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);  
 
-		 scrollPane_1.setViewportView(table);
+		scrollPane_1.setViewportView(table);
 
-		 JLabel label_7 = new JLabel("日期");
-		 label_7.setBounds(WIDTHL, 10, 54, 15);
-		 add(label_7);
+		JLabel label_7 = new JLabel("日期");
+		label_7.setBounds(WIDTHL, 10, 54, 15);
+		add(label_7);
 
-		 dataf = new JTextField(CurrentTime.getCurrentTimeDate());
-		 dataf.setBounds(880, 7, 101, 28);
-		 add(dataf);
-		 dataf.setColumns(10);
+		dataf = new JTextField(CurrentTime.getCurrentTimeDate());
+		dataf.setBounds(880, 7, 101, 28);
+		add(dataf);
+		dataf.setColumns(10);
 
-		 JLabel label_8 = new JLabel("营业厅编号");
-		 label_8.setBounds(787, 43, 93, 15);
-		 add(label_8);
+		JLabel label_8 = new JLabel("营业厅编号");
+		label_8.setBounds(787, 43, 93, 15);
+		add(label_8);
 
-		 servicecodef = new MJTextField();
-		 servicecodef.setBounds(880, 40, 239, 28);
-		 add(servicecodef);
-		 servicecodef.setColumns(10);
+		servicecodef = new MJTextField();
+		servicecodef.setBounds(880, 40, 239, 28);
+		add(servicecodef);
+		servicecodef.setColumns(10);
 
-		 JLabel label_9 = new JLabel("汽运编号");
-		 label_9.setBounds(787, 81, 93, 15);
-		 add(label_9);
+		JLabel label_9 = new JLabel("汽运编号");
+		label_9.setBounds(787, 81, 93, 15);
+		add(label_9);
 
-		 carcodef = new MJTextField();
-		 carcodef.setBounds(880, 78, 239, 28);
-		 add(carcodef);
-		 carcodef.setColumns(10);
+		carcodef = new MJTextField();
+		carcodef.setBounds(880, 78, 239, 28);
+		add(carcodef);
+		carcodef.setColumns(10);
 
-		 JLabel label_10 = new JLabel("目的地");
-		 label_10.setBounds(787, 122, 78, 15);
-		 add(label_10);
+		JLabel label_10 = new JLabel("目的地");
+		label_10.setBounds(787, 122, 78, 15);
+		add(label_10);
 
-		 JLabel label_11 = new JLabel("车辆编号");
-		 label_11.setBounds(787, 150, 93, 15);
-		 add(label_11);
+		JLabel label_11 = new JLabel("车辆编号");
+		label_11.setBounds(787, 150, 93, 15);
+		add(label_11);
 
-		 JLabel label_12 = new JLabel("监装员");
-		 label_12.setBounds(787, 188, 78, 15);
-		 add(label_12);
+		JLabel label_12 = new JLabel("监装员");
+		label_12.setBounds(787, 188, 78, 15);
+		add(label_12);
 
-		 JLabel label_13 = new JLabel("押运员");
-		 label_13.setBounds(787, 226, 78, 15);
-		 add(label_13);
+		JLabel label_13 = new JLabel("押运员");
+		label_13.setBounds(787, 226, 78, 15);
+		add(label_13);
 
-		 queren = new JButton("确认");
-		 queren.addActionListener(new confirmListener());
-		 queren.setBounds(995, 247, 93, 23);
-		 add(queren);
+		queren = new JButton("确认");
+		queren.addActionListener(new confirmListener());
+		queren.setBounds(995, 247, 93, 23);
+		add(queren);
 
-		 JLabel label_14 = new JLabel("货物编码");
-		 label_14.setBounds(WIDTHL, 281, 78, 15);
-		 add(label_14);
+		JLabel label_14 = new JLabel("货物编码");
+		label_14.setBounds(WIDTHL, 281, 78, 15);
+		add(label_14);
 
-		 codef = new MJTextField();
-		 codef.setBounds(880, 280, 239, 28);
-		 add(codef);
-		 codef.setColumns(10);
+		codef = new MJTextField();
+		codef.setBounds(880, 280, 239, 28);
+		add(codef);
+		codef.setColumns(10);
 
-		 tianjia = new JButton("添加");
-		 tianjia.addActionListener(new addListener());
-		 tianjia.setBounds(787, 337, 93, 23);
-		 add(tianjia);
+		tianjia = new JButton("添加");
+		tianjia.addActionListener(new addListener());
+		tianjia.setBounds(787, 337, 93, 23);
+		add(tianjia);
 
-		 tof = new MJTextField();
-		 tof.setBounds(880, 116, 239, 28);
-		 add(tof);
-		 tof.setColumns(10);
+		tof = new MJTextField();
+		tof.setBounds(880, 116, 239, 28);
+		add(tof);
+		tof.setColumns(10);
 
-		 scarcodef = new MJTextField();
-		 scarcodef.setBounds(880, 150, 239, 28);
-		 add(scarcodef);
-		 scarcodef.setColumns(10);
+		scarcodef = new MJTextField();
+		scarcodef.setBounds(880, 150, 239, 28);
+		add(scarcodef);
+		scarcodef.setColumns(10);
 
-		 supermanf = new MJTextField();
-		 supermanf.setBounds(880, 185, 101, 28);
-		 add(supermanf);
-		 supermanf.setColumns(10);
+		supermanf = new MJTextField();
+		supermanf.setBounds(880, 185, 101, 28);
+		add(supermanf);
+		supermanf.setColumns(10);
 
-		 sendmanf = new MJTextField();
-		 sendmanf.setBounds(880, 223, 101, 28);
-		 add(sendmanf);
-		 sendmanf.setColumns(10);
+		sendmanf = new MJTextField();
+		sendmanf.setBounds(880, 223, 101, 28);
+		add(sendmanf);
+		sendmanf.setColumns(10);
 
-		 JLabel label_15 = new JLabel("新增装车单");
-		 label_15.setBounds(28, 10, 84, 15);
-		 add(label_15);
-		 
-		 JButton button = new JButton("修改");
-		 button.addActionListener(new ActionListener() {
-		 	public void actionPerformed(ActionEvent e) {
-		 		int selectedRow =table.getSelectedRow();
+		JLabel label_15 = new JLabel("新增装车单");
+		label_15.setBounds(28, 10, 84, 15);
+		add(label_15);
+
+		JButton button = new JButton("修改");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedRow =table.getSelectedRow();
 				if(selectedRow!=-1){
 					String temp=model.getValueAt(selectedRow, 0).toString();
 					LoadNoteOnServiceVO  vo=null;
-					
-						ArrayList<String> ba=new ArrayList<String>();
-						if(Chachong.isRepeat(chachong,codef.getText())){
-							//如果已经重复，则不能添加
-							JOptionPane.showMessageDialog(null, "不能重复添加相同的条形码哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
-							return;
-						}
-						//不重复，则加入
-					chachong.remove(temp);
-						chachong.add(codef.getText());
-						ba.add(codef.getText());
-						vo=new LoadNoteOnServiceVO ("2011-11-11","0251000","02510002015092100000","北京","025000000","厘米","厘米",ba);
-						ResultMsg result=load.inputHallLoadDoc(vo);
-						if(result.isPass()){//格式检查正确
-							model.setValueAt(codef.getText(), selectedRow,0);
-							codef.setText("");
-					
-					
-						}
-						else{//格式有误
-							int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
-									JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 
-						}
+					ArrayList<String> ba=new ArrayList<String>();
+					if(Chachong.isRepeat(chachong,codef.getText())){
+						//如果已经重复，则不能添加
+						JOptionPane.showMessageDialog(null, "不能重复添加相同的条形码哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+						return;
+					}
+					//不重复，则加入
+					chachong.remove(temp);
+					chachong.add(codef.getText());
+					ba.add(codef.getText());
+					vo=new LoadNoteOnServiceVO ("2011-11-11","0251000","02510002015092100000","北京","025000000","厘米","厘米",ba);
+					ResultMsg result=load.inputHallLoadDoc(vo);
+					if(result.isPass()){//格式检查正确
+						model.setValueAt(codef.getText(), selectedRow,0);
+						codef.setText("");
+
+
+					}
+					else{//格式有误
+						int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
+								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+
+					}
 				}
 				else{
 					//未选中提示要选中才能编辑哦；
 
 					JOptionPane.showMessageDialog(null, "要选中表格中的一行才可以修改哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
 				}
-		 	}
-		 });
-		 button.setBounds(905, 337, 93, 23);
-		 add(button);
-		 
-		 JButton button_1 = new JButton("删除");
-		 button_1.addActionListener(new ActionListener() {
-		 	public void actionPerformed(ActionEvent e) {
-		 		int selectedRow =table.getSelectedRow();
+			}
+		});
+		button.setBounds(905, 337, 93, 23);
+		add(button);
+
+		JButton button_1 = new JButton("删除");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedRow =table.getSelectedRow();
 				if(selectedRow!=-1){
+					//检查重复的array删
 					chachong.remove(model.getValueAt(selectedRow, 0));
 					model.removeRow(selectedRow);
 				}
@@ -384,10 +385,10 @@ public class LoadCarOrder extends JPanel {
 
 					JOptionPane.showMessageDialog(null, "要选中表格中的一行才可以删除哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
 				}
-		 	}
-		 });
-		 button_1.setBounds(1008, 337, 93, 23);
-		 add(button_1);
+			}
+		});
+		button_1.setBounds(1008, 337, 93, 23);
+		add(button_1);
 
 	}
 	public class confirmListener implements ActionListener{
@@ -418,12 +419,12 @@ public class LoadCarOrder extends JPanel {
 
 		}
 	}
-	
+
 	public class addListener implements ActionListener{
 		LoadNoteOnServiceVO  vo=null;
 		public void actionPerformed(ActionEvent e) {
 			ArrayList<String> ba=new ArrayList<String>();
-			
+
 			if(Chachong.isRepeat(chachong,codef.getText())){
 				//如果已经重复，则不能添加
 				JOptionPane.showMessageDialog(null, "不能重复添加相同的条形码哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
@@ -443,25 +444,25 @@ public class LoadCarOrder extends JPanel {
 						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 
 			}
-			
+
 		}
 
 
 	}
 	public class submitListener implements ActionListener{
-		
+
 
 
 		public void actionPerformed(ActionEvent e) {
 			if(data.getText().isEmpty()){
 				JOptionPane.showConfirmDialog(null, "有咚咚漏填啦","系统提示",
 						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-			return ;
+				return ;
 			}
 			if(model.getRowCount()==0){
 				JOptionPane.showConfirmDialog(null, "有咚咚漏填啦","系统提示",
 						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-			return ;
+				return ;
 			}
 			int count=model.getRowCount();
 			for(int i=0;i<count;i++){
@@ -475,7 +476,7 @@ public class LoadCarOrder extends JPanel {
 					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 			if(result == JOptionPane.YES_OPTION) {
 				//将提交放到新的线程中
-				
+
 				//提交之后panel里都不可编辑
 				lock(false);
 				//提交之后右下面板换
@@ -533,14 +534,14 @@ public class LoadCarOrder extends JPanel {
 					JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
 			//解锁那些可以编辑的框框
 		}
-		
-		}
+
+	}
 	class Submitter extends Thread {
-		
+
 		public void run() {
 			super.run();
-//			ResultMsg result=load.submitHallLoadDoc(vo);
-//			setResult(result);
+			//			ResultMsg result=load.submitHallLoadDoc(vo);
+			//			setResult(result);
 			setResult(load.submitHallLoadDoc(vo));
 		}
 	}

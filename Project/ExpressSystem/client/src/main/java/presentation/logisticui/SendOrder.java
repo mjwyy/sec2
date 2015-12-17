@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 import presentation.logisticui.ArrivalOrder.Submitter;
+import presentation.util.Chachong;
 import presentation.util.CleanTextField;
 import presentation.util.CurrentTime;
 import presentation.util.MJTextField;
@@ -34,7 +35,7 @@ import businesslogicservice.logisticblservice._Stub.ArrivalNoteOnServiceBLServic
 
 public class SendOrder extends JPanel {
 	//
-//	ArrivalNoteOnServiceBLService arr=new ArrivalNoteOnServiceBLService_Stub();
+	//	ArrivalNoteOnServiceBLService arr=new ArrivalNoteOnServiceBLService_Stub();
 	ArrivalNoteOnServiceBLService arr=new ArrivalNoteOnService();
 	private JPanel thisP=this;
 	private 	DeliverNoteOnServiceVO vo;
@@ -51,6 +52,9 @@ public class SendOrder extends JPanel {
 	private JTable table;
 	private DefaultTableModel model;
 	private ArrayList<String> BarCode=new ArrayList<String>();
+
+	//给查重用的arrayList
+	private ArrayList<String> chachong=new  ArrayList<String> ();
 	//frame传来的东东
 	private LogInMsg lim;
 	private Service frame;//
@@ -70,7 +74,7 @@ public class SendOrder extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	
+
 	public SendOrder(LogInMsg lim,Service frame) {
 		this.lim=lim;
 		this.frame=frame;
@@ -218,28 +222,39 @@ public class SendOrder extends JPanel {
 		sendcodef.setBounds(863, 37, 159, 28);
 		add(sendcodef);
 		sendcodef.setColumns(10);
-		
+
 		JButton button = new JButton("修改");
 		button.addActionListener(new ActionListener() {
 			DeliverNoteOnServiceVO vo=null;
-			public void actionPerformed(ActionEvent e) {
-		 		int selectedRow =table.getSelectedRow();
-				if(selectedRow!=-1){
-				ArrayList<String> ba=new ArrayList<String>();
-				ba.add(codef.getText());
-				//id具体是啥？
-				vo=new DeliverNoteOnServiceVO("1234567890","2010-11-11",ba,"厘米");
-				ResultMsg result=arr.inputHallDeliverDoc(vo);
-				if(result.isPass()){//格式检查正确
-					model.setValueAt(codef.getText(), selectedRow,0);
-					
-					codef.setText("");
-				}
-				else{//格式有误
-					int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
-							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 
-				}
+			public void actionPerformed(ActionEvent e) {
+				int selectedRow =table.getSelectedRow();
+
+				if(selectedRow!=-1){
+					String temp=model.getValueAt(selectedRow, 0).toString();
+					ArrayList<String> ba=new ArrayList<String>();
+					if(Chachong.isRepeat(chachong,codef.getText())){
+						//如果已经重复，则不能添加
+						JOptionPane.showMessageDialog(null, "不能重复添加相同的条形码哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+						return;
+					}
+					//不重复，则加入
+					chachong.remove(temp);
+					chachong.add(codef.getText());
+					ba.add(codef.getText());
+					//id具体是啥？
+					vo=new DeliverNoteOnServiceVO("1234567890","2010-11-11",ba,"厘米");
+					ResultMsg result=arr.inputHallDeliverDoc(vo);
+					if(result.isPass()){//格式检查正确
+						model.setValueAt(codef.getText(), selectedRow,0);
+
+						codef.setText("");
+					}
+					else{//格式有误
+						int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
+								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+
+					}
 				}
 				else{
 					//未选中提示要选中才能编辑哦；
@@ -250,12 +265,14 @@ public class SendOrder extends JPanel {
 		});
 		button.setBounds(892, 304, 93, 23);
 		add(button);
-		
+
 		JButton button_1 = new JButton("删除");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int selectedRow =table.getSelectedRow();
 				if(selectedRow!=-1){
+					 //检查重复的array删
+					 chachong.remove(model.getValueAt(selectedRow, 0));
 					model.removeRow(selectedRow);
 				}
 				else{
@@ -275,6 +292,12 @@ public class SendOrder extends JPanel {
 		DeliverNoteOnServiceVO vo=null;
 		public void actionPerformed(ActionEvent e) {
 			ArrayList<String> ba=new ArrayList<String>();
+			if(Chachong.isRepeat(chachong,codef.getText())){
+				//如果已经重复，则不能添加
+				JOptionPane.showMessageDialog(null, "不能重复添加相同的条形码哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+				return;
+			}
+			chachong.add(codef.getText());
 			ba.add(codef.getText());
 			//id具体是啥？
 			vo=new DeliverNoteOnServiceVO("1234567890","2010-11-11",ba,"厘米");
@@ -362,13 +385,13 @@ public class SendOrder extends JPanel {
 		//textfield
 		dataf.setEditable(notlock);
 		dataf.setEnabled(notlock);
-		
+
 		codef.setEditable(notlock);
 		codef.setEnabled(notlock);
-		
+
 		sendcodef.setEditable(notlock);
 		sendcodef.setEnabled(notlock);
-		
+
 		senderf.setEditable(notlock);
 		senderf.setEnabled(notlock);
 		//button

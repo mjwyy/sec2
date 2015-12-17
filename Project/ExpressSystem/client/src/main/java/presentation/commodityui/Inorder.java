@@ -22,6 +22,7 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
+import presentation.util.Chachong;
 import presentation.util.CleanTextField;
 import presentation.util.CurrentTime;
 import presentation.util.MJTextField;
@@ -63,6 +64,9 @@ public class Inorder extends JPanel {
 	private JTable table;
 	private DefaultTableModel model;
 
+	//给查重用的arrayList
+		private ArrayList<String> chachong=new  ArrayList<String> ();
+		
 	//button
 	private JButton submit;
 	private JButton add;
@@ -239,6 +243,13 @@ public class Inorder extends JPanel {
 		add = new JButton("加入");
 		add.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				if(Chachong.isRepeat(chachong,codef.getText())){
+					//如果已经重复，则不能添加
+					JOptionPane.showMessageDialog(null, "不能重复添加相同的条形码哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+					return;
+				}
+				chachong.add(codef.getText());
 				ArrayList<CommodityGoodsVO> GoodsInStorageInfo=new ArrayList<CommodityGoodsVO> ();
 				CommodityGoodsVO  cgv=new CommodityGoodsVO(codef.getText(),getArea(comboBox.getSelectedIndex()),tof.getText(),rowf.getText(),
 						jiahaof.getText(),weihaof.getText());
@@ -258,7 +269,7 @@ public class Inorder extends JPanel {
 			}
 
 		});
-		add.setBounds(1063, 380, 66, 23);
+		add.setBounds(878, 380, 66, 23);
 		add(add);
 
 		codef = new MJTextField();
@@ -291,6 +302,15 @@ public class Inorder extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				int selectedRow =table.getSelectedRow();
 				if(selectedRow!=-1){
+					 String temp=model.getValueAt(selectedRow, 0).toString();
+					 if(Chachong.isRepeat(chachong,codef.getText())){
+						 //如果已经重复，则不能添加
+						 JOptionPane.showMessageDialog(null, "不能重复添加相同的条形码哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+						 return;
+					 }
+					 //不重复，则加入
+					 chachong.remove(temp);
+					 chachong.add(codef.getText());
 					ArrayList<CommodityGoodsVO> GoodsInStorageInfo=new ArrayList<CommodityGoodsVO> ();
 					CommodityGoodsVO  cgv=new CommodityGoodsVO(codef.getText(),getArea(comboBox.getSelectedIndex()),tof.getText(),rowf.getText(),
 							jiahaof.getText(),weihaof.getText());
@@ -326,6 +346,8 @@ public class Inorder extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				int seletedRow=table.getSelectedRow();
 				if(seletedRow!=-1){
+					 //检查重复的array删
+					 chachong.remove(model.getValueAt(seletedRow, 0));
 					//直接删
 					model.removeRow(seletedRow);
 				}
@@ -336,7 +358,7 @@ public class Inorder extends JPanel {
 				}
 			}
 		});
-		delete.setBounds(851, 380, 93, 23);
+		delete.setBounds(1059, 380, 93, 23);
 		add(delete);
 
 		JLabel label_1 = new JLabel("入库日期");

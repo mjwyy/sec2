@@ -22,6 +22,7 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
+import presentation.util.Chachong;
 import presentation.util.CleanTextField;
 import presentation.util.CurrentTime;
 import presentation.util.FitTabel;
@@ -53,7 +54,9 @@ public class OutOrder extends JPanel {
 	private JComboBox typef;
 	private MJTextField bianhaof;
 	private JComboBox comboBox1;//汽运or中专
-
+	//给查重用的arrayList
+			private ArrayList<String> chachong=new  ArrayList<String> ();
+			
 	//button
 	private  JButton submit;
 	private JButton btnDelete ;
@@ -204,6 +207,12 @@ public class OutOrder extends JPanel {
 		add = new JButton("加入");
 		add.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(Chachong.isRepeat(chachong,codef.getText())){
+					//如果已经重复，则不能添加
+					JOptionPane.showMessageDialog(null, "不能重复添加相同的条形码哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+					return;
+				}
+				chachong.add(codef.getText());
 				ArrayList<String> ba=new ArrayList<String> ();
 				ba.add(codef.getText());
 				StorageOutVO vv=new StorageOutVO(dataf.getText(),tof.getText(),bianhaof.getText(),typef.getSelectedItem().toString(),ba,ist(comboBox1.getSelectedIndex()));
@@ -225,7 +234,7 @@ public class OutOrder extends JPanel {
 
 			}
 		});
-		add.setBounds(981, 319, 93, 23);
+		add.setBounds(760, 319, 93, 23);
 		add(add);
 
 		codef = new MJTextField();
@@ -281,6 +290,15 @@ public class OutOrder extends JPanel {
 
 				int selectedRow =table.getSelectedRow();
 				if(selectedRow!=-1){
+					 String temp=model.getValueAt(selectedRow, 0).toString();
+					 if(Chachong.isRepeat(chachong,codef.getText())){
+						 //如果已经重复，则不能添加
+						 JOptionPane.showMessageDialog(null, "不能重复添加相同的条形码哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+						 return;
+					 }
+					 //不重复，则加入
+					 chachong.remove(temp);
+					 chachong.add(codef.getText());
 					ArrayList<String> ba=new ArrayList<String> ();
 					ba.add(codef.getText());
 					StorageOutVO vv=new StorageOutVO(dataf.getText(),tof.getText(),bianhaof.getText(),typef.getSelectedItem().toString(),ba,ist(comboBox1.getSelectedIndex()));
@@ -313,6 +331,8 @@ public class OutOrder extends JPanel {
 
 				int seletedRow=table.getSelectedRow();
 				if(seletedRow!=-1){
+					 //检查重复的array删
+					 chachong.remove(model.getValueAt(seletedRow, 0));
 					model.removeRow(seletedRow);
 				}
 				else{
@@ -322,7 +342,7 @@ public class OutOrder extends JPanel {
 				}
 			}
 		});
-		btnDelete.setBounds(775, 319, 93, 23);
+		btnDelete.setBounds(996, 319, 93, 23);
 		add(btnDelete);
 
 	}  

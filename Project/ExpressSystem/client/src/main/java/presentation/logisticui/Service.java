@@ -418,14 +418,14 @@ public class Service extends JFrame {
 		mnNewMenu.add(mntmNewMenuItem_2);
 
 		initDownLabel();
+//一开始什么都看不见
+		initPaisong(false,false,false);
 
-		initPaisong(false,true,false);
+		initZhuangche(false,false,false);
 
-		initZhuangche(false,true,false);
-
-		initDaoda(false,true,false);
+		initDaoda(false,false,false);
 		
-		initFukuan(false,true,false);
+		initFukuan(false,false,false);
 		
 		setCaiDanLan();
 		setClose();
@@ -433,48 +433,48 @@ public class Service extends JFrame {
 	
 	public void initDownLabel(){
 		daoda = new JLabel("您提交的到达单已通过审批,现在可以填下一份了哟~");
-		daoda.setBounds(21, 3, 487, 24);
+		daoda.setBounds(21, 1, 487, 24);
 		leftdown.add(daoda);
 		daodaA = new JLabel("您提交的到达单正在等待审批哦，请耐心等待哦~");
-		daodaA.setBounds(21, 3, 487, 24);
+		daodaA.setBounds(21, 1, 487, 24);
 		leftdown.add(daodaA);
 		daodaF = new JLabel("您提交的到达单未通过审批>_<");
-		daodaF.setBounds(21, 3, 487, 24);
+		daodaF.setBounds(21, 1, 487, 24);
 		daodaF.setForeground(Color.red);
 		leftdown.add(daodaF);
 
 		paisong = new JLabel("您提交的派送单已通过审批,现在可以填下一份了哟~");
-		paisong.setBounds(21, 31, 487, 24);
+		paisong.setBounds(21, 27, 487, 24);
 		leftdown.add(paisong);
 		paisongA = new JLabel("您提交的派送单正在等待审批哦，请耐心等待哦~");
-		paisongA.setBounds(21, 31, 487, 24);
+		paisongA.setBounds(21, 27, 487, 24);
 		leftdown.add(paisongA);
 		paisongF = new JLabel("您提交的派送单未通过审批>_<");
-		paisongF.setBounds(21, 31, 487, 24);
+		paisongF.setBounds(21, 27, 487, 24);
 		paisongF.setForeground(Color.red);
 		leftdown.add(paisongF);
 
 		zhuangche = new JLabel("您提交的装车单已通过审批,现在可以填下一份了哟~");
-		zhuangche.setBounds(21, 61, 487, 24);
+		zhuangche.setBounds(21, 57, 487, 24);
 		leftdown.add(zhuangche);
 		zhuangcheA = new JLabel("您提交的装车单正在等待审批哦，请耐心等待哦~");
-		zhuangcheA.setBounds(21, 61, 487, 24);
+		zhuangcheA.setBounds(21, 57, 487, 24);
 		leftdown.add(zhuangcheA);
 		zhuangcheF = new JLabel("您提交的装车单未通过审批>_<");
-		zhuangcheF.setBounds(21, 61, 487, 24);
+		zhuangcheF.setBounds(21, 57, 487, 24);
 		zhuangcheF.setForeground(Color.red);
 		leftdown.add(zhuangcheF);
 		
 		fukuan = new JLabel("您提交的付款单正在等待审批哦，请耐心等待哦~");
-		fukuan.setBounds(21, 90, 487, 24);
+		fukuan.setBounds(21, 86, 487, 24);
 		leftdown.add(fukuan);
 		
 		fukuanS = new JLabel("您提交的付款单已通过审批,现在可以填下一份了哟~");
-		fukuanS.setBounds(21, 90, 487, 24);
+		fukuanS.setBounds(21, 86, 487, 24);
 		leftdown.add(fukuanS);
 		
 		fukuanF = new JLabel("您提交的付款单未通过审批>_<");
-		fukuanF.setBounds(21, 90, 487, 24);
+		fukuanF.setBounds(21, 86, 487, 24);
 		fukuanF.setForeground(Color.red);
 		leftdown.add(fukuanF);
 	}

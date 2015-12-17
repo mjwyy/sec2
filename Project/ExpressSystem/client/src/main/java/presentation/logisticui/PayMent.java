@@ -352,6 +352,8 @@ public class PayMent extends JPanel {
 		lock(true);
 		if(s.isPass()){//审批通过之后，清空textfiled
 			CleanTextField.clean(thisP);
+			//然而日期还是要填上的
+			dataF.setText(CurrentTime.getCurrentTimeDate());
 			//jtable也要清空
 			CleanTextField.cleanJtable(table);
 		}

@@ -452,6 +452,10 @@ public class LoadCarOrder extends JPanel {
 			//解锁那些可以编辑的框框
 			//清空textfiled
 			CleanTextField.clean(thisP);
+			//然而日期还是要填上的
+			dataf.setText(CurrentTime.getCurrentTimeDate());
+			//jtable也要清空
+			CleanTextField.cleanJtable(table);
 		}
 		else{//审批未通过
 			JOptionPane.showConfirmDialog(null, s.getMessage());

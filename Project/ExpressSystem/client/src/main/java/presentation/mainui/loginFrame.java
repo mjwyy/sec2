@@ -23,7 +23,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-import dataservice.exception.ElementNotFoundException;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 import presentation.commodityui.Commodity;
@@ -50,7 +49,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 public class loginFrame extends JFrame {
@@ -185,21 +183,10 @@ public class loginFrame extends JFrame {
         button_1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 res = orderService.inputBarcode(barcode.getText());
-
+                
                 if (res.isPass()) {
-                    OrderVO vo = null;
-                    try {
-                        vo = orderService.submitBarcode(barcode.getText());
-                        //TODO 界面的代码没有复用这样很不好:界面显示提示框,打印Info里面的内容
-                    } catch (ElementNotFoundException e1) {
-                        e1.printStackTrace();
-                        String info = e1.getMessage();
-
-                    } catch (RemoteException e1) {
-                        e1.printStackTrace();
-                        String info = e1.getMessage();
-                    }
-
+                    OrderVO vo = orderService.submitBarcode(barcode.getText());
+                    if(vo!=null){
                     clientInquiryPanel cip = new clientInquiryPanel(vo);
                     cip.setBounds(0, 0, WIDTH, HEIGHT);
                     contentPane.removeAll();
@@ -216,6 +203,11 @@ public class loginFrame extends JFrame {
                         }
 
                     });
+                    }else{
+                    	JOptionPane.showConfirmDialog(null, "此订单信息不存在，请核对信息是否正确哦！亲O_O","系统提示",
+        						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+                    }
+                    
                 } else {
                     label.setVisible(true);
                 }

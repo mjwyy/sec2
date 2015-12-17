@@ -445,7 +445,7 @@ public class LoadCarOrder extends JPanel {
 	}
 	public void setResult(ResultMsg s) {//审批之后才调这个方法
 		//审批通没通过在这里体现
-		frame.initPaisong(false,s.isPass(),!s.isPass());
+		frame.initZhuangche(false,s.isPass(),!s.isPass());
 		frame.leftdown.repaint();
 		lock(true);
 		if(s.isPass()){//审批通过之后，清空textfiled

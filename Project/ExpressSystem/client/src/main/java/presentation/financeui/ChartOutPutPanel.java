@@ -172,6 +172,7 @@ public class ChartOutPutPanel extends JPanel {
 					charttype = charttype.BUSINESS_STAT_CHART;
 				else
 					charttype = charttype.PROFIT_CHART;
+				
 				if(!(startT.getText().isEmpty()||endT.getText().isEmpty())){
 				res = service.enquiryChart(charttype,startT.getText(),endT.getText());//查询格式检查
 				if(res.isPass()){
@@ -185,7 +186,7 @@ public class ChartOutPutPanel extends JPanel {
 			    	   name.add("收款金额");
 			    	   name.add("收款账户");
 			    	   name.add("付款人");
-			    	if(vob!=null){
+			    	if(vob.equals(null)){
 			    	   bcontents = vob.getContents();
       		    	  
       		    		   for(int i = 0;i <bcontents.size();i++){
@@ -212,7 +213,7 @@ public class ChartOutPutPanel extends JPanel {
 			    	   name.add("收入");
 			    	   name.add("成本");
 			    	   name.add("利润");
-			    	   if(voc != null){	   
+			    	   if(voc.equals(null)){	   
 			    	   costAndProfitContents = voc.getCostAndProfitContents();			    	
 			    	   for(int i = 0;i<costAndProfitContents.size();i++){
 			    		   Vector row = new Vector();
@@ -289,11 +290,7 @@ public class ChartOutPutPanel extends JPanel {
 	}
 	
 	public void noFind(){
-		 name.clear();
-		   name.add("查询内容");
-		   data.clear();
-		   Vector row = new Vector();
-		   row.add("未查询到相关报表");
-		   data.add(row.clone());
+		int result1 = JOptionPane.showConfirmDialog(null, "此间时间木有查询到信息","系统提示",
+				JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE); 
 	}
 }

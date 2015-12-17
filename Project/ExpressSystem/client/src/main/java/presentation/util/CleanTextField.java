@@ -7,7 +7,9 @@
 package presentation.util;
 
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 public class CleanTextField {
 	public static void clean(JPanel panel){
@@ -19,4 +21,12 @@ public class CleanTextField {
 		}
 			}
 		}
+	public static void cleanJtable(JTable table){
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
+		int count=model.getRowCount();
+		for(int i=0;i<count;i++){
+			model.removeRow(i);
+		}
+		
+	}
 }

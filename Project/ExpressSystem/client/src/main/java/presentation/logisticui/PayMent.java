@@ -278,13 +278,15 @@ public class PayMent extends JPanel {
 		add.setEnabled(notlock);
 		confirm.setEnabled(notlock);
 		submit.setEnabled(notlock);
+		//jtable
+		table.setEnabled(notlock);
 	}
 	public class addListener implements ActionListener{
 		CreditNoteVO vo=null;
 		public void actionPerformed(ActionEvent e) {
 			ArrayList<String> ba=new ArrayList<String>();
 			ba.add(codeF.getText());
-			vo=new CreditNoteVO("2011-1-1","10","厘米", ba);
+			vo=new CreditNoteVO("2011-01-01","10","厘米", ba);
 			ResultMsg result=payment.addReceipeDoc(vo);
 			if(result.isPass()){//格式检查正确
 				String[] s={codeF.getText()};
@@ -327,7 +329,7 @@ public class PayMent extends JPanel {
 			int result = JOptionPane.showConfirmDialog(null, "确认提交审批？","系统提示",
 					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 			if(result == JOptionPane.YES_OPTION) {
-				ResultMsg resultS=payment.submitReceipeDoc(vo);
+			//	ResultMsg resultS=payment.submitReceipeDoc(vo);
 				//提交之后panel里都不可编辑
 				lock(false);
 				//提交之后右下面板换
@@ -350,10 +352,12 @@ public class PayMent extends JPanel {
 		lock(true);
 		if(s.isPass()){//审批通过之后，清空textfiled
 			CleanTextField.clean(thisP);
+			//jtable也要清空
+			CleanTextField.cleanJtable(table);
 		}
 		else{//审批未通过
-			JOptionPane.showConfirmDialog(null, s.getMessage());
-			
+			JOptionPane.showConfirmDialog(null, s.getMessage(),"系统提示",
+					JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
 		}
 		
 		}

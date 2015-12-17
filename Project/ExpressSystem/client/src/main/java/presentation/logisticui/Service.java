@@ -475,6 +475,7 @@ public class Service extends JFrame {
 		
 		fukuanF = new JLabel("您提交的付款单未通过审批>_<");
 		fukuanF.setBounds(21, 90, 487, 24);
+		fukuanF.setForeground(Color.red);
 		leftdown.add(fukuanF);
 	}
 	

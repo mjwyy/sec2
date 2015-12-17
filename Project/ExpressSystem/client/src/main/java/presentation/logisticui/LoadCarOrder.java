@@ -458,7 +458,8 @@ public class LoadCarOrder extends JPanel {
 			CleanTextField.cleanJtable(table);
 		}
 		else{//审批未通过
-			JOptionPane.showConfirmDialog(null, s.getMessage());
+			JOptionPane.showConfirmDialog(null,s.getMessage() ,"系统提示",
+					JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
 			//解锁那些可以编辑的框框
 		}
 		

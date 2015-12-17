@@ -408,7 +408,7 @@ public class LoadCarOrder extends JPanel {
 				//提交之后panel里都不可编辑
 				lock(false);
 				//提交之后右下面板换
-				frame.initPaisong(true,false,false);
+				frame.initZhuangche(true,false,false);
 				//提交审批
 				new Submitter().start();
 			}

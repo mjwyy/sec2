@@ -297,6 +297,11 @@ public class OutOrder extends JPanel {
 								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 					}
 				}
+				else{
+					//未选中提示要选中才能编辑哦；
+
+					JOptionPane.showMessageDialog(null, "要选中表格中的一行才可以修改哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+				}
 			}
 		});
 		btnModify.setBounds(878, 319, 93, 23);
@@ -307,8 +312,14 @@ public class OutOrder extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 
 				int seletedRow=table.getSelectedRow();
-				if(seletedRow!=-1)
+				if(seletedRow!=-1){
 					model.removeRow(seletedRow);
+				}
+				else{
+					//未选中提示要选中才能编辑哦；
+
+					JOptionPane.showMessageDialog(null, "要选中表格中的一行才可以删除哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+				}
 			}
 		});
 		btnDelete.setBounds(775, 319, 93, 23);

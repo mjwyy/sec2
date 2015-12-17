@@ -400,6 +400,11 @@ public class SystemUser extends JFrame {
 
 					}
 				}
+				else{
+					//未选中提示要选中才能编辑哦；
+
+					JOptionPane.showMessageDialog(null, "要选中表格中的一行才可以删除哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+				}
 			}
 		});
 		button_3.setBounds(875, 260, 99, 30);
@@ -437,6 +442,11 @@ public class SystemUser extends JFrame {
 					}
 
 
+				}
+				else{
+					//未选中提示要选中才能编辑哦；
+
+					JOptionPane.showMessageDialog(null, "要选中表格中的一行才可以修改哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
 				}
 			}
 		});

@@ -201,6 +201,11 @@ public class Driver extends JPanel {
 								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 		        	}
 				}
+				else{
+					//未选中提示要选中才能编辑哦；
+
+					JOptionPane.showMessageDialog(null, "要选中表格中的一行才可以删除哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+				}
 			}
 		});
 		add(btnNewButton_1);
@@ -230,6 +235,11 @@ public class Driver extends JPanel {
 								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 		        	}
 					}
+				else{
+					//未选中提示要选中才能编辑哦；
+
+					JOptionPane.showMessageDialog(null, "要选中表格中的一行才可以修改哦~", "友情提示",JOptionPane.WARNING_MESSAGE);  
+				}
 			}
 		});
 		btnNewButton_2.setBounds(924, 413, 70, 23);

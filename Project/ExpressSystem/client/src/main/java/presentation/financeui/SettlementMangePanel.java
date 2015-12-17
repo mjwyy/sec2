@@ -116,12 +116,13 @@ public class SettlementMangePanel extends JPanel {
 		JButton button = new JButton("提交");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				bankAccount = bankservice.find(new BankAccountVO(null,account.getText(),null)).get(0);
-				if(bankAccount == null){
+				//bankAccount = bankservice.find(new BankAccountVO(null,account.getText(),null)).get(0);
+				if(bankservice.find(new BankAccountVO(null,account.getText(),null)).isEmpty()){
 					int result1 = JOptionPane.showConfirmDialog(null, "无此银行账户","系统提示",
 							JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
 				}
 				else{
+					bankAccount = bankservice.find(new BankAccountVO(null,account.getText(),null)).get(0);
 				if(money.getText().isEmpty()||date.getText().isEmpty()||institution.getText().isEmpty()||
 						payee.getText().isEmpty()||payservice.getText().isEmpty()){
 					int result1 = JOptionPane.showConfirmDialog(null, "有咚咚木有填","系统提示",

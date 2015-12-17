@@ -92,7 +92,6 @@ public class PaymentInputPanel extends JPanel {
 		way = new JComboBox(payway);
 		way.setModel(new DefaultComboBoxModel(new String[] {"租金", "运费", "工资", "奖金"}));
 		way.setBounds(426, 282, 134, 28);
-		//comboBox.setVisible(true);
 		add(way);
 		
 		JLabel lblNewLabel_1 = new JLabel("付款金额");
@@ -116,17 +115,12 @@ public class PaymentInputPanel extends JPanel {
 					 sd.setVisible(true);
 					sd.getOK().addActionListener(new  ActionListener(){
 						@Override
-						public void actionPerformed(ActionEvent e) {
-							
-							date.setEditable(false);
-							money.setEditable(false);
-							payer.setEditable(false);
-							account.setEditable(false);
-							way.setEditable(false);
-							btnNewButton.setFocusable(false);
+						public void actionPerformed(ActionEvent e) {						
+						    lock(false);
 							sd.dispose();
-							parent.setPip(PaymentInputPanel.this);
+							parent.setPaymentInputPanel(PaymentInputPanel.this);
 							btnNewButton.setFocusable(false);
+							parent.setLeftdown(true, false, false);
 							new Submitter().start();		
 						}
 						
@@ -151,19 +145,14 @@ public class PaymentInputPanel extends JPanel {
 	
 	
 	public void setResult(ResultMsg s) {
-		
+		parent.setLeftdown(false, s.isPass(), !s.isPass());
 		if(s.isPass()){
-			parent.setPip(null);;
+			parent.setPaymentInputPanel(null);
 		}else{
 			int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
 					JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);	
-			date.setEditable(true);
-			money.setEditable(true);
-			payer.setEditable(true);
-			account.setEditable(true);
-			way.setEditable(true);
-			btnNewButton.setFocusable(true);
-			btnNewButton.setFocusable(true);
+			lock(true);
+		
 		}
 		
 		}
@@ -174,5 +163,15 @@ public class PaymentInputPanel extends JPanel {
 			super.run();
 			setResult(service.submitPaymentRecord(vo));
 		}
+	}
+	
+	public void lock(boolean islock) {
+		
+		date.setEditable(islock);
+		money.setEditable(islock);
+		payer.setEditable(islock);
+		account.setEditable(islock);
+		way.setEditable(islock);
+		btnNewButton.setEnabled(islock);;
 	}
 }

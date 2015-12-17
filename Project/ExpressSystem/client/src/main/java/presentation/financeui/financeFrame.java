@@ -47,6 +47,12 @@ public class financeFrame extends JFrame {
 	private welcomPanel welcome;
 	private LogInMsg  lim;
 	private BaseDataBuildingBLService service;
+	private PaymentInputPanel paymentInputPanel;
+	private JPanel leftdown;
+	private JLabel jiesuanWait;
+	private JLabel jiesuanTongguo;
+	private JLabel jiesuanBu;
+	
 	/**
 	 * 窗口宽度
 	 */
@@ -122,8 +128,8 @@ public class financeFrame extends JFrame {
 	 * Create the frame.
      * @param lim
      */
-	public financeFrame(LogInMsg lim) {
-	    this.lim = lim;
+	public financeFrame(LogInMsg limm) {
+	    lim = limm;
 		setSize(WIDTH,HEIGHT);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -256,10 +262,26 @@ public class financeFrame extends JFrame {
 		panel_2.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 		contentPane.add(panel_2);
 		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(347, 570, 933, 124);
-		panel_3.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		contentPane.add(panel_3);
+		leftdown = new JPanel();
+		leftdown.setBounds(347, 570, 933, 124);
+		leftdown.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		contentPane.add(leftdown);
+		leftdown.setLayout(null);
+		
+	    jiesuanWait = new JLabel("付款记录已去审批，请耐心等待");
+		jiesuanWait.setBounds(19, 24, 718, 37);
+		leftdown.add(jiesuanWait);
+		jiesuanWait.setVisible(false);
+		
+		jiesuanTongguo = new JLabel("付款记录通过审批了，可以填下一份了");
+		jiesuanTongguo .setBounds(19, 24, 718, 37);
+		leftdown.add(jiesuanTongguo );
+		jiesuanTongguo .setVisible(false);
+		
+		jiesuanBu = new JLabel("付款记录通过审批了，可以填下一份了");
+		jiesuanBu .setBounds(19, 24, 718, 37);
+		leftdown.add(jiesuanBu );
+		jiesuanBu .setVisible(false);
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBounds(0, 140, 137, 89);
@@ -274,7 +296,7 @@ public class financeFrame extends JFrame {
 		JMenuItem menuItem = new JMenuItem("录入付款单");
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PaymentInputPanel pip = new PaymentInputPanel(null,null){
+				PaymentInputPanel pip = new PaymentInputPanel(lim,financeFrame.this){
 					public void paintComponent(Graphics g) {
 						 super.paintComponent(g);
 						 ImageIcon img = new ImageIcon("image/0111.jpg");
@@ -449,12 +471,19 @@ public class financeFrame extends JFrame {
 				}
 			}
 		});
-		mnNewMenu_3.add(mntmNewMenuItem);
-		
-		
+		mnNewMenu_3.add(mntmNewMenuItem);	
 	}
 
-    public void setPip(Object pip) {
-//        this.pip = pip;
-    }
+
+	public void setPaymentInputPanel(PaymentInputPanel paymentInputPanel) {
+		this.paymentInputPanel = paymentInputPanel;
+	}
+	
+	public void setLeftdown(boolean dengdai,boolean tongguo,boolean butongguo) {
+		jiesuanWait.setVisible(dengdai);
+		jiesuanTongguo.setVisible(tongguo);
+		jiesuanBu.setVisible(butongguo);
+	}
+	
+	
 }

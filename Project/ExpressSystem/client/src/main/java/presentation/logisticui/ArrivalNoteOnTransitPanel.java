@@ -311,40 +311,6 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 			
 			ADD.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-//					ArrayList<BarcodeAndState> bas = new ArrayList<BarcodeAndState>();
-//					if(!barcode.getText().isEmpty()){
-//					if(statechoose.getSelectedItem().equals("完整"))
-//					    brcodeAndState = new BarcodeAndState(barcode.getText(),GoodsState.COMPLETE);
-//					else if(statechoose.getSelectedItem().equals("缺损"))
-//						brcodeAndState = new BarcodeAndState(barcode.getText(),GoodsState.DAMAGED);
-//					else
-//						brcodeAndState = new BarcodeAndState(barcode.getText(),GoodsState.LOST);
-//					bas.add(brcodeAndState);
-//					
-//					
-//					ArrivalNoteOnTransitVO vo = new ArrivalNoteOnTransitVO("025000201510100000001","025000",date1.getText(),
-//							"北京",bas);
-//					
-//					res = service.inputCenterArrivalDoc(vo);
-//					if(res.isPass()){
-//						Vector row = new Vector();
-//						row.add(barcode.getText());
-//						row.add(statechoose.getSelectedItem());
-//						data.add(row.clone());
-//						model.setDataVector(data, name);
-//						table.setModel(model);	
-//						barcode.setText("");
-////						trannum1.setText("");
-////						departure1.setText("");
-//						barcodeAndStates.add( brcodeAndState);		
-//					}else{
-//						int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
-//								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-//					}
-//					}else{
-//						JOptionPane.showConfirmDialog(null, "有咚咚木有填","系统提示",
-//								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-//					}
 					addBarcode();
 				}
 			});	

@@ -360,19 +360,19 @@ public class TransitFrame extends JFrame {
 		leftdown.add(daodB);
 		
 		zhongzhuan = new JLabel("您提交的中转单单已通过审批,现在可以填下一份了哟");
-		zhongzhuan.setBounds(21, 60, 487, 24);
+		zhongzhuan.setBounds(21, 58, 487, 24);
 		zhongzhuan.setForeground(Color.red);
 		zhongzhuan.setVisible(false);
 		leftdown.add(zhongzhuan);
 		
 		zhongzhuanA = new JLabel("您提交的中转单审批未通过,请前去修改哦～");
 		zhongzhuanA.setForeground(Color.red);
-		zhongzhuanA.setBounds(21, 60, 487, 24);
+		zhongzhuanA.setBounds(21, 58, 487, 24);
 		zhongzhuanA.setVisible(false);
 		leftdown.add(zhongzhuanA);
 		
 		zhongzhuanB = new JLabel("您提交的中转单正在等待审批哦，请耐心等待哦~");
-		zhongzhuanB.setBounds(21, 60, 487, 24);
+		zhongzhuanB.setBounds(21, 58, 487, 24);
 		zhongzhuanB.setForeground(Color.red);
 		zhongzhuanB.setVisible(false);
 		leftdown.add(zhongzhuanB);
@@ -388,7 +388,7 @@ public class TransitFrame extends JFrame {
 		zhuangcheA.setVisible(false);
 		leftdown.add(zhuangcheA);
 		
-		zhuangcheB = new JLabel("您提交的装车单已通过审批,现在可以填下一份了哟");
+		zhuangcheB = new JLabel("您提交的装车正在等待审批哦，请耐心等待哦~");
 		zhuangcheB.setBounds(21, 35, 487, 24);
 		zhuangcheB.setVisible(false);
 		leftdown.add(zhuangcheB);
@@ -460,10 +460,20 @@ public class TransitFrame extends JFrame {
 		this.loadNoteOnTransitpanel = loadNoteOnTransitpanel;
 	}
 
-	
 
 	public void setTransitNoteInputOanel(TransitNoteInputPanel transitNoteInputpanel) {
 		this.transitNoteInputpanel = transitNoteInputpanel;
 	}
 	
+	public void setZhongzhuan(boolean dengdai,boolean tongguo,boolean butongguo){
+		zhongzhuanB.setVisible(dengdai);
+		zhongzhuan.setVisible(tongguo);
+		zhongzhuanA.setVisible(butongguo);
+	}
+	
+	public void setZhuangche(boolean dengdai,boolean tongguo,boolean butongguo) {
+		zhuangcheA.setVisible(butongguo);
+		zhuangche.setVisible(tongguo);
+		zhuangcheB.setVisible(dengdai);
+	}
 }

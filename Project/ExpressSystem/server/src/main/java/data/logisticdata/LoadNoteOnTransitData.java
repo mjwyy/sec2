@@ -60,14 +60,16 @@ public class LoadNoteOnTransitData extends NoteInputData implements LoadNoteOnTr
             statement.setString(7,po.getHallNumber());
             statement.setString(8,po.getTranspotationNumber());
 
+            if(this.isNoteInDB( "note_load_on_transit",
+                    "transpotationNumber", po.getTranspotationNumber() ))
+                throw new InterruptWithExistedElementException("");
+
             if(this.isBarcodeInDB(po.getBarcodes())){
                 statement.executeUpdate();
                 resultMsg = this.afterInsert(po);
             }else
                 throw new ElementNotFoundException();
 
-        } catch (MySQLIntegrityConstraintViolationException e){
-            throw new InterruptWithExistedElementException("");
         } catch (SQLException e) {
             e.printStackTrace();
             resultMsg = new ResultMsg(false,"中转中心装车单提交失败!");

@@ -20,24 +20,24 @@ public class BarcodesAndLocation implements Serializable{
     /**
      * 仓库区号
      */
-    private int section;
+    private String section;
 
     /**
      * 仓库排号
      */
-    private int line;
+    private String line;
 
     /**
      * 仓库架号
      */
-    private int row;
+    private String row;
 
     /**
      * 仓库位号
      */
-    private int number;
+    private String number;
 
-    public BarcodesAndLocation(String barcode, int section, int line, int row, int number) {
+    public BarcodesAndLocation(String barcode, String section, String line, String row, String number) {
         this.barcode = barcode;
         this.section = section;
         this.line = line;
@@ -49,19 +49,19 @@ public class BarcodesAndLocation implements Serializable{
         return barcode;
     }
 
-    public int getSection() {
+    public String getSection() {
         return section;
     }
 
-    public int getLine() {
+    public String getLine() {
         return line;
     }
 
-    public int getRow() {
+    public String getRow() {
         return row;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 }

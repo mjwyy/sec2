@@ -60,13 +60,16 @@ public class LoadNoteOnServiceData extends NoteInputData implements LoadNoteOnSe
             statement.setString(6,po.getCarNumber());
             statement.setString(7,po.getHallNumber());
             statement.setString(8,po.getTranspotationNumber());
+
+            if(this.isNoteInDB( "note_load_on_service", "transpotationNumber",
+                    po.getTranspotationNumber() ))
+                throw new InterruptWithExistedElementException("");
+
             if(this.isBarcodeInDB(po.getBarcodes())){
                 statement.executeUpdate();
                 resultMsg = this.afterInsert(po);
             }else
                 throw new ElementNotFoundException();
-        } catch (MySQLIntegrityConstraintViolationException e){
-            throw new InterruptWithExistedElementException("");
         } catch (SQLException e) {
             e.printStackTrace();
             resultMsg = new ResultMsg(false,"提交营业厅装车单失败!");

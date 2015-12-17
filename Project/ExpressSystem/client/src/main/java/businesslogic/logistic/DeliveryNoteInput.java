@@ -36,6 +36,8 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
     private PriceStrategy priceStrategy;
     private TimePresumeStrategy timePresumeStrategy;
 
+    private CityManager cityManager;
+
     public DeliveryNoteInput() {
         RemoteObjectGetter getter = new RemoteObjectGetter();
         this.dataService = (DeliveryNoteInputDataService) getter.getObjectByName("DeliveryNoteInputDataService");
@@ -43,6 +45,7 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
                 (BusinessDataModificationDataService) getter.getObjectByName("BusinessDataModificationDataService");
         priceStrategy = new PriceStrategy();
         timePresumeStrategy = new TimePresumeStrategy();
+
     }
 
     @Override
@@ -51,14 +54,12 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
         if(format.isPass()){
             SendDocMsg sendDocMsg;
             //获取地址中的有效城市与距离
-            ArrayList<String> cites = null;
             try {
                 String packPriceType = sendDocVO.getPackType().toString();
                 double pricePerKG = businessDataModificationDataService.getPrice(PriceType.PricePerKg);
                 double packagePrice = businessDataModificationDataService.getPrice(PriceType.getPriceType(packPriceType));
-                cites = businessDataModificationDataService.getAllCities();
-                String city1 = this.findCity(cites,sendDocVO.getSenderAddress());
-                String city2 = this.findCity(cites,sendDocVO.getReceiverAddress());
+                String city1 = CityManager.findCity(sendDocVO.getSenderAddress());
+                String city2 = CityManager.findCity(sendDocVO.getReceiverAddress());
                 //防御式编程:如果城市在系统中不存在,返回错误信息
                 if(city1 == null)
                     return new ResultMsg(false,"寄件人城市有误!");
@@ -108,23 +109,6 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
             e.printStackTrace();
             return new SendDocMsg(false, "提交寄件单失败!单据编号已存在!", 0, null);
         }
-    }
-
-    /**
-     * 从一个详细的现实业务地址中获取有效的城市名称
-     *
-     * @param citys 公司业务已覆盖的所有城市
-     * @param senderAddress 现实地址
-     * @return 从地址中找到的城市(如果存在)
-     */
-    private String findCity(ArrayList<String> citys, String senderAddress) {
-        for (String regex : citys) {
-            Pattern pattern = Pattern.compile(regex);
-            Matcher matcher = pattern.matcher(senderAddress);
-            if (matcher.find())
-                return regex;
-        }
-        return null;
     }
 
 }

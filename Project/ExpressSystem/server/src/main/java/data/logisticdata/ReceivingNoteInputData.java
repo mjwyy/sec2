@@ -43,14 +43,16 @@ public class ReceivingNoteInputData extends NoteInputData implements ReceivingNo
             statement.setString(1,po.getBarcode());
             statement.setString(2,po.getTime());
             statement.setString(3,po.getReceiveCustomer());
+
+            if(this.isNoteInDB( "note_receive_note", "barcode", po.getBarcode() ))
+                throw new InterruptWithExistedElementException("");
+
             if(this.isBarcodeInDB(po.getBarcode())){
                 statement.executeUpdate();
                 return this.afterInsert(po);
             }else
                 throw new ElementNotFoundException();
-        } catch (MySQLIntegrityConstraintViolationException e){
-            throw new InterruptWithExistedElementException("");
-        } catch (SQLException e) {
+        }  catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -63,8 +65,7 @@ public class ReceivingNoteInputData extends NoteInputData implements ReceivingNo
         ResultMsg resultMsg = new ResultMsg(false);
         LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+po.getUserName()+
                 "新增收件单,单据编号:" + po.getBarcode());
-        DocState result = this.waitForCheck("note_receive_note",
-                "barcode", po.getBarcode());
+        DocState result = this.waitForCheck("note_receive_note", "barcode", po.getBarcode());
 
         if (result == DocState.PASSED) {
             ArrayList<String> bars = new ArrayList<>();

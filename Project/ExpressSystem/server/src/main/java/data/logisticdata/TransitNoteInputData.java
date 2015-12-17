@@ -47,21 +47,10 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
         try {
             statement = connection.prepareStatement(sql);
             StringBuilder stringBuilder = new StringBuilder();
-            ArrayList<BarcodesAndLocation> barcodesAndLocationArrayList = po.getBarcodes();
-            ArrayList<String> barcodes = new ArrayList<>();
-            //存储货物的条形码与位置,位置包括4位数字
-            //格式如下:1234567890,1,2,3,4;
-            for (BarcodesAndLocation barcodesAndLocation : barcodesAndLocationArrayList) {
-                barcodes.add(barcodesAndLocation.getBarcode());
-                stringBuilder.append(barcodesAndLocation.getBarcode());
-                stringBuilder.append(',');
-                stringBuilder.append(barcodesAndLocation.getSection());
-                stringBuilder.append(',');
-                stringBuilder.append(barcodesAndLocation.getLine());
-                stringBuilder.append(',');
-                stringBuilder.append(barcodesAndLocation.getRow());
-                stringBuilder.append(',');
-                stringBuilder.append(barcodesAndLocation.getNumber());
+            //存储货物的条形码
+            ArrayList<String> barcodes = po.getBarcodes();
+            for (String barcode : barcodes) {
+                stringBuilder.append(barcode);
                 stringBuilder.append(';');
             }
             statement.setString(1, stringBuilder.toString());
@@ -73,14 +62,15 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
             statement.setString(7, po.getDesitination());
             statement.setString(8, po.getTransportationNumber());
 
+            if(this.isNoteInDB("note_transit","transitDocNumber", po.getTransitDocNumber()))
+                throw new InterruptWithExistedElementException("");
+
             if(this.isBarcodeInDB(barcodes)){
                 statement.executeUpdate();
                 resultMsg = this.afterInsert(po);
             }else
                 throw new ElementNotFoundException();
 
-        } catch (MySQLIntegrityConstraintViolationException e){
-            throw new InterruptWithExistedElementException("");
         } catch (SQLException e) {
             e.printStackTrace();
             return new ResultMsg(false,"数据库异常:新增中转单失败!");
@@ -96,13 +86,12 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
                 "新增中转单,单据编号:" + po.getTransitDocNumber());
         DocState result = this.waitForCheck("note_transit",
                 "transitDocNumber", po.getTransitDocNumber());
-        ArrayList<BarcodesAndLocation> barcodesAndLocationArrayList = po.getBarcodes();
+        ArrayList<String> barcodes = po.getBarcodes();
 
         if (result == DocState.PASSED) {
             System.out.println("TransitNote is passed!");
             ArrayList<String> bars = new ArrayList<>();
-            for (BarcodesAndLocation barcodesAndLocation : barcodesAndLocationArrayList)
-                bars.add(barcodesAndLocation.getBarcode());
+
             this.updateOrder("已从 "+po.getOrganization()+" 发往 "+po.getDesitination()+" 中转中心",bars);
             resultMsg.setPass(true);
             resultMsg.setMessage("中转单提交成功!");
@@ -115,23 +104,6 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
         }
 
         return resultMsg;
-    }
-
-    /**
-     * 从数据库中存储的条形码与货物位置获得BarcodesAndLocation
-     *
-     * @param barcodes
-     * @return
-     */
-    public ArrayList<BarcodesAndLocation> getBarcodesAndLocation(String barcodes){
-        ArrayList<BarcodesAndLocation> result = new ArrayList<>();
-        String[] split = barcodes.split(";");
-        for(String line : split){
-            String[] aline = line.split(",");
-            result.add(new BarcodesAndLocation(aline[0],Integer.parseInt(aline[1]),Integer.parseInt(aline[2]),
-                    Integer.parseInt(aline[3]),Integer.parseInt(aline[4])));
-        }
-        return result;
     }
 
 }

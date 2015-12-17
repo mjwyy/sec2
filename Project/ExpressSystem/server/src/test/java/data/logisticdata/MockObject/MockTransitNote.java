@@ -11,12 +11,7 @@ import java.util.ArrayList;
  */
 public class MockTransitNote extends TransitNotePO {
 
-
-    public MockTransitNote(String transitDocNumber,String flightNumber,String desitination){
-        super(transitDocNumber, flightNumber, desitination, TransitType.Aircraft, null, null, null, null);
-    }
-
-    public MockTransitNote(String date, String transitDocNumber, String flightNumber, String departurePlace, String desitination, String supercargoMan, ArrayList<BarcodesAndLocation> barcodes) {
-        super(date, transitDocNumber, flightNumber, TransitType.Aircraft, departurePlace, desitination, supercargoMan, barcodes);
+    public MockTransitNote(String date, String transitDocNumber, String flightNumber, TransitType transitType, String departurePlace, String desitination, String supercargoMan, ArrayList<String> barcodes) {
+        super(date, transitDocNumber, flightNumber, transitType, departurePlace, desitination, supercargoMan, barcodes);
     }
 }

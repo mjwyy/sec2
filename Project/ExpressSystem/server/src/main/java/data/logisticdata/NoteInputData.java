@@ -176,4 +176,25 @@ public class NoteInputData extends UnicastRemoteObject implements Remote, Serial
         return result;
     }
 
+    public boolean isNoteInDB(String table, String keyName, String key){
+        Connection connection = DatabaseManager.getConnection();
+        String sql = "select advice from " + table +
+                " where " + keyName + " = '" + key + "'";
+        ResultSet resultSet = null;
+        PreparedStatement statement = null;
+        String advice = null;
+
+        try {
+            statement = connection.prepareStatement(sql);
+            resultSet = statement.executeQuery();
+            if (resultSet.next())
+               return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        DatabaseManager.releaseConnection(connection, statement, resultSet);
+        return false;
+    }
+
 }

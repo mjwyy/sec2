@@ -57,9 +57,9 @@ public class TransitNoteOnTransitVO extends NoteVO {
     private String supercargoMan;
 
     /**
-     * 装箱所有托运单号,货柜号
+     * 装箱所有托运单号
      */
-    private ArrayList<BarcodesAndLocation> barcodes;
+    private ArrayList<String> barcodes;
 
     /**
      * 运费
@@ -67,7 +67,7 @@ public class TransitNoteOnTransitVO extends NoteVO {
     private double price;
 
     public TransitNoteOnTransitVO(String date, String transitDocNumber, String flightNumber, TransitType transitType, String departurePlace,
-                                  String desitination, String supercargoMan, ArrayList<BarcodesAndLocation> barcodes) {
+                                  String desitination, String supercargoMan, ArrayList<String> barcodes) {
         this.date = date;
         this.transitDocNumber = transitDocNumber;
         this.transportationNumber = flightNumber;
@@ -114,7 +114,7 @@ public class TransitNoteOnTransitVO extends NoteVO {
         return supercargoMan;
     }
 
-    public ArrayList<BarcodesAndLocation> getBarcodes() {
+    public ArrayList<String> getBarcodes() {
         return barcodes;
     }
 
@@ -146,7 +146,7 @@ public class TransitNoteOnTransitVO extends NoteVO {
         this.supercargoMan = supercargoMan;
     }
 
-    public void setBarcodes(ArrayList<BarcodesAndLocation> barcodes) {
+    public void setBarcodes(ArrayList<String> barcodes) {
         this.barcodes = barcodes;
     }
 
@@ -179,8 +179,8 @@ public class TransitNoteOnTransitVO extends NoteVO {
         results[6] = FormatCheck.isChineseName(this.supercargoMan);
         ResultMsg barcodes;
         results[7] = new ResultMsg(true);
-        for(BarcodesAndLocation barcodeAndState:this.barcodes){
-            barcodes = FormatCheck.isBarcode(barcodeAndState.getBarcode());
+        for(String barcode:this.barcodes){
+            barcodes = FormatCheck.isBarcode(barcode);
             if(!barcodes.isPass()){
                 results[7] = barcodes;
                 break;

@@ -51,10 +51,13 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
             statement.setString(11, po.getSenderName());
             statement.setString(12, po.getName());
             statement.setString(13, po.getBarCode());
-            statement.executeUpdate();
-            sendDocMsg = this.afterInsert(po);
-        } catch (MySQLIntegrityConstraintViolationException e){
-            throw new InterruptWithExistedElementException("");
+
+            if(this.isNoteInDB( "note_delivery", "barCode", po.getBarCode() ))
+                throw new InterruptWithExistedElementException("");
+            else{
+                statement.executeUpdate();
+                sendDocMsg = this.afterInsert(po);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             sendDocMsg = new SendDocMsg(false, "寄件单提交失败!", 0, null);

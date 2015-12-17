@@ -54,13 +54,14 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
             statement.setString(4, po.getTransferNumber());
             statement.setString(5, po.getDate());
             //向数据库添加到达单
+            if(this.isNoteInDB("note_arrival_on_service", "TransferNumber", po.getTransferNumber()))
+                throw new InterruptWithExistedElementException("");
+
             if(this.isBarcodeInDB(po.getBarcodeAndStates(),true)){
                 statement.executeUpdate();
                 resultMsg = this.afterInsertArrival(po);
             }else
                 throw new ElementNotFoundException();
-        } catch (MySQLIntegrityConstraintViolationException e){
-            throw new InterruptWithExistedElementException("");
         } catch (SQLException e) {
             e.printStackTrace();
             resultMsg = new ResultMsg(false,"添加营业厅到达单失败");
@@ -102,14 +103,14 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
             statement.setString(2, po.getID());
             statement.setString(3, barcodeUtil.getDBbarsFromBarList(po.getBarCode()));
             statement.setString(4, po.getDate());
-            //向数据库添加到达单,首先检查订单信息是否存在
+            if(this.isNoteInDB( "note_delivery_on_service", "id", po.getID() ))
+                throw new InterruptWithExistedElementException("");
+            //检查订单信息是否存在
             if(this.isBarcodeInDB(po.getBarCode())){
                 statement.executeUpdate();
                 resultMsg = this.afterInsertDelivery(po);
             }else
                 throw new ElementNotFoundException();
-        } catch (MySQLIntegrityConstraintViolationException e){
-            throw new InterruptWithExistedElementException("");
         } catch (SQLException e) {
             e.printStackTrace();
             resultMsg = new ResultMsg(false,po.getUserName()+"添加派件单失败");

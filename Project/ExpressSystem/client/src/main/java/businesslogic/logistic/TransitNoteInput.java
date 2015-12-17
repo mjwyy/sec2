@@ -34,6 +34,11 @@ public class TransitNoteInput implements TransitNoteInputBLService {
     @Override
     public ResultMsg submitCenterTransitDoc(TransitNoteOnTransitVO centerTransitDocVO) {
         try {
+            String city1 = centerTransitDocVO.getDeparturePlace();
+            String city2 = centerTransitDocVO.getDesitination();
+            if( (!CityManager.hasCity(city1)) || (!CityManager.hasCity(city2))){
+                return new ResultMsg(false,"输入的城市不存在,请重新输入!");
+            }
             this.po = (TransitNotePO) centerTransitDocVO.toPO();
             this.po.setUserName(centerTransitDocVO.getUserName());
             this.po.setOrganization(centerTransitDocVO.getOrganization());

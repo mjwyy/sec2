@@ -24,13 +24,15 @@ public class BaseDataBuildingPanel extends JPanel {
 		setSize(WIDTH,HEIGHT);
 		setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("请点击右上角的建账项目菜单，选择对机构、银行账户、\n");
+		JLabel lblNewLabel = new JLabel("o_o请点击右上角的建账项目菜单，选择对机构、银行账户、\n");
 		lblNewLabel.setBounds(68, 46, 433, 49);
 		add(lblNewLabel);
 		
-		JLabel label = new JLabel("车辆进行建账信息，建账完毕请点击结束建账按钮\n\n\n\n");
+		JLabel label = new JLabel("车辆进行建账信息，建账完毕请点击结束建账按钮> _<\n\n\n\n");
 		label.setBounds(68, 107, 624, 16);
 		add(label);
+		
+		
 
 	}
 }

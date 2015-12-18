@@ -134,7 +134,7 @@ public class financeFrame extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		//setClose();
+		setClose();
 		this.setResizable(false);//不可调整大小
 		setTitle("MinJW物流管理系统");
 		contentPane.setLayout(null);
@@ -175,84 +175,6 @@ public class financeFrame extends JFrame {
 		
 		JMenu mnf = new JMenu("功能（F）");
 		menuBar.add(mnf);
-		
-		final JMenuBar menuBar4 = new JMenuBar();
-		menuBar4.setBounds(1119, 0, 132, 22);
-		panel_1.add(menuBar4);
-		menuBar4.setVisible(false);
-		
-		final JMenu meun4 = new JMenu("建账项目");
-		meun4.setBounds(1114, 0, 124, 19);
-		menuBar4.add(meun4);
-		meun4.setVisible(false);
-		
-		final JMenuItem item1 = new JMenuItem("机构建账");
-		item1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ManageorgPanel anot = new  ManageorgPanel(){
-					public void paintComponent(Graphics g) {
-						 super.paintComponent(g);
-						 ImageIcon img = new ImageIcon("image/0111.jpg");
-						 g.drawImage(img.getImage(), 0, 0, null);
-						 float lineWidth = 3.0f;
-					      ((Graphics2D)g).setStroke(new BasicStroke(lineWidth));
-					      g.drawLine(768, 0, 768, 500);
-						}
-						}; 
-				anot.setBounds(0, 0, 1152, 446);
-				bankpanel.removeAll();
-				bankpanel.add(anot);
-				bankpanel.repaint();
-			}
-		});
-		meun4.add(item1);
-		item1.setVisible(false);
-		
-		final JMenuItem item2 = new JMenuItem("银行账户建账");
-		item2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				BankAccountManagePanel bamp = new BankAccountManagePanel(){
-					public void paintComponent(Graphics g) {
-						 super.paintComponent(g);
-						 ImageIcon img = new ImageIcon("image/0111.jpg");
-						 g.drawImage(img.getImage(), 0, 0, null);
-						 float lineWidth = 3.0f;
-					      ((Graphics2D)g).setStroke(new BasicStroke(lineWidth));
-					      g.drawLine(768, 0, 768, 500);
-						}
-						};
-				bankpanel.removeAll();
-				bankpanel.add(bamp);
-				bankpanel.repaint();
-			}
-		});
-		meun4.add(item2);
-		item2.setVisible(false);
-		
-		final JMenuItem item3 = new JMenuItem("车辆建账");
-		item3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Car a=new Car();
-				bankpanel.removeAll();
-				bankpanel.add(a);
-				bankpanel.repaint();
-			}
-		});
-		meun4.add(item3);
-		item3.setVisible(false);
-		
-		JButton btnNewButton = new JButton("建账结束");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				service = new BaseDataBuilding();
-				ResultMsg res = service.endDataBuilding();
-				int result1 = JOptionPane.showConfirmDialog(null, service.restartWithoutBasis().getMessage(),"系统提示",
-						JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);		
-			}
-		});
-		btnNewButton.setBounds(990, 0, 117, 29);
-		panel_1.add(btnNewButton);
-		btnNewButton.setVisible(false);
 		
 		
 		
@@ -424,13 +346,7 @@ public class financeFrame extends JFrame {
 						};
 				bankpanel.removeAll();
 				bankpanel.add(bdbp);
-				bankpanel.repaint();
-				meun4.setVisible(true);
-				menuBar4.setVisible(true);
-				item1.setVisible(true);
-				item2.setVisible(true);
-				item3.setVisible(true);
-				
+				bankpanel.repaint();		
 				service = new BaseDataBuilding();
 				service.restartWithBasis();
 				if(!service.restartWithBasis().isPass()){
@@ -456,11 +372,7 @@ public class financeFrame extends JFrame {
 				bankpanel.removeAll();
 				bankpanel.add(bdbp);
 				bankpanel.repaint();
-				meun4.setVisible(true);
-				menuBar4.setVisible(true);
-				item1.setVisible(true);
-				item2.setVisible(true);
-				item3.setVisible(true);
+				
 				
 				service = new BaseDataBuilding();
 				service.restartWithoutBasis();

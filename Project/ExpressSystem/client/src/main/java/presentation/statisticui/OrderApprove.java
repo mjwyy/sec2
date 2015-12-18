@@ -77,7 +77,7 @@ JOptionPane.showConfirmDialog(null,e.getMessage());
 			}
 		}
 		else{
-			JOptionPane.showConfirmDialog(null, "暂时木有要审批的单据");
+			JOptionPane.showMessageDialog(null, "暂时木有要审批的单据");
 		}
 
 	}

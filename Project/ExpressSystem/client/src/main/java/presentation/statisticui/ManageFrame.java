@@ -148,6 +148,17 @@ public class ManageFrame extends JFrame {
 		contentPane.add(panel_3);
 		
 		JButton btnNewButton = new JButton("审批单据");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				OrderApprove appr = new  OrderApprove (){
+					
+						}; 
+						appr.setBounds(0, 0, 1152, 446);
+				bankpanel.removeAll();
+				bankpanel.add(appr);
+				bankpanel.repaint();
+			}
+		});
 		btnNewButton.setBounds(0, 123, 140, 80);
 		contentPane.add(btnNewButton);
 		

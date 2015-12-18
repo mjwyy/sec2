@@ -44,13 +44,17 @@ public class ConnectionPool extends Thread {
 
     static{
         HashMap<String, String> hashMap = ServerConfig.getDatabaseConfig().getParams();
-        DB_DRIVER = hashMap.get("dbDriver");
+        //DB_DRIVER = hashMap.get("dbDriver");
         String dbLocation = hashMap.get("dbLocation");
         String dbUnicode = hashMap.get("dbUnicode");
         String dbEncoding = hashMap.get("dbEncoding");
+        DB_DRIVER = "com.mysql.jdbc.Driver";
+        dbLocation = "jdbc:mysql://localhost:3306/express"; 
+        dbUnicode = "useUnicode=true";
+        dbEncoding = "characterEncoding=UTF-8";
         DB_URL = dbLocation + "?" + dbUnicode + "&" + dbEncoding;
-        DB_USER = hashMap.get("dbUser");
-        DB_PASSWORD = hashMap.get("dbPassword");
+        DB_USER = "root";
+        DB_PASSWORD = "wuqinyue123";
     }
 
     private ConnectionPool(){

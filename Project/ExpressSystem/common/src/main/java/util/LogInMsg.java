@@ -27,6 +27,8 @@ public class LogInMsg implements Serializable {
 
     // 创建这个单据的业务员所在的机构名称
     private String organization;
+
+    private String organization_id;
     
     public LogInMsg(boolean pass, Authority authority,String message) {
         this.pass = pass;
@@ -34,12 +36,14 @@ public class LogInMsg implements Serializable {
         this.message = message;
     }
 
-    public LogInMsg(boolean pass, Authority authority, String message, String userName, String organization) {
+    public LogInMsg(boolean pass, Authority authority, String message,
+                    String userName, String organization, String organization_id) {
         this.pass = pass;
         this.authority = authority;
         this.message = message;
         this.userName = userName;
         this.organization = organization;
+        this.organization_id = organization_id;
     }
 
     public boolean isPass() {
@@ -49,9 +53,9 @@ public class LogInMsg implements Serializable {
     public Authority getAuthority() {
         return authority;
     }
-    
+
     public String getMessage() {
-    	return message;
+        return message;
     }
 
     public String getUserName() {
@@ -60,5 +64,9 @@ public class LogInMsg implements Serializable {
 
     public String getOrganization() {
         return organization;
+    }
+
+    public String getOrganization_id() {
+        return organization_id;
     }
 }

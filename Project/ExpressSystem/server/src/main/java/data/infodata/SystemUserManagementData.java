@@ -103,6 +103,7 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
     }
 
     @Override
+    //TODO 查询结果多余
     public ArrayList<UserPO> inquireUser(UserPO info) throws ElementNotFoundException {
         Connection connection = DatabaseManager.getConnection();
         String sqlFindAll = null;
@@ -190,7 +191,14 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
                     organization =  set.getString("organization");
                 }
                 RuntimeUserInfo.setUserNum(userName);
-                logInMsg = new LogInMsg(true,a,"",userName,organization);
+                sql = "SELECT organization_id from organization where name = '"+organization+"'";
+                stmt = connection.prepareStatement(sql);
+                set = stmt.executeQuery();
+                String org_id = "";
+                if(set.next()){
+                    org_id = set.getString("organization_id");
+                }
+                logInMsg = new LogInMsg(true,a,"",userName,organization,org_id);
             } else { // No such user.
                 logInMsg = new LogInMsg(false, null, "密码错误，请检查输入");
             }

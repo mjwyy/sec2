@@ -224,7 +224,7 @@ public class StaffOrganizationManagementData extends UnicastRemoteObject impleme
 
 	@Override
     public ArrayList<StaffPO> getAllStaff() throws RemoteException{
-        String sql = "SELECT * from `staff`";
+        String sql = "select * from staff";
         try {
             return this.excFindStaffStatement(sql);
         } catch (ElementNotFoundException e) {
@@ -251,6 +251,7 @@ public class StaffOrganizationManagementData extends UnicastRemoteObject impleme
         ArrayList<StaffPO> result = new ArrayList<>();
         try {
             statement = connection.prepareStatement(str);
+            System.out.println(str);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 String staff_id = resultSet.getString(1);
@@ -271,9 +272,9 @@ public class StaffOrganizationManagementData extends UnicastRemoteObject impleme
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        DatabaseManager.releaseConnection(connection,statement,null);
         if(result.isEmpty())
             throw new ElementNotFoundException();
+        DatabaseManager.releaseConnection(connection,statement,null);
         return result;
     }
 

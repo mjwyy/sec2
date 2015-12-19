@@ -463,9 +463,7 @@ public class StaffManagementPanel extends JPanel {
 	   
 	   public void showall(){
 		   data.clear();//清空table内容
-		   staffVO = new StaffVO(null,null,null,null,null,null,-1,null,null);
-		   ArrayList<StaffVO>  staffList = new   ArrayList<StaffVO> ();
-		   staffList = service.findStaffInfo(staffVO);
+		   ArrayList<StaffVO>  staffList = service.findStaffInfo(null);
 		   System.out.println( service.findStaffInfo(staffVO).get(0).getWorkingtime());
 		   if(staffList == null){
 			   int result1 = JOptionPane.showConfirmDialog(null, "显示出错","系统提示",

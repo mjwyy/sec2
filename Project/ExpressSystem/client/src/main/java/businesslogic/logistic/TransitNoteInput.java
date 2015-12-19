@@ -32,8 +32,10 @@ public class TransitNoteInput implements TransitNoteInputBLService {
     }
 
     @Override
+    //TODO 检查人员的存在性
     public ResultMsg submitCenterTransitDoc(TransitNoteOnTransitVO centerTransitDocVO) {
         try {
+            System.out.println("this is TransitNoteInput");
             String city1 = centerTransitDocVO.getDeparturePlace();
             String city2 = centerTransitDocVO.getDesitination();
             if( (!CityManager.hasCity(city1)) || (!CityManager.hasCity(city2))){

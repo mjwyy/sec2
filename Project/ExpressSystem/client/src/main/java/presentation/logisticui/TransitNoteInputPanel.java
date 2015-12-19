@@ -168,7 +168,11 @@ public class TransitNoteInputPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if((!barcodesandLocation.isEmpty())&&(!date2.getText().isEmpty())){			
 					transitNoteOnTransitVO = new TransitNoteOnTransitVO(date2.getText(),transitnum2.getText(),
-							flightNumber2.getText(),transitNoteType,setout2.getText(),arrival2.getText(),loader2.getText(),barcodesandLocation);
+							flightNumber2.getText(),transitNoteType,setout2.getText(),arrival2.getText(),
+                            loader2.getText(),barcodesandLocation);
+                    for(String barcode : barcodesandLocation){
+                        System.out.println("tiaoxingma :" + barcode);
+                    }
 					transitNoteOnTransitVO.setUserName(lim.getUserName());
 					transitNoteOnTransitVO.setOrganization(lim.getOrganization());
 					UnEditablePanel.UnEdit(TransitNoteInputPanel.this);//设置为不可编辑
@@ -410,7 +414,7 @@ public class TransitNoteInputPanel extends JPanel {
 		if(s.isPass()){
 			parent.setTransitNoteInputOanel(null);
 		}else{
-			int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
+			int result1 = JOptionPane.showConfirmDialog(null, s.getMessage(),"系统提示",
 					JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);//提示错误信息
 			EditableTrue.Edit(thisP);
 			
@@ -443,7 +447,7 @@ public class TransitNoteInputPanel extends JPanel {
 				JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 		}else{
 		ArrayList<String> add = new ArrayList<String>();
-		
+
 		add.add(barcode.getText());
 		TransitNoteOnTransitVO vo = new TransitNoteOnTransitVO("2015-12-12","025000201510120000002",
 				"MF8190",transitNoteType.Aircraft,"南京","北京","王小二",add);
@@ -455,9 +459,9 @@ public class TransitNoteInputPanel extends JPanel {
 			data.add(row.clone());
 			model.setDataVector(data, name);
 			table.setModel(model);
+            barcodesandLocation.add(barcode.getText());
 			barcode.setText("");
-		
-			barcodesandLocation.add(barcode.getText());	
+
 		}else{
 			int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
 					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);

@@ -371,7 +371,7 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 			//parent.setArrivalNoteOnTransitVO(null);;
 			parent.setArrivalNoteOnTransitpanel(null);
 		}else{
-			int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
+			int result1 = JOptionPane.showConfirmDialog(null, s.getMessage(),"系统提示",
 					JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
 			date1.setEditable(true);
 			date1.setEnabled(true);
@@ -425,9 +425,10 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 			row.add(statechoose.getSelectedItem());
 			data.add(row.clone());
 			model.setDataVector(data, name);
-			table.setModel(model);	
-			barcode.setText("");
-			barcodeAndStates.add( brcodeAndState);		
+			table.setModel(model);
+            barcodeAndStates.add( brcodeAndState);
+            barcode.setText("");
+
 		}else{
 			int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
 					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);

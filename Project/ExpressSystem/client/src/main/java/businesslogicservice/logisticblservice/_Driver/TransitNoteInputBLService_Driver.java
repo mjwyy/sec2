@@ -22,30 +22,27 @@ public class TransitNoteInputBLService_Driver {
 		b.driver(a);
 	}
 	public void driver(TransitNoteInputBLService a) {
-//        ArrayList<String> bar = new ArrayList<String>();
-//        bar.add("1234567890");
-//        ArrayList<BarcodesAndLocation> list = new ArrayList<BarcodesAndLocation>();
-//        list.add(new BarcodesAndLocation("0000000001", 1, 2, 3, 4));
-//        list.add(new BarcodesAndLocation("0000000002", 1, 2, 3, 5));
-//        list.add(new BarcodesAndLocation("0000000003", 1, 2, 3, 6));
-//        list.add(new BarcodesAndLocation("0000000004", 1, 2, 3, 7));
-//        TransitNoteOnTransitVO transitNoteOnTransitVO = new TransitNoteOnTransitVO(
-//                "2015-12-17", "025000201510120000011",
-//                "MF8190", TransitType.Aircraft, "南京市栖霞区南京大学",
-//                "北京市", "张三", list);
-//        ResultMsg result = a.inputCenterTransitDoc(transitNoteOnTransitVO);
-//        if (result.isPass()) {
-//            System.out.println("输入的中转单格式正确");
-//            ResultMsg result2 = a.submitCenterTransitDoc(transitNoteOnTransitVO);
-//            if (result2.isPass())
-//                System.out.println("提交成功");
-//            else{
-//                System.out.println("提交失败");
-//                System.out.println(result2.getMessage());
-//            }
-//        } else{
-//            System.out.println("输入的中转单格式不正确");
-//            System.out.println(result.getMessage());
-//        }
+        ArrayList<String> bar = new ArrayList<String>();
+        bar.add("0000000001");
+        bar.add("0000000002");
+        TransitNoteOnTransitVO transitNoteOnTransitVO = new TransitNoteOnTransitVO(
+                "2015-12-19", "025000201510120000099",
+                "G8888", TransitType.Aircraft, "南京市栖霞区南京大学",
+                "北京市", "张三", bar);
+        ResultMsg result = a.inputCenterTransitDoc(transitNoteOnTransitVO);
+
+        if (result.isPass()) {
+            System.out.println("输入的中转单格式正确");
+            ResultMsg result2 = a.submitCenterTransitDoc(transitNoteOnTransitVO);
+            if (result2.isPass())
+                System.out.println("提交成功");
+            else{
+                System.out.println("提交失败");
+                System.out.println(result2.getMessage());
+            }
+        } else{
+            System.out.println("输入的中转单格式不正确");
+            System.out.println(result.getMessage());
+        }
     }
 }

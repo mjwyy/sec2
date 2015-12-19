@@ -43,7 +43,7 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
         Connection connection = DatabaseManager.getConnection();
         PreparedStatement statement = null;
         ResultMsg resultMsg = new ResultMsg(false);
-
+        System.out.println("this is TransitNoteInputData");
         try {
             statement = connection.prepareStatement(sql);
             StringBuilder stringBuilder = new StringBuilder();

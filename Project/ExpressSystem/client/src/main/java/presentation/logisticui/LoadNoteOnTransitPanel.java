@@ -355,7 +355,7 @@ public class LoadNoteOnTransitPanel extends JPanel {
 		if(s.isPass()){
 			parent.setLoadNoteOnTransitpanel(null);
 		}else{
-			int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
+			int result1 = JOptionPane.showConfirmDialog(null, s.getMessage(),"系统提示",
 					JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
 			EditableTrue.Edit(thisP);
 			date2.setEditable(false);
@@ -394,9 +394,9 @@ public class LoadNoteOnTransitPanel extends JPanel {
 			data.add(row.clone());
 			model.setDataVector(data, name);
 			table.setModel(model);
+            goodsbarcode.add(addbarcode.getText());
 			addbarcode.setText("");
-			goodsbarcode.add(addbarcode.getText());
-			
+
 		}
 		else{
 			int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",

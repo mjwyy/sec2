@@ -189,6 +189,8 @@ public class BankAccountManagePanel extends JPanel {
     			accountname.setText("");
            		account.setText("");
            		balance.setText("");
+           		JOptionPane.showConfirmDialog(null, "删除成功","系统提示",
+						JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
     		}
     			else{
     				int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",

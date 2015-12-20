@@ -37,7 +37,8 @@ public class StaffManagementPanel extends JPanel {
 	private MJTextField keyword;
 	private MJTextField staffID;
 	private MJTextField staffname;
-	private MJTextField staffsex;
+	//private MJTextField staffsex;
+	private JComboBox comboBox_1;
 	private MJTextField org;
 	private MJTextField IDCode;
 	private MJTextField worktime;
@@ -237,7 +238,7 @@ public class StaffManagementPanel extends JPanel {
           		if(seletedRow != -1){
           			staffID.setText(model.getValueAt(seletedRow, 0).toString());
 				    staffname.setText((String)model.getValueAt(seletedRow, 1).toString());
-				    staffsex.setText((String)model.getValueAt(seletedRow, 2).toString());
+				    comboBox_1.setSelectedItem(((String)model.getValueAt(seletedRow, 2).toString()));
 				    org.setText((String)model.getValueAt(seletedRow, 3).toString());
 				    zhiwei.setSelectedItem((String)model.getValueAt(seletedRow, 4).toString());
 				    IDCode.setText((String)model.getValueAt(seletedRow, 5).toString());
@@ -287,10 +288,14 @@ public class StaffManagementPanel extends JPanel {
 		label_3.setBounds(782, 103, 61, 16);
 		add(label_3);
 		
-		staffsex = new MJTextField();
-		staffsex.setBounds(837, 97, 192, 28);
-		add(staffsex);
-		staffsex.setColumns(10);
+		
+		
+		
+		String[] sex = {"男","女"};
+	 comboBox_1 = new JComboBox(sex);
+		comboBox_1.setBounds(837, 99, 192, 20);
+		add(comboBox_1);
+		
 		
 		JLabel label_4 = new JLabel("机构");
 		label_4.setBounds(782, 131, 61, 16);
@@ -354,7 +359,7 @@ public class StaffManagementPanel extends JPanel {
 				else if(zhiwei.getSelectedItem().equals(poslist0[5])){staffType = staffType.SYSTEM_MANAGER;pos = "系统管理人员";}
 				else if(zhiwei.getSelectedItem().equals(poslist0[6])){staffType = staffType.DRIVER;pos = "司机";}
 				else if(zhiwei.getSelectedItem().equals(poslist0[7])){staffType = staffType.ACCOUNTANT;pos ="财务人员";}
-				staffVO = new StaffVO(staffID.getText(),staffname.getText(),staffsex.getText(),org.getText(),
+				staffVO = new StaffVO(staffID.getText(),staffname.getText(),comboBox_1.getSelectedItem().toString(),org.getText(),
 						staffType,IDCode.getText(),Integer.parseInt(worktime.getText()),phonum.getText(),wage.getText());
 				res = service.addStaff(staffVO);
 				if(res.isPass()){
@@ -387,7 +392,7 @@ public class StaffManagementPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				seletedRow=table.getSelectedRow();
 				if(seletedRow != -1)		    
-					staffVO = new StaffVO(staffID.getText(),staffname.getText(),staffsex.getText(),org.getText(),
+					staffVO = new StaffVO(staffID.getText(),staffname.getText(),comboBox_1.getSelectedItem().toString(),org.getText(),
 							staffType,IDCode.getText(),Integer.parseInt(worktime.getText()),phonum.getText(),wage.getText());
 	
 				int result2 = JOptionPane.showConfirmDialog(null, "确认删除吗？","系统提示",
@@ -399,12 +404,13 @@ public class StaffManagementPanel extends JPanel {
 						model.removeRow(seletedRow);
 						staffID.setText("");
 					    staffname.setText("");
-					    staffsex.setText("");
 					    org.setText("");
 					    IDCode.setText("");
 					    worktime.setText("");
 					    phonum.setText("");
 					    wage.setText("");
+					    JOptionPane.showConfirmDialog(null, "删除成功","系统提示",
+								JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
 					}else{
 						int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
 								JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
@@ -420,7 +426,7 @@ public class StaffManagementPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				seletedRow=table.getSelectedRow();
 				if(seletedRow != -1){
-					staffVO = new StaffVO(staffID.getText(),staffname.getText(),staffsex.getText(),org.getText(),
+					staffVO = new StaffVO(staffID.getText(),staffname.getText(),comboBox_1.getSelectedItem().toString(),org.getText(),
 							staffType,IDCode.getText(),Integer.parseInt(worktime.getText()),phonum.getText(),wage.getText());
 					res = service.ModifyStaff(staffVO);
 					if(res.isPass()){
@@ -457,10 +463,6 @@ public class StaffManagementPanel extends JPanel {
 		});
 		btnNewButton_1.setBounds(615, 38, 80, 24);
 		add(btnNewButton_1);
-		
-		
-		
-	
 		
 	}
 	
@@ -511,5 +513,4 @@ public class StaffManagementPanel extends JPanel {
 		   
 		   
 				 }
-
 }

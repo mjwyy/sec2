@@ -72,7 +72,7 @@ public class ManageorgPanel extends JPanel {
 		table = new JTable(model);
 		table.setBounds(38, 72, 612, 348);
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(38, 72, 612, 303);
+		scrollPane.setBounds(38, 72, 612, 348);
 		add(scrollPane);
 		showall();//初始化时显示所有机构信息
 		
@@ -84,16 +84,9 @@ public class ManageorgPanel extends JPanel {
           		orgnum.setText(model.getValueAt(seletedRow, 0).toString());
           		orgtype.setSelectedItem(model.getValueAt(seletedRow, 1).toString());
           		orgname.setText(model.getValueAt(seletedRow, 2).toString());
-          		OrganizationInfoVO vos = new OrganizationInfoVO(null,null,model.getValueAt(seletedRow, 2).toString(),null);
-          		orgvo = service.findOrgInfo(vos);
-          		if(orgvo.isEmpty()){
-          			JOptionPane.showConfirmDialog(null, "数据库中未查询到该机股信息，异常，请联系系统管理员","系统提示",
-							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-          		}else {
-          	       if(orgvo.get(0).getStaffinfo() != null)
-          			staffinfo = orgvo.get(0).getStaffinfo();
-          		
-          		}
+          		StaffVO	staffVO = new StaffVO(null,null,null,model.getValueAt(seletedRow, 2).toString()
+          				,null,null,-1,null,null);
+          		staffinfo  = service.findStaffInfo(staffVO);
           		}
           		
         	}
@@ -223,12 +216,8 @@ public class ManageorgPanel extends JPanel {
 				//System.out.println("添加信息");
 				res  = service.addOrganization(vo);
 				if(res.isPass()){
-					Vector row = new Vector();
-					row.add(orgnum.getText());
-					row.add(orgtype.getSelectedItem().toString());
-					row.add(orgname.getText());
-					data.add(row.clone());
-					 model.setDataVector(data, name);
+					String[] rowValues={orgnum.getText(),orgtype.getSelectedItem().toString(),orgname.getText()};
+					model.addRow(rowValues);
 				    table.setModel(model);
 				    JOptionPane.showConfirmDialog(null, "添加机构成功","系统提示",
 							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
@@ -266,13 +255,10 @@ public class ManageorgPanel extends JPanel {
 		delete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(seletedRow != -1){
-				OrganizationInfoVO vos = new OrganizationInfoVO(null,null,model.getValueAt(seletedRow, 2).toString(),null);
-				if(service.findOrgInfo(vos).isEmpty()){
-					JOptionPane.showConfirmDialog(null, "数据库异常，请联系管理员","系统提示",
-							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-				}else {
-				for(int i = 0;i< service.findOrgInfo(vos).size();i++){
-					res  = service.delOrganization(service.findOrgInfo(vos).get(i));
+
+					OrganizationInfoVO vos = new OrganizationInfoVO(orgnum.getText(),whichType(orgtype.getSelectedItem().toString()),
+							orgname.getText(),staffinfo);;			
+					res  = service.delOrganization(vos);
 						if(!res.isPass()){
 							int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
 									JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
@@ -282,8 +268,7 @@ public class ManageorgPanel extends JPanel {
 									JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 							seletedRow = -1;
 						}	
-				}
-				}
+			
 			}else {
 				JOptionPane.showConfirmDialog(null, "请选择要删除的信息","系统提示",
 						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
@@ -365,7 +350,8 @@ public class ManageorgPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				isselected();
 				f = new JFrame();
-				f.setBounds(140, 125,1152, 446);
+				f.setBounds(140, 125,1152, 600);
+				f.setResizable(false);
 				msp = new ManageStaffPanel();
 				msp.setStaffList(staffinfo);
 				msp.showall();
@@ -382,6 +368,9 @@ public class ManageorgPanel extends JPanel {
 						vo = new OrganizationInfoVO(orgnum.getText(),whichType(orgtype.getSelectedItem().toString()),
 								orgname.getText(),staffinfo);
 						res = service.ModifyOrganization(vo);
+						for(int i = 0;i<staffinfo.size();i++){
+						res = service.ModifyStaff(staffinfo.get(i));
+						}
 						if(!res.isPass()){
 							int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
 									JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);

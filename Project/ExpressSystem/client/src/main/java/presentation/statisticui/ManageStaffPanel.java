@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 import po.StaffPO;
 import util.ResultMsg;
@@ -34,7 +35,6 @@ import java.awt.Color;
 public class ManageStaffPanel extends JPanel {
 	private JTextField staffID;
 	private JTextField staffname;
-	private JTextField staffsex;
 	private JTextField org;
 	private JTextField IDCode;
 	private JTextField worktime;
@@ -52,14 +52,16 @@ public class ManageStaffPanel extends JPanel {
 	private ResultMsg res;
 	private int seletedRow;
 	private String[] poslist;
+	private JComboBox sex;
 	private ArrayList<StaffVO> staffList = new ArrayList<StaffVO>();
 	private JButton btnNewButton;
 	/**
 	 * Create the panel.
 	 */
 	public ManageStaffPanel() {
-		setSize(1152,446);
-		setLayout(null);
+		setSize(1152,600);
+		setLayout(null)
+		;
 		
 
 		final String[] poslist0 = {"总经理","营业厅业务员","中转中心业务员","库存管理人员","快递员","系统管理人员","司机","财务人员"};
@@ -86,6 +88,14 @@ public class ManageStaffPanel extends JPanel {
 		scrollPane.setBounds(27, 75, 721, 345);
 		add(scrollPane);
 		//showall();
+		TableColumn column = null;
+   		int colunms = table.getColumnCount();  
+   		for(int i = 0; i < colunms; i++)  
+   		{  
+   			column = table.getColumnModel().getColumn(i);  
+   			/*将每一列的默认宽度设置为180*/  
+   			column.setPreferredWidth(180);  
+   		}
 		
 		
 		table.addMouseListener(new MouseAdapter() {
@@ -94,7 +104,8 @@ public class ManageStaffPanel extends JPanel {
           		if(seletedRow != -1){
           			staffID.setText(model.getValueAt(seletedRow, 0).toString());
 				    staffname.setText(model.getValueAt(seletedRow, 1).toString());
-				    staffsex.setText(model.getValueAt(seletedRow, 2).toString());
+				    //staffsex.setText(model.getValueAt(seletedRow, 2).toString());
+				    sex.setSelectedItem(model.getValueAt(seletedRow, 2).toString());
 				    org.setText(model.getValueAt(seletedRow, 3).toString());
 				    zhiwei.setSelectedItem(model.getValueAt(seletedRow, 4).toString());
 				    IDCode.setText(model.getValueAt(seletedRow, 5).toString());
@@ -113,7 +124,7 @@ public class ManageStaffPanel extends JPanel {
 					else if(zhiwei.getSelectedItem().equals(poslist0[6])){staffType = staffType.DRIVER;pos = "司机";}
 					else if(zhiwei.getSelectedItem().equals(poslist0[7])){staffType = staffType.ACCOUNTANT;pos ="财务人员";}
 					
-					firststaffVO = new StaffVO(staffID.getText(),staffname.getText(),staffsex.getText(),org.getText(),
+					firststaffVO = new StaffVO(staffID.getText(),staffname.getText(),sex.getSelectedItem().toString(),org.getText(),
 							staffType,IDCode.getText(),Integer.parseInt(worktime.getText()),phonum.getText(),wage.getText());
 					
           		}
@@ -141,11 +152,6 @@ public class ManageStaffPanel extends JPanel {
 		JLabel label_3 = new JLabel("性别");
 		label_3.setBounds(782, 103, 61, 16);
 		add(label_3);
-		
-		staffsex = new JTextField();
-		staffsex.setBounds(837, 97, 192, 28);
-		add(staffsex);
-		staffsex.setColumns(10);
 		
 		JLabel label_4 = new JLabel("机构");
 		label_4.setBounds(782, 131, 61, 16);
@@ -209,7 +215,7 @@ public class ManageStaffPanel extends JPanel {
 				else if(zhiwei.getSelectedItem().equals(poslist0[5])){staffType = staffType.SYSTEM_MANAGER;pos = "系统管理人员";}
 				else if(zhiwei.getSelectedItem().equals(poslist0[6])){staffType = staffType.DRIVER;pos = "司机";}
 				else if(zhiwei.getSelectedItem().equals(poslist0[7])){staffType = staffType.ACCOUNTANT;pos ="财务人员";}
-				staffVO = new StaffVO(staffID.getText(),staffname.getText(),staffsex.getText(),org.getText(),
+				staffVO = new StaffVO(staffID.getText(),staffname.getText(),sex.getSelectedItem().toString(),org.getText(),
 						staffType,IDCode.getText(),Integer.parseInt(worktime.getText()),phonum.getText(),wage.getText());
 				res = service.addStaff(staffVO);
 				if(res.isPass()){
@@ -244,21 +250,24 @@ public class ManageStaffPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				seletedRow=table.getSelectedRow();
 				if(seletedRow != -1)		    
-					staffVO = new StaffVO(staffID.getText(),staffname.getText(),staffsex.getText(),org.getText(),
+					staffVO = new StaffVO(staffID.getText(),staffname.getText(),sex.getSelectedItem().toString(),org.getText(),
 							staffType,IDCode.getText(),Integer.parseInt(worktime.getText()),phonum.getText(),wage.getText());
 					
 					res = service.delStaff(staffVO);
 					if(res.isPass()){
+						 staffList.remove(staffVO);
 						model.removeRow(seletedRow);
 						staffID.setText("");
 					    staffname.setText("");
-					    staffsex.setText("");
+					  
 					    org.setText("");
 					    IDCode.setText("");
 					    worktime.setText("");
 					    phonum.setText("");
 					    wage.setText("");
-					    staffList.remove(staffVO);
+					    JOptionPane.showConfirmDialog(null, "删除成功","系统提示",
+								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+					   
 					}else{
 						int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
 								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
@@ -274,7 +283,7 @@ public class ManageStaffPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				seletedRow=table.getSelectedRow();
 				if(seletedRow != -1){
-					staffVO = new StaffVO(staffID.getText(),staffname.getText(),staffsex.getText(),org.getText(),
+					staffVO = new StaffVO(staffID.getText(),staffname.getText(),sex.getSelectedItem().toString(),org.getText(),
 							staffType,IDCode.getText(),Integer.parseInt(worktime.getText()),phonum.getText(),wage.getText());
 					res = service.ModifyStaff(staffVO);
 					if(res.isPass()){
@@ -294,6 +303,8 @@ public class ManageStaffPanel extends JPanel {
 				   		 table.setModel(model);
 				   		 staffList.remove(firststaffVO);
 				   		 staffList.add(staffVO);
+				   	  JOptionPane.showConfirmDialog(null, "修改成功","系统提示",
+								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 					}else{
 						int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
 								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
@@ -308,6 +319,11 @@ public class ManageStaffPanel extends JPanel {
 		btnNewButton = new JButton("确认");
 		btnNewButton.setBounds(775, 388, 247, 36);
 		add(btnNewButton);
+		
+		String[] sexchoose = {"男","女"};
+		sex = new JComboBox(sexchoose);
+		sex.setBounds(837, 99, 192, 20);
+		add(sex);
 		
 		
 		

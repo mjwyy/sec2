@@ -576,21 +576,24 @@ UserVO vvvv=null;
 				else if(ssss.equals("高级财务人员")){
 					aau=Authority.ACCOUNTANT_HIGH;
 				}
-				else if(ssss.equals("低级财务人员")){
+				else if(ssss.equals("财务人员")){
 					aau=Authority.ACCOUNTANT;
 				}
 				else if(ssss.equals("库存管理人员")){
 					aau=Authority.WAREHOUSE_MANAGER;
 				}
-				else if(ssss.equals("财务人员")){
-					comboBox.setSelectedIndex(4);
+				else if(ssss.equals("中转中心业务员")){
+					aau=Authority.TRANSIT_CENTER_PERSONNEL;
 				}
 				else if(ssss.equals("快递员")){
 					aau=Authority.DELIVERY_MAN;
 				}
 				else if(ssss.equals("系统管理员")){
 					aau=Authority.SYSTEM_MANAGER;
-				}	
+				}
+				else{
+					aau=Authority.SERVICE_HALL_PERSONNEL;
+				}
 				vvvv=new UserVO (null,null,aau);
 			}
 		initTabel(vvvv);

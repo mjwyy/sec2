@@ -183,6 +183,23 @@ public class financeFrame extends JFrame {
 		panel_2.setBounds(0, 570, 350, 124);
 		panel_2.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 		contentPane.add(panel_2);
+		panel_2.setLayout(null);
+		
+		JLabel label = new JLabel("姓名：");
+		label.setBounds(6, 19, 77, 16);
+		panel_2.add(label);
+		
+		JLabel label_1 = new JLabel("机构：");
+		label_1.setBounds(6, 70, 61, 16);
+		panel_2.add(label_1);
+		
+		JLabel lblNewLabel = new JLabel(lim.getUserName());
+		lblNewLabel.setBounds(95, 19, 226, 27);
+		panel_2.add(lblNewLabel);
+		
+		JLabel label_2 = new JLabel(lim.getOrganization());
+		label_2.setBounds(95, 70, 226, 27);
+		panel_2.add(label_2);
 		
 		leftdown = new JPanel();
 		leftdown.setBounds(347, 570, 933, 124);
@@ -396,6 +413,4 @@ public class financeFrame extends JFrame {
 		jiesuanTongguo.setVisible(tongguo);
 		jiesuanBu.setVisible(butongguo);
 	}
-	
-	
 }

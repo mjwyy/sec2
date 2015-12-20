@@ -44,7 +44,7 @@ public class ManageorgPanel extends JPanel {
 	private StaffOrganizationManagementBLService service = new StaffOrganizationManagement();
 	private OrganizationType organizationType;
 	private ArrayList<StaffVO> staffinfo = new  ArrayList<StaffVO>();
-	private int seletedRow;
+	private int seletedRow  = -1;
 	private ManageStaffPanel msp ;
 	private JFrame f;
 	private ArrayList<OrganizationInfoVO> orgvo = new ArrayList<OrganizationInfoVO>();
@@ -59,7 +59,9 @@ public class ManageorgPanel extends JPanel {
 	public ManageorgPanel() {
 		setSize(1152,446);
 		setLayout(null);
+		renyuan();
 		
+		//表格显示内容
 		name = new Vector();
 		name.add("机构编号");
 		name.add("机构类型");
@@ -72,37 +74,26 @@ public class ManageorgPanel extends JPanel {
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(38, 72, 612, 303);
 		add(scrollPane);
-		showall();
+		showall();//初始化时显示所有机构信息
 		
+		//选中table某一行。这一行的信息显示在编辑狂中，可查看人员信息
 		table.addMouseListener(new MouseAdapter() {
         	public void mouseClicked(MouseEvent arg0) {
         		 seletedRow = table.getSelectedRow();
           		if(seletedRow != -1){
           		orgnum.setText(model.getValueAt(seletedRow, 0).toString());
           		orgtype.setSelectedItem(model.getValueAt(seletedRow, 1).toString());
-          		orgname.setText(model.getValueAt(seletedRow, 1).toString());
-          		OrganizationInfoVO vos = new OrganizationInfoVO(model.getValueAt(seletedRow, 0).toString(),null,null,null);
+          		orgname.setText(model.getValueAt(seletedRow, 2).toString());
+          		OrganizationInfoVO vos = new OrganizationInfoVO(null,null,model.getValueAt(seletedRow, 2).toString(),null);
           		orgvo = service.findOrgInfo(vos);
-          		for(int i = 0;i<orgvo.size();i++){
-          			staffinfo = orgvo.get(i).getStaffinfo();
-          		}
+          		if(orgvo.isEmpty()){
+          			JOptionPane.showConfirmDialog(null, "数据库中未查询到该机股信息，异常，请联系系统管理员","系统提示",
+							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+          		}else {
+          	       if(orgvo.get(0).getStaffinfo() != null)
+          			staffinfo = orgvo.get(0).getStaffinfo();
           		
-          		JButton button = new JButton("查看所选机构人员信息");
-        		button.addActionListener(new ActionListener() {
-        			public void actionPerformed(ActionEvent e) {
-        				f = new JFrame();
-        				f.setBounds(140, 125, 721, 345);
-        				StaffInfoPanel sip = new StaffInfoPanel();
-        				sip.setStaffList(staffinfo);
-        				sip.showall();
-        				sip.setVisible(true);
-        				f.getContentPane().add(sip);
-        				f.setVisible(false);
-        				
-        			}
-        		});
-        		button.setBounds(488, 387, 162, 38);
-        		add(button);
+          		}
           		}
           		
         	}
@@ -112,6 +103,7 @@ public class ManageorgPanel extends JPanel {
 		label.setBounds(38, 41, 91, 16);
 		add(label);
 		
+		//查询关键字选项
 		final String[] keywordlist = {"机构编码","机构类型","机构名"};
 		keywordType = new JComboBox(keywordlist);
 		keywordType.addActionListener(new ActionListener() {
@@ -119,12 +111,17 @@ public class ManageorgPanel extends JPanel {
 				if(keywordType.getSelectedItem().toString().equals(keywordlist[1])){
 					keyword.setVisible(false);
 					jigouleixing.setVisible(true);			
+				}else {
+				    keyword.setText("");
+					keyword.setVisible(true);
+					jigouleixing.setVisible(false);	
 				}
 			}
 		});
 		keywordType.setBounds(117, 37, 142, 20);
 		add(keywordType);
 		
+		//机构类型的选项
 		String[] jigoulist = {"中转中心","营业厅","仓库","总部"};
 		jigouleixing = new JComboBox(jigoulist);
 		jigouleixing.setBounds(260, 35, 216, 28);
@@ -136,8 +133,8 @@ public class ManageorgPanel extends JPanel {
 		add(keyword);
 		keyword.setColumns(10);
 		
-		JButton btnNewButton = new JButton("查询");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton chaxun = new JButton("查询");
+		chaxun.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//zhe li bu dui 
 				if(keywordType.getSelectedItem().toString().equals("机构编码")){	
@@ -166,27 +163,25 @@ public class ManageorgPanel extends JPanel {
 					 model.setDataVector(data, name);
 				   	 table.setModel(model);
 				}else{
-					Vector row = new Vector();
-					row.add("未查询到相关机构信息，请检查关键字输入是否正确");
-					data.add(row.clone());
-					model.setDataVector(data, name);
-				   	table.setModel(model);
+					JOptionPane.showConfirmDialog(null,"未查询到信息，-_-#","系统提示",
+							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 				}
 				
 				
 			}
 		});
-		btnNewButton.setBounds(488, 31, 73, 38);
-		add(btnNewButton);
+		chaxun.setBounds(488, 31, 73, 38);
+		add(chaxun);
 		
-		JButton btnNewButton_1 = new JButton("显示所有");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		//点击显示所有，将在表格中看到所有机构列表
+		JButton xianshi = new JButton("显示所有");
+		xianshi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				showall();
 			}
 		});
-		btnNewButton_1.setBounds(577, 31, 73, 38);
-		add(btnNewButton_1);
+		xianshi.setBounds(577, 31, 73, 38);
+		add(xianshi);
 		
 		JLabel lblNewLabel = new JLabel("机构编号");
 		lblNewLabel.setBounds(772, 54, 61, 16);
@@ -195,7 +190,7 @@ public class ManageorgPanel extends JPanel {
 		orgnum = new MJTextField();
 		orgnum.setBounds(840, 48, 287, 28);
 		add(orgnum);
-		orgnum.setColumns(10);
+		orgnum.setColumns(10);	//机构编号编辑框
 		
 		JLabel lblNewLabel_1 = new JLabel("机构类型");
 		lblNewLabel_1.setBounds(772, 111, 61, 16);
@@ -204,7 +199,7 @@ public class ManageorgPanel extends JPanel {
 		String[] orgTypeList = {"营业厅","中转中心","仓库","总部"};
 		orgtype = new JComboBox(orgTypeList);
 		orgtype.setBounds(840, 107, 287, 20);
-		add(orgtype);
+		add(orgtype);//机构类型选择框
 		
 		JLabel label_1 = new JLabel("机构名称");
 		label_1.setBounds(772, 171, 61, 16);
@@ -219,25 +214,24 @@ public class ManageorgPanel extends JPanel {
 		label_2.setBounds(772, 215, 302, 16);
 		add(label_2);
 		
-		JButton btnNewButton_2 = new JButton("ADD");
-		btnNewButton_2.addActionListener(new ActionListener() {
+		JButton add = new JButton("ADD");
+		add.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				staffinfo.clear();
-				if(btnNewButton_5 != null){
-					remove(btnNewButton_5);
-				}
-				vo = new OrganizationInfoVO(orgnum.getText(),whichType(keywordType.getSelectedItem().toString()),
+				vo = new OrganizationInfoVO(orgnum.getText(),whichType(orgtype.getSelectedItem().toString()),
 						orgname.getText(),staffinfo);
+				//System.out.println("添加信息");
 				res  = service.addOrganization(vo);
 				if(res.isPass()){
 					Vector row = new Vector();
 					row.add(orgnum.getText());
-					row.add(keywordType.getSelectedItem().toString());
+					row.add(orgtype.getSelectedItem().toString());
 					row.add(orgname.getText());
 					data.add(row.clone());
-					// model.setDataVector(data, name);
-				   // table.setModel(model);
-				   add();
+					 model.setDataVector(data, name);
+				    table.setModel(model);
+				    JOptionPane.showConfirmDialog(null, "添加机构成功","系统提示",
+							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 				}else{
 					int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
 							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
@@ -245,44 +239,59 @@ public class ManageorgPanel extends JPanel {
 			
 			}
 		});
-		btnNewButton_2.setBounds(772, 254, 75, 49);
-		add(btnNewButton_2);
+		add.setBounds(772, 254, 75, 49);
+		add(add);
 		
-		JButton btnNewButton_3 = new JButton("MODIFY");
-		btnNewButton_3.addActionListener(new ActionListener() {
+		JButton modify = new JButton("MODIFY");
+		modify.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(btnNewButton_5 != null){
-					remove(btnNewButton_5);
-				}
+				if(seletedRow != -1){
+					System.out.println("modify:" + seletedRow);
+					if(!staffinfo.isEmpty()){
 				for(int i = 0;i<staffinfo.size();i++){
 					staffinfo.get(i).setOrganization(orgname.getText());
-				}
+				}// 改变一个机构时，该机构隶属人员的信息也做相应改动
+					}
 				modify();
+				}else {
+					JOptionPane.showConfirmDialog(null, "尼木有选择要修改的机构哦！^_−☆","系统提示",
+							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+				}
 			}
 		});
-		btnNewButton_3.setBounds(881, 254, 77, 49);
-		add(btnNewButton_3);
+		modify.setBounds(881, 254, 77, 49);
+		add(modify);
 		
-		JButton btnNewButton_4 = new JButton("DELETE");
-		btnNewButton_4.addActionListener(new ActionListener() {
+		JButton delete = new JButton("DELETE");
+		delete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				OrganizationInfoVO vos = new OrganizationInfoVO(model.getValueAt(seletedRow, 0).toString(),null,null,null);
+				if(seletedRow != -1){
+				OrganizationInfoVO vos = new OrganizationInfoVO(null,null,model.getValueAt(seletedRow, 2).toString(),null);
+				if(service.findOrgInfo(vos).isEmpty()){
+					JOptionPane.showConfirmDialog(null, "数据库异常，请联系管理员","系统提示",
+							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+				}else {
 				for(int i = 0;i< service.findOrgInfo(vos).size();i++){
 					res  = service.delOrganization(service.findOrgInfo(vos).get(i));
-					if(res.isPass()){
 						if(!res.isPass()){
 							int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
 									JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 						}else{
-							int result1 = JOptionPane.showConfirmDialog(null, "机构人员信息删除成功","系统提示",
+							model.removeRow(seletedRow);
+							int result1 = JOptionPane.showConfirmDialog(null, "机构信息删除成功","系统提示",
 									JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-						}
-					}
+							seletedRow = -1;
+						}	
 				}
+				}
+			}else {
+				JOptionPane.showConfirmDialog(null, "请选择要删除的信息","系统提示",
+						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+			}
 			}
 		});
-		btnNewButton_4.setBounds(981, 254, 77, 49);
-		add(btnNewButton_4);
+		delete.setBounds(981, 254, 77, 49);
+		add(delete);
 
 	}
 	
@@ -333,9 +342,28 @@ public class ManageorgPanel extends JPanel {
 	}
 	
 	public void modify(){
-		 btnNewButton_5 = new JButton("编辑此人员信息");
+		vo = new OrganizationInfoVO(orgnum.getText(),whichType(orgtype.getSelectedItem().toString()),
+				orgname.getText(),staffinfo);
+		res = service.ModifyOrganization(vo);
+		if(!res.isPass()){
+			int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
+					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+
+		}else{
+			int result1 = JOptionPane.showConfirmDialog(null, "机构信息成功更新","系统提示",
+					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+			model.setValueAt(orgnum.getText(), seletedRow, 0);
+			model.setValueAt(orgtype.getSelectedItem().toString(), seletedRow, 1);
+    		model.setValueAt(orgname.getText(), seletedRow, 2);
+    		seletedRow = -1;
+		}
+	}
+	
+	public void renyuan() {
+		btnNewButton_5 = new JButton("编辑/查看人员信息");
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				isselected();
 				f = new JFrame();
 				f.setBounds(140, 125,1152, 446);
 				msp = new ManageStaffPanel();
@@ -351,15 +379,16 @@ public class ManageorgPanel extends JPanel {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						staffinfo = msp.getStaffList();	
-						vo = new OrganizationInfoVO(orgnum.getText(),whichType(keywordType.getSelectedItem().toString()),
+						vo = new OrganizationInfoVO(orgnum.getText(),whichType(orgtype.getSelectedItem().toString()),
 								orgname.getText(),staffinfo);
 						res = service.ModifyOrganization(vo);
 						if(!res.isPass()){
 							int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
 									JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 						}else{
-							int result1 = JOptionPane.showConfirmDialog(null, "机构人员信息成功更新","系统提示",
+							int result1 = JOptionPane.showConfirmDialog(null, "此机构人员信息成功更新","系统提示",
 									JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+							staffinfo.clear();
 						}
 					}
 					
@@ -368,48 +397,12 @@ public class ManageorgPanel extends JPanel {
 		});
 		btnNewButton_5.setBounds(782, 315, 279, 49);
 		add(btnNewButton_5);
-		repaint();
 	}
 	
-	public void add(){
-		btnNewButton_5 = new JButton("编辑此人员信息");
-		btnNewButton_5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				f = new JFrame();
-				f.setBounds(140, 125,1152, 446);
-				msp = new ManageStaffPanel();
-				msp.setStaffList(staffinfo);
-				msp.showall();
-				msp.setBounds(0, 0, 1152, 446);
-				f.getContentPane().add(msp);
-				f.setVisible(true);
-				msp.setVisible(true);
-				
-				msp.getButton().addActionListener(new ActionListener(){
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						staffinfo = msp.getStaffList();	
-						vo = new OrganizationInfoVO(orgnum.getText(),whichType(keywordType.getSelectedItem().toString()),
-								orgname.getText(),staffinfo);
-						res = service.addOrganization(vo);
-						if(!res.isPass()){
-							int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
-									JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-
-						}else{
-							int result1 = JOptionPane.showConfirmDialog(null, "机构人员信息成功增加","系统提示",
-									JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-						}
-					}
-					
-				});
-			}
-		});
-		btnNewButton_5.setBounds(782, 315, 279, 49);
-		add(btnNewButton_5);
-		repaint();
+	public void isselected() {
+		if(seletedRow == -1){
+			JOptionPane.showConfirmDialog(null, "请先选择机构哦！","系统提示",
+					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+		}
 	}
-	
-	
 }

@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 import po.StaffPO;
 import presentation.util.MJTextField;
@@ -215,9 +216,19 @@ public class StaffManagementPanel extends JPanel {
 		table = new JTable(model);
 		table.setBounds(54, 75, 641, 309);
 		scrollPane = new JScrollPane(table);
+		TableColumn column = null;
+   		int colunms = table.getColumnCount();  
+   		for(int i = 0; i < colunms; i++)  
+   		{  
+   			column = table.getColumnModel().getColumn(i);  
+   			/*将每一列的默认宽度设置为180*/  
+   			column.setPreferredWidth(180);  
+   		}
 		scrollPane.setBounds(27, 75, 721, 345);
 		add(scrollPane);
 		showall();
+		
+
 		
 		
 		table.addMouseListener(new MouseAdapter() {
@@ -463,7 +474,9 @@ public class StaffManagementPanel extends JPanel {
 	   
 	   public void showall(){
 		   data.clear();//清空table内容
-		   ArrayList<StaffVO>  staffList = service.findStaffInfo(null);
+		  // staffVO = new StaffVO(null,null,null,null,null,null,-1,null,null);
+		   ArrayList<StaffVO>  staffList = new   ArrayList<StaffVO> ();
+		   staffList = service.findStaffInfo(null);
 		   System.out.println( service.findStaffInfo(staffVO).get(0).getWorkingtime());
 		   if(staffList == null){
 			   int result1 = JOptionPane.showConfirmDialog(null, "显示出错","系统提示",

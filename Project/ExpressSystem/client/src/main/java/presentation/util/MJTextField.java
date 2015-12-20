@@ -9,6 +9,7 @@ import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;  
 import java.awt.event.MouseListener;  
   
+
 import javax.swing.JMenuItem;  
 import javax.swing.JPopupMenu;  
 import javax.swing.JTextField;  
@@ -29,7 +30,11 @@ public class MJTextField extends JTextField implements MouseListener {
         init();  
     }  
   
-    private void init() {  
+    public MJTextField(String str) {
+		setText(str);
+	}
+
+	private void init() {  
         this.addMouseListener(this);  
         pop = new JPopupMenu();  
         pop.add(copy = new JMenuItem("复制"));  

@@ -20,7 +20,7 @@ public class ServerConfig {
         try {
             if (IS_DEBUG) {
                 SAXReader reader = new SAXReader();
-                Document document = reader.read("server/src/main/java/connection/config/databaseConfig.xml");
+                Document document = reader.read("src/main/java/connection/config/databaseConfig.xml");
                 Element server = document.getRootElement();
                 DATABASE_CONFIG = new DatabaseConfig(server.element("database"));
             }else{

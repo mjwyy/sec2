@@ -255,8 +255,8 @@ public class LoadCarOrder extends JPanel {
 		JLabel label_8 = new JLabel("营业厅编号");
 		label_8.setBounds(787, 43, 93, 15);
 		add(label_8);
-
-		servicecodef = new MJTextField();
+//自动填充
+		servicecodef = new MJTextField(lim.getOrganization_id());
 		servicecodef.setBounds(880, 40, 239, 28);
 		add(servicecodef);
 		servicecodef.setColumns(10);

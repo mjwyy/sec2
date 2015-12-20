@@ -24,8 +24,8 @@ public class SystemUserManagementBLService_Driver {
 
 	public void drive(SystemUserManagementBLService service){
 //        add(service);
-        del(service);
-//        find(service);
+//        del(service);
+        find(service);
 	}
 
     private void del(SystemUserManagementBLService service) {
@@ -36,8 +36,10 @@ public class SystemUserManagementBLService_Driver {
 
     public void find(SystemUserManagementBLService service){
         ArrayList<UserVO> result = service.find(new UserVO(
-                "admin",null,null));
+                null,null,Authority.SERVICE_HALL_PERSONNEL));
+
         System.out.println("result is empty?"+result.isEmpty());
+
         for (UserVO po2:result) {
             System.out.println(po2.getAuthority()+po2.getUserNum());
         }

@@ -27,8 +27,15 @@ public class StaffOrganizationManagementBLService_Driver {
 //        testaddStaff(service);
 //        addOrg(service);
 //        findStaff(service);
-        findOrg(service);
+//        findOrg(service);
+        testRemove(service);
 	}
+
+    private void testRemove(StaffOrganizationManagementBLService service) {
+        ResultMsg r = service.delOrganization(new OrganizationInfoVO("010000",OrganizationType.TRANSIT_CENTER,
+                "北京第一仓库",null));
+        System.out.println(r.getMessage());
+    }
 
     public static void main(String[] args) throws RemoteException, NotBoundException {
         RMIHelper.tryConnect();

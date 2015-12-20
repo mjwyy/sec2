@@ -129,7 +129,7 @@ public class StaffOrganizationManagementData extends UnicastRemoteObject impleme
             LogInsHelper.insertLog("机构信息不存在,删除失败");
             throw new ElementNotFoundException();
         }
-        String sql = "DELETE from `organization` where organization_id = "+org.getCode();
+        String sql = "DELETE from `organization` where organization_id = '"+org.getCode()+"'";
         try {
             SqlHelper.excUpdate(sql);
         } catch (SQLException e) {
@@ -146,12 +146,12 @@ public class StaffOrganizationManagementData extends UnicastRemoteObject impleme
         int gender = staff.getGender().equals("男") ? 0 : 1;
         String sql = "UPDATE staff SET name = '" + staff.getName() + "'," +
                 " organization = '" + staff.getOrganization() + "'," +
-                " gender = '" + gender + "'," +
+                " gender = " + gender + "," +
                 " idCardNumber = '" + staff.getIDCardNumber() + "'," +
-                " salary = '" + staff.getSalary() + "'," +
+                " salary = " + staff.getSalary() + "," +
                 " phoneNumber = '" + staff.getPhoneNumber() + "'," +
-                " position = '" + staff.getPosition().getIntStaffType() + "'," +
-                " workHour = '" + staff.getWorkHour() + "'" +
+                " position = " + staff.getPosition().getIntStaffType() + "," +
+                " workHour = " + staff.getWorkHour() + "," +
                 " WHERE staff_id = '" + staff.getStaffID() + "'";
         try {
             SqlHelper.excUpdate(sql);
@@ -195,7 +195,7 @@ public class StaffOrganizationManagementData extends UnicastRemoteObject impleme
             sql = "SELECT * FROM staff WHERE organization LIKE '%" + info.getOrganization() + "%'";
         else if (info.getGender() != null) {
             int gender = info.getGender().equals("男") ? 0 : 1;
-            sql = "SELECT * FROM staff WHERE gender =" + gender;
+            sql = "SELECT * FROM staff WHERE gender = " + gender;
         } else if (info.getIDCardNumber() != null)
             sql = "SELECT * FROM staff WHERE idCardNumber LIKE '%" + info.getIDCardNumber() + "%'";
         else if (info.getSalary() != -1)
@@ -286,11 +286,11 @@ public class StaffOrganizationManagementData extends UnicastRemoteObject impleme
             statement = connection.prepareStatement(str);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                int organization_id = resultSet.getInt(1);
+                String organization_id = resultSet.getString(1);
                 int intType = resultSet.getInt(2);
                 String name = resultSet.getString(3);
                 OrganizationType type = OrganizationType.getOrgType(intType);
-                OrganizationPO po = new OrganizationPO(Integer.toString(organization_id), type, name);
+                OrganizationPO po = new OrganizationPO(organization_id, type, name);
                 result.add(po);
             }
             resultSet.close();

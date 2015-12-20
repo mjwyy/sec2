@@ -31,12 +31,14 @@ import util.LogInMsg;
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
 public class ManageFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JPanel bankpanel;
     private JPanel welcome;
+    private LogInMsg lim;
 
 	/**
 	 * 窗口宽度
@@ -86,8 +88,8 @@ public class ManageFrame extends JFrame {
 	 * Create the frame.
      * @param lim
      */
-	public ManageFrame(LogInMsg lim) {
-	
+	public ManageFrame(LogInMsg limm) {
+	    lim = limm;
 		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -140,10 +142,29 @@ public class ManageFrame extends JFrame {
 		menuBar.add(mnf);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 		panel_2.setBounds(0, 570, 350, 124);
 		contentPane.add(panel_2);
+		panel_2.setLayout(null);
+		
+		JLabel label = new JLabel("姓名：");
+		label.setBounds(25, 26, 61, 16);
+		panel_2.add(label);
+		
+		JLabel label_1 = new JLabel("机构：");
+		label_1.setBounds(25, 71, 61, 16);
+		panel_2.add(label_1);
+		
+		JLabel lblNewLabel = new JLabel(lim.getUserName());
+		lblNewLabel.setBounds(76, 26, 231, 23);
+		panel_2.add(lblNewLabel);
+		
+		JLabel label_2 = new JLabel(lim.getOrganization());
+		label_2.setBounds(76, 71, 231, 23);
+		panel_2.add(label_2);
 		
 		JPanel panel_3 = new JPanel();
+		panel_3.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 		panel_3.setBounds(347, 570, 933, 124);
 		contentPane.add(panel_3);
 		

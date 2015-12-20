@@ -46,8 +46,8 @@ public class ModifyBusinessDataPanel extends JPanel {
 	private Vector name1;
 	private Vector data;
 	private Vector data1;
-	private int seletedRow;
-	private int seletedRow1;
+	private int seletedRow = -1;
+	private int seletedRow1 = -1;
 	private  ArrayList<PriceVO> priceVo = new  ArrayList<PriceVO>();
 	private  ArrayList<DistanceVO> distanceList = new  ArrayList<DistanceVO>();
 	/**
@@ -99,12 +99,14 @@ public class ModifyBusinessDataPanel extends JPanel {
         		 seletedRow1 = table1.getSelectedRow();
           		if(seletedRow1 != -1){
           			pricetype.setSelectedItem(model1.getValueAt(seletedRow1,0).toString());
-          			price.setText(model1.getValueAt(seletedRow1,1).toString());
-          			    			
+          			//System.out.println("price ="+model1.getValueAt(seletedRow1,1).toString());
+          			price.setText(model1.getValueAt(seletedRow1,1).toString());         			    			
           		}
         	}
         });
-      
+           
+     cityshowall();
+     priceshowall();
       JLabel label = new JLabel("修改价格常量");
       label.setBounds(90, 268, 127, 28);
       add(label);
@@ -113,7 +115,7 @@ public class ModifyBusinessDataPanel extends JPanel {
       label_1.setBounds(759, 300, 61, 16);
       add(label_1);
       
-      final String [] priceType = {"每公里的费用","纸箱价格","木箱价格","快递袋价格"};
+      final String [] priceType = {"每公里的运费","纸箱价格","木箱价格","快递袋价格"};
       pricetype = new JComboBox(priceType);
       pricetype.addActionListener(new ActionListener() {
       	public void actionPerformed(ActionEvent e) {
@@ -123,13 +125,13 @@ public class ModifyBusinessDataPanel extends JPanel {
       		else if(pricetype.getSelectedItem().equals(priceType[1])){
       			type = type.PaperBox;
       		}
-      		else if(pricetype.getSelectedItem().equals(priceType[1])){
+      		else if(pricetype.getSelectedItem().equals(priceType[2])){
       			type = type.WoodenBox;
       		}else{
       			type = type.PaperBox;
       		}
       			
-      	whichrow();
+      	whichrow(pricetype.getSelectedItem().toString());
       		
       	}
       });
@@ -196,11 +198,9 @@ public class ModifyBusinessDataPanel extends JPanel {
 				
 						ResultMsg resultMsg = service.submitPrice(type,  Double.parseDouble(price.getText()));						
 					   if(resultMsg.isPass()){
-						   model.removeRow(seletedRow1);
-						   Vector row = new Vector();
-						   row.add(whichString(type));
-						   row.add(price.getText());
-						   data.add(row);
+						   System.out.println("selectedrow:"+seletedRow1);
+						   model1.setValueAt(price.getText(), seletedRow1, 1);
+						   
 						   int result1 = JOptionPane.showConfirmDialog(null, "修改成功","系统提示",
 									JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 					   }else{
@@ -267,17 +267,8 @@ public class ModifyBusinessDataPanel extends JPanel {
       JButton button_1 = new JButton("显示所有");
       button_1.addActionListener(new ActionListener() {
       	public void actionPerformed(ActionEvent e) {
-      		distanceList = service.getAllDistanceInfo();
-      		data.clear();
-      		if(!distanceList.isEmpty()){
-      			for(int i = 0;i<distanceList.size();i++){
-      				Vector row = new Vector();
-      				row.add(distanceList.get(i).getCity1());
-      				row.add(distanceList.get(i).getCity2());
-      				row.add(distanceList.get(i).getDistance());
-      				data.add(row.clone());
-      			}
-      		}
+      		 cityshowall();
+      	   
       	}
       });
       button_1.setBounds(428, 23, 117, 29);
@@ -286,16 +277,7 @@ public class ModifyBusinessDataPanel extends JPanel {
       JButton button_2 = new JButton("显示所有");
       button_2.addActionListener(new ActionListener() {
       	public void actionPerformed(ActionEvent e) {
-      		priceVo = service.getAllPrices();
-      		data1.clear();
-      		if(!priceVo.isEmpty()){
-      			for(int i = 0;i<priceVo.size();i++){
-      				Vector row = new Vector();
-      				row.add(whichString(priceVo.get(i).getPriceType()));
-      				row.add(priceVo.get(i).getPrice());
-      				data1.add(row.clone());
-      			}
-      		}
+      		priceshowall();
       	}
       });
       button_2.setBounds(428, 269, 117, 29);
@@ -326,25 +308,52 @@ public class ModifyBusinessDataPanel extends JPanel {
 		}
 	}
 
-	public void whichrow(){
+	public void whichrow(String s){
 		int rownum = model1.getRowCount();
   		for(int i = 0;i<rownum;i++){
-  			if(model1.getValueAt(i, 0).toString().equals("每公里的费用")){
+  			if(model1.getValueAt(i, 0).toString().equals(s)){
   				seletedRow1 = i;
   				price.setText(model1.getValueAt(i, 1).toString());
   				break;
-  			}else if(model1.getValueAt(i, 0).toString().equals("纸箱价格")){
+  			}else if(model1.getValueAt(i, 0).toString().equals(s)){
   				seletedRow1 = i;
   				price.setText(model1.getValueAt(i, 1).toString());
   				break;
-  			}else if(model1.getValueAt(i, 0).toString().equals("木箱价格")){
+  			}else if(model1.getValueAt(i, 0).toString().equals(s)){
   				seletedRow1 = i;
   				price.setText(model1.getValueAt(i, 1).toString());
   				break;
-  			}else if(model1.getValueAt(i, 0).toString().equals("快递袋价格")){
+  			}else if(model1.getValueAt(i, 0).toString().equals(s)){
   				seletedRow1 = i;
   				price.setText(model1.getValueAt(i, 1).toString());
   				break;
+  			}
+  		}
+	}
+	
+	public void cityshowall() {
+		distanceList = service.getAllDistanceInfo();
+  		data.clear();
+  		if(!distanceList.isEmpty()){
+  			for(int i = 0;i<distanceList.size();i++){
+  				Vector row = new Vector();
+  				row.add(distanceList.get(i).getCity1());
+  				row.add(distanceList.get(i).getCity2());
+  				row.add(distanceList.get(i).getDistance());
+  				data.add(row.clone());
+  			}
+  		}
+	}
+	
+	public void priceshowall() {
+		priceVo = service.getAllPrices();
+  		data1.clear();
+  		if(!priceVo.isEmpty()){
+  			for(int i = 0;i<priceVo.size();i++){
+  				Vector row = new Vector();
+  				row.add(whichString(priceVo.get(i).getPriceType()));
+  				row.add(priceVo.get(i).getPrice());
+  				data1.add(row.clone());
   			}
   		}
 	}

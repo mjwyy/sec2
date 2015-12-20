@@ -490,7 +490,7 @@ public class SystemUser extends JFrame {
 		button.setBounds(553, 8, 63, 23);
 		middle.add(button);
 
-		JButton button_1 = new JButton("显示全部");
+		JButton button_1 = new JButton("刷新");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			initTabel(null);
@@ -507,12 +507,25 @@ public class SystemUser extends JFrame {
 
 
 		setCaiDanLan();
-	}  
-	public void initTabel(UserVO uuu){
+	} 
+	public void cleanTable(){
 		//显示到tabel里,先清空
-		for(int i=0;i<model.getRowCount();i++)
-			model.removeRow(i);
-		ArrayList<UserVO> vvoo=sum.find(uuu);//得到所有车辆信息
+		System.out.println("model"+model.getRowCount());
+		int count=model.getRowCount();
+		//这边modelremove后会变小，应该从后往前删
+				for(int i=count-1;i>=0;i--){
+					model.removeRow(i);
+					System.out.println("remove"+i);
+				}
+	}
+	public void initTabel(UserVO uuu){
+		cleanTable();
+		ArrayList<UserVO> vvoo=sum.find(uuu);//得到所有信息
+		int size=vvoo.size();
+		if(size==0){
+			JOptionPane.showMessageDialog(null, "没有找到相关用户");
+		}
+		else{
 		for(int i=0;i<vvoo.size();i++){
 			UserVO vo=vvoo.get(i);
 			String userNum=vo.getUserNum();
@@ -545,6 +558,7 @@ public class SystemUser extends JFrame {
 			}
 			Object[] oo={userNum,initialPassword,s};
 			model.addRow(oo);
+		}
 		}
 	}
 	public class findListener implements ActionListener{

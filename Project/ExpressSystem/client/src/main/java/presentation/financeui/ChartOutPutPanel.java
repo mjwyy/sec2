@@ -186,7 +186,7 @@ public class ChartOutPutPanel extends JPanel {
 			    	   name.add("收款金额");
 			    	   name.add("收款账户");
 			    	   name.add("付款人");
-			    	if(vob.equals(null)){
+			    	if(!vob.equals(null)){
 			    	   bcontents = vob.getContents();
       		    	  
       		    		   for(int i = 0;i <bcontents.size();i++){
@@ -213,7 +213,7 @@ public class ChartOutPutPanel extends JPanel {
 			    	   name.add("收入");
 			    	   name.add("成本");
 			    	   name.add("利润");
-			    	   if(voc.equals(null)){	   
+			    	   if(!voc.equals(null)){	   
 			    	   costAndProfitContents = voc.getCostAndProfitContents();			    	
 			    	   for(int i = 0;i<costAndProfitContents.size();i++){
 			    		   Vector row = new Vector();

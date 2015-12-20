@@ -28,8 +28,15 @@ public class StaffOrganizationManagementBLService_Driver {
 //        addOrg(service);
 //        findStaff(service);
 //        findOrg(service);
-        testRemove(service);
+        modifyOrg(service);
+//        testRemove(service);
 	}
+
+    private void modifyOrg(StaffOrganizationManagementBLService service) {
+        ResultMsg r = service.ModifyOrganization(new OrganizationInfoVO("010000",OrganizationType.TRANSIT_CENTER,
+                "北京第一仓库",null));
+        System.out.println(r.getMessage());
+    }
 
     private void testRemove(StaffOrganizationManagementBLService service) {
         ResultMsg r = service.delOrganization(new OrganizationInfoVO("010000",OrganizationType.TRANSIT_CENTER,
@@ -62,8 +69,8 @@ public class StaffOrganizationManagementBLService_Driver {
     }
 
     public void addOrg(StaffOrganizationManagementBLService service){
-        ResultMsg r = service.addOrganization(new OrganizationInfoVO("010002",OrganizationType.TRANSIT_CENTER,
-                "北京第一仓库",null));
+        ResultMsg r = service.addOrganization(new OrganizationInfoVO("0251002",OrganizationType.SERVICE_HALL,
+                "南京浦口营业厅",null));
         System.out.println(r.getMessage());
     }
 

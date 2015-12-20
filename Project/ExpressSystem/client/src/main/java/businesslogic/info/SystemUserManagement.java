@@ -50,10 +50,7 @@ public class SystemUserManagement implements SystemUserManagementBLService {
 
     @Override
     public ResultMsg delete(UserVO vo) {
-    	ResultMsg msg = vo.checkFormat();
-    	
-    	if(!msg.isPass()) return msg;
-    	
+
     	try {
 			boolean result = dataService.removeUser((UserPO) vo.toPO());
 			if(result)
@@ -73,13 +70,6 @@ public class SystemUserManagement implements SystemUserManagementBLService {
 
     @Override
     public ResultMsg modify(UserVO original,UserVO modified) {
-    	ResultMsg msg = original.checkFormat();
-    	
-    	if(!msg.isPass()) return msg;
-    	
-    	msg = modified.checkFormat();
-    	
-    	if(!msg.isPass()) return msg;
 
     	try {
 			boolean result = dataService.modifyUser((UserPO) original.toPO(), (UserPO) modified.toPO());

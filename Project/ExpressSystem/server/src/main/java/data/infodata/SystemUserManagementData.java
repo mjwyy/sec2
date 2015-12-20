@@ -80,16 +80,8 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
         Connection connection = DatabaseManager.getConnection();
         if(!originalUser.getAccount().equals(modified.getAccount()))
             return false;
-        String modify;
-        if(originalUser.getPassword()!=null && originalUser.getAuthority().getIntAuthority()!=0){
-            modify = "update user set rights="+modified.getAuthority()
+        String modify = "update user set rights = "+modified.getAuthority().getIntAuthority()
                     +",password = MD5('"+modified.getPassword()+"') where account = '"+modified.getAccount()+"'";
-        }else if(originalUser.getPassword()!=null&& originalUser.getAuthority().getIntAuthority()==0){
-            modify = "update user set password = MD5('"+modified.getPassword()+
-                    "') where account = '"+modified.getAccount()+"'";
-        }else
-            modify = "update user set rights = "+modified.getAuthority()
-                    +" where account = '"+modified.getAccount()+"'";
         PreparedStatement statement = null;
         int result = 0;
         try {

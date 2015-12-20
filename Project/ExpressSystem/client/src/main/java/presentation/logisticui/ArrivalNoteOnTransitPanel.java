@@ -32,6 +32,7 @@ import javax.swing.JTable;
 
 import presentation.financeui.PaymentInputPanel;
 import presentation.logisticui.ReceiveOrderPanel.Submitter;
+import presentation.util.Chachong;
 import presentation.util.CurrentTime;
 import presentation.util.MJTextField;
 import presentation.util.UnEditablePanel;
@@ -418,6 +419,11 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 		ArrivalNoteOnTransitVO vo = new ArrivalNoteOnTransitVO("025000201510100000001","025000",date1.getText(),
 				"北京",bas);
 		
+		if(Chachong.isRepeatState(barcodeAndStates, barcode.getText())){
+			JOptionPane.showConfirmDialog(null, "该条形码已存在于表中","系统提示",
+					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+		}else{
+		
 		res = service.inputCenterArrivalDoc(vo);
 		if(res.isPass()){
 			Vector row = new Vector();
@@ -426,12 +432,13 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 			data.add(row.clone());
 			model.setDataVector(data, name);
 			table.setModel(model);
-            barcodeAndStates.add( brcodeAndState);
-            barcode.setText("");
-
+			barcodeAndStates.add( brcodeAndState);	
+			barcode.setText("");
+				
 		}else{
 			int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
 					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+		}
 		}
 		}else{
 			JOptionPane.showConfirmDialog(null, "有咚咚木有填","系统提示",

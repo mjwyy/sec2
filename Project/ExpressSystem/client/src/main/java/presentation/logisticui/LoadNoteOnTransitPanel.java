@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JTable;
 
 import presentation.logisticui.ReceiveOrderPanel.Submitter;
+import presentation.util.Chachong;
 import presentation.util.CurrentTime;
 import presentation.util.EditableTrue;
 import presentation.util.MJTextField;
@@ -387,6 +388,10 @@ public class LoadNoteOnTransitPanel extends JPanel {
 		barcode.add(addbarcode.getText());
 		LoadNoteOnTransitVO vo = new LoadNoteOnTransitVO("2015-09-09", "025000201509091234567","上海", 
 				"025010222","汪文藻", "汪文藻", barcode);
+		if(Chachong.isRepeat(goodsbarcode, addbarcode.getText())){
+			JOptionPane.showConfirmDialog(null, "该条形码已经存在","系统提示",
+					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+		}else{
 		res = service.inputCenterLoadDoc(vo);//格式检查
 		if(res.isPass()){
 			Vector row = new Vector();
@@ -394,13 +399,13 @@ public class LoadNoteOnTransitPanel extends JPanel {
 			data.add(row.clone());
 			model.setDataVector(data, name);
 			table.setModel(model);
-            goodsbarcode.add(addbarcode.getText());
-			addbarcode.setText("");
-
+			goodsbarcode.add(addbarcode.getText());
+			addbarcode.setText("");			
 		}
 		else{
 			int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
 					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+		}
 		}
 		}else {
 			JOptionPane.showConfirmDialog(null, "要填好条形码哦！亲","系统提示",

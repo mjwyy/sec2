@@ -13,6 +13,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableModel;
 
 import presentation.logisticui.ReceiveOrderPanel.Submitter;
+import presentation.util.Chachong;
 import presentation.util.CurrentTime;
 import presentation.util.EditableTrue;
 import presentation.util.MJTextField;
@@ -168,11 +169,7 @@ public class TransitNoteInputPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if((!barcodesandLocation.isEmpty())&&(!date2.getText().isEmpty())){			
 					transitNoteOnTransitVO = new TransitNoteOnTransitVO(date2.getText(),transitnum2.getText(),
-							flightNumber2.getText(),transitNoteType,setout2.getText(),arrival2.getText(),
-                            loader2.getText(),barcodesandLocation);
-                    for(String barcode : barcodesandLocation){
-                        System.out.println("tiaoxingma :" + barcode);
-                    }
+							flightNumber2.getText(),transitNoteType,setout2.getText(),arrival2.getText(),loader2.getText(),barcodesandLocation);
 					transitNoteOnTransitVO.setUserName(lim.getUserName());
 					transitNoteOnTransitVO.setOrganization(lim.getOrganization());
 					UnEditablePanel.UnEdit(TransitNoteInputPanel.this);//设置为不可编辑
@@ -447,10 +444,14 @@ public class TransitNoteInputPanel extends JPanel {
 				JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 		}else{
 		ArrayList<String> add = new ArrayList<String>();
-
+		
 		add.add(barcode.getText());
 		TransitNoteOnTransitVO vo = new TransitNoteOnTransitVO("2015-12-12","025000201510120000002",
 				"MF8190",transitNoteType.Aircraft,"南京","北京","王小二",add);
+		if(Chachong.isRepeat(barcodesandLocation, barcode.getText())){
+			JOptionPane.showConfirmDialog(null, "此条形码已存在于表中！","系统提示",
+					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+		}else {
 		res = service.inputCenterTransitDoc(vo);
 		if(res.isPass()){
 			Vector row  = new Vector();
@@ -459,12 +460,13 @@ public class TransitNoteInputPanel extends JPanel {
 			data.add(row.clone());
 			model.setDataVector(data, name);
 			table.setModel(model);
-            barcodesandLocation.add(barcode.getText());
+			barcodesandLocation.add(barcode.getText());	
 			barcode.setText("");
-
+	
 		}else{
 			int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
 					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+		}
 		}
 		}
 	}

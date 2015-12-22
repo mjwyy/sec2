@@ -510,12 +510,10 @@ public class SystemUser extends JFrame {
 	} 
 	public void cleanTable(){
 		//显示到tabel里,先清空
-		System.out.println("model"+model.getRowCount());
 		int count=model.getRowCount();
 		//这边modelremove后会变小，应该从后往前删
 				for(int i=count-1;i>=0;i--){
 					model.removeRow(i);
-					System.out.println("remove"+i);
 				}
 	}
 	public void initTabel(UserVO uuu){

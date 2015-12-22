@@ -166,7 +166,7 @@ public class OutOrder extends JPanel {
 					//提交之后panel里都不可编辑
 					lock(false);
 					//提交之后右下面板换
-					frame.initChuku(true,false,false);
+				//	frame.initChuku(true,false,false);
 					//	frame.setReceivingNoteVo(vo);//将vo存到Frame里
 					//提交审批
 					new Submitter().start();
@@ -372,7 +372,7 @@ public class OutOrder extends JPanel {
 
 		public void run() {
 			super.run();
-			//ResultMsg result=si.submitPutInStorageDoc(siv);
+			//ResultMsg result=sob.submitStorageOutDoc(vv);
 			//setResult(result);
 			setResult(sob.submitStorageOutDoc(vv));
 		}

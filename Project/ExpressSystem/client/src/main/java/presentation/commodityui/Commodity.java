@@ -348,18 +348,22 @@ public class Commodity extends JFrame {
 		leftdown.add(lblNewLabel_1);
 
 		initDownLabel();
-		initRuku(false,true,false);
-		initChuku(false,true,false);
+		initRuku(false,false,false);
+		initChuku(false,false,false);
 		setCaiDanLan();
 		setClose();
 	}
 	//等待审批，已通过审批，未通过审批
 	public void initRuku(boolean w,boolean s,boolean f){
+		
 		ruku.setVisible(w);
 		rukuS.setVisible(s);
 		rukuF.setVisible(f);
 	}
 	public void initChuku(boolean w,boolean s,boolean f){
+		System.out.println(w);
+		System.out.println(s);
+		System.out.println(f);
 		chuku.setVisible(w);
 		chukuS.setVisible(s);
 		chukuF.setVisible(f);

@@ -418,6 +418,14 @@ DriverVO vo=null;
 		}
 		return true;
 	}
+	public void cleanTable(){
+		//显示到tabel里,先清空
+		int count=model.getRowCount();
+		//这边modelremove后会变小，应该从后往前删
+				for(int i=count-1;i>=0;i--){
+					model.removeRow(i);
+				}
+	}
 	public void initTabel(){
 		ArrayList<DriverVO> vvoo=dvm.findDriver(null);//得到所有司机信息
 		for(int i=0;i<vvoo.size();i++){

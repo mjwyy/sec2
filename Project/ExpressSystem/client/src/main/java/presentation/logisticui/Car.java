@@ -297,10 +297,18 @@ public class Car extends JPanel {
 	        
 	       
 	        
-	    }  
+	    } 
+	    public void cleanTable(){
+			//显示到tabel里,先清空
+			int count=model.getRowCount();
+			//这边modelremove后会变小，应该从后往前删
+					for(int i=count-1;i>=0;i--){
+						model.removeRow(i);
+					}
+		}
 	    public void initTabel(){
-	    	for(int i=0;i<model.getRowCount();i++)
-				model.removeRow(i);
+	    	cleanTable();
+	    	
 	    	ArrayList<VehicleVO> vvoo=dvm.findVehicle(null);//得到所有车辆信息
 	    	for(int i=0;i<vvoo.size();i++){
 	    		VehicleVO vo=vvoo.get(i);
@@ -325,8 +333,7 @@ public class Car extends JPanel {
 					vo=new VehicleVO(null,null,key.getText(),null);
 				}
 				//显示到tabel里,先清空
-				for(int i=0;i<model.getRowCount();i++)
-					model.removeRow(i);
+				cleanTable();
 				ArrayList<VehicleVO> vvoo=dvm.findVehicle(vo);
 				for(int i=0;i<vvoo.size();i++){
 		    		VehicleVO vo=vvoo.get(i);

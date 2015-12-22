@@ -53,7 +53,7 @@ public class NoteApproveChartData {
 		
 		temp = new TreeMap<>();
 		
-		
+		//TODO 单据各列信息
 		
 		chartData.put("CreditNotes", temp);
 		type.put("CreditNotes", NoteType.CREDIT_NOTE);
@@ -93,7 +93,7 @@ public class NoteApproveChartData {
 	
 	
 	public static NoteType getNoteType (String chartName) {
-		return type.get(chartData);
+		return type.get(chartName);
 	}
 	
 	public static String getChartName (NoteType noteType) {

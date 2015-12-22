@@ -69,6 +69,7 @@ public class OrderApprove extends JPanel {
 JOptionPane.showConfirmDialog(null,e.getMessage());
 		}
 		if(approvenote!=null){
+
 			for(int i=0;i<approvenote.size();i++){
 				ApproveNote aa=approvenote.get(i);
 				//这边要改,一开始时待审批

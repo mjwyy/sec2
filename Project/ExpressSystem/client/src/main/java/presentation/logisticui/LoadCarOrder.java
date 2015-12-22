@@ -71,11 +71,14 @@ public class LoadCarOrder extends JPanel {
 	private MJTextField scarcodef;
 	private MJTextField supermanf;
 	private MJTextField sendmanf;
+	private JLabel q;
+	
 	//button
 	private JButton tianjia;//添加
 	private JButton queren ;//确认
 	private JButton confirm ;
-
+	private JButton modify;
+	private JButton delete;
 	//frame传来的东东
 	private LogInMsg lim;
 	private Service frame;//
@@ -255,7 +258,7 @@ public class LoadCarOrder extends JPanel {
 		JLabel label_8 = new JLabel("营业厅编号");
 		label_8.setBounds(787, 43, 93, 15);
 		add(label_8);
-//自动填充
+		//自动填充
 		servicecodef = new MJTextField(lim.getOrganization_id());
 		servicecodef.setBounds(880, 40, 239, 28);
 		add(servicecodef);
@@ -266,7 +269,7 @@ public class LoadCarOrder extends JPanel {
 		add(label_9);
 
 		carcodef = new MJTextField();
-		carcodef.setBounds(880, 78, 239, 28);
+		carcodef.setBounds(1018, 78, 101, 28);
 		add(carcodef);
 		carcodef.setColumns(10);
 
@@ -329,8 +332,8 @@ public class LoadCarOrder extends JPanel {
 		label_15.setBounds(28, 10, 84, 15);
 		add(label_15);
 
-		JButton button = new JButton("修改");
-		button.addActionListener(new ActionListener() {
+		modify = new JButton("修改");
+		modify.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int selectedRow =table.getSelectedRow();
 				if(selectedRow!=-1){
@@ -368,11 +371,11 @@ public class LoadCarOrder extends JPanel {
 				}
 			}
 		});
-		button.setBounds(905, 337, 93, 23);
-		add(button);
+		modify.setBounds(905, 337, 93, 23);
+		add(modify);
 
-		JButton button_1 = new JButton("删除");
-		button_1.addActionListener(new ActionListener() {
+		delete = new JButton("删除");
+		delete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int selectedRow =table.getSelectedRow();
 				if(selectedRow!=-1){
@@ -387,8 +390,12 @@ public class LoadCarOrder extends JPanel {
 				}
 			}
 		});
-		button_1.setBounds(1008, 337, 93, 23);
-		add(button_1);
+		delete.setBounds(1008, 337, 93, 23);
+		add(delete);
+
+		q = new JLabel(lim.getOrganization_id()+CurrentTime.getCurrentTimeDateSimple());
+		q.setBounds(880, 78, 139, 28);
+		add(q);
 
 	}
 	public class confirmListener implements ActionListener{
@@ -398,7 +405,7 @@ public class LoadCarOrder extends JPanel {
 		public void actionPerformed(ActionEvent arg0) {
 			ArrayList<String> ba=new ArrayList<String>();
 			ba.add("0123456789");
-			vo=new LoadNoteOnServiceVO (dataf.getText(),servicecodef.getText(),carcodef.getText(),tof.getText(),scarcodef.getText(),supermanf.getText(),sendmanf.getText(),ba);
+			vo=new LoadNoteOnServiceVO (dataf.getText(),servicecodef.getText(),q.getText()+carcodef.getText(),tof.getText(),scarcodef.getText(),supermanf.getText(),sendmanf.getText(),ba);
 
 			ResultMsg result=load.inputHallLoadDoc(vo);
 			if(result.isPass()){//格式检查正确
@@ -406,7 +413,7 @@ public class LoadCarOrder extends JPanel {
 				service.setText(servicecodef.getText());
 				to.setText(tof.getText());
 				scar.setText(scarcodef.getText());
-				car.setText(carcodef.getText());
+				car.setText(q.getText()+carcodef.getText());
 				superman.setText(supermanf.getText());
 				senderman.setText(sendmanf.getText());
 			}
@@ -514,6 +521,8 @@ public class LoadCarOrder extends JPanel {
 		queren.setEnabled(notlock);
 		tianjia.setEnabled(notlock);
 		confirm.setEnabled(notlock);
+		modify.setEnabled(notlock);
+		delete.setEnabled(notlock);
 	}
 	public void setResult(ResultMsg s) {//审批之后才调这个方法
 		//审批通没通过在这里体现

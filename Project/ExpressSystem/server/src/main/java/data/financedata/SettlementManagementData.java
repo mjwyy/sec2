@@ -34,8 +34,6 @@ public class SettlementManagementData extends UnicastRemoteObject implements Set
 	
 	private static final long serialVersionUID = -5692094959798049197L;
 	
-	private Connection connection;
-	
 	private static RemoteException sqlEx = new RemoteException("系统数据异常，操作取消，请联系管理员。");
 	
 	public SettlementManagementData() throws RemoteException {
@@ -67,7 +65,7 @@ public class SettlementManagementData extends UnicastRemoteObject implements Set
     	 *	isPassed(int),advice(varchar)
     	 */
     	//向IncomeNotes添加一条记录
-    	connection = DatabaseManager.getConnection();
+    	Connection connection = DatabaseManager.getConnection();
     	String tempID = ""+System.currentTimeMillis();
     	String sql = "insert into IncomeNotes (id,date,receiveOrg,receiveStaff,payer,money,"
     			+ "account,submitter,isPassed) values "
@@ -78,7 +76,7 @@ public class SettlementManagementData extends UnicastRemoteObject implements Set
     		setStatementInfo(tempID, note, staffID, stmt);
     		stmt.executeUpdate();
     	} catch (SQLException e) {
-    		LogInsHelper.insertLog("系统获取Statement并执行下列语句时出错："+stmt);
+    		LogInsHelper.insertLog("系统获取Statement时出错");
     		e.printStackTrace();
     		throw sqlEx;
     	} finally {
@@ -154,7 +152,7 @@ public class SettlementManagementData extends UnicastRemoteObject implements Set
 		
 		//返回所有的信息，因为总部只有一个
 		
-		connection = DatabaseManager.getConnection();
+		Connection connection = DatabaseManager.getConnection();
 		String sql = "select * from IncomeNotes";
 		Statement stmt = null;
 		ResultSet set = null;

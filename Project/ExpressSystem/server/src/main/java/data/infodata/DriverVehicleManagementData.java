@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PipedOutputStream;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
@@ -17,7 +16,6 @@ import java.util.ArrayList;
 import po.DriverPO;
 import po.StaffPO;
 import po.VehiclePO;
-import data.database.DatabaseFactory;
 import data.database.DatabaseFactoryMysqlImpl;
 import data.database.DatabaseManager;
 import data.statisticdata.inte.LogInsertDataService;
@@ -30,7 +28,7 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
 
 
     private static final long serialVersionUID = 7214249074956257035L;
-    Connection connection;
+
     
     public DriverVehicleManagementData() throws RemoteException {
         super();
@@ -39,7 +37,7 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
     @Override
     public boolean addDriver(DriverPO driver) throws RemoteException,
             InterruptWithExistedElementException, SQLException {
-    	connection = DatabaseManager.getConnection();
+    	Connection connection = DatabaseManager.getConnection();
         //First, insert as a staff.
         StaffOrganizationManagementDataService staffIns = DatabaseFactoryMysqlImpl.getInstance().getStaffOrganizationManagementDataService();
         LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
@@ -51,7 +49,7 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
         }
 
         //Get the Staff to be linked to.
-        StaffPO get ;
+        StaffPO get = null;
         try {
             get = staffIns.findStaff(driver).get(0);
         } catch (Exception e) {
@@ -72,7 +70,7 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
 
     @Override
     public boolean addVehicle(VehiclePO vehicle) throws InterruptWithExistedElementException, SQLException, IOException {
-    	connection = DatabaseManager.getConnection();
+    	Connection connection = DatabaseManager.getConnection();
         LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
 
         ArrayList<VehiclePO> list = inquireVehicle(vehicle);
@@ -113,7 +111,7 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
     @Override
     public boolean removeDriver(DriverPO driver) throws RemoteException,
             ElementNotFoundException, SQLException {
-    	connection = DatabaseManager.getConnection();
+    	Connection connection = DatabaseManager.getConnection();
         //First, delete as a staff.
         StaffOrganizationManagementDataService staffIns = DatabaseFactoryMysqlImpl.getInstance().getStaffOrganizationManagementDataService();
         LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
@@ -139,7 +137,7 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
 
     @Override
     public boolean removeVehicle(VehiclePO vehicle) throws ElementNotFoundException, SQLException, IOException {
-    	connection = DatabaseManager.getConnection();
+    	Connection connection = DatabaseManager.getConnection();
         LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
 
         ArrayList<VehiclePO> list = inquireVehicle(vehicle);
@@ -160,7 +158,7 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
 
     @Override
     public boolean modifyDriver(DriverPO driver) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException, SQLException {
-    	connection = DatabaseManager.getConnection();
+    	Connection connection = DatabaseManager.getConnection();
     	
     	StaffOrganizationManagementDataService staffIns = DatabaseFactoryMysqlImpl.getInstance().getStaffOrganizationManagementDataService();
         LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
@@ -183,7 +181,7 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
 
     @Override
     public boolean modifyVehicle(VehiclePO originalVehicle) throws ElementNotFoundException, InterruptWithExistedElementException, SQLException, IOException {
-    	connection = DatabaseManager.getConnection();
+    	Connection connection = DatabaseManager.getConnection();
     	LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
 
         ArrayList<VehiclePO> list = inquireVehicle(originalVehicle);
@@ -205,7 +203,7 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
 
     @Override
     public ArrayList<DriverPO> getAllDriver() throws RemoteException, SQLException {
-    	connection = DatabaseManager.getConnection();
+    	Connection connection = DatabaseManager.getConnection();
     	StaffOrganizationManagementDataService staffIns = DatabaseFactoryMysqlImpl.getInstance().getStaffOrganizationManagementDataService();
         LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
         ArrayList<DriverPO> result = new ArrayList<>();
@@ -237,7 +235,7 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
     @Override
     public ArrayList<DriverPO> inquireDriver(DriverPO keywords)
             throws RemoteException, ElementNotFoundException, SQLException {
-    	connection = DatabaseManager.getConnection();
+    	Connection connection = DatabaseManager.getConnection();
         StaffOrganizationManagementDataService staffIns = DatabaseFactoryMysqlImpl.getInstance().getStaffOrganizationManagementDataService();
         LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
         ArrayList<DriverPO> result = new ArrayList<>();
@@ -278,7 +276,7 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
     @Override
     public ArrayList<VehiclePO> inquireVehicle(VehiclePO keywords)
             throws SQLException, IOException {
-    	connection = DatabaseManager.getConnection();
+    	Connection connection = DatabaseManager.getConnection();
         LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
         ArrayList<VehiclePO> result = new ArrayList<>();
 

@@ -35,7 +35,6 @@ public class PaymentInputData extends UnicastRemoteObject implements PaymentInpu
 	
 	private static final long serialVersionUID = 5769958555512055666L;
 	
-	private Connection connection = null;
 	private BankAccountBalanceAccess bankAccess = null;
 	public PaymentInputData() throws RemoteException {
 		super();
@@ -70,7 +69,7 @@ public class PaymentInputData extends UnicastRemoteObject implements PaymentInpu
     	 * 开始录入付款单
     	 */
     	
-    	connection = DatabaseManager.getConnection();
+    	Connection connection = DatabaseManager.getConnection();
        	/* 
     	 * Dependency:
     	 * 
@@ -99,7 +98,7 @@ public class PaymentInputData extends UnicastRemoteObject implements PaymentInpu
     		stmt.executeUpdate();
     		DatabaseManager.releaseConnection(null, stmt, null);
     	} catch (SQLException e) {
-    		LogInsHelper.insertLog("录入收款单时与数据库交互出错，语句为"+stmt);
+    		LogInsHelper.insertLog("录入收款单时与数据库交互出错");
     		e.printStackTrace();
     		DatabaseManager.releaseConnection(connection, stmt, null);
     		throw new RemoteException("系统数据出现异常，操作失败，请联系管理员。");

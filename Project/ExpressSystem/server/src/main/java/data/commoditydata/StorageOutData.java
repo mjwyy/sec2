@@ -27,7 +27,8 @@ import dataservice.commoditydataservice.StorageOutDataService;
  */
 
 public class StorageOutData extends UnicastRemoteObject implements StorageOutDataService {
-	private Connection connection;
+
+	private static final long serialVersionUID = 6320563981047628663L;
 	
 	public StorageOutData() throws RemoteException {
 		super();
@@ -36,7 +37,7 @@ public class StorageOutData extends UnicastRemoteObject implements StorageOutDat
     @Override
     public boolean insert(StorageOutPO po,String staffID) throws RemoteException {
     	
-    	connection = DatabaseManager.getConnection();
+    	Connection connection = DatabaseManager.getConnection();
     	
     	String org = null;
     	try {

@@ -37,8 +37,8 @@ import dataservice.exception.ElementNotFoundException;
  */
 public class InventoryData extends UnicastRemoteObject implements InventoryDataService {
 
-	private Connection connection;
-	
+	private static final long serialVersionUID = -1842346698338232148L;
+
 	public InventoryData() throws RemoteException {
 		super();
 	}
@@ -50,7 +50,7 @@ public class InventoryData extends UnicastRemoteObject implements InventoryDataS
 			org = UserInfoHelper.getOrg(staffID);
 			if(org==null) throw new Exception();
 		} catch (Exception e) {
-			System.out.println("StaffID: "+staffID+" 提供错误或数据库连接异常:");
+			System.out.println("StaffID: "+staffID+" 提供错误或数据库连接异常");
 			e.printStackTrace();
 		}
     	/*
@@ -68,7 +68,7 @@ public class InventoryData extends UnicastRemoteObject implements InventoryDataS
     	int totalOut = 0;
     	ArrayList<CommodityGoodsPO> goodsInStore = new ArrayList<>();
     	
-    	connection = DatabaseManager.getConnection();
+    	Connection connection = DatabaseManager.getConnection();
     	String sql = null;
     	Statement stmt = null;
     	try {
@@ -93,7 +93,7 @@ public class InventoryData extends UnicastRemoteObject implements InventoryDataS
 				barcodes.add(set1.getString("barcode"));
 			}
 		} catch (SQLException e) {
-			LogInsHelper.insertLog("数据库异常，执行查询语句"+sql+"失败");
+			LogInsHelper.insertLog("数据库异常，执行查询语句失败");
 			e.printStackTrace();
 			DatabaseManager.releaseConnection(null, stmt, set1);
 			throw new RemoteException("系统异常，暂时无法使用，请联系系统管理员");
@@ -121,7 +121,7 @@ public class InventoryData extends UnicastRemoteObject implements InventoryDataS
 			}
 			DatabaseManager.releaseConnection(null, stmt1, setOut);
 		} catch (SQLException e) {
-			LogInsHelper.insertLog("在查询出库记录时数据库出错，SQL语句如下:"+sql);
+			LogInsHelper.insertLog("在查询出库记录时数据库出错");
 			e.printStackTrace();
 			throw new RemoteException("查询出库记录时出现错误，请联系系统管理员");
 		}
@@ -138,7 +138,7 @@ public class InventoryData extends UnicastRemoteObject implements InventoryDataS
 			}
 			DatabaseManager.releaseConnection(null, stmt1, setIn);
 		} catch (SQLException e) {
-			LogInsHelper.insertLog("在查询出库记录时数据库出错，SQL语句如下:"+sql);
+			LogInsHelper.insertLog("在查询出库记录时数据库出错");
 			e.printStackTrace();
 			throw new RemoteException("查询出库记录时出现错误，请联系系统管理员");
 		}
@@ -155,7 +155,7 @@ public class InventoryData extends UnicastRemoteObject implements InventoryDataS
 				stmt1.setString(1, it.next());
 				ResultSet setStore = stmt1.executeQuery();
 				if(!setStore.next()) {
-					LogInsHelper.insertLog("执行SQL语句时无预期返回条目："+stmt1);
+					LogInsHelper.insertLog("执行SQL语句时无预期返回条目");
 					throw new RemoteException("数据出现故障，请联系系统管理员");
 				}
 				
@@ -175,7 +175,7 @@ public class InventoryData extends UnicastRemoteObject implements InventoryDataS
 				DatabaseManager.releaseConnection(null, null, setStore);
 			}
 		} catch (SQLException e) {
-			LogInsHelper.insertLog("在查询出库记录时数据库出错，SQL语句如下:"+sql);
+			LogInsHelper.insertLog("在查询出库记录时数据库出错");
 			e.printStackTrace();
 			throw new RemoteException("查询出库记录时出现错误，请联系系统管理员");
 		}
@@ -202,7 +202,7 @@ public class InventoryData extends UnicastRemoteObject implements InventoryDataS
 			LogInsHelper.insertLog("获取职员"+staffID+"机构信息失败");
 			throw new RemoteException("获取职员机构信息失败");
 		}
-        connection = DatabaseManager.getConnection();
+        Connection connection = DatabaseManager.getConnection();
     	String sql = "select Date from RecentInquiryTime where WarehouseID='"+org+"'";
     	
     	try {
@@ -230,7 +230,7 @@ public class InventoryData extends UnicastRemoteObject implements InventoryDataS
 
 	@Override
 	public boolean setRecentTime(String date, String staffID) throws RemoteException {
-
+		Connection connection = DatabaseManager.getConnection();
 		String org = null;
         try {
 			org = UserInfoHelper.getOrg(staffID);

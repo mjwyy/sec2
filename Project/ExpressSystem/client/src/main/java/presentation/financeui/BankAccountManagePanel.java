@@ -243,16 +243,15 @@ public class BankAccountManagePanel extends JPanel {
        		
        		bankAccountList = service.find(vo);
        		if(!bankAccountList.isEmpty()){
-       		for(int i = 0;i<bankAccountList.size();i++){
-       			Vector row = new Vector();
-       			row.add(bankAccountList.get(i).getAccount());
-       			row.add(bankAccountList.get(i).getName());
-       			row.add(bankAccountList.get(i).getBalance());
-       			data.add(row.clone());
-       		}
-       		model.setDataVector(data, name);
-   			table.setModel(model);
-   			
+	       		for(int i = 0;i<bankAccountList.size();i++){
+	       			Vector row = new Vector();
+	       			row.add(bankAccountList.get(i).getAccount());
+	       			row.add(bankAccountList.get(i).getName());
+	       			row.add(bankAccountList.get(i).getBalance());
+	       			data.add(row.clone());
+	       		}
+	       		model.setDataVector(data, name);
+	   			table.setModel(model);
        		}else{
        			 JOptionPane.showConfirmDialog(null, "木有查询到相关账户(((o(*ﾟ▽ﾟ*)o)))","系统提示",
 						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);

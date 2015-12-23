@@ -53,6 +53,7 @@ public class BankAccountManagement implements BankAccountManagementBLService {
     		boolean b = dataService.addBankAccount((BankAccountPO) vo.toPO());
     		if(!b) return new ResultMsg(false,"添加银行账户失败，请重试");
     	} catch (Exception e) {
+
     		return new ResultMsg(false, e.getMessage());
     	}
     	

@@ -4,6 +4,7 @@ import data.database.DatabaseFactory;
 import data.database.DatabaseFactoryMysqlImpl;
 import data.database.DatabaseManager;
 import data.infodata.inte.BankAccountBalanceAccess;
+import data.statisticdata.LogInsHelper;
 import data.statisticdata.inte.LogInsertDataService;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
@@ -25,7 +26,6 @@ public class BankAccountManagementData extends UnicastRemoteObject implements Ba
 
 
 	private static final long serialVersionUID = -8080269551859558616L;
-	private Connection connection;
 
     public BankAccountManagementData() throws RemoteException {
         super();
@@ -34,12 +34,11 @@ public class BankAccountManagementData extends UnicastRemoteObject implements Ba
 
     @Override
     public boolean addBankAccount(BankAccountPO account) throws RemoteException, InterruptWithExistedElementException, SQLException {
-    	connection = DatabaseManager.getConnection();
-        LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
+    	Connection connection = DatabaseManager.getConnection();
 
         try {
             if(findBankAccount(account).size()>0) {
-                logIns.insertSystemLog("试图新增银行账户:"+account.getName()+","+account.getNumber()+"，但银行账户已存在，取消操作");
+                LogInsHelper.insertLog("试图新增银行账户:"+account.getName()+","+account.getNumber()+"，但银行账户已存在，取消操作");
                 DatabaseManager.releaseConnection(connection,null,null);
                 throw new InterruptWithExistedElementException("银行账户："+account.getNumber()+"已存在。");
             }
@@ -47,7 +46,7 @@ public class BankAccountManagementData extends UnicastRemoteObject implements Ba
             // That's OK
         }
 
-        String stat = "insert into BankAccounts (name,number,balance) values ('"+account.getNumber()+"','"+
+        String stat = "insert into BankAccounts (name,number,balance) values ('"+account.getName()+"','"+
                 account.getNumber()+"','"+account.getBalance()+"')";
         PreparedStatement statement = connection.prepareStatement(stat);
 
@@ -55,7 +54,7 @@ public class BankAccountManagementData extends UnicastRemoteObject implements Ba
         try {
             result = statement.executeUpdate();
         } catch (SQLException e) {
-            logIns.insertSystemLog("新增银行账户失败");
+            LogInsHelper.insertLog("新增银行账户失败");
             DatabaseManager.releaseConnection(connection,statement,null);
             return false;
         }
@@ -65,7 +64,7 @@ public class BankAccountManagementData extends UnicastRemoteObject implements Ba
 
     @Override
     public boolean removeBankAccount(BankAccountPO account) throws RemoteException, ElementNotFoundException, SQLException {
-    	connection = DatabaseManager.getConnection();
+    	Connection connection = DatabaseManager.getConnection();
     	LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
 
         if(findBankAccount(account).size()==0) {
@@ -91,7 +90,7 @@ public class BankAccountManagementData extends UnicastRemoteObject implements Ba
 
     @Override
     public ArrayList<BankAccountPO> findBankAccount(BankAccountPO accountInfo) throws RemoteException, ElementNotFoundException, SQLException {
-    	connection = DatabaseManager.getConnection();
+    	Connection connection = DatabaseManager.getConnection();
     	LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
 
         String stmt = "select * from BankAccounts ";
@@ -118,8 +117,9 @@ public class BankAccountManagementData extends UnicastRemoteObject implements Ba
         while(set.next()) {
             result.add(new BankAccountPO(set.getString("name"), set.getString("number"), set.getString("balance")));
         }
-
-        logIns.insertSystemLog("查找了银行账户：name="+accountInfo.getName()+",number="+accountInfo.getNumber());
+        
+        logIns.insertSystemLog("查找了银行账户："+
+        ((accountInfo==null)?("所有银行账户"):("name="+accountInfo.getName()+",number="+accountInfo.getNumber())));
         DatabaseManager.releaseConnection(connection,stat,set);
         return result;
     }
@@ -132,7 +132,7 @@ public class BankAccountManagementData extends UnicastRemoteObject implements Ba
     @Override
     public boolean modifyBankAccount(BankAccountPO account)	throws RemoteException, ElementNotFoundException,
             InterruptWithExistedElementException, SQLException {
-    	connection = DatabaseManager.getConnection();
+    	Connection connection = DatabaseManager.getConnection();
     	LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
 
         BankAccountPO searched = new BankAccountPO(null, account.getNumber(), null);
@@ -142,11 +142,11 @@ public class BankAccountManagementData extends UnicastRemoteObject implements Ba
             throw new ElementNotFoundException("未找到银行账户，修改操作取消");
         }
 
-        String stmt = "update BankAccounts name='"+account.getName()+"' where number='"+account.getNumber()+"'";
+        String stmt = "update BankAccounts set name='"+account.getName()+"' where number='"+account.getNumber()+"'";
         PreparedStatement stat = connection.prepareStatement(stmt);
         int result = stat.executeUpdate();
 
-        logIns.insertSystemLog("修改银行账户,number='"+account.getNumber()+"',name="+account.getName());
+        LogInsHelper.insertLog("修改银行账户,number="+account.getNumber()+",name="+account.getName());
         DatabaseManager.releaseConnection(connection,stat,null);
         return result > 0;
     }
@@ -173,7 +173,7 @@ public class BankAccountManagementData extends UnicastRemoteObject implements Ba
 
 		String balance = null;
 		
-		connection = DatabaseManager.getConnection();
+		Connection connection = DatabaseManager.getConnection();
     	LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
 
         BankAccountPO searched = new BankAccountPO(null, accountNum, null);

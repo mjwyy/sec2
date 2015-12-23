@@ -31,8 +31,6 @@ public class CreditNoteInputData extends UnicastRemoteObject implements CreditNo
 	
 	private static final long serialVersionUID = 203150499169106219L;
 	
-	private Connection connection;
-	
 	public CreditNoteInputData() throws RemoteException {
 		super();
 	}
@@ -40,7 +38,7 @@ public class CreditNoteInputData extends UnicastRemoteObject implements CreditNo
     @Override
     public boolean addCreditNote(CreditNotePO note, String staffID) throws RemoteException, FailToPassApprovingException {
     	
-    	connection = DatabaseManager.getConnection();
+    	Connection connection = DatabaseManager.getConnection();
     	
     	/*
     	 * * Database dependencies:
@@ -67,7 +65,7 @@ public class CreditNoteInputData extends UnicastRemoteObject implements CreditNo
     		
     		stmt.executeUpdate();
     	} catch (SQLException e) {
-    		LogInsHelper.insertLog("录入营业厅收款单时与数据库交互出错，语句为"+stmt);
+    		LogInsHelper.insertLog("录入营业厅收款单时与数据库交互出错");
     		e.printStackTrace();
     		DatabaseManager.releaseConnection(connection, stmt, null);
     		throw new RemoteException("系统数据出现异常，操作失败，请联系管理员。");
@@ -123,7 +121,7 @@ public class CreditNoteInputData extends UnicastRemoteObject implements CreditNo
 	@Override
 	public double getOrderMoney(String barcode) throws RemoteException {
 		
-		connection = DatabaseManager.getConnection();
+		Connection connection = DatabaseManager.getConnection();
 		
 		String sql = "select money from order where barcode='"+barcode+"'";
 		double result = 0.0;

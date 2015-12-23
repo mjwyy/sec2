@@ -30,8 +30,8 @@ import dataservice.exception.ElementNotFoundException;
  */
 
 public class StorageInData extends UnicastRemoteObject implements StorageInDataService {
-	
-	private Connection connection;
+
+	private static final long serialVersionUID = -4450540381738301736L;
 	
 	public StorageInData() throws RemoteException {
 		super();
@@ -40,7 +40,7 @@ public class StorageInData extends UnicastRemoteObject implements StorageInDataS
     @Override
     public boolean insert(StorageInPO po,String staffID) throws RemoteException {
     	
-    	connection = DatabaseManager.getConnection();
+    	Connection connection = DatabaseManager.getConnection();
     	String org = null;
     	try {
 			org = UserInfoHelper.getOrg(staffID);

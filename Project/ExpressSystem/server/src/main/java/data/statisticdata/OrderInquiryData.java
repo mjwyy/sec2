@@ -33,7 +33,7 @@ public class OrderInquiryData extends UnicastRemoteObject implements OrderInquir
     @Override
     public boolean insertOrderPO(String barcode, String info, double price) throws RemoteException {
         Connection connection = DatabaseManager.getConnection();
-        String sql = "insert into `order` ( `history`, `stateOfTransport`, `barcode`,`money`) " +
+        String sql = "insert into `GoodsOrder` ( `history`, `stateOfTransport`, `barcode`,`money`) " +
                 "values (?,?,?,?)";
         PreparedStatement statement = null;
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -59,7 +59,7 @@ public class OrderInquiryData extends UnicastRemoteObject implements OrderInquir
 	public OrderPO findOrder(String barcode) throws RemoteException,
             ElementNotFoundException {
         Connection connection = DatabaseManager.getConnection();
-        String sql = "select `stateOfTransport`,`history` from `order` where `barcode` = '"+barcode+"'";
+        String sql = "select `stateOfTransport`,`history` from `GoodsOrder` where `barcode` = '"+barcode+"'";
         PreparedStatement statement = null;
         OrderPO po;
         try {

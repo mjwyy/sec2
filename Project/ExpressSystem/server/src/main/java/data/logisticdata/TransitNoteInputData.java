@@ -36,6 +36,7 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
 
     @Override
     public ResultMsg insert(TransitNotePO po) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException {
+        //TODO 计算运费
         String sql = "insert into `Express`.`note_transit`" +
                 " ( `barcodes`, `transitDocNumber`, `supercargoMan`, `departurePlace`, " +
                 "`transitType`, `date`, `desitination`, `transportNumber`)" +

@@ -102,7 +102,7 @@ public class NoteInputData extends UnicastRemoteObject implements Remote, Serial
                     throw new ElementNotFoundException();
                 }
 
-                statement.executeUpdate("update `order` set `history` = concat(`history`, '" + msg + "'), " +
+                statement.executeUpdate("update `GoodsOrder` set `history` = concat(`history`, '" + msg + "'), " +
                         "`stateOfTransport` = '"+goodsState.toString()+"' where barcode = '"+barcode+"'");
             }
         } catch (SQLException e) {
@@ -127,7 +127,7 @@ public class NoteInputData extends UnicastRemoteObject implements Remote, Serial
                 }
 
                 statement = connection.prepareStatement("");
-                statement.executeUpdate("update `order` set `history` = concat(`history`, '" + msg + "') " +
+                statement.executeUpdate("update `GoodsOrder` set `history` = concat(`history`, '" + msg + "') " +
                         " where `barcode` = '"+bar+"'");
             }
         } catch (SQLException e) {
@@ -139,7 +139,7 @@ public class NoteInputData extends UnicastRemoteObject implements Remote, Serial
 
     public boolean isBarcodeInDB(String barcode){
         Connection connection = DatabaseManager.getConnection();
-        String sql = "select `stateOfTransport` from `order` where barcode = '"+barcode+"'";
+        String sql = "select `stateOfTransport` from `GoodsOrder` where barcode = '"+barcode+"'";
         PreparedStatement statement;
         ResultSet set;
         boolean result = false;

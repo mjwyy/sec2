@@ -26,9 +26,12 @@ public class NoteApproveChartData {
      */
     private static Map<String,NoteType> type = null;
 
+    private static Map<String,String> primaryKey = null;
+    
 	static {
 		chartData = new HashMap<String, Map<String,String>>();
 		type = new HashMap<>();
+		primaryKey = new HashMap<>();
 		
 		Map<String,String> temp = new TreeMap<>();
 		
@@ -37,7 +40,7 @@ public class NoteApproveChartData {
 		temp.put("warehouseID", "仓库号");
 		chartData.put("StorageInNote", temp);
 		type.put("StorageInNote", NoteType.STORAGE_IN);
-		
+		primaryKey.put("StorageInNote", "id");
 		//实例：出库单
 		
 		temp = new TreeMap<>();
@@ -48,7 +51,7 @@ public class NoteApproveChartData {
 		
 		chartData.put("StorageOutNote", temp);
 		type.put("StorageOutNote", NoteType.STORAGE_OUT);
-		
+		primaryKey.put("StorageOutNote", "id");
 		//实例：营业厅收款单
 		
 		temp = new TreeMap<>();
@@ -57,6 +60,7 @@ public class NoteApproveChartData {
         temp.put("Money", "收款金额");
 		chartData.put("CreditNotes", temp);
 		type.put("CreditNotes", NoteType.CREDIT_NOTE);
+		primaryKey.put("CreditNotes", "id");
 		
 		//营业厅到达单
 		temp = new TreeMap<>();
@@ -67,7 +71,8 @@ public class NoteApproveChartData {
         temp.put("barcodes", "条形码");
         chartData.put("note_arrival_on_service", temp);
         type.put("note_arrival_on_service", NoteType.ARRIVAL_NOTE_ON_SERVICE);
-
+        primaryKey.put("note_arrival_on_service", "TransferNumber");
+        
         //营业厅派件单
         temp = new TreeMap<>();
         temp.put("date", "日期");
@@ -76,7 +81,9 @@ public class NoteApproveChartData {
         temp.put("barcodes", "条形码");
         chartData.put("note_delivery_on_service", temp);
         type.put("note_delivery_on_service", NoteType.DELIVER_NOTE_ON_SERVICE);
-
+        primaryKey.put("note_delivery_on_service", "id");
+        
+        
         //中转中心到达单
         temp = new TreeMap<>();
         temp.put("departurePlace", "出发地");
@@ -85,7 +92,8 @@ public class NoteApproveChartData {
         temp.put("centerNumber", "中转中心编号");
         chartData.put("note_arrival_on_transit", temp);
         type.put("note_arrival_on_transit", NoteType.ARRIVAL_NOTE_ON_TRANSIT);
-
+        primaryKey.put("note_arrival_on_transit", "transferNumber");
+        
         //寄件单
         temp = new TreeMap<>();
         temp.put("name", "货物名称");
@@ -95,7 +103,8 @@ public class NoteApproveChartData {
         temp.put("receiverAddress", "目的地");
         chartData.put("note_delivery", temp);
         type.put("note_delivery", NoteType.DELIVERY_NOTE);
-
+        primaryKey.put("note_delivery", "barCode");
+        
         //营业厅装车单
         temp = new TreeMap<>();
         temp.put("date", "日期");
@@ -105,7 +114,8 @@ public class NoteApproveChartData {
         temp.put("barcodes", "货物条形码");
         chartData.put("note_load_on_service", temp);
         type.put("note_load_on_service", NoteType.LOAD_NOTE_ON_SERVICE);
-
+        primaryKey.put("note_load_on_service", "transpotationNumber");
+        
         //中转中心装车单
         temp = new TreeMap<>();
         temp.put("date", "日期");
@@ -115,7 +125,7 @@ public class NoteApproveChartData {
         temp.put("barcodes", "货物条形码");
         chartData.put("note_load_on_transit", temp);
         type.put("note_load_on_transit", NoteType.LOAD_NOTE_ON_TRANSIT);
-
+        primaryKey.put("note_load_on_transit", "transpotationNumber");
         //收件单
         temp = new TreeMap<>();
         temp.put("time", "收件时间");
@@ -123,7 +133,8 @@ public class NoteApproveChartData {
         temp.put("barcode", "条形码");
         chartData.put("note_receive_note", temp);
         type.put("note_receive_note", NoteType.RECEIVING_NOTE);
-
+        primaryKey.put("note_receive_note", "barcode");
+        
         //中转单
         temp = new TreeMap<>();
         temp.put("transitDocNumber", "中转单编号");
@@ -134,7 +145,7 @@ public class NoteApproveChartData {
         temp.put("barcodes", "条形码");
         chartData.put("note_transit", temp);
         type.put("note_transit", NoteType.TRANSIT_NOTE);
-
+        primaryKey.put("note_transit","transitDocNumber");
 	}
 	
 	/**
@@ -180,5 +191,9 @@ public class NoteApproveChartData {
 			}
 		}
 		return result;
+	}
+
+	public static String getPrimaryKey(String chartName) {
+		return primaryKey.get(chartName);
 	}
 }

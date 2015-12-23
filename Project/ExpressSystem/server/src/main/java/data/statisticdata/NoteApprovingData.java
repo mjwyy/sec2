@@ -77,7 +77,7 @@ public class NoteApprovingData extends UnicastRemoteObject implements NoteApprov
 				
 				while (set.next()) {//遍历所有未审批的单据条目
 
-                    String id = set.getString("id");//ID
+                    String id = set.getString(NoteApproveChartData.getPrimaryKey(chartName));//ID
 
                     //每次获取新迭代器,因为generateInfoString会用掉迭代器
                     columns = NoteApproveChartData.getColumns(chartName);
@@ -92,7 +92,7 @@ public class NoteApprovingData extends UnicastRemoteObject implements NoteApprov
 				DatabaseManager.releaseConnection(null,stmt,set);
 			} catch (SQLException e) {
                 //TODO 暂时没有处理SQLException的具体子类,以后可以加一下,返回更具体的错误信息
-				LogInsHelper.insertLog("系统数据库连接出现异常:"+e.getMessage());
+				LogInsHelper.insertLog("系统数据库连接出现异常");
 				e.printStackTrace();
 				throw new RemoteException("系统数据出现异常，操作失败，请联系管理员。");
 			}
@@ -122,7 +122,7 @@ public class NoteApprovingData extends UnicastRemoteObject implements NoteApprov
 		for(ApproveNote note:results) {//遍历List中所有单据
 			//由单据种类获取数据表名称
 			String chartName = NoteApproveChartData.getChartName(note.getType());
-
+			String primaryKey = NoteApproveChartData.getPrimaryKey(chartName);
             //获取单据唯一辨识符:ID
 			String id = note.getId();
 			PreparedStatement stmt = null;
@@ -133,12 +133,12 @@ public class NoteApprovingData extends UnicastRemoteObject implements NoteApprov
 				if (note.isPass()) {
                     //把isPassed设为PASSED
 					sql = "update "+chartName+" set isPassed="+DocState.PASSED.getIntState()
-                            +" where id='"+id+"'";
+                            +" where "+primaryKey+"='"+id+"'";
 				} else {
                     //把isPassed设为FAILED,并添加rejection message
 					String advice = note.getRejectionMessage();
 					sql = "update "+chartName+" set isPassed="+DocState.FAILED.getIntState()+","
-							+ "advice='"+advice+"' where id='"+id+"'";
+							+ "advice='"+advice+"' where "+primaryKey+"='"+id+"'";
 				}
 
                 //执行语句
@@ -146,7 +146,7 @@ public class NoteApprovingData extends UnicastRemoteObject implements NoteApprov
 				stmt.execute();
 			} catch (Exception e) {
                 //TODO 暂时没有处理SQLException具体子类,以后可以处理一下,返回更具体的错误信息
-				LogInsHelper.insertLog("数据库异常："+e.getMessage());
+				LogInsHelper.insertLog("数据库异常");
 				e.printStackTrace();
 				return new ResultMsg(false,"系统数据出现异常，请联系管理员。");
 			}

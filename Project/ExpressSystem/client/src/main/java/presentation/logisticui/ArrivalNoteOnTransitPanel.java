@@ -34,6 +34,7 @@ import presentation.financeui.PaymentInputPanel;
 import presentation.logisticui.ReceiveOrderPanel.Submitter;
 import presentation.util.Chachong;
 import presentation.util.CurrentTime;
+import presentation.util.GetTime;
 import presentation.util.MJTextField;
 import presentation.util.UnEditablePanel;
 import presentation.util.checkstyleDialog;
@@ -81,6 +82,7 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 	private JButton confirm;
 	private JButton submit;
 	private JButton modify;
+	private String jigou;
 	
 	/**
 	 * Create the panel.
@@ -122,12 +124,13 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 												
 												
 		centrenum1= new MJTextField();
+		centrenum1.setText(lim.getOrganization_id());
 		centrenum1.setBounds(970, 81, 156, 30);
 		add(centrenum1);										
 	    centrenum1.setColumns(10);
 												
 	    confirm = new JButton("确认");
-	    confirm.setBounds(1009, 222, 117, 30);
+	    confirm.setBounds(1009, 237, 117, 30);
 		add(confirm);	
 		confirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -139,7 +142,7 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 		    		 JOptionPane.showConfirmDialog(null, "有咚咚漏天啦！","系统提示",
 							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 		       }else{
-				ArrivalNoteOnTransitVO vo = new ArrivalNoteOnTransitVO(trannum1.getText(),centrenum1.getText(),date1.getText(),
+				ArrivalNoteOnTransitVO vo = new ArrivalNoteOnTransitVO(jigou+trannum1.getText(),centrenum1.getText(),date1.getText(),
 						departure1.getText(),bas);
 				//格式检查
 			    res = service.inputCenterArrivalDoc(vo);
@@ -147,7 +150,7 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 				if(res.isPass()){
 					date2.setText(date1.getText());
 					centrenum2.setText(centrenum1.getText());
-					trannum2.setText(trannum1.getText());
+					trannum2.setText(jigou+trannum1.getText());
 					departure2.setText(departure1.getText());
 				}
 				else{
@@ -191,7 +194,7 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 	    departure1.setColumns(10);													
 																		
 	    trannum1 = new MJTextField();
-	    trannum1.setBounds(970, 171, 156, 30);
+	    trannum1.setBounds(992, 195, 134, 30);
 		add(trannum1);
 		trannum1.setColumns(10);
 			
@@ -205,17 +208,17 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 			
 			date2 = new JTextField();
 			date2.setEditable(false);
-			date2.setBounds(145, 67, 180, 28);
+			date2.setBounds(162, 67, 180, 28);
 			add(date2);
 			date2.setColumns(10);
 			
 			JLabel centerNum = new JLabel("中转中心编号");
-			centerNum.setBounds(44, 151, 89, 16);
+			centerNum.setBounds(44, 151, 117, 16);
 			add(centerNum);
 			
 			centrenum2 = new JTextField();
 			centrenum2.setEditable(false);
-			centrenum2.setBounds(145, 145, 180, 28);
+			centrenum2.setBounds(162, 145, 180, 28);
 			add(centrenum2);
 			centrenum2.setColumns(10);
 					
@@ -254,7 +257,7 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 			
 			departure2 = new JTextField();
 			departure2.setEditable(false);
-			departure2.setBounds(145, 222, 180, 28);
+			departure2.setBounds(162, 222, 180, 28);
 			add(departure2);
 			departure2.setColumns(10);
 			
@@ -264,7 +267,7 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 			
 			trannum2 = new JTextField();
 			trannum2.setEditable(false);
-			trannum2.setBounds(145, 291, 180, 28);
+			trannum2.setBounds(162, 291, 180, 28);
 			add(trannum2);
 			trannum2.setColumns(10);
 			
@@ -308,6 +311,11 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 			});
 			modify.setBounds(938, 390, 102, 30);
 			add(modify);
+			
+			jigou = lim.getOrganization_id()+GetTime.getTime(date1.getText());
+			JLabel lblNewLabel_2 = new JLabel(jigou);		
+			lblNewLabel_2.setBounds(850, 206, 144, 16);
+			add(lblNewLabel_2);
 			
 			
 			ADD.addActionListener(new ActionListener() {

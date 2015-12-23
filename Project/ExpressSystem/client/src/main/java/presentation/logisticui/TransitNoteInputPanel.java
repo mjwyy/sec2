@@ -16,6 +16,7 @@ import presentation.logisticui.ReceiveOrderPanel.Submitter;
 import presentation.util.Chachong;
 import presentation.util.CurrentTime;
 import presentation.util.EditableTrue;
+import presentation.util.GetTime;
 import presentation.util.MJTextField;
 import presentation.util.UnEditablePanel;
 import presentation.util.checkstyleDialog;
@@ -84,6 +85,7 @@ public class TransitNoteInputPanel extends JPanel {
 	 */
 	private static final int HEIGHT = 446;
 	private JTextField transitType2;
+	private JLabel lblNewLabel_1;
 
 	/**
 	 * Create the panel.
@@ -207,12 +209,12 @@ public class TransitNoteInputPanel extends JPanel {
 		add(lblNewLabel);
 		
 		JLabel label_6 = new JLabel("中转单编号");
-		label_6.setBounds(818, 88, 99, 16);
+		label_6.setBounds(807, 88, 99, 16);
 		add(label_6);
 		
 		transitnum1 = new MJTextField();
 		transitnum1.setColumns(10);
-		transitnum1.setBounds(893, 82, 209, 28);
+		transitnum1.setBounds(1028, 82, 74, 28);
 		add(transitnum1);
 		
 		JLabel label_7 = new JLabel("监装员");
@@ -258,13 +260,13 @@ public class TransitNoteInputPanel extends JPanel {
 				 boolean isempty = date1.getText().isEmpty()||transitnum1.getText().isEmpty()||
 							flightNumber1.getText().isEmpty()||setout1.getText().isEmpty()||arrival1.getText().isEmpty()||loader1.getText().isEmpty();
 				 if(!isempty){
-				 TransitNoteOnTransitVO vo = new TransitNoteOnTransitVO(date1.getText(),transitnum1.getText(),
+				 TransitNoteOnTransitVO vo = new TransitNoteOnTransitVO(date1.getText(),lim.getOrganization_id()+GetTime.getTime(date1.getText())+transitnum1.getText(),
 							flightNumber1.getText(),transitNoteType,setout1.getText(),arrival1.getText(),loader1.getText(),mock);
 				 
 				 res = service.inputCenterTransitDoc(vo);
 				if(res.isPass()){
 					date2.setText(date1.getText());
-					transitnum2.setText(transitnum1.getText());
+					transitnum2.setText(lim.getOrganization_id()+GetTime.getTime(date1.getText())+transitnum1.getText());
 					setout2.setText(setout1.getText());
 					arrival2.setText(arrival1.getText());
 					loader2.setText(loader1.getText());
@@ -385,6 +387,10 @@ public class TransitNoteInputPanel extends JPanel {
 		});
 		Modify.setBounds(914, 394, 86, 28);
 		add(Modify);
+		
+		lblNewLabel_1 = new JLabel(lim.getOrganization_id()+GetTime.getTime(date1.getText()));
+		lblNewLabel_1.setBounds(883, 88, 150, 16);
+		add(lblNewLabel_1);
 		
 		
 

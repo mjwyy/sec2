@@ -69,18 +69,18 @@ public class ReceiveOrderPanel extends JPanel {
 		//service = new ReceivingNoteInputBLService_Stub();
 		
 		JLabel label = new JLabel("收件日期");
-		label.setBounds(165, 62, 61, 16);
+		label.setBounds(131, 62, 82, 16);
 		add(label);
 		
 		CurrentTime currentTime = new CurrentTime();
 		date = new MJTextField();
 		date.setBounds(264, 56, 201, 28);
-		date.setText(currentTime.getCurrentTimeDate());//精确到秒
+		date.setText(currentTime.getCurrentTimeMinute());//精确到秒
 		add(date);
 		date.setColumns(10);
 		
 		JLabel label_1 = new JLabel("条形码");
-		label_1.setBounds(165, 122, 61, 16);
+		label_1.setBounds(131, 122, 82, 16);
 		add(label_1);
 		
 		barcode = new MJTextField();
@@ -89,7 +89,7 @@ public class ReceiveOrderPanel extends JPanel {
 		barcode.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("收件人姓名");
-		lblNewLabel.setBounds(165, 186, 87, 16);
+		lblNewLabel.setBounds(131, 186, 121, 16);
 		add(lblNewLabel);
 		
 		receiver = new MJTextField();
@@ -118,7 +118,7 @@ public class ReceiveOrderPanel extends JPanel {
 						if(result1 == JOptionPane.YES_OPTION) {	
 						UnEditablePanel.UnEdit(thisP);
 						parent.setReceiveOrderpanel(thisP);
-						parent.setshouJianB(true);
+						parent.setShoujian(true, false, false);
 						new Submitter().start();
 						
 						}
@@ -135,8 +135,7 @@ public class ReceiveOrderPanel extends JPanel {
 	}
 	
 public void setResult(ResultMsg s) {
-	parent.setshouJianB(false);	
-	parent.initshoujian(s.isPass());
+	parent.setShoujian(false, s.isPass(), !s.isPass());
 	parent.leftpanel.repaint();
 	if(s.isPass()){
 		parent.setReceiveOrderpanel(null);

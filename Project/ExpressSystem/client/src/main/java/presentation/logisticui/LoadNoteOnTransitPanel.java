@@ -16,6 +16,7 @@ import presentation.logisticui.ReceiveOrderPanel.Submitter;
 import presentation.util.Chachong;
 import presentation.util.CurrentTime;
 import presentation.util.EditableTrue;
+import presentation.util.GetTime;
 import presentation.util.MJTextField;
 import presentation.util.UnEditablePanel;
 import presentation.util.checkstyleDialog;
@@ -68,6 +69,7 @@ public class LoadNoteOnTransitPanel extends JPanel {
 	private JButton submit;
 	private JButton add;
 	private JButton delete;
+	private JLabel lblNewLabel;
 	
 
 	/**
@@ -200,27 +202,27 @@ public class LoadNoteOnTransitPanel extends JPanel {
 		add(submit);
 		
 		JLabel label_6 = new JLabel("日期");
-		label_6.setBounds(842, 54, 61, 16);
+		label_6.setBounds(811, 54, 61, 16);
 		add(label_6);
 		
 		JLabel label_7 = new JLabel("到达地");
-		label_7.setBounds(842, 94, 61, 16);
+		label_7.setBounds(811, 94, 61, 16);
 		add(label_7);
 		
 		JLabel label_8 = new JLabel("汽运编号");
-		label_8.setBounds(842, 139, 61, 16);
+		label_8.setBounds(811, 139, 61, 16);
 		add(label_8);
 		
 		JLabel label_9 = new JLabel("车辆代号");
-		label_9.setBounds(842, 182, 61, 16);
+		label_9.setBounds(811, 182, 61, 16);
 		add(label_9);
 		
 		JLabel label_10 = new JLabel("监装员");
-		label_10.setBounds(842, 223, 61, 16);
+		label_10.setBounds(811, 223, 61, 16);
 		add(label_10);
 		
 		JLabel label_11 = new JLabel("押运员");
-		label_11.setBounds(842, 262, 61, 16);
+		label_11.setBounds(811, 262, 61, 16);
 		add(label_11);
 		
 		CurrentTime currentTime = new CurrentTime();
@@ -236,8 +238,9 @@ public class LoadNoteOnTransitPanel extends JPanel {
 		add(destination1);
 		
 		trucknum1 = new MJTextField();
+		trucknum1.setText("1234567");
 		trucknum1.setColumns(10);
-		trucknum1.setBounds(930, 133, 134, 28);
+		trucknum1.setBounds(1018, 133, 79, 28);
 		add(trucknum1);
 		
 		carnum = new MJTextField();
@@ -267,13 +270,13 @@ public class LoadNoteOnTransitPanel extends JPanel {
 							JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
 					
 				}else{
-				LoadNoteOnTransitVO vo = new LoadNoteOnTransitVO(date1.getText(), trucknum1.getText(),destination1.getText(), 
+				LoadNoteOnTransitVO vo = new LoadNoteOnTransitVO(date1.getText(), lim.getOrganization_id()+GetTime.getTime(date1.getText())+trucknum1.getText(),destination1.getText(), 
 						carnum.getText(),supervisor1.getText(), escort1.getText(), s);
 				res = service.inputCenterLoadDoc(vo);//格式检查
 				//格式通过
 				if(res.isPass()){
 					date2.setText(date1.getText());
-					trucknum2.setText(trucknum1.getText());
+					trucknum2.setText(lim.getOrganization_id()+GetTime.getTime(date1.getText())+trucknum1.getText());
 					destination2.setText(destination1.getText());
 					carnum2.setText(carnum.getText());
 					supervisor2.setText(supervisor1.getText());
@@ -290,7 +293,7 @@ public class LoadNoteOnTransitPanel extends JPanel {
 		add(confirm);
 		
 		JLabel label_12 = new JLabel("条形码");
-		label_12.setBounds(842, 338, 61, 16);
+		label_12.setBounds(822, 346, 61, 16);
 		add(label_12);
 		
 		addbarcode = new MJTextField();
@@ -342,6 +345,10 @@ public class LoadNoteOnTransitPanel extends JPanel {
 		});
 		modify.setBounds(940, 378, 89, 29);
 		add(modify);
+		
+		lblNewLabel = new JLabel(lim.getOrganization_id()+GetTime.getTime(date1.getText()));
+		lblNewLabel.setBounds(873, 139, 144, 16);
+		add(lblNewLabel);
 
 	}
 	

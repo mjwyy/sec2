@@ -276,38 +276,44 @@ public class CourierFrame extends JFrame {
 		
 		jijian = new JLabel("您提交的寄件单已通过审批,现在可以填下一份了哟");
 		jijian.setBounds(21, 10, 487, 24);
-		jijian.setVisible(false);
 		leftpanel.add(jijian);
-		jijianA = new JLabel("您提交的寄件单未通过审批");
-		jijianA.setBounds(21, 10, 487, 24);
-		jijianA.setForeground(Color.red);
-		leftpanel.add(jijianA);
-		jijianA.setVisible(false);
+		jijian.setVisible(false);
+		
+		
 		jijianB = new JLabel("您提交的寄件正在等待审批，请耐心等待哦～");
 		jijianB.setBounds(21, 10, 487, 24);
 		jijianB.setForeground(Color.red);
-		leftpanel.add(jijianA);
+		leftpanel.add(jijianB);
 		jijianB.setVisible(false);
 		
-		
+		jijianA = new JLabel("您提交的寄件单未通过审批");
+		jijianA.setBounds(21, 10, 487, 24);
+		jijianA.setForeground(Color.red);
+		jijianA.setVisible(false);	
+		leftpanel.add(jijianA);
+	
 		shoujian = new JLabel("您提交的收件单已通过审批,现在可以填下一份了哟");
 		shoujian.setBounds(21, 60, 487, 24);
-		shoujian.setVisible(false);
 		leftpanel.add(shoujian);
+		shoujian.setVisible(false);
+	
+	
       
 		
 		shoujianA = new JLabel("您提交的收件单未通过审批");
 		shoujianA.setBounds(21, 60, 487, 24);
 		shoujianA.setForeground(Color.red);
-		shoujianA.setVisible(false);
 		leftpanel.add(shoujianA);
+		shoujianA.setVisible(false);
+		
 	
 	    
 		shoujianB = new JLabel("您提交的收件单正在等待审批，请耐心等待哦～");
 		shoujianB.setBounds(21, 60, 487, 24);
 		shoujianB.setForeground(Color.red);
-		shoujianB.setVisible(false);
 		leftpanel.add(shoujianB);
+		shoujianB.setVisible(false);
+	
 	}
 
 	public MailOrderPanel getMailOrderPanel() {
@@ -356,7 +362,15 @@ public class CourierFrame extends JFrame {
 		jijianB.setVisible(torf);
 	}
 	
-
+   public void setJijian(boolean dengdai,boolean tongguo,boolean butongguo ) {
+	   jijianB.setVisible(dengdai);
+	   jijian.setVisible(tongguo);
+	   jijianA.setVisible(butongguo);	   
+   }
 	
-
+  public void setShoujian(boolean dengdai,boolean tongguo,boolean butongguo) {
+	  shoujianB.setVisible(dengdai);
+	  shoujian.setVisible(tongguo);
+	  shoujianA.setVisible(butongguo);	  
+  }
 }

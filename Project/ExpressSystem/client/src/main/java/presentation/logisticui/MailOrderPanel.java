@@ -61,7 +61,7 @@ public class MailOrderPanel extends JPanel {
 	private MJTextField volum;
 	private MJTextField money;
 	private MJTextField predate;
-	private DeliveryNoteInputBLService service ;
+	private DeliveryNoteInputBLService service = new DeliveryNoteInput();;
 	private MJTextField senderPho;
 	private MJTextField barcode;
 	private ResultMsg res;
@@ -93,7 +93,7 @@ public class MailOrderPanel extends JPanel {
         lim = logInMsg;
 		setSize(WIDTH,HEIGHT);
 		setLayout(null);
-		service = new DeliveryNoteInput();//实例化bl接口
+		//service = new DeliveryNoteInput();//实例化bl接口
 		// service = new DeliveryNoteInputBLService_Stub();
 		 parent = courierFrame;
 		 sendDocVO = parent.getDeliveryNoteVo();
@@ -302,7 +302,7 @@ public class MailOrderPanel extends JPanel {
                     String price = df.format(sendDocMsg.getPrice());//显示价格，保留两位，四舍五入
                     money.setText(price);
                     predate.setText(sendDocMsg.getPredectedDate());//显示预计到达日期
-                    parent.setDeliveryNoteVo(sendDocVO);//将单据信息存到vo里
+                   // parent.setDeliveryNoteVo(sendDocVO);//将单据信息存到vo里
 					int result1 = JOptionPane.showConfirmDialog(null, "确认提交审批？（≧∇≦）","系统提示",
 							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);//询问是否确认提交
 
@@ -310,7 +310,8 @@ public class MailOrderPanel extends JPanel {
 						
 						UnEditablePanel.UnEdit(MailOrderPanel.this);
 						parent.setMailOrderPanel(MailOrderPanel.this);
-						parent.setjijianB(true);
+						parent.setJijian(true, false,false);
+						System.out.println("提交了寄件单");
 						new Submitter().start();
                       
 					}
@@ -332,8 +333,7 @@ public class MailOrderPanel extends JPanel {
 	
 	
 	public void setResult(ResultMsg s) {
-		parent.setjijianB(false);	
-		parent.initjijian(s.isPass());
+		parent.setJijian(false, s.isPass(), !s.isPass());
 		parent.leftpanel.repaint();
 		if(s.isPass()){
 			parent.setMailOrderPanel(null);
@@ -349,6 +349,7 @@ public class MailOrderPanel extends JPanel {
 		public void run() {
 			super.run();
 			setResult(service.submitSendDoc(sendDocVO));
+			System.out.println(service.submitSendDoc(sendDocVO).getMessage());
 		}
 	}
 	

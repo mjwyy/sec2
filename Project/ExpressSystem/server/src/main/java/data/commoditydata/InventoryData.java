@@ -82,7 +82,7 @@ public class InventoryData extends UnicastRemoteObject implements InventoryDataS
     	 * 1、先获取一下本仓库内货物条形码与金额，计算其总数
     	 */
     	
-    	sql = "select barcode,money from order where (isInStorage=1 AND warehouseID='"+org+"')";
+    	sql = "select barcode,money from goodsorder where (isInStorage=1 AND warehouseID='"+org+"')";
     	ResultSet set1 = null;
     	
     	try {

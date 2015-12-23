@@ -74,8 +74,6 @@ public class OrganizationInfoVO {
 		return msg;
 	}
 
-
-    //TODO 管理机构时人员信息丢失与否
 	public Object toPO() {
 		OrganizationPO po = new OrganizationPO(organizationNum, type, name);
 		return po;

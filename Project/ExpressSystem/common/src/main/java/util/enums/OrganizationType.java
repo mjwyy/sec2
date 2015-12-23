@@ -9,7 +9,6 @@ public enum  OrganizationType {
     TRANSIT_CENTER(2),
     STORE_HOUSE(3),
     HEADQUARTERS(4);
-    //TODO 添加时候种类错误
 
     private int type;
 

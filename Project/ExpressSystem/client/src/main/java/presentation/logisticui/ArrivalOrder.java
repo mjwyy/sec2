@@ -542,7 +542,6 @@ public class ArrivalOrder extends JPanel {
 			//	ResultMsg result=arrive.submitHallArrivalDoc(vo);
 			//	setResult(result);
 			setResult(arrive.submitHallArrivalDoc(vo));
-			//TODO 要不要让人家sleep一下下
 		}
 	}
 	public void paintComponent(Graphics g) {

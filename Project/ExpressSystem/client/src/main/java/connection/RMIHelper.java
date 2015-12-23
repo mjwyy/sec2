@@ -36,6 +36,7 @@ public class RMIHelper {
     private void initiateIP() {}
 
     public static void tryConnect() throws RemoteException, NotBoundException {
+        // 获取服务器的IP地址
         serverIP = RMIConfig.getServerIP();
         if (System.getSecurityManager() == null) {
             System.setSecurityManager(new SecurityManager());

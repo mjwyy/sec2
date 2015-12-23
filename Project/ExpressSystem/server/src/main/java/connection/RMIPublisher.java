@@ -46,9 +46,11 @@ public class RMIPublisher {
 
     }
 
+    /**
+     * 服务器向指定的IP与端口注册
+     */
     private void setHostIP() {
         hostIP =  RMIConfig.getServerIP();
-//        hostIP = "localhost";
         regPort =  Integer.parseInt(RMIConfig.getPort());
     }
 

@@ -7,8 +7,8 @@ public class RMIConfig {
 
 //    private static final HashMap<String,String> params;
 
-    private static final String serverIP;
-    private static final String port;
+    public static String serverIP;
+    public static String port;
 
     public static boolean IS_DEBUG = false;
 
@@ -44,5 +44,11 @@ public class RMIConfig {
         return port;
     }
 
+    public static void setServerIP(String serverIP) {
+        RMIConfig.serverIP = serverIP;
+    }
 
+    public static void setPort(String port) {
+        RMIConfig.port = port;
+    }
 }

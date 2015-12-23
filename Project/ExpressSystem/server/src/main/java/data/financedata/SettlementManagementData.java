@@ -43,10 +43,8 @@ public class SettlementManagementData extends UnicastRemoteObject implements Set
     @Override
     public boolean addIncomeNote(IncomeNotePO note, String staffID) throws RemoteException {
     	
-    	//TODO 由于DatabaseFactoryMysqlImpl暂时未跟进，所以强制类型转换。应尽快给出接口。
-    	BankAccountBalanceAccess bankAccess = 
-    			(BankAccountBalanceAccess) DatabaseFactoryMysqlImpl.getInstance().getBankAccountManagementDataService();
-    	
+    	BankAccountBalanceAccess bankAccess =
+                DatabaseFactoryMysqlImpl.getInstance().getBankAccountBalanceAccess();
     	//检查钱数是否正常（是否为数字）
     	try {
     		double moneyAmount = Double.parseDouble(note.getMoney());

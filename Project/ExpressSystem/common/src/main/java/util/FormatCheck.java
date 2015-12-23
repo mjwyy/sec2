@@ -332,7 +332,6 @@ public class FormatCheck {
                 new ResultMsg(false,"银行账号格式错误，应为10位数字");
     }
 
-    //TODO 账号密码必须为6~10位数字?!
     /**
      * 检查账号密码格式，必须为6~10位数字
      *

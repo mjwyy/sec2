@@ -10,7 +10,6 @@ import util.ResultMsg;
 import vo.ArrivalNoteOnTransitVO;
 
 import java.rmi.RemoteException;
-import java.sql.SQLException;
 
 /**
  * Created by kylin on 15/11/17.
@@ -35,7 +34,7 @@ public class ArrivalNoteOnTransit implements ArrivalNoteOnTransitBLService {
     public ResultMsg submitCenterArrivalDoc(ArrivalNoteOnTransitVO centerArrivalDocVO) {
         try {
             String city = centerArrivalDocVO.getDeparturePlace();
-            if( !CityManager.hasCity(city)){
+            if( !InfoManager.hasCity(city)){
                 return new ResultMsg(false,"输入的城市不存在,请重新输入!");
             }
             this.po = centerArrivalDocVO.toPO();

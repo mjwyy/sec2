@@ -34,6 +34,10 @@ public class LoadNoteOnTransit implements LoadNoteOnTransitBLService {
     @Override
     public ResultMsg submitCenterLoadDoc(LoadNoteOnTransitVO centerLoadDocVO) {
         try {
+            if( !InfoManager.isStaffInDB(centerLoadDocVO.getSupercargoMan()) )
+                return new ResultMsg(false,"输入的押运员信息不存在,请重新输入!");
+            if( !InfoManager.isStaffInDB(centerLoadDocVO.getGuardMan()) )
+                return new ResultMsg(false,"输入的监装员信息不存在,请重新输入!");
             this.po = centerLoadDocVO.toPO();
             this.po.setUserName(centerLoadDocVO.getUserName());
             this.po.setOrganization(centerLoadDocVO.getOrganization());

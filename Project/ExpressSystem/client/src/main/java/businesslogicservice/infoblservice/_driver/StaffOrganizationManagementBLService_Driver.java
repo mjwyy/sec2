@@ -26,9 +26,9 @@ public class StaffOrganizationManagementBLService_Driver {
 	public void drive(StaffOrganizationManagementBLService service){
 //        testaddStaff(service);
 //        addOrg(service);
-//        findStaff(service);
+        findStaff(service);
 //        findOrg(service);
-        modifyOrg(service);
+//        modifyOrg(service);
 //        testRemove(service);
 	}
 
@@ -60,8 +60,9 @@ public class StaffOrganizationManagementBLService_Driver {
 
     public void findStaff(StaffOrganizationManagementBLService service){
 //        StaffVO vo  = new StaffVO(null,"经理",null,null,null,null,0,null,null);
-        StaffVO vo  = new StaffVO(null,null,"女",null,null,null,-1,null,null);
+        StaffVO vo  = new StaffVO(null,"监装员2",null,null,null,null,-1,null,null);
         ArrayList<StaffVO> staffVOs = service.findStaffInfo(vo);
+        System.out.println("staffVOs.size() = "+ staffVOs.size());
         for(StaffVO staffVO: staffVOs){
             System.out.println(staffVO.getSex()+" "+
                     staffVO.getName()+" "+staffVO.getOrganization());

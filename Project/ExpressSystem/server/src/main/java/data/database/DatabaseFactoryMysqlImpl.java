@@ -11,6 +11,7 @@ import data.infodata.BankAccountManagementData;
 import data.infodata.DriverVehicleManagementData;
 import data.infodata.StaffOrganizationManagementData;
 import data.infodata.SystemUserManagementData;
+import data.infodata.inte.BankAccountBalanceAccess;
 import data.logisticdata.*;
 import data.statisticdata.*;
 import data.statisticdata.inte.LogInsertDataService;
@@ -73,6 +74,8 @@ public class DatabaseFactoryMysqlImpl implements DatabaseFactory{
         logInsertDataService = new LogInsertData();
         deliveryNoteInputDataService = new DeliveryNoteInputData(orderInquiryDataService);
         noteApprovingDataService = new NoteApprovingData();
+
+        bankAccountBalanceAccess = new BankAccountManagementData();
     }
 
     public static DatabaseFactoryMysqlImpl getInstance() throws RemoteException {
@@ -98,6 +101,7 @@ public class DatabaseFactoryMysqlImpl implements DatabaseFactory{
     private CreditNoteInputDataService creditNoteInputDataService;
     private PaymentInputDataService paymentInputDataService;
     private SettlementManagementDataService settlementManagementDataService;
+    private BankAccountBalanceAccess bankAccountBalanceAccess;
 
     //info
     private BankAccountManagementDataService bankAccountManagementDataService;
@@ -242,4 +246,8 @@ public class DatabaseFactoryMysqlImpl implements DatabaseFactory{
         return logInsertDataService;
     }
 
+    @Override
+    public BankAccountBalanceAccess getBankAccountBalanceAccess() {
+        return bankAccountBalanceAccess;
+    }
 }

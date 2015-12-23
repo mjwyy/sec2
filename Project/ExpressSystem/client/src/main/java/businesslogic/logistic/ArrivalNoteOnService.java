@@ -19,8 +19,6 @@ import java.sql.SQLException;
  */
 public class ArrivalNoteOnService implements ArrivalNoteOnServiceBLService {
 
-    //TODO 界面输入的条形码无法删除
-
     private ArrivalNoteOnServiceDataService dataService;
 
     private ArrivalNoteOnServicePO arrivalNoteOnServicePO;
@@ -64,6 +62,9 @@ public class ArrivalNoteOnService implements ArrivalNoteOnServiceBLService {
     @Override
     public ResultMsg submitHallDeliverDoc(DeliverNoteOnServiceVO deliverDocVO) {
         try {
+            if( !InfoManager.isStaffInDB(deliverDocVO.getDeliveryMan()) ){
+                return new ResultMsg(false,"输入的派件员信息不存在,请重新输入!");
+            }
             this.deliverNoteOnServicePO = deliverDocVO.toPO();
             this.deliverNoteOnServicePO.setOrganization(deliverDocVO.getOrganization());
             this.deliverNoteOnServicePO.setUserName(deliverDocVO.getUserName());

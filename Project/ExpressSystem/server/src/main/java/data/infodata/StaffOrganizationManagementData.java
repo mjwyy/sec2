@@ -251,7 +251,6 @@ public class StaffOrganizationManagementData extends UnicastRemoteObject impleme
         ArrayList<StaffPO> result = new ArrayList<>();
         try {
             statement = connection.prepareStatement(str);
-            System.out.println(str);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 String staff_id = resultSet.getString(1);

@@ -112,7 +112,7 @@ public class SystemUserManagement implements SystemUserManagementBLService {
     	try {
 			LogInMsg msg = dataService.logIn(userNum, initialPassword);
 			if(msg.isPass()) {
-				RuntimeUserInfo.setUserNum(userNum);
+				RuntimeUserInfo.setUserName(userNum);
 			}
             return msg;
 		} catch (RemoteException e) {

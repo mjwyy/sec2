@@ -75,7 +75,7 @@ public class ArrivalNoteOnTransitData extends NoteInputData implements ArrivalNo
         ResultMsg resultMsg = new ResultMsg(false);
         //审批通过,追加修改物流信息
         if (result == DocState.PASSED) {
-            this.updateOrder(po.getBarcodeAndStates(),"已到达"+po.getOrganization());
+            this.updateOrder(po.getBarcodeAndStates(),"已到达 "+po.getOrganization());
             resultMsg.setPass(true);
             resultMsg.setMessage("中转中心到达单提交成功!");
         //审批否决,获取总经理意见

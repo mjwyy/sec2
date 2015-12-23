@@ -10,7 +10,6 @@ import util.ResultMsg;
 import vo.TransitNoteOnTransitVO;
 
 import java.rmi.RemoteException;
-import java.sql.SQLException;
 
 /**
  * Created by kylin on 15/11/17.
@@ -32,13 +31,14 @@ public class TransitNoteInput implements TransitNoteInputBLService {
     }
 
     @Override
-    //TODO 检查人员的存在性
     public ResultMsg submitCenterTransitDoc(TransitNoteOnTransitVO centerTransitDocVO) {
         try {
-            System.out.println("this is TransitNoteInput");
+            if( !InfoManager.isStaffInDB(centerTransitDocVO.getSupercargoMan()) )
+                return new ResultMsg(false,"输入的监装员信息不存在,请重新输入!");
+
             String city1 = centerTransitDocVO.getDeparturePlace();
             String city2 = centerTransitDocVO.getDesitination();
-            if( (!CityManager.hasCity(city1)) || (!CityManager.hasCity(city2))){
+            if( (!InfoManager.hasCity(city1)) || (!InfoManager.hasCity(city2))){
                 return new ResultMsg(false,"输入的城市不存在,请重新输入!");
             }
             this.po = (TransitNotePO) centerTransitDocVO.toPO();

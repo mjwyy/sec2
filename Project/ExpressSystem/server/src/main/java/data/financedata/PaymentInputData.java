@@ -43,9 +43,7 @@ public class PaymentInputData extends UnicastRemoteObject implements PaymentInpu
     @Override
     public boolean addPayment(PaymentPO payment, String staffID) throws RemoteException, FailToPassApprovingException {
     	
-    	//TODO 由于DatabaseFactoryMysqlImpl暂时未跟进，所以强制类型转换。应尽快给出接口。
-    	bankAccess = (BankAccountBalanceAccess) DatabaseFactoryMysqlImpl.getInstance().
-    			getBankAccountManagementDataService();
+    	bankAccess = DatabaseFactoryMysqlImpl.getInstance().getBankAccountBalanceAccess();
     	//注意首先检查余额，余额不够直接回去
 
     	BigDecimal balance = null;

@@ -31,7 +31,7 @@ public class RMIConfig {
 //            }
 //            serverIP = params.get("serverIP");
 //            port =  params.get("port");
-        //TODO RMI配置写入代码
+        //TODO RMI配置移出代码
         serverIP = "localhost";
         port = "1099";
     }

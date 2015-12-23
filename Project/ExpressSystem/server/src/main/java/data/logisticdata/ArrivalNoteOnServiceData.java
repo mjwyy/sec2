@@ -125,7 +125,8 @@ public class ArrivalNoteOnServiceData extends NoteInputData implements ArrivalNo
         LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+po.getUserName()+
                 "添加派件单,派件员:"+po.getDeliveryMan());
         if (result == DocState.PASSED) {
-            this.updateOrder("正由 "+po.getUserName()+" 快递员派送",po.getBarCode());
+            this.updateOrder("正由 "+po.getOrganization()+" 的快递员 " + po.getDeliveryMan()
+                    +" 派送",po.getBarCode());
             resultMsg.setPass(true);
             resultMsg.setMessage("派件单提交成功!");
         } else {

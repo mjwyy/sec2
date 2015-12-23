@@ -95,7 +95,6 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
     }
 
     @Override
-    //TODO 查询结果多余
     public ArrayList<UserPO> inquireUser(UserPO info) throws ElementNotFoundException {
         Connection connection = DatabaseManager.getConnection();
         String sqlFindAll = null;
@@ -173,6 +172,7 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
             ResultSet set = stmt.executeQuery();
             if(set.next()) { // Found it!
                 Authority a = Authority.getAuthObject(set.getInt("rights"));
+                // 这里要求staff表格的staff_id与用户表的account一致
                 sql = "SELECT name,organization from staff where staff_id = '"+account+"'";
                 stmt = connection.prepareStatement(sql);
                 set = stmt.executeQuery();
@@ -182,7 +182,11 @@ public class SystemUserManagementData extends UnicastRemoteObject implements Sys
                     userName = set.getString("name");
                     organization =  set.getString("organization");
                 }
-                RuntimeUserInfo.setUserNum(userName);
+
+                // 记录登陆后获取的用户的姓名与用户所在机构的名称
+                RuntimeUserInfo.setUserName(userName);
+                RuntimeUserInfo.setUserOrgName(organization);
+
                 sql = "SELECT organization_id from organization where name = '"+organization+"'";
                 stmt = connection.prepareStatement(sql);
                 set = stmt.executeQuery();

@@ -197,4 +197,5 @@ public class NoteInputData extends UnicastRemoteObject implements Remote, Serial
         return false;
     }
 
+
 }

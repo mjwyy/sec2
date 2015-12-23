@@ -88,7 +88,8 @@ public class LoadNoteOnServiceData extends NoteInputData implements LoadNoteOnSe
 
         if (result == DocState.PASSED) {
             System.out.println("ArrivalNoteOnTransitPO is passed!");
-            this.updateOrder("已到达"+po.getOrganization(),po.getBarcodes());
+            this.updateOrder("已从 "+po.getOrganization()+" 装车,发往 "+po.getDestination(),
+                    po.getBarcodes());
             resultMsg.setPass(true);
             resultMsg.setMessage("营业厅装车单提交成功!");
 

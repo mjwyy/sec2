@@ -34,6 +34,10 @@ public class LoadNoteOnService implements LoadNoteOnServiceBLService {
     @Override
     public ResultMsg submitHallLoadDoc(LoadNoteOnServiceVO hallLoadDocVO) {
         try {
+            if( !InfoManager.isStaffInDB(hallLoadDocVO.getSupercargoMan()) )
+                return new ResultMsg(false,"输入的押运员信息不存在,请重新输入!");
+            if( !InfoManager.isStaffInDB(hallLoadDocVO.getGuardMan()) )
+                return new ResultMsg(false,"输入的监装员信息不存在,请重新输入!");
             this.po = hallLoadDocVO.toPO();
             this.po.setOrganization(hallLoadDocVO.getOrganization());
             this.po.setUserName(hallLoadDocVO.getUserName());

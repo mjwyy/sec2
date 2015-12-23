@@ -1,9 +1,13 @@
 package businesslogic.logistic;
 
-import businesslogicservice.statisticblservice.BusinessDataModificationBLService;
+import businesslogic.info.StaffOrganizationManagement;
 import connection.RMIHelper;
 import connection.RemoteObjectGetter;
+import dataservice.exception.ElementNotFoundException;
+import dataservice.infodataservice.StaffOrganizationManagementDataService;
 import dataservice.statisticdataservice.BusinessDataModificationDataService;
+import po.StaffPO;
+import vo.StaffVO;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -14,14 +18,17 @@ import java.util.regex.Pattern;
 /**
  * Created by kylin on 15/12/15.
  */
-public class CityManager {
+public class InfoManager {
 
-    private static BusinessDataModificationDataService dataService;
+    private static BusinessDataModificationDataService businessDataService;
+    private static StaffOrganizationManagementDataService staffDataService;
 
     static {
         RemoteObjectGetter getter = new RemoteObjectGetter();
-        dataService = (BusinessDataModificationDataService)
-                getter.getObjectByName("BusinessDataModificationDataService");;
+        businessDataService = (BusinessDataModificationDataService)
+                getter.getObjectByName("BusinessDataModificationDataService");
+        staffDataService = (StaffOrganizationManagementDataService)
+                getter.getObjectByName("StaffOrganizationManagementDataService");
     }
 
     /**
@@ -31,7 +38,7 @@ public class CityManager {
      * @return 地址中城市是否在系统中存在
      */
     public static boolean hasCity(String address) throws RemoteException {
-        ArrayList<String> cities = dataService.getAllCities();
+        ArrayList<String> cities = businessDataService.getAllCities();
         for (String regex : cities) {
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher = pattern.matcher(address);
@@ -49,7 +56,7 @@ public class CityManager {
      * @return 从地址中找到的城市(如果存在)
      */
     public static String findCity(String senderAddress) throws RemoteException {
-        ArrayList<String> cities = dataService.getAllCities();
+        ArrayList<String> cities = businessDataService.getAllCities();
         for (String regex : cities) {
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher = pattern.matcher(senderAddress);
@@ -57,6 +64,26 @@ public class CityManager {
                 return regex;
         }
         return null;
+    }
+
+
+    /**
+     * 判断一个人员是否存在于系统中
+     *
+     * @param staffName 目标人员的名字
+     * @return 查询结果
+     */
+    public static boolean isStaffInDB(String staffName) throws RemoteException {
+        StaffVO vo = new StaffVO(null,staffName,null,null,null,null,-1,null,null);
+        StaffPO po = (StaffPO) vo.toPO();
+        try {
+            ArrayList<StaffPO> staffPOs = staffDataService.findStaff(po);
+            if( !staffPOs.isEmpty() )
+                return true;
+        } catch (ElementNotFoundException e) {
+            return false;
+        }
+        return false;
     }
 
 }

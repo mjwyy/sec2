@@ -88,7 +88,7 @@ public class LoadNoteOnTransitData extends NoteInputData implements LoadNoteOnTr
                 "transpotationNumber", po.getTranspotationNumber());
 
         if (result == DocState.PASSED) {
-            this.updateOrder( "已从"+po.getOrganization()+"装车发往本地营业厅",po.getBarcodes());
+            this.updateOrder( "已从 "+po.getOrganization()+" 装车发往本地营业厅",po.getBarcodes());
             resultMsg.setPass(true);
             resultMsg.setMessage("中转中心装车单提交成功!");
 

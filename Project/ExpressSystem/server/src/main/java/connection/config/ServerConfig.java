@@ -23,7 +23,7 @@ public class ServerConfig {
 //        }  catch (DocumentException e) {
 //            e.printStackTrace();
 //        }
-        //TODO 数据库配置写入代码
+        //TODO 数据库配置移出代码
         DATABASE_CONFIG = new DatabaseConfig();
     }
 

@@ -1,5 +1,6 @@
 package data.database;
 
+import data.infodata.inte.BankAccountBalanceAccess;
 import data.statisticdata.inte.LogInsertDataService;
 import dataservice.commoditydataservice.InventoryDataService;
 import dataservice.commoditydataservice.StorageInDataService;
@@ -66,4 +67,6 @@ public interface DatabaseFactory{
     OrderInquiryDataService getOrderInquiryDataService();
 
     LogInsertDataService getLogInsertDataService();
+
+    BankAccountBalanceAccess getBankAccountBalanceAccess();
 }

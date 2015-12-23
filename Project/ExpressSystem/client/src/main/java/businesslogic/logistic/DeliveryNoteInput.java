@@ -11,18 +11,13 @@ import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.logisticdataservice.DeliveryNoteInputDataService;
 import dataservice.statisticdataservice.BusinessDataModificationDataService;
 import po.DeliveryNotePO;
-import po.OrderPO;
 import util.ResultMsg;
 import util.SendDocMsg;
-import util.enums.PackageType;
 import util.enums.PriceType;
 import vo.DeliveryNoteVO;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by kylin on 15/11/10.
@@ -36,7 +31,7 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
     private PriceStrategy priceStrategy;
     private TimePresumeStrategy timePresumeStrategy;
 
-    private CityManager cityManager;
+    private InfoManager DBInfoManager;
 
     public DeliveryNoteInput() {
         RemoteObjectGetter getter = new RemoteObjectGetter();
@@ -58,8 +53,8 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
                 String packPriceType = sendDocVO.getPackType().toString();
                 double pricePerKG = businessDataModificationDataService.getPrice(PriceType.PricePerKg);
                 double packagePrice = businessDataModificationDataService.getPrice(PriceType.getPriceType(packPriceType));
-                String city1 = CityManager.findCity(sendDocVO.getSenderAddress());
-                String city2 = CityManager.findCity(sendDocVO.getReceiverAddress());
+                String city1 = DBInfoManager.findCity(sendDocVO.getSenderAddress());
+                String city2 = DBInfoManager.findCity(sendDocVO.getReceiverAddress());
                 //防御式编程:如果城市在系统中不存在,返回错误信息
                 if(city1 == null)
                     return new ResultMsg(false,"寄件人城市有误!");

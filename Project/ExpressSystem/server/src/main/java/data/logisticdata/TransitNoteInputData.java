@@ -36,7 +36,6 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
 
     @Override
     public ResultMsg insert(TransitNotePO po) throws RemoteException, ElementNotFoundException, InterruptWithExistedElementException {
-        //TODO 计算运费
         String sql = "insert into `Express`.`note_transit`" +
                 " ( `barcodes`, `transitDocNumber`, `supercargoMan`, `departurePlace`, " +
                 "`transitType`, `date`, `desitination`, `transportNumber`)" +
@@ -44,7 +43,6 @@ public class TransitNoteInputData extends NoteInputData implements TransitNoteIn
         Connection connection = DatabaseManager.getConnection();
         PreparedStatement statement = null;
         ResultMsg resultMsg = new ResultMsg(false);
-        System.out.println("this is TransitNoteInputData");
         try {
             statement = connection.prepareStatement(sql);
             StringBuilder stringBuilder = new StringBuilder();

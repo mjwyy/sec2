@@ -88,13 +88,13 @@ public class IncomeNoteVO {
 	}
 	
 	public ResultMsg checkFormat(){
-		ResultMsg[] msgs = new ResultMsg[7];
+		ResultMsg[] msgs = new ResultMsg[6];
 		msgs[0] = FormatCheck.isDate(date);
 		msgs[1] = FormatCheck.isOrganizationName(institution);
 		msgs[2] = FormatCheck.isMoney(money);
 		msgs[3] = FormatCheck.isChineseName(payee);
 		msgs[4] = FormatCheck.isServiceHall(payService);
-		msgs[6] = bankAccount.checkFormat();
+		msgs[5] = bankAccount.checkFormat();
 		
 		for(int i=0;i<msgs.length;i++) {
 			if(!msgs[i].isPass()) return msgs[i];

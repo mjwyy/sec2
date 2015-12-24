@@ -123,8 +123,8 @@ public class ChaKan extends JPanel {
 						heji.setVisible(true);
 						//详细信息显示
 						if(ivo==null){//为空
-							JOptionPane.showConfirmDialog(null, "木有什么可以看哒","系统提示",
-									JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+							JOptionPane.showMessageDialog(null, "暂时木有库存哦~");
+							
 							return;
 						}
 						InventoryVO vv=ivo;
@@ -351,7 +351,7 @@ public class ChaKan extends JPanel {
 				mon.setText(money+"");
 				}
 				else{
-					JOptionPane.showConfirmDialog(null, "这段时间内木有库存哦~");
+					JOptionPane.showMessageDialog(null, "暂时木有库存哦~");
 				}
 			}
 			else{

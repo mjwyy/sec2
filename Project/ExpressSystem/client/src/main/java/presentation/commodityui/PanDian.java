@@ -23,6 +23,7 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
+import businesslogic.commodity.StorageExport;
 import businesslogic.commodity.StorageInquiryAll;
 import businesslogicservice.commodityblservice.StorageInquiryAllBLService;
 import businesslogicservice.commodityblservice._Stub.StorageInquiryAllBLService_Stub;
@@ -33,6 +34,7 @@ import vo.InventoryVO;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.File;
 import java.util.ArrayList;
 
 import presentation.util.CurrentTime;
@@ -42,6 +44,8 @@ public class PanDian extends JPanel {
 private JFrame frame;
 private DefaultTableModel model;
 private JTable table;
+private InventoryVO inventory=null;
+private boolean isnull=true;
 	/**
 	 * Create the panel.
 	 */
@@ -110,12 +114,18 @@ private JTable table;
 	        			//当天的库存快照，时间为当天
 	        			//批次（日期）批号（序号）,
 	        			//快递编号、入库日期、目的地、区号、排号、架号、位号
-						InventoryVO inventory=sab.request();
+						inventory=sab.request();
+						isnull=false;
 						ArrayList<CommodityGoodsVO> goodsInfo=inventory.getGoodsInfo();
+						
+						if(goodsInfo.size()==0){
+							JOptionPane.showMessageDialog(null, "暂时木有库存哦~");
+							return ;
+						}
 						for(int i=0;i<goodsInfo.size();i++){
 							CommodityGoodsVO v=goodsInfo.get(i);
 
-							Object[] aa={CurrentTime.getCurrentTimeDate()+"000"+i,v.getBarcode(),CurrentTime.getCurrentTimeDate(),
+							Object[] aa={CurrentTime.getCurrentTimeDateSimple()+"000"+i,v.getBarcode(),CurrentTime.getCurrentTimeDate(),
 									v.getDestination(),v.getAreacode(),
 									v.getRownumber(),v.getFramenumber(),v.getPlacenumber()};
 							model.addRow(aa);
@@ -135,11 +145,25 @@ private JTable table;
 	        JButton btnexcel = new JButton("导出excel");
 	        btnexcel.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent arg0) {
+	        		if(isnull){
+	        			JOptionPane.showMessageDialog(null, "请先库存盘点哦~");
+	        			return;
+	        		}
 	        	MyJFileChooser mfc=new MyJFileChooser();
 	        	if(mfc.showSaveDialog(PanDian.this)== JFileChooser.APPROVE_OPTION){
 	        		String filename=mfc.getSelectedFile().getAbsolutePath();
 	        		System.out.println(filename);
-	        		//
+	        		
+	        		StorageExport  sse=new StorageExport();
+	        		
+	        			try {
+							sse.exportTo(inventory,filename);
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+	        		
+	        		
 	        	}
 	        	}
 	        });
@@ -153,10 +177,5 @@ private JTable table;
 			 ImageIcon img = new ImageIcon("image/0111.jpg");
 			 g.drawImage(img.getImage(), 0, 0, null);
 			}
-
-
-		
-
-
-		
+	
 }

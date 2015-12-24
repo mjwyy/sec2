@@ -361,9 +361,7 @@ public class Commodity extends JFrame {
 		rukuF.setVisible(f);
 	}
 	public void initChuku(boolean w,boolean s,boolean f){
-		System.out.println(w);
-		System.out.println(s);
-		System.out.println(f);
+		
 		chuku.setVisible(w);
 		chukuS.setVisible(s);
 		chukuF.setVisible(f);

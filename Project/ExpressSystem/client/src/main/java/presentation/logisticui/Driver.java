@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 
 import presentation.util.MJTextField;
+import presentation.util.ShowMessageFrame;
 import util.ResultMsg;
 import util.enums.StaffType;
 import vo.DriverVO;
@@ -182,6 +183,7 @@ public class Driver extends JPanel {
 					String[] rowValues={code.getText(),name.getText(),sex.getText(),orgi.getText(),posi.getText(),
 							id.getText(),workhour.getText(),phone.getText(),sala.getText(),qixian.getText()};
 					model.addRow(rowValues);
+					setTishi(0);
 				}
 				else{
 					int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
@@ -201,14 +203,20 @@ public class Driver extends JPanel {
 				if(seletedRow!=-1){
 					DriverVO vo=new DriverVO(code.getText(),name.getText(),sex.getText(),orgi.getText(),StaffType.DRIVER,
 							id.getText(),Integer.parseInt(workhour.getText()),phone.getText(),sala.getText(),qixian.getText());
+					 int result11 = JOptionPane.showConfirmDialog(null, "确认删除？","系统提示",
+                             JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+                     if(result11 == JOptionPane.YES_OPTION) {
 					ResultMsg result=dvm.deleteDriver(vo);	
 					if(result.isPass()){
+						
 					model.removeRow(seletedRow);
+					setTishi(2);
 					}
 					else{
 		        		int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
 								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 		        	}
+                     }
 				}
 				else{
 					//未选中提示要选中才能编辑哦；
@@ -238,6 +246,7 @@ public class Driver extends JPanel {
 					model.setValueAt(phone.getText(),selectedRow, 7);
 					model.setValueAt(sala.getText(),selectedRow, 8);
 					model.setValueAt(qixian.getText(),selectedRow, 9);
+					setTishi(1);
 					}
 					else{
 		        		int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
@@ -356,6 +365,20 @@ public class Driver extends JPanel {
 
 
 	}  
+	 public void setTishi(int i){
+	        //0新增成功
+	        if(i==0){
+	            new ShowMessageFrame("新增成功");
+	        }
+	        //1修改成功
+	        else if(i==1){
+	            new ShowMessageFrame("修改成功");
+	        }
+	        //2删除成功
+	        else{
+	            new ShowMessageFrame("删除成功");
+	        }
+	    }
 	public class findListener implements ActionListener{
 DriverVO vo=null;
 		public void actionPerformed(ActionEvent arg0) {

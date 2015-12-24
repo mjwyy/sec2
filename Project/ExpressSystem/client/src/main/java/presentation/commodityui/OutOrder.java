@@ -79,6 +79,8 @@ public class OutOrder extends JPanel {
 		setSize(1152,446);
 		setLayout(null);
 		intiComponent();
+		this.lim=lim;
+		this.frame=frame;
 	}
 
 
@@ -166,18 +168,10 @@ public class OutOrder extends JPanel {
 					//提交之后panel里都不可编辑
 					lock(false);
 					//提交之后右下面板换
-				//	frame.initChuku(true,false,false);
-					//	frame.setReceivingNoteVo(vo);//将vo存到Frame里
+					frame.initChuku(true,false,false);
 					//提交审批
 					new Submitter().start();
-//					ResultMsg result=sob.submitStorageOutDoc(vv);
-					
-//					if(result.isPass()) {
-//					}
-//					else{
-//						JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
-//								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-//					}
+//					
 				}
 				else {
 					return;
@@ -362,7 +356,7 @@ public class OutOrder extends JPanel {
 			CleanTextField.cleanJtable(table);
 		}
 		else{//审批未通过
-			JOptionPane.showConfirmDialog(null,s.getMessage() ,"系统提示",
+			JOptionPane.showConfirmDialog(null,s.getMessage(),"系统提示",
 					JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
 			//解锁那些可以编辑的框框
 		}

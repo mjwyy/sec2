@@ -101,11 +101,12 @@ public class InquiryPanel extends JPanel {
                 } catch (ElementNotFoundException e1) {
                     e1.printStackTrace();
                     String info = e1.getMessage();
-                    
+                    error(info);
 
                 } catch (RemoteException e1) {
                     e1.printStackTrace();
                     String info = e1.getMessage();
+                    error(info);
                 }
         		Vector row = new Vector();
         		ArrayList<String> historys = new ArrayList<String>();

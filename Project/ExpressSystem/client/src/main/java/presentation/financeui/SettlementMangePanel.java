@@ -132,6 +132,14 @@ public class SettlementMangePanel extends JPanel {
 						payee.getText(),payservice.getText(),bankAccount);
 				res = service.addReceiveRecord(vo);
 				if(res.isPass()){
+					Vector row = new Vector();
+					row.add(date.getText());
+					row.add(payee.getText());
+					row.add(institution.getText());
+					row.add(payservice.getText());
+					row.add(money.getText());
+					row.add(account.getText());
+					data.add(row.clone());
 					int result1 = JOptionPane.showConfirmDialog(null, "提交成功","系统提示",
 							JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
 				}else{

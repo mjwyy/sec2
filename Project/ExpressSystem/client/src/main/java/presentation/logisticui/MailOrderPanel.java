@@ -333,7 +333,7 @@ public class MailOrderPanel extends JPanel {
 	
 	
 	public void setResult(ResultMsg s) {
-		parent.setJijian(false, s.isPass(), !s.isPass());
+        parent.setJijian(false, s.isPass(), !s.isPass());
 		parent.leftpanel.repaint();
 		if(s.isPass()){
 			parent.setMailOrderPanel(null);
@@ -349,7 +349,6 @@ public class MailOrderPanel extends JPanel {
 		public void run() {
 			super.run();
 			setResult(service.submitSendDoc(sendDocVO));
-			System.out.println(service.submitSendDoc(sendDocVO).getMessage());
 		}
 	}
 	

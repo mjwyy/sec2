@@ -26,7 +26,7 @@ public class DeliveryNoteInputBLService_Driver {
 		DeliveryNoteVO sendDocVO1=new DeliveryNoteVO("王二狗","江苏省南京市栖霞区南京大学仙林校区",
                 "15005212000", "王二狗","上海市第三中学语文组",
                 "15005212000","爆炸物",10, 10,2,
-                DeliverCategory.EXPRESS, PackageType.Bag,"0000000005");
+                DeliverCategory.EXPRESS, PackageType.Bag,"0000000012");
         sendDocVO1.setUserName("收件的快递员");
         sendDocVO1.setOrganization("南京栖霞营业厅");
         ResultMsg result = service.inputSendDoc(sendDocVO1);

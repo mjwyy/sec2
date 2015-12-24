@@ -81,7 +81,7 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
      * @see data.statisticdata.LogInsHelper
      */
     private SendDocMsg afterInsert(DeliveryNotePO po) throws RemoteException, ElementNotFoundException, SQLException {
-        SendDocMsg sendDocMsg = null;
+        SendDocMsg sendDocMsg;
         String deliveryMan = po.getUserName();
         String orderInfo = "货物已被快递员 "+deliveryMan+" 签收";
         LogInsHelper.insertLog(po.getOrganization()+" 业务员 "+deliveryMan+
@@ -91,6 +91,7 @@ public class DeliveryNoteInputData extends NoteInputData implements DeliveryNote
         if (docState == DocState.PASSED) {
             //追加修改物流信息
             orderDataService.insertOrderPO(po.getBarCode(),orderInfo,po.getPrice());
+            sendDocMsg = new SendDocMsg(true, null, 0, null);
         } else {
             //审批没有通过
             String advice = this.getFailedAdvice("note_delivery",

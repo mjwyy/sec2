@@ -18,9 +18,9 @@ public enum NoteType implements Serializable{
 	 */
 	
 	ARRIVAL_NOTE_ON_SERVICE("营业厅到达单"),
-	DELIVER_NOTE_ON_SERVICE("营业厅送货单"),
+	DELIVER_NOTE_ON_SERVICE("营业厅派件单"),
 	ARRIVAL_NOTE_ON_TRANSIT("中转中心到达单"),
-	DELIVERY_NOTE("派件单"),
+	DELIVERY_NOTE("寄件单"),
 	LOAD_NOTE_ON_SERVICE("营业厅装车单"),
 	LOAD_NOTE_ON_TRANSIT("中转中心装车单"),
 	RECEIVING_NOTE("收件单"),

@@ -31,8 +31,6 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
     private PriceStrategy priceStrategy;
     private TimePresumeStrategy timePresumeStrategy;
 
-    private InfoManager DBInfoManager;
-
     public DeliveryNoteInput() {
         RemoteObjectGetter getter = new RemoteObjectGetter();
         this.dataService = (DeliveryNoteInputDataService) getter.getObjectByName("DeliveryNoteInputDataService");
@@ -53,8 +51,8 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
                 String packPriceType = sendDocVO.getPackType().toString();
                 double pricePerKG = businessDataModificationDataService.getPrice(PriceType.PricePerKg);
                 double packagePrice = businessDataModificationDataService.getPrice(PriceType.getPriceType(packPriceType));
-                String city1 = DBInfoManager.findCity(sendDocVO.getSenderAddress());
-                String city2 = DBInfoManager.findCity(sendDocVO.getReceiverAddress());
+                String city1 = InfoManager.findCity(sendDocVO.getSenderAddress());
+                String city2 = InfoManager.findCity(sendDocVO.getReceiverAddress());
                 //防御式编程:如果城市在系统中不存在,返回错误信息
                 if(city1 == null)
                     return new ResultMsg(false,"寄件人城市有误!");

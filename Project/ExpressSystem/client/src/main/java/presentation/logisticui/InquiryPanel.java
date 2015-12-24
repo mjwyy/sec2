@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import businesslogic.statistic.OrderInquiry;
 import dataservice.exception.ElementNotFoundException;
 import util.ResultMsg;
+import util.enums.GoodsState;
 import vo.OrderVO;
 import businesslogicservice.statisticblservice.OrderInquiryBLService;
 import businesslogicservice.statisticblservice._stub.OrderInquiryBLService_Stub;
@@ -61,7 +62,9 @@ public class InquiryPanel extends JPanel {
 	barcode.setColumns(10);
 	
 	name = new Vector();
-	name.add("历史轨迹");
+	name.add("时间");
+	name.add("物流信息");
+	name.add("货物状态");
 	data = new Vector();
 	model = new DefaultTableModel();
 	model.setDataVector(data, name);
@@ -69,7 +72,7 @@ public class InquiryPanel extends JPanel {
 	table.setBounds(76, 113, 555, 276);
 	JScrollPane scrollPane = new JScrollPane(table);
 	scrollPane.setEnabled(false);
-	scrollPane.setBounds(76, 113, 555, 276);
+	scrollPane.setBounds(76, 113, 731, 276);
 	add(scrollPane);
 	
     lblNewLabel = new JLabel("条形码应为10位0～9位的数字");
@@ -79,7 +82,7 @@ public class InquiryPanel extends JPanel {
 	lblNewLabel.setVisible(false);
 	
 	back = new JButton("返回");
-	back.setBounds(715, 386, 82, 37);
+	back.setBounds(836, 390, 82, 37);
 	add(back);
 	
 	JButton btnNewButton = new JButton("查询");
@@ -101,23 +104,33 @@ public class InquiryPanel extends JPanel {
                     String info = e1.getMessage();
                 }
                 ArrayList<String> history = new ArrayList<String>();
-				Vector row = new Vector();
-				history = vo.getHistory();
-				if(history.isEmpty()){
-					row.add("暂无跟踪记录");
-					data.add(row.clone());
-					model.setDataVector(data, name);
-					table.setModel(model);
-					row.clear();
-				}
-				else{for(int i = 0;i<history.size();i++){
-					row.add(history.get(i)+vo.getStateOfTransport());
-					data.add(row.clone());
-					model.setDataVector(data, name);
-					table.setModel(model);
-					row.clear();
-				}
-				}
+
+        		Vector row = new Vector();
+        		ArrayList<String> historys = new ArrayList<String>();
+        		historys = vo.getHistory();
+        		if(historys.isEmpty()){
+        			row.add("暂无跟踪记录");
+        			data.add(row.clone());
+        			row.clear();
+        			model.setDataVector(data, name);
+        			table.setModel(model);
+        			
+        		}else{
+        			
+        		for(int i = 0;i<historys.size();i++){
+        			String[] s = historys.get(i).split(",");
+        			GoodsState state = vo.getStateOfTransport();
+        			String historystate = s[1];
+        			row.add(s[0]);
+        			row.add(historystate);
+        			row.add(whichStates(state));
+        			data.add(row.clone());
+        			row.clear();
+        			model.setDataVector(data, name);
+        			table.setModel(model);
+        			//这里假设history货运状态以“时间＋“ ”＋历史轨迹形式
+        		}
+        		}
 				
 			}else{
 				lblNewLabel.setVisible(true);
@@ -133,4 +146,13 @@ public class InquiryPanel extends JPanel {
 	public JButton getBack(){
 		return back;
 	}
+	
+	  public String whichStates(GoodsState state) {
+		  if(state.equals(state.COMPLETE))
+			  return "完整(●°u°●)​";
+		  else if(state.equals(state.DAMAGED))
+			  return "损坏(ｰｰ;)";
+		  else 
+			  return "丢失(´Д` )";
+	  }
 }

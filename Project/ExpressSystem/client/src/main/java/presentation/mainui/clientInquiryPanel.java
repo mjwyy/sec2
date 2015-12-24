@@ -46,13 +46,14 @@ public class clientInquiryPanel extends JPanel {
 		name = new Vector();
 		name.add("时间");
 		name.add("物流信息");
+		name.add("货物状态");
 		data = new Vector();
 		model = new DefaultTableModel();
 		model.setDataVector(data,name);
 		table = new JTable(model);
-		table.setBounds(219, 139, 748, 392);
+		table.setBounds(135, 158, 913, 328);
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(222, 158, 826, 328);
+		scrollPane.setBounds(135, 158, 913, 328);
 		add(scrollPane);
 		
 	    btnNewButton = new JButton("返回");
@@ -78,6 +79,7 @@ public class clientInquiryPanel extends JPanel {
 			String historystate = s[1];
 			row.add(s[0]);
 			row.add(historystate);
+			row.add(whichStates(state));
 			data.add(row.clone());
 			row.clear();
 			model.setDataVector(data, name);
@@ -101,6 +103,13 @@ public class clientInquiryPanel extends JPanel {
 		 g.drawImage(img, 0, 0, null);
 		}
 	
-
+  public String whichStates(GoodsState state) {
+	  if(state.equals(state.COMPLETE))
+		  return "完整(●°u°●)​";
+	  else if(state.equals(state.DAMAGED))
+		  return "损坏(ｰｰ;)";
+	  else 
+		  return "丢失(´Д` )";
+  }
 
 }

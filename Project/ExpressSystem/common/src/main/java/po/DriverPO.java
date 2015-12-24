@@ -34,7 +34,7 @@ public class DriverPO extends StaffPO implements Serializable {
 
     public DriverVO toVO() {
         return new DriverVO(staffID,name, gender, organization, position
-                , staffID, Integer.parseInt(Double.toString(workHour)), phoneNumber, Double.toString(salary), licenseDate);
+                ,IDCardNumber, (int)workHour, phoneNumber, Double.toString(salary), licenseDate);
     }
 
     public String getLicenseDate() {

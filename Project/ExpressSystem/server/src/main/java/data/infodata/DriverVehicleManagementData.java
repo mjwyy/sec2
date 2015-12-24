@@ -18,6 +18,7 @@ import po.StaffPO;
 import po.VehiclePO;
 import data.database.DatabaseFactoryMysqlImpl;
 import data.database.DatabaseManager;
+import data.statisticdata.LogInsHelper;
 import data.statisticdata.inte.LogInsertDataService;
 import dataservice.exception.ElementNotFoundException;
 import dataservice.exception.InterruptWithExistedElementException;
@@ -40,7 +41,7 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
     	Connection connection = DatabaseManager.getConnection();
         //First, insert as a staff.
         StaffOrganizationManagementDataService staffIns = DatabaseFactoryMysqlImpl.getInstance().getStaffOrganizationManagementDataService();
-        LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
+
         boolean result = staffIns.addStaff(driver);
 
         //If insertion failed then skip the operation
@@ -53,7 +54,8 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
         try {
             get = staffIns.findStaff(driver).get(0);
         } catch (Exception e) {
-            logIns.insertSystemLog("查找员工："+driver.getName()+"失败，新增司机操作取消");
+            LogInsHelper.insertLog("查找员工："+driver.getName()+"失败，新增司机操作取消");
+            e.printStackTrace();
             DatabaseManager.releaseConnection(connection,null,null);
             return false;
         }
@@ -61,7 +63,7 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
         String stat = "insert into Drivers (staffID,licenseDate) values('"+driver.getStaffID()+"','"+driver.getLicenseDate()+"')";
         PreparedStatement statement = connection.prepareStatement(stat);
         int resultNum = statement.executeUpdate();
-        logIns.insertSystemLog("新增司机信息完成："+(resultNum>0));
+        LogInsHelper.insertLog("新增司机信息完成："+(resultNum>0));
         
         DatabaseManager.releaseConnection(connection,statement,null);
         
@@ -71,11 +73,10 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
     @Override
     public boolean addVehicle(VehiclePO vehicle) throws InterruptWithExistedElementException, SQLException, IOException {
     	Connection connection = DatabaseManager.getConnection();
-        LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
 
         ArrayList<VehiclePO> list = inquireVehicle(vehicle);
         if(list.size()>0) {
-            logIns.insertSystemLog("尝试添加车辆："+vehicle.getCarNumber()+"但数据库已包含其数据");
+        	LogInsHelper.insertLog("尝试添加车辆："+vehicle.getCarNumber()+"但数据库已包含其数据");
             return false;
         }
 
@@ -92,7 +93,8 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
         try {
             fis = new FileInputStream(picture);
         } catch (FileNotFoundException e) {
-            logIns.insertSystemLog("读取图片失败："+picture.getName());
+        	LogInsHelper.insertLog("读取图片失败："+picture.getName());
+            e.printStackTrace();
             DatabaseManager.releaseConnection(connection,null,null);
             return false;
         }
@@ -102,7 +104,7 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
 
         int resultNum = stmt.executeUpdate();
 
-        logIns.insertSystemLog("成功加入车辆信息："+vehicle.getCarNumber());
+        LogInsHelper.insertLog("成功加入车辆信息："+vehicle.getCarNumber());
         DatabaseManager.releaseConnection(connection,stmt,null);
         
         return resultNum>0;
@@ -114,12 +116,13 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
     	Connection connection = DatabaseManager.getConnection();
         //First, delete as a staff.
         StaffOrganizationManagementDataService staffIns = DatabaseFactoryMysqlImpl.getInstance().getStaffOrganizationManagementDataService();
-        LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
+       
         try {
             boolean result = staffIns.removeStaff(driver);
             if(!result) throw new Exception();
         } catch (Exception e) {
-            logIns.insertSystemLog("删除员工："+driver.getName()+"失败，删除司机操作取消");
+        	LogInsHelper.insertLog("删除员工："+driver.getName()+"失败，删除司机操作取消");
+            e.printStackTrace();
             DatabaseManager.releaseConnection(connection,null,null);
             return false;
         }
@@ -129,7 +132,7 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
         
         int resultNum = statement.executeUpdate();
         
-        logIns.insertSystemLog("删除司机信息完成："+(resultNum>0));
+        LogInsHelper.insertLog("删除司机信息完成："+(resultNum>0));
         
         DatabaseManager.releaseConnection(connection,statement,null);
         return resultNum>0;
@@ -161,12 +164,13 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
     	Connection connection = DatabaseManager.getConnection();
     	
     	StaffOrganizationManagementDataService staffIns = DatabaseFactoryMysqlImpl.getInstance().getStaffOrganizationManagementDataService();
-        LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
+       
         try {
             boolean result = staffIns.modifyStaff(driver);
             if(!result) throw new Exception();
         } catch (Exception e) {
-            logIns.insertSystemLog("修改员工："+driver.getName()+"失败，修改司机操作取消");
+        	LogInsHelper.insertLog("修改员工："+driver.getName()+"失败，修改司机操作取消");
+            e.printStackTrace();
             DatabaseManager.releaseConnection(connection,null,null);
             return false;
         }
@@ -174,7 +178,7 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
         String stat = "update Drivers set licenseDate='"+driver.getLicenseDate()+"' where staffID='"+driver.getStaffID()+"'";
         PreparedStatement statement = connection.prepareStatement(stat);
         int resultNum = statement.executeUpdate();
-        logIns.insertSystemLog("修改司机信息完成："+(resultNum>0));
+        LogInsHelper.insertLog("修改司机信息完成："+(resultNum>0));
         DatabaseManager.releaseConnection(connection,statement,null);
         return resultNum>0;
     }
@@ -182,11 +186,10 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
     @Override
     public boolean modifyVehicle(VehiclePO originalVehicle) throws ElementNotFoundException, InterruptWithExistedElementException, SQLException, IOException {
     	Connection connection = DatabaseManager.getConnection();
-    	LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
 
         ArrayList<VehiclePO> list = inquireVehicle(originalVehicle);
         if(list.size()==0) {
-            logIns.insertSystemLog("欲修改车辆信息："+originalVehicle.getCarNumber()+",未找到记录");
+        	LogInsHelper.insertLog("欲修改车辆信息："+originalVehicle.getCarNumber()+",未找到记录");
             DatabaseManager.releaseConnection(connection,null,null);
             throw new ElementNotFoundException("未找到该车辆信息");
         }
@@ -196,7 +199,7 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
             result = addVehicle(originalVehicle);
         }
 
-        logIns.insertSystemLog("成功修改车辆信息："+originalVehicle.getCarNumber());
+        LogInsHelper.insertLog("成功修改车辆信息："+originalVehicle.getCarNumber());
         DatabaseManager.releaseConnection(connection,null,null);
         return result;
     }
@@ -205,7 +208,7 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
     public ArrayList<DriverPO> getAllDriver() throws RemoteException, SQLException {
     	Connection connection = DatabaseManager.getConnection();
     	StaffOrganizationManagementDataService staffIns = DatabaseFactoryMysqlImpl.getInstance().getStaffOrganizationManagementDataService();
-        LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
+    	
         ArrayList<DriverPO> result = new ArrayList<>();
 
         String stat = "select * from Drivers";
@@ -217,12 +220,13 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
                 StaffPO temp = staffIns.findStaff(new StaffPO(drivers.getString("staffID"), null, null, null, null, 0, null, null, 0)).get(0);
                 result.add(new DriverPO(temp, drivers.getString("licenseDate")));
             } catch (Exception e) {
-                logIns.insertSystemLog("获取员工信息失败，取消获取司机信息操作");
+            	LogInsHelper.insertLog("获取员工信息失败，取消获取司机信息操作");
+                e.printStackTrace();
                 DatabaseManager.releaseConnection(connection,statement,drivers);
                 return new ArrayList<>();
             }
         }
-        logIns.insertSystemLog("返回司机信息完成：返回数量为"+result.size());
+        LogInsHelper.insertLog("返回司机信息完成：返回数量为"+result.size());
         DatabaseManager.releaseConnection(connection,statement,drivers);
         return result;
     }
@@ -237,7 +241,7 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
             throws RemoteException, ElementNotFoundException, SQLException {
     	Connection connection = DatabaseManager.getConnection();
         StaffOrganizationManagementDataService staffIns = DatabaseFactoryMysqlImpl.getInstance().getStaffOrganizationManagementDataService();
-        LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
+        
         ArrayList<DriverPO> result = new ArrayList<>();
 
         String stat = null;
@@ -268,7 +272,7 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
             }
 
         }
-        logIns.insertSystemLog("返回司机信息完成：返回数量为"+result.size());
+        LogInsHelper.insertLog("返回司机信息完成：返回数量为"+result.size());
         
         return result;
     }
@@ -277,7 +281,7 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
     public ArrayList<VehiclePO> inquireVehicle(VehiclePO keywords)
             throws SQLException, IOException {
     	Connection connection = DatabaseManager.getConnection();
-        LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
+        
         ArrayList<VehiclePO> result = new ArrayList<>();
 
         String sql = "select * from Vehicles";
@@ -322,7 +326,7 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
             result.add(po);
         }
 
-        logIns.insertSystemLog("成功查找车辆信息");
+        LogInsHelper.insertLog("成功查找车辆信息");
         DatabaseManager.releaseConnection(connection,stmt,set);
         return result;
     }

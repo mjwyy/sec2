@@ -12,16 +12,16 @@ public class RuntimeUserInfo {
      * 用户所在机构的名称
      */
     private static String userOrgName = null;
-	
-	private RuntimeUserInfo() {	}
-	
-	public static void setUserName(String num) {
-		userName = num;
-	}
-	
-	public static String getNum() {
-		return userName;
-	}
+
+    private RuntimeUserInfo() {	}
+
+    public static void setUserName(String num) {
+        userName = num;
+    }
+
+    public static String getNum() {
+        return userName;
+    }
 
     public static String getUserOrgName() {
         return userOrgName;

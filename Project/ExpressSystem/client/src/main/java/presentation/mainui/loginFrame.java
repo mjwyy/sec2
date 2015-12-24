@@ -253,8 +253,9 @@ public class loginFrame extends JFrame {
         JButton button = new JButton("登录");
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                lim = service.logIn(account.getText(), password.getText());
+                lim = service.logIn(account.getText(), password.getPassword().toString());
                 if (lim.isPass()) {
+                	red.setVisible(false);
                     if (lim.getAuthority().equals(authority.MANAGER)) {//总经理登录
                         ManageFrame mf = new ManageFrame(lim);
                         mf.setVisible(true);

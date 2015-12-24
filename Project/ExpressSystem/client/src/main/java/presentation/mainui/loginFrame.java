@@ -208,6 +208,9 @@ public class loginFrame extends JFrame {
 					} catch (RemoteException | ElementNotFoundException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
+						 String info = e1.getMessage();
+						 JOptionPane.showConfirmDialog(null, info,"系统提示",
+	        						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);	 
 					}
                     if(vo!=null){
                     clientInquiryPanel cip = new clientInquiryPanel(vo);

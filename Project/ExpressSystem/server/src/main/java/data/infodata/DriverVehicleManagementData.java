@@ -247,7 +247,7 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
         String stat = null;
         if(keywords.getLicenseDate()!=null) {// Search the driver list first.
 
-            stat = "select * from Drivers where licenseData LIKE '%"+keywords.getLicenseDate()+"%'";
+            stat = "select * from Drivers where licenseDate LIKE '%"+keywords.getLicenseDate()+"%'";
             PreparedStatement statement = connection.prepareStatement(stat);
             ResultSet drivers = statement.executeQuery();
 

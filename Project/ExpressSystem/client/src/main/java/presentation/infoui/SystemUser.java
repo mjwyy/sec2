@@ -156,7 +156,7 @@ public class SystemUser extends JFrame {
         this.lim=lim;
         JPanel pppp = (JPanel)this.getContentPane();
         // 加载背景图片 
-        ImageIcon img = new ImageIcon("image/0111.jpg");
+        ImageIcon img = new ImageIcon("image/1111.jpg");
         JLabel llll=new JLabel(img);
         llll.setBounds(0,0,img.getIconWidth(),img.getIconHeight());
         pppp.setOpaque(false);//最上层透明
@@ -255,7 +255,7 @@ public class SystemUser extends JFrame {
         JPanel middle = new JPanel(){
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon img = new ImageIcon("image/0111.jpg");
+                ImageIcon img = new ImageIcon("image/1111.jpg");
                 g.drawImage(img.getImage(), 0, 0, null);
             }
         };

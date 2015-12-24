@@ -334,7 +334,7 @@ public class ArrivalNoteOnTransitPanel extends JPanel {
 		 float lineWidth = 3.0f;
 	      ((Graphics2D)g).setStroke(new BasicStroke(lineWidth));
 	      g.drawLine(768, 0, 768, 500);
-		}
+	}
 	
 	public ArrivalNoteOnTransitVO getVO(){
 		return arrivalNoteOnTransitVO;

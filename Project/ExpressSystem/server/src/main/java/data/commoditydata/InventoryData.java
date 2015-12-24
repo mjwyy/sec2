@@ -128,7 +128,7 @@ public class InventoryData extends UnicastRemoteObject implements InventoryDataS
     	
 		//再查入库记录，重点还是计数
 		
-		sql = "select aeraCode from InOutInfo where (isIn=1 AND WarehouseID='"+org+"' AND "
+		sql = "select areaCode from InOutInfo where (isIn=1 AND WarehouseID='"+org+"' AND "
     			+ "Date<='"+eTime+"' AND Date>='"+sTime+"')";
 		try {
 			stmt1 = connection.prepareStatement(sql);
@@ -152,7 +152,8 @@ public class InventoryData extends UnicastRemoteObject implements InventoryDataS
 			stmt1 = connection.prepareStatement(sql);
 			Iterator<String> it = barcodes.iterator();
 			while(it.hasNext()) {
-				stmt1.setString(1, it.next());
+				String bar = it.next();
+				stmt1.setString(1, bar);
 				ResultSet setStore = stmt1.executeQuery();
 				if(!setStore.next()) {
 					LogInsHelper.insertLog("执行SQL语句时无预期返回条目");
@@ -164,7 +165,7 @@ public class InventoryData extends UnicastRemoteObject implements InventoryDataS
 				 *	aeraCode(VARCHAR(16)),rowNumber(VARCHAR(16)),frameNumber(VARCHAR(16)),placeNumber(VARCHAR(16))
 				 */
 				String barcode = setStore.getString("OrderID");
-				String aeracode = setStore.getString("aeraCode");
+				String aeracode = setStore.getString("areaCode");
 				String destination = setStore.getString("Destination");
 				String rownumber = setStore.getString("rowNumber");
 				String framenumber = setStore.getString("frameNumber");

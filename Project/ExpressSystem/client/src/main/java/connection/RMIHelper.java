@@ -45,7 +45,6 @@ public class RMIHelper {
         Registry registry = LocateRegistry.getRegistry(serverIP);
         Remote provider = registry.lookup(objectiveName);
         obj.provider = (RMIObjectProviderService) provider;
-        System.out.println("obj.provider is null?"+(obj.provider==null));
         obj.connectStatus = true;
     }
 

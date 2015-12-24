@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 管理系统用户主界面
  * 
  * @author wqy
@@ -25,6 +25,7 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import presentation.logisticui.CourierFrame;
 import presentation.mainui.loginFrame;
 import presentation.util.MJTextField;
+import presentation.util.ShowMessageFrame;
 import businesslogic.info.SystemUserManagement;
 import businesslogicservice.infoblservice.SystemUserManagementBLService;
 import businesslogicservice.infoblservice._stub.SystemUserManagementBLService_Stub;
@@ -235,15 +236,11 @@ public class SystemUser extends JFrame {
 		label_2.setBounds(56, 53, 284, 15);
 		QUANXIANW.add(label_2);
 
-		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
-		panel_2.setBounds(341, 570, 939, 124);
-		contentPane.add(panel_2);
-		panel_2.setLayout(null);
-		
-		JLabel lblNewLabel_3 = new JLabel("我是萌萌的系统管理员,我要管好大家的帐号呀!");
-		lblNewLabel_3.setBounds(118, 7, 378, 47);
-		panel_2.add(lblNewLabel_3);
+		JPanel leftdown = new JPanel();
+		leftdown.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
+		leftdown.setBounds(341, 570, 939, 124);
+		contentPane.add(leftdown);
+		leftdown.setLayout(null);
 
 		initComponent();
 	}
@@ -359,6 +356,7 @@ public class SystemUser extends JFrame {
 					String[] rowValues={code.getText(),pass.getText(),comboBox.getSelectedItem().toString()
 					};
 					model.addRow(rowValues);
+					setTishi(0);
 				}
 				else{
 					int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
@@ -390,8 +388,12 @@ public class SystemUser extends JFrame {
 					UserVO vo=new UserVO(code.getText(),pass.getText(),au);
 					ResultMsg result=sum.delete(vo);
 					if(result.isPass()){
-
+						int result11 = JOptionPane.showConfirmDialog(null, "确认删除？","系统提示",
+								JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+						if(result11 == JOptionPane.YES_OPTION) {
 						model.removeRow(seletedRow);
+						setTishi(2);
+						}
 					}
 					else{
 						int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
@@ -433,6 +435,7 @@ public class SystemUser extends JFrame {
 						model.setValueAt(code.getText(),selectedRow, 0);
 						model.setValueAt(pass.getText(),selectedRow, 1);
 						model.setValueAt(comboBox.getSelectedItem().toString(),selectedRow, 2);
+					setTishi(1);
 					}
 					else{
 						int result1 = JOptionPane.showConfirmDialog(null, result.getMessage(),"系统提示",
@@ -498,6 +501,10 @@ public class SystemUser extends JFrame {
 		});
 		button_1.setBounds(626, 8, 84, 23);
 		middle.add(button_1);
+		
+		JLabel lblNewLabel_3 = new JLabel("帐号不能修改哦~");
+		lblNewLabel_3.setBounds(1013, 315, 137, 28);
+		middle.add(lblNewLabel_3);
 
 
 		JLabel lblNewLabel = new JLabel("");
@@ -508,6 +515,20 @@ public class SystemUser extends JFrame {
 
 		setCaiDanLan();
 	} 
+	public void setTishi(int i){
+		//0新增成功
+		if(i==0){
+		new ShowMessageFrame("新增成功");
+		}
+		//1修改成功
+		else if(i==1){
+			new ShowMessageFrame("修改成功");
+			}
+		//2删除成功
+		else{
+			new ShowMessageFrame("删除成功");
+			}
+	}
 	public void cleanTable(){
 		//显示到tabel里,先清空
 		int count=model.getRowCount();

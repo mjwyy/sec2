@@ -1,5 +1,7 @@
 package connection.config;
 
+import connection.RMIPublisher;
+
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -33,16 +35,7 @@ public class ServerFrame extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ServerFrame frame = new ServerFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+
 	}
 
 	/**
@@ -91,13 +84,19 @@ public class ServerFrame extends JFrame {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!(serverIP.getText().isEmpty()||port.getText().isEmpty())){
-					showStatus(false,true);
+
 				RMIConfig.setServerIP(serverIP.getText());
 				RMIConfig.setPort(port.getText());
+
+                    if(RMIPublisher.buildConnection()){
+                        System.out.println("服务器已建立!");
+                        showStatus(false,true);
+                    }
+
 				}else {
 					tips.setVisible(true);
 					showStatus(true,false);
-				}
+                   }
 			}
 		});
 		button.setBounds(240, 215, 117, 29);

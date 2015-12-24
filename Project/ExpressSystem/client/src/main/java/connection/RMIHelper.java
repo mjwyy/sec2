@@ -20,7 +20,7 @@ import java.rmi.registry.Registry;
  */
 public class RMIHelper {
 
-    private static String serverIP;
+    public static String serverIP;
     private static String objectiveName = "RMIObjectProvider";
 
     private RMIObjectProviderService provider = null;
@@ -36,7 +36,6 @@ public class RMIHelper {
     private void initiateIP() {}
 
     public static void tryConnect() throws RemoteException, NotBoundException {
-        // 获取服务器的IP地址
         serverIP = RMIConfig.getServerIP();
         if (System.getSecurityManager() == null) {
             System.setSecurityManager(new SecurityManager());
@@ -51,6 +50,11 @@ public class RMIHelper {
     public static boolean getConnectionStatus() {
         if(obj==null) obj = new RMIHelper();
         return obj.connectStatus;
+    }
+
+    // TODO 客户端设置这一个
+    public static void setServerIP(String serverIP) {
+        RMIHelper.serverIP = serverIP;
     }
 
     public static RMIHelper getInstance() {

@@ -31,7 +31,6 @@ public class RMIConfig {
 //            }
 //            serverIP = params.get("serverIP");
 //            port =  params.get("port");
-        //TODO RMI配置移出代码
         serverIP = "localhost";
         port = "1099";
     }
@@ -44,6 +43,7 @@ public class RMIConfig {
         return port;
     }
 
+    // TODO 服务器的界面设置这个IP与端口
     public static void setServerIP(String serverIP) {
         RMIConfig.serverIP = serverIP;
     }

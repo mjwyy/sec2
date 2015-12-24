@@ -201,6 +201,7 @@ public class loginFrame extends JFrame {
                 res = orderService.inputBarcode(barcode.getText());
                 
                 if (res.isPass()) {
+                	 label.setVisible(false);
                     OrderVO vo=null;
 					try {
 						vo = orderService.submitBarcode(barcode.getText());

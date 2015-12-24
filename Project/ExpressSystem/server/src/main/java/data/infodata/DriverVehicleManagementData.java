@@ -245,7 +245,19 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
         ArrayList<DriverPO> result = new ArrayList<>();
 
         String stat = null;
-        if(keywords.getLicenseDate()!=null) {// Search the driver list first.
+        if(keywords==null) {
+        	stat = "select * from Drivers";
+        	PreparedStatement statement = connection.prepareStatement(stat);
+            ResultSet drivers = statement.executeQuery();
+
+            while(drivers.next()) {
+                StaffPO temp = staffIns.findStaff(new StaffPO(drivers.getString("staffID"), null, null, null, null, 0, null, null, 0)).get(0);
+                result.add(new DriverPO(temp, drivers.getString("licenseDate")));
+            }
+            
+            DatabaseManager.releaseConnection(connection,statement,drivers);
+            
+        } else if(keywords.getLicenseDate()!=null) {// Search the driver list first.
 
             stat = "select * from Drivers where licenseDate LIKE '%"+keywords.getLicenseDate()+"%'";
             PreparedStatement statement = connection.prepareStatement(stat);

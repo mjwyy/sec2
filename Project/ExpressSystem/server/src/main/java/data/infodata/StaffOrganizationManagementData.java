@@ -272,7 +272,7 @@ public class StaffOrganizationManagementData extends UnicastRemoteObject impleme
             e.printStackTrace();
         }
         if(result.isEmpty())
-            throw new ElementNotFoundException();
+            throw new ElementNotFoundException("无此员工信息");
         DatabaseManager.releaseConnection(connection,statement,null);
         return result;
     }
@@ -298,7 +298,7 @@ public class StaffOrganizationManagementData extends UnicastRemoteObject impleme
         }
         DatabaseManager.releaseConnection(connection,statement,null);
         if(result.isEmpty())
-            throw new ElementNotFoundException();
+            throw new ElementNotFoundException("无此车辆信息");
         return result;
     }
 

@@ -120,7 +120,7 @@ public class ServerFrame extends JFrame {
 		
 		state2 = new JLabel("running……");
 		state2.setBounds(39, 302, 319, 31);
-		contentPane.add(state1);
+		contentPane.add(state2);
 		state2.setVisible(false);
 	
 	}

@@ -117,7 +117,7 @@ public class MailOrderPanel extends JPanel {
 		receiveAddress.setColumns(10);
 		
 		JLabel label_2 = new JLabel("收件人电话");
-		label_2.setBounds(70, 138, 71, 16);
+		label_2.setBounds(70, 138, 136, 16);
 		add(label_2);
 		
 		receivePho = new MJTextField();
@@ -126,7 +126,7 @@ public class MailOrderPanel extends JPanel {
 		receivePho.setColumns(10);
 		
 		JLabel label_3 = new JLabel("寄件人姓名");
-		label_3.setBounds(70, 185, 97, 16);
+		label_3.setBounds(70, 185, 136, 16);
 		add(label_3);
 		
 		JLabel label_4 = new JLabel("件数");
@@ -139,7 +139,7 @@ public class MailOrderPanel extends JPanel {
 		senderAddress.setColumns(10);
 		
 		JLabel label_5 = new JLabel("货物名称");
-		label_5.setBounds(70, 319, 61, 16);
+		label_5.setBounds(70, 319, 112, 16);
 		add(label_5);
 		
 		name = new MJTextField();
@@ -172,7 +172,7 @@ public class MailOrderPanel extends JPanel {
 		goodsnum.setColumns(10);
 		
 		JLabel label_8 = new JLabel("包装方式");
-		label_8.setBounds(462, 39, 61, 16);
+		label_8.setBounds(462, 39, 87, 16);
 		add(label_8);
 		
 		String[] packway = {"快递袋","纸箱","木箱"};
@@ -333,7 +333,7 @@ public class MailOrderPanel extends JPanel {
 	
 	
 	public void setResult(ResultMsg s) {
-        parent.setJijian(false, s.isPass(), !s.isPass());
+		parent.setJijian(false, s.isPass(), !s.isPass());
 		parent.leftpanel.repaint();
 		if(s.isPass()){
 			parent.setMailOrderPanel(null);
@@ -349,6 +349,7 @@ public class MailOrderPanel extends JPanel {
 		public void run() {
 			super.run();
 			setResult(service.submitSendDoc(sendDocVO));
+			System.out.println(service.submitSendDoc(sendDocVO).getMessage());
 		}
 	}
 	

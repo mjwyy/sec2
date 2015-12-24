@@ -215,8 +215,7 @@ public class StaffManagementPanel extends JPanel {
 		model = new DefaultTableModel();
 		model.setDataVector(data,name);
 		table = new JTable(model);
-		table.setBounds(54, 75, 641, 309);
-		scrollPane = new JScrollPane(table);
+		
 		TableColumn column = null;
    		int colunms = table.getColumnCount();  
    		for(int i = 0; i < colunms; i++)  
@@ -225,7 +224,15 @@ public class StaffManagementPanel extends JPanel {
    			/*将每一列的默认宽度设置为180*/  
    			column.setPreferredWidth(180);  
    		}
-		scrollPane.setBounds(27, 75, 721, 345);
+   		
+   		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+   		
+   		
+   		//table.setBounds(27, 75, 721, 345);
+		scrollPane = new JScrollPane(table);
+		scrollPane.setLocation(27, 75);
+		scrollPane.setSize(721, 345);
+		table.setSize(721, 345);
 		add(scrollPane);
 		showall();
 		

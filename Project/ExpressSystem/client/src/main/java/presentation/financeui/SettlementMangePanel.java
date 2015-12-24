@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
+import presentation.util.CurrentTime;
 import presentation.util.MJTextField;
 import util.ResultMsg;
 import vo.BankAccountVO;
@@ -64,6 +65,7 @@ public class SettlementMangePanel extends JPanel {
 		add(label);
 		
 		date = new MJTextField();
+		date.setText(CurrentTime.getCurrentTimeDate());
 		date.setBounds(939, 32, 164, 28);
 		add(date);
 		date.setColumns(10);

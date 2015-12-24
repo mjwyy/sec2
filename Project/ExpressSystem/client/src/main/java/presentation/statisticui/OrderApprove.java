@@ -30,6 +30,7 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 import businesslogic.statistic.NoteApproving;
 import businesslogicservice.statisticblservice.NoteApprovingBLService;
@@ -55,9 +56,8 @@ public class OrderApprove extends JPanel {
 	NoteApprovingBLService nab=new NoteApproving();
 	private JTable table;
 	private DefaultTableModel model;
-	private MJTextField textField;
 	ArrayList<ApproveNote> approvenote=null;
-
+private JTextArea xiangxi;
 
 	//获取以下各种单据
 	public void initTable() {
@@ -82,10 +82,38 @@ JOptionPane.showConfirmDialog(null,e.getMessage());
 		}
 
 	}
+	private String splitcoude(String s){
+		String[] c=s.split(",");
+		String temp="";
+		for(int i=0;i<c.length;i++){
+			temp=temp+c[i]+"\n";
+			System.out.println(c[i]);
+			//如果有一系列的条形码，还要分以下
+		}
+		return temp;
+	}
+	private void splitdetail(String s){
+		String[] c=s.split("；");
+		String temp="";
+		for(int i=0;i<c.length;i++){
+			//如果有一系列的条形码，还要分以下
+			if(c[i].contains(",")){
+				temp=temp+splitcoude(c[i]);
+				System.out.println("ll");
+			}
+		else{
+			temp=temp+c[i]+"\n";
+		}
+			System.out.println(c[i]);
+			
+		}
+		xiangxi.setText(temp);
+	}
 	/**
 	 * Create the panel.
 	 */
 	public OrderApprove() {
+	
 		setSize(1142,446);
 
 		String[] columnNames =  
@@ -118,18 +146,21 @@ JOptionPane.showConfirmDialog(null,e.getMessage());
 
 		table.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
+				//点中后第三列详细信息显示
 				int selectedRow= table.getSelectedRow();
 				Object oa=model.getValueAt(selectedRow, 0);
 				//codef.setText(oa.toString());
 				Object ob=model.getValueAt(selectedRow, 1);
 				//dataf.setText(ob.toString());
 				Object oc=model.getValueAt(selectedRow, 2);
+				
+				splitdetail(oc.toString());
 				//tof.setText(oc.toString());
 				Object od=model.getValueAt(selectedRow, 3);
 				//areaf.setText(od.toString());
-				Object oe=model.getValueAt(selectedRow, 4);
+				//Object oe=model.getValueAt(selectedRow, 4);
 				//rowf.setText(oe.toString());
-				Object of=model.getValueAt(selectedRow, 5);
+				//Object of=model.getValueAt(selectedRow, 5);
 				//jiahaof.setText(of.toString());
 				//	Object og=model.getValueAt(selectedRow, 6);
 				//weihaof.setText(og.toString());
@@ -144,20 +175,16 @@ JOptionPane.showConfirmDialog(null,e.getMessage());
 			column.setPreferredWidth(100);  
 		}
 		column = table.getColumnModel().getColumn(2);  
-		column.setPreferredWidth(400); 
+		column.setPreferredWidth(500); 
 		setLayout(null);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);  
 
 		JScrollPane scroll = new JScrollPane(table);
-		scroll.setBounds(182, 116, 777, 252);
+		scroll.setBounds(10, 98, 804, 305);
 		//初始化tabel
 		//initTable();
 
 		add(scroll);
-		JButton button = new JButton("查看详细");
-		button.addActionListener(new DetailListener() );
-		button.setBounds(342, 378, 103, 23);
-		add(button);
 		JButton btnNewButton = new JButton("审批通过");
 		btnNewButton.addActionListener(new ActionListener(){
 			//点中那行，或钩中checkbox的那行；
@@ -168,7 +195,7 @@ JOptionPane.showConfirmDialog(null,e.getMessage());
 			}
 
 		} );
-		btnNewButton.setBounds(465, 378, 93, 23);
+		btnNewButton.setBounds(471, 413, 93, 23);
 		add(btnNewButton);
 		JButton button_1 = new JButton("审批不通过");
 		button_1.addActionListener(new ActionListener(){
@@ -178,28 +205,45 @@ JOptionPane.showConfirmDialog(null,e.getMessage());
 			}
 
 		} );
-		button_1.setBounds(597, 378, 135, 23);
+		button_1.setBounds(598, 413, 135, 23);
 		add(button_1);
 		JLabel label = new JLabel("单据列表");
-		label.setBounds(185, 24, 83, 15);
+		label.setBounds(30, 21, 83, 15);
 		add(label);
 		//JButton button_2 = new JButton("待审批单据");
 		//button_2.setBounds(357, 20, 122, 23);
 		//add(button_2);
 		JLabel label_1 = new JLabel("筛选类型");
-		label_1.setBounds(186, 91, 90, 15);
+		label_1.setBounds(10, 67, 103, 18);
 		add(label_1);
 		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"所有", "中转单", "到达单", "装车单", "派送单"}));
-		comboBox.setBounds(286, 88, 83, 21);
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"所有", "寄件单", "收件单", "营业厅到达单", "营业厅装车单", "营业厅派件单", "中转中心到达单", "中转中心装车单", "中转中心中转单"}));
+		comboBox.setBounds(98, 66, 151, 21);
 		add(comboBox);
-		textField = new MJTextField();
-		textField.setBounds(379, 85, 66, 21);
-		add(textField);
-		textField.setColumns(10);
 		JButton button_5 = new JButton("查询");
-		button_5.setBounds(465, 83, 93, 23);
+		button_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//根据单据类型，在界面显示
+				
+			}
+		});
+		button_5.setBounds(310, 65, 93, 23);
 		add(button_5);
+		
+		JLabel label_2 = new JLabel("详细信息");
+		label_2.setBounds(916, 56, 83, 29);
+		add(label_2);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(824, 88, 308, 315);
+		add(scrollPane);
+		
+		 xiangxi = new JTextArea();
+		 scrollPane.setViewportView(xiangxi);
+		 xiangxi.setLineWrap(true);
+		 xiangxi.setOpaque(false);
+		 xiangxi.setEditable(false);
+		 xiangxi.setWrapStyleWord(true);
 
 
 	}
@@ -243,19 +287,6 @@ JOptionPane.showConfirmDialog(null,e.getMessage());
 			JOptionPane.showConfirmDialog(null, e.getMessage());
 		}
 	}
-	//察看详细
-	class DetailListener implements ActionListener{
-
-		public void actionPerformed(ActionEvent e) {
-			int count=model.getRowCount();
-			for(int i=0;i<count;i++){
-				System.out.println(model.getValueAt(i, 5));
-				//Boolean cb=(JCheckBox) model.getValueAt(i, 5);
-				//if(cb.isSelected()){
-				//System.out.println("sele");
-			}
-		}
-	}
 
 
 	public String type(NoteVO vo){//单据类型
@@ -291,26 +322,4 @@ JOptionPane.showConfirmDialog(null,e.getMessage());
 		else
 			return "未通过审批";
 	}
-	/*public void initTable(){
-	ArrayList<ArrivalNoteOnServiceVO>  ans=nab.getArrivalNoteOnServiceVO();
-	for(int i=0;i<ans.size();i++){
-		ArrivalNoteOnServiceVO aa=ans.get(i);
-		String[] obj={state(aa.isAppproved()),};
-
-	}
-	ArrayList<DeliverNoteOnServiceVO> dns=nab.getDeliverNoteOnServiceVO();
-
-	ArrayList<ArrivalNoteOnTransitVO> ant=nab.getArrivalNoteOnTransitVO();
-
-	ArrayList<DeliveryNoteVO> dn=nab.getDeliveryNoteVO();
-
-	ArrayList<LoadNoteOnServiceVO>ls=nab. getLoadNoteOnServiceVO();
-
-	ArrayList<LoadNoteOnTransitVO> lt=nab.getLoadNoteOnTransitVO();
-
-	ArrayList<ReceivingNoteVO> rn=nab.getReceivingNoteVO();
-
-	ArrayList<TransitNoteOnTransitVO> tot=nab.getTransitNoteVO();
-
-}*/
 }

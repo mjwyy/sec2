@@ -383,6 +383,8 @@ public class StaffManagementPanel extends JPanel {
 					 data.add(row.clone());
 					 model.setDataVector(data, name);
 			   		table.setModel(model); 
+			   		JOptionPane.showConfirmDialog(null, "新增人员成功","系统提示",
+							JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 				}else{			
 					int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
 						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);

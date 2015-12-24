@@ -15,7 +15,7 @@ public class OrderVO {
 	String barcode = null;
 	
 	/**
-	 * 当前运送状态：“已收货”，“正在送货”，“已签收”
+	 * 当前货物状态:COMPLETE("完整"),DAMAGED("损坏"),LOST("丢失");
 	 */
     GoodsState stateOfTransport = null;
 

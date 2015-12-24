@@ -324,7 +324,6 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
             String first = set.getString("firstUseTime");
 
             InputStream fis = set.getBinaryStream("picFile");
-//            FileInputStream fis = (FileInputStream) picStream;
             String picName = set.getString("picName");
             File pic = File.createTempFile(picName, "");
             FileOutputStream fos = new FileOutputStream(pic);

@@ -42,17 +42,20 @@ public class Driver extends JPanel {
 	private MJTextField code;
 	private MJTextField name;
 	private MJTextField sex;
+	private MJTextField orgi;
 	private MJTextField posi;
 	private MJTextField id;
+	private MJTextField workhour;
 	private MJTextField phone;
+	private MJTextField sala;
 	private MJTextField qixian;
 	private JTable table;
 	private DefaultTableModel model;
 //	DriverVehicleManagementBLService  dvm=new DriverVehicleManagementBLService_Stub();
 	DriverVehicleManagementBLService  dvm=new DriverVehicleManagement();
-	private MJTextField orgi;
-	private MJTextField workhour;
-	private MJTextField sala;
+	
+
+	
 	private JComboBox comboBox;
 	/**
 	 * Create the panel.
@@ -97,13 +100,19 @@ public class Driver extends JPanel {
 				name.setText(ob.toString());
 				Object oc=model.getValueAt(selectedRow, 2);
 				sex.setText(oc.toString());
-				Object od=model.getValueAt(selectedRow, 3);
+				Object o4=model.getValueAt(selectedRow, 3);
+				orgi.setText(o4.toString());
+				Object od=model.getValueAt(selectedRow, 4);
 				posi.setText(od.toString());
-				Object oe=model.getValueAt(selectedRow, 4);
+				Object oe=model.getValueAt(selectedRow, 5);
 				id.setText(oe.toString());
-				Object of=model.getValueAt(selectedRow, 5);
+				Object oc4=model.getValueAt(selectedRow, 6);
+				workhour.setText(oc4.toString());
+				Object of=model.getValueAt(selectedRow, 7);
 				phone.setText(of.toString());
-				Object og=model.getValueAt(selectedRow, 6);
+				Object odc=model.getValueAt(selectedRow, 8);
+				sala.setText(odc.toString());
+				Object og=model.getValueAt(selectedRow, 9);
 				qixian.setText(og.toString());
 			}
 		});
@@ -387,8 +396,7 @@ DriverVO vo=null;
 				vo=new DriverVO(null,null,null,null,null,null,-1,null,null,key.getText());
 			}
 			//显示到tabel里,先清空
-			for(int i=0;i<model.getRowCount();i++)
-				model.removeRow(i);
+			cleanTable();
 			ArrayList<DriverVO> vvoo=dvm.findDriver(vo);
 			for(int i=0;i<vvoo.size();i++){
 				DriverVO vo=vvoo.get(i);

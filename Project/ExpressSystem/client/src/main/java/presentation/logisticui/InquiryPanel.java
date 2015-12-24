@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -91,20 +92,21 @@ public class InquiryPanel extends JPanel {
 			service = new OrderInquiry();
 			res = service.inputBarcode(barcode.getText());
 			if(res.isPass()){
+				lblNewLabel.setVisible(false);
                 OrderVO vo = null;
                 try {
                     vo = service.submitBarcode(barcode.getText());
+                    data.clear();
                     //TODO 界面显示提示框,打印Info里面的内容
                 } catch (ElementNotFoundException e1) {
                     e1.printStackTrace();
                     String info = e1.getMessage();
+                    
 
                 } catch (RemoteException e1) {
                     e1.printStackTrace();
                     String info = e1.getMessage();
                 }
-                ArrayList<String> history = new ArrayList<String>();
-
         		Vector row = new Vector();
         		ArrayList<String> historys = new ArrayList<String>();
         		historys = vo.getHistory();
@@ -154,5 +156,10 @@ public class InquiryPanel extends JPanel {
 			  return "损坏(ｰｰ;)";
 		  else 
 			  return "丢失(´Д` )";
+	  }
+	  
+	  public void error(String s) {
+		  JOptionPane.showConfirmDialog(null, s+":-(","系统提示",
+					JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 	  }
 }

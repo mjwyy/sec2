@@ -1,10 +1,12 @@
 package data.infodata;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
@@ -13,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import connection.RMIPublisher;
 import po.DriverPO;
 import po.StaffPO;
 import po.VehiclePO;
@@ -314,14 +317,14 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
         }
 
         PreparedStatement stmt = connection.prepareStatement(sql);
-        ResultSet set = stmt.getResultSet();
+        ResultSet set = stmt.executeQuery();
         while(set.next()) {
             String carNum = set.getString("carNumber");
             String org = set.getString("organizationNumber");
             String first = set.getString("firstUseTime");
 
-
-            FileInputStream fis = (FileInputStream) set.getBinaryStream("picFile");
+            InputStream fis = set.getBinaryStream("picFile");
+//            FileInputStream fis = (FileInputStream) picStream;
             String picName = set.getString("picName");
             File pic = File.createTempFile(picName, "");
             FileOutputStream fos = new FileOutputStream(pic);

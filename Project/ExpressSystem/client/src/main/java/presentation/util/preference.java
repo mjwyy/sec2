@@ -2,6 +2,7 @@ package presentation.util;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -37,7 +38,11 @@ public class preference extends JFrame {
 	 */
 	public preference() {
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
+		int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
+		this.setLocation((screenWidth-450)>>1, (screenHeight-300)>>1);
+		//setBounds(100, 100, 450, 300);
+		setSize(450,300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -45,7 +50,7 @@ public class preference extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon("image/cat.jpg"));
-		lblNewLabel.setBounds(6, 37, 207, 116);
+		lblNewLabel.setBounds(16, 37, 207, 116);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("New label");
@@ -58,7 +63,7 @@ public class preference extends JFrame {
 		contentPane.add(button);
 		
 	    button_1 = new JButton("蓝色经典版");
-		button_1.setBounds(217, 202, 117, 29);
+		button_1.setBounds(245, 202, 117, 29);
 		contentPane.add(button_1);
 	}
 	

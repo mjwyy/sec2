@@ -207,7 +207,7 @@ public class ManageFrame extends JFrame {
 		JMenuItem mntmNewMenuItem = new JMenuItem("管理机构");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ManageorgPanel anot = new  ManageorgPanel(){
+				ManageorgPanel anot = new  ManageorgPanel(true){
 					public void paintComponent(Graphics g) {
 						 super.paintComponent(g);
 						 ImageIcon img = new ImageIcon("image/0111.jpg");

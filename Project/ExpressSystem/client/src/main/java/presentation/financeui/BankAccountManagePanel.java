@@ -56,7 +56,7 @@ public class BankAccountManagePanel extends JPanel {
 	private int seletedRow;
 	private JComboBox keyword;
 	
-	public BankAccountManagePanel() {
+	public BankAccountManagePanel(boolean hasBase) {
        setSize(WIDTH,HEIGHT);
        setLayout(null);
        
@@ -100,8 +100,9 @@ public class BankAccountManagePanel extends JPanel {
             JScrollPane scrollPane = new JScrollPane(table);
             scrollPane.setBounds(73, 109, 604, 274);
             add(scrollPane);
+            if(hasBase){
             showall();
-            
+            }
             
             table.addMouseListener(new MouseAdapter() {
 	        	public void mouseClicked(MouseEvent arg0) {

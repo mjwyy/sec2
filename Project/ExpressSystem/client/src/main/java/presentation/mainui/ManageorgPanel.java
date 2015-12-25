@@ -56,7 +56,7 @@ public class ManageorgPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public ManageorgPanel() {
+	public ManageorgPanel(boolean hasBase) {
 		setSize(1152,446);
 		setLayout(null);
 		renyuan();
@@ -74,7 +74,9 @@ public class ManageorgPanel extends JPanel {
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(38, 72, 612, 348);
 		add(scrollPane);
+		if(hasBase){
 		showall();//初始化时显示所有机构信息
+		}
 		
 		//选中table某一行。这一行的信息显示在编辑狂中，可查看人员信息
 		table.addMouseListener(new MouseAdapter() {

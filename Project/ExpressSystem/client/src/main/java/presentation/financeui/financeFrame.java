@@ -421,7 +421,7 @@ public class financeFrame extends JFrame {
 		JMenuItem menuItem_4 = new JMenuItem("管理银行账户");
 		menuItem_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BankAccountManagePanel bamp = new BankAccountManagePanel(){
+				BankAccountManagePanel bamp = new BankAccountManagePanel(true){
 					public void paintComponent(Graphics g) {
 						 super.paintComponent(g);
 						 ImageIcon img = new ImageIcon("image/0111.jpg");
@@ -442,7 +442,7 @@ public class financeFrame extends JFrame {
 		JMenuItem menuItem_5 = new JMenuItem("有基础期初建账");
 		menuItem_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BaseDataBuildingPanel bdbp = new BaseDataBuildingPanel(){
+				BaseDataBuildingPanel bdbp = new BaseDataBuildingPanel(true){
 					public void paintComponent(Graphics g) {
 						 super.paintComponent(g);
 						 ImageIcon img = new ImageIcon("image/0111.jpg");
@@ -467,7 +467,7 @@ public class financeFrame extends JFrame {
 		JMenuItem mntmNewMenuItem = new JMenuItem("无基础期初建账");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BaseDataBuildingPanel bdbp = new BaseDataBuildingPanel(){
+				BaseDataBuildingPanel bdbp = new BaseDataBuildingPanel(false){
 					public void paintComponent(Graphics g) {
 						 super.paintComponent(g);
 						 ImageIcon img = new ImageIcon("image/0111.jpg");

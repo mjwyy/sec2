@@ -421,6 +421,10 @@ DriverVO vo=null;
 			//显示到tabel里,先清空
 			cleanTable();
 			ArrayList<DriverVO> vvoo=dvm.findDriver(vo);
+			//如果为空
+			if(vvoo==null){
+				JOptionPane.showMessageDialog(null, "木有找到相关人员");
+			}
 			for(int i=0;i<vvoo.size();i++){
 				DriverVO vo=vvoo.get(i);
 				String staffID=vo.getStaffID();

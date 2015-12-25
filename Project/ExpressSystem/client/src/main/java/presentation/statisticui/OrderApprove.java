@@ -57,8 +57,10 @@ public class OrderApprove extends JPanel {
 	private JTable table;
 	private DefaultTableModel model;
 	ArrayList<ApproveNote> approvenote=null;
-private JTextArea xiangxi;
-
+	private JTextArea xiangxi;
+	private JComboBox orderType ;
+	private JCheckBox quanxuan ;
+	private static boolean single=true;
 	//获取以下各种单据
 	public void initTable() {
 
@@ -66,7 +68,7 @@ private JTextArea xiangxi;
 			approvenote = nab.getNotes();
 		} catch (Exception e) {
 			e.printStackTrace();
-JOptionPane.showConfirmDialog(null,e.getMessage());
+			JOptionPane.showConfirmDialog(null,e.getMessage());
 		}
 		if(approvenote!=null){
 
@@ -83,7 +85,7 @@ JOptionPane.showConfirmDialog(null,e.getMessage());
 
 	}
 	private String splitcoude(String s){
-		String[] c=s.split(",");
+		String[] c=s.split(";");
 		String temp="";
 		for(int i=0;i<c.length;i++){
 			temp=temp+c[i]+"\n";
@@ -93,19 +95,21 @@ JOptionPane.showConfirmDialog(null,e.getMessage());
 		return temp;
 	}
 	private void splitdetail(String s){
+		//其他是以中文分....
 		String[] c=s.split("；");
 		String temp="";
 		for(int i=0;i<c.length;i++){
 			//如果有一系列的条形码，还要分以下
+			//好像条形码也是以;分的(英文)
 			if(c[i].contains(",")){
 				temp=temp+splitcoude(c[i]);
 				System.out.println("ll");
 			}
-		else{
-			temp=temp+c[i]+"\n";
-		}
+			else{
+				temp=temp+c[i]+"\n";
+			}
 			System.out.println(c[i]);
-			
+
 		}
 		xiangxi.setText(temp);
 	}
@@ -113,7 +117,7 @@ JOptionPane.showConfirmDialog(null,e.getMessage());
 	 * Create the panel.
 	 */
 	public OrderApprove() {
-	
+
 		setSize(1142,446);
 
 		String[] columnNames =  
@@ -153,7 +157,7 @@ JOptionPane.showConfirmDialog(null,e.getMessage());
 				Object ob=model.getValueAt(selectedRow, 1);
 				//dataf.setText(ob.toString());
 				Object oc=model.getValueAt(selectedRow, 2);
-				
+
 				splitdetail(oc.toString());
 				//tof.setText(oc.toString());
 				Object od=model.getValueAt(selectedRow, 3);
@@ -190,12 +194,12 @@ JOptionPane.showConfirmDialog(null,e.getMessage());
 			//点中那行，或钩中checkbox的那行；
 			public void actionPerformed(ActionEvent arg0) {
 				shenpi(true);
-				
-				
+
+
 			}
 
 		} );
-		btnNewButton.setBounds(471, 413, 93, 23);
+		btnNewButton.setBounds(428, 413, 93, 23);
 		add(btnNewButton);
 		JButton button_1 = new JButton("审批不通过");
 		button_1.addActionListener(new ActionListener(){
@@ -205,7 +209,7 @@ JOptionPane.showConfirmDialog(null,e.getMessage());
 			}
 
 		} );
-		button_1.setBounds(598, 413, 135, 23);
+		button_1.setBounds(555, 413, 103, 23);
 		add(button_1);
 		JLabel label = new JLabel("单据列表");
 		label.setBounds(30, 21, 83, 15);
@@ -216,36 +220,81 @@ JOptionPane.showConfirmDialog(null,e.getMessage());
 		JLabel label_1 = new JLabel("筛选类型");
 		label_1.setBounds(10, 67, 103, 18);
 		add(label_1);
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"所有", "寄件单", "收件单", "营业厅到达单", "营业厅装车单", "营业厅派件单", "中转中心到达单", "中转中心装车单", "中转中心中转单"}));
-		comboBox.setBounds(98, 66, 151, 21);
-		add(comboBox);
+		orderType = new JComboBox();
+		orderType.setModel(new DefaultComboBoxModel(new String[] {"所有", "寄件单", "收件单", "营业厅到达单", "营业厅装车单", "营业厅派件单", "中转中心到达单", "中转中心装车单", "中转中心中转单"}));
+		orderType.setBounds(98, 66, 151, 21);
+		add(orderType);
 		JButton button_5 = new JButton("查询");
 		button_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//根据单据类型，在界面显示
-				
+				String s=orderType.getSelectedItem().toString();
+				if(s.equals("寄件单")){
+					//TODO
+				}
+				else if(s.equals("收件单")){
+					//TODO
+				}
+				else if(s.equals("营业厅到达单")){
+					//TODO
+				}
+				else if(s.equals("营业厅装车单")){
+
+				}
+				else if(s.equals("营业厅派件单")){
+
+				}
+				else if(s.equals("中转中心到达单")){
+
+				}
+				else if(s.equals("中转中心装车单")){
+
+				}
+				else if(s.equals("中转中心中转单")){
+
+				}
 			}
 		});
 		button_5.setBounds(310, 65, 93, 23);
 		add(button_5);
-		
+
 		JLabel label_2 = new JLabel("详细信息");
 		label_2.setBounds(916, 56, 83, 29);
 		add(label_2);
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(824, 88, 308, 315);
 		add(scrollPane);
+
+		xiangxi = new JTextArea();
+		scrollPane.setViewportView(xiangxi);
+		xiangxi.setLineWrap(true);
+		xiangxi.setOpaque(false);
+		xiangxi.setEditable(false);
+		xiangxi.setWrapStyleWord(true);
 		
-		 xiangxi = new JTextArea();
-		 scrollPane.setViewportView(xiangxi);
-		 xiangxi.setLineWrap(true);
-		 xiangxi.setOpaque(false);
-		 xiangxi.setEditable(false);
-		 xiangxi.setWrapStyleWord(true);
+		quanxuan = new JCheckBox("全选");
+		quanxuan.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				quanxua();
+				
+			}
+		});
+		quanxuan.setBounds(685, 413, 103, 23);
+		add(quanxuan);
 
 
+	}
+	private void quanxua(){
+		
+		//单数次
+		//全部选中第三列为true
+		//双数次为false;
+		
+		for(int i=0;i<model.getRowCount();i++){
+			model.setValueAt(single, i, 3);
+		}
+		single=!single;
 	}
 	//
 	public void checkbox(JTable jTable){//已开始要赋值
@@ -269,7 +318,7 @@ JOptionPane.showConfirmDialog(null,e.getMessage());
 				ApproveNote aaa=approvenote.get(i);
 				if(isappr){//审批通过
 					aaa.setPass(isappr);
-					
+
 					//审批通过jtabel里的审批状态变为审批通过
 					model.setValueAt("通过", i,0);
 				}

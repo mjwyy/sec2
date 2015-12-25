@@ -37,7 +37,9 @@ import businesslogicservice.statisticblservice.NoteApprovingBLService;
 import businesslogicservice.statisticblservice._stub.NoteApprovingBLService_Stub;
 import presentation.util.CheckBoxTable;
 import presentation.util.MJTextField;
+import presentation.util.ShowMessageFrame;
 import util.ApproveNote;
+import util.enums.NoteType;
 import vo.ArrivalNoteOnServiceVO;
 import vo.ArrivalNoteOnTransitVO;
 import vo.DeliverNoteOnServiceVO;
@@ -89,7 +91,6 @@ public class OrderApprove extends JPanel {
 		String temp="";
 		for(int i=0;i<c.length;i++){
 			temp=temp+c[i]+"\n";
-			System.out.println(c[i]);
 			//如果有一系列的条形码，还要分以下
 		}
 		return temp;
@@ -101,14 +102,12 @@ public class OrderApprove extends JPanel {
 		for(int i=0;i<c.length;i++){
 			//如果有一系列的条形码，还要分以下
 			//好像条形码也是以;分的(英文)
-			if(c[i].contains(",")){
+			if(c[i].contains(";")){
 				temp=temp+splitcoude(c[i]);
-				System.out.println("ll");
 			}
 			else{
 				temp=temp+c[i]+"\n";
 			}
-			System.out.println(c[i]);
 
 		}
 		xiangxi.setText(temp);
@@ -176,10 +175,12 @@ public class OrderApprove extends JPanel {
 		for(int i = 0; i < colunms; i++)  
 		{  
 			column = table.getColumnModel().getColumn(i);  
-			column.setPreferredWidth(100);  
+			column.setPreferredWidth(108);  
 		}
 		column = table.getColumnModel().getColumn(2);  
-		column.setPreferredWidth(500); 
+		column.setPreferredWidth(400); 
+		TableColumn column1 = table.getColumnModel().getColumn(1);  
+		column1.setPreferredWidth(160); 
 		setLayout(null);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);  
 
@@ -221,7 +222,7 @@ public class OrderApprove extends JPanel {
 		label_1.setBounds(10, 67, 103, 18);
 		add(label_1);
 		orderType = new JComboBox();
-		orderType.setModel(new DefaultComboBoxModel(new String[] {"所有", "寄件单", "收件单", "营业厅到达单", "营业厅装车单", "营业厅派件单", "中转中心到达单", "中转中心装车单", "中转中心中转单"}));
+		orderType.setModel(new DefaultComboBoxModel(new String[] {"所有", "寄件单", "收件单", "营业厅到达单", "营业厅装车单", "营业厅派件单", "中转中心到达单", "中转中心装车单", "中转中心中转单", "仓库入库单", "仓库出库单", "营业厅收款单"}));
 		orderType.setBounds(98, 66, 151, 21);
 		add(orderType);
 		JButton button_5 = new JButton("查询");
@@ -229,33 +230,17 @@ public class OrderApprove extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				//根据单据类型，在界面显示
 				String s=orderType.getSelectedItem().toString();
-				if(s.equals("寄件单")){
-					//TODO
+				//
+				if(s.equals("所有")){
+					cleanTable();
+					initTable();
 				}
-				else if(s.equals("收件单")){
-					//TODO
-				}
-				else if(s.equals("营业厅到达单")){
-					//TODO
-				}
-				else if(s.equals("营业厅装车单")){
-
-				}
-				else if(s.equals("营业厅派件单")){
-
-				}
-				else if(s.equals("中转中心到达单")){
-
-				}
-				else if(s.equals("中转中心装车单")){
-
-				}
-				else if(s.equals("中转中心中转单")){
-
+				else{
+				chooseType(s);
 				}
 			}
 		});
-		button_5.setBounds(310, 65, 93, 23);
+		button_5.setBounds(259, 65, 93, 23);
 		add(button_5);
 
 		JLabel label_2 = new JLabel("详细信息");
@@ -312,10 +297,13 @@ public class OrderApprove extends JPanel {
 	}
 	public void shenpi(boolean isappr){
 		////遍历checkbox是否被选中
+		boolean iss=false;
 		ArrayList<ApproveNote> results=new ArrayList<ApproveNote>();
 		for(int i=0;i<model.getRowCount();i++){
 			if((boolean) model.getValueAt(i, 3)){//checkbox被选中
+				iss=true;
 				ApproveNote aaa=approvenote.get(i);
+				//aaa.setPass(isappr);
 				if(isappr){//审批通过
 					aaa.setPass(isappr);
 
@@ -326,8 +314,16 @@ public class OrderApprove extends JPanel {
 					aaa.setRejectionMessage(JOptionPane.showInputDialog("请输入意见"));
 					model.setValueAt("未通过", i,0);
 				}
+				//model.setValueAt(state(aaa.isPass()), i,0);
 				results.add(aaa);
+				//之后设置成未被选中状态，否则容易出错。。。
+				model.setValueAt(false,i, 3);
 			}
+		}
+		if(!iss){
+			new ShowMessageFrame("请选中选择框后再进行操作哦~");
+			
+			return ;
 		}
 		try {
 			nab.pushResults(results);
@@ -336,39 +332,40 @@ public class OrderApprove extends JPanel {
 			JOptionPane.showConfirmDialog(null, e.getMessage());
 		}
 	}
-
-
-	public String type(NoteVO vo){//单据类型
-		if(vo instanceof ArrivalNoteOnServiceVO){
-			return "营业厅到达单";
+public void chooseType(String s){
+	//TODO
+	//便利approvenote,找到相应类型
+System.out.println(s);
+	cleanTable();
+	boolean isemp=true;
+	for(int i=0;i<approvenote.size();i++){
+		ApproveNote an=approvenote.get(i);
+		System.out.println(an.getType().toString());
+		if(an.getType().toString().equals(s)){
+			//xianshi
+			isemp=false;
+			System.out.println("ohayu");
+			Object[] obj={state(an.isPass()),an.getType().toString(),an.getInfo(),false};//false checkbox未选中
+			model.addRow(obj);
 		}
-		if(vo instanceof DeliverNoteOnServiceVO){
-			return "营业厅派件单";
-		}
-		if(vo instanceof ArrivalNoteOnTransitVO){
-			return "中转中心到达单";
-		}
-		if(vo instanceof DeliveryNoteVO){
-			return "寄件单";
-		}
-		if(vo instanceof LoadNoteOnServiceVO){
-			return "营业厅装车单";
-		}
-		if(vo instanceof LoadNoteOnTransitVO){
-			return "中转中心装车单";
-		}
-		if(vo instanceof ReceivingNoteVO){
-			return "收件单";
-		}
-		else
-			return "中转中心中转单";
-
+		
 	}
+	if(isemp){
+		JOptionPane.showMessageDialog(null, "暂时木有要审批的单据");
+}
+}
+private void cleanTable(){
+	int count=model.getRowCount();
+	for(int i=count-1;i>=0;i--){
+		model.removeRow(i);
+	}
+}
+	
 	public String state(boolean p){//审批状态
 		if(p){
-			return "通过审批";
+			return "通过";
 		}
 		else
-			return "未通过审批";
+			return "未通过";
 	}
 }

@@ -23,14 +23,18 @@ import javax.swing.JMenuItem;
 import presentation.financeui.ChartOutPutPanel;
 import presentation.financeui.SystemLogPanel;
 import presentation.infoui.StaffManagementPanel;
+import presentation.logisticui.CourierFrame;
 import presentation.mainui.ManageorgPanel;
 import presentation.mainui.loginFrame;
+import presentation.util.VersionFrame;
+import presentation.util.preference;
 import presentation.util.welcomPanel;
 import util.LogInMsg;
 
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JLabel;
 
 public class ManageFrame extends JFrame {
@@ -39,6 +43,7 @@ public class ManageFrame extends JFrame {
 	private JPanel bankpanel;
     private JPanel welcome;
     private LogInMsg lim;
+    private JPanel panel;
 
 	/**
 	 * 窗口宽度
@@ -83,6 +88,20 @@ public class ManageFrame extends JFrame {
 			}
 		});
 	}
+	
+	
+	
+	public void zhuxiao() {
+		int result = JOptionPane.showConfirmDialog( ManageFrame.this, "确认退出？","系统提示",
+				JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+		if(result == JOptionPane.YES_OPTION) {
+			dispose();
+			loginFrame lf = new loginFrame();
+			lf.setVisible(true);
+		} else {
+			setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		}
+	}
 
 	/**
 	 * Create the frame.
@@ -116,7 +135,7 @@ public class ManageFrame extends JFrame {
 		bankpanel.add(welcome);
 		welcome.setLayout(null);
 		
-		JPanel panel = new JPanel(){
+		 panel = new JPanel(){
 			public void paintComponent(Graphics g) {
 				 super.paintComponent(g);
 				 ImageIcon img = new ImageIcon("image/henfu.png");
@@ -131,15 +150,7 @@ public class ManageFrame extends JFrame {
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(6, 0, 132, 22);
-		panel_1.add(menuBar);
-		
-		JMenu mnNewMenu = new JMenu("系统（S）");
-		menuBar.add(mnNewMenu);
-		
-		JMenu mnf = new JMenu("功能（F）");
-		menuBar.add(mnf);
+	
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
@@ -235,6 +246,82 @@ public class ManageFrame extends JFrame {
 			
 		});
 		mnNewMenu_1.add(mntmNewMenuItem_1);
+		
+		JMenuBar mmenuBar = new JMenuBar();
+		mmenuBar.setBounds(6, 0, 132, 22);
+		panel_1.add(mmenuBar);
+		
+		JMenu mmnNewMenu = new JMenu("功能（F）");
+		mmenuBar.add(mmnNewMenu);
+		
+		JMenuItem menuItem = new JMenuItem("个性化");
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				final preference pf = new preference();
+				pf.setVisible(true);
+				pf.getButtton().addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+					JPanel p = new JPanel(){
+							public void paintComponent(Graphics g) {
+								 super.paintComponent(g);
+								 ImageIcon img = new ImageIcon("image/henfu.png");
+								 g.drawImage(img.getImage(), 0, 0, null);
+								}
+								};
+						p.setBounds(0, 0, 1280, 100);
+						panel.removeAll();
+						panel.add(p);
+						panel.repaint();
+						p.setLayout(null);
+						pf.dispose();
+					}
+			});
+			
+				pf.getButton1().addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+					JPanel p = new JPanel(){
+							public void paintComponent(Graphics g) {
+								 super.paintComponent(g);
+								 ImageIcon img = new ImageIcon("image/word.jpg");
+								 g.drawImage(img.getImage(), 0, 0, null);
+								}
+								};
+						p.setBounds(0, 0, 1280, 100);
+						panel.removeAll();
+						panel.add(p);
+						panel.repaint();
+						p.setLayout(null);
+						pf.dispose();
+					}
+			});
+				
+
+			}
+		});
+		mmnNewMenu.add(menuItem);
+		
+		JMenuItem menuItem_1 = new JMenuItem("注销");
+		menuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				zhuxiao();
+			}
+		});
+		mmnNewMenu.add(menuItem_1);
+		
+		JMenu mmnf = new JMenu("帮助（H）");
+		mmenuBar.add(mmnf);
+		
+		JMenuItem menuItem_2 = new JMenuItem("详细");
+		menuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VersionFrame frame = new VersionFrame();
+				frame.setVisible(true);
+			}
+		});
+		mmnf.add(menuItem_2);
+		
+		JMenuItem mntmHelp = new JMenuItem("Help");
+		mmnf.add(mntmHelp);
 		
 		JButton btnNewButton_1 = new JButton("修改业务数据");
 		btnNewButton_1.addActionListener(new ActionListener() {

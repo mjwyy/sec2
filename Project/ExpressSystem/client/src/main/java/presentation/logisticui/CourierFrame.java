@@ -9,6 +9,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
@@ -25,6 +28,8 @@ import javax.swing.border.EtchedBorder;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 import presentation.mainui.loginFrame;
+import presentation.util.VersionFrame;
+import presentation.util.preference;
 import presentation.util.welcomPanel;
 import util.LogInMsg;
 import util.ResultMsg;
@@ -56,7 +61,7 @@ public class CourierFrame extends JFrame {
 	private JLabel label_1;
 	private JLabel limname;
 	private JLabel limorg;
-
+    private JPanel panel;
 	/**
 	 * Launch the application.
 	 */
@@ -115,7 +120,19 @@ public class CourierFrame extends JFrame {
 			}
 		});
 	}
-
+	
+	
+	public void zhuxiao() {
+		int result = JOptionPane.showConfirmDialog( CourierFrame.this, "确认退出？","系统提示",
+				JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+		if(result == JOptionPane.YES_OPTION) {
+			dispose();
+			loginFrame lf = new loginFrame();
+			lf.setVisible(true);
+		} else {
+			setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		}
+	}
 	/**
 	 * Create the frame.
 	 */
@@ -133,7 +150,7 @@ public class CourierFrame extends JFrame {
 		this.setResizable(false);//不可调整大小
 		setTitle("MinJW物流管理系统");
 		
-		JPanel panel = new JPanel(){
+		panel = new JPanel(){
 			public void paintComponent(Graphics g) {
 				 super.paintComponent(g);
 				 ImageIcon img = new ImageIcon("image/henfu.png");
@@ -145,10 +162,6 @@ public class CourierFrame extends JFrame {
 		panel.setLayout(null);
 		
 
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
-		panel_1.setBounds(0, 100, 1280, 25);
-		contentPane.add(panel_1);
 		
 		bankpanel = new JPanel();
 		bankpanel.setBounds(138, 125, 1152, 446);
@@ -273,6 +286,88 @@ public class CourierFrame extends JFrame {
 		});
 		button_1.setBounds(0, 421, 140, 152);
 		contentPane.add(button_1);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(0, 100, 1280, 25);
+		contentPane.add(panel_1);
+		panel_1.setBorder(new EtchedBorder(EtchedBorder.RAISED, Color.LIGHT_GRAY, Color.LIGHT_GRAY));
+		panel_1.setLayout(null);
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(6, 0, 132, 22);
+		panel_1.add(menuBar);
+		
+		JMenu mnNewMenu = new JMenu("功能（F）");
+		menuBar.add(mnNewMenu);
+		
+		JMenuItem menuItem = new JMenuItem("个性化");
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				final preference pf = new preference();
+				pf.setVisible(true);
+				pf.getButtton().addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+					JPanel p = new JPanel(){
+							public void paintComponent(Graphics g) {
+								 super.paintComponent(g);
+								 ImageIcon img = new ImageIcon("image/henfu.png");
+								 g.drawImage(img.getImage(), 0, 0, null);
+								}
+								};
+						p.setBounds(0, 0, 1280, 100);
+						panel.removeAll();
+						panel.add(p);
+						panel.repaint();
+						p.setLayout(null);
+						pf.dispose();
+					}
+			});
+			
+				pf.getButton1().addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+					JPanel p = new JPanel(){
+							public void paintComponent(Graphics g) {
+								 super.paintComponent(g);
+								 ImageIcon img = new ImageIcon("image/word.jpg");
+								 g.drawImage(img.getImage(), 0, 0, null);
+								}
+								};
+						p.setBounds(0, 0, 1280, 100);
+						panel.removeAll();
+						panel.add(p);
+						panel.repaint();
+						p.setLayout(null);
+						pf.dispose();
+					}
+			});
+				
+
+			}
+		});
+		mnNewMenu.add(menuItem);
+		
+		JMenuItem menuItem_1 = new JMenuItem("注销");
+		menuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				zhuxiao();
+			}
+		});
+		mnNewMenu.add(menuItem_1);
+		
+		JMenu mnf = new JMenu("帮助（H）");
+		menuBar.add(mnf);
+		
+		JMenuItem menuItem_2 = new JMenuItem("详细");
+		menuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VersionFrame frame = new VersionFrame();
+				frame.setVisible(true);
+			}
+		});
+		mnf.add(menuItem_2);
+		
+		JMenuItem mntmHelp = new JMenuItem("Help");
+		mnf.add(mntmHelp);
 		
 		jijian = new JLabel("您提交的寄件单已通过审批,现在可以填下一份了哟");
 		jijian.setBounds(21, 10, 487, 24);

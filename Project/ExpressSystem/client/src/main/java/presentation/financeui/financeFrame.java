@@ -28,6 +28,8 @@ import presentation.logisticui.Car;
 import presentation.logisticui.CourierFrame;
 import presentation.mainui.ManageorgPanel;
 import presentation.mainui.loginFrame;
+import presentation.util.VersionFrame;
+import presentation.util.preference;
 import presentation.util.welcomPanel;
 import util.LogInMsg;
 import util.ResultMsg;
@@ -52,6 +54,7 @@ public class financeFrame extends JFrame {
 	private JLabel jiesuanWait;
 	private JLabel jiesuanTongguo;
 	private JLabel jiesuanBu;
+	private JPanel panel;
 	
 	/**
 	 * 窗口宽度
@@ -124,6 +127,19 @@ public class financeFrame extends JFrame {
 		});
 	}
 
+	
+	
+	public void zhuxiao() {
+		int result = JOptionPane.showConfirmDialog( financeFrame.this, "确认退出？","系统提示",
+				JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+		if(result == JOptionPane.YES_OPTION) {
+			dispose();
+			loginFrame lf = new loginFrame();
+			lf.setVisible(true);
+		} else {
+			setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		}
+	}
 	/**
 	 * Create the frame.
      * @param lim
@@ -139,7 +155,7 @@ public class financeFrame extends JFrame {
 		setTitle("MinJW物流管理系统");
 		contentPane.setLayout(null);
 		
-		JPanel panel = new JPanel(){
+		panel = new JPanel(){
 			public void paintComponent(Graphics g) {
 				 super.paintComponent(g);
 				 ImageIcon img = new ImageIcon("image/henfu.png");
@@ -150,11 +166,11 @@ public class financeFrame extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(0, 100, 1280, 25);
-		panel_1.setBorder(new EtchedBorder(EtchedBorder.RAISED, Color.LIGHT_GRAY, Color.LIGHT_GRAY));
-		contentPane.add(panel_1);
-		panel_1.setLayout(null);
+//		JPanel panel_1 = new JPanel();
+//		panel_1.setBounds(0, 100, 1280, 25);
+//		panel_1.setBorder(new EtchedBorder(EtchedBorder.RAISED, Color.LIGHT_GRAY, Color.LIGHT_GRAY));
+//		contentPane.add(panel_1);
+//		panel_1.setLayout(null);
 		
 		bankpanel = new JPanel();
 		bankpanel.setBounds(138, 125, 1152, 446);
@@ -166,15 +182,87 @@ public class financeFrame extends JFrame {
 		bankpanel.add(welcome);
 		welcome.setLayout(null);
 		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(0, 100, 1280, 25);
+		contentPane.add(panel_1);
+		panel_1.setBorder(new EtchedBorder(EtchedBorder.RAISED, Color.LIGHT_GRAY, Color.LIGHT_GRAY));
+		panel_1.setLayout(null);
+		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(6, 0, 132, 22);
 		panel_1.add(menuBar);
 		
-		JMenu mnNewMenu = new JMenu("系统（S）");
+		JMenu mnNewMenu = new JMenu("功能（F）");
 		menuBar.add(mnNewMenu);
 		
-		JMenu mnf = new JMenu("功能（F）");
+		JMenuItem mmenuItem = new JMenuItem("个性化");
+		mmenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				final preference pf = new preference();
+				pf.setVisible(true);
+				pf.getButtton().addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+					JPanel p = new JPanel(){
+							public void paintComponent(Graphics g) {
+								 super.paintComponent(g);
+								 ImageIcon img = new ImageIcon("image/henfu.png");
+								 g.drawImage(img.getImage(), 0, 0, null);
+								}
+								};
+						p.setBounds(0, 0, 1280, 100);
+						panel.removeAll();
+						panel.add(p);
+						panel.repaint();
+						p.setLayout(null);
+						pf.dispose();
+					}
+			});
+			
+				pf.getButton1().addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+					JPanel p = new JPanel(){
+							public void paintComponent(Graphics g) {
+								 super.paintComponent(g);
+								 ImageIcon img = new ImageIcon("image/word.jpg");
+								 g.drawImage(img.getImage(), 0, 0, null);
+								}
+								};
+						p.setBounds(0, 0, 1280, 100);
+						panel.removeAll();
+						panel.add(p);
+						panel.repaint();
+						p.setLayout(null);
+						pf.dispose();
+					}
+			});
+				
+
+			}
+		});
+		mnNewMenu.add(mmenuItem);
+		
+		JMenuItem menuItem_1 = new JMenuItem("注销");
+		menuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				zhuxiao();
+			}
+		});
+		mnNewMenu.add(menuItem_1);
+		
+		JMenu mnf = new JMenu("帮助（H）");
 		menuBar.add(mnf);
+		
+		JMenuItem menuItem_2 = new JMenuItem("详细");
+		menuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VersionFrame frame = new VersionFrame();
+				frame.setVisible(true);
+			}
+		});
+		mnf.add(menuItem_2);
+		
+		JMenuItem mntmHelp = new JMenuItem("Help");
+		mnf.add(mntmHelp);
 		
 		
 		
@@ -249,8 +337,8 @@ public class financeFrame extends JFrame {
 		});
 		mnNewMenu_1.add(menuItem);
 		
-		JMenuItem menuItem_1 = new JMenuItem("结算管理");
-		menuItem_1.addActionListener(new ActionListener() {
+		JMenuItem mmenuItem_1 = new JMenuItem("结算管理");
+		mmenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SettlementMangePanel smp = new SettlementMangePanel(){
 					public void paintComponent(Graphics g) {
@@ -267,7 +355,7 @@ public class financeFrame extends JFrame {
 				bankpanel.repaint();
 			}
 		});
-		mnNewMenu_1.add(menuItem_1);
+		mnNewMenu_1.add(mmenuItem_1);
 		
 		JPanel panel_5 = new JPanel();
 		panel_5.setBounds(0, 282, 137, 89);
@@ -279,8 +367,8 @@ public class financeFrame extends JFrame {
 		JMenu mnNewMenu_2 = new JMenu("统计与查询");
 		menuBar_2.add(mnNewMenu_2);
 		
-		JMenuItem menuItem_2 = new JMenuItem("查询系统日志");
-		menuItem_2.addActionListener(new ActionListener() {
+		JMenuItem mmenuItem_2 = new JMenuItem("查询系统日志");
+		mmenuItem_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				 SystemLogPanel slp = new  SystemLogPanel(){
 					public void paintComponent(Graphics g) {
@@ -297,7 +385,7 @@ public class financeFrame extends JFrame {
 				bankpanel.repaint();		
 			}
 		});
-		mnNewMenu_2.add(menuItem_2);
+		mnNewMenu_2.add(mmenuItem_2);
 		
 		JMenuItem menuItem_3 = new JMenuItem("生成统计报表");
 		menuItem_3.addActionListener(new ActionListener() {

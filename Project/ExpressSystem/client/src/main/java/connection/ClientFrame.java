@@ -52,8 +52,11 @@ public class ClientFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public ClientFrame() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
+		int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
+		int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
+		this.setLocation((screenWidth-450)>>1, (screenHeight-300)>>1);
 		contentPane = new JPanel(){
 			public void paintComponent(Graphics g) {
 				 super.paintComponent(g);

@@ -37,15 +37,16 @@ public class RMIHelper {
     private void initiateIP() {}
 
     public static void tryConnect() throws RemoteException, NotBoundException {
-        serverIP = RMIConfig.getServerIP();
         if (System.getSecurityManager() == null) {
             System.setSecurityManager(new SecurityManager());
         }
         obj = new RMIHelper();
         int port = Integer.parseInt(strPort);
-        Registry registry = LocateRegistry.getRegistry(serverIP);
+//        System.out.println("ip = " +serverIP+"port = "+port);
+        Registry registry = LocateRegistry.getRegistry(serverIP,port);
         Remote provider = registry.lookup(objectiveName);
         obj.provider = (RMIObjectProviderService) provider;
+//        System.out.println("obj.provider == null?" + (obj.provider == null));
         obj.connectStatus = true;
     }
 

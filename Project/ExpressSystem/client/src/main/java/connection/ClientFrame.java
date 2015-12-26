@@ -1,5 +1,6 @@
 package connection;
 
+import presentation.mainui.loginFrame;
 import util.FormatCheck;
 import util.ResultMsg;
 
@@ -102,18 +103,23 @@ public class ClientFrame extends JFrame {
                     if(!IPMeg.isPass()){
                         //TODO 界面弹出提示框显示IPMsg里面的字符串
                         String infoToDisplay = IPMeg.getMessage();
-                        System.out.println(infoToDisplay);
+//                        System.out.println(infoToDisplay);
                     } else if(!PortMsg.isPass()){
                         //TODO 界面弹出提示框显示IPMsg里面的字符串
                         String infoToDisplay = PortMsg.getMessage();
-                        System.out.println(infoToDisplay);
+//                        System.out.println(infoToDisplay);
                     } else {
                         //通过格式检查
                         RMIHelper.setServerIP(aserverIP);
                         RMIHelper.setServerPort(aport);
+//                        System.out.println("pass foramt");
                         try {
                             RMIHelper.tryConnect();
+                            System.out.println("sout pass try");
                             dispose();
+                            System.out.println("pass dispose");
+                            loginFrame loginFrame = new loginFrame();
+
                         } catch (RemoteException e1) {
                             showStatus(true,false);
                         } catch (NotBoundException e1) {

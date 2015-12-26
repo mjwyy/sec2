@@ -12,7 +12,7 @@ public class RMIConfig {
 
     public static boolean IS_DEBUG = false;
 
-    static {
+//    static {
 //            SAXReader reader = new SAXReader();
 //        Document document = null;
 //        try {
@@ -31,9 +31,9 @@ public class RMIConfig {
 //            }
 //            serverIP = params.get("serverIP");
 //            port =  params.get("port");
-        serverIP = "localhost";
-        port = "1099";
-    }
+//        serverIP = "localhost";
+//        port = "1099";
+//    }
 
     public static String getServerIP() {
         return serverIP;
@@ -49,6 +49,11 @@ public class RMIConfig {
     }
 
     public static void setPort(String port) {
+        RMIConfig.port = port;
+    }
+
+    public static void setServerIPAndPort(String serverIP, String port){
+        RMIConfig.serverIP = serverIP;
         RMIConfig.port = port;
     }
 }

@@ -20,9 +20,8 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 public class ClientMain {
 
     public static void main(String[] args) throws RemoteException, NotBoundException {
-					ClientFrame frame = new ClientFrame();
-					frame.setVisible(true);
-
+            ClientFrame frame = new ClientFrame();
+            frame.setVisible(true);
     }
     /**
 	 * 更改外观

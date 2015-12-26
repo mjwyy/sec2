@@ -10,6 +10,30 @@ import java.util.regex.Pattern;
 public class FormatCheck {
 
     /**
+     * 检查输入是否是IP
+     *
+     * @param str
+     * @return
+     */
+    public static ResultMsg isIP(String str) {
+        String trueExpression = "((?:(?:25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(?:25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d))))";
+        return Pattern.matches(trueExpression,str)? new ResultMsg(true) :
+                new ResultMsg(false,"IP地址格式错误!");
+    }
+
+    /**
+     * 检查输入是否是正数端口号
+     *
+     * @param num
+     * @return
+     */
+    public static ResultMsg isPort(String num) {
+        int port = Integer.parseInt(num);
+        return (port >= 0 && port <= 65535) ? new ResultMsg(true) :
+                new ResultMsg(false,"端口号格式错误,必须为0-65535间的整数!");
+    }
+
+    /**
      * 检查输入是否是正数
      *
      * @param num

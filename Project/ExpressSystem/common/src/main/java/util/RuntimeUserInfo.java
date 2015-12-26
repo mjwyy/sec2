@@ -1,6 +1,5 @@
 package util;
 
-//TODO 多客户端并发这个类的信息被覆盖
 public class RuntimeUserInfo {
 
     /**

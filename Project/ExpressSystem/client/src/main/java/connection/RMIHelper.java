@@ -21,6 +21,7 @@ import java.rmi.registry.Registry;
 public class RMIHelper {
 
     public static String serverIP;
+    public static String strPort;
     private static String objectiveName = "RMIObjectProvider";
 
     private RMIObjectProviderService provider = null;
@@ -41,6 +42,7 @@ public class RMIHelper {
             System.setSecurityManager(new SecurityManager());
         }
         obj = new RMIHelper();
+        int port = Integer.parseInt(strPort);
         Registry registry = LocateRegistry.getRegistry(serverIP);
         Remote provider = registry.lookup(objectiveName);
         obj.provider = (RMIObjectProviderService) provider;
@@ -55,6 +57,10 @@ public class RMIHelper {
     // TODO 客户端设置这一个
     public static void setServerIP(String serverIP) {
         RMIHelper.serverIP = serverIP;
+    }
+
+    public static void setServerPort(String serverPort) {
+        RMIHelper.strPort = serverPort;
     }
 
     public static RMIHelper getInstance() {

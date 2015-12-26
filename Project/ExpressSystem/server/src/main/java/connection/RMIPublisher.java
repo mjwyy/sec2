@@ -42,6 +42,7 @@ public class RMIPublisher {
             // 当端口注册失败时（例如，端口被占用或者不存在的端口号），
             // 该方法抛出RemoteException异常。
             System.out.println("java RMI registry already exists.");
+            e.printStackTrace();
         }
 
     }

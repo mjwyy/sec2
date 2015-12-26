@@ -1,3 +1,7 @@
+package connection.config;
+
+import javax.swing.*;
+
 //package connection.config;
 //
 //import connection.RMIPublisher;
@@ -21,7 +25,7 @@
 //import java.awt.event.ActionEvent;
 //import java.awt.Font;
 //
-//public class ServerFrame extends JFrame {
+public class ServerFrame extends JFrame {
 //
 //	private JPanel contentPane;
 //	private JTextField serverIP;
@@ -133,4 +137,4 @@
 //		state1.setVisible(stop);
 //		state2.setVisible(run);
 //	}
-//}
+}

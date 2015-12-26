@@ -1,5 +1,8 @@
 package connection;
 
+import util.FormatCheck;
+import util.ResultMsg;
+
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -89,17 +92,33 @@ public class ClientFrame extends JFrame {
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if(!(serverIP.getText().isEmpty()||port.getText().isEmpty())){
+                    String aserverIP = serverIP.getText();
+                    String aport = port.getText();
+                    System.out.println("ip = " + aserverIP);
+                    System.out.println("port = " + aport);
+                    ResultMsg IPMeg = FormatCheck.isIP(aserverIP);
+                    ResultMsg PortMsg = FormatCheck.isPort(aport);
 
-                    RMIHelper.setServerIP(serverIP.getText());
-                    RMIHelper.setServerPort(port.getText());
-
-                    try {
-                        RMIHelper.tryConnect();
-                        dispose();
-                    } catch (RemoteException e1) {
-                        showStatus(true,false);
-                    } catch (NotBoundException e1) {
-                        showStatus(true,false);
+                    if(!IPMeg.isPass()){
+                        //TODO 界面弹出提示框显示IPMsg里面的字符串
+                        String infoToDisplay = IPMeg.getMessage();
+                        System.out.println(infoToDisplay);
+                    } else if(!PortMsg.isPass()){
+                        //TODO 界面弹出提示框显示IPMsg里面的字符串
+                        String infoToDisplay = PortMsg.getMessage();
+                        System.out.println(infoToDisplay);
+                    } else {
+                        //通过格式检查
+                        RMIHelper.setServerIP(aserverIP);
+                        RMIHelper.setServerPort(aport);
+                        try {
+                            RMIHelper.tryConnect();
+                            dispose();
+                        } catch (RemoteException e1) {
+                            showStatus(true,false);
+                        } catch (NotBoundException e1) {
+                            showStatus(true,false);
+                        }
                     }
 
                 }else {

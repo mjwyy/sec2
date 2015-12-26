@@ -10,6 +10,16 @@ import static org.junit.Assert.assertEquals;
  */
 public class FormatCheck_Test {
 
+    @Test
+    public void testIP(){
+        assertEquals(true, FormatCheck.isIP("127.0.0.1").isPass());
+        assertEquals(true, FormatCheck.isIP("188.23.13.1").isPass());
+        assertEquals(false, FormatCheck.isIP("012456789").isPass());
+        assertEquals(false, FormatCheck.isIP("123.123.123.123.1").isPass());
+        assertEquals(false, FormatCheck.isIP("32.23.1").isPass());
+        assertEquals(false, FormatCheck.isIP("0.12301230.123.123").isPass());
+    }
+
 //    @Test
     public void testBarcode(){
         assertEquals(true, FormatCheck.isBarcode("0123456789").isPass());

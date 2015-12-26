@@ -28,6 +28,8 @@ public class RMIHelper {
 
     private static RMIHelper obj;
 
+    private static Registry registry = null;
+
     private boolean connectStatus = false;
 
     private RMIHelper() {
@@ -43,11 +45,15 @@ public class RMIHelper {
         obj = new RMIHelper();
         int port = Integer.parseInt(strPort);
 //        System.out.println("ip = " +serverIP+"port = "+port);
-        Registry registry = LocateRegistry.getRegistry(serverIP,port);
+        registry = LocateRegistry.getRegistry(serverIP,port);
         Remote provider = registry.lookup(objectiveName);
         obj.provider = (RMIObjectProviderService) provider;
 //        System.out.println("obj.provider == null?" + (obj.provider == null));
         obj.connectStatus = true;
+        if(obj.connectStatus) {
+            Thread discconChecker = new ConnectionChecker();
+            discconChecker.start();
+        }
     }
 
     public static boolean getConnectionStatus() {
@@ -70,5 +76,9 @@ public class RMIHelper {
 
     public RMIObjectProviderService getProvider() {
         return obj.provider;
+    }
+
+    public static Object getRemoteObj(String name) throws Exception {
+        return registry.lookup(name);
     }
 }

@@ -10,8 +10,6 @@ import java.awt.*;
 public class ServerMain {
 
     public static void main(String[] args) {
-//        ServerFrame frame = new ServerFrame();
-//        frame.setVisible(true);
         String IP = args[0];
         String port = args[1];
         RMIConfig.setServerIPAndPort(IP,port);

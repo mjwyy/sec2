@@ -20,6 +20,7 @@ public class RMIPublisher {
     private int regPort;
 
     private static RMIPublisher thisObj = null;
+    private DisconnectionCheckerObj disconnObj = null;
 
     public RMIPublisher() throws RemoteException, MalformedURLException {
         System.out.println("RMI server starting...");
@@ -29,6 +30,8 @@ public class RMIPublisher {
             System.setSecurityManager(new RMISecurityManager());
         }
 
+        disconnObj = new DisconnectionCheckerObj();
+
         try {
             StaticRmiSocketFactory regFac = new StaticRmiSocketFactory(hostIP, regPort);
             Registry reg = LocateRegistry.createRegistry(regPort, regFac, regFac);
@@ -37,6 +40,7 @@ public class RMIPublisher {
             //Instantiate RmiServer
             RMIObjectProvider obj = new RMIObjectProvider();
             reg.rebind("RMIObjectProvider", obj);
+            reg.rebind("DisconnectionCheckerObj",disconnObj);
             System.out.println("PeerServer bound in registry");
         } catch (RemoteException e) {
             // 当端口注册失败时（例如，端口被占用或者不存在的端口号），

@@ -48,7 +48,11 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 
 
+
+
 import presentation.mainui.loginFrame;
+import presentation.util.VersionFrame;
+import presentation.util.preference;
 import util.LogInMsg;
 
 import java.awt.Toolkit;
@@ -81,6 +85,7 @@ public class Service extends JFrame {
 	private LoadCarOrder lc;
 	private SendOrder so;
 	//↑↑↑↑↑
+	private JLabel biaotilan ;
 	/**
 	 * 窗口宽度
 	 */
@@ -175,6 +180,18 @@ public class Service extends JFrame {
 
 	
 	//设置菜单栏
+    public void zhuxiao() {
+		int result = JOptionPane.showConfirmDialog( null, "确认退出？","系统提示",
+				JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+		if(result == JOptionPane.YES_OPTION) {
+			dispose();
+			loginFrame lf = new loginFrame();
+			lf.setVisible(true);
+		} else {
+			setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		}
+	}
+	//设置菜单栏
 	public void setCaiDanLan(){
 
 
@@ -182,13 +199,51 @@ public class Service extends JFrame {
 		menuBar.setBounds(0, 80, WIDTH, 34);
 		getContentPane().add(menuBar);
 
-		JMenu mns = new JMenu("系统(S)");
-		menuBar.add(mns);
+		JMenu mnNewMenu = new JMenu("功能");
+		menuBar.add(mnNewMenu);
+		JMenuItem menuItem = new JMenuItem("个性化");
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				final preference pf = new preference();
+				pf.setVisible(true);
+				pf.getButtton().addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+					
+						biaotilan.setIcon(new ImageIcon("image/henfu.png"));
+						pf.dispose();
+					}
+			});
+			
+				pf.getButton1().addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+							
+								biaotilan.setIcon(new ImageIcon("image/word.jpg"));
+					
+						pf.dispose();
+					}
+			});
+				}
+		});
+		mnNewMenu.add(menuItem);
+		
+		JMenuItem menuItem_1 = new JMenuItem("注销");
+		menuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				zhuxiao();
+			}
+		});
+		mnNewMenu.add(menuItem_1);
+		JMenu mnf = new JMenu("帮助");
+		menuBar.add(mnf);
 
-		JMenu mns_1 = new JMenu("功能(F)");
-		menuBar.add(mns_1);
-
-
+		JMenuItem menuItem_2 = new JMenuItem("详细");
+		menuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VersionFrame frame = new VersionFrame();
+				frame.setVisible(true);
+			}
+		});
+		mnf.add(menuItem_2);
 
 	}
 	/**
@@ -234,11 +289,11 @@ public class Service extends JFrame {
 
 
 
-		JLabel lblNewLabel = new JLabel("MinJW快递物流系统");
-		lblNewLabel.requestFocus();
-		lblNewLabel.setBounds(0, 0, 1280, 100);
-		panel.add(lblNewLabel);
-		lblNewLabel.setIcon(new ImageIcon("image/henfu.png"));
+		biaotilan = new JLabel("MinJW快递物流系统");
+		biaotilan.requestFocus();
+		biaotilan.setBounds(0, 0, 1280, 100);
+		panel.add(biaotilan);
+		biaotilan.setIcon(new ImageIcon("image/henfu.png"));
 
 		middle = new JPanel(){
 			public void paintComponent(Graphics g) {

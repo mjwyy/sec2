@@ -1,7 +1,6 @@
 package connection;
 
 import connection.config.RMIConfig;
-import connection.config.ServerFrame;
 
 import java.awt.*;
 

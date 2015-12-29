@@ -17,6 +17,7 @@ import javax.swing.table.TableColumn;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
+import connection.ConnectionChecker;
 import presentation.logisticui.CourierFrame;
 import presentation.mainui.loginFrame;
 import presentation.util.MJTextField;
@@ -207,6 +208,7 @@ public class SystemUser extends JFrame {
      * Create the frame.
      */
     public SystemUser(LogInMsg lim) {
+    	new ConnectionChecker().start();
         this.lim=lim;
         JPanel pppp = (JPanel)this.getContentPane();
         // 加载背景图片 

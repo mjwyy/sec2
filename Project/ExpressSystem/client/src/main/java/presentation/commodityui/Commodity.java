@@ -50,6 +50,8 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 
 
+
+import connection.ConnectionChecker;
 import presentation.logisticui.CourierFrame;
 import presentation.logisticui.PayMent;
 import presentation.mainui.loginFrame;
@@ -246,6 +248,7 @@ public class Commodity extends JFrame {
 	 * Create the frame.
 	 */
 	public Commodity( LogInMsg lim1) {
+		new ConnectionChecker().start();
 		this.lim=lim1;
 		this.setResizable(false);//不可调整大小
 		setIconImage(Toolkit.getDefaultToolkit().getImage("image/0010.jpg"));

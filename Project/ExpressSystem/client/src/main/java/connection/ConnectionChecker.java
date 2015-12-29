@@ -33,7 +33,8 @@ public class ConnectionChecker extends Thread {
 	
 	private void showDisconnectedPane() {
 		//TODO 显示具有断线信息的对话框，最好上面的按钮会关闭当前窗口
-	
+		JOptionPane.showConfirmDialog(null,"断线啦","系统提示",
+				JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
 		System.out.println("Disconnection detected! Showing dialog...");
 	}
 	

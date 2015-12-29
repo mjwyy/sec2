@@ -38,6 +38,7 @@ import businesslogicservice.infoblservice.SystemUserManagementBLService;
 import businesslogicservice.infoblservice._stub.SystemUserManagementBLService_Stub;
 import businesslogicservice.statisticblservice.OrderInquiryBLService;
 import businesslogicservice.statisticblservice._stub.OrderInquiryBLService_Stub;
+import connection.ConnectionChecker;
 import connection.RMIHelper;
 import dataservice.exception.ElementNotFoundException;
 import util.LogInMsg;
@@ -132,6 +133,8 @@ public class loginFrame extends JFrame {
      * Create the frame.
      */
     public loginFrame() {
+    	ConnectionChecker c = new ConnectionChecker();
+		 c.start();
     	// 置顶
     	setAlwaysOnTop(true);
     	  // 双击置顶/取消置顶

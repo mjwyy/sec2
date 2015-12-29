@@ -37,6 +37,8 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.JLabel;
 
+import connection.ConnectionChecker;
+
 public class ManageFrame extends JFrame {
 
 	private JPanel contentPane;
@@ -108,6 +110,8 @@ public class ManageFrame extends JFrame {
      * @param lim
      */
 	public ManageFrame(LogInMsg limm) {
+		ConnectionChecker c = new ConnectionChecker();
+		 c.start();
 	    lim = limm;
 		setResizable(false);
 		contentPane = new JPanel();

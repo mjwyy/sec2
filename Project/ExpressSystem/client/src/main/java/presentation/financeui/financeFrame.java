@@ -22,6 +22,7 @@ import javax.swing.border.EtchedBorder;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
+import connection.ConnectionChecker;
 import businesslogic.statistic.BaseDataBuilding;
 import businesslogicservice.statisticblservice.BaseDataBuildingBLService;
 import presentation.logisticui.Car;
@@ -145,6 +146,8 @@ public class financeFrame extends JFrame {
      * @param lim
      */
 	public financeFrame(LogInMsg limm) {
+		 ConnectionChecker c = new ConnectionChecker();
+		 c.start();
 	    lim = limm;
 		setSize(WIDTH,HEIGHT);
 		contentPane = new JPanel();

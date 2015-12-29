@@ -37,6 +37,7 @@ import javax.swing.JLabel;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
+import connection.ConnectionChecker;
 import presentation.mainui.loginFrame;
 import presentation.util.ChanageLook;
 import presentation.util.VersionFrame;
@@ -159,6 +160,8 @@ public class TransitFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public TransitFrame( LogInMsg logInMsg ) {
+		ConnectionChecker c = new ConnectionChecker();
+		 c.start();
 		setResizable(false);
 		lim = logInMsg;
 		contentPane = new JPanel();

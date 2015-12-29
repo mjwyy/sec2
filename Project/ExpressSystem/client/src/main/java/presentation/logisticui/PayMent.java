@@ -16,6 +16,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+import dataservice.exception.ElementNotFoundException;
 import presentation.logisticui.ArrivalOrder.Submitter;
 import presentation.util.Chachong;
 import presentation.util.CleanTextField;
@@ -137,14 +138,14 @@ public class PayMent extends JPanel {
 		add(submit);
 
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(122, 188, 195, 150);
+		scrollPane_1.setBounds(122, 188, 367, 150);
 		add(scrollPane_1);
 
 
 		String[] columnNames =  
-			{ "货物编码"};  
+			{ "货物编码","订单金额"};  
 
-		Object[][] obj = new Object[1][1];  
+		Object[][] obj = new Object[1][2];  
 
 
 
@@ -360,6 +361,13 @@ public class PayMent extends JPanel {
 			vo=new CreditNoteVO("2011-01-01","10","厘米", ba);
 			ResultMsg result=payment.addReceipeDoc(vo);
 			if(result.isPass()){//格式检查正确
+				//获取该条形码金额
+				try {
+					double money=payment.getOrderMoney(codeF.getText());
+				} catch (ElementNotFoundException e1) {
+					JOptionPane.showMessageDialog(null, e1.message, "友情提示",JOptionPane.WARNING_MESSAGE);  
+					e1.printStackTrace();
+				}
 				String[] s={codeF.getText()};
 				model.addRow(s);
 				codeF.setText("");

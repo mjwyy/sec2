@@ -16,7 +16,7 @@ import java.awt.List;
 
 import javax.swing.DefaultComboBoxModel;
 
-
+import presentation.util.CurrentTime;
 import presentation.util.MJTextField;
 import presentation.util.SubmitDialog;
 import util.LogInMsg;
@@ -62,6 +62,7 @@ public class PaymentInputPanel extends JPanel {
 		add(label);
 		
 		date = new MJTextField();
+		date.setText(CurrentTime.getCurrentTimeDate());
 		date.setBounds(426, 73, 168, 28);
 		add(date);
 		date.setColumns(10);
@@ -149,7 +150,7 @@ public class PaymentInputPanel extends JPanel {
 		if(s.isPass()){
 			parent.setPaymentInputPanel(null);
 		}else{
-			int result1 = JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
+			int result1 = JOptionPane.showConfirmDialog(null, s.getMessage(),"系统提示",
 					JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);	
 			lock(true);
 		

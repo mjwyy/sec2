@@ -44,11 +44,11 @@ public class RMIHelper {
         }
         obj = new RMIHelper();
         int port = Integer.parseInt(strPort);
-//        System.out.println("ip = " +serverIP+"port = "+port);
+        System.out.println("ip = " +serverIP+"port = "+port);
         registry = LocateRegistry.getRegistry(serverIP,port);
         Remote provider = registry.lookup(objectiveName);
         obj.provider = (RMIObjectProviderService) provider;
-//        System.out.println("obj.provider == null?" + (obj.provider == null));
+        System.out.println("obj.provider == null?" + (obj.provider == null));
         obj.connectStatus = true;
         if(obj.connectStatus) {
             Thread discconChecker = new ConnectionChecker();

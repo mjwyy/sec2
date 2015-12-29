@@ -50,6 +50,8 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 
 
+
+import connection.ConnectionChecker;
 import presentation.mainui.loginFrame;
 import presentation.util.VersionFrame;
 import presentation.util.preference;
@@ -110,6 +112,7 @@ public class Service extends JFrame {
 	private LogInMsg lim;
 	public  JPanel leftdown ;
 	//↑↑↑↑
+	
 	/**
 	 * Launch the application.
 	 */
@@ -250,7 +253,7 @@ public class Service extends JFrame {
 	 * Create the frame.
 	 */
 	public Service(LogInMsg lim1) {
-		
+		new ConnectionChecker().start();
 
 		this.lim=lim1;
 		this.setResizable(false);//不可调整大小

@@ -1,5 +1,7 @@
 package connection;
 
+import javax.swing.JOptionPane;
+
 public class ConnectionChecker extends Thread {
 
 	private Object getter;
@@ -31,6 +33,7 @@ public class ConnectionChecker extends Thread {
 	
 	private void showDisconnectedPane() {
 		//TODO 显示具有断线信息的对话框，最好上面的按钮会关闭当前窗口
+	
 		System.out.println("Disconnection detected! Showing dialog...");
 	}
 	

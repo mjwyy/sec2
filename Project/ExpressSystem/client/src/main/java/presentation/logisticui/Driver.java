@@ -128,6 +128,9 @@ public class Driver extends JPanel {
 			/*将每一列的默认宽度设置为100*/  
 			column.setPreferredWidth(150);  
 		}  
+		column = table.getColumnModel().getColumn(5);  
+		/*将每一列的默认宽度设置为100*/  
+		column.setPreferredWidth(250);  
 		/* 
 		 * 设置JTable自动调整列表的状态，此处设置为关闭 
 		 */  
@@ -260,7 +263,7 @@ public class Driver extends JPanel {
 				}
 			}
 		});
-		btnNewButton_2.setBounds(924, 413, 70, 23);
+		btnNewButton_2.setBounds(887, 413, 70, 23);
 		add(btnNewButton_2);
 
 		JLabel label_2 = new JLabel("司机编号");
@@ -353,14 +356,18 @@ public class Driver extends JPanel {
 		sala.setBounds(824, 322, 170, 28);
 		add(sala);
 		
-		JButton aaall = new JButton("刷新");
+		JButton aaall = new JButton("显示全部");
 		aaall.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			initTabel();
 			}
 		});
-		aaall.setBounds(610, 6, 93, 23);
+		aaall.setBounds(610, 6, 102, 23);
 		add(aaall);
+		
+		JLabel label_11 = new JLabel("司机编号不能修改哦");
+		label_11.setBounds(975, 417, 167, 18);
+		add(label_11);
 
 
 
@@ -422,7 +429,7 @@ DriverVO vo=null;
 			cleanTable();
 			ArrayList<DriverVO> vvoo=dvm.findDriver(vo);
 			//如果为空
-			if(vvoo==null){
+			if(vvoo.size()<1){
 				JOptionPane.showMessageDialog(null, "木有找到相关人员");
 			}
 			for(int i=0;i<vvoo.size();i++){

@@ -38,7 +38,7 @@ public class Car extends JPanel {
      private MJTextField textField_1;
     private JComboBox comboBox;
     private JLabel pict;
-    private String fileName;
+    private String fileName="";
 	/**
 	 * Create the panel.
 	 */
@@ -139,6 +139,10 @@ public class Car extends JPanel {
 	        JButton btnNewButton = new JButton("新增");
 	        btnNewButton.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent e) {
+	        		if(fileName.equals("")){
+	        			JOptionPane.showMessageDialog(null, "请选择一张皂片", "友情提示",JOptionPane.WARNING_MESSAGE);  
+	        			return ;
+	        		}
 	        		File file=new File(fileName);
 		        	VehicleVO vo=new VehicleVO(code.getText(),name.getText(),time.getText(),file);
 		        	ResultMsg result=dvm.addVehicle(vo);
@@ -159,7 +163,7 @@ public class Car extends JPanel {
 	        add(btnNewButton);
 	        
 	        JButton btnNewButton_1 = new JButton("删除");
-	        btnNewButton_1.setBounds(816, 352, 75, 35);
+	        btnNewButton_1.setBounds(770, 352, 75, 35);
 	        btnNewButton_1.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent arg0) {
 	        		int seletedRow=table.getSelectedRow();
@@ -217,7 +221,7 @@ public class Car extends JPanel {
 					}
 	        	}
 	        });
-	        btnNewButton_2.setBounds(930, 352, 75, 35);
+	        btnNewButton_2.setBounds(872, 352, 75, 35);
 	        add(btnNewButton_2);
 	        
 	        JLabel label_2 = new JLabel("车辆代号");
@@ -295,6 +299,10 @@ public class Car extends JPanel {
 	        pict.setBounds(840, 248, 160, 85);
 	        add(pict);
 	        
+	        JLabel lblNewLabel = new JLabel("车辆代号不能修改哦");
+	        lblNewLabel.setBounds(957, 362, 170, 18);
+	        add(lblNewLabel);
+	        
 	       
 	        
 	    } 
@@ -335,6 +343,10 @@ public class Car extends JPanel {
 				//显示到tabel里,先清空
 				cleanTable();
 				ArrayList<VehicleVO> vvoo=dvm.findVehicle(vo);
+				//如果为空
+				if(vvoo.size()<1){
+					JOptionPane.showMessageDialog(null, "木有找到相关车辆");
+				}
 				for(int i=0;i<vvoo.size();i++){
 		    		VehicleVO vo=vvoo.get(i);
 		    		String vehiclecode=vo.getVehiclecode();

@@ -544,13 +544,13 @@ public class SystemUser extends JFrame {
         button.setBounds(553, 8, 63, 23);
         middle.add(button);
 
-        JButton button_1 = new JButton("刷新");
+        JButton button_1 = new JButton("显示所有");
         button_1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 initTabel(null);
             }
         });
-        button_1.setBounds(626, 8, 84, 23);
+        button_1.setBounds(626, 8, 109, 23);
         middle.add(button_1);
 
         JLabel lblNewLabel_3 = new JLabel("帐号不能修改哦~");

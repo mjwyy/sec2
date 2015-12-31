@@ -1,5 +1,8 @@
 package presentation.financeui;
 
+import java.rmi.RemoteException;
+
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.JOptionPane;
@@ -25,6 +28,10 @@ import businesslogicservice.infoblservice._stub.BankAccountManagemntBLService_St
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
+import javax.swing.JComboBox;
+
+import dataservice.exception.ElementNotFoundException;
 
 
 public class SettlementMangePanel extends JPanel {
@@ -56,6 +63,9 @@ public class SettlementMangePanel extends JPanel {
 	private SettlementManagementBLService service = new SettlementManagement();
 	private BankAccountManagementBLService bankservice = new BankAccountManagement();
 	private ResultMsg res;
+	private JTextField keyword;
+	private ArrayList<IncomeNoteVO> IncomeNoteVOList;
+	private JComboBox keywordtype;
 	public  SettlementMangePanel() {
 		setSize(WIDTH,HEIGHT);
 		setLayout(null);
@@ -166,9 +176,56 @@ public class SettlementMangePanel extends JPanel {
 		model = new DefaultTableModel();
 		model.setDataVector(data,name);
 		table = new JTable(model);
-		table.setBounds(17, 17, 713, 404);
+		table.setBounds(17, 100, 713, 321);
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(17, 17, 713, 404);
+		scrollPane.setBounds(17, 100, 713, 321);
 		add(scrollPane);
+		
+		JLabel label_4 = new JLabel("关键字类型");
+		label_4.setBounds(17, 38, 94, 16);
+		add(label_4);
+		
+		String[] type = {"收款日期","收款人","收款单位","交款营业厅"};
+		keywordtype = new JComboBox(type);
+		keywordtype.setBounds(123, 34, 177, 28);
+		add(keywordtype);
+		
+		keyword = new JTextField();
+		keyword.setBounds(309, 33, 231, 29);
+		add(keyword);
+		keyword.setColumns(10);
+		
+		JButton button_1 = new JButton("查询");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				data.clear();
+				if(keywordtype.getSelectedItem().toString().equals("收款日期"))
+				vo = new IncomeNoteVO(null,keyword.getText(),null,null,null,null);
+				else if(keywordtype.getSelectedItem().toString().equals("收款人"))
+					vo = new IncomeNoteVO(null,null,null,keyword.getText(),null,null);
+				else if(keywordtype.getSelectedItem().toString().equals("收款单位"))
+					vo = new IncomeNoteVO(null,null,keyword.getText(),null,null,null);
+				else 
+					vo = new IncomeNoteVO(null,null,null,null,keyword.getText(),null);
+				IncomeNoteVOList = service.find(vo);
+				if(!IncomeNoteVOList.isEmpty()){
+				for(int i = 0;i<IncomeNoteVOList.size();i++){
+				Vector row = new Vector();
+				row.add(IncomeNoteVOList.get(i).getDate());
+				row.add(IncomeNoteVOList.get(i).getPayee());
+				row.add(IncomeNoteVOList.get(i).getInstitution());
+				row.add(IncomeNoteVOList.get(i).getPayService());
+				row.add(IncomeNoteVOList.get(i).getMoney());
+				row.add(IncomeNoteVOList.get(i).getBankAccount().getAccount());
+				data.add(row.clone());
+				}
+				}else {
+					JOptionPane.showConfirmDialog(null, "未查询到相关信息","系统提示",
+							JOptionPane.OK_OPTION,JOptionPane.QUESTION_MESSAGE);
+				}
+			}
+		});
+		button_1.setBounds(613, 33, 117, 29);
+		add(button_1);
 	}
 }

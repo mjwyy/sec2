@@ -64,6 +64,7 @@ public class loginFrame extends JFrame {
     private JTextField barcode;
     private JTextField textField_2;
     private JLabel label;
+    private JLabel nofind;
     private LogInMsg lim;
     private ResultMsg res;
     private SystemUserManagementBLService service = null;
@@ -197,6 +198,12 @@ public class loginFrame extends JFrame {
         label.setBounds(168, 431, 240, 16);
         label.setVisible(false);
         llp.add(label);
+        
+       nofind = new JLabel("未查到信息，请检查输入单号正确性");
+       nofind .setForeground(Color.RED);
+       nofind .setBounds(168, 431, 240, 16);
+       nofind .setVisible(false);
+        llp.add(nofind );
 
         JButton button_1 = new JButton("查询");
         button_1.addActionListener(new ActionListener() {
@@ -208,34 +215,32 @@ public class loginFrame extends JFrame {
                     OrderVO vo=null;
 					try {
 						vo = orderService.submitBarcode(barcode.getText());
-					} catch (RemoteException | ElementNotFoundException e1) {
+						 
+			                    clientInquiryPanel cip = new clientInquiryPanel(vo);
+			                    cip.setBounds(0, 0, WIDTH, HEIGHT);
+			                    contentPane.removeAll();
+			                    contentPane.add(cip);
+			                    contentPane.repaint();
+
+			                    cip.getButton().addActionListener(new ActionListener() {
+
+			                        @Override
+			                        public void actionPerformed(ActionEvent e) {
+			                            contentPane.removeAll();
+			                            contentPane.add(mainPanel);
+			                            repaint();
+			                        }
+
+			                    });
+			                   
+					} catch ( ElementNotFoundException | RemoteException e1) {
 						// TODO Auto-generated catch block
-						e1.printStackTrace();
-						 String info = e1.getMessage();
-						 JOptionPane.showConfirmDialog(null, info,"系统提示",
-	        						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);	 
+//						e1.printStackTrace();
+					String info = e1.getMessage();
+						System.out.println("查不到单号");
+						nofind.setVisible(true);			 
 					}
-                    if(vo!=null){
-                    clientInquiryPanel cip = new clientInquiryPanel(vo);
-                    cip.setBounds(0, 0, WIDTH, HEIGHT);
-                    contentPane.removeAll();
-                    contentPane.add(cip);
-                    contentPane.repaint();
-
-                    cip.getButton().addActionListener(new ActionListener() {
-
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            contentPane.removeAll();
-                            contentPane.add(mainPanel);
-                            repaint();
-                        }
-
-                    });
-                    }else{
-                    	JOptionPane.showConfirmDialog(null, "此订单信息不存在，请核对信息是否正确哦！亲O_O","系统提示",
-        						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-                    }
+                   
                     
                 } else {
                     label.setVisible(true);
@@ -248,11 +253,14 @@ public class loginFrame extends JFrame {
         llp.add(button_1);
 
 
-        final JLabel red = new JLabel("帐号或者密码有误，请检查重新输入");
+       final JLabel red = new JLabel("帐号或者密码有误，请检查重新输入");
         red.setForeground(Color.RED);
         red.setBounds(668, 461, 248, 16);
         red.setVisible(false);
         llp.add(red);
+        
+       
+       
 
         service = new SystemUserManagement();
         orderService = new OrderInquiry();
@@ -309,6 +317,8 @@ public class loginFrame extends JFrame {
             e.printStackTrace();
         }
         mainPanel = llp;
+        
+     
     }
 
     

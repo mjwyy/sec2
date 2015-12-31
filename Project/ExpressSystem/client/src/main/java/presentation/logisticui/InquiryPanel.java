@@ -101,7 +101,7 @@ public class InquiryPanel extends JPanel {
                 } catch (ElementNotFoundException e1) {
                     e1.printStackTrace();
                     String info = e1.getMessage();
-                    error(info);
+                    error("未查到信息");
 
                 } catch (RemoteException e1) {
                     e1.printStackTrace();

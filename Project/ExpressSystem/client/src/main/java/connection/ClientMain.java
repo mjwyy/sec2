@@ -1,12 +1,6 @@
 package connection;
 
-import presentation.mainui.loginFrame;
-
-import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.Toolkit;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 

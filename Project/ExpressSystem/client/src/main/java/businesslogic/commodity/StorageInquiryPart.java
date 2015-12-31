@@ -40,6 +40,10 @@ public class StorageInquiryPart implements StorageInquiryPartBLService {
         	if(!msg[i].isPass()) return msg[i];
         }
         
+        if(time1.compareTo(time2)>0) {
+        	return new ResultMsg(false,"开始时间应该在结束时间之前~");
+        }
+        
         return new ResultMsg(true);
     }
 

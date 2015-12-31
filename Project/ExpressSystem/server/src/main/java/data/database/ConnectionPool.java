@@ -1,4 +1,4 @@
-package data.database;
+﻿package data.database;
 
 import connection.config.ServerConfig;
 

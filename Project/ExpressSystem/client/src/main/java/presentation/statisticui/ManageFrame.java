@@ -1,7 +1,6 @@
 package presentation.statisticui;
 
 import java.awt.BasicStroke;
-import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
@@ -23,7 +22,6 @@ import javax.swing.JMenuItem;
 import presentation.financeui.ChartOutPutPanel;
 import presentation.financeui.SystemLogPanel;
 import presentation.infoui.StaffManagementPanel;
-import presentation.logisticui.CourierFrame;
 import presentation.mainui.ManageorgPanel;
 import presentation.mainui.loginFrame;
 import presentation.util.VersionFrame;
@@ -37,7 +35,6 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.JLabel;
 
-import connection.ConnectionChecker;
 
 public class ManageFrame extends JFrame {
 
@@ -110,8 +107,6 @@ public class ManageFrame extends JFrame {
      * @param lim
      */
 	public ManageFrame(LogInMsg limm) {
-		ConnectionChecker c = new ConnectionChecker();
-		 c.start();
 	    lim = limm;
 		setResizable(false);
 		contentPane = new JPanel();

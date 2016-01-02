@@ -1,9 +1,7 @@
 package presentation.financeui;
 
 import java.awt.BasicStroke;
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -22,26 +20,18 @@ import javax.swing.border.EtchedBorder;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
-import connection.ConnectionChecker;
 import businesslogic.statistic.BaseDataBuilding;
 import businesslogicservice.statisticblservice.BaseDataBuildingBLService;
-import presentation.logisticui.Car;
-import presentation.logisticui.CourierFrame;
-import presentation.mainui.ManageorgPanel;
 import presentation.mainui.loginFrame;
 import presentation.util.VersionFrame;
 import presentation.util.preference;
 import presentation.util.welcomPanel;
 import util.LogInMsg;
-import util.ResultMsg;
-
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
-import javax.swing.JButton;
 //财务的panel监听待加
 public class financeFrame extends JFrame {
 
@@ -146,8 +136,6 @@ public class financeFrame extends JFrame {
      * @param lim
      */
 	public financeFrame(LogInMsg limm) {
-		 ConnectionChecker c = new ConnectionChecker();
-		 c.start();
 	    lim = limm;
 		setSize(WIDTH,HEIGHT);
 		contentPane = new JPanel();

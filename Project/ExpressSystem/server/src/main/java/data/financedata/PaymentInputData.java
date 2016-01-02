@@ -125,7 +125,7 @@ public class PaymentInputData extends UnicastRemoteObject implements PaymentInpu
 				set.next();
 				state = DocState.getDocState(set.getInt("isPassed"));
 				advice = set.getString("advice");	
-				DatabaseManager.releaseConnection(null, stmt, set);
+				DatabaseManager.releaseConnection(null, null, set);
 			} catch (SQLException e) {
 				e.printStackTrace();
 				DatabaseManager.releaseConnection(connection, stmt, set);
@@ -137,7 +137,7 @@ public class PaymentInputData extends UnicastRemoteObject implements PaymentInpu
 				e.printStackTrace();
 			}
     	}
-    	
+    	DatabaseManager.releaseConnection(null, stmt, set);
     	if(state==DocState.FAILED) {
     		throw new FailToPassApprovingException("单据审批不通过，意见为："+advice);
     	}

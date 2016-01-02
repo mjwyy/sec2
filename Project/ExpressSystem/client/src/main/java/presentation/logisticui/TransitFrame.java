@@ -1,14 +1,12 @@
 package presentation.logisticui;
 
 import java.awt.BasicStroke;
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
 
-import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -25,21 +23,12 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.border.EtchedBorder;
-import javax.swing.border.LineBorder;
-
 import java.awt.Color;
-import java.io.File;
-
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.MatteBorder;
 import javax.swing.JLabel;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
-import connection.ConnectionChecker;
 import presentation.mainui.loginFrame;
-import presentation.util.ChanageLook;
 import presentation.util.VersionFrame;
 import presentation.util.preference;
 import presentation.util.welcomPanel;
@@ -49,7 +38,6 @@ import vo.LoadNoteOnTransitVO;
 import vo.TransitNoteOnTransitVO;
 
 import javax.swing.ImageIcon;
-import javax.swing.JTextField;
 import javax.swing.JMenuItem;
 
 public class TransitFrame extends JFrame {
@@ -160,8 +148,6 @@ public class TransitFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public TransitFrame( LogInMsg logInMsg ) {
-		ConnectionChecker c = new ConnectionChecker();
-		 c.start();
 		setResizable(false);
 		lim = logInMsg;
 		contentPane = new JPanel();

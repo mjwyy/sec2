@@ -222,7 +222,7 @@ public class OrderApprove extends JPanel {
 		label_1.setBounds(10, 67, 103, 18);
 		add(label_1);
 		orderType = new JComboBox();
-		orderType.setModel(new DefaultComboBoxModel(new String[] {"所有", "寄件单", "收件单", "营业厅到达单", "营业厅装车单", "营业厅派件单", "中转中心到达单", "中转中心装车单", "中转中心中转单", "仓库入库单", "仓库出库单", "营业厅收款单"}));
+		orderType.setModel(new DefaultComboBoxModel(new String[] {"所有", "寄件单", "收件单", "营业厅到达单", "营业厅装车单", "营业厅派件单", "中转中心到达单", "中转中心装车单", "中转中心中转单", "仓库入库单", "仓库出库单", "营业厅收款单","付款单"}));
 		orderType.setBounds(98, 66, 151, 21);
 		add(orderType);
 		JButton button_5 = new JButton("查询");

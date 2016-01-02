@@ -146,6 +146,21 @@ public class NoteApproveChartData {
         chartData.put("note_transit", temp);
         type.put("note_transit", NoteType.TRANSIT_NOTE);
         primaryKey.put("note_transit","transitDocNumber");
+        
+        //付款单
+        temp = new TreeMap<>();
+        temp.put("date", "日期");
+        temp.put("payer", "付款人");
+        temp.put("account", "账户");
+        temp.put("money", "金额");
+        temp.put("type", "付款类型");
+        temp.put("comment", "备注");
+        temp.put("submitter", "经办人");
+        
+        chartData.put("paymentnotes", temp);
+        type.put("paymentnotes", NoteType.PAYMENT_NOTE);
+        primaryKey.put("paymentnotes", "id");
+        
 	}
 	
 	/**

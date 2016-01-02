@@ -1,8 +1,5 @@
 package presentation.financeui;
 
-import java.awt.Choice;
-
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -12,8 +9,6 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.List;
-
 import javax.swing.DefaultComboBoxModel;
 
 import presentation.util.CurrentTime;
@@ -24,7 +19,6 @@ import util.ResultMsg;
 import vo.PaymentVO;
 import businesslogic.finance.PaymentInput;
 import businesslogicservice.financeblservice.PaymentInputBLService;
-import businesslogicservice.financeblservice._stub.PaymentInputBLService_Stub;
 
 public class PaymentInputPanel extends JPanel {
 	private MJTextField date;

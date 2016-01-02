@@ -1,14 +1,8 @@
 package presentation.mainui;
 
-import java.awt.BasicStroke;
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Toolkit;
 
-import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -23,8 +17,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
-
 import presentation.commodityui.Commodity;
 import presentation.financeui.financeFrame;
 import presentation.infoui.SystemUser;
@@ -35,26 +27,17 @@ import presentation.statisticui.ManageFrame;
 import businesslogic.info.SystemUserManagement;
 import businesslogic.statistic.OrderInquiry;
 import businesslogicservice.infoblservice.SystemUserManagementBLService;
-import businesslogicservice.infoblservice._stub.SystemUserManagementBLService_Stub;
 import businesslogicservice.statisticblservice.OrderInquiryBLService;
-import businesslogicservice.statisticblservice._stub.OrderInquiryBLService_Stub;
-import connection.ConnectionChecker;
-import connection.RMIHelper;
 import dataservice.exception.ElementNotFoundException;
 import util.LogInMsg;
 import util.ResultMsg;
 import util.enums.Authority;
 import vo.OrderVO;
-import vo.UserVO;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 public class loginFrame extends JFrame {
     //查询的监听
@@ -134,8 +117,6 @@ public class loginFrame extends JFrame {
      * Create the frame.
      */
     public loginFrame() {
-    	ConnectionChecker c = new ConnectionChecker();
-		 c.start();
     	// 置顶
     	setAlwaysOnTop(true);
     	  // 双击置顶/取消置顶

@@ -1,7 +1,6 @@
 package presentation.logisticui;
 
 import java.awt.BasicStroke;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -27,13 +26,11 @@ import javax.swing.border.EtchedBorder;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
-import connection.ConnectionChecker;
 import presentation.mainui.loginFrame;
 import presentation.util.VersionFrame;
 import presentation.util.preference;
 import presentation.util.welcomPanel;
 import util.LogInMsg;
-import util.ResultMsg;
 import vo.DeliveryNoteVO;
 import vo.ReceivingNoteVO;
 
@@ -138,8 +135,6 @@ public class CourierFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public CourierFrame(LogInMsg  logInMsg) {
-		ConnectionChecker c = new ConnectionChecker();
-		 c.start();
 		setSize(1280,720);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1280, 720);

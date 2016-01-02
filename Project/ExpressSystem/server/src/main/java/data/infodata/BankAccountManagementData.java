@@ -168,9 +168,9 @@ public class BankAccountManagementData extends UnicastRemoteObject implements Ba
 		
 		double left = getAccountBalance(accountNum);
 		
-		assert (left+Double.parseDouble(variance))>=0;
+		assert (left+Double.parseDouble(variance))>=0:"余额不足，操作已取消";
 
-		String balance = null;
+		String balance = ""+(left+Double.parseDouble(variance));
 		
 		Connection connection = DatabaseManager.getConnection();
     	LogInsertDataService logIns = DatabaseFactoryMysqlImpl.getInstance().getLogInsertDataService();
@@ -182,11 +182,12 @@ public class BankAccountManagementData extends UnicastRemoteObject implements Ba
             throw new ElementNotFoundException("未找到银行账户，修改操作取消");
         }
 
-        String stmt = "update BankAccounts balance='"+balance+"' where number='"+accountNum+"'";
+        String stmt = "update BankAccounts set balance='"+balance+"' where number='"+accountNum+"'";
+        System.out.println("Executing:"+stmt);
         PreparedStatement stat = connection.prepareStatement(stmt);
         int result = stat.executeUpdate();
 
-        logIns.insertSystemLog("修改银行账户,number='"+accountNum+"',name="+balance);
+        logIns.insertSystemLog("修改银行账户,number="+accountNum+",name="+balance);
         DatabaseManager.releaseConnection(connection,stat,null);
 		
 	}

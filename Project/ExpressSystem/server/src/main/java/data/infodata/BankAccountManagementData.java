@@ -1,6 +1,5 @@
 package data.infodata;
 
-import data.database.DatabaseFactory;
 import data.database.DatabaseFactoryMysqlImpl;
 import data.database.DatabaseManager;
 import data.infodata.inte.BankAccountBalanceAccess;

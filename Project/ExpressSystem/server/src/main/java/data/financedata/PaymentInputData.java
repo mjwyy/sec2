@@ -78,7 +78,7 @@ public class PaymentInputData extends UnicastRemoteObject implements PaymentInpu
     	 */
     	String tempID = ""+System.currentTimeMillis();
     	String sql = "insert into PaymentNotes (id,date,payer,account,money,type,comment,submitter,isPassed) "
-    			+ "values (?,?,?,?,?,?,?,?,"+DocState.UNCHECKED+")";
+    			+ "values (?,?,?,?,?,?,?,?,"+DocState.UNCHECKED.getIntState()+")";
     	PreparedStatement stmt = null; 
     	
     	try {
@@ -94,7 +94,7 @@ public class PaymentInputData extends UnicastRemoteObject implements PaymentInpu
     		stmt.setString(8, staffID);
     		
     		stmt.executeUpdate();
-    		DatabaseManager.releaseConnection(null, stmt, null);
+
     	} catch (SQLException e) {
     		LogInsHelper.insertLog("录入收款单时与数据库交互出错");
     		e.printStackTrace();
@@ -125,7 +125,7 @@ public class PaymentInputData extends UnicastRemoteObject implements PaymentInpu
 				set.next();
 				state = DocState.getDocState(set.getInt("isPassed"));
 				advice = set.getString("advice");	
-				DatabaseManager.releaseConnection(null, null, set);
+				DatabaseManager.releaseConnection(null, stmt, set);
 			} catch (SQLException e) {
 				e.printStackTrace();
 				DatabaseManager.releaseConnection(connection, stmt, set);

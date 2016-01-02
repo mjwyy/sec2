@@ -52,7 +52,7 @@ public class PaymentInputData extends UnicastRemoteObject implements PaymentInpu
     		double balanceD = bankAccess.getAccountBalance(payment.getAccountNumber());
     		balance = new BigDecimal(balanceD);
        		if(needed.compareTo(balance)>0) { //余额不足
-    			throw new RemoteException("银行账户余额仅为"+needed+"元，不足以支付，操作已取消。");
+    			throw new RemoteException("银行账户余额仅为"+balance+"元，不足以支付，操作已取消。");
     		}
     	} catch (SQLException e) {
     		LogInsHelper.insertLog("查询银行账户"+payment.getAccountNumber()+"余额时出错");

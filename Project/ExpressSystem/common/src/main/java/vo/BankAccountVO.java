@@ -64,6 +64,10 @@ public class BankAccountVO {
 		return new ResultMsg(true);
 	}
 	
+	public ResultMsg checkNumber() {
+		return FormatCheck.isBankAccount(account);
+	}
+	
 	public Object toPO() {
 		BankAccountPO po = new BankAccountPO(name, account, balance);
 		return po;

@@ -251,7 +251,7 @@ public class ChartOutPutPanel extends JPanel {
 				//TODO 导出
 				MyJFileChooser mfc=new MyJFileChooser();
 	        	if(mfc.showSaveDialog(ChartOutPutPanel.this)== JFileChooser.APPROVE_OPTION){
-	        		String filename=mfc.getSelectedFile().getAbsolutePath();
+	        		String filename=mfc.getSelectedFile().getParent();
 	        		System.out.println(filename);
 	        		
 	        		if(vob != null){
@@ -270,12 +270,6 @@ public class ChartOutPutPanel extends JPanel {
 		});
 		button.setBounds(962, 37, 89, 30);
 		add(button);
-		
-	
-		
-		
-		
-		
 
 	}
 	

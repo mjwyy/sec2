@@ -84,48 +84,48 @@ public class SettlementManagementData extends UnicastRemoteObject implements Set
     	LogInsHelper.insertLog("已添加财务人员收款单"+tempID+"，待审核");
     	
     	//注意审批、修改银行账户余额
-    	//先审批
-    	
-    	DocState state = DocState.UNCHECKED;
-    	Statement stmt2 = null;
-    	
-    	try {
-    		stmt2 = connection.createStatement();
-    	} catch (SQLException e) {
-    		e.printStackTrace();
-    		throw sqlEx;
-    	}
-    	
-    	while(state==DocState.UNCHECKED) {
-    		
-    		try {
-    			state = getNoteState(tempID, stmt2);
-    		} catch (SQLException e) {
-    			e.printStackTrace();
-    			throw sqlEx;
-    		}
-    		
-    		try {
-    			Thread.sleep(1000);
-    		} catch (InterruptedException e) {
-    			e.printStackTrace();
-    		}
-    	}
-    	//审批不通过就返回
-    	if(state==DocState.FAILED) {
-    		
-    		String advice = null;
-    		try {
-    			advice = getAdvice(tempID, stmt2);
-    		} catch (SQLException e) {
-    			e.printStackTrace();
-    			throw sqlEx;
-    		}
-    		
-    		LogInsHelper.insertLog("收款单"+tempID+"未通过审批，消息发送至客户端。");
-    		throw new RemoteException("您输入的收款单未通过审批，意见为："+advice);
-    	}
-    	
+//    	//先审批
+//    	
+//    	DocState state = DocState.UNCHECKED;
+//    	Statement stmt2 = null;
+//    	
+//    	try {
+//    		stmt2 = connection.createStatement();
+//    	} catch (SQLException e) {
+//    		e.printStackTrace();
+//    		throw sqlEx;
+//    	}
+//    	
+//    	while(state==DocState.UNCHECKED) {
+//    		
+//    		try {
+//    			state = getNoteState(tempID, stmt2);
+//    		} catch (SQLException e) {
+//    			e.printStackTrace();
+//    			throw sqlEx;
+//    		}
+//    		
+//    		try {
+//    			Thread.sleep(1000);
+//    		} catch (InterruptedException e) {
+//    			e.printStackTrace();
+//    		}
+//    	}
+//    	//审批不通过就返回
+//    	if(state==DocState.FAILED) {
+//    		
+//    		String advice = null;
+//    		try {
+//    			advice = getAdvice(tempID, stmt2);
+//    		} catch (SQLException e) {
+//    			e.printStackTrace();
+//    			throw sqlEx;
+//    		}
+//    		
+//    		LogInsHelper.insertLog("收款单"+tempID+"未通过审批，消息发送至客户端。");
+//    		throw new RemoteException("您输入的收款单未通过审批，意见为："+advice);
+//    	}
+//    	
     	//通过了审批，就修改银行账户余额
     	
     	try {
@@ -137,7 +137,7 @@ public class SettlementManagementData extends UnicastRemoteObject implements Set
     		e.printStackTrace();
     		throw sqlEx;
     	} finally {
-    		DatabaseManager.releaseConnection(connection, stmt2, null);
+    		DatabaseManager.releaseConnection(connection, null, null);
     	}
     	
     	LogInsHelper.insertLog("成功添加收款单："+tempID+"并通过审核");

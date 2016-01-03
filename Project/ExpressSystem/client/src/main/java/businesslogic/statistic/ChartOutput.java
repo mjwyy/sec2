@@ -125,8 +125,9 @@ public class ChartOutput extends ChartOutputImpl implements ChartOutputBLService
 
         String formType = chartVO.getType().toString();
         String formTime = chartVO.getStartTime() + "至" + chartVO.getEndTime();
-        String fileName = formType + ":" + formTime + ".xls";
-        String exportPath = path + fileName;
+        String fileName = formType + " " + formTime + ".xls";
+        String exportPath = path + "\\" + fileName;
+        System.out.println(exportPath);
         // 将表格导出至本地目录
         return this.exportWorkBook(workbook,exportPath);
     }

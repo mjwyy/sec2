@@ -161,6 +161,20 @@ public class NoteApproveChartData {
         type.put("paymentnotes", NoteType.PAYMENT_NOTE);
         primaryKey.put("paymentnotes", "id");
         
+        
+//        //收款单
+//        temp = new TreeMap<>();
+//        temp.put("date", "日期");
+//        temp.put("receiveOrg", "收款机构");
+//        temp.put("receiveStaff", "收款人");
+//        temp.put("payer", "库款机构");
+//        temp.put("money", "金额");
+//        temp.put("account", "银行账户");
+//        
+//        chartData.put("incomenotes", temp);
+//        type.put("incomenotes", NoteType.INCOME_NOTE);
+//        primaryKey.put("incomenotes", "id");
+
 	}
 	
 	/**

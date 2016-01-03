@@ -79,8 +79,9 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
 
         ArrayList<VehiclePO> list = inquireVehicle(vehicle);
         if(list.size()>0) {
-        	LogInsHelper.insertLog("尝试添加车辆："+vehicle.getCarNumber()+"但数据库已包含其数据");
-            return false;
+        	String msg = "尝试添加车辆："+vehicle.getCarNumber()+"但数据库已包含其数据";
+        	LogInsHelper.insertLog(msg);
+            throw new RemoteException(msg);
         }
 
         String sql = "insert into Vehicles (carNumber,organizationNumber,firstUseTime,"
@@ -96,21 +97,22 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
         try {
             fis = new FileInputStream(picture);
         } catch (FileNotFoundException e) {
-        	LogInsHelper.insertLog("读取图片失败："+picture.getName());
+        	String msg = "读取图片失败："+picture.getName();
+        	LogInsHelper.insertLog(msg);
             e.printStackTrace();
             DatabaseManager.releaseConnection(connection,null,null);
-            return false;
+            throw new RemoteException(msg);
         }
 
         stmt.setString(4, picture.getName());
         stmt.setBinaryStream(5, fis);
 
-        int resultNum = stmt.executeUpdate();
+        stmt.executeUpdate();
 
         LogInsHelper.insertLog("成功加入车辆信息："+vehicle.getCarNumber());
         DatabaseManager.releaseConnection(connection,stmt,null);
         
-        return resultNum>0;
+        return true;
     }
 
     @Override
@@ -310,7 +312,7 @@ public class DriverVehicleManagementData extends UnicastRemoteObject implements 
             }
             if(keywords.getInstitutionNumber()!=null) {
                 if(keywords.getCarNumber()!=null) {
-                    sql = sql + " OR ";
+                    sql = sql + " AND ";
                 }
                 sql = sql + "(organizationNumber LIKE '%"+keywords.getInstitutionNumber()+"%')";
             }

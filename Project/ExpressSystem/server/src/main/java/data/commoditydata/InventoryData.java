@@ -225,7 +225,7 @@ public class InventoryData extends UnicastRemoteObject implements InventoryDataS
     	String nowTime = null;
     	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
     	nowTime = format.format(new Date());
-    	
+    	System.out.println("Recent:"+recentTime+"Now:"+nowTime);
         return findByTime(recentTime, nowTime, staffID);
     }
 

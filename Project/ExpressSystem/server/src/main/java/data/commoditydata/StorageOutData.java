@@ -117,7 +117,7 @@ public class StorageOutData extends UnicastRemoteObject implements StorageOutDat
 				int result = stmt.executeUpdate("insert into InOutInfo (OrderID,WarehouseID,isIn,Date) values"
 						+ "('"+barcode+"',"
 						+ "'"+org+"',"
-						+ ""+1+","
+						+ ""+0+","
 						+ "'"+po.getDate()+"')");
 			} catch (SQLException e) {
 				e.printStackTrace();

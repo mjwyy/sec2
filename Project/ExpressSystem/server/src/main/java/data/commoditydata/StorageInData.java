@@ -120,7 +120,7 @@ public class StorageInData extends UnicastRemoteObject implements StorageInDataS
 						+ "'"+good.getFramenumber()+"',"
 						+ "'"+good.getPlacenumber()+"',"
 						+ "'"+good.getDestination()+"')");
-				result = stmt.executeUpdate("update order set isInStorage=1,warehouseID='"+org+"' "
+				result = stmt.executeUpdate("update goodsorder set isInStorage=1,warehouseID='"+org+"' "
 						+ "where barcode='"+good.getBarcode()+"'");
 			} catch (SQLException e) {
 				e.printStackTrace();

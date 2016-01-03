@@ -94,7 +94,7 @@ public class IncomeNoteVO {
 		msgs[2] = FormatCheck.isMoney(money);
 		msgs[3] = FormatCheck.isChineseName(payee);
 		msgs[4] = FormatCheck.isServiceHall(payService);
-		msgs[5] = bankAccount.checkFormat();
+		msgs[5] = bankAccount.checkNumber();
 		
 		for(int i=0;i<msgs.length;i++) {
 			if(!msgs[i].isPass()) return msgs[i];

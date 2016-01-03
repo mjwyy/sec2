@@ -24,7 +24,7 @@ public class CleanTextField {
 	public static void cleanJtable(JTable table){
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		int count=model.getRowCount();
-		for(int i=0;i<count;i++){
+		for(int i=count-1;i>=0;i--){
 			model.removeRow(i);
 		}
 		

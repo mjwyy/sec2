@@ -50,6 +50,7 @@ public class ModifyBusinessDataPanel extends JPanel {
 	private int seletedRow1 = -1;
 	private  ArrayList<PriceVO> priceVo = new  ArrayList<PriceVO>();
 	private  ArrayList<DistanceVO> distanceList = new  ArrayList<DistanceVO>();
+	private JTextField textField;
 	/**
 	 * Create the panel.
 	 */
@@ -67,7 +68,7 @@ public class ModifyBusinessDataPanel extends JPanel {
 		table = new JTable(model);
 		table.setBounds(367, 72, 371, 272);
       JScrollPane scrollPane = new JScrollPane(table);
-      scrollPane.setBounds(90, 64, 455, 154);
+      scrollPane.setBounds(80, 51, 253, 265);
       add(scrollPane);
       
       table.addMouseListener(new MouseAdapter() {
@@ -91,7 +92,7 @@ public class ModifyBusinessDataPanel extends JPanel {
 		table1 = new JTable(model1);
 		table1.setBounds(367, 72, 371, 272);
       JScrollPane pricetable = new JScrollPane(table1);
-      pricetable.setBounds(90, 308, 455, 115);
+      pricetable.setBounds(779, 54, 238, 234);
       add(pricetable);
       
       table1.addMouseListener(new MouseAdapter() {
@@ -108,11 +109,11 @@ public class ModifyBusinessDataPanel extends JPanel {
      cityshowall();
      priceshowall();
       JLabel label = new JLabel("修改价格常量");
-      label.setBounds(90, 268, 127, 28);
+      label.setBounds(780, 17, 127, 28);
       add(label);
       
       JLabel label_1 = new JLabel("价格类型");
-      label_1.setBounds(759, 300, 61, 16);
+      label_1.setBounds(779, 300, 61, 16);
       add(label_1);
       
       final String [] priceType = {"每公里的运费","纸箱价格","木箱价格","快递袋价格"};
@@ -144,37 +145,37 @@ public class ModifyBusinessDataPanel extends JPanel {
       price.setColumns(10);
       
       JLabel lblNewLabel = new JLabel("价格");
-      lblNewLabel.setBounds(759, 341, 61, 16);
+      lblNewLabel.setBounds(779, 341, 61, 16);
       add(lblNewLabel);
       
       JLabel label_2 = new JLabel("修改城市间距离");
-      label_2.setBounds(759, 23, 105, 16);
+      label_2.setBounds(367, 52, 105, 16);
       add(label_2);
       
       JLabel label_3 = new JLabel("城市1");
-      label_3.setBounds(759, 61, 61, 16);
+      label_3.setBounds(367, 92, 61, 16);
       add(label_3);
       
       city1 = new JTextField();
-      city1.setBounds(854, 55, 190, 28);
+      city1.setBounds(426, 86, 190, 28);
       add(city1);
       city1.setColumns(10);
       
       JLabel label_4 = new JLabel("城市2:");
-      label_4.setBounds(759, 101, 61, 16);
+      label_4.setBounds(367, 126, 61, 16);
       add(label_4);
       
       city2 = new JTextField();
-      city2.setBounds(854, 95, 190, 28);
+      city2.setBounds(426, 120, 190, 28);
       add(city2);
       city2.setColumns(10);
       
       JLabel label_5 = new JLabel("距离");
-      label_5.setBounds(759, 139, 61, 16);
+      label_5.setBounds(367, 164, 61, 16);
       add(label_5);
       
       distance = new JTextField();
-      distance.setBounds(854, 133, 190, 28);
+      distance.setBounds(426, 158, 190, 28);
       add(distance);
       distance.setColumns(10);
       
@@ -219,7 +220,7 @@ public class ModifyBusinessDataPanel extends JPanel {
       btnModify.setBounds(927, 383, 117, 29);
       add(btnModify);
       
-      JButton btnAdd = new JButton("ADD");
+      JButton btnAdd = new JButton("MODIFY");
       btnAdd.addActionListener(new ActionListener() {
       	public void actionPerformed(ActionEvent e) {
       		String distanceNum = distance.getText();
@@ -256,7 +257,7 @@ public class ModifyBusinessDataPanel extends JPanel {
       		}
       	}
       });
-      btnAdd.setBounds(927, 189, 117, 29);
+      btnAdd.setBounds(499, 225, 117, 29);
       add(btnAdd);
   
       
@@ -271,7 +272,7 @@ public class ModifyBusinessDataPanel extends JPanel {
       	   
       	}
       });
-      button_1.setBounds(428, 23, 117, 29);
+      button_1.setBounds(229, 18, 117, 29);
       add(button_1);
       
       JButton button_2 = new JButton("显示所有");
@@ -280,8 +281,21 @@ public class ModifyBusinessDataPanel extends JPanel {
       		priceshowall();
       	}
       });
-      button_2.setBounds(428, 269, 117, 29);
+      button_2.setBounds(931, 18, 117, 29);
       add(button_2);  
+      
+      JLabel label_7 = new JLabel("新增城市");
+      label_7.setBounds(84, 341, 75, 16);
+      add(label_7);
+      
+      textField = new JTextField();
+      textField.setBounds(80, 369, 171, 28);
+      add(textField);
+      textField.setColumns(10);
+      
+      JButton btnAdd_1 = new JButton("ADD");
+      btnAdd_1.setBounds(236, 412, 97, 28);
+      add(btnAdd_1);
 	}
 	
 	public String whichString(PriceType priceType){

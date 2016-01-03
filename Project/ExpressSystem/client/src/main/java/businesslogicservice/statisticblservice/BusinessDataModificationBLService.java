@@ -16,6 +16,15 @@ import java.util.ArrayList;
  */
 public interface BusinessDataModificationBLService {
 
+
+    /**
+     * 添加name表示的城市
+     *
+     * @param name
+     * @return
+     */
+    boolean addCity(String name);
+
     /**
      * 获取数据库中所有的价格信息
      * @return 价格的类型与数量

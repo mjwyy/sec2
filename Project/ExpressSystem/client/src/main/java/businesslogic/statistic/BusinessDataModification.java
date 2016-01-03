@@ -30,6 +30,11 @@ public class BusinessDataModification implements BusinessDataModificationBLServi
     }
 
     @Override
+    public boolean addCity(String name) {
+        return this.addCity(name);
+    }
+
+    @Override
     public ArrayList<PriceVO> getAllPrices() {
         ArrayList<PriceVO> priceVOs = new ArrayList<>();
         try {

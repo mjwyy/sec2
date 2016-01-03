@@ -1,6 +1,5 @@
 package businesslogicservice.statisticblservice;
 
-import businesslogic.logistic.deliverystrategy.PriceInfo;
 import util.ResultMsg;
 import util.enums.PriceType;
 import vo.DistanceVO;
@@ -23,7 +22,7 @@ public interface BusinessDataModificationBLService {
      * @param name
      * @return
      */
-    boolean addCity(String name);
+    ResultMsg addCity(String name);
 
     /**
      * 获取数据库中所有的价格信息

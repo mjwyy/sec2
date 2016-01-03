@@ -3,6 +3,7 @@ package businesslogic.statistic;
 import businesslogicservice.statisticblservice.BusinessDataModificationBLService;
 import connection.RemoteObjectGetter;
 import dataservice.exception.ElementNotFoundException;
+import dataservice.exception.InterruptWithExistedElementException;
 import dataservice.statisticdataservice.BusinessDataModificationDataService;
 import po.DistancePO;
 import util.ResultMsg;
@@ -11,7 +12,6 @@ import vo.DistanceVO;
 import vo.PriceVO;
 
 import java.rmi.RemoteException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -30,8 +30,17 @@ public class BusinessDataModification implements BusinessDataModificationBLServi
     }
 
     @Override
-    public boolean addCity(String name) {
-        return this.addCity(name);
+    public ResultMsg addCity(String name) {
+        try {
+            boolean result =  this.dataService.addCity(name);
+            return new ResultMsg(result);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return new ResultMsg(false,e.getMessage());
+        } catch (InterruptWithExistedElementException e) {
+            e.printStackTrace();
+            return new ResultMsg(false,e.getMessage());
+        }
     }
 
     @Override

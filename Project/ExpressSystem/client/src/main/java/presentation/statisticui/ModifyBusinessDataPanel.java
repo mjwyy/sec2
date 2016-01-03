@@ -296,9 +296,12 @@ public class ModifyBusinessDataPanel extends JPanel {
       JButton btnAdd_1 = new JButton("ADD");
       btnAdd_1.addActionListener(new ActionListener() {
       	public void actionPerformed(ActionEvent e) {
-      		boolean f = service.addCity(newcity.getText());
-      		if(f){
+      		res = service.addCity(newcity.getText());
+      		if(res.isPass()){
       			cityshowall();
+      		}else{
+      			JOptionPane.showConfirmDialog(null, res.getMessage(),"系统提示",
+						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
       		}
       	}
       });

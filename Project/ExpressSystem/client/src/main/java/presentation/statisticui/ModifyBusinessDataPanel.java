@@ -50,7 +50,7 @@ public class ModifyBusinessDataPanel extends JPanel {
 	private int seletedRow1 = -1;
 	private  ArrayList<PriceVO> priceVo = new  ArrayList<PriceVO>();
 	private  ArrayList<DistanceVO> distanceList = new  ArrayList<DistanceVO>();
-	private JTextField textField;
+	private JTextField newcity;
 	/**
 	 * Create the panel.
 	 */
@@ -288,12 +288,20 @@ public class ModifyBusinessDataPanel extends JPanel {
       label_7.setBounds(84, 341, 75, 16);
       add(label_7);
       
-      textField = new JTextField();
-      textField.setBounds(80, 369, 171, 28);
-      add(textField);
-      textField.setColumns(10);
+      newcity = new JTextField();
+      newcity.setBounds(80, 369, 171, 28);
+      add(newcity);
+      newcity.setColumns(10);
       
       JButton btnAdd_1 = new JButton("ADD");
+      btnAdd_1.addActionListener(new ActionListener() {
+      	public void actionPerformed(ActionEvent e) {
+      		boolean f = service.addCity(newcity.getText());
+      		if(f){
+      			cityshowall();
+      		}
+      	}
+      });
       btnAdd_1.setBounds(236, 412, 97, 28);
       add(btnAdd_1);
 	}

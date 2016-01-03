@@ -332,7 +332,7 @@ public class ManageFrame extends JFrame {
 							 g.drawImage(img.getImage(), 0, 0, null);
 							 float lineWidth = 3.0f;
 						      ((Graphics2D)g).setStroke(new BasicStroke(lineWidth));
-						      g.drawLine(0, 233,1152 , 233);
+						      g.drawLine(650, 0,650 , 720);
 							}
 							}; 
 					anot.setBounds(0, 0, 1152, 446);

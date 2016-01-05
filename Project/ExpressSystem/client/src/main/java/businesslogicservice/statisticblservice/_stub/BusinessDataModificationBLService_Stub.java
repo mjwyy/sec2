@@ -45,4 +45,10 @@ public class BusinessDataModificationBLService_Stub implements BusinessDataModif
         System.out.println("inputPrice succeed");
 		return new ResultMsg(true,"Success!");
 	}
+
+	@Override
+	public ResultMsg addCity(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

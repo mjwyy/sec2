@@ -1,9 +1,6 @@
 package businesslogic.logistic;
 
-import businesslogic.logistic.deliverystrategy.DeliveryInfo;
-import businesslogic.logistic.deliverystrategy.PriceInfo;
-import businesslogic.logistic.deliverystrategy.PriceStrategy;
-import businesslogic.logistic.deliverystrategy.TimePresumeStrategy;
+import businesslogic.logistic.deliverystrategy.*;
 import businesslogicservice.logisticblservice.DeliveryNoteInputBLService;
 import connection.RemoteObjectGetter;
 import dataservice.exception.ElementNotFoundException;
@@ -28,15 +25,16 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
     private BusinessDataModificationDataService businessDataModificationDataService;
 
     private DeliveryNotePO notePO;
+
     private PriceStrategy priceStrategy;
-    private TimePresumeStrategy timePresumeStrategy;
+    private TimeStrategy timePresumeStrategy;
 
     public DeliveryNoteInput() {
         RemoteObjectGetter getter = new RemoteObjectGetter();
         this.dataService = (DeliveryNoteInputDataService) getter.getObjectByName("DeliveryNoteInputDataService");
         this.businessDataModificationDataService =
                 (BusinessDataModificationDataService) getter.getObjectByName("BusinessDataModificationDataService");
-        priceStrategy = new PriceStrategy();
+        priceStrategy = new DeliveryPriceStrategy();
         timePresumeStrategy = new TimePresumeStrategy();
 
     }
@@ -51,8 +49,10 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
                 String packPriceType = sendDocVO.getPackType().toString();
                 double pricePerKG = businessDataModificationDataService.getPrice(PriceType.PricePerKg);
                 double packagePrice = businessDataModificationDataService.getPrice(PriceType.getPriceType(packPriceType));
+
                 String city1 = InfoManager.findCity(sendDocVO.getSenderAddress());
                 String city2 = InfoManager.findCity(sendDocVO.getReceiverAddress());
+
                 //防御式编程:如果城市在系统中不存在,返回错误信息
                 if(city1 == null)
                     return new ResultMsg(false,"寄件人城市有误!");
@@ -64,10 +64,13 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
                 DeliveryInfo deliveryInfo = new DeliveryInfo(city1,city2,distance,sendDocVO.getWeight(),
                         sendDocVO.getVolume(),sendDocVO.getCategory(),sendDocVO.getPackType());
                 PriceInfo priceInfo = new PriceInfo(pricePerKG,packagePrice);
+
                 //委托:获取价格与预计日期
                 double price = priceStrategy.getPrice(deliveryInfo,priceInfo);
+
                 sendDocVO.setPrice(price);
                 String presumedDate = timePresumeStrategy.getPresumedTime(deliveryInfo);
+
                 sendDocMsg = new SendDocMsg(true, "寄件单已成功提交,等待审批", price, presumedDate);
             } catch (RemoteException e) {
                 e.printStackTrace();
@@ -102,6 +105,16 @@ public class DeliveryNoteInput implements DeliveryNoteInputBLService {
             e.printStackTrace();
             return new SendDocMsg(false, "提交寄件单失败!单据编号已存在!", 0, null);
         }
+    }
+
+    @Override
+    public void setTimeStrategy(TimeStrategy timeStrategy) {
+        this.timePresumeStrategy = timeStrategy;
+    }
+
+    @Override
+    public void setPriceStrategy(PriceStrategy priceStrategy) {
+        this.priceStrategy = priceStrategy;
     }
 
 }

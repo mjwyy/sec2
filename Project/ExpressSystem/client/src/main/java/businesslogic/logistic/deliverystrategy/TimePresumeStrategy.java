@@ -11,7 +11,7 @@ import java.util.Date;
 /**
  * Created by kylin on 15/11/30.
  */
-public class TimePresumeStrategy {
+public class TimePresumeStrategy implements TimeStrategy{
 
     /**
      * 根据寄件单信息预测预计到达日期

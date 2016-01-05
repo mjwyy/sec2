@@ -32,6 +32,11 @@ public class BusinessDataModificationBLService_Stub implements BusinessDataModif
     }
 
     @Override
+    public ResultMsg addCity(String name) {
+        return null;
+    }
+
+    @Override
     public ArrayList<PriceVO> getAllPrices() {
         return null;
     }

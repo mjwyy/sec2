@@ -1,5 +1,7 @@
 package businesslogicservice.logisticblservice._Stub;
 
+import businesslogic.logistic.deliverystrategy.PriceStrategy;
+import businesslogic.logistic.deliverystrategy.TimeStrategy;
 import util.SendDocMsg;
 import vo.DeliveryNoteVO;
 import businesslogicservice.logisticblservice.DeliveryNoteInputBLService;
@@ -44,6 +46,16 @@ public class DeliveryNoteInputBLService_Stub implements DeliveryNoteInputBLServi
 	//提交界面得到对提交的寄件单的反馈结果
     public ResultMsg submitSendDoc(DeliveryNoteVO sendDocVO) {
         return new SendDocMsg(true, "提交成功", 10, "3days");
+    }
+
+    @Override
+    public void setTimeStrategy(TimeStrategy timeStrategy) {
+
+    }
+
+    @Override
+    public void setPriceStrategy(PriceStrategy priceStrategy) {
+
     }
 
 }

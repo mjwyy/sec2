@@ -1,5 +1,7 @@
 package businesslogicservice.logisticblservice;
 
+import businesslogic.logistic.deliverystrategy.PriceStrategy;
+import businesslogic.logistic.deliverystrategy.TimeStrategy;
 import util.ResultMsg;
 import vo.DeliveryNoteVO;
 
@@ -27,4 +29,17 @@ public interface DeliveryNoteInputBLService {
 	 */
     public ResultMsg submitSendDoc(DeliveryNoteVO sendDocVO);
 
+    /**
+     * 更改运费价格计算策略
+     *
+     * @param timeStrategy 价格计算策略
+     */
+    void setTimeStrategy(TimeStrategy timeStrategy);
+
+    /**
+     * 更改预计到达日期预测策略
+     *
+     * @param priceStrategy 日期预测策略
+     */
+    void setPriceStrategy(PriceStrategy priceStrategy);
 }
